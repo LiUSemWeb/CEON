@@ -52,5 +52,4 @@ TODO
 * Robin Keskisärkkä <robin.keskisarkka@liu.se>
 * Huanyu Li <huanyu.li@liu.se>
 * Eva Blmoqvist <eva.blomqvist@liu.se>
-* Huanyu Li <huanyu.li@liu.se>
 * Mikael Lindecrantz <mikael.lindecrantz@ragnsells.com>
