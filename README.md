@@ -23,6 +23,7 @@ __Note__: GitHub supports a list of keywords that can be used to automatically c
 ### Requirements
 - Git
 - Python 3
+- Java 8 (or higher)
 
 
 ### Setup
@@ -51,5 +52,5 @@ TODO
 ## Contact
 * Robin Keskisärkkä <robin.keskisarkka@liu.se>
 * Huanyu Li <huanyu.li@liu.se>
-* Eva Blmoqvist <eva.blomqvist@liu.se>
+* Eva Blomqvist <eva.blomqvist@liu.se>
 * Mikael Lindecrantz <mikael.lindecrantz@ragnsells.com>
