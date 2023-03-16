@@ -104,6 +104,8 @@ def create_index_file(config):
                          "version": version,
                          "title": basename})
         
+        # sort by name ascending, version descending
+        data.sort(key=lambda x: (x["title"], -float(x["version"])))
         with open(template_file, "r") as f:
             template = compiler.compile(f.read())
             
@@ -119,5 +121,7 @@ def main():
     generate_vowl(config)
     create_documentation(config)
     create_index_file(config)
+
+
 if __name__ == "__main__":
     main()
