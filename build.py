@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from bs4 import BeautifulSoup, formatter
 import os
 import yaml
 import urllib.request
@@ -46,6 +47,42 @@ def generate_vowl(config):
                 -output docs/webvowl/data/{path}/{version}/{basename}.json > /dev/null
         """)
 
+
+def create_documentation(config):
+    """Generate LODE documentation and instert VOWL visualization."""
+    for ontology in config["ontologies"]:
+        source = ontology["source"]
+        basename = os.path.basename(source).split(".")[0]
+        dirname = ontology["path"]
+        version = ontology["version"]
+        
+        os.system(f"mkdir -p docs/ontology-network/{dirname}/{version}/")
+        
+        # Note: Using the pyLODE package as a module is not working fails,
+        # and we instead call it using the CLI method
+        html_file = f"docs/ontology-network/{dirname}/{version}/index.html"
+        os.system(f"python3 -m pylode {source} -o {html_file}")      
+
+        # Insert overview section into documentation with WebVOWL in an iframe
+        with open(html_file, encoding="utf-8") as f:
+            soup = BeautifulSoup(f, "html.parser")
+            overview = BeautifulSoup(f"""
+                <div id="overview" class="section">
+                    <h2>Overview</h2>
+                    <div class="figure">
+                        <iframe id="iframe-overview" width="100%" height ="800px" src="../../../webvowl/index.html#{dirname}/{version}/{basename}"></iframe>
+                        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+                    </div>
+                </section>
+            """, "html.parser")
+            tag = soup.find(id='metadata')
+            tag.insert_after(overview)
+        
+        html_formatter = formatter.HTMLFormatter(indent=4)
+        with open(html_file, "w") as f:
+            f.write(soup.prettify(formatter=html_formatter))
+
+
 def main():
     with open("config.yml", 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
@@ -53,6 +90,7 @@ def main():
     copy_ontologies(config)
     download_owl2vowl()
     generate_vowl(config)
+    create_documentation(config)
 
 if __name__ == "__main__":
     main()
