@@ -1,0 +1,2687 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Circular Economy Ontology Network (CEON) - Resource Module
+        </title>
+        <style>
+            #pylode {
+            position: fixed;
+            top: 130px;
+            left: -80px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        #metadata ul,
+        #classes ul {
+            list-style-type: none;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-left: -40px;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor:help;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        sup {
+            margin-left: -3px;
+        }
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+
+#toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    border: solid 1px navy;
+    font-size: small;
+    width: 180px;
+}
+#toc h3 {
+    margin-top: 5px;
+}
+
+#toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#toc .first > li {
+    margin-top: 5px;
+}
+
+#toc .second,
+#toc .third {
+    padding-left: 10px;
+}
+
+#content {
+    width: calc(100% - 150px);
+}
+
+.hover_property {
+    cursor: help;
+    text-decoration: none;
+    border-bottom: dashed 1px;
+}
+
+.setclass {
+    list-style-type: none;
+}
+
+code{
+    word-wrap: break-word;
+  }
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  td {
+    word-wrap: break-word;
+  }
+        </style>
+        <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png"/>
+        <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png"/>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <script id="schema.org" type="application/ld+json">
+            [
+  {
+    "@id": "http://w3id.org/CEON/ontology-network/Resource#",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/contributor": [
+      {
+        "@value": "Eva Blomqvist"
+      },
+      {
+        "@value": "Mikael Lindecrantz"
+      },
+      {
+        "@value": "Robin Keskisärkkä"
+      }
+    ],
+    "https://schema.org/creator": [
+      {
+        "@value": "Huanyu Li"
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@value": "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Circular Economy Ontology Network (CEON) - Resource Module"
+      }
+    ]
+  }
+]
+        </script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="section" id="metadata">
+                <h1>
+                    Circular Economy Ontology Network (CEON) - Resource Module
+                </h1>
+                <h2>
+                    Metadata
+                </h2>
+                <dl>
+                    <div>
+                        <dt>
+                            <strong>
+                                IRI
+                            </strong>
+                        </dt>
+                        <dd>
+                            <code>
+                                http://w3id.org/CEON/ontology-network/Resource#
+                            </code>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">
+                                Title
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                Circular Economy Ontology Network (CEON) - Resource Module
+                            </p>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">
+                                Creator
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                Huanyu Li
+                            </p>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/dc/terms/contributor" title="An entity responsible for making contributions to the resource. Defined in DCMI Metadata Terms">
+                                Contributor
+                            </a>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>
+                                    <p>
+                                        Eva Blomqvist
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Mikael Lindecrantz
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Robin Keskisärkkä
+                                    </p>
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">
+                                License
+                            </a>
+                        </dt>
+                        <dd>
+                            <a href="https://github.com/LiUSemWeb/CEON/blob/master/LICENSE">
+                                ns1:LICENSE
+                            </a>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://www.w3.org/2002/07/owl#versionIRI" title="The property that identifies the version IRI of an ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">
+                                Version Iri
+                            </a>
+                        </dt>
+                        <dd>
+                            <a href="http://w3id.org/CEON/ontology-network/0.1/Resource#">
+                                http://w3id.org/CEON/ontology-network/0.1/Resource#
+                            </a>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://www.w3.org/2002/07/owl#versionInfo" title="The annotation property that provides version information for an ontology or another OWL construct. Defined in The OWL 2 Schema vocabulary (OWL 2)">
+                                Version Info
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                0.1
+                            </p>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespacePrefix" title="None. Defined in None">
+                                Preferred Namespace Prefix
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                CEON-Resource
+                            </p>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespaceUri" title="None. Defined in None">
+                                Preferred Namespace Uri
+                            </a>
+                        </dt>
+                        <dd>
+                            <a href="#Resource">
+                                ns2:Resource
+                            </a>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="section" id="overview">
+                <h2>
+                    Overview
+                </h2>
+                <div class="figure">
+                    <iframe height="800px" id="iframe-overview" src="../../../../webvowl/index.html#ontology/modules/resource/0.1/resource" width="100%">
+                    </iframe>
+                    <div class="caption">
+                        <strong>
+                            Figure 1:
+                        </strong>
+                        Ontology overview
+                    </div>
+                </div>
+            </div>
+            <div class="section" id="classes">
+                <h2>
+                    Classes
+                </h2>
+                <div class="property entity" id="CarbonFootprintInformation">
+                    <h3>
+                        Carbon Footprint Information
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#CarbonFootprintInformation
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Information">
+                                        CEON-R:Information
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="CertificationData">
+                    <h3>
+                        Certification Data
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#CertificationData
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Data">
+                                        CEON-R:Data
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#ComplianceSchema">
+                                                CEON-R:ComplianceSchema
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#LegislationInformation">
+                                                CEON-R:LegislationInformation
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#TransactionCertificate">
+                                                CEON-R:TransactionCertificate
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ChemicalEntity">
+                    <h3>
+                        Chemical Entity
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#ChemicalEntity
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Matter">
+                                        CEON-R:Matter
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#ChemicalSubstance">
+                                                CEON-R:ChemicalSubstance
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#MolecularEntity">
+                                                CEON-R:MolecularEntity
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ChemicalSubstance">
+                    <h3>
+                        Chemical Substance
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#ChemicalSubstance
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#ChemicalEntity">
+                                        CEON-R:ChemicalEntity
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="CirculalityScore">
+                    <h3>
+                        Circulality Score
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#CirculalityScore
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Information">
+                                        CEON-R:Information
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="CircularityCalculationModel">
+                    <h3>
+                        Circularity Calculation Model
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#CircularityCalculationModel
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#MathematicalModel">
+                                        CEON-R:MathematicalModel
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ComplianceSchema">
+                    <h3>
+                        Compliance Schema
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#ComplianceSchema
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#CertificationData">
+                                        CEON-R:CertificationData
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="Constituent">
+                    <h3>
+                        Constituent
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#Constituent
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#MaterialComponent">
+                                                CEON-R:MaterialComponent
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#ProductComponent">
+                                                CEON-R:ProductComponent
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="Data">
+                    <h3>
+                        Data
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#Data
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Resource">
+                                        CEON-R:Resource
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#CertificationData">
+                                                CEON-R:CertificationData
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#Information">
+                                                CEON-R:Information
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="IdentityInformation">
+                    <h3>
+                        Identity Information
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#IdentityInformation
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Information">
+                                        CEON-R:Information
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="Information">
+                    <h3>
+                        Information
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#Information
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Data">
+                                        CEON-R:Data
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#CarbonFootprintInformation">
+                                                CEON-R:CarbonFootprintInformation
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#CirculalityScore">
+                                                CEON-R:CirculalityScore
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#IdentityInformation">
+                                                CEON-R:IdentityInformation
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#LocationInformation">
+                                                CEON-R:LocationInformation
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#MathematicalModel">
+                                                CEON-R:MathematicalModel
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#ProcessGuideline">
+                                                CEON-R:ProcessGuideline
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#QuantityProperty">
+                                                CEON-R:QuantityProperty
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#SustainabilityScore">
+                                                CEON-R:SustainabilityScore
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="LegislationInformation">
+                    <h3>
+                        Legislation Information
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#LegislationInformation
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#CertificationData">
+                                        CEON-R:CertificationData
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="LocationInformation">
+                    <h3>
+                        Location Information
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#LocationInformation
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Information">
+                                        CEON-R:Information
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="Material">
+                    <h3>
+                        Material
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#Material
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Matter">
+                                        CEON-R:Matter
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">
+                                    In Domain Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#hasMaterialComponent">
+                                        CEON-R:hasMaterialComponent
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="MaterialComponent">
+                    <h3>
+                        Material Component
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#MaterialComponent
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Constituent">
+                                        CEON-R:Constituent
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">
+                                    In Range Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#hasMaterialComponent">
+                                        CEON-R:hasMaterialComponent
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="MathematicalModel">
+                    <h3>
+                        Mathematical Model
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#MathematicalModel
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Information">
+                                        CEON-R:Information
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#CircularityCalculationModel">
+                                                CEON-R:CircularityCalculationModel
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#ProcessCostModel">
+                                                CEON-R:ProcessCostModel
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#SustainabilityCalculationModel">
+                                                CEON-R:SustainabilityCalculationModel
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="Matter">
+                    <h3>
+                        Matter
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#Matter
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#PhysicalObject">
+                                        CEON-R:PhysicalObject
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">
+                                    In Range Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#hasMatter">
+                                        CEON-R:hasMatter
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#ChemicalEntity">
+                                                CEON-R:ChemicalEntity
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#Material">
+                                                CEON-R:Material
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="MolecularEntity">
+                    <h3>
+                        Molecular Entity
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#MolecularEntity
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#ChemicalEntity">
+                                        CEON-R:ChemicalEntity
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="PhysicalObject">
+                    <h3>
+                        Physical Object
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#PhysicalObject
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Resource">
+                                        CEON-R:Resource
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#Matter">
+                                                CEON-R:Matter
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#Product">
+                                                CEON-R:Product
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ProcessCostModel">
+                    <h3>
+                        Process Cost Model
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#ProcessCostModel
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#MathematicalModel">
+                                        CEON-R:MathematicalModel
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ProcessGuideline">
+                    <h3>
+                        Process Guideline
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#ProcessGuideline
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Information">
+                                        CEON-R:Information
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="Product">
+                    <h3>
+                        Product
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#Product
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#PhysicalObject">
+                                        CEON-R:PhysicalObject
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">
+                                    In Domain Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#hasMatter">
+                                                CEON-R:hasMatter
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#hasProductComponent">
+                                                CEON-R:hasProductComponent
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ProductComponent">
+                    <h3>
+                        Product Component
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#ProductComponent
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Constituent">
+                                        CEON-R:Constituent
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">
+                                    In Domain Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#hasMatter">
+                                        CEON-R:hasMatter
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">
+                                    In Range Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#hasProductComponent">
+                                        CEON-R:hasProductComponent
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="QuantityProperty">
+                    <h3>
+                        Quantity Property
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#QuantityProperty
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Information">
+                                        CEON-R:Information
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="Resource1">
+                    <h3>
+                        Resource
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#Resource
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#Data">
+                                                CEON-R:Data
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#PhysicalObject">
+                                                CEON-R:PhysicalObject
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="SustainabilityCalculationModel">
+                    <h3>
+                        Sustainability Calculation Model
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#SustainabilityCalculationModel
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#MathematicalModel">
+                                        CEON-R:MathematicalModel
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="SustainabilityScore">
+                    <h3>
+                        Sustainability Score
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#SustainabilityScore
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Information">
+                                        CEON-R:Information
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="TransactionCertificate">
+                    <h3>
+                        Transaction Certificate
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#TransactionCertificate
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#CertificationData">
+                                        CEON-R:CertificationData
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="section" id="objectproperties">
+                <h2>
+                    Object Properties
+                </h2>
+                <div class="property entity" id="hasmaterialcomponent">
+                    <h3>
+                        has material component
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#hasMaterialComponent
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Material">
+                                        CEON-R:Material
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#MaterialComponent">
+                                        CEON-R:MaterialComponent
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="hasmatter">
+                    <h3>
+                        has matter
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#hasMatter
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#Product">
+                                                CEON-R:Product
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/Resource#ProductComponent">
+                                                CEON-R:ProductComponent
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Matter">
+                                        CEON-R:Matter
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="hasproductcomponent">
+                    <h3>
+                        has product component
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/Resource#hasProductComponent
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#Product">
+                                        CEON-R:Product
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/Resource#ProductComponent">
+                                        CEON-R:ProductComponent
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="section" id="annotationproperties">
+                <h2>
+                    Annotation Properties
+                </h2>
+                <div class="property entity" id="contributor">
+                    <h3>
+                        contributor
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/contributor
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="created">
+                    <h3>
+                        created
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/created
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="creator">
+                    <h3>
+                        creator
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/creator
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="description">
+                    <h3>
+                        description
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/description
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="license">
+                    <h3>
+                        license
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/license
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="title">
+                    <h3>
+                        title
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/title
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="preferredNamespacePrefix">
+                    <h3>
+                        preferred namespace prefix
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/vocab/vann/preferredNamespacePrefix
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="preferredNamespaceUri">
+                    <h3>
+                        preferred namespace uri
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/vocab/vann/preferredNamespaceUri
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="namespaces">
+                <h2>
+                    Namespaces
+                </h2>
+                <dl>
+                    <dt id="CEON-R">
+                        CEON-R
+                    </dt>
+                    <dd>
+                        <code>
+                            http://w3id.org/CEON/Resource#
+                        </code>
+                    </dd>
+                    <dt id="ns1">
+                        ns1
+                    </dt>
+                    <dd>
+                        <code>
+                            https://github.com/LiUSemWeb/CEON/blob/master/
+                        </code>
+                    </dd>
+                    <dt id="ns2">
+                        ns2
+                    </dt>
+                    <dd>
+                        <code>
+                            https://w3id.org/CEON/ontology-network/0.1/
+                        </code>
+                    </dd>
+                    <dt id="owl">
+                        owl
+                    </dt>
+                    <dd>
+                        <code>
+                            http://www.w3.org/2002/07/owl#
+                        </code>
+                    </dd>
+                    <dt id="rdf">
+                        rdf
+                    </dt>
+                    <dd>
+                        <code>
+                            http://www.w3.org/1999/02/22-rdf-syntax-ns#
+                        </code>
+                    </dd>
+                    <dt id="rdfs">
+                        rdfs
+                    </dt>
+                    <dd>
+                        <code>
+                            http://www.w3.org/2000/01/rdf-schema#
+                        </code>
+                    </dd>
+                </dl>
+            </div>
+            <div id="legend">
+                <h2>
+                    Legend
+                </h2>
+                <table class="entity">
+                    <tr>
+                        <td>
+                            <sup class="sup-c" title="OWL/RDFS Class">
+                                c
+                            </sup>
+                        </td>
+                        <td>
+                            Classes
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sup class="sup-op" title="OWL Object Property">
+                                op
+                            </sup>
+                        </td>
+                        <td>
+                            Object Properties
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sup class="sup-ap" title="OWL Annotation Property">
+                                ap
+                            </sup>
+                        </td>
+                        <td>
+                            Annotation Properties
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="pylode">
+            <p>
+                made by
+                <a href="https://github.com/rdflib/pyLODE">
+                    <span id="p">
+                        p
+                    </span>
+                    <span id="y">
+                        y
+                    </span>
+                    <span>
+                        LODE
+                    </span>
+                </a>
+                <a href="https://github.com/rdflib/pyLODE/release/3.0.4" id="version">
+                    3.0.4
+                </a>
+            </p>
+        </div>
+        <div id="toc">
+            <h3>
+                Table of Contents
+            </h3>
+            <ul class="first">
+                <li>
+                    <h4>
+                        <a href="#metadata">
+                            Metadata
+                        </a>
+                    </h4>
+                </li>
+                <li>
+                    <h4>
+                        <a href="#classes">
+                            Classes
+                        </a>
+                    </h4>
+                    <ul class="second">
+                        <li>
+                            <a href="#CarbonFootprintInformation">
+                                Carbon Footprint Information
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#CertificationData">
+                                Certification Data
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ChemicalEntity">
+                                Chemical Entity
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ChemicalSubstance">
+                                Chemical Substance
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#CirculalityScore">
+                                Circulality Score
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#CircularityCalculationModel">
+                                Circularity Calculation Model
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ComplianceSchema">
+                                Compliance Schema
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#Constituent">
+                                Constituent
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#Data">
+                                Data
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#IdentityInformation">
+                                Identity Information
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#Information">
+                                Information
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#LegislationInformation">
+                                Legislation Information
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#LocationInformation">
+                                Location Information
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#Material">
+                                Material
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#MaterialComponent">
+                                Material Component
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#MathematicalModel">
+                                Mathematical Model
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#Matter">
+                                Matter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#MolecularEntity">
+                                Molecular Entity
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#PhysicalObject">
+                                Physical Object
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ProcessCostModel">
+                                Process Cost Model
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ProcessGuideline">
+                                Process Guideline
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#Product">
+                                Product
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ProductComponent">
+                                Product Component
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#QuantityProperty">
+                                Quantity Property
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#Resource1">
+                                Resource
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#SustainabilityCalculationModel">
+                                Sustainability Calculation Model
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#SustainabilityScore">
+                                Sustainability Score
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#TransactionCertificate">
+                                Transaction Certificate
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>
+                        <a href="#objectproperties">
+                            Object Properties
+                        </a>
+                    </h4>
+                    <ul class="second">
+                        <li>
+                            <a href="#hasmaterialcomponent">
+                                has material component
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#hasmatter">
+                                has matter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#hasproductcomponent">
+                                has product component
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>
+                        <a href="#annotationproperties">
+                            Annotation Properties
+                        </a>
+                    </h4>
+                    <ul class="second">
+                        <li>
+                            <a href="#contributor">
+                                contributor
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#created">
+                                created
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#creator">
+                                creator
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#description">
+                                description
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#license">
+                                license
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#title">
+                                title
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#preferredNamespacePrefix">
+                                preferred namespace prefix
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#preferredNamespaceUri">
+                                preferred namespace uri
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>
+                        <a href="#namespaces">
+                            Namespaces
+                        </a>
+                    </h4>
+                    <ul class="second">
+                        <li>
+                            <a href="#CEON-R">
+                                CEON-R
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ns1">
+                                ns1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ns2">
+                                ns2
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#owl">
+                                owl
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#rdf">
+                                rdf
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#rdfs">
+                                rdfs
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>
+                        <a href="#legend">
+                            Legend
+                        </a>
+                    </h4>
+                    <ul class="second">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
