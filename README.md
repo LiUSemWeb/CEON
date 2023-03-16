@@ -20,33 +20,31 @@ $ git commit -m "resolve issue #123"
 ## Adding a ontology pattern or module
 The easiest way to publish a new ontology or ontology module is to follow the steps below:
 
-1. Checkout the `develop` branch
+1. Checkout the `develop` branch and pull the latest changes
 ```bash
 $ git checkout develop
-```
-2. Pull the latest changes
-```bash
 $ git pull
 ```
-3. Create a new branch (e.g., `update-actor-module-to-version-1.0`)
+2. Create a new branch (e.g., `update-actor-module-to-version-1.0`)
 ```bash
 $ git checkout -b update-actor-module-to-version-1.0
 ```
-4. Add your ontology or ontology module to the `ontology/` directory, e.g. `ontology/modules/actor/1.0/actor.owl`
-5. Add config info about the file to `config.yml`:
+3. Add your ontology or ontology module to the `ontology/` directory, e.g. `ontology/modules/actor/1.0/actor.owl`
+4. Add config info about the file to `config.yml`:
 ```yml
   - source: "ontology/modules/actor/1.0/actor.owl"
     path: "ontology/modules/actor/"
     version: "1.0"
     latest: true
 ```
-6. (optional) Build and check the output
+5. (optional) Build and check the output
 ```bash
-$ ./build.py
+6 ./build.py
 ```
 7. Add, commit and push:
 ```bash
 $ git add ontolgies/ config.yml
+$ git commit -m "update actor module to version 1.0"
 $ git push origin update-actor-module-to-version-1.0
 ```
 8. From the GitHub page, create a pull request from your branch to `develop`.
