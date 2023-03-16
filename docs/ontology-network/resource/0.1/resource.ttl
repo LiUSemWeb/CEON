@@ -1,0 +1,257 @@
+@prefix : <http://w3id.org/CEON#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix CEON-R: <http://w3id.org/CEON/Resource#> .
+@base <http://w3id.org/CEON/ontology-network/Resource#> .
+
+<http://w3id.org/CEON/ontology-network/Resource#> rdf:type owl:Ontology ;
+                                                   owl:versionIRI <http://w3id.org/CEON/ontology-network/0.1/Resource#> ;
+                                                   <http://purl.org/dc/terms/contributor> "Eva Blomqvist" ,
+                                                                                          "Mikael Lindecrantz" ,
+                                                                                          "Robin Keskisärkkä" ;
+                                                   <http://purl.org/dc/terms/creator> "Huanyu Li" ;
+                                                   <http://purl.org/dc/terms/license> "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"^^xsd:string ;
+                                                   <http://purl.org/dc/terms/title> "Circular Economy Ontology Network (CEON) - Resource Module"^^xsd:string ;
+                                                   <http://purl.org/vocab/vann/preferredNamespacePrefix> "CEON-Resource"^^xsd:string ;
+                                                   <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/CEON/ontology-network/0.1/Resource"^^xsd:string ;
+                                                   rdfs:seeAlso "2023-03-16"^^xsd:string ,
+                                                                "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
+                                                   owl:versionInfo "0.1"^^xsd:string .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/Resource#hasMaterialComponent
+CEON-R:hasMaterialComponent rdf:type owl:ObjectProperty ;
+                            rdfs:domain CEON-R:Material ;
+                            rdfs:range CEON-R:MaterialComponent ;
+                            rdfs:label "has material component" .
+
+
+###  http://w3id.org/CEON/Resource#hasMatter
+CEON-R:hasMatter rdf:type owl:ObjectProperty ;
+                 rdfs:domain CEON-R:Product ,
+                             CEON-R:ProductComponent ;
+                 rdfs:range CEON-R:Matter ;
+                 rdfs:label "has matter" .
+
+
+###  http://w3id.org/CEON/Resource#hasProductComponent
+CEON-R:hasProductComponent rdf:type owl:ObjectProperty ;
+                           rdfs:domain CEON-R:Product ;
+                           rdfs:range CEON-R:ProductComponent ;
+                           rdfs:label "has product component" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/Resource#CarbonFootprintInformation
+CEON-R:CarbonFootprintInformation rdf:type owl:Class ;
+                                  rdfs:subClassOf CEON-R:Information ;
+                                  rdfs:label "Carbon Footprint Information" .
+
+
+###  http://w3id.org/CEON/Resource#CertificationData
+CEON-R:CertificationData rdf:type owl:Class ;
+                         rdfs:subClassOf CEON-R:Data ;
+                         rdfs:label "Certification Data" .
+
+
+###  http://w3id.org/CEON/Resource#ChemicalEntity
+CEON-R:ChemicalEntity rdf:type owl:Class ;
+                      rdfs:subClassOf CEON-R:Matter ;
+                      rdfs:label "Chemical Entity" .
+
+
+###  http://w3id.org/CEON/Resource#ChemicalSubstance
+CEON-R:ChemicalSubstance rdf:type owl:Class ;
+                         rdfs:subClassOf CEON-R:ChemicalEntity ;
+                         rdfs:label "Chemical Substance" .
+
+
+###  http://w3id.org/CEON/Resource#CirculalityScore
+CEON-R:CirculalityScore rdf:type owl:Class ;
+                        rdfs:subClassOf CEON-R:Information ;
+                        rdfs:label "Circulality Score" .
+
+
+###  http://w3id.org/CEON/Resource#CircularityCalculationModel
+CEON-R:CircularityCalculationModel rdf:type owl:Class ;
+                                   rdfs:subClassOf CEON-R:MathematicalModel ;
+                                   rdfs:label "Circularity Calculation Model" .
+
+
+###  http://w3id.org/CEON/Resource#ComplianceSchema
+CEON-R:ComplianceSchema rdf:type owl:Class ;
+                        rdfs:subClassOf CEON-R:CertificationData ;
+                        rdfs:label "Compliance Schema" .
+
+
+###  http://w3id.org/CEON/Resource#Constituent
+CEON-R:Constituent rdf:type owl:Class ;
+                   rdfs:label "Constituent" .
+
+
+###  http://w3id.org/CEON/Resource#Data
+CEON-R:Data rdf:type owl:Class ;
+            rdfs:subClassOf CEON-R:Resource ;
+            rdfs:label "Data" .
+
+
+###  http://w3id.org/CEON/Resource#IdentityInformation
+CEON-R:IdentityInformation rdf:type owl:Class ;
+                           rdfs:subClassOf CEON-R:Information ;
+                           rdfs:label "Identity Information" .
+
+
+###  http://w3id.org/CEON/Resource#Information
+CEON-R:Information rdf:type owl:Class ;
+                   rdfs:subClassOf CEON-R:Data ;
+                   rdfs:label "Information" .
+
+
+###  http://w3id.org/CEON/Resource#LegislationInformation
+CEON-R:LegislationInformation rdf:type owl:Class ;
+                              rdfs:subClassOf CEON-R:CertificationData ;
+                              rdfs:label "Legislation Information" .
+
+
+###  http://w3id.org/CEON/Resource#LocationInformation
+CEON-R:LocationInformation rdf:type owl:Class ;
+                           rdfs:subClassOf CEON-R:Information ;
+                           rdfs:label "Location Information" .
+
+
+###  http://w3id.org/CEON/Resource#Material
+CEON-R:Material rdf:type owl:Class ;
+                rdfs:subClassOf CEON-R:Matter ;
+                rdfs:label "Material" .
+
+
+###  http://w3id.org/CEON/Resource#MaterialComponent
+CEON-R:MaterialComponent rdf:type owl:Class ;
+                         rdfs:subClassOf CEON-R:Constituent ;
+                         rdfs:label "Material Component" .
+
+
+###  http://w3id.org/CEON/Resource#MathematicalModel
+CEON-R:MathematicalModel rdf:type owl:Class ;
+                         rdfs:subClassOf CEON-R:Information ;
+                         rdfs:label "Mathematical Model" .
+
+
+###  http://w3id.org/CEON/Resource#Matter
+CEON-R:Matter rdf:type owl:Class ;
+              rdfs:subClassOf CEON-R:PhysicalObject ;
+              rdfs:label "Matter" .
+
+
+###  http://w3id.org/CEON/Resource#MolecularEntity
+CEON-R:MolecularEntity rdf:type owl:Class ;
+                       rdfs:subClassOf CEON-R:ChemicalEntity ;
+                       rdfs:label "Molecular Entity" .
+
+
+###  http://w3id.org/CEON/Resource#PhysicalObject
+CEON-R:PhysicalObject rdf:type owl:Class ;
+                      rdfs:subClassOf CEON-R:Resource ;
+                      rdfs:label "Physical Object" .
+
+
+###  http://w3id.org/CEON/Resource#ProcessCostModel
+CEON-R:ProcessCostModel rdf:type owl:Class ;
+                        rdfs:subClassOf CEON-R:MathematicalModel ;
+                        rdfs:label "Process Cost Model" .
+
+
+###  http://w3id.org/CEON/Resource#ProcessGuideline
+CEON-R:ProcessGuideline rdf:type owl:Class ;
+                        rdfs:subClassOf CEON-R:Information ;
+                        rdfs:label "Process Guideline" .
+
+
+###  http://w3id.org/CEON/Resource#Product
+CEON-R:Product rdf:type owl:Class ;
+               rdfs:subClassOf CEON-R:PhysicalObject ;
+               rdfs:label "Product" .
+
+
+###  http://w3id.org/CEON/Resource#ProductComponent
+CEON-R:ProductComponent rdf:type owl:Class ;
+                        rdfs:subClassOf CEON-R:Constituent ;
+                        rdfs:label "Product Component" .
+
+
+###  http://w3id.org/CEON/Resource#QuantityProperty
+CEON-R:QuantityProperty rdf:type owl:Class ;
+                        rdfs:subClassOf CEON-R:Information ;
+                        rdfs:label "Quantity Property" .
+
+
+###  http://w3id.org/CEON/Resource#Resource
+CEON-R:Resource rdf:type owl:Class ;
+                rdfs:label "Resource" .
+
+
+###  http://w3id.org/CEON/Resource#SustainabilityCalculationModel
+CEON-R:SustainabilityCalculationModel rdf:type owl:Class ;
+                                      rdfs:subClassOf CEON-R:MathematicalModel ;
+                                      rdfs:label "Sustainability Calculation Model" .
+
+
+###  http://w3id.org/CEON/Resource#SustainabilityScore
+CEON-R:SustainabilityScore rdf:type owl:Class ;
+                           rdfs:subClassOf CEON-R:Information ;
+                           rdfs:label "Sustainability Score" .
+
+
+###  http://w3id.org/CEON/Resource#TransactionCertificate
+CEON-R:TransactionCertificate rdf:type owl:Class ;
+                              rdfs:subClassOf CEON-R:CertificationData ;
+                              rdfs:label "Transaction Certificate" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
