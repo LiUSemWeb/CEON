@@ -85,8 +85,7 @@ def create_documentation(config):
         
         html_formatter = formatter.HTMLFormatter(indent=4)
         with open(html_file, "w") as f:
-            #f.write(soup.prettify(formatter=html_formatter))
-            f.write(soup.get_text())
+            f.write(soup.prettify(formatter=html_formatter))
 
 
 def create_index_file(config):
