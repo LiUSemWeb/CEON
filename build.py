@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from pybars import Compiler
 from bs4 import BeautifulSoup, formatter
 import os
 import yaml
@@ -84,8 +85,31 @@ def create_documentation(config):
         
         html_formatter = formatter.HTMLFormatter(indent=4)
         with open(html_file, "w") as f:
-            f.write(soup.prettify(formatter=html_formatter))
+            #f.write(soup.prettify(formatter=html_formatter))
+            f.write(soup.get_text())
 
+
+def create_index_file(config):
+        compiler = Compiler()
+        template_file = "index.hbs"
+        index_file = "docs/index.html"
+        
+        data = []
+        for ontology in config["ontologies"]:
+            source = ontology["source"]
+            path = ontology["path"].strip("/")
+            version = ontology["version"].strip("/")
+            basename = os.path.basename(source)
+            data.append({"docs": f"{path}/{version}/index.html",
+                         "file": f"{path}/{version}/{basename}",
+                         "version": version,
+                         "title": basename})
+        
+        with open(template_file, "r") as f:
+            template = compiler.compile(f.read())
+            
+        with open(index_file, "w") as f:
+            f.write(template({"data": data}))
 
 def main():
     with open("config.yml", 'r') as f:
@@ -95,6 +119,6 @@ def main():
     download_owl2vowl()
     generate_vowl(config)
     create_documentation(config)
-
+    create_index_file(config)
 if __name__ == "__main__":
     main()
