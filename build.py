@@ -9,10 +9,10 @@ def copy_ontologies(config):
     """Copy ontologies to web path."""
     for ontology in config["ontologies"]:
         source = ontology["source"]
-        dirname = ontology["path"]
+        path = ontology["path"]
         version = ontology["version"]
-        os.system(f"mkdir -p docs/ontology-network/{dirname}/{version}")
-        os.system(f"cp {source} docs/ontology-network/{dirname}/{version}/")
+        os.system(f"mkdir -p docs/{path}/{version}")
+        os.system(f"cp {source} docs/{path}/{version}/")
 
 
 def download_owl2vowl():
@@ -35,9 +35,9 @@ def generate_vowl(config):
     # "InaccessibleObjectException" in later versions of Java
     for ontology in config["ontologies"]:
         source = ontology["source"]
-        basename = os.path.basename(source).split(".")[0]
         path = ontology["path"]
         version = ontology["version"]
+        basename = os.path.basename(source).split(".")[0]
         os.system(f"mkdir -p docs/webvowl/data/{path}/{version}/")
         os.system(f"""
             java -Dlog4j.configurationFile=log4j2.xml \
@@ -53,15 +53,19 @@ def create_documentation(config):
     for ontology in config["ontologies"]:
         source = ontology["source"]
         basename = os.path.basename(source).split(".")[0]
-        dirname = ontology["path"]
-        version = ontology["version"]
+        path = ontology["path"].strip("/")
+        version = ontology["version"].strip("/")
         
-        os.system(f"mkdir -p docs/ontology-network/{dirname}/{version}/")
+        os.system(f"mkdir -p docs/{path}/{version}/")
         
         # Note: Using the pyLODE package as a module is not working fails,
         # and we instead call it using the CLI method
-        html_file = f"docs/ontology-network/{dirname}/{version}/index.html"
+        html_file = f"docs/{path}/{version}/index.html"
         os.system(f"python3 -m pylode {source} -o {html_file}")      
+
+        # relative path to webvowl
+        rel = "../" * f"{path}/{version}/".count("/")
+        path_to_webvowl = rel + f"webvowl/index.html#{path}/{version}/{basename}"
 
         # Insert overview section into documentation with WebVOWL in an iframe
         with open(html_file, encoding="utf-8") as f:
@@ -70,7 +74,7 @@ def create_documentation(config):
                 <div id="overview" class="section">
                     <h2>Overview</h2>
                     <div class="figure">
-                        <iframe id="iframe-overview" width="100%" height ="800px" src="../../../webvowl/index.html#{dirname}/{version}/{basename}"></iframe>
+                        <iframe id="iframe-overview" width="100%" height ="800px" src="{path_to_webvowl}"></iframe>
                         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
                     </div>
                 </section>
