@@ -1,0 +1,114 @@
+@prefix : <http://w3id.org/CEON/ontology/material/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix material: <http://w3id.org/CEON/ontology/material/> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@base <http://w3id.org/CEON/ontology/material/> .
+
+<http://w3id.org/CEON/ontology/material/> rdf:type owl:Ontology ;
+                                           owl:versionIRI <http://w3id.org/CEON/ontology/0.1/material/> ;
+                                                  <http://purl.org/dc/terms/contributor> "Eva Blomqvist" ,
+                                                                                         "Mikael Lindecrantz" ,
+                                                                                         "Robin Keskisärkkä" ;
+                                                  <http://purl.org/dc/terms/created> "2023-03-16"^^xsd:string ;
+                                                  <http://purl.org/dc/terms/creator> "Huanyu Li" ;
+                                                  <http://purl.org/dc/terms/description> "The Material module of CEON (Circular Economy Ontology Network)." ;
+                                                  <http://purl.org/dc/terms/license> "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"^^xsd:string ;
+                                                  <http://purl.org/dc/terms/title> "Circular Economy Ontology Network (CEON) - Material Module"^^xsd:string ;
+                                                  <http://purl.org/vocab/vann/preferredNamespacePrefix> "material"^^xsd:string ;
+                                                  <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/CEON/ontology/0.1/material/"^^xsd:string ;
+                                                  rdfs:seeAlso "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
+                                                  owl:versionInfo "0.1"^^xsd:string .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/material/hasConstituent
+material:hasConstituent rdf:type owl:ObjectProperty ;
+                        rdfs:domain material:MaterialComponent ;
+                        rdfs:range resourceODP:Constituent ;
+                        rdfs:label "has constituent" .
+
+
+###  http://w3id.org/CEON/ontology/material/hasMaterialComponent
+material:hasMaterialComponent rdf:type owl:ObjectProperty ;
+                              rdfs:domain material:Material ;
+                              rdfs:range material:MaterialComponent ;
+                              rdfs:label "has material component" .
+
+
+###  http://w3id.org/CEON/ontology/material/hasMatter
+material:hasMatter rdf:type owl:ObjectProperty ;
+                   rdfs:domain resourceODP:PhysicalObject ;
+                   rdfs:range resourceODP:Matter ;
+                   rdfs:label "has matter" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/material/ChemicalEntity
+material:ChemicalEntity rdf:type owl:Class ;
+                        rdfs:subClassOf resourceODP:Matter ;
+                        rdfs:label "Chemical Entity" .
+
+
+###  http://w3id.org/CEON/ontology/material/ChemicalSubstance
+material:ChemicalSubstance rdf:type owl:Class ;
+                           rdfs:subClassOf material:ChemicalEntity ;
+                           rdfs:label "Chemical Substance" .
+
+
+###  http://w3id.org/CEON/ontology/material/Material
+material:Material rdf:type owl:Class ;
+                  rdfs:subClassOf resourceODP:Matter ;
+                  rdfs:label "Material" .
+
+
+###  http://w3id.org/CEON/ontology/material/MaterialComponent
+material:MaterialComponent rdf:type owl:Class ;
+                           rdfs:label "Material Component" .
+
+
+###  http://w3id.org/CEON/ontology/material/MolecularEntity
+material:MolecularEntity rdf:type owl:Class ;
+                         rdfs:subClassOf material:ChemicalEntity ;
+                         rdfs:label "Molecular Entity" .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/Constituent
+resourceODP:Constituent rdf:type owl:Class ;
+                        rdfs:label "Constituent" .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/Matter
+resourceODP:Matter rdf:type owl:Class ;
+                   rdfs:label "Matter" .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/PhysicalObject
+resourceODP:PhysicalObject rdf:type owl:Class ;
+                           rdfs:subClassOf resourceODP:Resource ;
+                           rdfs:label "Physical Object" .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/Resource
+resourceODP:Resource rdf:type owl:Class ;
+                     rdfs:label "Resource" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
