@@ -16,15 +16,47 @@ When working on an issue it's good to also reference to them in your commit mess
 ```bash
 $ git commit -m "resolve issue #123"
 ```
-__Note__: GitHub supports a list of keywords that can be used to automatically close an issue using a commit message. such as _close_, _resolve_ or _fix_.
 
-## Getting started
+## Adding a ontology pattern or module
+The easiest way to publish a new ontology or ontology module is to follow the steps below:
+
+1. Checkout the `develop` branch and pull the latest changes
+```bash
+$ git checkout develop
+$ git pull
+```
+2. Create a new branch (e.g., `update-actor-module-to-version-1.0`)
+```bash
+$ git checkout -b update-actor-module-to-version-1.0
+```
+3. Add your ontology or ontology module to the `ontology/` directory, e.g. `ontology/modules/actor/1.0/actor.owl`
+4. Add config info about the file to `config.yml`:
+```yml
+  - source: "ontology/modules/actor/1.0/actor.owl"
+    path: "ontology/modules/actor/"
+    version: "1.0"
+    latest: true
+```
+5. (optional) Build and check the output
+```bash
+6 ./build.py
+```
+7. Add, commit and push:
+```bash
+$ git add ontolgies/ config.yml
+$ git commit -m "update actor module to version 1.0"
+$ git push origin update-actor-module-to-version-1.0
+```
+8. From the GitHub page, create a pull request from your branch to `develop`.
+9. Done!
+
+## Building locally
+Building the documentation locally is a great way to verify that you don't have any obvious errors in your ontology, and that nothing is missing. The same files are generated in the in `main` branch automatically.
 
 ### Requirements
 - Git
 - Python 3
 - Java 8 (or higher)
-
 
 ### Setup
 1. Clone the project:
@@ -40,14 +72,10 @@ $ source ceon-venv/bin/activate
 $ pip3 install -r requirements.txt
 ```
 
-
-## Adding a ontology pattern or module
-TODO
-
-
-## Build
-TODO
-
+3. Build the documentation
+```bash
+$ ./build.py
+```
 
 ## Contact
 * Robin Keskisärkkä <robin.keskisarkka@liu.se>
