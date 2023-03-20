@@ -11,18 +11,19 @@
 
 <http://w3id.org/CEON/ontology/material/> rdf:type owl:Ontology ;
                                            owl:versionIRI <http://w3id.org/CEON/ontology/0.1/material/> ;
-                                                  <http://purl.org/dc/terms/contributor> "Eva Blomqvist" ,
-                                                                                         "Mikael Lindecrantz" ,
-                                                                                         "Robin Keskisärkkä" ;
-                                                  <http://purl.org/dc/terms/created> "2023-03-16"^^xsd:string ;
-                                                  <http://purl.org/dc/terms/creator> "Huanyu Li" ;
-                                                  <http://purl.org/dc/terms/description> "The Material module of CEON (Circular Economy Ontology Network)." ;
-                                                  <http://purl.org/dc/terms/license> "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"^^xsd:string ;
-                                                  <http://purl.org/dc/terms/title> "Circular Economy Ontology Network (CEON) - Material Module"^^xsd:string ;
-                                                  <http://purl.org/vocab/vann/preferredNamespacePrefix> "material"^^xsd:string ;
-                                                  <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/CEON/ontology/0.1/material/"^^xsd:string ;
-                                                  rdfs:seeAlso "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
-                                                  owl:versionInfo "0.1"^^xsd:string .
+                                           owl:imports <http://w3id.org/CEON/ontology/0.1/resourceODP/> ;
+                                           <http://purl.org/dc/terms/contributor> "Eva Blomqvist" ,
+                                                                                  "Mikael Lindecrantz" ,
+                                                                                  "Robin Keskisärkkä" ;
+                                           <http://purl.org/dc/terms/created> "2023-03-16"^^xsd:string ;
+                                           <http://purl.org/dc/terms/creator> "Huanyu Li" ;
+                                           <http://purl.org/dc/terms/description> "The Material module of CEON (Circular Economy Ontology Network)." ;
+                                           <http://purl.org/dc/terms/license> "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"^^xsd:string ;
+                                           <http://purl.org/dc/terms/title> "Circular Economy Ontology Network (CEON) - Material Module"^^xsd:string ;
+                                           <http://purl.org/vocab/vann/preferredNamespacePrefix> "material"^^xsd:string ;
+                                           <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/CEON/ontology/0.1/material/"^^xsd:string ;
+                                           rdfs:seeAlso "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
+                                           owl:versionInfo "0.1"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -36,25 +37,10 @@ dc:description rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://w3id.org/CEON/ontology/material/hasConstituent
-material:hasConstituent rdf:type owl:ObjectProperty ;
-                        rdfs:domain material:MaterialComponent ;
-                        rdfs:range resourceODP:Constituent ;
-                        rdfs:label "has constituent" .
-
-
 ###  http://w3id.org/CEON/ontology/material/hasMaterialComponent
 material:hasMaterialComponent rdf:type owl:ObjectProperty ;
-                              rdfs:domain material:Material ;
                               rdfs:range material:MaterialComponent ;
-                              rdfs:label "has material component" .
-
-
-###  http://w3id.org/CEON/ontology/material/hasMatter
-material:hasMatter rdf:type owl:ObjectProperty ;
-                   rdfs:domain resourceODP:PhysicalObject ;
-                   rdfs:range resourceODP:Matter ;
-                   rdfs:label "has matter" .
+                              rdfs:label "hasMaterialComponent"@en .
 
 
 #################################################################
@@ -64,13 +50,19 @@ material:hasMatter rdf:type owl:ObjectProperty ;
 ###  http://w3id.org/CEON/ontology/material/ChemicalEntity
 material:ChemicalEntity rdf:type owl:Class ;
                         rdfs:subClassOf resourceODP:Matter ;
-                        rdfs:label "Chemical Entity" .
+                        rdfs:comment "A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance."@en ;
+                        rdfs:label "Chemical Entity"@en ;
+                        rdfs:seeAlso "CHEBI:24431" ,
+                                     "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0" .
 
 
 ###  http://w3id.org/CEON/ontology/material/ChemicalSubstance
 material:ChemicalSubstance rdf:type owl:Class ;
                            rdfs:subClassOf material:ChemicalEntity ;
-                           rdfs:label "Chemical Substance" .
+                           rdfs:comment "A chemical substance is made up of a collection of molecular entities."@en ;
+                           rdfs:label "Chemical Substance" ;
+                           rdfs:seeAlso "CHEBI:59999" ,
+                                        "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea" .
 
 
 ###  http://w3id.org/CEON/ontology/material/Material
@@ -81,34 +73,33 @@ material:Material rdf:type owl:Class ;
 
 ###  http://w3id.org/CEON/ontology/material/MaterialComponent
 material:MaterialComponent rdf:type owl:Class ;
+                           rdfs:subClassOf resourceODP:Constituent ;
                            rdfs:label "Material Component" .
 
 
 ###  http://w3id.org/CEON/ontology/material/MolecularEntity
 material:MolecularEntity rdf:type owl:Class ;
                          rdfs:subClassOf material:ChemicalEntity ;
-                         rdfs:label "Molecular Entity" .
+                         rdfs:comment "A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion."@en ;
+                         rdfs:label "Molecular Entity" ;
+                         rdfs:seeAlso "CHEBI:23367" ,
+                                      "http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a" .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Constituent
-resourceODP:Constituent rdf:type owl:Class ;
-                        rdfs:label "Constituent" .
+resourceODP:Constituent rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Matter
-resourceODP:Matter rdf:type owl:Class ;
-                   rdfs:label "Matter" .
+resourceODP:Matter rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/PhysicalObject
-resourceODP:PhysicalObject rdf:type owl:Class ;
-                           rdfs:subClassOf resourceODP:Resource ;
-                           rdfs:label "Physical Object" .
+resourceODP:PhysicalObject rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Resource
-resourceODP:Resource rdf:type owl:Class ;
-                     rdfs:label "Resource" .
+resourceODP:Resource rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
