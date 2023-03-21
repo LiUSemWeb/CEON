@@ -37,10 +37,48 @@ dc:description rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
+###  http://w3id.org/CEON/ontology/material/hasChemicalEntity
+material:hasChemicalEntity rdf:type owl:ObjectProperty ;
+                           rdfs:domain material:Material ;
+                           rdfs:range material:ChemicalEntity ;
+                           rdfs:comment "hasChemicalEntity intends to represent that a material can have a collection of chemical entities."@en ;
+                           rdfs:label "hasChemicalEntity"@en .
+
+
 ###  http://w3id.org/CEON/ontology/material/hasMaterialComponent
 material:hasMaterialComponent rdf:type owl:ObjectProperty ;
+                              rdfs:domain material:Material ;
                               rdfs:range material:MaterialComponent ;
+                              rdfs:comment "hasMaterialComponent intends to represent that a material can have a collection of components."@en ;
                               rdfs:label "hasMaterialComponent"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/material/AnonymousFormula
+material:AnonymousFormula rdf:type owl:DatatypeProperty ;
+                          rdfs:comment "AnonymousFormula represents that a molecular entity has the anonymous formula in a string."@en ;
+                          rdfs:seeAlso "https://w3id.org/mdo/structure/AnonymousFormula" .
+
+
+###  http://w3id.org/CEON/ontology/material/DescriptiveFormula
+material:DescriptiveFormula rdf:type owl:DatatypeProperty ;
+                            rdfs:comment "DescriptiveFormula represents that a molecular entity has the descriptive formula in a string."@en ;
+                            rdfs:seeAlso "https://w3id.org/mdo/structure/DescriptiveFormula" .
+
+
+###  http://w3id.org/CEON/ontology/material/HillFormula
+material:HillFormula rdf:type owl:DatatypeProperty ;
+                     rdfs:comment "HillFormula represents that a composition has the hill formula in a string."@en ;
+                     rdfs:seeAlso "https://w3id.org/mdo/structure/HillFormula" .
+
+
+###  http://w3id.org/CEON/ontology/material/ReducedChemicalFormula
+material:ReducedChemicalFormula rdf:type owl:DatatypeProperty ;
+                                rdfs:comment "ReducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string."@en ;
+                                rdfs:seeAlso "https://w3id.org/mdo/structure/ReducedFormula" .
 
 
 #################################################################
@@ -51,39 +89,47 @@ material:hasMaterialComponent rdf:type owl:ObjectProperty ;
 material:ChemicalEntity rdf:type owl:Class ;
                         rdfs:subClassOf resourceODP:Matter ;
                         rdfs:comment "A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance."@en ;
-                        rdfs:label "Chemical Entity"@en ;
-                        rdfs:seeAlso "CHEBI:24431" ,
-                                     "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0" .
+                        rdfs:label "ChemicalEntity"@en ;
+                        rdfs:seeAlso "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0" ,
+                                     "http://purl.obolibrary.org/obo/chebi#24431" .
 
 
 ###  http://w3id.org/CEON/ontology/material/ChemicalSubstance
 material:ChemicalSubstance rdf:type owl:Class ;
                            rdfs:subClassOf material:ChemicalEntity ;
                            rdfs:comment "A chemical substance is made up of a collection of molecular entities."@en ;
-                           rdfs:label "Chemical Substance" ;
-                           rdfs:seeAlso "CHEBI:59999" ,
-                                        "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea" .
+                           rdfs:label "ChemicalSubstance"@en ;
+                           rdfs:seeAlso "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea" ,
+                                        "http://purl.obolibrary.org/obo/chebi#59999" .
 
 
 ###  http://w3id.org/CEON/ontology/material/Material
 material:Material rdf:type owl:Class ;
-                  rdfs:subClassOf resourceODP:Matter ;
-                  rdfs:label "Material" .
+                  rdfs:subClassOf resourceODP:Matter ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty material:hasChemicalEntity ;
+                                    owl:someValuesFrom material:ChemicalEntity
+                                  ] ;
+                  rdfs:comment "Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of."@en ;
+                  rdfs:label "Material"@en ;
+                  rdfs:seeAlso "http://emmo.info/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94" ,
+                               "https://w3id.org/mdo/core/Material" .
 
 
 ###  http://w3id.org/CEON/ontology/material/MaterialComponent
 material:MaterialComponent rdf:type owl:Class ;
                            rdfs:subClassOf resourceODP:Constituent ;
-                           rdfs:label "Material Component" .
+                           rdfs:comment "A material component is a part of a material."@en ;
+                           rdfs:label "MaterialComponent"@en .
 
 
 ###  http://w3id.org/CEON/ontology/material/MolecularEntity
 material:MolecularEntity rdf:type owl:Class ;
                          rdfs:subClassOf material:ChemicalEntity ;
                          rdfs:comment "A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion."@en ;
-                         rdfs:label "Molecular Entity" ;
-                         rdfs:seeAlso "CHEBI:23367" ,
-                                      "http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a" .
+                         rdfs:label "MolecularEntity"@en ;
+                         rdfs:seeAlso "http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a" ,
+                                      "http://purl.obolibrary.org/obo/chebi#23367" .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Constituent
