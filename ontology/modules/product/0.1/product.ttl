@@ -33,7 +33,8 @@
 product:hasProductComponent rdf:type owl:ObjectProperty ;
                             rdfs:domain product:Product ;
                             rdfs:range product:ProductComponent ;
-                            rdfs:label "has product component" .
+                            rdfs:comment "hasProductComponent intends to represent that a product can have a collection of components."@en ;
+                            rdfs:label "hasProductComponent"@en .
 
 
 #################################################################
@@ -42,13 +43,26 @@ product:hasProductComponent rdf:type owl:ObjectProperty ;
 
 ###  http://w3id.org/CEON/ontology/product/Product
 product:Product rdf:type owl:Class ;
-                rdfs:subClassOf resourceODP:PhysicalObject ;
+                rdfs:subClassOf resourceODP:PhysicalObject ,
+                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty product:hasProductComponent ;
+                                                         owl:someValuesFrom product:ProductComponent
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty product:hasProductComponent ;
+                                                         owl:allValuesFrom product:ProductComponent
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+                rdfs:comment "A product is a physical object put into a market for sale. The product can be a thing that grows naturally or produced through some chemical or manufacturing processes."@en ;
                 rdfs:label "Product" .
 
 
 ###  http://w3id.org/CEON/ontology/product/ProductComponent
 product:ProductComponent rdf:type owl:Class ;
                          rdfs:subClassOf resourceODP:Constituent ;
+                         rdfs:comment "A product component is a part of a product."@en ;
                          rdfs:label "Product Component" .
 
 
