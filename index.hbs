@@ -3,19 +3,57 @@
     <head>
         <link href="style.css" rel="stylesheet"/>
         <title>
-            CEON
+            Circular Economy Ontology Network (CEON)
         </title>
     </head>
     <body>
         <main>
-            <h1> CEON: Automatically generated index</h1>
-            <ul id="docs">
-                {{#each data}}
-                    <li>
-                        <a href="{{{file}}}"">{{title}}</a> (version: {{version}}) (<a href="{{{docs}}}">docs</a>)
-                    </li>
-                {{/each}}
-            </ul>
+            <div id="overview">
+                <h1>Circular Economy Ontology Network (CEON)</h1>
+                <p>
+                    The Circular Economy Ontology Network (CEON) provides a shared vocabulary for representing information about circular economies in the form of a network of ontology modules.
+                </p>
+                <p>
+                    The figure below shows an overview of the topics covered. The lines between the boxes represent some common-sense relations between the topics, which are represented as formal relations within the actual modules, such as <code>owl:import</code> or specific object properties connecting concepts inside the modules. The light blue box (location) is not part of CEON, but instead reuses a standard geographical ontology such as the OGC GeoSPARQL standards.
+                </p>
+
+                <p>
+                    The set of core modules that are in this release of CEON forms a set of generic reusable ontology building blocks and include Circular Value Network, Actor, Process, and Resource (Material and Product).
+                    </ul>
+                </p>
+                <div class="img-div">
+                    <img src="images/overview.png">
+                </div>
+            </div>
+
+            <div id="index">
+                <table id="docs">
+                    <tr>
+                        <th>
+                            Ontology pattern or module
+                        </th>
+                        <th>
+                            Documentation
+                        </th>
+                        <th>
+                            Version
+                        </th>
+                    </tr>
+                    {{#each data}}
+                        <tr>
+                            <td>
+                                <a href="{{{file}}}">{{title}}</a>
+                            </td>
+                            <td>
+                                <a href="{{{docs}}}">docs</a>
+                            </td>
+                            <td>
+                                {{version}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
         </main>
     </body>
 </html>
