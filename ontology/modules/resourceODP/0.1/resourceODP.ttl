@@ -111,9 +111,31 @@ resourceODP:Matter rdf:type owl:Class ;
 
 ###  http://w3id.org/CEON/ontology/resourceODP/PhysicalObject
 resourceODP:PhysicalObject rdf:type owl:Class ;
-                           rdfs:subClassOf resourceODP:Resource ;
+                           rdfs:subClassOf resourceODP:Resource ,
+                                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty resourceODP:hasConstituent ;
+                                                                    owl:someValuesFrom resourceODP:Constituent
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty resourceODP:hasConstituent ;
+                                                                    owl:allValuesFrom resourceODP:Constituent
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ,
+                                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty resourceODP:hasMatter ;
+                                                                    owl:someValuesFrom resourceODP:Matter
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty resourceODP:hasMatter ;
+                                                                    owl:allValuesFrom resourceODP:Matter
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ;
                            rdfs:comment "A physical object is a collection of matter."@en ;
-                           rdfs:label "Physical Object" .
+                           rdfs:label "PhysicalObject"@en .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Resource
