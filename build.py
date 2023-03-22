@@ -5,6 +5,7 @@ import os
 import yaml
 import urllib.request
 import zipfile
+from pylode.profiles.vocpub import VocPub
 
 def copy_ontologies(config):
     """Copy ontologies to web path."""
@@ -59,11 +60,10 @@ def create_documentation(config):
         
         os.system(f"mkdir -p docs/{path}/{version}/")
         
-        # Note: Using the pyLODE package as a module is not working fails,
-        # and we instead call it using the CLI method
         html_file = f"docs/{path}/{version}/index.html"
-        os.system(f"python3 -m pylode {source} -o {html_file}")      
-
+        od = VocPub(ontology=source)
+        od.make_html(destination=html_file)
+        
         # relative path to webvowl
         rel = "../" * f"{path}/{version}/".count("/")
         path_to_webvowl = rel + f"webvowl/index.html#{path}/{version}/{basename}"
@@ -75,7 +75,7 @@ def create_documentation(config):
                 <div id="overview" class="section">
                     <h2>Overview</h2>
                     <div class="figure">
-                        <iframe id="iframe-overview" width="100%" height ="800px" src="{path_to_webvowl}"></iframe>
+                        <iframe id="iframe-overview" width="100%" height ="600px" src="{path_to_webvowl}"></iframe>
                         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
                     </div>
                 </section>
