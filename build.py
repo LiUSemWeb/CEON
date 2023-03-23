@@ -6,6 +6,7 @@ import yaml
 import urllib.request
 import zipfile
 from pylode.profiles.vocpub import VocPub
+import pdfkit
 
 def copy_ontologies(config):
     """Copy ontologies to web path."""
@@ -29,6 +30,41 @@ def download_owl2vowl():
 
         with zipfile.ZipFile(path_to_zip, 'r') as zip_ref:
             zip_ref.extractall("temp/")
+
+
+def build_pdf(config):
+    """Convert docs to PDF using wkhtmltopdf."""
+    try:
+        html_formatter = formatter.HTMLFormatter(indent=4)
+        for ontology in config["ontologies"]:
+            path = ontology["path"].strip("/")
+            version = ontology["version"].strip("/")
+            html_file = f"docs/{path}/{version}/index.html"
+            pdf_file = f"docs/{path}/{version}/index.pdf"
+            
+            # Drop TOC, logo and iframe before generating PDF 
+            with open(html_file, encoding="utf-8") as f:
+                soup = BeautifulSoup(f, "html.parser")
+                
+                for table in soup.select("table"):
+                    table.insert(0, soup.new_tag("thead"))
+                    table.wrap(soup.new_tag("tbody")).wrap(soup.new_tag("table"))
+                    table.unwrap()
+                    
+                for id in ["toc", "pylode", "overview"]:
+                    tag = soup.find(id=id)
+                    if tag != None:
+                        tag.decompose()
+
+            with open("test.html","w") as f:
+                f.write(soup.prettify(formatter=html_formatter))
+                
+            pdfkit.from_string(soup.prettify(formatter=html_formatter), pdf_file, options = { "enable-local-file-access": "" })
+    except Exception as e:
+        print(e)
+        print("PDF conversion cancelled. Is 'wkhtmltopdf' (https://wkhtmltopdf.org/) installed?")
+            
+    
 
 
 def generate_vowl(config):
@@ -116,12 +152,12 @@ def main():
     with open("config.yml", 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
     
-    copy_ontologies(config)
-    download_owl2vowl()
-    generate_vowl(config)
-    create_documentation(config)
-    create_index_file(config)
-
+    #copy_ontologies(config)
+    #download_owl2vowl()
+    #generate_vowl(config)
+    #create_documentation(config)
+    #create_index_file(config)
+    build_pdf(config)
 
 if __name__ == "__main__":
     main()
