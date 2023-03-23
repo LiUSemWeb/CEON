@@ -1,0 +1,108 @@
+@prefix : <http://w3id.org/CEON/ontology/processODP/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://w3id.org/CEON/ontology/processODP/> .
+
+<http://w3id.org/CEON/ontology/processODP/> rdf:type owl:Ontology ;
+                                             owl:versionIRI <http://w3id.org/CEON/ontology/0.1/processODP/> ;
+                                             <http://purl.org/dc/terms/contributor> "Eva Blomqvist" ,
+                                                                                    "Huanyu Li" ,
+                                                                                    "Mikael Lindecrantz" ,
+                                                                                    "Robin Keskisärkkä" ;
+                                             <http://purl.org/dc/terms/created> "2023-03-23" ;
+                                             <http://purl.org/dc/terms/creator> "Huanyu Li" ;
+                                             <http://purl.org/dc/terms/description> "A core ODP of the CEON ontology network, defining aspects of the process concept." ;
+                                             <http://purl.org/dc/terms/license> "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE" ;
+                                             <http://purl.org/dc/terms/title> "Process ODP" ;
+                                             <http://purl.org/vocab/vann/preferredNamespacePrefix> "processODP" ;
+                                             <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/CEON/ontology/0.1/processODP/" ;
+                                             rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the process concept." ;
+                                             rdfs:seeAlso "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
+                                             owl:versionInfo 0.1 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/processODP/hasProcessExecution
+:hasProcessExecution rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Process ;
+                     rdfs:range :ProcessExecution ;
+                     rdfs:comment "A process can have  specific executions."@en ;
+                     rdfs:label "hasProcessExecution"@en .
+
+
+###  http://w3id.org/CEON/ontology/processODP/hasProcessType
+:hasProcessType rdf:type owl:ObjectProperty ;
+                rdfs:domain :Process ;
+                rdfs:range :ProcessType ;
+                rdfs:comment "The type of the process."@en ;
+                rdfs:label "hasProcessType"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/actorODP/Participation
+<http://w3id.org/CEON/ontology/actorODP/Participation> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Process
+:Process rdf:type owl:Class ;
+         rdfs:comment "An activity in the context of a circular value network, handling resources."@en ;
+         rdfs:label "Process"@en .
+
+
+###  http://w3id.org/CEON/ontology/processODP/ProcessExecution
+:ProcessExecution rdf:type owl:Class ;
+                  rdfs:comment "An execution of a specific process."@en ;
+                  rdfs:label "ProcessExecution"@en .
+
+
+###  http://w3id.org/CEON/ontology/processODP/ProcessType
+:ProcessType rdf:type owl:Class ;
+             rdfs:comment "The type of a process."@en ;
+             rdfs:label "ProcessType"@en .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
