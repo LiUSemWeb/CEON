@@ -39,12 +39,38 @@ def build_pdf(config):
         for ontology in config["ontologies"]:
             path = ontology["path"].strip("/")
             version = ontology["version"].strip("/")
+            source = ontology["source"]
+            basename = os.path.basename(source).split(".")[0]
+
             html_file = f"docs/{path}/{version}/index.html"
-            pdf_file = f"docs/{path}/{version}/index.pdf"
+            pdf_file = f"docs/{path}/{version}/{basename}.pdf"
             
             # Drop TOC, logo and iframe before generating PDF 
             with open(html_file, encoding="utf-8") as f:
                 soup = BeautifulSoup(f, "html.parser")
+                style = soup.new_tag('style', type='text/css')
+                style.append("""
+                    /* hack to avoid lonely heading (mot of the time at least) */
+                    h2 {
+                        page-break-inside: avoid;
+                    }
+                    .section h2::after {
+                        content: "";
+                        display: block;
+                        height: 300px;
+                        margin-bottom: -300px;
+                    }
+                    .entity {
+                        page-break-inside: avoid;
+                    }
+                    p, dt, dd, ul {
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+                """)
+                soup.head.append(style)
                 
                 for table in soup.select("table"):
                     table.insert(0, soup.new_tag("thead"))
@@ -63,8 +89,6 @@ def build_pdf(config):
     except Exception as e:
         print(e)
         print("PDF conversion cancelled. Is 'wkhtmltopdf' (https://wkhtmltopdf.org/) installed?")
-            
-    
 
 
 def generate_vowl(config):
@@ -125,39 +149,41 @@ def create_documentation(config):
 
 
 def create_index_file(config):
-        compiler = Compiler()
-        template_file = "index.hbs"
-        index_file = "docs/index.html"
+    compiler = Compiler()
+    template_file = "index.hbs"
+    index_file = "docs/index.html"
+    
+    data = []
+    for ontology in config["ontologies"]:
+        source = ontology["source"]
+        path = ontology["path"].strip("/")
+        version = ontology["version"].strip("/")
+        filename = os.path.basename(source)
+        basename = filename.split(".")[0]
+        data.append({ "html": f"{path}/{version}/index.html",
+                      "pdf": f"{path}/{version}/{basename}.pdf",
+                      "file": f"{path}/{version}/{filename}",
+                      "version": version,
+                      "title": basename })
+    
+    # sort by name ascending, version descending
+    data.sort(key=lambda x: (x["title"], -float(x["version"])))
+    with open(template_file, "r") as f:
+        template = compiler.compile(f.read())
         
-        data = []
-        for ontology in config["ontologies"]:
-            source = ontology["source"]
-            path = ontology["path"].strip("/")
-            version = ontology["version"].strip("/")
-            basename = os.path.basename(source)
-            data.append({"docs": f"{path}/{version}/index.html",
-                         "file": f"{path}/{version}/{basename}",
-                         "version": version,
-                         "title": basename})
-        
-        # sort by name ascending, version descending
-        data.sort(key=lambda x: (x["title"], -float(x["version"])))
-        with open(template_file, "r") as f:
-            template = compiler.compile(f.read())
-            
-        with open(index_file, "w") as f:
-            f.write(template({"data": data}))
+    with open(index_file, "w") as f:
+        f.write(template({"data": data}))
 
 def main():
     with open("config.yml", 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
     
-    #copy_ontologies(config)
-    #download_owl2vowl()
-    #generate_vowl(config)
-    #create_documentation(config)
-    #create_index_file(config)
+    copy_ontologies(config)
+    download_owl2vowl()
+    generate_vowl(config)
+    create_documentation(config)
     build_pdf(config)
+    create_index_file(config)
 
 if __name__ == "__main__":
     main()
