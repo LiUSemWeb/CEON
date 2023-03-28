@@ -77,6 +77,12 @@ $ pip3 install -r requirements.txt
 $ ./build.py
 ```
 
+4. __(optional)__ Host the generated documentation locally:
+```bash
+$ python3 -m "http.server" -d ./docs 
+# navigate to http://localhost:8000/
+```
+
 ## Contact
 * Robin Keskisärkkä <robin.keskisarkka@liu.se>
 * Huanyu Li <huanyu.li@liu.se>
