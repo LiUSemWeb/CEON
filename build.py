@@ -7,6 +7,7 @@ import urllib.request
 import zipfile
 from pylode.profiles.vocpub import VocPub
 import pdfkit
+from rdflib import Graph
 
 def copy_ontologies(config):
     """Copy ontologies to web path."""
@@ -15,8 +16,13 @@ def copy_ontologies(config):
         path = ontology["path"]
         version = ontology["version"]
         os.system(f"mkdir -p docs/{path}/{version}")
-        os.system(f"cp {source} docs/{path}/{version}/")
-
+        
+        basename = os.path.basename(source).split(".")[0]
+        g = Graph()
+        g.parse(source)
+        g.serialize(destination=f"docs/{path}/{version}/{basename}.ttl", format="turtle")
+        g.serialize(destination=f"docs/{path}/{version}/{basename}.rdf", format="xml")
+        g.serialize(destination=f"docs/{path}/{version}/{basename}.jsonld", format="json-ld")
 
 def download_owl2vowl():
     """Download and extract OWL2VOWL."""
