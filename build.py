@@ -22,6 +22,7 @@ def copy_ontologies(config):
         g.parse(source)
         g.serialize(destination=f"docs/{path}/{version}/{basename}.ttl", format="turtle")
         g.serialize(destination=f"docs/{path}/{version}/{basename}.rdf", format="xml")
+        g.serialize(destination=f"docs/{path}/{version}/{basename}.owl", format="xml")
         g.serialize(destination=f"docs/{path}/{version}/{basename}.jsonld", format="json-ld")
 
 def download_owl2vowl():
