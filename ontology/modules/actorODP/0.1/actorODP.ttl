@@ -101,6 +101,15 @@ actorODP:capabilityProperty rdf:type owl:ObjectProperty ;
                             rdfs:label "capability property" .
 
 
+###  http://w3id.org/CEON/ontology/actorODP/hasLocation
+actorODP:hasLocation rdf:type owl:ObjectProperty ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( actorODP:Actor
+                                                 <http://w3id.org/CEON/ontology/resourceODP/Resource>
+                                               )
+                                 ] .
+
+
 ###  http://w3id.org/CEON/ontology/actorODP/participantRole
 actorODP:participantRole rdf:type owl:ObjectProperty ;
                          rdfs:domain actorODP:Participation ;
@@ -141,43 +150,45 @@ actorODP:participationIn rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
-###  http://w3id.org/CEON/ontology/actorODP/endTime
-actorODP:endTime rdf:type owl:DatatypeProperty ;
-                 rdfs:range [ rdf:type rdfs:Datatype ;
-                              owl:unionOf ( xsd:date
-                                            xsd:dateTime
-                                            xsd:gMonthYear
-                                            xsd:gYear
-                                          )
-                            ] ;
-                 rdfs:comment "The end of a time interval." ;
-                 rdfs:label "end time" .
+###  http://w3id.org/CEON/ontology/actorODP/participationEndTime
+actorODP:participationEndTime rdf:type owl:DatatypeProperty ;
+                              rdfs:range [ rdf:type rdfs:Datatype ;
+                                           owl:unionOf ( xsd:date
+                                                         xsd:dateTime
+                                                         xsd:gMonthYear
+                                                         xsd:gYear
+                                                       )
+                                         ] ;
+                              rdfs:comment "The end of a time interval." ;
+                              rdfs:label "end time" .
 
 
-###  http://w3id.org/CEON/ontology/actorODP/startTime
-actorODP:startTime rdf:type owl:DatatypeProperty ;
-                   rdfs:range [ rdf:type rdfs:Datatype ;
-                                owl:unionOf ( xsd:date
-                                              xsd:dateTime
-                                              xsd:gMonthYear
-                                              xsd:gYear
-                                            )
-                              ] ;
-                   rdfs:comment "The start of a time interval." ;
-                   rdfs:label "start time" .
+###  http://w3id.org/CEON/ontology/actorODP/participationStartTime
+actorODP:participationStartTime rdf:type owl:DatatypeProperty ;
+                                rdfs:domain actorODP:Participation ;
+                                rdfs:range [ rdf:type rdfs:Datatype ;
+                                             owl:unionOf ( xsd:date
+                                                           xsd:dateTime
+                                                           xsd:gMonthYear
+                                                           xsd:gYear
+                                                         )
+                                           ] ;
+                                rdfs:comment "The start of a time interval." ;
+                                rdfs:label "start time" .
 
 
-###  http://w3id.org/CEON/ontology/actorODP/timePoint
-actorODP:timePoint rdf:type owl:DatatypeProperty ;
-                   rdfs:range [ rdf:type rdfs:Datatype ;
-                                owl:unionOf ( xsd:date
-                                              xsd:dateTime
-                                              xsd:gMonthYear
-                                              xsd:gYear
-                                            )
-                              ] ;
-                   rdfs:comment "The point in time when something took place or was valid." ;
-                   rdfs:label "time point" .
+###  http://w3id.org/CEON/ontology/actorODP/participationTimePoint
+actorODP:participationTimePoint rdf:type owl:DatatypeProperty ;
+                                rdfs:domain actorODP:Participation ;
+                                rdfs:range [ rdf:type rdfs:Datatype ;
+                                             owl:unionOf ( xsd:date
+                                                           xsd:dateTime
+                                                           xsd:gMonthYear
+                                                           xsd:gYear
+                                                         )
+                                           ] ;
+                                rdfs:comment "The point in time when something took place or was valid." ;
+                                rdfs:label "time point" .
 
 
 #################################################################
@@ -206,18 +217,18 @@ actorODP:Capability rdf:type owl:Class ;
 actorODP:CollaborationParticipation rdf:type owl:Class ;
                                     rdfs:subClassOf actorODP:Participation ;
                                     rdfs:comment "The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time." ;
-                                    rdfs:label "Circular Value Network Participation" .
+                                    rdfs:label "Collaboration participation" .
 
 
 ###  http://w3id.org/CEON/ontology/actorODP/Participation
 actorODP:Participation rdf:type owl:Class ;
                        rdfs:subClassOf [ rdf:type owl:Class ;
                                          owl:unionOf ( [ rdf:type owl:Restriction ;
-                                                         owl:onProperty actorODP:startTime ;
+                                                         owl:onProperty actorODP:participationStartTime ;
                                                          owl:cardinality "1"^^xsd:nonNegativeInteger
                                                        ]
                                                        [ rdf:type owl:Restriction ;
-                                                         owl:onProperty actorODP:timePoint ;
+                                                         owl:onProperty actorODP:participationTimePoint ;
                                                          owl:cardinality "1"^^xsd:nonNegativeInteger
                                                        ]
                                                      )
@@ -239,7 +250,9 @@ actorODP:Role rdf:type owl:Class ;
 
 
 ###  http://w3id.org/CEON/ontology/cvn/Collaboration
-<http://w3id.org/CEON/ontology/cvn/Collaboration> rdf:type owl:Class .
+<http://w3id.org/CEON/ontology/cvn/Collaboration> rdf:type owl:Class ;
+                                                  rdfs:comment "A collaboration between a set of actors." ;
+                                                  rdfs:label "Collaboration" .
 
 
 ###  http://w3id.org/CEON/ontology/process/Process
