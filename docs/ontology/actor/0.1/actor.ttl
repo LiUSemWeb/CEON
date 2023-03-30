@@ -1,475 +1,305 @@
-@prefix : <http://w3id.org/CEON/ontology/actor/> .
+@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
-@base <http://w3id.org/CEON/ontology/actor/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+actor: a owl:Ontology ;
+    dcterms:contributor "Huanyu Li",
+        "Mikael Lindecrantz",
+        "Robin Keskisärkkä" ;
+    dcterms:created "2023-03-16"^^xsd:string ;
+    dcterms:creator "Eva Blomqvist" ;
+    dcterms:description "The Actor module of CEON (Circular Economy Ontology Network)." ;
+    dcterms:license "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Actor Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "actor"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/0.1/actor/"^^xsd:string ;
+    odp:coversRequirements "What are the roles of this actor in this circular value network/process/in relation to this resource? What are the capabilities of this actor?" ;
+    rdfs:seeAlso "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
+    owl:imports <http://w3id.org/CEON/ontology/0.1/actorODP> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/0.1/actor/> ;
+    owl:versionInfo "0.1"^^xsd:string .
+
+actor:ActorProcessRole a owl:Class ;
+    rdfs:label "Actor process role" ;
+    rdfs:comment "The role(s) of an actor involved in a process." ;
+    rdfs:subClassOf actor:ActorCollaborationRole .
+
+actor:BuyingResource a owl:Class ;
+    rdfs:label "Buying resource" ;
+    rdfs:comment "The relation where the role of the actor is the buyer of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:buyer ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:CVNParticipation a owl:Class ;
+    rdfs:label "Circular Value Network Participation" ;
+    rdfs:comment "A participation-relation, that represents the participation of an actor in a CVN with a certain role. For instance, a specific company playing the role of recycler in a certain flow of a CVN. The participation may also be related to a certain time (or time interval)." ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation> [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
+                        owl:someValuesFrom actor:ActorCVNRole ] [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingActor> ;
+                        owl:someValuesFrom <http://w3id.org/CEON/ontology/actorODP/Actor> ] [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participationIn> ;
+                        owl:someValuesFrom <http://w3id.org/CEON/ontology/cvn/CVN> ] ) ],
+        <http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation> .
+
+actor:ConsumingResource a owl:Class ;
+    rdfs:label "Consuming resource" ;
+    rdfs:comment "The relation where the role of the actor is the consumer of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:consumer ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:IssuingResource a owl:Class ;
+    rdfs:label "Issuing resource" ;
+    rdfs:comment "The relation where the role of the actor is the issuer of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:issuer ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:OwningResource a owl:Class ;
+    rdfs:label "Owning resource" ;
+    rdfs:comment "The relation where the role of the actor is the owner of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:owner ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:ProcessParticipation a owl:Class ;
+    rdfs:label "Process Participation" ;
+    rdfs:comment "Participation of a certain actor in a certain process, with a certain role. For instance, a certain department of a recycling company having the role of quality controllant, or material sorter, in a certain recycling process. The participation may also be given a time, e.g. a start and end time." ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation> [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
+                        owl:someValuesFrom actor:ActorCVNRole ] [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingActor> ;
+                        owl:someValuesFrom <http://w3id.org/CEON/ontology/actorODP/Actor> ] [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participationIn> ;
+                        owl:someValuesFrom <http://w3id.org/CEON/ontology/process/Process> ] ) ],
+        <http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation> .
+
+actor:ProducingResource a owl:Class ;
+    rdfs:label "Producing resource" ;
+    rdfs:comment "The relation where the role of the actor is the producer of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:producer ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:ProvidingResource a owl:Class ;
+    rdfs:label "Providing resource" ;
+    rdfs:comment "The relation where the role of the actor is the provider of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:provider ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:ResellingResource a owl:Class ;
+    rdfs:label "Reselling resource" ;
+    rdfs:comment "The relation where the role of the actor is the reseller of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:reseller ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:SellingResource a owl:Class ;
+    rdfs:label "Selling resource" ;
+    rdfs:comment "The relation where the role of the actor is the seller of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:seller ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:SupplyingResource a owl:Class ;
+    rdfs:label "Supplying resource" ;
+    rdfs:comment "The relation where the role of the actor is the supplier of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:supplier ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:UpdatingResource a owl:Class ;
+    rdfs:label "Updating resource" ;
+    rdfs:comment "The relation where the role of the actor is the updater of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:updater ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:UsingResource a owl:Class ;
+    rdfs:label "Using resource" ;
+    rdfs:comment "The relation where the role of the actor is the user of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:user ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:ViewingResource a owl:Class ;
+    rdfs:label "Viewing resource" ;
+    rdfs:comment "The relation where the role of the actor is the viewer of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue actor:viewer ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+actor:capabilityExtent a owl:ObjectProperty ;
+    rdfs:label "capability extent" ;
+    rdfs:comment "The extent of this capability, e.g. stating whether there are limist to the capability, such as a maximum amount or size of something." ;
+    rdfs:domain <http://w3id.org/CEON/ontology/actorODP/Capability> ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/capabilityProperty> .
+
+actor:collector a actor:ActorCVNRole,
+        owl:NamedIndividual .
+
+actor:dismantler a actor:ActorCVNRole,
+        owl:NamedIndividual .
+
+actor:manufacturer a actor:ActorCVNRole,
+        owl:NamedIndividual .
+
+actor:neededResourceRelation a owl:ObjectProperty ;
+    rdfs:label "needed resource relations" ;
+    rdfs:comment "In order for an actor to have a capability, it needs to have certain resources, e.g. materials, infrastrucutre, know-how, information etc." ;
+    rdfs:domain <http://w3id.org/CEON/ontology/actorODP/Capability> ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/capabilityProperty> .
+
+actor:recycler a actor:ActorCVNRole,
+        owl:NamedIndividual .
+
+odp:coversRequirements a owl:AnnotationProperty .
+
+actor:buyer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:consumer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:issuer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:owner a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:producer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:provider a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:reseller a actor:ActorCVNRole,
+        actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:seller a actor:ActorCVNRole,
+        actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:supplier a actor:ActorCVNRole,
+        actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:updater a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:user a actor:ActorCVNRole,
+        actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:viewer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+<http://w3id.org/CEON/ontology/actorODP/Participation> a owl:Class .
+
+<http://w3id.org/CEON/ontology/actorODP/participatingResource> a owl:ObjectProperty .
+
+<http://w3id.org/CEON/ontology/cvn/CVN> a owl:Class ;
+    rdfs:label "Circular Value Network" ;
+    rdfs:comment "A collaboration between actors that constitute a Circular Value Newtworks, implicitly or explicitly set up." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collaboration> .
+
+<http://w3id.org/CEON/ontology/cvn/Collaboration> a owl:Class .
+
+<http://w3id.org/CEON/ontology/process/Process> a owl:Class .
+
+<http://w3id.org/CEON/ontology/resourceODP/Resource> a owl:Class .
+
+actor:ActorCollaborationRole a owl:Class ;
+    rdfs:label "Actor collaboration role" ;
+    rdfs:comment "The roles of an actor involved in a collaboration." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/Role> .
+
+<http://w3id.org/CEON/ontology/actorODP/Capability> a owl:Class .
+
+<http://w3id.org/CEON/ontology/actorODP/Role> a owl:Class .
+
+<http://w3id.org/CEON/ontology/actorODP/capabilityProperty> a owl:ObjectProperty .
+
+<http://w3id.org/CEON/ontology/actorODP/participationIn> a owl:ObjectProperty .
+
+<http://w3id.org/CEON/ontology/actorODP/Actor> a owl:Class .
+
+<http://w3id.org/CEON/ontology/actorODP/participatingActor> a owl:ObjectProperty .
+
+<http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation> a owl:Class .
+
+actor:ActorCVNRole a owl:Class ;
+    rdfs:label "Actor Circular Value Network role" ;
+    rdfs:comment "The role(s) of an actor in a Circular Value Network, which is a specific type of collaboration." ;
+    rdfs:subClassOf actor:ActorCollaborationRole .
+
+actor:ActorResourceRole a owl:Class ;
+    rdfs:label "Actor resource role" ;
+    rdfs:comment "The role(s) of an actor in relation to a resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/Role> .
+
+<http://w3id.org/CEON/ontology/actorODP/participantRole> a owl:ObjectProperty .
+
+<http://w3id.org/CEON/ontology/actorODP/ResourceRelation> a owl:Class ;
+    rdfs:label "Resource Relation" ;
+    rdfs:comment "A relation between a resource, an actor, and the role the actor has in relation to the resource. For instance, the role of owner that a certain actor takes for a certain resource for a certain period of time. Or the seller of a certain resource, until that resource has been sold, and the actor no longer has that role in relation to the resource." ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/Participation> [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
+                        owl:someValuesFrom actor:ActorResourceRole ] [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingActor> ;
+                        owl:someValuesFrom <http://w3id.org/CEON/ontology/actorODP/Actor> ] [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingResource> ;
+                        owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Resource> ] ) ] .
 
-<http://w3id.org/CEON/ontology/actor/> rdf:type owl:Ontology ;
-                                        owl:versionIRI <http://w3id.org/CEON/ontology/0.1/actor/> ;
-                                        owl:imports <http://w3id.org/CEON/ontology/0.1/actorODP> ;
-                                        <http://purl.org/dc/terms/contributor> "Huanyu Li" ,
-                                                                               "Mikael Lindecrantz" ,
-                                                                               "Robin Keskisärkkä" ;
-                                        <http://purl.org/dc/terms/created> "2023-03-16"^^xsd:string ;
-                                        <http://purl.org/dc/terms/creator> "Eva Blomqvist" ;
-                                        <http://purl.org/dc/terms/description> "The Actor module of CEON (Circular Economy Ontology Network)." ;
-                                        <http://purl.org/dc/terms/license> "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"^^xsd:string ;
-                                        <http://purl.org/dc/terms/title> "Circular Economy Ontology Network (CEON) - Actor Module"^^xsd:string ;
-                                        <http://purl.org/vocab/vann/preferredNamespacePrefix> "actor"^^xsd:string ;
-                                        <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/CEON/ontology/0.1/actor/"^^xsd:string ;
-                                        odp:coversRequirements "What are the roles of this actor in this network?" ;
-                                        rdfs:seeAlso "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
-                                        owl:versionInfo "0.1"^^xsd:string .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  http://purl.org/dc/terms/contributor
-<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/created
-<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/creator
-<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/description
-<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/license
-<http://purl.org/dc/terms/license> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/title
-<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/vocab/vann/preferredNamespacePrefix
-<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/vocab/vann/preferredNamespaceUri
-<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements
-odp:coversRequirements rdf:type owl:AnnotationProperty .
-
-
-#################################################################
-#    Object Properties
-#################################################################
-
-###  http://w3id.org/CEON/ontology/actor/capabilityExtent
-actor:capabilityExtent rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/capabilityProperty> ;
-                       rdfs:domain <http://w3id.org/CEON/ontology/actorODP/Capability> ;
-                       rdfs:comment "The extent of this capability, e.g. stating whether there are limist to the capability, such as a maximum amount or size of something." ;
-                       rdfs:label "capability extent" .
-
-
-###  http://w3id.org/CEON/ontology/actor/neededResourceRelation
-actor:neededResourceRelation rdf:type owl:ObjectProperty ;
-                             rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/capabilityProperty> ;
-                             rdfs:domain <http://w3id.org/CEON/ontology/actorODP/Capability> ;
-                             rdfs:comment "In order for an actor to have a capability, it needs to have certain resources, e.g. materials, infrastrucutre, know-how, information etc." ;
-                             rdfs:label "needed resource relations" .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/capabilityProperty
-<http://w3id.org/CEON/ontology/actorODP/capabilityProperty> rdf:type owl:ObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/participantRole
-<http://w3id.org/CEON/ontology/actorODP/participantRole> rdf:type owl:ObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/participatingActor
-<http://w3id.org/CEON/ontology/actorODP/participatingActor> rdf:type owl:ObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/participatingResource
-<http://w3id.org/CEON/ontology/actorODP/participatingResource> rdf:type owl:ObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/participationIn
-<http://w3id.org/CEON/ontology/actorODP/participationIn> rdf:type owl:ObjectProperty .
-
-
-#################################################################
-#    Classes
-#################################################################
-
-###  http://w3id.org/CEON/ontology/actor/ActorCVNRole
-actor:ActorCVNRole rdf:type owl:Class ;
-                   rdfs:subClassOf actor:ActorCollaborationRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/ActorCollaborationRole
-actor:ActorCollaborationRole rdf:type owl:Class ;
-                             rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/Role> .
-
-
-###  http://w3id.org/CEON/ontology/actor/ActorProcessRole
-actor:ActorProcessRole rdf:type owl:Class ;
-                       rdfs:subClassOf actor:ActorCollaborationRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/ActorResourceRole
-actor:ActorResourceRole rdf:type owl:Class ;
-                        rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/Role> .
-
-
-###  http://w3id.org/CEON/ontology/actor/BuyingResource
-actor:BuyingResource rdf:type owl:Class ;
-                     owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                [ rdf:type owl:Restriction ;
-                                                                  owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                  owl:hasValue actor:buyer
-                                                                ]
-                                                              ) ;
-                                           rdf:type owl:Class
-                                         ] ;
-                     rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/CVNParticipation
-actor:CVNParticipation rdf:type owl:Class ;
-                       rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation> ,
-                                       [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/Participation>
-                                                              [ rdf:type owl:Restriction ;
-                                                                owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                owl:someValuesFrom actor:ActorCVNRole
-                                                              ]
-                                                              [ rdf:type owl:Restriction ;
-                                                                owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingActor> ;
-                                                                owl:someValuesFrom <http://w3id.org/CEON/ontology/actorODP/Actor>
-                                                              ]
-                                                              [ rdf:type owl:Restriction ;
-                                                                owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participationIn> ;
-                                                                owl:someValuesFrom <http://w3id.org/CEON/ontology/cvn/CVN>
-                                                              ]
-                                                            ) ;
-                                         rdf:type owl:Class
-                                       ] .
-
-
-###  http://w3id.org/CEON/ontology/actor/ConsumingResource
-actor:ConsumingResource rdf:type owl:Class ;
-                        owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                     owl:hasValue actor:consumer
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ] ;
-                        rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/IssuingResource
-actor:IssuingResource rdf:type owl:Class ;
-                      owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                   owl:hasValue actor:issuer
-                                                                 ]
-                                                               ) ;
-                                            rdf:type owl:Class
-                                          ] ;
-                      rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/OwningResource
-actor:OwningResource rdf:type owl:Class ;
-                     owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                [ rdf:type owl:Restriction ;
-                                                                  owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                  owl:hasValue actor:owner
-                                                                ]
-                                                              ) ;
-                                           rdf:type owl:Class
-                                         ] ;
-                     rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/ProcessParticipation
-actor:ProcessParticipation rdf:type owl:Class ;
-                           rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation> ,
-                                           [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/Participation>
-                                                                  [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                    owl:someValuesFrom actor:ActorCVNRole
-                                                                  ]
-                                                                  [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingActor> ;
-                                                                    owl:someValuesFrom <http://w3id.org/CEON/ontology/actorODP/Actor>
-                                                                  ]
-                                                                  [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participationIn> ;
-                                                                    owl:someValuesFrom <http://w3id.org/CEON/ontology/process/Process>
-                                                                  ]
-                                                                ) ;
-                                             rdf:type owl:Class
-                                           ] .
-
-
-###  http://w3id.org/CEON/ontology/actor/ProducingResource
-actor:ProducingResource rdf:type owl:Class ;
-                        owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                     owl:hasValue actor:producer
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ] ;
-                        rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/ProvidingResource
-actor:ProvidingResource rdf:type owl:Class ;
-                        owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                     owl:hasValue actor:provider
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ] ;
-                        rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/ResellingResource
-actor:ResellingResource rdf:type owl:Class ;
-                        owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                     owl:hasValue actor:reseller
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ] ;
-                        rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/SellingResource
-actor:SellingResource rdf:type owl:Class ;
-                      owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                   owl:hasValue actor:seller
-                                                                 ]
-                                                               ) ;
-                                            rdf:type owl:Class
-                                          ] ;
-                      rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/SupplyingResource
-actor:SupplyingResource rdf:type owl:Class ;
-                        owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                     owl:hasValue actor:supplier
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ] ;
-                        rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/UpdatingResource
-actor:UpdatingResource rdf:type owl:Class ;
-                       owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                  [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                    owl:hasValue actor:updater
-                                                                  ]
-                                                                ) ;
-                                             rdf:type owl:Class
-                                           ] ;
-                       rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/UsingResource
-actor:UsingResource rdf:type owl:Class ;
-                    owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                 owl:hasValue actor:user
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ] ;
-                    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actor/ViewingResource
-actor:ViewingResource rdf:type owl:Class ;
-                      owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                   owl:hasValue actor:viewer
-                                                                 ]
-                                                               ) ;
-                                            rdf:type owl:Class
-                                          ] ;
-                      rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/Actor
-<http://w3id.org/CEON/ontology/actorODP/Actor> rdf:type owl:Class .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/Capability
-<http://w3id.org/CEON/ontology/actorODP/Capability> rdf:type owl:Class .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation
-<http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation> rdf:type owl:Class .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/Participation
-<http://w3id.org/CEON/ontology/actorODP/Participation> rdf:type owl:Class .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/ResourceRelation
-<http://w3id.org/CEON/ontology/actorODP/ResourceRelation> rdf:type owl:Class ;
-                                                          rdfs:subClassOf [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/Participation>
-                                                                                                 [ rdf:type owl:Restriction ;
-                                                                                                   owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
-                                                                                                   owl:someValuesFrom actor:ActorResourceRole
-                                                                                                 ]
-                                                                                                 [ rdf:type owl:Restriction ;
-                                                                                                   owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingActor> ;
-                                                                                                   owl:someValuesFrom <http://w3id.org/CEON/ontology/actorODP/Actor>
-                                                                                                 ]
-                                                                                                 [ rdf:type owl:Restriction ;
-                                                                                                   owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingResource> ;
-                                                                                                   owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Resource>
-                                                                                                 ]
-                                                                                               ) ;
-                                                                            rdf:type owl:Class
-                                                                          ] .
-
-
-###  http://w3id.org/CEON/ontology/actorODP/Role
-<http://w3id.org/CEON/ontology/actorODP/Role> rdf:type owl:Class .
-
-
-###  http://w3id.org/CEON/ontology/cvn/CVN
-<http://w3id.org/CEON/ontology/cvn/CVN> rdf:type owl:Class ;
-                                        rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collaboration> .
-
-
-###  http://w3id.org/CEON/ontology/cvn/Collaboration
-<http://w3id.org/CEON/ontology/cvn/Collaboration> rdf:type owl:Class .
-
-
-###  http://w3id.org/CEON/ontology/process/Process
-<http://w3id.org/CEON/ontology/process/Process> rdf:type owl:Class .
-
-
-###  http://w3id.org/CEON/ontology/resourceODP/Resource
-<http://w3id.org/CEON/ontology/resourceODP/Resource> rdf:type owl:Class .
-
-
-#################################################################
-#    Individuals
-#################################################################
-
-###  http://w3id.org/CEON/ontology/actor/buyer
-actor:buyer rdf:type owl:NamedIndividual ,
-                     actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/collector
-actor:collector rdf:type owl:NamedIndividual ,
-                         actor:ActorCVNRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/consumer
-actor:consumer rdf:type owl:NamedIndividual ,
-                        actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/dismantler
-actor:dismantler rdf:type owl:NamedIndividual ,
-                          actor:ActorCVNRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/issuer
-actor:issuer rdf:type owl:NamedIndividual ,
-                      actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/manufacturer
-actor:manufacturer rdf:type owl:NamedIndividual ,
-                            actor:ActorCVNRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/owner
-actor:owner rdf:type owl:NamedIndividual ,
-                     actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/producer
-actor:producer rdf:type owl:NamedIndividual ,
-                        actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/provider
-actor:provider rdf:type owl:NamedIndividual ,
-                        actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/recycler
-actor:recycler rdf:type owl:NamedIndividual ,
-                        actor:ActorCVNRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/reseller
-actor:reseller rdf:type owl:NamedIndividual ,
-                        actor:ActorCVNRole ,
-                        actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/seller
-actor:seller rdf:type owl:NamedIndividual ,
-                      actor:ActorCVNRole ,
-                      actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/supplier
-actor:supplier rdf:type owl:NamedIndividual ,
-                        actor:ActorCVNRole ,
-                        actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/updater
-actor:updater rdf:type owl:NamedIndividual ,
-                       actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/user
-actor:user rdf:type owl:NamedIndividual ,
-                    actor:ActorCVNRole ,
-                    actor:ActorResourceRole .
-
-
-###  http://w3id.org/CEON/ontology/actor/viewer
-actor:viewer rdf:type owl:NamedIndividual ,
-                      actor:ActorResourceRole .
-
-
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
