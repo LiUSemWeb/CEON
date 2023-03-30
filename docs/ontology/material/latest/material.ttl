@@ -1,0 +1,99 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix material: <http://w3id.org/CEON/ontology/material/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dc:description a owl:AnnotationProperty .
+
+material: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist",
+        "Mikael Lindecrantz",
+        "Robin Keskisärkkä" ;
+    dcterms:created "2023-03-16"^^xsd:string ;
+    dcterms:creator "Huanyu Li" ;
+    dcterms:description "The Material module of CEON (Circular Economy Ontology Network)." ;
+    dcterms:license "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Material Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "material"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/0.1/material/"^^xsd:string ;
+    rdfs:seeAlso "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
+    owl:imports <http://w3id.org/CEON/ontology/0.1/resourceODP/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/0.1/material/> ;
+    owl:versionInfo "0.1"^^xsd:string .
+
+material:AnonymousFormula a owl:DatatypeProperty ;
+    rdfs:comment "AnonymousFormula represents that a molecular entity has the anonymous formula in a string."@en ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/AnonymousFormula" .
+
+material:ChemicalSubstance a owl:Class ;
+    rdfs:label "ChemicalSubstance"@en ;
+    rdfs:comment "A chemical substance is made up of a collection of molecular entities."@en ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea",
+        "http://purl.obolibrary.org/obo/chebi#59999" ;
+    rdfs:subClassOf material:ChemicalEntity .
+
+material:DescriptiveFormula a owl:DatatypeProperty ;
+    rdfs:comment "DescriptiveFormula represents that a molecular entity has the descriptive formula in a string."@en ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/DescriptiveFormula" .
+
+material:HillFormula a owl:DatatypeProperty ;
+    rdfs:comment "HillFormula represents that a composition has the hill formula in a string."@en ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/HillFormula" .
+
+material:MolecularEntity a owl:Class ;
+    rdfs:label "MolecularEntity"@en ;
+    rdfs:comment "A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion."@en ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a",
+        "http://purl.obolibrary.org/obo/chebi#23367" ;
+    rdfs:subClassOf material:ChemicalEntity .
+
+material:ReducedChemicalFormula a owl:DatatypeProperty ;
+    rdfs:comment "ReducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string."@en ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/ReducedFormula" .
+
+material:hasMaterialComponent a owl:ObjectProperty ;
+    rdfs:label "hasMaterialComponent"@en ;
+    rdfs:comment "hasMaterialComponent intends to represent that a material can have a collection of components."@en ;
+    rdfs:domain material:Material ;
+    rdfs:range material:MaterialComponent .
+
+resourceODP:PhysicalObject a owl:Class .
+
+resourceODP:Resource a owl:Class .
+
+material:MaterialComponent a owl:Class ;
+    rdfs:label "MaterialComponent"@en ;
+    rdfs:comment "A material component is a part of a material."@en ;
+    rdfs:subClassOf resourceODP:Constituent .
+
+material:hasChemicalEntity a owl:ObjectProperty ;
+    rdfs:label "hasChemicalEntity"@en ;
+    rdfs:comment "hasChemicalEntity intends to represent that a material can have a collection of chemical entities."@en ;
+    rdfs:domain material:Material ;
+    rdfs:range material:ChemicalEntity .
+
+resourceODP:Constituent a owl:Class .
+
+material:Material a owl:Class ;
+    rdfs:label "Material"@en ;
+    rdfs:comment "Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of."@en ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94",
+        "https://w3id.org/mdo/core/Material" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty material:hasChemicalEntity ;
+            owl:someValuesFrom material:ChemicalEntity ],
+        resourceODP:Matter .
+
+resourceODP:Matter a owl:Class .
+
+material:ChemicalEntity a owl:Class ;
+    rdfs:label "ChemicalEntity"@en ;
+    rdfs:comment "A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance."@en ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0",
+        "http://purl.obolibrary.org/obo/chebi#24431" ;
+    rdfs:subClassOf resourceODP:Matter .
+
