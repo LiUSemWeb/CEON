@@ -25,6 +25,10 @@ def copy_ontologies(config):
         g.serialize(destination=f"docs/{path}/{version}/{basename}.owl", format="xml")
         g.serialize(destination=f"docs/{path}/{version}/{basename}.jsonld", format="json-ld")
 
+        if ontology.get("latest"):
+            os.system(f"mkdir -p docs/{path}/latest")
+            os.system(f"cp docs/{path}/{version}/* docs/{path}/latest")
+
 def download_owl2vowl():
     """Download and extract OWL2VOWL."""
     os.system("mkdir -p temp")
@@ -153,6 +157,10 @@ def create_documentation(config):
         html_formatter = formatter.HTMLFormatter(indent=4)
         with open(html_file, "w") as f:
             f.write(soup.prettify(formatter=html_formatter))
+        
+        if ontology.get("latest"):
+            os.system(f"mkdir -p docs/{path}/latest")
+            os.system(f"cp docs/{path}/{version}/* docs/{path}/latest")
 
 
 def create_index_file(config):
