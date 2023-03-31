@@ -194,10 +194,10 @@ def main():
         config = yaml.load(f, Loader=yaml.FullLoader)
     
     copy_ontologies(config)
-    #download_owl2vowl()
-    #generate_vowl(config)
+    download_owl2vowl()
+    generate_vowl(config)
     create_documentation(config)
-    #build_pdf(config)
+    build_pdf(config)
     create_index_file(config)
 
 if __name__ == "__main__":
