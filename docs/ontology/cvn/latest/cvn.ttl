@@ -1,9 +1,14 @@
 @prefix : <http://w3id.org/CEON/ontology/cvn/> .
+@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
 @prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix process: <http://w3id.org/CEON/ontology/process/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix value: <http://w3id.org/CEON/ontology/value/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -28,44 +33,35 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     dcterms:description "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself." ;
     dcterms:title "Circular Value Network" ;
     vann:preferredNamespacePrefix "cvn"^^xsd:string ;
-    vann:preferredNamespaceUri "https://w3id.org/CEON/ontoloy/0.1/cvn/"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/cvn/"^^xsd:string ;
+    odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-CVN-1,6, CVN-Process-1,6, CVN-VP-1,3, CVN-Type-3, C0-1." ;
     rdfs:comment "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself." ;
     rdfs:seeAlso "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
-    owl:imports <http://w3id.org/CEON/ontology/0.1/actor> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/0.1/cvn/> ;
+    owl:imports actor: ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/cvn/0.1/> ;
     owl:versionInfo "0.1" .
-
-:actorType a owl:ObjectProperty ;
-    rdfs:label "has actor type" ;
-    rdfs:comment "The type of the actor." .
 
 :aimsAtValue a owl:ObjectProperty ;
     rdfs:label "aims at value" ;
     rdfs:comment "The value proposition that the planned abstract CVN configuration, or concrete network wants to achieve." ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( :CVN :CVNBlueprint ) ] ;
-    rdfs:range <http://w3id.org/CEON/ontology/value/ValueProposition> .
+    rdfs:range value:ValueProposition .
 
 :composedOf a owl:ObjectProperty ;
     rdfs:label "composed of" ;
     rdfs:comment "Both a CVN and a process can be composed of other CVNs or processes." ;
     rdfs:domain [ a owl:Class ;
-            owl:unionOf ( :CVN <http://w3id.org/CEON/ontology/process/Process> ) ] ;
+            owl:unionOf ( :CVN process:Process ) ] ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( :CVN <http://w3id.org/CEON/ontology/process/Process> ) ] .
+            owl:unionOf ( :CVN process:Process ) ] .
 
 :createsValue a owl:ObjectProperty ;
     rdfs:label "creates value" ;
     rdfs:comment "Value creation can be captured at the actor level, i.e. value created by an actor's participation in a collaboration, or at the process or complete CVN level." ;
     rdfs:domain [ a owl:Class ;
-            owl:unionOf ( actorODP:Participation :CVN <http://w3id.org/CEON/ontology/process/Process> ) ] ;
-    rdfs:range <http://w3id.org/CEON/ontology/value/Value> .
-
-:endTime a owl:DatatypeProperty ;
-    rdfs:label "end time" ;
-    rdfs:comment "The end of a time interval." ;
-    rdfs:range [ a rdfs:Datatype ;
-            owl:unionOf ( xsd:date xsd:dateTime xsd:gMonthYear xsd:gYear ) ] .
+            owl:unionOf ( actorODP:Participation :CVN process:Process ) ] ;
+    rdfs:range value:Value .
 
 :implementsBlueprint a owl:ObjectProperty ;
     rdfs:label "implements blueprint" ;
@@ -78,63 +74,32 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:range :CircularStrategy ;
     rdfs:subPropertyOf :relatedStrategy .
 
-:nextProcess a owl:ObjectProperty ;
-    rdfs:label "next process" ;
-    rdfs:comment "Processes in a CVN are ordered in the sense that something has to be done before something else, since the input of one process may be the output of another." ;
-    rdfs:domain <http://w3id.org/CEON/ontology/process/Process> ;
-    rdfs:range <http://w3id.org/CEON/ontology/process/Process> .
-
-:participantRole a owl:ObjectProperty ;
-    rdfs:label "has participant role" ;
-    rdfs:comment "Holds the value of the role of the participant in this participation relation." .
-
-:participatingActor a owl:ObjectProperty ;
-    rdfs:label "har participating actor" ;
-    rdfs:comment "Holds the value of the actor involved in this participation relation." .
-
-:participatingResource a owl:ObjectProperty ;
-    rdfs:label "has participating resource" ;
-    rdfs:comment "The resource that this participation relation relates to, i.e. for which the actor holds the specified role." ;
-    rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> .
-
-:participationIn a owl:ObjectProperty ;
-    rdfs:label "is a participation in" ;
-    rdfs:comment "The collaboration or process that this participation relates to." ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( :Collaboration <http://w3id.org/CEON/ontology/process/Process> ) ] .
-
 :plansToImplementStrategy a owl:ObjectProperty ;
     rdfs:domain :CVNBlueprint ;
     rdfs:range :CircularStrategy ;
     rdfs:subPropertyOf :relatedStrategy .
 
-:startTime a owl:DatatypeProperty ;
-    rdfs:label "start time" ;
-    rdfs:comment "The start of a time interval." ;
-    rdfs:range [ a rdfs:Datatype ;
-            owl:unionOf ( xsd:date xsd:dateTime xsd:gMonthYear xsd:gYear ) ] .
+resourceODP:Resource a owl:Class .
 
-:timePoint a owl:DatatypeProperty ;
-    rdfs:label "time point" ;
-    rdfs:comment "The point in time when something took place or was valid." ;
-    rdfs:range [ a rdfs:Datatype ;
-            owl:unionOf ( xsd:date xsd:dateTime xsd:gMonthYear xsd:gYear ) ] .
+xsd:date a rdfs:Datatype .
+
+xsd:gMonthYear a rdfs:Datatype .
+
+xsd:gYear a rdfs:Datatype .
 
 actorODP:Participation a owl:Class .
-
-<http://w3id.org/CEON/ontology/resourceODP/Resource> a owl:Class .
-
-<http://w3id.org/CEON/ontology/value/Value> a owl:Class .
-
-<http://w3id.org/CEON/ontology/value/ValueProposition> a owl:Class .
-
-:CircularStrategy a owl:Class ;
-    rdfs:label "Circular Strategy" ;
-    rdfs:comment "A circular strategy, such as to reccycle, reuse or refurbish something." .
 
 :Collaboration a owl:Class ;
     rdfs:comment "Collaboration",
         "Some collaboration to achieve a goal." .
+
+value:Value a owl:Class .
+
+value:ValueProposition a owl:Class .
+
+:CircularStrategy a owl:Class ;
+    rdfs:label "Circular Strategy" ;
+    rdfs:comment "A circular strategy, such as to reccycle, reuse or refurbish something." .
 
 :relatedStrategy a owl:ObjectProperty ;
     rdfs:label "related strategy" ;
@@ -144,16 +109,10 @@ actorODP:Participation a owl:Class .
     rdfs:label "Circular Value Network Blueprint" ;
     rdfs:comment "A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs." .
 
-xsd:date a rdfs:Datatype .
-
-xsd:gMonthYear a rdfs:Datatype .
-
-xsd:gYear a rdfs:Datatype .
+process:Process a owl:Class .
 
 :CVN a owl:Class ;
     rdfs:label "Circular Value Network" ;
     rdfs:comment "An instantiation of a circular value network, i.e. a concrete network of different actors collaborating to achieve some goal." ;
     rdfs:subClassOf :Collaboration .
-
-<http://w3id.org/CEON/ontology/process/Process> a owl:Class .
 
