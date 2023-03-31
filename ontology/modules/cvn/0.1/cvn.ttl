@@ -1,36 +1,33 @@
 @prefix : <http://w3id.org/CEON/ontology/cvn/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
-@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
-@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
-@prefix material: <http://w3id.org/CEON/ontology/material/> .
-@prefix process: <http://w3id.org/CEON/ontology/process/> .
-@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
-@prefix resource: <http://w3id.org/CEON/ontology/resource/> .
-@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 @prefix value: <http://w3id.org/CEON/ontology/value/> .
-@prefix valueODP: <http://w3id.org/CEON/ontology/valueODP/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix process: <http://w3id.org/CEON/ontology/process/> .
+@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
 @base <http://w3id.org/CEON/ontology/cvn/> .
 
 <http://w3id.org/CEON/ontology/cvn/> rdf:type owl:Ontology ;
                                       owl:versionIRI <http://w3id.org/CEON/ontology/cvn/0.1/> ;
-                                      owl:imports <http://w3id.org/CEON/ontology/actor/> ;
-                                      <http://purl.org/dc/terms/contributor> "Eva Blomqvist" ,
-                                                                             "Huanyu Li" ,
-                                                                             "Mikael Lindecrantz" ,
-                                                                             "Robin Keskisärkkä" ;
-                                      <http://purl.org/dc/terms/creator> "Eva Blomqvist" ;
-                                      <http://purl.org/dc/terms/description> "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself." ;
-                                      <http://purl.org/dc/terms/title> "Circular Economy Ontology Network (CEON) - Circular Value Network" ;
-                                      <http://purl.org/vocab/vann/preferredNamespacePrefix> "cvn"^^xsd:string ;
-                                      <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/CEON/ontoloy/cvn/"^^xsd:string ;
+                                      owl:imports <http://w3id.org/CEON/ontology/actor> ;
+                                      dcterms:contributor "Huanyu Li" ,
+                                                          "Mikael Lindecrantz" ,
+                                                          "Robin Keskisärkkä" ;
+                                      dcterms:creator "Eva Blomqvist" ;
+                                      dcterms:description "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself." ;
+                                      dcterms:title "Circular Economy Ontology Network (CEON) - Circular Value Network Module" ;
+                                      vann:preferredNamespacePrefix "cvn"^^xsd:string ;
+                                      vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/cvn/"^^xsd:string ;
+                                      odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-CVN-1,6, CVN-Process-1,6, CVN-VP-1,3, CVN-Type-3, C0-1." ;
                                       rdfs:comment "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself." ;
-				                              odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-CVN-1,6, CVN-Process-1,6, CVN-VP-1,3, CVN-Type-3, C0-1." ;
-                                      rdfs:seeAlso "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
+                                      rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
                                       owl:versionInfo "0.1" .
 
 #################################################################
@@ -38,27 +35,27 @@
 #################################################################
 
 ###  http://purl.org/dc/terms/contributor
-<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+dcterms:contributor rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/creator
-<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+dcterms:creator rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/description
-<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+dcterms:description rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/title
-<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+dcterms:title rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/vocab/vann/preferredNamespacePrefix
-<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/vocab/vann/preferredNamespaceUri
-<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -88,7 +85,7 @@ xsd:gYear rdf:type rdfs:Datatype .
                                          :CVNBlueprint
                                        )
                          ] ;
-             rdfs:range <http://w3id.org/CEON/ontology/value/ValueProposition> ;
+             rdfs:range value:ValueProposition ;
              rdfs:comment "The value proposition that the planned abstract CVN configuration, or concrete network wants to achieve." ;
              rdfs:label "aims at value" .
 
@@ -97,12 +94,12 @@ xsd:gYear rdf:type rdfs:Datatype .
 :composedOf rdf:type owl:ObjectProperty ;
             rdfs:domain [ rdf:type owl:Class ;
                           owl:unionOf ( :CVN
-                                        <http://w3id.org/CEON/ontology/process/Process>
+                                        process:Process
                                       )
                         ] ;
             rdfs:range [ rdf:type owl:Class ;
                          owl:unionOf ( :CVN
-                                       <http://w3id.org/CEON/ontology/process/Process>
+                                       process:Process
                                      )
                        ] ;
             rdfs:comment "Both a CVN and a process can be composed of other CVNs or processes." ;
@@ -114,10 +111,10 @@ xsd:gYear rdf:type rdfs:Datatype .
               rdfs:domain [ rdf:type owl:Class ;
                             owl:unionOf ( actorODP:Participation
                                           :CVN
-                                          <http://w3id.org/CEON/ontology/process/Process>
+                                          process:Process
                                         )
                           ] ;
-              rdfs:range <http://w3id.org/CEON/ontology/value/Value> ;
+              rdfs:range value:Value ;
               rdfs:comment "Value creation can be captured at the actor level, i.e. value created by an actor's participation in a collaboration, or at the process or complete CVN level." ;
               rdfs:label "creates value" .
 
@@ -184,19 +181,19 @@ actorODP:Participation rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/process/Process
-<http://w3id.org/CEON/ontology/process/Process> rdf:type owl:Class .
+process:Process rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Resource
-<http://w3id.org/CEON/ontology/resourceODP/Resource> rdf:type owl:Class .
+resourceODP:Resource rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/value/Value
-<http://w3id.org/CEON/ontology/value/Value> rdf:type owl:Class .
+value:Value rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/value/ValueProposition
-<http://w3id.org/CEON/ontology/value/ValueProposition> rdf:type owl:Class .
+value:ValueProposition rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
