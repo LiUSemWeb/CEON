@@ -4,15 +4,17 @@
     "languages" : [ "en", "undefined" ],
     "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://w3id.org/CEON/ontology/product", "http://w3id.org/CEON/ontology/resourceODP", "http://www.w3.org/2000/01/rdf-schema", "http://www.w3.org/2001/XMLSchema" ],
     "prefixList" : {
-      "product" : "http://w3id.org/CEON/ontology/product/",
       "owl" : "http://www.w3.org/2002/07/owl#",
       "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "vann" : "http://purl.org/vocab/vann/",
+      "dcterms" : "http://purl.org/dc/terms/",
       "xsd" : "http://www.w3.org/2001/XMLSchema#",
       "" : "http://w3id.org/CEON/ontology/product/",
       "dc" : "http://purl.org/dc/elements/1.1/",
       "xml" : "http://www.w3.org/XML/1998/namespace",
       "odp" : "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#",
       "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+      "actorODP" : "http://w3id.org/CEON/ontology/actorODP/",
       "resourceODP" : "http://w3id.org/CEON/ontology/resourceODP/"
     },
     "title" : {
@@ -93,7 +95,7 @@
         "identifier" : "seeAlso",
         "language" : "undefined",
         "value" : "https://github.com/LiUSemWeb/CEON",
-        "type" : "label"
+        "type" : "iri"
       } ]
     }
   },
@@ -111,23 +113,13 @@
     "id" : "5",
     "type" : "owl:Class"
   }, {
-    "id" : "3",
+    "id" : "1",
     "type" : "owl:Class"
   }, {
-    "id" : "1",
+    "id" : "3",
     "type" : "owl:Class"
   } ],
   "classAttribute" : [ {
-    "iri" : "http://w3id.org/CEON/ontology/resourceODP/Constituent",
-    "baseIri" : "http://w3id.org/CEON/ontology/resourceODP",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "Constituent"
-    },
-    "subClasses" : [ "1" ],
-    "attributes" : [ "external" ],
-    "id" : "0"
-  }, {
     "iri" : "http://w3id.org/CEON/ontology/product/Product",
     "baseIri" : "http://w3id.org/CEON/ontology/product",
     "instances" : 0,
@@ -138,8 +130,18 @@
     "comment" : {
       "en" : "A product is a physical object put into a market for sale. The product can be a thing that grows naturally or produced through some chemical or manufacturing processes."
     },
-    "id" : "2",
-    "superClasses" : [ "3" ]
+    "id" : "0",
+    "superClasses" : [ "1" ]
+  }, {
+    "iri" : "http://w3id.org/CEON/ontology/resourceODP/Constituent",
+    "baseIri" : "http://w3id.org/CEON/ontology/resourceODP",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Constituent"
+    },
+    "subClasses" : [ "3" ],
+    "attributes" : [ "external" ],
+    "id" : "2"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/resourceODP/Resource",
     "baseIri" : "http://w3id.org/CEON/ontology/resourceODP",
@@ -165,9 +167,9 @@
     "label" : {
       "IRI-based" : "PhysicalObject"
     },
-    "subClasses" : [ "2" ],
+    "subClasses" : [ "0" ],
     "attributes" : [ "external" ],
-    "id" : "3"
+    "id" : "1"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/product/ProductComponent",
     "baseIri" : "http://w3id.org/CEON/ontology/product",
@@ -179,8 +181,8 @@
     "comment" : {
       "en" : "A product component is a part of a product."
     },
-    "id" : "1",
-    "superClasses" : [ "0" ]
+    "id" : "3",
+    "superClasses" : [ "2" ]
   } ],
   "property" : [ {
     "id" : "6",
@@ -193,24 +195,24 @@
     "type" : "owl:objectProperty"
   } ],
   "propertyAttribute" : [ {
-    "range" : "0",
-    "domain" : "1",
+    "range" : "2",
+    "domain" : "3",
     "attributes" : [ "object", "anonymous" ],
     "id" : "6"
   }, {
-    "range" : "3",
-    "domain" : "2",
+    "range" : "1",
+    "domain" : "0",
     "attributes" : [ "object", "anonymous" ],
     "id" : "7"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/product/hasProductComponent",
     "baseIri" : "http://w3id.org/CEON/ontology/product",
-    "range" : "1",
+    "range" : "3",
     "label" : {
       "IRI-based" : "hasProductComponent",
       "en" : "hasProductComponent"
     },
-    "domain" : "2",
+    "domain" : "0",
     "comment" : {
       "en" : "hasProductComponent intends to represent that a product can have a collection of components."
     },
