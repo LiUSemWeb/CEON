@@ -77,6 +77,31 @@ $ pip3 install -r requirements.txt
 $ ./build.py
 ```
 
+4. __(optional)__ Host the generated documentation locally:
+```bash
+$ python3 -m "http.server" -d ./docs 
+# navigate to http://localhost:8000/
+```
+
+## Versioning
+Releases are deployable iterations of the repo that can be packaged and made available for download and use. The project uses semantic version numbering for releases following the pattern: MAJOR.MINOR.PATCH:
+- Patch releases (e.g., going from version v1.0.1 to version v1.0.2) indicate bug fixes or trivial updates)
+- Minor releases (e.g. going from version v1.0.2 to v1.1.0) indicate a change to functionality. This can be any functionality change or new functionality but should not break backward compatability
+- Major releases (e.g. going from version v1.1.0 to version v2.0.0) indicate changes that significantly alter functionality or might break backward compatibility
+ 
+Releases are created by adding a release tag in the GitHub web interface, which marks a specific commit as meaningful in some way. Each new release should be accompanied by release notes:
+- A patch release should contain a list of bugfixes
+- A minor release should contain a list of changes and usage details
+- A major release should contain a list of removals, a list of additions, and instructions on how to upgrade from the previous version (if needed)
+ 
+## Pre-releases
+It sometimes useful to be able to publish a release before all the features are developed and tested. In these cases, the use of semantic versioning still applies; however, the release should be tagged with, e.g., a `beta` suffix. In the GitHub web interface, define the new tag name (e.g. `v1.0.0-beta`) and then check the radio button `Set as a pre-release` prior to publishing the release. When the release has been tested, create a new release without the beta suffix.
+
+## Initial development
+Any release with major version zero (e.g., `v0.1.0`) is part of initial development. This indicates that the ontologies should not be considered stable, and that anything may change at any time. This also means that nothing is considered a *breaking change* until the first non-zero major release. Developers are free to add alternative tags with suffixes to add meaning to these early releases (e.g. release `v0.1.0` could at the same time be tagged with `v1.0.0-prototype1`).
+
+
+
 ## Contact
 * Robin Keskisärkkä <robin.keskisarkka@liu.se>
 * Huanyu Li <huanyu.li@liu.se>
