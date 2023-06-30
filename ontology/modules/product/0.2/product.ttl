@@ -73,10 +73,23 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
+###  http://w3id.org/CEON/ontology/product/associatedWithMatter
+:associatedWithMatter rdf:type owl:ObjectProperty ;
+                      rdfs:domain :MatterComposition ;
+                      rdfs:range resourceODP:Matter .
+
+
 ###  http://w3id.org/CEON/ontology/product/associatedWithProductModel
 :associatedWithProductModel rdf:type owl:ObjectProperty ;
                             rdfs:domain :ProductComposition ;
                             rdfs:range :ProductModel .
+
+
+###  http://w3id.org/CEON/ontology/product/hasComposition
+:hasComposition rdf:type owl:ObjectProperty ;
+                rdfs:domain :ProductModel ,
+                            resourceODP:PhysicalObject ;
+                rdfs:range resourceODP:Composition .
 
 
 ###  http://w3id.org/CEON/ontology/product/hasProductComponent
@@ -97,8 +110,14 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
+###  http://w3id.org/CEON/ontology/product/MatterComposition
+:MatterComposition rdf:type owl:Class ;
+                   rdfs:subClassOf resourceODP:Composition .
+
+
 ###  http://w3id.org/CEON/ontology/product/ProductComposition
-:ProductComposition rdf:type owl:Class .
+:ProductComposition rdf:type owl:Class ;
+                    rdfs:subClassOf resourceODP:Composition .
 
 
 ###  http://w3id.org/CEON/ontology/product/ProductModel
