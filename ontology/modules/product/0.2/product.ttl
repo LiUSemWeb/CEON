@@ -89,6 +89,12 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                             rdfs:label "associatedWithProductModel"@en .
 
 
+###  http://w3id.org/CEON/ontology/product/batchOfProduct
+:batchOfProduct rdf:type owl:ObjectProperty ;
+                rdfs:comment "batchOfProduct intends to represent what is the model product of a batch of objects."@en ;
+                rdfs:label "batchOfProduct"@en .
+
+
 ###  http://w3id.org/CEON/ontology/product/hasComposition
 :hasComposition rdf:type owl:ObjectProperty ;
                 rdfs:domain :Product ,
@@ -181,6 +187,14 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                                ] ;
                rdfs:comment "A product object is a physical object put into a market for sale. The product can be a thing that grows naturally or produced through some chemical or manufacturing processes."@en ;
                rdfs:label "ProductObject"@en .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects
+resourceODP:BatchOfObjects rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                             owl:onProperty :batchOfProduct ;
+                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :Product
+                                           ] .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Composition
