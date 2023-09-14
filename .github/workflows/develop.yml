@@ -21,8 +21,6 @@ jobs:
           
       - name: get and commit files
         run: |
-          git checkout dev-test
-          git checkout ontology/
           rsync -a ./ontology/ ./docs/ontology
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -33,4 +31,4 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: dev-test
+          branch: main
