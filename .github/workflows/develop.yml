@@ -21,6 +21,8 @@ jobs:
           
       - name: get and commit files
         run: |
+          git checkout main
+          git checkout develop -- ./ontology
           rsync -a ./ontology/ ./docs/ontology
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
