@@ -1,0 +1,199 @@
+@prefix : <http://w3id.org/CEON/ontology/cvn/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix value: <http://w3id.org/CEON/ontology/value/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix process: <http://w3id.org/CEON/ontology/process/> .
+@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@base <http://w3id.org/CEON/ontology/cvn/> .
+
+<http://w3id.org/CEON/ontology/cvn/> rdf:type owl:Ontology ;
+                                      owl:versionIRI <http://w3id.org/CEON/ontology/cvn/0.1/> ;
+                                      owl:imports <http://w3id.org/CEON/ontology/actor> ;
+                                      dcterms:contributor "Huanyu Li" ,
+                                                          "Mikael Lindecrantz" ,
+                                                          "Robin Keskisärkkä" ;
+                                      dcterms:creator "Eva Blomqvist" ;
+                                      dcterms:description "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself." ;
+                                      dcterms:title "Circular Economy Ontology Network (CEON) - Circular Value Network Module" ;
+                                      vann:preferredNamespacePrefix "cvn"^^xsd:string ;
+                                      vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/cvn/"^^xsd:string ;
+                                      odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-CVN-1,6, CVN-Process-1,6, CVN-VP-1,3, CVN-Type-3, C0-1." ;
+                                      rdfs:comment "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself." ;
+                                      rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+                                      owl:versionInfo "0.1" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gMonthYear
+xsd:gMonthYear rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/cvn/aimsAtValue
+:aimsAtValue rdf:type owl:ObjectProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :CVN
+                                         :CVNBlueprint
+                                       )
+                         ] ;
+             rdfs:range value:ValueProposition ;
+             rdfs:comment "The value proposition that the planned abstract CVN configuration, or concrete network wants to achieve." ;
+             rdfs:label "aims at value" .
+
+
+###  http://w3id.org/CEON/ontology/cvn/composedOf
+:composedOf rdf:type owl:ObjectProperty ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :CVN
+                                        process:Process
+                                      )
+                        ] ;
+            rdfs:range [ rdf:type owl:Class ;
+                         owl:unionOf ( :CVN
+                                       process:Process
+                                     )
+                       ] ;
+            rdfs:comment "Both a CVN and a process can be composed of other CVNs or processes." ;
+            rdfs:label "composed of" .
+
+
+###  http://w3id.org/CEON/ontology/cvn/createsValue
+:createsValue rdf:type owl:ObjectProperty ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( actorODP:Participation
+                                          :CVN
+                                          process:Process
+                                        )
+                          ] ;
+              rdfs:range value:Value ;
+              rdfs:comment "Value creation can be captured at the actor level, i.e. value created by an actor's participation in a collaboration, or at the process or complete CVN level." ;
+              rdfs:label "creates value" .
+
+
+###  http://w3id.org/CEON/ontology/cvn/implementsBlueprint
+:implementsBlueprint rdf:type owl:ObjectProperty ;
+                     rdfs:domain :CVN ;
+                     rdfs:range :CVNBlueprint ;
+                     rdfs:comment "The blueprint (or plan) that this concrete CVN is an instance of." ;
+                     rdfs:label "implements blueprint" .
+
+
+###  http://w3id.org/CEON/ontology/cvn/implementsStrategy
+:implementsStrategy rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :relatedStrategy ;
+                    rdfs:domain :CVN ;
+                    rdfs:range :CircularStrategy .
+
+
+###  http://w3id.org/CEON/ontology/cvn/plansToImplementStrategy
+:plansToImplementStrategy rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :relatedStrategy ;
+                          rdfs:domain :CVNBlueprint ;
+                          rdfs:range :CircularStrategy .
+
+
+###  http://w3id.org/CEON/ontology/cvn/relatedStrategy
+:relatedStrategy rdf:type owl:ObjectProperty ;
+                 rdfs:comment "A strategy that is targeted by this CVN or CVN blueprint." ;
+                 rdfs:label "related strategy" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/actorODP/Participation
+actorODP:Participation rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/cvn/CVN
+:CVN rdf:type owl:Class ;
+     rdfs:subClassOf :Collaboration ;
+     rdfs:comment "An instantiation of a circular value network, i.e. a concrete network of different actors collaborating to achieve some goal." ;
+     rdfs:label "Circular Value Network" .
+
+
+###  http://w3id.org/CEON/ontology/cvn/CVNBlueprint
+:CVNBlueprint rdf:type owl:Class ;
+              rdfs:comment "A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs." ;
+              rdfs:label "Circular Value Network Blueprint" .
+
+
+###  http://w3id.org/CEON/ontology/cvn/CircularStrategy
+:CircularStrategy rdf:type owl:Class ;
+                  rdfs:comment "A circular strategy, such as to reccycle, reuse or refurbish something." ;
+                  rdfs:label "Circular Strategy" .
+
+
+###  http://w3id.org/CEON/ontology/cvn/Collaboration
+:Collaboration rdf:type owl:Class ;
+               rdfs:comment "Collaboration" ,
+                            "Some collaboration to achieve a goal." .
+
+
+###  http://w3id.org/CEON/ontology/process/Process
+process:Process rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/Resource
+resourceODP:Resource rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/value/Value
+value:Value rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueProposition
+value:ValueProposition rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
