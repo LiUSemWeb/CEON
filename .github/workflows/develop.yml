@@ -18,12 +18,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          
       - name: get and commit files
         run: |
           git checkout main
           git checkout develop -- ./ontology
-          rsync -a ./ontology/modules/ ./docs/ontology
+          run: pip install -r requirements.txt
+          run: python build-dev.py
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -f docs/
