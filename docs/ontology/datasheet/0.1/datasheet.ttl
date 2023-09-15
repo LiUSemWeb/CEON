@@ -1,60 +1,37 @@
 @prefix : <http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-86/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-86/> .
 
-<http://w3id.org/CEON/ontology/datasheet/> rdf:type owl:Ontology ;
-                                            owl:versionIRI <http://w3id.org/CEON/ontology/datasheet/0.1/> ;
-                                            owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.2/> ,
-                                                        <http://www.w3.org/ns/prov-o-20130430> .
+<http://w3id.org/CEON/ontology/datasheet/> a owl:Ontology ;
+    owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.2/>,
+        <http://www.w3.org/ns/prov-o-20130430> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/datasheet/0.1/> .
 
-#################################################################
-#    Object Properties
-#################################################################
+:DataSheet a owl:Class ;
+    rdfs:label "Data Sheet" ;
+    rdfs:comment "A data sheet is a collection of data about something, e.g. a set of facts about a product." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/resourceODP/containsInformation> ;
+            owl:someValuesFrom :Statement ],
+        <http://w3id.org/CEON/ontology/resourceODP/Information>,
+        prov:Entity .
 
-###  http://w3id.org/CEON/ontology/datasheet/isRealizationOf
-:isRealizationOf rdf:type owl:ObjectProperty ;
-                 rdfs:domain [ rdf:type owl:Class ;
-                               owl:unionOf ( :DigitalObject
-                                             <http://w3id.org/CEON/ontology/resourceODP/PhysicalObject>
-                                           )
-                             ] ;
-                 rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Information> ;
-                 rdfs:comment "The physical or digital realisation of a piece of information, e.g. a pdf file that stores the information about a product." ;
-                 rdfs:label "is realization of" .
+:isRealizationOf a owl:ObjectProperty ;
+    rdfs:label "is realization of" ;
+    rdfs:comment "The physical or digital realisation of a piece of information, e.g. a pdf file that stores the information about a product." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :DigitalObject <http://w3id.org/CEON/ontology/resourceODP/PhysicalObject> ) ] ;
+    rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Information> .
 
+:DigitalObject a owl:Class ;
+    rdfs:label "Digital object" ;
+    rdfs:comment "A digital object, e.g. file or other digital resource, exisiting on a computer, server, on the web etc." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Resource> .
 
-#################################################################
-#    Classes
-#################################################################
+:Statement a owl:Class ;
+    rdfs:label "Statement" ;
+    rdfs:comment "A single fact, or statement about something. Usually contained within some larger piece of information, e.g. a document." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Information> .
 
-###  http://w3id.org/CEON/ontology/datasheet/DataSheet
-:DataSheet rdf:type owl:Class ;
-           rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Information> ,
-                           <http://www.w3.org/ns/prov#Entity> ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty <http://w3id.org/CEON/ontology/resourceODP/containsInformation> ;
-                             owl:someValuesFrom :Statement
-                           ] ;
-           rdfs:comment "A data sheet is a collection of data about something, e.g. a set of facts about a product." ;
-           rdfs:label "Data Sheet" .
-
-
-###  http://w3id.org/CEON/ontology/datasheet/DigitalObject
-:DigitalObject rdf:type owl:Class ;
-               rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
-               rdfs:comment "A digital object, e.g. file or other digital resource, exisiting on a computer, server, on the web etc." ;
-               rdfs:label "Digital object" .
-
-
-###  http://w3id.org/CEON/ontology/datasheet/Statement
-:Statement rdf:type owl:Class ;
-           rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Information> ;
-           rdfs:comment "A single fact, or statement about something. Usually contained within some larger piece of information, e.g. a document." ;
-           rdfs:label "Statement" .
-
-
-###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
