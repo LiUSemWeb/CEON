@@ -12,8 +12,7 @@
 
 <http://w3id.org/CEON/ontology/quantity> rdf:type owl:Ontology ;
                                           owl:versionIRI <http://w3id.org/CEON/ontology/quantity/0.1/> ;
-                                          owl:imports <http://w3id.org/CEON/ontology/qudt/0.1/> ;
-                                          dcterms:created "2023-08-09"^^xsd:date ;
+                                          owl:imports <http://w3id.org/CEON/ontology/qudt-unit/2.1/> ;
                                           dcterms:creator "Robin Keskisärkkä"^^xsd:string ;
                                           dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module"@en ;
                                           vann:preferredNamespacePrefix "quantity" ;
@@ -26,28 +25,12 @@
 #    Annotation properties
 #################################################################
 
-###  http://purl.org/dc/elements/1.1/description
-<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/contributor
-dcterms:contributor rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/created
-dcterms:created rdf:type owl:AnnotationProperty .
-
-
 ###  http://purl.org/dc/terms/creator
 dcterms:creator rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/description
 dcterms:description rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/license
-dcterms:license rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/title
@@ -89,6 +72,12 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/ontology/quantity#hasTransportCost
 :hasTransportCost rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf qudt:quantityValue .
+
+
+###  http://w3id.org/CEON/ontology/quantity#objectValue
+:objectValue rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:comment "objectValue is analogous to qudt:numericalValue" .
 
 
 #################################################################
