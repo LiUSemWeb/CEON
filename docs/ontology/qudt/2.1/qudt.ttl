@@ -4,42 +4,31 @@
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 dc:description a owl:AnnotationProperty .
 
-dcterms:contributor a owl:AnnotationProperty ;
-    rdfs:label "contributor" .
+dcterms:contributor a owl:AnnotationProperty .
 
-dcterms:creator a owl:AnnotationProperty ;
-    rdfs:label "creator" .
+dcterms:created a owl:AnnotationProperty .
 
-dcterms:description a owl:AnnotationProperty ;
-    rdfs:label "description" .
+dcterms:creator a owl:AnnotationProperty .
 
-dcterms:rights a owl:AnnotationProperty ;
-    rdfs:label "rights" ;
-    rdfs:range xsd:string .
+dcterms:description a owl:AnnotationProperty .
 
-dcterms:source a owl:AnnotationProperty ;
-    rdfs:label "source" ;
-    rdfs:isDefinedBy dcterms: ;
-    rdfs:range xsd:anyURI .
+dcterms:rights a owl:AnnotationProperty .
 
-dcterms:subject a owl:AnnotationProperty ;
-    rdfs:label "subject" ;
-    rdfs:range xsd:string .
+dcterms:title a owl:AnnotationProperty .
 
-dcterms:title a owl:AnnotationProperty ;
-    rdfs:label "title" ;
-    rdfs:range xsd:string .
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 qudt:LatexString a rdfs:Datatype .
 
 qudt:Quantity a owl:Class ;
     rdfs:label "Quantity" ;
-    qudt:dbpediaMatch "http://dbpedia.org/resource/Quantity"^^xsd:anyURI ;
     rdfs:comment """<p class="lm-para">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system. A quantity is always associated with the context of measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the underlying <b>quantity kind</b> is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific quantity of length; its magnitude that may be expressed in meters, feet, inches, etc. Examples of physical quantities include physical constants, such as the speed of light in a vacuum, Planck's constant, the electric permittivity of free space, and the fine structure constant. </p>
 
 <p class="lm-para">In other words, quantities are quantifiable aspects of the world, such as the duration of a movie, the distance between two points, velocity of a car, the pressure of the atmosphere, and a person's weight; and units are used to describe their numerical measure. 
@@ -57,8 +46,6 @@ qudt:Quantity a owl:Class ;
             owl:minCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onProperty qudt:hasQuantityKind ] .
 
-qudt:UCUMcs a rdfs:Datatype .
-
 qudt:hasUnit a owl:ObjectProperty ;
     rdfs:label "has unit",
         "has unit"@en ;
@@ -70,19 +57,11 @@ qudt:hasUnit a owl:ObjectProperty ;
 qudt:numericalValue a owl:DatatypeProperty ;
     rdfs:range xsd:double .
 
-vaem:namespace a owl:AnnotationProperty .
-
-vaem:namespacePrefix a owl:AnnotationProperty .
-
-vaem:previousPublishedVersion a owl:AnnotationProperty .
-
 rdf:HTML a rdfs:Datatype .
 
 qudt:Unit a owl:Class ;
     rdfs:label "Unit" ;
     dcterms:description "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension). For example, the meter is a quantity of length that has been rigorously defined and standardized by the BIPM (International Board of Weights and Measures). Any measurement of the length can be expressed as a number multiplied by the unit meter. More formally, the value of a physical quantity Q with respect to a unit (U) is expressed as the scalar multiple of a real number (n) and U, as  \\(Q = nU\\)."^^qudt:LatexString ;
-    qudt:informativeReference "http://dbpedia.org/resource/Category:Units_of_measure"^^xsd:anyURI,
-        "http://www.allmeasures.com/Fullconversion.asp"^^xsd:anyURI ;
     rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom qudt:QuantityKind ;
@@ -100,7 +79,6 @@ qudt:QuantityValue a owl:Class ;
 qudt:QuantityKind a owl:Class ;
     rdfs:label "Quantity Kind" ;
     dc:description "A Quantity Kind is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity." ;
-    qudt:informativeReference "http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=112-01-04"^^xsd:anyURI ;
     rdfs:comment "A <b>Quantity Kind</b> is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity."^^rdf:HTML ;
     rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> .
 
@@ -111,8 +89,24 @@ qudt:hasQuantityKind a owl:ObjectProperty ;
     rdfs:range qudt:QuantityKind .
 
 <http://qudt.org/2.1/schema/qudt> a owl:Ontology ;
-    rdfs:label "QUDT Schema - Version 2.1.30" ;
-    vaem:hasGraphMetadata vaem:GMD_QUDT-SCHEMA ;
+    dcterms:contributor "Daniel Mekonnen",
+        "David Price",
+        "Jack Hodges",
+        "James E. Masters",
+        "Simon J D Cox",
+        "Steve Ray" ;
+    dcterms:created "2011-04-20"^^xsd:date ;
+    dcterms:creator "Ralph Hodgson" ;
+    dcterms:description """<p class="lm-para">The QUDT, or &quot;Quantity, Unit, Dimension and Type&quot; schema defines the base classes properties, and restrictions used for modeling physical quantities, units of measure, and their dimensions in various measurement systems. The goal of the QUDT ontology is to provide a unified model of, measurable quantities, units for measuring different kinds of quantities, the numerical values of quantities in different units of measure and the data structures and data types used to store and manipulate these objects in software.</p>
+
+<p class="lm-para">Except for unit prefixes, all units are specified in separate vocabularies. Descriptions are provided in both HTML and LaTeX formats. A quantity is a measure of an observable phenomenon, that, when associated with something, becomes a property of that thing; a particular object, event, or physical system. </p>
+
+<p class="lm-para">A quantity has meaning in the context of a measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the underlying quantity kind is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific quantity of length; its magnitude that may be expressed in meters, feet, inches, etc.  Or, as stated at Wikipedia, in the language of measurement, quantities are quantifiable aspects of the world, such as time, distance, velocity, mass, momentum, energy, and weight, and units are used to describe their measure. Many of these quantities are related to each other by various physical laws, and as a result the units of some of the quantities can be expressed as products (or ratios) of powers of other units (e.g., momentum is mass times velocity and velocity is measured in distance divided by time).</p>"""^^rdf:HTML ;
+    dcterms:rights "The QUDT Ontologies are issued under a Creative Commons Attribution 4.0 International License (CC BY 4.0), available at https://creativecommons.org/licenses/by/4.0/. Attribution should be made to QUDT.org" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Subset of the QUDT Schema"^^xsd:string ;
+    vann:preferredNamespacePrefix "qudt"^^xsd:string ;
+    vann:preferredNamespaceUri "http://qudt.org/2.1/schema/qudt#"^^xsd:string ;
     rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
+    rdfs:seeAlso <http://qudt.org/2.1/schema/qudt> ;
     owl:versionIRI <http://qudt.org/2.1/schema/qudt> .
 
