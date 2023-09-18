@@ -132,6 +132,13 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
          rdfs:label "is about" .
 
 
+###  http://w3id.org/CEON/ontology/resourceODP/isRealizationOf
+:isRealizationOf rdf:type owl:ObjectProperty ;
+                 rdfs:range :Information ;
+                 rdfs:comment "Relates a thing, e.g. a digital object, or a physical object, to the information it is a realization of. C.f. a physical book that is the realization of a novel, or a pdf or Excel-file that is a realization of a certain data sheet." ;
+                 rdfs:label "is realization of"@en .
+
+
 #################################################################
 #    Data properties
 #################################################################
@@ -171,17 +178,24 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                 rdfs:seeAlso "Batch Of Objects"@en .
 
 
-
 ###  http://w3id.org/CEON/ontology/resourceODP/Composition
 :Composition rdf:type owl:Class ;
              rdfs:comment "A composition is used to represent what composing a physical object."@en ;
              rdfs:label "Composition"@en .
+
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Constituent
 :Constituent rdf:type owl:Class ;
              rdfs:comment "A constituent is a component of object."@en ;
              rdfs:label "Constituent"@en ;
              rdfs:seeAlso "http://emmo.info/emmo#EMMO_ceaaf9f7_fd11_424b_8fda_9afa186af186" .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/DigitalObject
+:DigitalObject rdf:type owl:Class ;
+               rdfs:subClassOf :Resource ;
+               rdfs:comment "A digital object, e.g. a computer file, that is located on some server, hard drive, or on the web. Most often the digital object is the realization of some piece of information." ;
+               rdfs:label "digital object"@en .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Information
