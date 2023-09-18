@@ -1,0 +1,118 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dc:description a owl:AnnotationProperty .
+
+dcterms:contributor a owl:AnnotationProperty ;
+    rdfs:label "contributor" .
+
+dcterms:creator a owl:AnnotationProperty ;
+    rdfs:label "creator" .
+
+dcterms:description a owl:AnnotationProperty ;
+    rdfs:label "description" .
+
+dcterms:rights a owl:AnnotationProperty ;
+    rdfs:label "rights" ;
+    rdfs:range xsd:string .
+
+dcterms:source a owl:AnnotationProperty ;
+    rdfs:label "source" ;
+    rdfs:isDefinedBy dcterms: ;
+    rdfs:range xsd:anyURI .
+
+dcterms:subject a owl:AnnotationProperty ;
+    rdfs:label "subject" ;
+    rdfs:range xsd:string .
+
+dcterms:title a owl:AnnotationProperty ;
+    rdfs:label "title" ;
+    rdfs:range xsd:string .
+
+qudt:LatexString a rdfs:Datatype .
+
+qudt:Quantity a owl:Class ;
+    rdfs:label "Quantity" ;
+    qudt:dbpediaMatch "http://dbpedia.org/resource/Quantity"^^xsd:anyURI ;
+    rdfs:comment """<p class="lm-para">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system. A quantity is always associated with the context of measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the underlying <b>quantity kind</b> is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific quantity of length; its magnitude that may be expressed in meters, feet, inches, etc. Examples of physical quantities include physical constants, such as the speed of light in a vacuum, Planck's constant, the electric permittivity of free space, and the fine structure constant. </p>
+
+<p class="lm-para">In other words, quantities are quantifiable aspects of the world, such as the duration of a movie, the distance between two points, velocity of a car, the pressure of the atmosphere, and a person's weight; and units are used to describe their numerical measure. 
+
+</p><p class="lm-para">Many <b>quantity kinds</b> are related to each other by various physical laws, and as a result, the associated units of some quantity kinds can be expressed as products (or ratios) of powers of other quantity kinds (e.g., momentum is mass times velocity and velocity is defined as distance divided by time). In this way, some quantities can be calculated from other measured quantities using their associations to the quantity kinds in these expressions. These quantity kind relationships are also discussed in dimensional analysis. Those that cannot be so expressed can be regarded as &quot;fundamental&quot; in this sense.</p>
+<p class="lm-para">A quantity is distinguished from a &quot;quantity kind&quot; in that the former carries a value and the latter is a type specifier.</p>"""^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKind ;
+            owl:onProperty qudt:hasQuantityKind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityValue ;
+            owl:onProperty qudt:quantityValue ],
+        [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty qudt:hasQuantityKind ] .
+
+qudt:UCUMcs a rdfs:Datatype .
+
+qudt:hasUnit a owl:ObjectProperty ;
+    rdfs:label "has unit",
+        "has unit"@en ;
+    dcterms:description "This property relates a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system."^^rdf:HTML,
+        "This property relates a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system."@en ;
+    rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
+    rdfs:range qudt:Unit .
+
+qudt:numericalValue a owl:DatatypeProperty ;
+    rdfs:range xsd:double .
+
+vaem:namespace a owl:AnnotationProperty .
+
+vaem:namespacePrefix a owl:AnnotationProperty .
+
+vaem:previousPublishedVersion a owl:AnnotationProperty .
+
+rdf:HTML a rdfs:Datatype .
+
+qudt:Unit a owl:Class ;
+    rdfs:label "Unit" ;
+    dcterms:description "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension). For example, the meter is a quantity of length that has been rigorously defined and standardized by the BIPM (International Board of Weights and Measures). Any measurement of the length can be expressed as a number multiplied by the unit meter. More formally, the value of a physical quantity Q with respect to a unit (U) is expressed as the scalar multiple of a real number (n) and U, as  \\(Q = nU\\)."^^qudt:LatexString ;
+    qudt:informativeReference "http://dbpedia.org/resource/Category:Units_of_measure"^^xsd:anyURI,
+        "http://www.allmeasures.com/Fullconversion.asp"^^xsd:anyURI ;
+    rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKind ;
+            owl:onProperty qudt:hasQuantityKind ] .
+
+qudt:quantityValue a owl:ObjectProperty ;
+    rdfs:label "quantity value" ;
+    rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
+    rdfs:range qudt:QuantityValue .
+
+qudt:QuantityValue a owl:Class ;
+    rdfs:label "Quantity Value" ;
+    dc:description "A Quantity Value expresses the magnitude and kind of a quantity and is given by the product of a numerical value n and a unit of measure U. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit." .
+
+qudt:QuantityKind a owl:Class ;
+    rdfs:label "Quantity Kind" ;
+    dc:description "A Quantity Kind is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity." ;
+    qudt:informativeReference "http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=112-01-04"^^xsd:anyURI ;
+    rdfs:comment "A <b>Quantity Kind</b> is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity."^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> .
+
+qudt:hasQuantityKind a owl:ObjectProperty ;
+    rdfs:label "has quantity kind",
+        "has quantity kind"@en ;
+    rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
+    rdfs:range qudt:QuantityKind .
+
+<http://qudt.org/2.1/schema/qudt> a owl:Ontology ;
+    rdfs:label "QUDT Schema - Version 2.1.30" ;
+    vaem:hasGraphMetadata vaem:GMD_QUDT-SCHEMA ;
+    rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
+    owl:versionIRI <http://qudt.org/2.1/schema/qudt> .
+
