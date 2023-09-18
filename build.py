@@ -16,9 +16,11 @@ def copy_ontologies():
     latest = {}
 
     # publish ontologies
-    for source in glob("ontology/modules/*/*/*", recursive=True):
+    for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
         if not source.endswith(".ttl"):
             continue
+        
+        print(f"Copy ontology {source}")
 
         parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
         name = parts.group(1)
@@ -60,9 +62,11 @@ def build_pdf():
     try:
         html_formatter = formatter.HTMLFormatter(indent=4)
         
-        for source in glob("ontology/modules/*/*/*", recursive=True):
+        for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
             if not source.endswith(".ttl"):
                 continue
+
+            print(f"Generating PDF docs for {source}")
 
             parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
             name = parts.group(1)
@@ -120,9 +124,11 @@ def build_pdf():
 
 def generate_vowl():
     """Generate VOWL specifications."""
-    for source in glob("ontology/modules/*/*/*", recursive=True):
+    for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
         if not source.endswith(".ttl"):
             continue
+        
+        print(f"Generating VOWL for {source}")
 
         parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
         name = parts.group(1)
@@ -142,9 +148,11 @@ def generate_vowl():
 
 def create_documentation():
     """Generate LODE documentation and instert VOWL visualization."""
-    for source in glob("ontology/modules/*/*/*", recursive=True):
+    for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
         if not source.endswith(".ttl"):
             continue
+        
+        print(f"Generating docs for {source}")
 
         parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
         name = parts.group(1)
@@ -179,6 +187,7 @@ def create_documentation():
 
 
 def create_index_file():
+    print("Generating index file")
     compiler = Compiler()
     template_file = "index.hbs"
     index_file = "docs/index.html"
@@ -187,7 +196,6 @@ def create_index_file():
     for source in glob("ontology/modules/*/*/*", recursive=True):
         if not source.endswith(".ttl"):
             continue
-        
         parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
         name = parts.group(1)
         version = float(parts.group(2))
@@ -214,12 +222,12 @@ def create_index_file():
         f.write(template({"data": data}))
 
 def main():
-    #download_owl2vowl()
-    #generate_vowl()
-    #create_documentation()
-    #build_pdf()
+    download_owl2vowl()
+    generate_vowl()
+    create_documentation()
+    build_pdf()
     create_index_file()
-    #copy_ontologies()
+    copy_ontologies()
 
 if __name__ == "__main__":
     main()
