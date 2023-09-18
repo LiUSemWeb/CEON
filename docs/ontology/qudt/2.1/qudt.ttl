@@ -7,24 +7,6 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-dc:description a owl:AnnotationProperty .
-
-dcterms:contributor a owl:AnnotationProperty .
-
-dcterms:created a owl:AnnotationProperty .
-
-dcterms:creator a owl:AnnotationProperty .
-
-dcterms:description a owl:AnnotationProperty .
-
-dcterms:rights a owl:AnnotationProperty .
-
-dcterms:title a owl:AnnotationProperty .
-
-vann:preferredNamespacePrefix a owl:AnnotationProperty .
-
-vann:preferredNamespaceUri a owl:AnnotationProperty .
-
 qudt:LatexString a rdfs:Datatype .
 
 qudt:Quantity a owl:Class ;
@@ -72,6 +54,21 @@ qudt:quantityValue a owl:ObjectProperty ;
     rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
     rdfs:range qudt:QuantityValue .
 
+<http://w3id.org/CEON/ontology/2.1/> a owl:Ontology ;
+    dcterms:creator "Robin Keskisärkkä" ;
+    dcterms:description """<p class="lm-para">The QUDT, or &quot;Quantity, Unit, Dimension and Type&quot; schema defines the base classes properties, and restrictions used for modeling physical quantities, units of measure, and their dimensions in various measurement systems. The goal of the QUDT ontology is to provide a unified model of, measurable quantities, units for measuring different kinds of quantities, the numerical values of quantities in different units of measure and the data structures and data types used to store and manipulate these objects in software.</p>
+
+<p class="lm-para">Except for unit prefixes, all units are specified in separate vocabularies. Descriptions are provided in both HTML and LaTeX formats. A quantity is a measure of an observable phenomenon, that, when associated with something, becomes a property of that thing; a particular object, event, or physical system. </p>
+
+<p class="lm-para">A quantity has meaning in the context of a measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the underlying quantity kind is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific quantity of length; its magnitude that may be expressed in meters, feet, inches, etc.  Or, as stated at Wikipedia, in the language of measurement, quantities are quantifiable aspects of the world, such as time, distance, velocity, mass, momentum, energy, and weight, and units are used to describe their measure. Many of these quantities are related to each other by various physical laws, and as a result the units of some of the quantities can be expressed as products (or ratios) of powers of other units (e.g., momentum is mass times velocity and velocity is measured in distance divided by time).</p>"""^^rdf:HTML ;
+    dcterms:rights "The QUDT Ontologies are issued under a Creative Commons Attribution 4.0 International License (CC BY 4.0), available at https://creativecommons.org/licenses/by/4.0/. Attribution should be made to QUDT.org" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Subset of the QUDT Schema"^^xsd:string ;
+    vann:preferredNamespacePrefix "qudt"^^xsd:string ;
+    vann:preferredNamespaceUri "http://qudt.org/2.1/schema/qudt#"^^xsd:string ;
+    rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
+    rdfs:seeAlso <http://qudt.org/2.1/schema/qudt> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/2.1/> .
+
 qudt:QuantityValue a owl:Class ;
     rdfs:label "Quantity Value" ;
     dc:description "A Quantity Value expresses the magnitude and kind of a quantity and is given by the product of a numerical value n and a unit of measure U. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit." .
@@ -87,26 +84,4 @@ qudt:hasQuantityKind a owl:ObjectProperty ;
         "has quantity kind"@en ;
     rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
     rdfs:range qudt:QuantityKind .
-
-<http://qudt.org/2.1/schema/qudt> a owl:Ontology ;
-    dcterms:contributor "Daniel Mekonnen",
-        "David Price",
-        "Jack Hodges",
-        "James E. Masters",
-        "Simon J D Cox",
-        "Steve Ray" ;
-    dcterms:created "2011-04-20"^^xsd:date ;
-    dcterms:creator "Ralph Hodgson" ;
-    dcterms:description """<p class="lm-para">The QUDT, or &quot;Quantity, Unit, Dimension and Type&quot; schema defines the base classes properties, and restrictions used for modeling physical quantities, units of measure, and their dimensions in various measurement systems. The goal of the QUDT ontology is to provide a unified model of, measurable quantities, units for measuring different kinds of quantities, the numerical values of quantities in different units of measure and the data structures and data types used to store and manipulate these objects in software.</p>
-
-<p class="lm-para">Except for unit prefixes, all units are specified in separate vocabularies. Descriptions are provided in both HTML and LaTeX formats. A quantity is a measure of an observable phenomenon, that, when associated with something, becomes a property of that thing; a particular object, event, or physical system. </p>
-
-<p class="lm-para">A quantity has meaning in the context of a measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the underlying quantity kind is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific quantity of length; its magnitude that may be expressed in meters, feet, inches, etc.  Or, as stated at Wikipedia, in the language of measurement, quantities are quantifiable aspects of the world, such as time, distance, velocity, mass, momentum, energy, and weight, and units are used to describe their measure. Many of these quantities are related to each other by various physical laws, and as a result the units of some of the quantities can be expressed as products (or ratios) of powers of other units (e.g., momentum is mass times velocity and velocity is measured in distance divided by time).</p>"""^^rdf:HTML ;
-    dcterms:rights "The QUDT Ontologies are issued under a Creative Commons Attribution 4.0 International License (CC BY 4.0), available at https://creativecommons.org/licenses/by/4.0/. Attribution should be made to QUDT.org" ;
-    dcterms:title "Circular Economy Ontology Network (CEON) - Subset of the QUDT Schema"^^xsd:string ;
-    vann:preferredNamespacePrefix "qudt"^^xsd:string ;
-    vann:preferredNamespaceUri "http://qudt.org/2.1/schema/qudt#"^^xsd:string ;
-    rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
-    rdfs:seeAlso <http://qudt.org/2.1/schema/qudt> ;
-    owl:versionIRI <http://qudt.org/2.1/schema/qudt> .
 
