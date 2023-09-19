@@ -1,37 +1,37 @@
-@prefix : <http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-86/> .
+@prefix : <http://w3id.org/CEON/ontology/datasheet/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix provenance: <http://w3id.org/CEON/ontology/provenance/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 
-<http://w3id.org/CEON/ontology/datasheet/> a owl:Ontology ;
-    owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.2/>,
-        <http://www.w3.org/ns/prov-o-20130430> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/datasheet/0.1/> .
+: a owl:Ontology ;
+    dcterms:contributor "Huanyu Li",
+        "Mikael Lindecrantz",
+        "Robin Keskisärkkä" ;
+    dcterms:created "2023-09-11" ;
+    dcterms:creator "Eva Blomqvist" ;
+    dcterms:description "A general representation of a CE data sheet, e.g. a product data sheet, a PCDS or similar." ;
+    dcterms:license "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Data Sheet" ;
+    vann:preferredNamespacePrefix "datasheet" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/datasheet/" ;
+    owl:imports <http://w3id.org/CEON/ontology/provenance/0.1/>,
+        <http://w3id.org/CEON/ontology/resourceODP/0.2/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/datasheet/0.1/> ;
+    owl:versionInfo "0.1" .
 
 :DataSheet a owl:Class ;
     rdfs:label "Data Sheet" ;
     rdfs:comment "A data sheet is a collection of data about something, e.g. a set of facts about a product." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty <http://w3id.org/CEON/ontology/resourceODP/containsInformation> ;
-            owl:someValuesFrom :Statement ],
-        <http://w3id.org/CEON/ontology/resourceODP/Information>,
-        prov:Entity .
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( resourceODP:Information [ a owl:Restriction ;
+                        owl:onProperty resourceODP:containsInformation ;
+                        owl:someValuesFrom provenance:Statement ] ) ],
+        resourceODP:Information .
 
-:isRealizationOf a owl:ObjectProperty ;
-    rdfs:label "is realization of" ;
-    rdfs:comment "The physical or digital realisation of a piece of information, e.g. a pdf file that stores the information about a product." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( :DigitalObject <http://w3id.org/CEON/ontology/resourceODP/PhysicalObject> ) ] ;
-    rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Information> .
-
-:DigitalObject a owl:Class ;
-    rdfs:label "Digital object" ;
-    rdfs:comment "A digital object, e.g. file or other digital resource, exisiting on a computer, server, on the web etc." ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Resource> .
-
-:Statement a owl:Class ;
-    rdfs:label "Statement" ;
-    rdfs:comment "A single fact, or statement about something. Usually contained within some larger piece of information, e.g. a document." ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Information> .
+prov:Entity a owl:Class .
 

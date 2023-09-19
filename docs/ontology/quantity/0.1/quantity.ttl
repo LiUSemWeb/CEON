@@ -1,5 +1,4 @@
 @prefix : <http://w3id.org/CEON/ontology/quantity#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
@@ -9,17 +8,9 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-dc:description a owl:AnnotationProperty .
-
-dcterms:contributor a owl:AnnotationProperty .
-
-dcterms:created a owl:AnnotationProperty .
-
 dcterms:creator a owl:AnnotationProperty .
 
 dcterms:description a owl:AnnotationProperty .
-
-dcterms:license a owl:AnnotationProperty .
 
 dcterms:title a owl:AnnotationProperty .
 
@@ -40,14 +31,13 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
     qudt:symbol "€/m²" .
 
 <http://w3id.org/CEON/ontology/quantity> a owl:Ontology ;
-    dcterms:created "2023-08-09"^^xsd:date ;
     dcterms:creator "Robin Keskisärkkä"^^xsd:string ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module"@en ;
     vann:preferredNamespacePrefix "quantity" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/quantity/"^^xsd:string ;
     rdfs:comment "This module defines base properties to describe quantitites with standardized units."@en ;
     rdfs:seeAlso "https://github.com/LiUSemWeb/Materials-Design-Ontology" ;
-    owl:imports <http://w3id.org/CEON/ontology/qudt/0.1/> ;
+    owl:imports <http://w3id.org/CEON/ontology/qudt-unit/2.1/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/quantity/0.1/> ;
     owl:versionInfo "0.1"@en .
 
@@ -84,4 +74,8 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
 :numericalMinValue a owl:DatatypeProperty ;
     rdfs:range xsd:double ;
     rdfs:subPropertyOf owl:topDataProperty .
+
+:objectValue a owl:ObjectProperty ;
+    rdfs:comment "objectValue is analogous to qudt:numericalValue" ;
+    rdfs:subPropertyOf owl:topObjectProperty .
 
