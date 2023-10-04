@@ -1,5 +1,84 @@
 [
   {
+    "@id": "http://qudt.org/schema/qudt/numericalValue",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#double"
+      }
+    ]
+  },
+  {
+    "@id": "http://qudt.org/schema/qudt/hasQuantityKind",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://qudt.org/2.1/schema/qudt"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has quantity kind"
+      },
+      {
+        "@language": "en",
+        "@value": "has quantity kind"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://qudt.org/schema/qudt/QuantityKind"
+      }
+    ]
+  },
+  {
+    "@id": "http://qudt.org/schema/qudt/Unit",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@type": "http://qudt.org/schema/qudt/LatexString",
+        "@value": "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension). For example, the meter is a quantity of length that has been rigorously defined and standardized by the BIPM (International Board of Weights and Measures). Any measurement of the length can be expressed as a number multiplied by the unit meter. More formally, the value of a physical quantity Q with respect to a unit (U) is expressed as the scalar multiple of a real number (n) and U, as  \\(Q = nU\\)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://qudt.org/2.1/schema/qudt"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Unit"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "_:n787a994bc8e74267bc97318f295ca8ccb4"
+      }
+    ]
+  },
+  {
+    "@id": "_:n787a994bc8e74267bc97318f295ca8ccb4",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#allValuesFrom": [
+      {
+        "@id": "http://qudt.org/schema/qudt/QuantityKind"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://qudt.org/schema/qudt/hasQuantityKind"
+      }
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/qudt/",
     "@type": [
       "http://www.w3.org/2002/07/owl#Ontology"
@@ -52,75 +131,6 @@
     ]
   },
   {
-    "@id": "http://qudt.org/schema/qudt/numericalValue",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://www.w3.org/2001/XMLSchema#double"
-      }
-    ]
-  },
-  {
-    "@id": "http://qudt.org/schema/qudt/LatexString",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
-    ]
-  },
-  {
-    "@id": "http://qudt.org/schema/qudt/hasQuantityKind",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@id": "http://qudt.org/2.1/schema/qudt"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has quantity kind"
-      },
-      {
-        "@language": "en",
-        "@value": "has quantity kind"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://qudt.org/schema/qudt/QuantityKind"
-      }
-    ]
-  },
-  {
-    "@id": "http://qudt.org/schema/qudt/quantityValue",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@id": "http://qudt.org/2.1/schema/qudt"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "quantity value"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://qudt.org/schema/qudt/QuantityValue"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
-    ]
-  },
-  {
     "@id": "http://qudt.org/schema/qudt/Quantity",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -143,18 +153,18 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:n18cdc6e4de8047e5a3b51c96acd70048b1"
+        "@id": "_:n787a994bc8e74267bc97318f295ca8ccb1"
       },
       {
-        "@id": "_:n18cdc6e4de8047e5a3b51c96acd70048b2"
+        "@id": "_:n787a994bc8e74267bc97318f295ca8ccb2"
       },
       {
-        "@id": "_:n18cdc6e4de8047e5a3b51c96acd70048b3"
+        "@id": "_:n787a994bc8e74267bc97318f295ca8ccb3"
       }
     ]
   },
   {
-    "@id": "_:n18cdc6e4de8047e5a3b51c96acd70048b1",
+    "@id": "_:n787a994bc8e74267bc97318f295ca8ccb1",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -170,7 +180,7 @@
     ]
   },
   {
-    "@id": "_:n18cdc6e4de8047e5a3b51c96acd70048b2",
+    "@id": "_:n787a994bc8e74267bc97318f295ca8ccb2",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -186,7 +196,7 @@
     ]
   },
   {
-    "@id": "_:n18cdc6e4de8047e5a3b51c96acd70048b3",
+    "@id": "_:n787a994bc8e74267bc97318f295ca8ccb3",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -194,84 +204,6 @@
       {
         "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
         "@value": "0"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://qudt.org/schema/qudt/hasQuantityKind"
-      }
-    ]
-  },
-  {
-    "@id": "http://qudt.org/schema/qudt/hasUnit",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://purl.org/dc/terms/description": [
-      {
-        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML",
-        "@value": "This property relates a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system."
-      },
-      {
-        "@language": "en",
-        "@value": "This property relates a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@id": "http://qudt.org/2.1/schema/qudt"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has unit"
-      },
-      {
-        "@language": "en",
-        "@value": "has unit"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://qudt.org/schema/qudt/Unit"
-      }
-    ]
-  },
-  {
-    "@id": "http://qudt.org/schema/qudt/Unit",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://purl.org/dc/terms/description": [
-      {
-        "@type": "http://qudt.org/schema/qudt/LatexString",
-        "@value": "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension). For example, the meter is a quantity of length that has been rigorously defined and standardized by the BIPM (International Board of Weights and Measures). Any measurement of the length can be expressed as a number multiplied by the unit meter. More formally, the value of a physical quantity Q with respect to a unit (U) is expressed as the scalar multiple of a real number (n) and U, as  \\(Q = nU\\)."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@id": "http://qudt.org/2.1/schema/qudt"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Unit"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "_:n18cdc6e4de8047e5a3b51c96acd70048b4"
-      }
-    ]
-  },
-  {
-    "@id": "_:n18cdc6e4de8047e5a3b51c96acd70048b4",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#allValuesFrom": [
-      {
-        "@id": "http://qudt.org/schema/qudt/QuantityKind"
       }
     ],
     "http://www.w3.org/2002/07/owl#onProperty": [
@@ -308,6 +240,33 @@
     ]
   },
   {
+    "@id": "http://qudt.org/schema/qudt/quantityValue",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://qudt.org/2.1/schema/qudt"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "quantity value"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://qudt.org/schema/qudt/QuantityValue"
+      }
+    ]
+  },
+  {
+    "@id": "http://qudt.org/schema/qudt/LatexString",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ]
+  },
+  {
     "@id": "http://qudt.org/schema/qudt/QuantityValue",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -320,6 +279,47 @@
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@value": "Quantity Value"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ]
+  },
+  {
+    "@id": "http://qudt.org/schema/qudt/hasUnit",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML",
+        "@value": "This property relates a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system."
+      },
+      {
+        "@language": "en",
+        "@value": "This property relates a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@id": "http://qudt.org/2.1/schema/qudt"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has unit"
+      },
+      {
+        "@language": "en",
+        "@value": "has unit"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://qudt.org/schema/qudt/Unit"
       }
     ]
   }
