@@ -22,8 +22,20 @@
     owl:versionIRI <http://w3id.org/CEON/ontology/provenance/0.1/> ;
     owl:versionInfo "0.1" .
 
-:Statement a owl:Class ;
-    rdfs:subClassOf prov:Entity .
+:statementAbout a owl:ObjectProperty ;
+    rdfs:label "statement about" ;
+    rdfs:comment "Generic property to express what the statement is about, i.e. what is involved in the statement." ;
+    rdfs:domain :Statement .
+
+:statementValue a owl:DatatypeProperty ;
+    rdfs:label "statement value" ;
+    rdfs:comment "Generic property to express values, e.g. literals, that are involved in this statement." ;
+    rdfs:domain :Statement .
 
 resourceODP:Resource rdfs:subClassOf prov:Entity .
+
+:Statement a owl:Class ;
+    rdfs:label "statement" ;
+    rdfs:comment "Generic class representing the concept of a statement, i.e. some piece of information, fact etc that is expressed in the data. Effectively used to reify relations (triples) in the data, and express information about them." ;
+    rdfs:subClassOf prov:Entity .
 
