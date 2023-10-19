@@ -1,5 +1,6 @@
 @prefix : <http://w3id.org/CEON/ontology/construction/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix cvn: <http://w3id.org/CEON/ontology/cvn/> .
 @prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -7,30 +8,37 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix product: <http://w3id.org/CEON/ontology/product/> .
 @prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix material: <http://w3id.org/CEON/ontology/material/> .
 @prefix quantity: <http://w3id.org/CEON/ontology/quantity#> .
+@prefix datasheet: <http://w3id.org/CEON/ontology/datasheet/> .
+@prefix provenance: <http://w3id.org/CEON/ontology/provenance/> .
 @prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
 @base <http://w3id.org/CEON/ontology/construction/> .
 
 <http://w3id.org/CEON/ontology/construction/> rdf:type owl:Ontology ;
                                                owl:versionIRI <http://w3id.org/CEON/ontology/construction/0.1/> ;
-                                               owl:imports <http://w3id.org/CEON/ontology/product/0.2/> ,
+                                               owl:imports <http://w3id.org/CEON/ontology/actor/0.2/> ,
+                                                           <http://w3id.org/CEON/ontology/datasheet/0.1/> ,
+                                                           <http://w3id.org/CEON/ontology/material/0.1/> ,
+                                                           <http://w3id.org/CEON/ontology/product/0.2/> ,
                                                            <http://w3id.org/CEON/ontology/quantity/0.1/> ,
                                                            <http://w3id.org/CEON/ontology/qudt/0.1/> ;
                                                dcterms:contributor "Eva Blomqvist" ,
                                                                    "Huanyu Li" ,
                                                                    "Mikael Lindecrantz" ;
                                                dcterms:created "2023-03-16"^^xsd:string ;
-                                               dcterms:creator "Robin Keskisärkkä"^^xsd:string ;
+                                               dcterms:creator "Robin Keskisärkkä" ;
                                                dcterms:description "The Product module of CEON (Circular Economy Ontology Network)." ;
                                                dcterms:license "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"^^xsd:string ;
                                                dcterms:title "Circular Economy Ontology Network (CEON) - Construction Module"^^xsd:string ;
                                                vann:preferredNamespacePrefix "construction"^^xsd:string ;
                                                vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/construction/"^^xsd:string ;
                                                rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
-                                               owl:versionInfo "0.1"^^xsd:string .
+                                               owl:versionInfo "0.1" .
 
 #################################################################
 #    Annotation properties
@@ -76,252 +84,215 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://w3id.org/CEON/ontology/construction/condition
-:condition rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf owl:topObjectProperty .
+###  http://w3id.org/CEON/ontology/construction/hasAccessory
+:hasAccessory rdf:type owl:ObjectProperty .
 
 
-###  http://w3id.org/CEON/ontology/construction/conductivity
-:conductivity rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+###  http://w3id.org/CEON/ontology/construction/hasCondition
+:hasCondition rdf:type owl:ObjectProperty .
 
 
-###  http://w3id.org/CEON/ontology/construction/dimensionalDeviationAccordingToEN12825
-:dimensionalDeviationAccordingToEN12825 rdf:type owl:ObjectProperty ;
-                                        rdfs:subPropertyOf owl:topObjectProperty .
+###  http://w3id.org/CEON/ontology/construction/hasConductivity
+:hasConductivity rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
 
 
-###  http://w3id.org/CEON/ontology/construction/distanceToLocallyAvailabileRecyclingPlant
-:distanceToLocallyAvailabileRecyclingPlant rdf:type owl:ObjectProperty ;
-                                           rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+###  http://w3id.org/CEON/ontology/construction/hasDimensionalDeviation
+:hasDimensionalDeviation rdf:type owl:ObjectProperty .
 
 
-###  http://w3id.org/CEON/ontology/construction/fireResistance
-:fireResistance rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf owl:topObjectProperty .
+###  http://w3id.org/CEON/ontology/construction/hasDistanceToRecyclingPlant
+:hasDistanceToRecyclingPlant rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
 
 
-###  http://w3id.org/CEON/ontology/construction/hasComposant
-:hasComposant rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty .
+###  http://w3id.org/CEON/ontology/construction/hasFireResistance
+:hasFireResistance rdf:type owl:ObjectProperty ;
+                   rdfs:range :FireResistance .
 
 
-###  http://w3id.org/CEON/ontology/construction/hasContaminant
-:hasContaminant rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf owl:topObjectProperty .
+###  http://w3id.org/CEON/ontology/construction/hasHeight
+:hasHeight rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasTileDimension .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasMarketValueForNewProduct
+:hasMarketValueForNewProduct rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf quantity:hasMarketValue .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasMarketValueForReusedProduct
+:hasMarketValueForReusedProduct rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf quantity:hasMarketValue .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasPedestalGridDimension
+:hasPedestalGridDimension rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasProductCategory
+:hasProductCategory rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasRecyclingPotential
+:hasRecyclingPotential rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasRecyclingSeparability
+:hasRecyclingSeparability rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasResistanceToEarth
+:hasResistanceToEarth rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasReuseDeconstructability
+:hasReuseDeconstructability rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasReusePotential
+:hasReusePotential rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasSystemWeight
+:hasSystemWeight rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasThickness
+:hasThickness rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasTileDimension .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasTileDimension
+:hasTileDimension rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasUseSpanRemaining
+:hasUseSpanRemaining rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasUseSpanTotal
+:hasUseSpanTotal rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasWidth
+:hasWidth rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasTileDimension .
 
 
 ###  http://w3id.org/CEON/ontology/construction/ifcEntity
-:ifcEntity rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf owl:topObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/ifcPredefinedType
-:ifcPredefinedType rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf owl:topObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/manufacturer
-:manufacturer rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty ;
-              rdfs:range :Manufacturer .
-
-
-###  http://w3id.org/CEON/ontology/construction/marketValueForNewProduct
-:marketValueForNewProduct rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf quantity:hasMarketValue .
-
-
-###  http://w3id.org/CEON/ontology/construction/marketValueForReuseProduct
-:marketValueForReuseProduct rdf:type owl:ObjectProperty ;
-                            rdfs:subPropertyOf quantity:hasMarketValue .
-
-
-###  http://w3id.org/CEON/ontology/construction/objectValue
-:objectValue rdf:type owl:ObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/pedestalGridDimension
-:pedestalGridDimension rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+:ifcEntity rdf:type owl:ObjectProperty .
 
 
 ###  http://w3id.org/CEON/ontology/construction/pedestalGridHeight
 :pedestalGridHeight rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf :pedestalGridDimension .
+                    rdfs:subPropertyOf :hasPedestalGridDimension .
 
 
 ###  http://w3id.org/CEON/ontology/construction/pedestalGridThickness
 :pedestalGridThickness rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf :pedestalGridDimension .
+                       rdfs:subPropertyOf :hasPedestalGridDimension .
 
 
 ###  http://w3id.org/CEON/ontology/construction/pedestalGridWidth
 :pedestalGridWidth rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :pedestalGridDimension .
+                   rdfs:subPropertyOf :hasPedestalGridDimension .
 
 
 ###  http://w3id.org/CEON/ontology/construction/policyOnTreatment
-:policyOnTreatment rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf owl:topObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/productCategory
-:productCategory rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf owl:topObjectProperty .
+:policyOnTreatment rdf:type owl:ObjectProperty .
 
 
 ###  http://w3id.org/CEON/ontology/construction/qualityOfProduct
-:qualityOfProduct rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf owl:topObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/rangeOfDismantlingCostsPerSqm
-:rangeOfDismantlingCostsPerSqm rdf:type owl:ObjectProperty ;
-                               rdfs:subPropertyOf quantity:hasDismantlingCost .
-
-
-###  http://w3id.org/CEON/ontology/construction/refurbishmentCostsPerSqm
-:refurbishmentCostsPerSqm rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf quantity:hasRefurbishmentCost .
-
-
-###  http://w3id.org/CEON/ontology/construction/resistanceToEarth
-:resistanceToEarth rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+:qualityOfProduct rdf:type owl:ObjectProperty .
 
 
 ###  http://w3id.org/CEON/ontology/construction/standardPedestalHeight
 :standardPedestalHeight rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf :pedestalGridDimension .
-
-
-###  http://w3id.org/CEON/ontology/construction/systemWeight
-:systemWeight rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
-
-
-###  http://w3id.org/CEON/ontology/construction/testingCostsPerSqm
-:testingCostsPerSqm rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf quantity:hasTestingCost .
-
-
-###  http://w3id.org/CEON/ontology/construction/tileDimension
-:tileDimension rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
-
-
-###  http://w3id.org/CEON/ontology/construction/tileHeight
-:tileHeight rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :tileDimension .
-
-
-###  http://w3id.org/CEON/ontology/construction/tileThickness
-:tileThickness rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :tileDimension .
-
-
-###  http://w3id.org/CEON/ontology/construction/tileWidth
-:tileWidth rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :tileDimension .
-
-
-###  http://w3id.org/CEON/ontology/construction/transportCostsPerSqm
-:transportCostsPerSqm rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf quantity:hasTransportCost .
+                        rdfs:subPropertyOf :hasPedestalGridDimension .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://w3id.org/CEON/ontology/construction/accessories
-:accessories rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/dismantlingMethod
-:dismantlingMethod rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf owl:topDataProperty .
-
-
 ###  http://w3id.org/CEON/ontology/construction/hasContaminant
 :hasContaminant rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://w3id.org/CEON/ontology/construction/ifc_isBuiltIn
-:ifc_isBuiltIn rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf owl:topDataProperty .
+###  http://w3id.org/CEON/ontology/construction/hasDismantlingMethod
+:hasDismantlingMethod rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://w3id.org/CEON/ontology/construction/ifc_is_external
-:ifc_is_external rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/ifc_loadbearing
-:ifc_loadbearing rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/installationDate
-:installationDate rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/packagingRecommandationsAfterDismantling
-:packagingRecommandationsAfterDismantling rdf:type owl:DatatypeProperty ;
-                                          rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/productDescription
-:productDescription rdf:type owl:DatatypeProperty ;
-                    rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/productID
-:productID rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/productName
-:productName rdf:type owl:DatatypeProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/productionCate
-:productionCate rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/productionSite
-:productionSite rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/recyclingPotential
-:recyclingPotential rdf:type owl:DatatypeProperty ;
-                    rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/recyclingSeparability
-:recyclingSeparability rdf:type owl:DatatypeProperty ;
-                       rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/refurbishmentMethod
-:refurbishmentMethod rdf:type owl:DatatypeProperty ;
+###  http://w3id.org/CEON/ontology/construction/hasInstallationDate
+:hasInstallationDate rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://w3id.org/CEON/ontology/construction/reuseDeconstructability
-:reuseDeconstructability rdf:type owl:DatatypeProperty ;
-                         rdfs:subPropertyOf owl:topDataProperty .
+###  http://w3id.org/CEON/ontology/construction/hasPackagingRecommendationsAfterDismantling
+:hasPackagingRecommendationsAfterDismantling rdf:type owl:DatatypeProperty ;
+                                             rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://w3id.org/CEON/ontology/construction/reusePotential
-:reusePotential rdf:type owl:DatatypeProperty ;
+###  http://w3id.org/CEON/ontology/construction/hasPolicyOnTreatment
+:hasPolicyOnTreatment rdf:type owl:DatatypeProperty .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasProductDescription
+:hasProductDescription rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasProductID
+:hasProductID rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasProductName
+:hasProductName rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasProductionDate
+:hasProductionDate rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasProductionSite
+:hasProductionSite rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasRefurbishmentMethod
+:hasRefurbishmentMethod rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/construction/isBuiltIn
+:isBuiltIn rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/construction/isExternal
+:isExternal rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/construction/isLoadbearing
+:isLoadbearing rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty .
 
 
 ###  http://w3id.org/CEON/ontology/construction/takeBackProgramOriginalManufacturer
@@ -344,58 +315,58 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                                           rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://w3id.org/CEON/ontology/construction/totalUseSpan
-:totalUseSpan rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/useSpanRemaining
-:useSpanRemaining rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf owl:topDataProperty .
-
-
 #################################################################
 #    Classes
 #################################################################
 
-###  http://qudt.org/schema/qudt/Quantity
-<http://qudt.org/schema/qudt/Quantity> rdfs:subClassOf :Statement .
+###  http://w3id.org/CEON/ontology/construction/ConstructionProduct
+:ConstructionProduct rdf:type owl:Class ;
+                     rdfs:subClassOf product:Product .
 
 
-###  http://w3id.org/CEON/ontology/construction/Composant
-:Composant rdf:type owl:Class .
+###  http://w3id.org/CEON/ontology/construction/DimensionalDeviation
+:DimensionalDeviation rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/construction/FireResistance
 :FireResistance rdf:type owl:Class .
 
 
+###  http://w3id.org/CEON/ontology/construction/FireResistanceRelation
+:FireResistanceRelation rdf:type owl:Class ;
+                        rdfs:subClassOf actorODP:ResourceRelation .
+
+
 ###  http://w3id.org/CEON/ontology/construction/FloorPanel
 :FloorPanel rdf:type owl:Class ;
-            rdfs:subClassOf product:Product .
+            rdfs:subClassOf :ConstructionProduct .
 
 
-###  http://w3id.org/CEON/ontology/construction/Manufacturer
-:Manufacturer rdf:type owl:Class .
+###  http://w3id.org/CEON/ontology/construction/FloorTileCondition
+:FloorTileCondition rdf:type owl:Class .
 
 
-###  http://w3id.org/CEON/ontology/construction/ObjectValue
-:ObjectValue rdf:type owl:Class ;
-             rdfs:subClassOf :Statement .
+###  http://w3id.org/CEON/ontology/construction/FloorTileConditionRelation
+:FloorTileConditionRelation rdf:type owl:Class ;
+                            rdfs:subClassOf actorODP:ResourceRelation .
 
 
-###  http://w3id.org/CEON/ontology/construction/Statement
-:Statement rdf:type owl:Class .
+###  http://w3id.org/CEON/ontology/construction/ProductQuality
+:ProductQuality rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/construction/RemainingUseSpan
+:RemainingUseSpan rdf:type owl:Class ;
+                  rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> .
+
+
+###  http://w3id.org/CEON/ontology/construction/TreatmentPolicy
+:TreatmentPolicy rdf:type owl:Class .
 
 
 #################################################################
 #    Individuals
 #################################################################
-
-###  http://w3id.org/CEON/ontology/construction/Calcium_sulphate_panel
-:Calcium_sulphate_panel rdf:type owl:NamedIndividual ,
-                                 :Composant .
-
 
 ###  http://w3id.org/CEON/ontology/construction/F30
 :F30 rdf:type owl:NamedIndividual ,
@@ -407,24 +378,34 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
               :FireResistance .
 
 
-###  http://w3id.org/CEON/ontology/construction/FGD_gypsum
-:FGD_gypsum rdf:type owl:NamedIndividual ,
-                     :Composant .
+###  http://w3id.org/CEON/ontology/construction/condition_bad
+:condition_bad rdf:type owl:NamedIndividual ,
+                        :FloorTileCondition .
 
 
-###  http://w3id.org/CEON/ontology/construction/LindnerNortec
-:LindnerNortec rdf:type owl:NamedIndividual ,
-                        :Manufacturer .
+###  http://w3id.org/CEON/ontology/construction/condition_good
+:condition_good rdf:type owl:NamedIndividual ,
+                         :FloorTileCondition .
 
 
-###  http://w3id.org/CEON/ontology/construction/NordecFloorPane
-:NordecFloorPane rdf:type owl:NamedIndividual ,
-                          :FloorPanel .
+###  http://w3id.org/CEON/ontology/construction/condition_medium
+:condition_medium rdf:type owl:NamedIndividual ,
+                           :FloorTileCondition .
 
 
-###  http://w3id.org/CEON/ontology/construction/Pedestal_glue_Polyurethane_SMP_lt_0.5
-:Pedestal_glue_Polyurethane_SMP_lt_0.5 rdf:type owl:NamedIndividual ,
-                                                :Composant .
+###  http://w3id.org/CEON/ontology/construction/quality_high
+:quality_high rdf:type owl:NamedIndividual ,
+                       :ProductQuality .
+
+
+###  http://w3id.org/CEON/ontology/construction/quality_low
+:quality_low rdf:type owl:NamedIndividual ,
+                      :ProductQuality .
+
+
+###  http://w3id.org/CEON/ontology/construction/quality_medium
+:quality_medium rdf:type owl:NamedIndividual ,
+                         :ProductQuality .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
