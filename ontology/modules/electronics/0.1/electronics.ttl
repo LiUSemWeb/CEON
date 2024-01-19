@@ -30,44 +30,16 @@
 #    Annotation properties
 #################################################################
 
-###  http://qudt.org/schema/qudt/conversionMultiplier
-<http://qudt.org/schema/qudt/conversionMultiplier> rdf:type owl:AnnotationProperty .
-
-
-###  http://qudt.org/schema/qudt/definedUnitOfSystem
-<http://qudt.org/schema/qudt/definedUnitOfSystem> rdf:type owl:AnnotationProperty .
-
-
-###  http://qudt.org/schema/qudt/derivedCoherentUnitOfSystem
-<http://qudt.org/schema/qudt/derivedCoherentUnitOfSystem> rdf:type owl:AnnotationProperty .
-
-
-###  http://qudt.org/schema/qudt/exactMatch
-<http://qudt.org/schema/qudt/exactMatch> rdf:type owl:AnnotationProperty .
-
-
 ###  http://qudt.org/schema/qudt/expression
 <http://qudt.org/schema/qudt/expression> rdf:type owl:AnnotationProperty .
 
 
-###  http://qudt.org/schema/qudt/hasDimensionVector
-<http://qudt.org/schema/qudt/hasDimensionVector> rdf:type owl:AnnotationProperty .
+###  http://w3id.org/CEON/ontology/actorODP/participatingObject
+<http://w3id.org/CEON/ontology/actorODP/participatingObject> rdf:type owl:AnnotationProperty .
 
 
-###  http://qudt.org/schema/qudt/hasUnit
-<http://qudt.org/schema/qudt/hasUnit> rdf:type owl:AnnotationProperty .
-
-
-###  http://qudt.org/schema/qudt/iec61360Code
-<http://qudt.org/schema/qudt/iec61360Code> rdf:type owl:AnnotationProperty .
-
-
-###  http://qudt.org/schema/qudt/numericalValue
-<http://qudt.org/schema/qudt/numericalValue> rdf:type owl:AnnotationProperty .
-
-
-###  http://qudt.org/schema/qudt/siUnitsExpression
-<http://qudt.org/schema/qudt/siUnitsExpression> rdf:type owl:AnnotationProperty .
+###  http://w3id.org/CEON/ontology/actorODP/participatingSubject
+<http://w3id.org/CEON/ontology/actorODP/participatingSubject> rdf:type owl:AnnotationProperty .
 
 
 ###  http://w3id.org/CEON/ontology/provenance/statementAbout
@@ -85,6 +57,26 @@ xsd:date rdf:type rdfs:Datatype .
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://qudt.org/schema/qudt/definedUnitOfSystem
+<http://qudt.org/schema/qudt/definedUnitOfSystem> rdf:type owl:ObjectProperty .
+
+
+###  http://qudt.org/schema/qudt/derivedCoherentUnitOfSystem
+<http://qudt.org/schema/qudt/derivedCoherentUnitOfSystem> rdf:type owl:ObjectProperty .
+
+
+###  http://qudt.org/schema/qudt/exactMatch
+<http://qudt.org/schema/qudt/exactMatch> rdf:type owl:ObjectProperty .
+
+
+###  http://qudt.org/schema/qudt/hasDimensionVector
+<http://qudt.org/schema/qudt/hasDimensionVector> rdf:type owl:ObjectProperty .
+
+
+###  http://qudt.org/schema/qudt/hasUnit
+<http://qudt.org/schema/qudt/hasUnit> rdf:type owl:ObjectProperty .
+
 
 ###  http://w3id.org/CEON/ontology/actorODP/participantRole
 <http://w3id.org/CEON/ontology/actorODP/participantRole> rdf:type owl:ObjectProperty .
@@ -105,6 +97,22 @@ xsd:date rdf:type rdfs:Datatype .
 #################################################################
 #    Data properties
 #################################################################
+
+###  http://qudt.org/schema/qudt/conversionMultiplier
+<http://qudt.org/schema/qudt/conversionMultiplier> rdf:type owl:DatatypeProperty .
+
+
+###  http://qudt.org/schema/qudt/iec61360Code
+<http://qudt.org/schema/qudt/iec61360Code> rdf:type owl:DatatypeProperty .
+
+
+###  http://qudt.org/schema/qudt/numericalValue
+<http://qudt.org/schema/qudt/numericalValue> rdf:type owl:DatatypeProperty .
+
+
+###  http://qudt.org/schema/qudt/siUnitsExpression
+<http://qudt.org/schema/qudt/siUnitsExpression> rdf:type owl:DatatypeProperty .
+
 
 ###  http://w3id.org/CEON/ontology/actorODP/participationTimePoint
 <http://w3id.org/CEON/ontology/actorODP/participationTimePoint> rdf:type owl:DatatypeProperty .
@@ -137,7 +145,8 @@ xsd:date rdf:type rdfs:Datatype .
 
 
 ###  http://w3id.org/CEON/ontology/electronics/decommissionReason
-:decommissionReason rdf:type owl:DatatypeProperty .
+:decommissionReason rdf:type owl:DatatypeProperty ;
+                    rdfs:comment "The reason for a decommission operation." .
 
 
 ###  http://w3id.org/CEON/ontology/electronics/fatigueResistance
@@ -155,6 +164,12 @@ xsd:date rdf:type rdfs:Datatype .
                  rdfs:comment "Flame Retardancy property is used to represent whether a product or content resist or delay the ignition and spread of fire. This property has 'True' of 'False' values." .
 
 
+###  http://w3id.org/CEON/ontology/electronics/hazardousMaterialsPercentage
+:hazardousMaterialsPercentage rdf:type owl:DatatypeProperty ;
+                              rdfs:range xsd:double ;
+                              rdfs:comment "The percentage of hazardous materials." .
+
+
 ###  http://w3id.org/CEON/ontology/electronics/highUVResistance
 :highUVResistance rdf:type owl:DatatypeProperty ;
                   rdfs:range xsd:boolean ;
@@ -167,14 +182,32 @@ xsd:date rdf:type rdfs:Datatype .
                                      "locationOfBatchComponent represents the location information of a component object within a batch." .
 
 
+###  http://w3id.org/CEON/ontology/electronics/numberOfRecyclingCycles
+:numberOfRecyclingCycles rdf:type owl:DatatypeProperty .
+
+
+###  http://w3id.org/CEON/ontology/electronics/recyclingPressure
+:recyclingPressure rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:double ;
+                   rdfs:comment "To represent the pressure condition in a recycling process." .
+
+
+###  http://w3id.org/CEON/ontology/electronics/recyclingTemperature
+:recyclingTemperature rdf:type owl:DatatypeProperty ;
+                      rdfs:range xsd:double ;
+                      rdfs:comment "To represent the temperature condition in a recycling process." .
+
+
 ###  http://w3id.org/CEON/ontology/electronics/reportedDamage
 :reportedDamage rdf:type owl:DatatypeProperty ;
-                rdfs:range xsd:string .
+                rdfs:range xsd:string ;
+                rdfs:comment "reportedDamage is used to represent damage information." .
 
 
 ###  http://w3id.org/CEON/ontology/electronics/reportedRepairs
 :reportedRepairs rdf:type owl:DatatypeProperty ;
-                 rdfs:range xsd:string .
+                 rdfs:range xsd:string ;
+                 rdfs:comment "reportedRepairs is used to represent repairing information." .
 
 
 ###  http://w3id.org/CEON/ontology/electronics/shearStrength
@@ -276,12 +309,15 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://w3id.org/CEON/ontology/electronics/PostCustomerRecycledContent
 :PostCustomerRecycledContent rdf:type owl:Class ;
-                             rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> .
+                             rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+                             rdfs:seeAlso "The finished goods or products that have been used by a customer, and then are going to be recycled." .
 
 
 ###  http://w3id.org/CEON/ontology/electronics/PreCustomerRecycledContent
 :PreCustomerRecycledContent rdf:type owl:Class ;
-                            rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> .
+                            rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+                            rdfs:comment "The recycled content during the process of manufacturing or delivering products before delivering to a customer." ;
+                            rdfs:seeAlso "https://en.wikipedia.org/wiki/Pre-consumer_recycling" .
 
 
 ###  http://w3id.org/CEON/ontology/electronics/Speaker
@@ -297,13 +333,25 @@ xsd:date rdf:type rdfs:Datatype .
 #    Individuals
 #################################################################
 
+###  http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-1D0
+<http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-1D0> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-2D0
+<http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-2D0> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/sou/SI
+<http://qudt.org/vocab/sou/SI> rdf:type owl:NamedIndividual .
+
+
 ###  http://qudt.org/vocab/unit/GigaPA
 <http://qudt.org/vocab/unit/GigaPA> rdf:type owl:NamedIndividual ,
                                              <http://qudt.org/schema/qudt/Unit> ;
-                                    <http://purl.org/dc/terms/description> "1 000 000 000-fold of the SI derived unit pascal"^^rdf:HTML ;
-                                    <http://qudt.org/schema/qudt/conversionMultiplier> 1000000000.0 ;
                                     <http://qudt.org/schema/qudt/hasDimensionVector> <http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-2D0> ;
+                                    <http://qudt.org/schema/qudt/conversionMultiplier> 1000000000.0 ;
                                     <http://qudt.org/schema/qudt/iec61360Code> "0112/2///62720#UAA153" ;
+                                    <http://purl.org/dc/terms/description> "1 000 000 000-fold of the SI derived unit pascal"^^rdf:HTML ;
                                     <http://qudt.org/schema/qudt/plainTextDescription> "1 000 000 000-fold of the SI derived unit pascal" ;
                                     <http://qudt.org/schema/qudt/prefix> <http://qudt.org/vocab/prefix/Giga> ;
                                     <http://qudt.org/schema/qudt/symbol> "GPa" ;
@@ -314,12 +362,16 @@ xsd:date rdf:type rdfs:Datatype .
                                     rdfs:label "Gigapascal"@en .
 
 
+###  http://qudt.org/vocab/unit/KiloGM-PER-M-SEC2
+<http://qudt.org/vocab/unit/KiloGM-PER-M-SEC2> rdf:type owl:NamedIndividual .
+
+
 ###  http://qudt.org/vocab/unit/MegaPA
 <http://qudt.org/vocab/unit/MegaPA> rdf:type owl:NamedIndividual ,
                                              <http://qudt.org/schema/qudt/Unit> ;
-                                    <http://purl.org/dc/terms/description> "1,000,000-fold of the derived unit pascal"^^rdf:HTML ;
                                     <http://qudt.org/schema/qudt/conversionMultiplier> 1000000.0 ;
                                     <http://qudt.org/schema/qudt/iec61360Code> "0112/2///62720#UAA215" ;
+                                    <http://purl.org/dc/terms/description> "1,000,000-fold of the derived unit pascal"^^rdf:HTML ;
                                     <http://qudt.org/schema/qudt/plainTextDescription> "1,000,000-fold of the derived unit pascal" ;
                                     <http://qudt.org/schema/qudt/prefix> <http://qudt.org/vocab/prefix/Mega> ;
                                     <http://qudt.org/schema/qudt/symbol> "MPa" ;
@@ -328,6 +380,10 @@ xsd:date rdf:type rdfs:Datatype .
                                     rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> ,
                                                      <http://qudt.org/vocab/unit> ;
                                     rdfs:label "Megapascal"@en .
+
+
+###  http://qudt.org/vocab/unit/N-PER-M2
+<http://qudt.org/vocab/unit/N-PER-M2> rdf:type owl:NamedIndividual .
 
 
 ###  http://qudt.org/vocab/unit/OHM-M
@@ -348,15 +404,15 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://qudt.org/vocab/unit/PA
 <http://qudt.org/vocab/unit/PA> rdf:type owl:NamedIndividual ,
                                          <http://qudt.org/schema/qudt/Unit> ;
-                                <http://purl.org/dc/terms/description> "The SI unit of pressure. The pascal is the standard pressure unit in the MKS metric system, equal to one newton per square meter or one \"kilogram per meter per second per second.\" The unit is named for Blaise Pascal (1623-1662), French philosopher and mathematician, who was the first person to use a barometer to measure differences in altitude."^^rdf:HTML ;
-                                <http://qudt.org/schema/qudt/conversionMultiplier> 1.0 ;
-                                <http://qudt.org/schema/qudt/dbpediaMatch> "http://dbpedia.org/resource/Pascal"^^xsd:anyURI ;
                                 <http://qudt.org/schema/qudt/exactMatch> <http://qudt.org/vocab/unit/KiloGM-PER-M-SEC2> ,
                                                                          <http://qudt.org/vocab/unit/N-PER-M2> ;
+                                <http://qudt.org/schema/qudt/conversionMultiplier> 1.0 ;
                                 <http://qudt.org/schema/qudt/iec61360Code> "0112/2///62720#UAA258" ;
+                                <http://qudt.org/schema/qudt/siUnitsExpression> "N/m^2" ;
+                                <http://purl.org/dc/terms/description> "The SI unit of pressure. The pascal is the standard pressure unit in the MKS metric system, equal to one newton per square meter or one \"kilogram per meter per second per second.\" The unit is named for Blaise Pascal (1623-1662), French philosopher and mathematician, who was the first person to use a barometer to measure differences in altitude."^^rdf:HTML ;
+                                <http://qudt.org/schema/qudt/dbpediaMatch> "http://dbpedia.org/resource/Pascal"^^xsd:anyURI ;
                                 <http://qudt.org/schema/qudt/informativeReference> "http://en.wikipedia.org/wiki/Pascal?oldid=492989202"^^xsd:anyURI ;
                                 <http://qudt.org/schema/qudt/omUnit> <http://www.ontology-of-units-of-measure.org/resource/om-2/pascal> ;
-                                <http://qudt.org/schema/qudt/siUnitsExpression> "N/m^2" ;
                                 <http://qudt.org/schema/qudt/symbol> "Pa" ;
                                 <http://qudt.org/schema/qudt/ucumCode> "Pa"^^<http://qudt.org/schema/qudt/UCUMcs> ;
                                 <http://qudt.org/schema/qudt/udunitsCode> "Pa" ;
@@ -370,14 +426,14 @@ xsd:date rdf:type rdfs:Datatype .
 <http://qudt.org/vocab/unit/PA-SEC> rdf:type owl:NamedIndividual ,
                                              <http://qudt.org/schema/qudt/DerivedUnit> ,
                                              <http://qudt.org/schema/qudt/Unit> ;
-                                    <http://purl.org/dc/terms/description> "The SI unit of dynamic viscosity, equal to 10 poises or 1000 centipoises. "^^rdf:HTML ;
-                                    <http://qudt.org/schema/qudt/conversionMultiplier> 1.0 ;
                                     <http://qudt.org/schema/qudt/definedUnitOfSystem> <http://qudt.org/vocab/sou/SI> ;
                                     <http://qudt.org/schema/qudt/derivedCoherentUnitOfSystem> <http://qudt.org/vocab/sou/SI> ;
-                                    <http://qudt.org/schema/qudt/expression> "\\(Pa-s\\)"^^<http://qudt.org/schema/qudt/LatexString> ;
                                     <http://qudt.org/schema/qudt/hasDimensionVector> <http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-1D0> ;
+                                    <http://qudt.org/schema/qudt/conversionMultiplier> 1.0 ;
                                     <http://qudt.org/schema/qudt/iec61360Code> "0112/2///62720#UAA265" ;
                                     <http://qudt.org/schema/qudt/siUnitsExpression> "Pa.s" ;
+                                    <http://purl.org/dc/terms/description> "The SI unit of dynamic viscosity, equal to 10 poises or 1000 centipoises. "^^rdf:HTML ;
+                                    <http://qudt.org/schema/qudt/expression> "\\(Pa-s\\)"^^<http://qudt.org/schema/qudt/LatexString> ;
                                     <http://qudt.org/schema/qudt/symbol> "Paâ‹…s" ;
                                     <http://qudt.org/schema/qudt/ucumCode> "Pa.s"^^<http://qudt.org/schema/qudt/UCUMcs> ;
                                     <http://qudt.org/schema/qudt/uneceCommonCode> "C65" ;
@@ -444,9 +500,9 @@ xsd:date rdf:type rdfs:Datatype .
                         <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ,
                         <http://w3id.org/CEON/ontology/provenance/Statement> ;
                <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/GM> ;
+               <http://qudt.org/schema/qudt/numericalValue> "300.0"^^xsd:double ;
                <http://w3id.org/CEON/ontology/actorODP/participatingObject> :carbon_material_a ;
                <http://w3id.org/CEON/ontology/actorODP/participatingSubject> :speaker_x ;
-               <http://qudt.org/schema/qudt/numericalValue> "300.0"^^xsd:double ;
                rdfs:comment "Speaker x contains 300 grams of carbon material a." .
 
 
@@ -504,8 +560,8 @@ xsd:date rdf:type rdfs:Datatype .
              <http://qudt.org/schema/qudt/Quantity> ,
              <http://w3id.org/CEON/ontology/provenance/Statement> ;
     <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PA> ;
-    <http://w3id.org/CEON/ontology/provenance/statementAbout> :speaker_x ;
-    :fatigueResistance "80.0"^^xsd:double .
+    :fatigueResistance "80.0"^^xsd:double ;
+    <http://w3id.org/CEON/ontology/provenance/statementAbout> :speaker_x .
 
 
 ###  http://w3id.org/CEON/ontology/electronics/s63
