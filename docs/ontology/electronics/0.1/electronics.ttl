@@ -3,33 +3,33 @@
 @prefix ns1: <http://qudt.org/schema/qudt/> .
 @prefix ns2: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix ns3: <http://w3id.org/CEON/ontology/resourceODP/> .
-@prefix ns4: <http://w3id.org/CEON/ontology/product/> .
-@prefix ns5: <http://w3id.org/CEON/ontology/provenance/> .
+@prefix ns4: <http://w3id.org/CEON/ontology/provenance/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ns1:conversionMultiplier a owl:AnnotationProperty .
+ns1:conversionMultiplier a owl:DatatypeProperty .
 
-ns1:definedUnitOfSystem a owl:AnnotationProperty .
+ns1:definedUnitOfSystem a owl:ObjectProperty .
 
-ns1:derivedCoherentUnitOfSystem a owl:AnnotationProperty .
+ns1:derivedCoherentUnitOfSystem a owl:ObjectProperty .
 
-ns1:exactMatch a owl:AnnotationProperty .
+ns1:exactMatch a owl:ObjectProperty .
 
 ns1:expression a owl:AnnotationProperty .
 
-ns1:hasDimensionVector a owl:AnnotationProperty .
+ns1:hasDimensionVector a owl:ObjectProperty .
 
-ns1:hasUnit a owl:AnnotationProperty .
+ns1:hasUnit a owl:ObjectProperty .
 
-ns1:iec61360Code a owl:AnnotationProperty .
+ns1:iec61360Code a owl:DatatypeProperty .
 
-ns1:numericalValue a owl:AnnotationProperty .
+ns1:numericalValue a owl:DatatypeProperty .
 
-ns1:siUnitsExpression a owl:AnnotationProperty .
+ns1:siUnitsExpression a owl:DatatypeProperty .
 
 <http://qudt.org/vocab/unit/GigaPA> a ns1:Unit,
         owl:NamedIndividual ;
@@ -95,7 +95,11 @@ ns2:participantRole a owl:ObjectProperty .
 
 ns2:participatingActor a owl:ObjectProperty .
 
+ns2:participatingObject a owl:AnnotationProperty .
+
 ns2:participatingResource a owl:ObjectProperty .
+
+ns2:participatingSubject a owl:AnnotationProperty .
 
 ns2:participationIn a owl:ObjectProperty .
 
@@ -131,12 +135,14 @@ ns2:participationTimePoint a owl:DatatypeProperty .
     rdfs:subClassOf :ElectronicsProduct .
 
 :ElectronicsProductSourcingComponentRelation a owl:Class ;
-    rdfs:subClassOf ns5:Statement .
+    rdfs:subClassOf ns4:Statement .
 
 :Frame a owl:Class ;
     rdfs:subClassOf :ElectronicsProduct .
 
 :PreCustomerRecycledContent a owl:Class ;
+    rdfs:comment "The recycled content during the process of manufacturing or delivering products before delivering to a customer." ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Pre-consumer_recycling" ;
     rdfs:subClassOf ns1:Quantity .
 
 :batchNumber a owl:DatatypeProperty ;
@@ -162,7 +168,8 @@ ns2:participationTimePoint a owl:DatatypeProperty .
     rdfs:comment "dateOfProduction represents the date of production of a batch of products." ;
     rdfs:domain ns3:BatchOfObjects .
 
-:decommissionReason a owl:DatatypeProperty .
+:decommissionReason a owl:DatatypeProperty ;
+    rdfs:comment "The reason for a decommission operation." .
 
 :ds_issue_1 a <http://w3id.org/CEON/ontology/actor/IssuingResource>,
         owl:NamedIndividual ;
@@ -181,6 +188,10 @@ ns2:participationTimePoint a owl:DatatypeProperty .
     rdfs:comment "Flame Retardancy property is used to represent whether a product or content resist or delay the ignition and spread of fire. This property has 'True' of 'False' values." ;
     rdfs:range xsd:boolean .
 
+:hazardousMaterialsPercentage a owl:DatatypeProperty ;
+    rdfs:comment "The percentage of hazardous materials." ;
+    rdfs:range xsd:double .
+
 :highUVResistance a owl:DatatypeProperty ;
     rdfs:comment "High UV Resistance property is used to represent whether a product or content withstand the damaging effects of ultraviolet (UV) radiation. It has values 'True' or 'False'." ;
     rdfs:range xsd:boolean .
@@ -189,17 +200,29 @@ ns2:participationTimePoint a owl:DatatypeProperty .
     rdfs:label "Location of batch component",
         "locationOfBatchComponent represents the location information of a component object within a batch." .
 
+:numberOfRecyclingCycles a owl:DatatypeProperty .
+
 :q1 a ns1:Quantity,
-        ns5:Statement,
+        ns4:Statement,
         owl:NamedIndividual ;
     ns1:hasUnit <http://qudt.org/vocab/unit/PA> ;
     :fatigueResistance 8e+01 ;
-    ns5:statementAbout :speaker_x .
+    ns4:statementAbout :speaker_x .
+
+:recyclingPressure a owl:DatatypeProperty ;
+    rdfs:comment "To represent the pressure condition in a recycling process." ;
+    rdfs:range xsd:double .
+
+:recyclingTemperature a owl:DatatypeProperty ;
+    rdfs:comment "To represent the temperature condition in a recycling process." ;
+    rdfs:range xsd:double .
 
 :reportedDamage a owl:DatatypeProperty ;
+    rdfs:comment "reportedDamage is used to represent damage information." ;
     rdfs:range xsd:string .
 
 :reportedRepairs a owl:DatatypeProperty ;
+    rdfs:comment "reportedRepairs is used to represent repairing information." ;
     rdfs:range xsd:string .
 
 :s7 a <http://w3id.org/CEON/ontology/actor/SupplyingResource>,
@@ -243,7 +266,7 @@ ns2:participationTimePoint a owl:DatatypeProperty .
     rdfs:comment "Tensile Strength is a used to represent the ability of a product or some content to resist breaking when it is pulled apart. It is the maximum stress that a product can withstand before breaking." ;
     rdfs:range xsd:double .
 
-ns5:statementAbout a owl:AnnotationProperty .
+ns4:statementAbout a owl:AnnotationProperty .
 
 xsd:date a rdfs:Datatype .
 
@@ -252,6 +275,14 @@ ns1:DerivedUnit a owl:Class ;
     dcterms:description "A DerivedUnit is a type specification for units that are derived from other units." ;
     rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
     rdfs:subClassOf ns1:Unit .
+
+<http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-1D0> a owl:NamedIndividual .
+
+<http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-2D0> a owl:NamedIndividual .
+
+<http://qudt.org/vocab/unit/KiloGM-PER-M-SEC2> a owl:NamedIndividual .
+
+<http://qudt.org/vocab/unit/N-PER-M2> a owl:NamedIndividual .
 
 <http://qudt.org/vocab/unit/PA> a ns1:Unit,
         owl:NamedIndividual ;
@@ -296,6 +327,7 @@ ns2:ResourceRelation a owl:Class .
     rdfs:subClassOf :ElectronicsProduct .
 
 :PostCustomerRecycledContent a owl:Class ;
+    rdfs:seeAlso "The finished goods or products that have been used by a customer, and then are going to be recycled." ;
     rdfs:subClassOf ns1:Quantity .
 
 :Speaker a owl:Class ;
@@ -318,7 +350,7 @@ ns2:ResourceRelation a owl:Class .
 
 :composition_a a ns1:Quantity,
         ns2:ResourceRelation,
-        ns5:Statement,
+        ns4:Statement,
         owl:NamedIndividual ;
     ns1:hasUnit <http://qudt.org/vocab/unit/GM> ;
     ns1:numericalValue 3e+02 ;
@@ -351,16 +383,18 @@ ns2:ResourceRelation a owl:Class .
 <https://qudt.org/vocab/unit/PERCENT> a ns1:Unit,
         owl:NamedIndividual .
 
+<http://qudt.org/vocab/sou/SI> a owl:NamedIndividual .
+
 :boc_x a ns3:BatchOfObjects,
         owl:NamedIndividual ;
-    ns4:batchOfProduct :speaker_x .
+    ns5:batchOfProduct :speaker_x .
 
 :damper_x a :Damper,
-        ns4:Product,
+        ns5:Product,
         owl:NamedIndividual .
 
 :neodymium_magnet_x a :NeodymiumMagnet,
-        ns4:Product,
+        ns5:Product,
         owl:NamedIndividual ;
     ns3:hasConstituent :damper_x,
         :neodymium_magnet_x .
@@ -375,5 +409,5 @@ ns2:ResourceRelation a owl:Class .
 ns2:Actor a owl:Class .
 
 :ElectronicsProduct a owl:Class ;
-    rdfs:subClassOf ns4:Product .
+    rdfs:subClassOf ns5:Product .
 
