@@ -10,14 +10,11 @@ def copy_ontologies():
     for source in glob("ontology/modules/*/*/*", recursive=True):
         if not source.endswith(".ttl"):
             continue
-        #output = f"docs/ontology/{filename.split('ontology/modules/')[1]}"
-        #print("from:", filename)
-        #print("to:", output)
+
         parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
         name = parts.group(1)
         version = parts.group(2)
         base = f"docs/ontology/{name}/{version}/{name}"
-        
         os.makedirs(f"docs/ontology/{name}/{version}/", exist_ok=True)
         g = Graph()
         g.parse(source)
