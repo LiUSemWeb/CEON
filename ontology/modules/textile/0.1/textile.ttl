@@ -1,0 +1,1024 @@
+@prefix : <http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/> .
+
+<http://w3id.org/CEON/ontology/textile/> rdf:type owl:Ontology ;
+                                          owl:versionIRI <http://w3id.org/CEON/ontology/textile/0.1/> ;
+                                          owl:imports <http://w3id.org/CEON/ontology/actorODP/0.2/> ,
+                                                      <http://w3id.org/CEON/ontology/datasheet/0.1/> ,
+                                                      <http://w3id.org/CEON/ontology/product/0.2/> ,
+                                                      <http://w3id.org/CEON/ontology/provenance/0.1/> ,
+                                                      <http://w3id.org/CEON/ontology/quantity/0.1/> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/CFmapping
+:CFmapping rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/PCDSmapping
+:PCDSmapping rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/anticipatedLeakageDuringUse
+:anticipatedLeakageDuringUse rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :hasProperty ;
+                             :PCDSmapping "5040-5046" ;
+                             rdfs:comment "Percentage of the product content anticipated to become leakage during the use phase due to for example wear & tear, oxidation, erosion, etc."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/chemicalSubstanceDisclosureThreshold
+:chemicalSubstanceDisclosureThreshold rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/designedForRecyclingAtSameQuality
+:designedForRecyclingAtSameQuality rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf :hasProperty ;
+                                   :PCDSmapping "5030-5037" ;
+                                   rdfs:comment "Percentage of the product that is designed for recycling at the same level of quality. The remainder of the materials is foreseen by the manufacturer to be recycled at a lower quality than the original content."@en ;
+                                   rdfs:label "desinged for recycling at the same level of quality"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasColor
+:hasColor rdf:type owl:ObjectProperty ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( <http://w3id.org/CEON/ontology/product/Product>
+                                      <http://w3id.org/CEON/ontology/product/ProductObject>
+                                      <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects>
+                                    )
+                      ] ;
+          rdfs:range :Color .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasDyeMethod
+:hasDyeMethod rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasTextileManufacturingProcess ;
+              rdfs:range :DyeingProcess ;
+              :CFmapping "CF700" ;
+              rdfs:label "Dye Method"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasDyeStuff
+:hasDyeStuff rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :hasProperty ;
+             :CFmapping "CF701" ;
+             rdfs:label "Dye Stuff"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasFinishing
+:hasFinishing rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasProperty ;
+              rdfs:range :TextileFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasFinishingStep
+:hasFinishingStep rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasTextileManufacturingProcess ;
+                  :CFmapping "CF704" ;
+                  rdfs:label "Finishing Step"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasPostConsumerRecycledContentAmount
+:hasPostConsumerRecycledContentAmount rdf:type owl:ObjectProperty ;
+                                      rdfs:subPropertyOf <http://w3id.org/CEON/ontology/product/hasComposition> .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasPreConsumerRecycledContentAmount
+:hasPreConsumerRecycledContentAmount rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/product/hasComposition> .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasPrintFinishing
+:hasPrintFinishing rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasProperty ;
+                   rdfs:label "Print Finishing"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasPrintMethod
+:hasPrintMethod rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasTextileManufacturingProcess ;
+                rdfs:range :PrintingProcess ;
+                :CFmapping "CF702" ;
+                rdfs:label "Print Method"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasPrintStuff
+:hasPrintStuff rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasProperty ;
+               :CFmapping "CF703" ;
+               rdfs:label "Print Stuff"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasProperty
+:hasProperty rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasTextileManufacturingProcess
+:hasTextileManufacturingProcess rdf:type owl:ObjectProperty ;
+                                rdfs:range :TextileManufacturingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasTextileProductType
+:hasTextileProductType rdf:type owl:ObjectProperty ;
+                       rdfs:domain :TextileProduct ;
+                       rdfs:range :TextileProductType .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/hasWaterProperty
+:hasWaterProperty rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasProperty ;
+                  rdfs:range :WaterProperty ;
+                  :CFmapping "CF706" ;
+                  rdfs:label "Water Property"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/productCompositionDisclosureAvailability
+:productCompositionDisclosureAvailability rdf:type owl:ObjectProperty ;
+                                          rdfs:comment "A product composition disclosed at the defined threshold is publicly available or a product composition disclosed at the defined threshold is available to the customer under secrecy agreement." .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/productCompositionDisclosureValidation
+:productCompositionDisclosureValidation rdf:type owl:ObjectProperty ;
+                                        rdfs:comment "The product composition disclosed at the defined threshold has been validated by a third party or the product has been awarded an independent certification or standard related to its composition." .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/textileProductDesign
+:textileProductDesign rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/textileProductDesignForRecycling
+:textileProductDesignForRecycling rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :textileProductDesign ;
+                                  rdfs:range :TextileRecyclingProcess ;
+                                  :PCDSmapping "5070, 5080, 5081, 5090, 5091" ;
+                                  rdfs:comment "Product designed for a certain recycling method."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/weightFractionOfDisclosedSubstances
+:weightFractionOfDisclosedSubstances rdf:type owl:ObjectProperty ;
+                                     rdfs:comment "The weight fraction of all disclosed chemical substances is 0%, 0-10%, 10-25%, 25-50%, 50-75%, 75-95%, 95-99%, over 99%." .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/CEmark
+:CEmark rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf :certification ;
+        rdfs:range xsd:boolean ;
+        :PCDSmapping "5001" ;
+        rdfs:comment "The product has theCE mark."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/availableInformation
+:availableInformation rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/biodegradabilityTestAvailable
+:biodegradabilityTestAvailable rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf :availableInformation ;
+                               rdfs:range xsd:boolean ;
+                               :CFmapping "CF600" ;
+                               rdfs:comment "Biodegradability test is available."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/certification
+:certification rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/chemicalCompliance
+:chemicalCompliance rdf:type owl:DatatypeProperty ;
+                    :CFmapping "CF707" .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/collectionParameter
+:collectionParameter rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/collectionSystem
+:collectionSystem rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :collectionParameter ;
+                  rdfs:range xsd:boolean ;
+                  :PCDSmapping "5050" ;
+                  rdfs:comment "The manufacturer/ industry association has a dedicated collection system in place to gather and deliver products for recycling."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/designForProperties
+:designForProperties rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/designForRecyclingAmounts
+:designForRecyclingAmounts rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/designedForRecycling
+:designedForRecycling rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :designForProperties ;
+                      rdfs:comment "The product is designed for recycling?e"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/designedForRefurbishment
+:designedForRefurbishment rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :designForProperties ;
+                          :PCDSmapping "5010" ;
+                          rdfs:comment "The product is desinged for refurbishment?"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/designedForRemanufacturing
+:designedForRemanufacturing rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf :designForProperties ;
+                            :PCDSmapping "5020" ;
+                            rdfs:comment "The product is designed for remanufacturing?"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/designedForReuse
+:designedForReuse rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :designForProperties ;
+                  rdfs:comment "The product is designed for reused?" .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/designedForReuseWMinimalMod
+:designedForReuseWMinimalMod rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf :designedForReuse ;
+                             :PCDSmapping "5000" ;
+                             rdfs:comment "The product is designed for re-use as-is or with minimal modification."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/emissionByDesign
+:emissionByDesign rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :designForRecyclingAmounts ;
+                  :PCDSmapping "5060" ;
+                  rdfs:comment "The portion of the product known to be emitted into the environment during use is designed for that purpose.  "@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/finishingSteps
+:finishingSteps rdf:type owl:DatatypeProperty ;
+                :CFmapping "CF705" .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/materialSafetyDataSheetAvailable
+:materialSafetyDataSheetAvailable rdf:type owl:DatatypeProperty ;
+                                  rdfs:subPropertyOf :availableInformation ;
+                                  rdfs:range xsd:boolean ;
+                                  :CFmapping "CF603" ;
+                                  rdfs:comment "Material Safety Data Sheet for the product is available."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/materialSafetyDataSheetForDyeingAvailable
+:materialSafetyDataSheetForDyeingAvailable rdf:type owl:DatatypeProperty ;
+                                           rdfs:subPropertyOf :availableInformation ;
+                                           rdfs:range xsd:boolean ;
+                                           :CFmapping "CF602" ;
+                                           rdfs:comment "Material Safety Data Sheets for Dyeing are available."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/materialSafetyDataSheetForFinishingAvailable
+:materialSafetyDataSheetForFinishingAvailable rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf :availableInformation ;
+                                              rdfs:range xsd:boolean ;
+                                              :CFmapping "CF601" ;
+                                              rdfs:comment "Material Safety Data Sheets for Finishing are available."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/technicalDataSheetAvailable
+:technicalDataSheetAvailable rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf :availableInformation ;
+                             rdfs:range xsd:boolean ;
+                             :CFmapping "CF604" ;
+                             rdfs:comment "The Technical Data Sheet is available."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/AmountIntervalValue
+:AmountIntervalValue rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/Availability
+:Availability rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/BatchOfTextileObjects
+:BatchOfTextileObjects rdf:type owl:Class ;
+                       rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasColor ;
+                                         owl:someValuesFrom :Color
+                                       ] .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/ChemicalFinishing
+:ChemicalFinishing rdf:type owl:Class ;
+                   rdfs:subClassOf :TextileFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/Color
+:Color rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/Dye
+:Dye rdf:type owl:Class ;
+     rdfs:subClassOf :TextileProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/DyeingProcess
+:DyeingProcess rdf:type owl:Class ;
+               rdfs:subClassOf :TextileManufacturingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/LeakageAmountInterval
+:LeakageAmountInterval rdf:type owl:Class ;
+                       rdfs:subClassOf :AmountIntervalValue .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/MechanicalFinishing
+:MechanicalFinishing rdf:type owl:Class ;
+                     rdfs:subClassOf :TextileFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/PostConsumerRecycledContentInterval
+:PostConsumerRecycledContentInterval rdf:type owl:Class ;
+                                     rdfs:subClassOf :AmountIntervalValue .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/PreConsumerRecycledContentInterval
+:PreConsumerRecycledContentInterval rdf:type owl:Class ;
+                                    rdfs:subClassOf :AmountIntervalValue .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/Print
+:Print rdf:type owl:Class ;
+       rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Constituent> .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/PrintStuff
+:PrintStuff rdf:type owl:Class ;
+            rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Matter> .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/PrintingProcess
+:PrintingProcess rdf:type owl:Class ;
+                 rdfs:subClassOf :TextileManufacturingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/RecyclingAtSameLevelAmountInterval
+:RecyclingAtSameLevelAmountInterval rdf:type owl:Class ;
+                                    rdfs:subClassOf :AmountIntervalValue .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileDataSheet
+:TextileDataSheet rdf:type owl:Class ;
+                  rdfs:subClassOf <http://w3id.org/CEON/ontology/datasheet/DataSheet> ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://w3id.org/CEON/ontology/resourceODP/isAbout> ;
+                                    owl:someValuesFrom :TextileProduct
+                                  ] .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileDataSheetIssuingStatement
+:TextileDataSheetIssuingStatement rdf:type owl:Class ;
+                                  rdfs:subClassOf <http://w3id.org/CEON/ontology/provenance/Statement> .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileFinishing
+:TextileFinishing rdf:type owl:Class ;
+                  rdfs:subClassOf :TextileProperty .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileManufacturerStatement
+:TextileManufacturerStatement rdf:type owl:Class ;
+                              rdfs:subClassOf <http://w3id.org/CEON/ontology/provenance/Statement> .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileManufacturingProcess
+:TextileManufacturingProcess rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileManufacturingSiteStatement
+:TextileManufacturingSiteStatement rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://w3id.org/CEON/ontology/provenance/Statement> .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileProduct
+:TextileProduct rdf:type owl:Class ;
+                rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Product> ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasColor ;
+                                  owl:someValuesFrom :Color
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasTextileProductType ;
+                                  owl:someValuesFrom :TextileProductType
+                                ] .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileProductComponentRelation
+:TextileProductComponentRelation rdf:type owl:Class ;
+                                 rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                                 <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation> ,
+                                                 <http://w3id.org/CEON/ontology/provenance/Statement> ,
+                                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                          owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingObject> ;
+                                                                          owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Constituent>
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingSubject> ;
+                                                                          owl:someValuesFrom :TextileProduct
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://qudt.org/schema/qudt/numericalValue> ;
+                                                                          owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                               owl:unionOf ( xsd:double
+                                                                                                             xsd:integer
+                                                                                                           )
+                                                                                             ]
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ] .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileProductMatterCompositionRelation
+:TextileProductMatterCompositionRelation rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                                         <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation> ,
+                                                         <http://w3id.org/CEON/ontology/provenance/Statement> ,
+                                                         [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingObject> ;
+                                                                                  owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Matter>
+                                                                                ]
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingSubject> ;
+                                                                                  owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                       owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent>
+                                                                                                                     :TextileProduct
+                                                                                                                   )
+                                                                                                     ]
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ] .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileProductObject
+:TextileProductObject rdf:type owl:Class ;
+                      rdfs:subClassOf <http://w3id.org/CEON/ontology/product/ProductObject> ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasColor ;
+                                        owl:someValuesFrom :Color
+                                      ] .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileProductRecycledContent
+:TextileProductRecycledContent rdf:type owl:Class ;
+                               rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                               <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation> ,
+                                               <http://w3id.org/CEON/ontology/provenance/Statement> ,
+                                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                        owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty <http://w3id.org/CEON/ontology/provenance/statementAbout> ;
+                                                                        owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                             owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent>
+                                                                                                           :TextileProduct
+                                                                                                         )
+                                                                                           ]
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty <http://qudt.org/schema/qudt/numericalValue> ;
+                                                                        owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                             owl:unionOf ( xsd:double
+                                                                                                           xsd:integer
+                                                                                                         )
+                                                                                           ]
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ] .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileProductType
+:TextileProductType rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileProperty
+:TextileProperty rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/TextileRecyclingProcess
+:TextileRecyclingProcess rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/Validation
+:Validation rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/WaterProperty
+:WaterProperty rdf:type owl:Class ;
+               rdfs:subClassOf :TextileProperty .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://w3id.org/CEON/ontology/textile/0perc
+<http://w3id.org/CEON/ontology/textile/0perc> rdf:type owl:NamedIndividual ,
+                                                       :PostConsumerRecycledContentInterval ,
+                                                       :PreConsumerRecycledContentInterval ,
+                                                       :RecyclingAtSameLevelAmountInterval .
+
+
+###  http://w3id.org/CEON/ontology/textile/0to10Perc
+<http://w3id.org/CEON/ontology/textile/0to10Perc> rdf:type owl:NamedIndividual ,
+                                                           :PostConsumerRecycledContentInterval ,
+                                                           :PreConsumerRecycledContentInterval ,
+                                                           :RecyclingAtSameLevelAmountInterval .
+
+
+###  http://w3id.org/CEON/ontology/textile/1to10Perc
+<http://w3id.org/CEON/ontology/textile/1to10Perc> rdf:type owl:NamedIndividual ,
+                                                           :LeakageAmountInterval .
+
+
+###  http://w3id.org/CEON/ontology/textile/10to25Perc
+<http://w3id.org/CEON/ontology/textile/10to25Perc> rdf:type owl:NamedIndividual ,
+                                                            :LeakageAmountInterval ,
+                                                            :PostConsumerRecycledContentInterval ,
+                                                            :PreConsumerRecycledContentInterval ,
+                                                            :RecyclingAtSameLevelAmountInterval .
+
+
+###  http://w3id.org/CEON/ontology/textile/25to50Perc
+<http://w3id.org/CEON/ontology/textile/25to50Perc> rdf:type owl:NamedIndividual ,
+                                                            :LeakageAmountInterval ,
+                                                            :PostConsumerRecycledContentInterval ,
+                                                            :PreConsumerRecycledContentInterval ,
+                                                            :RecyclingAtSameLevelAmountInterval .
+
+
+###  http://w3id.org/CEON/ontology/textile/50-75Perc
+<http://w3id.org/CEON/ontology/textile/50-75Perc> rdf:type owl:NamedIndividual ,
+                                                           :LeakageAmountInterval ,
+                                                           :PostConsumerRecycledContentInterval ,
+                                                           :PreConsumerRecycledContentInterval ,
+                                                           :RecyclingAtSameLevelAmountInterval .
+
+
+###  http://w3id.org/CEON/ontology/textile/75to95Perc
+<http://w3id.org/CEON/ontology/textile/75to95Perc> rdf:type owl:NamedIndividual ,
+                                                            :LeakageAmountInterval ,
+                                                            :PostConsumerRecycledContentInterval ,
+                                                            :PreConsumerRecycledContentInterval ,
+                                                            :RecyclingAtSameLevelAmountInterval .
+
+
+###  http://w3id.org/CEON/ontology/textile/95to99Perc
+<http://w3id.org/CEON/ontology/textile/95to99Perc> rdf:type owl:NamedIndividual ,
+                                                            :RecyclingAtSameLevelAmountInterval .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/above95Perc
+:above95Perc rdf:type owl:NamedIndividual ,
+                      :LeakageAmountInterval ,
+                      :PostConsumerRecycledContentInterval ,
+                      :PreConsumerRecycledContentInterval .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/above99Perc
+:above99Perc rdf:type owl:NamedIndividual ,
+                      :RecyclingAtSameLevelAmountInterval .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/acidDye
+:acidDye rdf:type owl:NamedIndividual ,
+                  :Dye ,
+                  :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/analineDye
+:analineDye rdf:type owl:NamedIndividual ,
+                     :Dye ,
+                     :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/anti-pilling
+:anti-pilling rdf:type owl:NamedIndividual ,
+                       :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/antiStaticFinishing
+:antiStaticFinishing rdf:type owl:NamedIndividual ,
+                              :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/antibacterialFinishing
+:antibacterialFinishing rdf:type owl:NamedIndividual ,
+                                 :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/azoDye
+:azoDye rdf:type owl:NamedIndividual ,
+                 :Dye ,
+                 :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/basicDye
+:basicDye rdf:type owl:NamedIndividual ,
+                   :Dye ,
+                   :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/batikPrinted
+:batikPrinted rdf:type owl:NamedIndividual ,
+                       :PrintingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/biodigestion
+:biodigestion rdf:type owl:NamedIndividual ,
+                       :TextileRecyclingProcess ;
+              rdfs:comment "Clean biodigestion."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/biosphereCascading
+:biosphereCascading rdf:type owl:NamedIndividual ,
+                             :TextileRecyclingProcess ;
+                    rdfs:comment "Industrial cascading in the biosphere."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/calendering
+:calendering rdf:type owl:NamedIndividual ,
+                      :MechanicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/certified
+:certified rdf:type owl:NamedIndividual ,
+                    :Validation .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/chromeDye
+:chromeDye rdf:type owl:NamedIndividual ,
+                    :Dye ,
+                    :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/coating
+:coating rdf:type owl:NamedIndividual ,
+                  :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/coatingAcrylic
+:coatingAcrylic rdf:type owl:NamedIndividual ,
+                         :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/coatingPU
+:coatingPU rdf:type owl:NamedIndividual ,
+                    :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/coatingPVC
+:coatingPVC rdf:type owl:NamedIndividual ,
+                     :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/creaseResistance
+:creaseResistance rdf:type owl:NamedIndividual ,
+                           :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/digitalPrinted
+:digitalPrinted rdf:type owl:NamedIndividual ,
+                         :PrintingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/directDye
+:directDye rdf:type owl:NamedIndividual ,
+                    :Dye ,
+                    :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/directDyed
+:directDyed rdf:type owl:NamedIndividual ,
+                     :TextileManufacturingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/disperseDye
+:disperseDye rdf:type owl:NamedIndividual ,
+                      :Dye ,
+                      :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/dopeDyed
+:dopeDyed rdf:type owl:NamedIndividual ,
+                   :TextileManufacturingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/embossing
+:embossing rdf:type owl:NamedIndividual ,
+                    :MechanicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/enzymeFinishing
+:enzymeFinishing rdf:type owl:NamedIndividual ,
+                          :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/flameRetardant
+:flameRetardant rdf:type owl:NamedIndividual ,
+                         :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/handPainted
+:handPainted rdf:type owl:NamedIndividual ,
+                      :PrintingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/homeComposting
+:homeComposting rdf:type owl:NamedIndividual ,
+                         :TextileRecyclingProcess ;
+                rdfs:comment "Composting in a home composter."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/incineration
+:incineration rdf:type owl:NamedIndividual ,
+                       :TextileRecyclingProcess ;
+              rdfs:comment "Clean incineration/pyrolysis."@en ;
+              rdfs:label "incineration"@en ,
+                         "pyrolysis"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/industrialComposting
+:industrialComposting rdf:type owl:NamedIndividual ,
+                               :TextileRecyclingProcess ;
+                      rdfs:comment "Composting in an industrial facility."@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/inkjetPrinted
+:inkjetPrinted rdf:type owl:NamedIndividual ,
+                        :PrintingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/lessThan1Perc
+:lessThan1Perc rdf:type owl:NamedIndividual ,
+                        :LeakageAmountInterval .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/mattingAgent
+:mattingAgent rdf:type owl:NamedIndividual ,
+                       :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/mercerizing
+:mercerizing rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/millWashing
+:millWashing rdf:type owl:NamedIndividual ,
+                      :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/millingAgent
+:millingAgent rdf:type owl:NamedIndividual ,
+                       :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/moistureManagemnet
+:moistureManagemnet rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/mordantDye
+:mordantDye rdf:type owl:NamedIndividual ,
+                     :Dye ,
+                     :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/mothproof
+:mothproof rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/nanoFinishing
+:nanoFinishing rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/narturalDye
+:narturalDye rdf:type owl:NamedIndividual ,
+                      :Dye ,
+                      :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/naturalOiling
+:naturalOiling rdf:type owl:NamedIndividual ,
+                        :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/opticalBrighteners
+:opticalBrighteners rdf:type owl:NamedIndividual ,
+                             :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/permanentCreasing
+:permanentCreasing rdf:type owl:NamedIndividual ,
+                            :MechanicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/permanentPress
+:permanentPress rdf:type owl:NamedIndividual ,
+                         :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/pieceDyed
+:pieceDyed rdf:type owl:NamedIndividual ,
+                    :TextileManufacturingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/pigmentBiosynthetic
+:pigmentBiosynthetic rdf:type owl:NamedIndividual ,
+                              :Dye ,
+                              :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/pigmentNatural
+:pigmentNatural rdf:type owl:NamedIndividual ,
+                         :Dye ,
+                         :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/pigmentSynthetic
+:pigmentSynthetic rdf:type owl:NamedIndividual ,
+                           :Dye ,
+                           :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/pre-shrinking
+:pre-shrinking rdf:type owl:NamedIndividual ,
+                        :MechanicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/prepareForDyeing
+:prepareForDyeing rdf:type owl:NamedIndividual ,
+                           :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/public
+:public rdf:type owl:NamedIndividual ,
+                 :Availability .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/reactiveDye
+:reactiveDye rdf:type owl:NamedIndividual ,
+                      :Dye ,
+                      :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/resins
+:resins rdf:type owl:NamedIndividual ,
+                 :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/rollerPrinted
+:rollerPrinted rdf:type owl:NamedIndividual ,
+                        :PrintingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/scratchAndSniff
+:scratchAndSniff rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/screenPrinted
+:screenPrinted rdf:type owl:NamedIndividual ,
+                        :PrintingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/secrecyAgreement
+:secrecyAgreement rdf:type owl:NamedIndividual ,
+                           :Availability .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/shearing
+:shearing rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/silicones
+:silicones rdf:type owl:NamedIndividual ,
+                    :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/singeing
+:singeing rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/softeningAgent
+:softeningAgent rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/soilRelease
+:soilRelease rdf:type owl:NamedIndividual ,
+                      :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/stainResistance
+:stainResistance rdf:type owl:NamedIndividual ,
+                          :ChemicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/steaming
+:steaming rdf:type owl:NamedIndividual ,
+                   :MechanicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/sueding
+:sueding rdf:type owl:NamedIndividual ,
+                  :MechanicalFinishing .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/sulfurDye
+:sulfurDye rdf:type owl:NamedIndividual ,
+                    :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/topDyed
+:topDyed rdf:type owl:NamedIndividual ,
+                  :TextileManufacturingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/transferPrinted
+:transferPrinted rdf:type owl:NamedIndividual ,
+                          :PrintingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/undyed
+:undyed rdf:type owl:NamedIndividual ,
+                 :TextileManufacturingProcess .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/validatedByThirdParty
+:validatedByThirdParty rdf:type owl:NamedIndividual ,
+                                :Validation .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/vatDye
+:vatDye rdf:type owl:NamedIndividual ,
+                 :Dye ,
+                 :PrintStuff .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/washAndWear
+:washAndWear rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/waterAndOilRepellency
+:waterAndOilRepellency rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/waterRepellent
+:waterRepellent rdf:type owl:NamedIndividual ,
+                         :WaterProperty ;
+                rdfs:label "Water repellent"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/waterResistant
+:waterResistant rdf:type owl:NamedIndividual ,
+                         :WaterProperty ;
+                rdfs:label "Water resistant"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/waterproof
+:waterproof rdf:type owl:NamedIndividual ,
+                     :WaterProperty ;
+            rdfs:label "Waterproof"@en .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/waxing
+:waxing rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/wrinkleResistance
+:wrinkleResistance rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/yarnDyed
+:yarnDyed rdf:type owl:NamedIndividual ,
+                   :TextileManufacturingProcess .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
