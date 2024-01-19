@@ -1,33 +1,47 @@
 #!/usr/bin/env python3
 from pybars import Compiler
 from bs4 import BeautifulSoup, formatter
+from glob import glob
 import os
-import yaml
+import re
 import urllib.request
 import zipfile
 from pylode.profiles.vocpub import VocPub
 import pdfkit
 from rdflib import Graph
 
-def copy_ontologies(config):
+
+def copy_ontologies():
     """Copy ontologies to web path."""
-    for ontology in config["ontologies"]:
-        source = ontology["source"]
-        path = ontology["path"]
-        version = ontology["version"]
-        os.system(f"mkdir -p docs/{path}/{version}")
+    latest = {}
+
+    # publish ontologies
+    for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
+        if not source.endswith(".ttl"):
+            continue
         
-        basename = os.path.basename(source).split(".")[0]
+        print(f"Copy ontology {source}")
+
+        parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
+        name = parts.group(1)
+        version = float(parts.group(2))
+        base = f"docs/ontology/{name}/{version}/{name}"
+        os.makedirs(f"docs/ontology/{name}/{version}/", exist_ok=True)
         g = Graph()
         g.parse(source)
-        g.serialize(destination=f"docs/{path}/{version}/{basename}.ttl", format="turtle")
-        g.serialize(destination=f"docs/{path}/{version}/{basename}.rdf", format="xml")
-        g.serialize(destination=f"docs/{path}/{version}/{basename}.owl", format="xml")
-        g.serialize(destination=f"docs/{path}/{version}/{basename}.jsonld", format="json-ld")
+        g.serialize(destination=f"{base}.ttl", format="turtle")
+        g.serialize(destination=f"{base}.rdf", format="xml")
+        g.serialize(destination=f"{base}.owl", format="xml")
+        g.serialize(destination=f"{base}.jsonld", format="json-ld")
+        
+        if latest.get(name, 0) < version:
+            latest[name] = version
+        
+    # add latest
+    for name, version in latest.items():
+        os.makedirs(f"docs/ontology/{name}/latest/", exist_ok=True)
+        os.system(f"cp docs/ontology/{name}/{version}/* docs/ontology/{name}/latest/")
 
-        if ontology.get("latest"):
-            os.system(f"mkdir -p docs/{path}/latest")
-            os.system(f"cp docs/{path}/{version}/* docs/{path}/latest")
 
 def download_owl2vowl():
     """Download and extract OWL2VOWL."""
@@ -43,18 +57,24 @@ def download_owl2vowl():
             zip_ref.extractall("temp/")
 
 
-def build_pdf(config):
+def build_pdf():
     """Convert docs to PDF using wkhtmltopdf."""
     try:
         html_formatter = formatter.HTMLFormatter(indent=4)
-        for ontology in config["ontologies"]:
-            path = ontology["path"].strip("/")
-            version = ontology["version"].strip("/")
-            source = ontology["source"]
-            basename = os.path.basename(source).split(".")[0]
+        
+        for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
+            if not source.endswith(".ttl"):
+                continue
 
-            html_file = f"docs/{path}/{version}/index.html"
-            pdf_file = f"docs/{path}/{version}/{basename}.pdf"
+            print(f"Generating PDF docs for {source}")
+
+            parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
+            name = parts.group(1)
+            version = float(parts.group(2))
+        
+
+            html_file = f"docs/ontology/{name}/{version}/index.html"
+            pdf_file = f"docs/ontology/{name}/{version}/{name}.pdf"
             
             # Drop TOC, logo and iframe before generating PDF 
             with open(html_file, encoding="utf-8") as f:
@@ -102,44 +122,51 @@ def build_pdf(config):
         print("PDF conversion cancelled. Is 'wkhtmltopdf' (https://wkhtmltopdf.org/) installed?")
 
 
-def generate_vowl(config):
+def generate_vowl():
     """Generate VOWL specifications."""
-    # Note: The flag "add-opens" below fixes an issue with
-    # "InaccessibleObjectException" in later versions of Java
-    for ontology in config["ontologies"]:
-        source = ontology["source"]
-        path = ontology["path"]
-        version = ontology["version"]
-        basename = os.path.basename(source).split(".")[0]
-        os.system(f"mkdir -p docs/webvowl/data/{path}/{version}/")
+    for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
+        if not source.endswith(".ttl"):
+            continue
+        
+        print(f"Generating VOWL for {source}")
+
+        parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
+        name = parts.group(1)
+        version = float(parts.group(2))
+        
+        os.makedirs(f"docs/webvowl/data/ontology/{name}/{version}/", exist_ok=True)
+        # Note: The flag "add-opens" below fixes an issue with
+        # "InaccessibleObjectException" in later versions of Java
         os.system(f"""
             java -Dlog4j.configurationFile=log4j2.xml \
                 --add-opens java.base/java.lang=ALL-UNNAMED \
                 -jar temp/owl2vowl.jar \
                 -file {source} \
-                -output docs/webvowl/data/{path}/{version}/{basename}.json > /dev/null
+                -output docs/webvowl/data/ontology/{name}/{version}/{name}.json > /dev/null
         """)
 
 
-def create_documentation(config):
+def create_documentation():
     """Generate LODE documentation and instert VOWL visualization."""
-    for ontology in config["ontologies"]:
-        source = ontology["source"]
-        basename = os.path.basename(source).split(".")[0]
-        path = ontology["path"].strip("/")
-        version = ontology["version"].strip("/")
+    for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
+        if not source.endswith(".ttl"):
+            continue
         
-        os.system(f"mkdir -p docs/{path}/{version}/")
-        
-        html_file = f"docs/{path}/{version}/index.html"
+        print(f"Generating docs for {source}")
+
+        parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
+        name = parts.group(1)
+        version = float(parts.group(2))
+        os.makedirs(f"docs/ontology/{name}/{version}/", exist_ok=True)
+                
+        html_file = f"docs/ontology/{name}/{version}/index.html"
         od = VocPub(ontology=source)
         od.make_html(destination=html_file)
-        
-        # relative path to webvowl
-        rel = "../" * f"{path}/{version}/".count("/")
-        path_to_webvowl = rel + f"webvowl/index.html#{path}/{version}/{basename}"
 
-        # Insert overview section into documentation with WebVOWL in an iframe
+        # relative path to webvowl and vowl file
+        path_to_webvowl = f"../../../webvowl/index.html#ontology/{name}/{version}/{name}"
+
+        # # Insert overview section into documentation with WebVOWL in an iframe
         with open(html_file, encoding="utf-8") as f:
             soup = BeautifulSoup(f, "html.parser")
             overview = BeautifulSoup(f"""
@@ -153,36 +180,41 @@ def create_documentation(config):
             """, "html.parser")
             tag = soup.find(id='metadata')
             tag.insert_after(overview)
-        
-        html_formatter = formatter.HTMLFormatter(indent=4)
-        with open(html_file, "w") as f:
-            f.write(soup.prettify(formatter=html_formatter))
-        
-        if ontology.get("latest"):
-            os.system(f"mkdir -p docs/{path}/latest")
-            os.system(f"cp docs/{path}/{version}/* docs/{path}/latest")
+
+            html_formatter = formatter.HTMLFormatter(indent=4)
+            with open(html_file, "w") as f:
+                f.write(soup.prettify(formatter=html_formatter))
 
 
-def create_index_file(config):
+def create_index_file():
+    print("Generating index file")
     compiler = Compiler()
     template_file = "index.hbs"
     index_file = "docs/index.html"
     
-    data = []
-    for ontology in config["ontologies"]:
-        source = ontology["source"]
-        path = ontology["path"].strip("/")
-        version = ontology["version"].strip("/")
-        filename = os.path.basename(source)
-        basename = filename.split(".")[0]
-        data.append({ "html": f"{path}/{version}/index.html",
-                      "pdf": f"{path}/{version}/{basename}.pdf",
-                      "file": f"{path}/{version}/{filename}",
-                      "version": version,
-                      "title": basename })
+    ontologies = {}
+    for source in glob("ontology/modules/*/*/*", recursive=True):
+        if not source.endswith(".ttl"):
+            continue
+        parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
+        name = parts.group(1)
+        version = float(parts.group(2))
+        
+        if not ontologies.get(name):
+            ontologies[name] = { "name": name, "versions": [] }
+        
+        ontologies[name]["versions"].append(version)
+        ontologies[name]["versions"].sort(reverse=True)
     
+    data = []
+    for name in ontologies:
+        data.append({
+            "name": name,
+            "versions": ontologies[name]["versions"]
+        })
+    data.sort(key=lambda x: x["name"])
+        
     # sort by name ascending, version descending
-    data.sort(key=lambda x: (x["title"], -float(x["version"])))
     with open(template_file, "r") as f:
         template = compiler.compile(f.read())
         
@@ -190,15 +222,12 @@ def create_index_file(config):
         f.write(template({"data": data}))
 
 def main():
-    with open("config.yml", 'r') as f:
-        config = yaml.load(f, Loader=yaml.FullLoader)
-    
-    copy_ontologies(config)
     download_owl2vowl()
-    generate_vowl(config)
-    create_documentation(config)
-    build_pdf(config)
-    create_index_file(config)
+    generate_vowl()
+    create_documentation()
+    build_pdf()
+    create_index_file()
+    copy_ontologies()
 
 if __name__ == "__main__":
     main()

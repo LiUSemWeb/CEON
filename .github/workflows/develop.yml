@@ -1,0 +1,36 @@
+name: Publish development ontologies
+run-name: Publish ontologies
+on:
+  push:
+    branches:
+      - develop
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: get and commit files
+        run: |
+          git checkout main
+          git checkout develop -- ./ontology
+          pip install -r requirements.txt
+          python build-dev.py
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -f docs/
+          git commit -m "publish dev ontologies" -a
+          
+      - name: push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
