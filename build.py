@@ -50,7 +50,7 @@ def download_owl2vowl():
     if not os.path.isfile(path_to_jar):
         path_to_zip = "temp/owl2vowl_0.3.7.zip"
         if not os.path.isfile(path_to_zip):
-            url = "http://vowl.visualdataweb.org/downloads/owl2vowl_0.3.7.zip"
+            url = "https://github.com/VisualDataWeb/OWL2VOWL/archive/refs/tags/0.3.7.zip"
             urllib.request.urlretrieve(url, path_to_zip)
 
         with zipfile.ZipFile(path_to_zip, 'r') as zip_ref:
