@@ -1,10 +1,10 @@
-@prefix : <http://www.semanticweb.org/evabl45/ontologies/2023/8/untitled-ontology-98/> .
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://w3id.org/CEON/ontology/textile/> a owl:Ontology ;
+: a owl:Ontology ;
     owl:imports <http://w3id.org/CEON/ontology/actorODP/0.2/>,
         <http://w3id.org/CEON/ontology/datasheet/0.1/>,
         <http://w3id.org/CEON/ontology/product/0.2/>,
@@ -12,44 +12,44 @@
         <http://w3id.org/CEON/ontology/quantity/0.1/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/textile/0.1/> .
 
-<http://w3id.org/CEON/ontology/textile/0perc> a :PostConsumerRecycledContentInterval,
+:0perc a :PostConsumerRecycledContentInterval,
         :PreConsumerRecycledContentInterval,
         :RecyclingAtSameLevelAmountInterval,
         owl:NamedIndividual .
 
-<http://w3id.org/CEON/ontology/textile/0to10Perc> a :PostConsumerRecycledContentInterval,
+:0to10Perc a :PostConsumerRecycledContentInterval,
         :PreConsumerRecycledContentInterval,
         :RecyclingAtSameLevelAmountInterval,
         owl:NamedIndividual .
 
-<http://w3id.org/CEON/ontology/textile/10to25Perc> a :LeakageAmountInterval,
+:10to25Perc a :LeakageAmountInterval,
         :PostConsumerRecycledContentInterval,
         :PreConsumerRecycledContentInterval,
         :RecyclingAtSameLevelAmountInterval,
         owl:NamedIndividual .
 
-<http://w3id.org/CEON/ontology/textile/1to10Perc> a :LeakageAmountInterval,
+:1to10Perc a :LeakageAmountInterval,
         owl:NamedIndividual .
 
-<http://w3id.org/CEON/ontology/textile/25to50Perc> a :LeakageAmountInterval,
+:25to50Perc a :LeakageAmountInterval,
         :PostConsumerRecycledContentInterval,
         :PreConsumerRecycledContentInterval,
         :RecyclingAtSameLevelAmountInterval,
         owl:NamedIndividual .
 
-<http://w3id.org/CEON/ontology/textile/50-75Perc> a :LeakageAmountInterval,
+:50-75Perc a :LeakageAmountInterval,
         :PostConsumerRecycledContentInterval,
         :PreConsumerRecycledContentInterval,
         :RecyclingAtSameLevelAmountInterval,
         owl:NamedIndividual .
 
-<http://w3id.org/CEON/ontology/textile/75to95Perc> a :LeakageAmountInterval,
+:75to95Perc a :LeakageAmountInterval,
         :PostConsumerRecycledContentInterval,
         :PreConsumerRecycledContentInterval,
         :RecyclingAtSameLevelAmountInterval,
         owl:NamedIndividual .
 
-<http://w3id.org/CEON/ontology/textile/95to99Perc> a :RecyclingAtSameLevelAmountInterval,
+:95to99Perc a :RecyclingAtSameLevelAmountInterval,
         owl:NamedIndividual .
 
 :BatchOfTextileObjects a owl:Class ;
@@ -71,20 +71,32 @@
 :Print a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Constituent> .
 
+:TextileChemicalSubstanceThresholdStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
 :TextileDataSheet a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <http://w3id.org/CEON/ontology/resourceODP/isAbout> ;
             owl:someValuesFrom :TextileProduct ],
+        [ a owl:Restriction ;
+            owl:onProperty :hasProperty ;
+            owl:someValuesFrom :TextileDataSheetStatement ],
         <http://w3id.org/CEON/ontology/datasheet/DataSheet> .
 
 :TextileDataSheetIssuingStatement a owl:Class ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/provenance/Statement> .
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileDataSheetUpdateStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileManufacturerStatement a owl:Class ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/provenance/Statement> .
+    rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileManufacturingSiteStatement a owl:Class ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/provenance/Statement> .
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductCertification a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileProductComponentRelation a owl:Class ;
     rdfs:subClassOf [ a owl:Class ;
@@ -100,7 +112,43 @@
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
         <http://qudt.org/schema/qudt/Quantity>,
         <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>,
-        <http://w3id.org/CEON/ontology/provenance/Statement> .
+        :TextileDataSheetStatement .
+
+:TextileProductCompositionDisclosureStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductCompositionOfConcern a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductCompositionWeightFraction a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDataSheet a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignForRecycling a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignForRefurbishment a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignForRemanufacturing a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignForReuseMethod a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignToBeCleanlyRemoved a owl:Class ;
+    rdfs:subClassOf :TextileProductDesignForDisassembly .
+
+:TextileProductDesignToBeDismantled a owl:Class ;
+    rdfs:subClassOf :TextileProductDesignForDisassembly .
+
+:TextileProductDesignedForBetterUse a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductManufacturingMethod a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileProductMatterCompositionRelation a owl:Class ;
     rdfs:subClassOf [ a owl:Class ;
@@ -112,7 +160,7 @@
                                 owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ] ) ],
         <http://qudt.org/schema/qudt/Quantity>,
         <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>,
-        <http://w3id.org/CEON/ontology/provenance/Statement> .
+        :TextileDataSheetStatement .
 
 :TextileProductObject a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -133,7 +181,10 @@
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
         <http://qudt.org/schema/qudt/Quantity>,
         <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>,
-        <http://w3id.org/CEON/ontology/provenance/Statement> .
+        :TextileDataSheetStatement .
+
+:TextileProductRenewableContet a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
 
 :above95Perc a :LeakageAmountInterval,
         :PostConsumerRecycledContentInterval,
@@ -557,6 +608,9 @@
 
 :Availability a owl:Class .
 
+:TextileProductDesignForDisassembly a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
 :TextileProductType a owl:Class .
 
 :Validation a owl:Class .
@@ -608,13 +662,15 @@
 :PreConsumerRecycledContentInterval a owl:Class ;
     rdfs:subClassOf :AmountIntervalValue .
 
-:hasProperty a owl:ObjectProperty .
-
 :PrintingProcess a owl:Class ;
     rdfs:subClassOf :TextileManufacturingProcess .
 
 :RecyclingAtSameLevelAmountInterval a owl:Class ;
     rdfs:subClassOf :AmountIntervalValue .
+
+:hasProperty a owl:ObjectProperty ;
+    rdfs:domain <http://w3id.org/CEON/ontology/datasheet/DataSheet> ;
+    rdfs:range <http://w3id.org/CEON/ontology/provenance/Statement> .
 
 :TextileManufacturingProcess a owl:Class .
 
@@ -626,4 +682,7 @@
 
 :ChemicalFinishing a owl:Class ;
     rdfs:subClassOf :TextileFinishing .
+
+:TextileDataSheetStatement a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/provenance/Statement> .
 
