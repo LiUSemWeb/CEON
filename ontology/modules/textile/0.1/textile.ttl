@@ -38,7 +38,8 @@
 
 
 ###  http://w3id.org/CEON/ontology/textile/chemicalSubstanceDisclosureThreshold
-:chemicalSubstanceDisclosureThreshold rdf:type owl:ObjectProperty .
+:chemicalSubstanceDisclosureThreshold rdf:type owl:ObjectProperty ;
+                                      rdfs:range :TextileProductCompositionDisclosureStatement .
 
 
 ###  http://w3id.org/CEON/ontology/textile/designedForRecyclingAtSameQuality
@@ -48,6 +49,13 @@
                                    :PCDSmapping "5030-5037" ;
                                    rdfs:comment "Percentage of the product that is designed for recycling at the same level of quality. The remainder of the materials is foreseen by the manufacturer to be recycled at a lower quality than the original content."@en ;
                                    rdfs:label "desinged for recycling at the same level of quality"@en .
+
+
+###  http://w3id.org/CEON/ontology/textile/disclosureValue
+:disclosureValue rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity#objectValue> ;
+                 rdfs:domain :TextileChemicalSubstanceThresholdStatement ;
+                 rdfs:range :AmountThreshold .
 
 
 ###  http://w3id.org/CEON/ontology/textile/hasColor
@@ -315,6 +323,10 @@
 :AmountIntervalValue rdf:type owl:Class .
 
 
+###  http://w3id.org/CEON/ontology/textile/AmountThreshold
+:AmountThreshold rdf:type owl:Class .
+
+
 ###  http://w3id.org/CEON/ontology/textile/Availability
 :Availability rdf:type owl:Class .
 
@@ -517,7 +529,7 @@
                                   rdfs:subClassOf :TextileDataSheetStatement ,
                                                   [ rdf:type owl:Restriction ;
                                                     owl:onProperty :recyclingAtSameQualityRange ;
-                                                    owl:someValuesFrom :AmountIntervalValue
+                                                    owl:someValuesFrom :RecyclingAtSameLevelAmountInterval
                                                   ] .
 
 
@@ -647,16 +659,103 @@
 #    Individuals
 #################################################################
 
+###  http://w3id.org/CEON/ontology/textile/_0.01perc
+:_0.01perc rdf:type owl:NamedIndividual ,
+                    :AmountThreshold ;
+           rdfs:label "0.01%" ,
+                      "100ppm" .
+
+
+###  http://w3id.org/CEON/ontology/textile/_0.1perc
+:_0.1perc rdf:type owl:NamedIndividual ,
+                   :AmountThreshold ;
+          rdfs:label "0.1%" ,
+                     "1000ppm" .
+
+
+###  http://w3id.org/CEON/ontology/textile/_0perc
+:_0perc rdf:type owl:NamedIndividual ,
+                 :PostConsumerRecycledContentInterval ,
+                 :PreConsumerRecycledContentInterval ,
+                 :RecyclingAtSameLevelAmountInterval ;
+        rdfs:label "0%" .
+
+
+###  http://w3id.org/CEON/ontology/textile/_0to10Perc
+:_0to10Perc rdf:type owl:NamedIndividual ,
+                     :PostConsumerRecycledContentInterval ,
+                     :PreConsumerRecycledContentInterval ,
+                     :RecyclingAtSameLevelAmountInterval ;
+            rdfs:label "0-10%" .
+
+
+###  http://w3id.org/CEON/ontology/textile/_10to25Perc
+:_10to25Perc rdf:type owl:NamedIndividual ,
+                      :LeakageAmountInterval ,
+                      :PostConsumerRecycledContentInterval ,
+                      :PreConsumerRecycledContentInterval ,
+                      :RecyclingAtSameLevelAmountInterval ;
+             rdfs:label "10-25%" .
+
+
+###  http://w3id.org/CEON/ontology/textile/_1perc
+:_1perc rdf:type owl:NamedIndividual ,
+                 :AmountThreshold ;
+        rdfs:label "1%" ,
+                   "10000ppm" .
+
+
+###  http://w3id.org/CEON/ontology/textile/_1to10Perc
+:_1to10Perc rdf:type owl:NamedIndividual ,
+                     :LeakageAmountInterval ;
+            rdfs:label "1-10%" .
+
+
+###  http://w3id.org/CEON/ontology/textile/_25to50Perc
+:_25to50Perc rdf:type owl:NamedIndividual ,
+                      :LeakageAmountInterval ,
+                      :PostConsumerRecycledContentInterval ,
+                      :PreConsumerRecycledContentInterval ,
+                      :RecyclingAtSameLevelAmountInterval ;
+             rdfs:label "25-50%" .
+
+
+###  http://w3id.org/CEON/ontology/textile/_50-75Perc
+:_50-75Perc rdf:type owl:NamedIndividual ,
+                     :LeakageAmountInterval ,
+                     :PostConsumerRecycledContentInterval ,
+                     :PreConsumerRecycledContentInterval ,
+                     :RecyclingAtSameLevelAmountInterval ;
+            rdfs:label "50-75%" .
+
+
+###  http://w3id.org/CEON/ontology/textile/_75to95Perc
+:_75to95Perc rdf:type owl:NamedIndividual ,
+                      :LeakageAmountInterval ,
+                      :PostConsumerRecycledContentInterval ,
+                      :PreConsumerRecycledContentInterval ,
+                      :RecyclingAtSameLevelAmountInterval ;
+             rdfs:label "75-95%" .
+
+
+###  http://w3id.org/CEON/ontology/textile/_95to99Perc
+:_95to99Perc rdf:type owl:NamedIndividual ,
+                      :RecyclingAtSameLevelAmountInterval ;
+             rdfs:label "95-99%" .
+
+
 ###  http://w3id.org/CEON/ontology/textile/above95Perc
 :above95Perc rdf:type owl:NamedIndividual ,
                       :LeakageAmountInterval ,
                       :PostConsumerRecycledContentInterval ,
-                      :PreConsumerRecycledContentInterval .
+                      :PreConsumerRecycledContentInterval ;
+             rdfs:label ">95%" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/above99Perc
 :above99Perc rdf:type owl:NamedIndividual ,
-                      :RecyclingAtSameLevelAmountInterval .
+                      :RecyclingAtSameLevelAmountInterval ;
+             rdfs:label ">99%" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/acidDye
@@ -1069,62 +1168,6 @@
 ###  http://w3id.org/CEON/ontology/textile/yarnDyed
 :yarnDyed rdf:type owl:NamedIndividual ,
                    :TextileManufacturingProcess .
-
-
-###  http://w3id.org/CEON/ontology/textile/0perc
-<http://w3id.org/CEON/ontology/textile/0perc> rdf:type owl:NamedIndividual ,
-                                                       :PostConsumerRecycledContentInterval ,
-                                                       :PreConsumerRecycledContentInterval ,
-                                                       :RecyclingAtSameLevelAmountInterval .
-
-
-###  http://w3id.org/CEON/ontology/textile/0to10Perc
-<http://w3id.org/CEON/ontology/textile/0to10Perc> rdf:type owl:NamedIndividual ,
-                                                           :PostConsumerRecycledContentInterval ,
-                                                           :PreConsumerRecycledContentInterval ,
-                                                           :RecyclingAtSameLevelAmountInterval .
-
-
-###  http://w3id.org/CEON/ontology/textile/1to10Perc
-<http://w3id.org/CEON/ontology/textile/1to10Perc> rdf:type owl:NamedIndividual ,
-                                                           :LeakageAmountInterval .
-
-
-###  http://w3id.org/CEON/ontology/textile/10to25Perc
-<http://w3id.org/CEON/ontology/textile/10to25Perc> rdf:type owl:NamedIndividual ,
-                                                            :LeakageAmountInterval ,
-                                                            :PostConsumerRecycledContentInterval ,
-                                                            :PreConsumerRecycledContentInterval ,
-                                                            :RecyclingAtSameLevelAmountInterval .
-
-
-###  http://w3id.org/CEON/ontology/textile/25to50Perc
-<http://w3id.org/CEON/ontology/textile/25to50Perc> rdf:type owl:NamedIndividual ,
-                                                            :LeakageAmountInterval ,
-                                                            :PostConsumerRecycledContentInterval ,
-                                                            :PreConsumerRecycledContentInterval ,
-                                                            :RecyclingAtSameLevelAmountInterval .
-
-
-###  http://w3id.org/CEON/ontology/textile/50-75Perc
-<http://w3id.org/CEON/ontology/textile/50-75Perc> rdf:type owl:NamedIndividual ,
-                                                           :LeakageAmountInterval ,
-                                                           :PostConsumerRecycledContentInterval ,
-                                                           :PreConsumerRecycledContentInterval ,
-                                                           :RecyclingAtSameLevelAmountInterval .
-
-
-###  http://w3id.org/CEON/ontology/textile/75to95Perc
-<http://w3id.org/CEON/ontology/textile/75to95Perc> rdf:type owl:NamedIndividual ,
-                                                            :LeakageAmountInterval ,
-                                                            :PostConsumerRecycledContentInterval ,
-                                                            :PreConsumerRecycledContentInterval ,
-                                                            :RecyclingAtSameLevelAmountInterval .
-
-
-###  http://w3id.org/CEON/ontology/textile/95to99Perc
-<http://w3id.org/CEON/ontology/textile/95to99Perc> rdf:type owl:NamedIndividual ,
-                                                            :RecyclingAtSameLevelAmountInterval .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
