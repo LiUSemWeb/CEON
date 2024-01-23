@@ -12,46 +12,6 @@
         <http://w3id.org/CEON/ontology/quantity/0.1/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/textile/0.1/> .
 
-:0perc a :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual .
-
-:0to10Perc a :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual .
-
-:10to25Perc a :LeakageAmountInterval,
-        :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual .
-
-:1to10Perc a :LeakageAmountInterval,
-        owl:NamedIndividual .
-
-:25to50Perc a :LeakageAmountInterval,
-        :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual .
-
-:50-75Perc a :LeakageAmountInterval,
-        :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual .
-
-:75to95Perc a :LeakageAmountInterval,
-        :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual .
-
-:95to99Perc a :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual .
-
 :BatchOfTextileObjects a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty :hasColor ;
@@ -70,9 +30,6 @@
 
 :Print a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Constituent> .
-
-:TextileChemicalSubstanceThresholdStatement a owl:Class ;
-    rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileDataSheet a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -114,9 +71,6 @@
         <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>,
         :TextileDataSheetStatement .
 
-:TextileProductCompositionDisclosureStatement a owl:Class ;
-    rdfs:subClassOf :TextileDataSheetStatement .
-
 :TextileProductCompositionOfConcern a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
@@ -124,9 +78,6 @@
     rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileProductDataSheet a owl:Class ;
-    rdfs:subClassOf :TextileDataSheetStatement .
-
-:TextileProductDesignForRecycling a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileProductDesignForRefurbishment a owl:Class ;
@@ -186,13 +137,78 @@
 :TextileProductRenewableContet a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
+:_0.01perc a :AmountThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "0.01%",
+        "100ppm" .
+
+:_0.1perc a :AmountThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "0.1%",
+        "1000ppm" .
+
+:_0perc a :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "0%" .
+
+:_0to10Perc a :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "0-10%" .
+
+:_10to25Perc a :LeakageAmountInterval,
+        :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "10-25%" .
+
+:_1perc a :AmountThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "1%",
+        "10000ppm" .
+
+:_1to10Perc a :LeakageAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "1-10%" .
+
+:_25to50Perc a :LeakageAmountInterval,
+        :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "25-50%" .
+
+:_50-75Perc a :LeakageAmountInterval,
+        :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "50-75%" .
+
+:_75to95Perc a :LeakageAmountInterval,
+        :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "75-95%" .
+
+:_95to99Perc a :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "95-99%" .
+
 :above95Perc a :LeakageAmountInterval,
         :PostConsumerRecycledContentInterval,
         :PreConsumerRecycledContentInterval,
-        owl:NamedIndividual .
+        owl:NamedIndividual ;
+    rdfs:label ">95%" .
 
 :above99Perc a :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual .
+        owl:NamedIndividual ;
+    rdfs:label ">99%" .
 
 :acidDye a :Dye,
         :PrintStuff,
@@ -250,7 +266,8 @@
 :chemicalCompliance a owl:DatatypeProperty ;
     :CFmapping "CF707" .
 
-:chemicalSubstanceDisclosureThreshold a owl:ObjectProperty .
+:chemicalSubstanceDisclosureThreshold a owl:ObjectProperty ;
+    rdfs:range :TextileProductCompositionDisclosureStatement .
 
 :chromeDye a :Dye,
         :PrintStuff,
@@ -285,6 +302,7 @@
     rdfs:label "desinged for recycling at the same level of quality"@en ;
     :PCDSmapping "5030-5037" ;
     rdfs:comment "Percentage of the product that is designed for recycling at the same level of quality. The remainder of the materials is foreseen by the manufacturer to be recycled at a lower quality than the original content."@en ;
+    rdfs:range :TextileProductDesignForRecycling ;
     rdfs:subPropertyOf :hasProperty .
 
 :designedForRefurbishment a owl:DatatypeProperty ;
@@ -311,6 +329,11 @@
 
 :directDyed a :TextileManufacturingProcess,
         owl:NamedIndividual .
+
+:disclosureValue a owl:ObjectProperty ;
+    rdfs:domain :TextileChemicalSubstanceThresholdStatement ;
+    rdfs:range :AmountThreshold ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity#objectValue> .
 
 :disperseDye a :Dye,
         :PrintStuff,
@@ -590,6 +613,18 @@
 :DyeingProcess a owl:Class ;
     rdfs:subClassOf :TextileManufacturingProcess .
 
+:TextileChemicalSubstanceThresholdStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductCompositionDisclosureStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignForRecycling a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :recyclingAtSameQualityRange ;
+            owl:someValuesFrom :RecyclingAtSameLevelAmountInterval ],
+        :TextileDataSheetStatement .
+
 :certification a owl:DatatypeProperty .
 
 :collectionParameter a owl:DatatypeProperty .
@@ -603,6 +638,9 @@
 :hasTextileProductType a owl:ObjectProperty ;
     rdfs:domain :TextileProduct ;
     rdfs:range :TextileProductType .
+
+:recyclingAtSameQualityRange a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity#objectValue> .
 
 :textileProductDesign a owl:ObjectProperty .
 
@@ -629,6 +667,8 @@
     rdfs:range :TextileManufacturingProcess .
 
 :AmountIntervalValue a owl:Class .
+
+:AmountThreshold a owl:Class .
 
 :Color a owl:Class .
 
@@ -665,12 +705,12 @@
 :PrintingProcess a owl:Class ;
     rdfs:subClassOf :TextileManufacturingProcess .
 
-:RecyclingAtSameLevelAmountInterval a owl:Class ;
-    rdfs:subClassOf :AmountIntervalValue .
-
 :hasProperty a owl:ObjectProperty ;
     rdfs:domain <http://w3id.org/CEON/ontology/datasheet/DataSheet> ;
     rdfs:range <http://w3id.org/CEON/ontology/provenance/Statement> .
+
+:RecyclingAtSameLevelAmountInterval a owl:Class ;
+    rdfs:subClassOf :AmountIntervalValue .
 
 :TextileManufacturingProcess a owl:Class .
 
