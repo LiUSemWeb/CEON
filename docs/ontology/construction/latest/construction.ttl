@@ -1,0 +1,232 @@
+@prefix : <http://w3id.org/CEON/ontology/construction/> .
+@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix product: <http://w3id.org/CEON/ontology/product/> .
+@prefix quantity: <http://w3id.org/CEON/ontology/quantity#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist",
+        "Huanyu Li",
+        "Mikael Lindecrantz" ;
+    dcterms:created "2023-03-16"^^xsd:string ;
+    dcterms:creator "Robin Keskisärkkä" ;
+    dcterms:description "The Product module of CEON (Circular Economy Ontology Network)." ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Construction Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "construction"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/construction/"^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/actor/0.2/>,
+        <http://w3id.org/CEON/ontology/datasheet/0.1/>,
+        <http://w3id.org/CEON/ontology/material/0.1/>,
+        <http://w3id.org/CEON/ontology/product/0.2/>,
+        <http://w3id.org/CEON/ontology/quantity/0.1/>,
+        <http://w3id.org/CEON/ontology/qudt/0.1/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/construction/0.1/> ;
+    owl:versionInfo "0.1" .
+
+:DimensionalDeviation a owl:Class .
+
+:F30 a :FireResistance,
+        owl:NamedIndividual .
+
+:F60 a :FireResistance,
+        owl:NamedIndividual .
+
+:FireResistanceRelation a owl:Class ;
+    rdfs:subClassOf actorODP:ResourceRelation .
+
+:FloorPanel a owl:Class ;
+    rdfs:subClassOf :ConstructionProduct .
+
+:FloorTileConditionRelation a owl:Class ;
+    rdfs:subClassOf actorODP:ResourceRelation .
+
+:RemainingUseSpan a owl:Class ;
+    rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> .
+
+:TreatmentPolicy a owl:Class .
+
+:condition_bad a :FloorTileCondition,
+        owl:NamedIndividual .
+
+:condition_good a :FloorTileCondition,
+        owl:NamedIndividual .
+
+:condition_medium a :FloorTileCondition,
+        owl:NamedIndividual .
+
+:hasAccessory a owl:ObjectProperty .
+
+:hasCondition a owl:ObjectProperty .
+
+:hasConductivity a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasContaminant a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasDimensionalDeviation a owl:ObjectProperty .
+
+:hasDismantlingMethod a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasDistanceToRecyclingPlant a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasFireResistance a owl:ObjectProperty ;
+    rdfs:range :FireResistance .
+
+:hasHeight a owl:ObjectProperty ;
+    rdfs:subPropertyOf :hasTileDimension .
+
+:hasInstallationDate a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasMarketValueForNewProduct a owl:ObjectProperty ;
+    rdfs:subPropertyOf quantity:hasMarketValue .
+
+:hasMarketValueForReusedProduct a owl:ObjectProperty ;
+    rdfs:subPropertyOf quantity:hasMarketValue .
+
+:hasPackagingRecommendationsAfterDismantling a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasPolicyOnTreatment a owl:DatatypeProperty .
+
+:hasProductCategory a owl:ObjectProperty .
+
+:hasProductDescription a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasProductID a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasProductName a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasProductionDate a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasProductionSite a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasRecyclingPotential a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasRecyclingSeparability a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasRefurbishmentMethod a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasResistanceToEarth a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasReuseDeconstructability a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasReusePotential a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasSystemWeight a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasThickness a owl:ObjectProperty ;
+    rdfs:subPropertyOf :hasTileDimension .
+
+:hasUseSpanRemaining a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasUseSpanTotal a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasWidth a owl:ObjectProperty ;
+    rdfs:subPropertyOf :hasTileDimension .
+
+:ifcEntity a owl:ObjectProperty .
+
+:isBuiltIn a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:isExternal a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:isLoadbearing a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:pedestalGridHeight a owl:ObjectProperty ;
+    rdfs:subPropertyOf :hasPedestalGridDimension .
+
+:pedestalGridThickness a owl:ObjectProperty ;
+    rdfs:subPropertyOf :hasPedestalGridDimension .
+
+:pedestalGridWidth a owl:ObjectProperty ;
+    rdfs:subPropertyOf :hasPedestalGridDimension .
+
+:policyOnTreatment a owl:ObjectProperty .
+
+:qualityOfProduct a owl:ObjectProperty .
+
+:quality_high a :ProductQuality,
+        owl:NamedIndividual .
+
+:quality_low a :ProductQuality,
+        owl:NamedIndividual .
+
+:quality_medium a :ProductQuality,
+        owl:NamedIndividual .
+
+:standardPedestalHeight a owl:ObjectProperty ;
+    rdfs:subPropertyOf :hasPedestalGridDimension .
+
+:takeBackProgramOriginalManufacturer a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:takeBackProgramOtherManufacturers a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:technicalRequirementsForTakeBackForRecycling a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:technicalRequirementsForTakeBackForReuse a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+odp:coversRequirements a owl:AnnotationProperty .
+
+:ConstructionProduct a owl:Class ;
+    rdfs:subClassOf product:Product .
+
+:FireResistance a owl:Class .
+
+:FloorTileCondition a owl:Class .
+
+:ProductQuality a owl:Class .
+
+:hasTileDimension a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasPedestalGridDimension a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
