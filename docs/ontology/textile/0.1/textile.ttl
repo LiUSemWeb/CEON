@@ -1,16 +1,30 @@
 @prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 : a owl:Ontology ;
+    dcterms:contributor "Huanyu Li",
+        "Mikael Lindecrantz",
+        "Robin Keskisärkkä" ;
+    dcterms:creator "Eva Blomqvist" ;
+    dcterms:description "The Textile module of CEON (Circular Economy Ontology Network)." ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Textile Module" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/textile/" ;
+    ns1:prefix "textile" ;
+    rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
     owl:imports <http://w3id.org/CEON/ontology/actorODP/0.2/>,
         <http://w3id.org/CEON/ontology/datasheet/0.1/>,
         <http://w3id.org/CEON/ontology/product/0.2/>,
         <http://w3id.org/CEON/ontology/provenance/0.1/>,
         <http://w3id.org/CEON/ontology/quantity/0.1/> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/textile/0.1/> .
+    owl:versionIRI <http://w3id.org/CEON/ontology/textile/0.1/> ;
+    owl:versionInfo 0.1 .
 
 :BatchOfTextileObjects a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -58,16 +72,16 @@
 :TextileProductComponentRelation a owl:Class ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                        owl:someValuesFrom <http://qudt.org/schema/qudt/Unit> ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
                         owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingObject> ;
                         owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Constituent> ] [ a owl:Restriction ;
                         owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingSubject> ;
                         owl:someValuesFrom :TextileProduct ] [ a owl:Restriction ;
-                        owl:onProperty <http://qudt.org/schema/qudt/numericalValue> ;
+                        owl:onProperty ns1:numericalValue ;
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
-        <http://qudt.org/schema/qudt/Quantity>,
+        ns1:Quantity,
         <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>,
         :TextileDataSheetStatement .
 
@@ -109,7 +123,7 @@
                         owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingSubject> ;
                         owl:someValuesFrom [ a owl:Class ;
                                 owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ] ) ],
-        <http://qudt.org/schema/qudt/Quantity>,
+        ns1:Quantity,
         <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>,
         :TextileDataSheetStatement .
 
@@ -122,15 +136,15 @@
 :TextileProductRecycledContent a owl:Class ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                        owl:someValuesFrom <http://qudt.org/schema/qudt/Unit> ] [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
                         owl:onProperty <http://w3id.org/CEON/ontology/provenance/statementAbout> ;
                         owl:someValuesFrom [ a owl:Class ;
                                 owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ] [ a owl:Restriction ;
-                        owl:onProperty <http://qudt.org/schema/qudt/numericalValue> ;
+                        owl:onProperty ns1:numericalValue ;
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
-        <http://qudt.org/schema/qudt/Quantity>,
+        ns1:Quantity,
         <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>,
         :TextileDataSheetStatement .
 
