@@ -30,7 +30,7 @@
                                                dcterms:contributor "Eva Blomqvist" ,
                                                                    "Huanyu Li" ,
                                                                    "Mikael Lindecrantz" ;
-                                               dcterms:created "2023-03-16"^^xsd:string ;
+                                               dcterms:created "2023-09-14"^^xsd:string ;
                                                dcterms:creator "Robin Keskisärkkä" ;
                                                dcterms:description "The Product module of CEON (Circular Economy Ontology Network)." ;
                                                dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
@@ -84,21 +84,46 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://w3id.org/CEON/ontology/construction/hasAccessory
-:hasAccessory rdf:type owl:ObjectProperty .
-
-
 ###  http://w3id.org/CEON/ontology/construction/hasCondition
-:hasCondition rdf:type owl:ObjectProperty .
+:hasCondition rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( product:Product
+                                          product:ProductObject
+                                        )
+                          ] ;
+              rdfs:range :Condition ;
+              rdfs:comment "hasCondition is used to describe the condiction of a specific product object." ;
+              rdfs:label "has condition" .
 
 
-###  http://w3id.org/CEON/ontology/construction/hasConductivity
-:hasConductivity rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+###  http://w3id.org/CEON/ontology/construction/hasContaminant
+:hasContaminant rdf:type owl:ObjectProperty ;
+                rdfs:domain product:Product ;
+                rdfs:range :Contaminant ;
+                rdfs:comment "hasContaminant is used to express the presence of contaminants in a product or product object." ;
+                rdfs:label "has contaminant" .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasDimension
+:hasDimension rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( product:Product
+                                          product:ProductObject
+                                        )
+                          ] ;
+              rdfs:comment "hasDimension is used to describe a dimension of a product or product object." ;
+              rdfs:label "has dimension" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasDimensionalDeviation
-:hasDimensionalDeviation rdf:type owl:ObjectProperty .
+:hasDimensionalDeviation rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdfs:domain product:Product ;
+                         rdfs:range :DimensionalDeviation ;
+                         rdfs:comment "hasDimensionalDeviation is used to describe the dimensional deviation class of a product." ;
+                         rdfs:label "has dimensional deviation" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasDistanceToRecyclingPlant
@@ -106,262 +131,407 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                              rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
 
 
-###  http://w3id.org/CEON/ontology/construction/hasFireResistance
-:hasFireResistance rdf:type owl:ObjectProperty ;
-                   rdfs:range :FireResistance .
+###  http://w3id.org/CEON/ontology/construction/hasFireResistanceRating
+:hasFireResistanceRating rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( product:Product
+                                                     product:ProductObject
+                                                   )
+                                     ] ;
+                         rdfs:range :FireResistanceRating ;
+                         rdfs:comment "hasFireResistanceRating is used to represent the fire resistance rating of a product or product object." ;
+                         rdfs:label "has frire resistance rating" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasHeight
 :hasHeight rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :hasTileDimension .
+           rdfs:subPropertyOf :hasDimension ;
+           rdfs:comment "hasHeight is used to describe the height of a product or product object." ;
+           rdfs:label "has height" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasMarketValueForNewProduct
 :hasMarketValueForNewProduct rdf:type owl:ObjectProperty ;
-                             rdfs:subPropertyOf quantity:hasMarketValue .
+                             rdfs:subPropertyOf quantity:hasMarketValue ;
+                             rdfs:domain product:Product ;
+                             rdfs:comment "hasMarketValueForNewProduct is used to describe the market value of a new product." ;
+                             rdfs:label "has market value for new product" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasMarketValueForReusedProduct
 :hasMarketValueForReusedProduct rdf:type owl:ObjectProperty ;
-                                rdfs:subPropertyOf quantity:hasMarketValue .
+                                rdfs:subPropertyOf quantity:hasMarketValue ;
+                                rdfs:domain product:Product ;
+                                rdfs:comment "hasMarketValueForReusedProduct is used to describe the market value of a used product." ;
+                                rdfs:label "has market value for reused product" .
 
 
-###  http://w3id.org/CEON/ontology/construction/hasPedestalGridDimension
-:hasPedestalGridDimension rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
-
-
-###  http://w3id.org/CEON/ontology/construction/hasProductCategory
-:hasProductCategory rdf:type owl:ObjectProperty .
+###  http://w3id.org/CEON/ontology/construction/hasProductQuality
+:hasProductQuality rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( product:Product
+                                               product:ProductObject
+                                             )
+                               ] ;
+                   rdfs:range :ProductQuality ;
+                   rdfs:comment "hasProductQuality is used to represent the quality of a product or product object." ;
+                   rdfs:label "has product quality" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasRecyclingPotential
 :hasRecyclingPotential rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+                       rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( product:Product
+                                                   product:ProductObject
+                                                 )
+                                   ] ;
+                       rdfs:comment "hasRecyclingPotential describes the amount of the product or product object that can potenitally be recycled." ;
+                       rdfs:label "has recycling potential" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasRecyclingSeparability
 :hasRecyclingSeparability rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+                          rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                          rdfs:domain [ rdf:type owl:Class ;
+                                        owl:unionOf ( product:Product
+                                                      product:ProductObject
+                                                    )
+                                      ] ;
+                          rdfs:comment "has recycling separability" ,
+                                       "hasRecyclingSeparability is used to describe the amount of the product or product object that can be separated for recycling." .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasResistanceToEarth
 :hasResistanceToEarth rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                      rdfs:domain product:Product ;
+                      rdfs:comment "hasResistanceToEarth describes the resistance to earth of a product." ;
+                      rdfs:label "has resistance to earth" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasReuseDeconstructability
 :hasReuseDeconstructability rdf:type owl:ObjectProperty ;
-                            rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
-
-
-###  http://w3id.org/CEON/ontology/construction/hasReusePotential
-:hasReusePotential rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+                            rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                            rdfs:domain product:Product ;
+                            rdfs:comment "hasReuseDeconstructability is used to describe the amount of the product hat can be deconstructed for reuse." ;
+                            rdfs:label "has reuse deconstructability" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasSystemWeight
 :hasSystemWeight rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+                 rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( product:Product
+                                             product:ProductObject
+                                           )
+                             ] ;
+                 rdfs:comment "hasSystemWeight is used to express the system weight of a product or product object." ;
+                 rdfs:label "has system weight" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasThickness
 :hasThickness rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :hasTileDimension .
+              rdfs:subPropertyOf :hasDimension ;
+              rdfs:comment "hasThickness is used to describe the thickness of a product or product object." ;
+              rdfs:label "has thickness" .
 
 
-###  http://w3id.org/CEON/ontology/construction/hasTileDimension
-:hasTileDimension rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+###  http://w3id.org/CEON/ontology/construction/hasUseSpan
+:hasUseSpan rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( product:Product
+                                        product:ProductObject
+                                      )
+                        ] ;
+            rdfs:comment "hasUseSpan describes the use span of a product or prodcut object." ;
+            rdfs:label "has use span" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasUseSpanRemaining
 :hasUseSpanRemaining rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+                     rdfs:subPropertyOf :hasUseSpan ;
+                     rdfs:comment "hasUseSpanRemaining describes the remaining use span of a product or prodcut object." ;
+                     rdfs:label "has use span remaining" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasUseSpanTotal
 :hasUseSpanTotal rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+                 rdfs:subPropertyOf :hasUseSpan ;
+                 rdfs:comment "hasUseSpanTotal describes the total use span of a product or prodcut object." ;
+                 rdfs:label "has use span total" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasWidth
 :hasWidth rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :hasTileDimension .
-
-
-###  http://w3id.org/CEON/ontology/construction/ifcEntity
-:ifcEntity rdf:type owl:ObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/pedestalGridHeight
-:pedestalGridHeight rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf :hasPedestalGridDimension .
-
-
-###  http://w3id.org/CEON/ontology/construction/pedestalGridThickness
-:pedestalGridThickness rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf :hasPedestalGridDimension .
-
-
-###  http://w3id.org/CEON/ontology/construction/pedestalGridWidth
-:pedestalGridWidth rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :hasPedestalGridDimension .
+          rdfs:subPropertyOf :hasDimension ;
+          rdfs:comment "hasHeight is used to describe the height of a product or product object." ;
+          rdfs:label "has width" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/policyOnTreatment
-:policyOnTreatment rdf:type owl:ObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/qualityOfProduct
-:qualityOfProduct rdf:type owl:ObjectProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/standardPedestalHeight
-:standardPedestalHeight rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf :hasPedestalGridDimension .
+:policyOnTreatment rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain product:Product ;
+                   rdfs:range :PolicyOnTreatment ;
+                   rdfs:comment "policyOnTreatment describes the policy for treatment of used product." ;
+                   rdfs:label "policy on treatment" .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://w3id.org/CEON/ontology/construction/hasContaminant
-:hasContaminant rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty .
+###  http://w3id.org/CEON/ontology/construction/hasAccessories
+:hasAccessories rdf:type owl:DatatypeProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( product:Product
+                                            product:ProductObject
+                                          )
+                            ] ;
+                rdfs:range xsd:string ;
+                rdfs:comment "hasAccessories is used to provide a text representation of the accessories related to a product or product object." ;
+                rdfs:label "has accessories" .
+
+
+###  http://w3id.org/CEON/ontology/construction/hasCertificate
+:hasCertificate rdf:type owl:DatatypeProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( product:Product
+                                            product:ProductObject
+                                          )
+                            ] ;
+                rdfs:range xsd:string ;
+                rdfs:comment "hasCertificate is used to link a product or product object to a certificate. The certificate is represented as a string, whcih could refer to the URL, name, or identifier of a known certificate." ;
+                rdfs:label "has certificate" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasDismantlingMethod
 :hasDismantlingMethod rdf:type owl:DatatypeProperty ;
-                      rdfs:subPropertyOf owl:topDataProperty .
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( product:Product
+                                                  product:ProductObject
+                                                )
+                                  ] ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "hasDismantlingMethod is used to represent a textual description of the dismantling method for a product or product object." ;
+                      rdfs:label "has dismantling method" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasInstallationDate
 :hasInstallationDate rdf:type owl:DatatypeProperty ;
-                     rdfs:subPropertyOf owl:topDataProperty .
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain product:ProductObject ;
+                     rdfs:range xsd:date ;
+                     rdfs:comment "hasInstallationDate is used to represent the installation date of a specific product object." ;
+                     rdfs:label "has installation date" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasPackagingRecommendationsAfterDismantling
 :hasPackagingRecommendationsAfterDismantling rdf:type owl:DatatypeProperty ;
-                                             rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/hasPolicyOnTreatment
-:hasPolicyOnTreatment rdf:type owl:DatatypeProperty .
+                                             rdfs:subPropertyOf owl:topDataProperty ;
+                                             rdfs:domain [ rdf:type owl:Class ;
+                                                           owl:unionOf ( product:Product
+                                                                         product:ProductObject
+                                                                       )
+                                                         ] ;
+                                             rdfs:range xsd:string ;
+                                             rdfs:comment "hasPackagingRecommendationsAfterDismantling is used to represent a textual description of the packaging recommendations after a product or product object has been dismantled." ;
+                                             rdfs:label "has packaging recommendations after dismantling" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasProductDescription
 :hasProductDescription rdf:type owl:DatatypeProperty ;
-                       rdfs:subPropertyOf owl:topDataProperty .
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( product:Product
+                                                   product:ProductObject
+                                                 )
+                                   ] ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "has product description" ,
+                                    "hasProductDescription is used to represent a textual description of a product or product object." .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasProductID
 :hasProductID rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/hasProductName
-:hasProductName rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty .
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( product:Product
+                                          product:ProductObject
+                                        )
+                          ] ;
+              rdfs:range xsd:int ;
+              rdfs:comment "has product ID" ,
+                           "hasProductID is used to represent the product ID of a product or product object." .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasProductionDate
 :hasProductionDate rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf owl:topDataProperty .
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain product:ProductObject ;
+                   rdfs:range xsd:date ;
+                   rdfs:comment "hasProductionDate is used to represent the production date of a specific product object." ;
+                   rdfs:label "has production date" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasProductionSite
 :hasProductionSite rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf owl:topDataProperty .
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( product:Product
+                                               product:ProductObject
+                                             )
+                               ] ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "hasProductionSite is used to represent the site at which a given product or product object has been produced as a string. (This property could potentially be represented as an object property. The site could then potentially be treated as a location.)" ;
+                   rdfs:label "has production site" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/hasRefurbishmentMethod
 :hasRefurbishmentMethod rdf:type owl:DatatypeProperty ;
-                        rdfs:subPropertyOf owl:topDataProperty .
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( product:Product
+                                                    product:ProductObject
+                                                  )
+                                    ] ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "hasRefurbishmentMethod is used to provide a textual description of the refurbishment process for a product or product object." ;
+                        rdfs:label "has refurbishment method" .
 
 
-###  http://w3id.org/CEON/ontology/construction/isBuiltIn
-:isBuiltIn rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf owl:topDataProperty .
+###  http://w3id.org/CEON/ontology/construction/hasTakeBackProgramFromOriginalManufacturer
+:hasTakeBackProgramFromOriginalManufacturer rdf:type owl:DatatypeProperty ;
+                                            rdfs:subPropertyOf owl:topDataProperty ;
+                                            rdfs:domain product:Product ;
+                                            rdfs:range xsd:boolean ;
+                                            rdfs:comment "hasTakeBackProgramFromOriginalManufacturer is used to express whether the original manufacturer of a product has a take back program it (true/false)." ;
+                                            rdfs:label "has takeback program from original manufacturer" .
 
 
-###  http://w3id.org/CEON/ontology/construction/isExternal
-:isExternal rdf:type owl:DatatypeProperty ;
-            rdfs:subPropertyOf owl:topDataProperty .
+###  http://w3id.org/CEON/ontology/construction/hasTakeBackProgramOtherManufacturer
+:hasTakeBackProgramOtherManufacturer rdf:type owl:DatatypeProperty ;
+                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                     rdfs:domain product:Product ;
+                                     rdfs:range xsd:boolean ;
+                                     rdfs:comment "hasTakeBackProgramFromOtherManufacturer is used to express whether another manufacturer has a take back program (true/false) for a product." ;
+                                     rdfs:label "has takeback program from other manufacturer" .
 
 
-###  http://w3id.org/CEON/ontology/construction/isLoadbearing
-:isLoadbearing rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf owl:topDataProperty .
+###  http://w3id.org/CEON/ontology/construction/hasTechnicalRequirementsForTakeBackForRecycling
+:hasTechnicalRequirementsForTakeBackForRecycling rdf:type owl:DatatypeProperty ;
+                                                 rdfs:subPropertyOf owl:topDataProperty ;
+                                                 rdfs:domain [ rdf:type owl:Class ;
+                                                               owl:unionOf ( product:Product
+                                                                             product:ProductObject
+                                                                           )
+                                                             ] ;
+                                                 rdfs:range xsd:string ;
+                                                 rdfs:comment "hasTechnicalRequirmentsForTakeBackForRecycling is used to represent a textual description of the technical requirements of a product or product object for take back and recycling." ;
+                                                 rdfs:label "has technical requirements for take back and recycling" .
 
 
-###  http://w3id.org/CEON/ontology/construction/takeBackProgramOriginalManufacturer
-:takeBackProgramOriginalManufacturer rdf:type owl:DatatypeProperty ;
-                                     rdfs:subPropertyOf owl:topDataProperty .
+###  http://w3id.org/CEON/ontology/construction/hasTechnicalRequirementsForTakeBackForReuse
+:hasTechnicalRequirementsForTakeBackForReuse rdf:type owl:DatatypeProperty ;
+                                             rdfs:subPropertyOf owl:topDataProperty ;
+                                             rdfs:domain [ rdf:type owl:Class ;
+                                                           owl:unionOf ( product:Product
+                                                                         product:ProductObject
+                                                                       )
+                                                         ] ;
+                                             rdfs:range xsd:string ;
+                                             rdfs:comment "hasTechnicalRequirmentsForTakeBackForReuse is used to represent a textual description of the technical requirements of a product or product object for take back and reuse." ;
+                                             rdfs:label "has technical requirements for take back and reuse" .
 
 
-###  http://w3id.org/CEON/ontology/construction/takeBackProgramOtherManufacturers
-:takeBackProgramOtherManufacturers rdf:type owl:DatatypeProperty ;
-                                   rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/technicalRequirementsForTakeBackForRecycling
-:technicalRequirementsForTakeBackForRecycling rdf:type owl:DatatypeProperty ;
-                                              rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  http://w3id.org/CEON/ontology/construction/technicalRequirementsForTakeBackForReuse
-:technicalRequirementsForTakeBackForReuse rdf:type owl:DatatypeProperty ;
-                                          rdfs:subPropertyOf owl:topDataProperty .
+###  http://w3id.org/CEON/ontology/construction/isContaminated
+:isContaminated rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( product:Product
+                                            product:ProductObject
+                                          )
+                            ] ;
+                rdfs:range xsd:boolean ;
+                rdfs:comment "isContaminated is used to express whether a specific product object contains any contaminants (true/false)." ;
+                rdfs:label "is contaminated" .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://w3id.org/CEON/ontology/construction/ConstructionProduct
-:ConstructionProduct rdf:type owl:Class ;
-                     rdfs:subClassOf product:Product .
+###  http://w3id.org/CEON/ontology/construction/Condition
+:Condition rdf:type owl:Class ;
+           rdfs:comment "Condition is used to describe the condition of a specific product object." ;
+           rdfs:label "Condition" .
+
+
+###  http://w3id.org/CEON/ontology/construction/Contaminant
+:Contaminant rdf:type owl:Class ;
+             rdfs:comment "A contaminant is any physical thing that is regarded as a contaminant when present in a product or product object." ;
+             rdfs:label "Contaminant" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/DimensionalDeviation
 :DimensionalDeviation rdf:type owl:Class .
 
 
-###  http://w3id.org/CEON/ontology/construction/FireResistance
-:FireResistance rdf:type owl:Class .
+###  http://w3id.org/CEON/ontology/construction/FireResistanceRating
+:FireResistanceRating rdf:type owl:Class ;
+                      rdfs:comment "Fire resistance rating is expressed as 'F' followed by the minimum number of minutes in which the functionality of the product or product object can withstand fire. For example, F30 would therefore be a fire resistance duration of 30 min." ;
+                      rdfs:label "Fire resistance rating" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/FireResistanceRelation
 :FireResistanceRelation rdf:type owl:Class ;
-                        rdfs:subClassOf actorODP:ResourceRelation .
+                        rdfs:subClassOf actorODP:ResourceParticipation .
 
 
-###  http://w3id.org/CEON/ontology/construction/FloorPanel
-:FloorPanel rdf:type owl:Class ;
-            rdfs:subClassOf :ConstructionProduct .
+###  http://w3id.org/CEON/ontology/construction/FloorTile
+:FloorTile rdf:type owl:Class ;
+           rdfs:subClassOf product:Product ;
+           rdfs:comment "A floor tile is a type of product that used to cover a floor." ;
+           rdfs:label "Floor tile" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/FloorTileCondition
-:FloorTileCondition rdf:type owl:Class .
+:FloorTileCondition rdf:type owl:Class ;
+                    rdfs:subClassOf :Condition ;
+                    rdfs:comment "Floor Tile Condition is used to describe the condition of a floor tile (good, medium, bad)." ;
+                    rdfs:label "Floor Tile Condition" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/FloorTileConditionRelation
 :FloorTileConditionRelation rdf:type owl:Class ;
-                            rdfs:subClassOf actorODP:ResourceRelation .
+                            rdfs:subClassOf actorODP:ResourceParticipation .
+
+
+###  http://w3id.org/CEON/ontology/construction/GalvanizedSteelMaterial
+:GalvanizedSteelMaterial rdf:type owl:Class ;
+                         rdfs:subClassOf material:Material .
+
+
+###  http://w3id.org/CEON/ontology/construction/PolicyOnTreatment
+:PolicyOnTreatment rdf:type owl:Class ;
+                   rdfs:comment "PolicyOnTreatment represents the the policy for treatment (reuse, refurbish or reprocessing)" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/ProductQuality
-:ProductQuality rdf:type owl:Class .
-
-
-###  http://w3id.org/CEON/ontology/construction/RemainingUseSpan
-:RemainingUseSpan rdf:type owl:Class ;
-                  rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> .
+:ProductQuality rdf:type owl:Class ;
+                rdfs:comment "ProductQuality represents the quality of a product or product object." ;
+                rdfs:label "Product quality" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/TreatmentPolicy
-:TreatmentPolicy rdf:type owl:Class .
+:TreatmentPolicy rdf:type owl:Class ;
+                 rdfs:comment "TreatmentPolicy is used to describe the policy for treatment for a given product or product object." ;
+                 rdfs:label "treatment policy" .
 
 
 #################################################################
@@ -370,42 +540,73 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/ontology/construction/F30
 :F30 rdf:type owl:NamedIndividual ,
-              :FireResistance .
+              :FireResistanceRating ;
+     rdfs:comment "F30 represents a fire resitance duration of 30 min." ;
+     rdfs:label "F30" .
 
 
 ###  http://w3id.org/CEON/ontology/construction/F60
 :F60 rdf:type owl:NamedIndividual ,
-              :FireResistance .
+              :FireResistanceRating ;
+     rdfs:comment "F60" ,
+                  "F60 represents a fire resitance duration of 60 min." .
 
 
-###  http://w3id.org/CEON/ontology/construction/condition_bad
-:condition_bad rdf:type owl:NamedIndividual ,
-                        :FloorTileCondition .
+###  http://w3id.org/CEON/ontology/construction/bad_condition
+:bad_condition rdf:type owl:NamedIndividual ,
+                        :FloorTileCondition ;
+               rdfs:label "bad condition" .
 
 
-###  http://w3id.org/CEON/ontology/construction/condition_good
-:condition_good rdf:type owl:NamedIndividual ,
-                         :FloorTileCondition .
+###  http://w3id.org/CEON/ontology/construction/good_condition
+:good_condition rdf:type owl:NamedIndividual ,
+                         :FloorTileCondition ;
+                rdfs:label "good condition" .
 
 
-###  http://w3id.org/CEON/ontology/construction/condition_medium
-:condition_medium rdf:type owl:NamedIndividual ,
-                           :FloorTileCondition .
+###  http://w3id.org/CEON/ontology/construction/medium_condition
+:medium_condition rdf:type owl:NamedIndividual ,
+                           :FloorTileCondition ;
+                  rdfs:label "medium condition" .
 
 
-###  http://w3id.org/CEON/ontology/construction/quality_high
-:quality_high rdf:type owl:NamedIndividual ,
-                       :ProductQuality .
+###  http://w3id.org/CEON/ontology/construction/product_quality_high
+:product_quality_high rdf:type owl:NamedIndividual ,
+                               :ProductQuality ;
+                      rdfs:label "Product quality high" .
 
 
-###  http://w3id.org/CEON/ontology/construction/quality_low
-:quality_low rdf:type owl:NamedIndividual ,
-                      :ProductQuality .
+###  http://w3id.org/CEON/ontology/construction/product_quality_low
+:product_quality_low rdf:type owl:NamedIndividual ,
+                              :ProductQuality ;
+                     rdfs:label "Product quality low" .
 
 
-###  http://w3id.org/CEON/ontology/construction/quality_medium
-:quality_medium rdf:type owl:NamedIndividual ,
-                         :ProductQuality .
+###  http://w3id.org/CEON/ontology/construction/product_quality_medium
+:product_quality_medium rdf:type owl:NamedIndividual ,
+                                 :ProductQuality ;
+                        rdfs:label "Product quality medium" .
+
+
+###  http://w3id.org/CEON/ontology/construction/refurbish
+:refurbish rdf:type owl:NamedIndividual ,
+                    :PolicyOnTreatment ,
+                    :TreatmentPolicy ;
+           rdfs:label "refurbish" .
+
+
+###  http://w3id.org/CEON/ontology/construction/reprocess
+:reprocess rdf:type owl:NamedIndividual ,
+                    :PolicyOnTreatment ,
+                    :TreatmentPolicy ;
+           rdfs:label "reprocess" .
+
+
+###  http://w3id.org/CEON/ontology/construction/reuse
+:reuse rdf:type owl:NamedIndividual ,
+                :PolicyOnTreatment ,
+                :TreatmentPolicy ;
+       rdfs:label "reuse" .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
