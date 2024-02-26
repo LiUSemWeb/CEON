@@ -1,10 +1,12 @@
 @prefix : <http://w3id.org/CEON/ontology/construction/> .
 @prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix material: <http://w3id.org/CEON/ontology/material/> .
 @prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix product: <http://w3id.org/CEON/ontology/product/> .
 @prefix quantity: <http://w3id.org/CEON/ontology/quantity#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -29,7 +31,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     dcterms:contributor "Eva Blomqvist",
         "Huanyu Li",
         "Mikael Lindecrantz" ;
-    dcterms:created "2023-03-16"^^xsd:string ;
+    dcterms:created "2023-09-14"^^xsd:string ;
     dcterms:creator "Robin Keskisärkkä" ;
     dcterms:description "The Product module of CEON (Circular Economy Ontology Network)." ;
     dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
@@ -46,187 +48,343 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     owl:versionIRI <http://w3id.org/CEON/ontology/construction/0.1/> ;
     owl:versionInfo "0.1" .
 
-:DimensionalDeviation a owl:Class .
+:F30 a :FireResistanceRating,
+        owl:NamedIndividual ;
+    rdfs:label "F30" ;
+    rdfs:comment "F30 represents a fire resitance duration of 30 min." .
 
-:F30 a :FireResistance,
-        owl:NamedIndividual .
-
-:F60 a :FireResistance,
-        owl:NamedIndividual .
+:F60 a :FireResistanceRating,
+        owl:NamedIndividual ;
+    rdfs:comment "F60",
+        "F60 represents a fire resitance duration of 60 min." .
 
 :FireResistanceRelation a owl:Class ;
-    rdfs:subClassOf actorODP:ResourceRelation .
+    rdfs:subClassOf actorODP:ResourceParticipation .
 
-:FloorPanel a owl:Class ;
-    rdfs:subClassOf :ConstructionProduct .
+:FloorTile a owl:Class ;
+    rdfs:label "Floor tile" ;
+    rdfs:comment "A floor tile is a type of product that used to cover a floor." ;
+    rdfs:subClassOf product:Product .
 
 :FloorTileConditionRelation a owl:Class ;
-    rdfs:subClassOf actorODP:ResourceRelation .
+    rdfs:subClassOf actorODP:ResourceParticipation .
 
-:RemainingUseSpan a owl:Class ;
-    rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> .
+:GalvanizedSteelMaterial a owl:Class ;
+    rdfs:subClassOf material:Material .
 
-:TreatmentPolicy a owl:Class .
+:bad_condition a :FloorTileCondition,
+        owl:NamedIndividual ;
+    rdfs:label "bad condition" .
 
-:condition_bad a :FloorTileCondition,
-        owl:NamedIndividual .
+:good_condition a :FloorTileCondition,
+        owl:NamedIndividual ;
+    rdfs:label "good condition" .
 
-:condition_good a :FloorTileCondition,
-        owl:NamedIndividual .
+:hasAccessories a owl:DatatypeProperty ;
+    rdfs:label "has accessories" ;
+    rdfs:comment "hasAccessories is used to provide a text representation of the accessories related to a product or product object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:string .
 
-:condition_medium a :FloorTileCondition,
-        owl:NamedIndividual .
+:hasCertificate a owl:DatatypeProperty ;
+    rdfs:label "has certificate" ;
+    rdfs:comment "hasCertificate is used to link a product or product object to a certificate. The certificate is represented as a string, whcih could refer to the URL, name, or identifier of a known certificate." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:string .
 
-:hasAccessory a owl:ObjectProperty .
+:hasCondition a owl:ObjectProperty ;
+    rdfs:label "has condition" ;
+    rdfs:comment "hasCondition is used to describe the condiction of a specific product object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range :Condition ;
+    rdfs:subPropertyOf owl:topObjectProperty .
 
-:hasCondition a owl:ObjectProperty .
+:hasContaminant a owl:ObjectProperty ;
+    rdfs:label "has contaminant" ;
+    rdfs:comment "hasContaminant is used to express the presence of contaminants in a product or product object." ;
+    rdfs:domain product:Product ;
+    rdfs:range :Contaminant .
 
-:hasConductivity a owl:ObjectProperty ;
-    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
-
-:hasContaminant a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty .
-
-:hasDimensionalDeviation a owl:ObjectProperty .
+:hasDimensionalDeviation a owl:ObjectProperty ;
+    rdfs:label "has dimensional deviation" ;
+    rdfs:comment "hasDimensionalDeviation is used to describe the dimensional deviation class of a product." ;
+    rdfs:domain product:Product ;
+    rdfs:range :DimensionalDeviation ;
+    rdfs:subPropertyOf owl:topObjectProperty .
 
 :hasDismantlingMethod a owl:DatatypeProperty ;
+    rdfs:label "has dismantling method" ;
+    rdfs:comment "hasDismantlingMethod is used to represent a textual description of the dismantling method for a product or product object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:string ;
     rdfs:subPropertyOf owl:topDataProperty .
 
 :hasDistanceToRecyclingPlant a owl:ObjectProperty ;
     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
 
-:hasFireResistance a owl:ObjectProperty ;
-    rdfs:range :FireResistance .
+:hasFireResistanceRating a owl:ObjectProperty ;
+    rdfs:label "has frire resistance rating" ;
+    rdfs:comment "hasFireResistanceRating is used to represent the fire resistance rating of a product or product object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range :FireResistanceRating ;
+    rdfs:subPropertyOf owl:topObjectProperty .
 
 :hasHeight a owl:ObjectProperty ;
-    rdfs:subPropertyOf :hasTileDimension .
+    rdfs:label "has height" ;
+    rdfs:comment "hasHeight is used to describe the height of a product or product object." ;
+    rdfs:subPropertyOf :hasDimension .
 
 :hasInstallationDate a owl:DatatypeProperty ;
+    rdfs:label "has installation date" ;
+    rdfs:comment "hasInstallationDate is used to represent the installation date of a specific product object." ;
+    rdfs:domain product:ProductObject ;
+    rdfs:range xsd:date ;
     rdfs:subPropertyOf owl:topDataProperty .
 
 :hasMarketValueForNewProduct a owl:ObjectProperty ;
+    rdfs:label "has market value for new product" ;
+    rdfs:comment "hasMarketValueForNewProduct is used to describe the market value of a new product." ;
+    rdfs:domain product:Product ;
     rdfs:subPropertyOf quantity:hasMarketValue .
 
 :hasMarketValueForReusedProduct a owl:ObjectProperty ;
+    rdfs:label "has market value for reused product" ;
+    rdfs:comment "hasMarketValueForReusedProduct is used to describe the market value of a used product." ;
+    rdfs:domain product:Product ;
     rdfs:subPropertyOf quantity:hasMarketValue .
 
 :hasPackagingRecommendationsAfterDismantling a owl:DatatypeProperty ;
+    rdfs:label "has packaging recommendations after dismantling" ;
+    rdfs:comment "hasPackagingRecommendationsAfterDismantling is used to represent a textual description of the packaging recommendations after a product or product object has been dismantled." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:string ;
     rdfs:subPropertyOf owl:topDataProperty .
 
-:hasPolicyOnTreatment a owl:DatatypeProperty .
-
-:hasProductCategory a owl:ObjectProperty .
-
 :hasProductDescription a owl:DatatypeProperty ;
+    rdfs:comment "has product description",
+        "hasProductDescription is used to represent a textual description of a product or product object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:string ;
     rdfs:subPropertyOf owl:topDataProperty .
 
 :hasProductID a owl:DatatypeProperty ;
+    rdfs:comment "has product ID",
+        "hasProductID is used to represent the product ID of a product or product object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:int ;
     rdfs:subPropertyOf owl:topDataProperty .
 
-:hasProductName a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty .
+:hasProductQuality a owl:ObjectProperty ;
+    rdfs:label "has product quality" ;
+    rdfs:comment "hasProductQuality is used to represent the quality of a product or product object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range :ProductQuality ;
+    rdfs:subPropertyOf owl:topObjectProperty .
 
 :hasProductionDate a owl:DatatypeProperty ;
+    rdfs:label "has production date" ;
+    rdfs:comment "hasProductionDate is used to represent the production date of a specific product object." ;
+    rdfs:domain product:ProductObject ;
+    rdfs:range xsd:date ;
     rdfs:subPropertyOf owl:topDataProperty .
 
 :hasProductionSite a owl:DatatypeProperty ;
+    rdfs:label "has production site" ;
+    rdfs:comment "hasProductionSite is used to represent the site at which a given product or product object has been produced as a string. (This property could potentially be represented as an object property. The site could then potentially be treated as a location.)" ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:string ;
     rdfs:subPropertyOf owl:topDataProperty .
 
 :hasRecyclingPotential a owl:ObjectProperty ;
+    rdfs:label "has recycling potential" ;
+    rdfs:comment "hasRecyclingPotential describes the amount of the product or product object that can potenitally be recycled." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
 
 :hasRecyclingSeparability a owl:ObjectProperty ;
+    rdfs:comment "has recycling separability",
+        "hasRecyclingSeparability is used to describe the amount of the product or product object that can be separated for recycling." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
 
 :hasRefurbishmentMethod a owl:DatatypeProperty ;
+    rdfs:label "has refurbishment method" ;
+    rdfs:comment "hasRefurbishmentMethod is used to provide a textual description of the refurbishment process for a product or product object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:string ;
     rdfs:subPropertyOf owl:topDataProperty .
 
 :hasResistanceToEarth a owl:ObjectProperty ;
+    rdfs:label "has resistance to earth" ;
+    rdfs:comment "hasResistanceToEarth describes the resistance to earth of a product." ;
+    rdfs:domain product:Product ;
     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
 
 :hasReuseDeconstructability a owl:ObjectProperty ;
-    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
-
-:hasReusePotential a owl:ObjectProperty ;
+    rdfs:label "has reuse deconstructability" ;
+    rdfs:comment "hasReuseDeconstructability is used to describe the amount of the product hat can be deconstructed for reuse." ;
+    rdfs:domain product:Product ;
     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
 
 :hasSystemWeight a owl:ObjectProperty ;
+    rdfs:label "has system weight" ;
+    rdfs:comment "hasSystemWeight is used to express the system weight of a product or product object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:hasTakeBackProgramFromOriginalManufacturer a owl:DatatypeProperty ;
+    rdfs:label "has takeback program from original manufacturer" ;
+    rdfs:comment "hasTakeBackProgramFromOriginalManufacturer is used to express whether the original manufacturer of a product has a take back program it (true/false)." ;
+    rdfs:domain product:Product ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasTakeBackProgramOtherManufacturer a owl:DatatypeProperty ;
+    rdfs:label "has takeback program from other manufacturer" ;
+    rdfs:comment "hasTakeBackProgramFromOtherManufacturer is used to express whether another manufacturer has a take back program (true/false) for a product." ;
+    rdfs:domain product:Product ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasTechnicalRequirementsForTakeBackForRecycling a owl:DatatypeProperty ;
+    rdfs:label "has technical requirements for take back and recycling" ;
+    rdfs:comment "hasTechnicalRequirmentsForTakeBackForRecycling is used to represent a textual description of the technical requirements of a product or product object for take back and recycling." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:hasTechnicalRequirementsForTakeBackForReuse a owl:DatatypeProperty ;
+    rdfs:label "has technical requirements for take back and reuse" ;
+    rdfs:comment "hasTechnicalRequirmentsForTakeBackForReuse is used to represent a textual description of the technical requirements of a product or product object for take back and reuse." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf owl:topDataProperty .
 
 :hasThickness a owl:ObjectProperty ;
-    rdfs:subPropertyOf :hasTileDimension .
+    rdfs:label "has thickness" ;
+    rdfs:comment "hasThickness is used to describe the thickness of a product or product object." ;
+    rdfs:subPropertyOf :hasDimension .
 
 :hasUseSpanRemaining a owl:ObjectProperty ;
-    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+    rdfs:label "has use span remaining" ;
+    rdfs:comment "hasUseSpanRemaining describes the remaining use span of a product or prodcut object." ;
+    rdfs:subPropertyOf :hasUseSpan .
 
 :hasUseSpanTotal a owl:ObjectProperty ;
-    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+    rdfs:label "has use span total" ;
+    rdfs:comment "hasUseSpanTotal describes the total use span of a product or prodcut object." ;
+    rdfs:subPropertyOf :hasUseSpan .
 
 :hasWidth a owl:ObjectProperty ;
-    rdfs:subPropertyOf :hasTileDimension .
+    rdfs:label "has width" ;
+    rdfs:comment "hasHeight is used to describe the height of a product or product object." ;
+    rdfs:subPropertyOf :hasDimension .
 
-:ifcEntity a owl:ObjectProperty .
-
-:isBuiltIn a owl:DatatypeProperty ;
+:isContaminated a owl:DatatypeProperty ;
+    rdfs:label "is contaminated" ;
+    rdfs:comment "isContaminated is used to express whether a specific product object contains any contaminants (true/false)." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
+    rdfs:range xsd:boolean ;
     rdfs:subPropertyOf owl:topDataProperty .
 
-:isExternal a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty .
+:medium_condition a :FloorTileCondition,
+        owl:NamedIndividual ;
+    rdfs:label "medium condition" .
 
-:isLoadbearing a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty .
+:policyOnTreatment a owl:ObjectProperty ;
+    rdfs:label "policy on treatment" ;
+    rdfs:comment "policyOnTreatment describes the policy for treatment of used product." ;
+    rdfs:domain product:Product ;
+    rdfs:range :PolicyOnTreatment ;
+    rdfs:subPropertyOf owl:topObjectProperty .
 
-:pedestalGridHeight a owl:ObjectProperty ;
-    rdfs:subPropertyOf :hasPedestalGridDimension .
+:product_quality_high a :ProductQuality,
+        owl:NamedIndividual ;
+    rdfs:label "Product quality high" .
 
-:pedestalGridThickness a owl:ObjectProperty ;
-    rdfs:subPropertyOf :hasPedestalGridDimension .
+:product_quality_low a :ProductQuality,
+        owl:NamedIndividual ;
+    rdfs:label "Product quality low" .
 
-:pedestalGridWidth a owl:ObjectProperty ;
-    rdfs:subPropertyOf :hasPedestalGridDimension .
+:product_quality_medium a :ProductQuality,
+        owl:NamedIndividual ;
+    rdfs:label "Product quality medium" .
 
-:policyOnTreatment a owl:ObjectProperty .
+:refurbish a :PolicyOnTreatment,
+        :TreatmentPolicy,
+        owl:NamedIndividual ;
+    rdfs:label "refurbish" .
 
-:qualityOfProduct a owl:ObjectProperty .
+:reprocess a :PolicyOnTreatment,
+        :TreatmentPolicy,
+        owl:NamedIndividual ;
+    rdfs:label "reprocess" .
 
-:quality_high a :ProductQuality,
-        owl:NamedIndividual .
-
-:quality_low a :ProductQuality,
-        owl:NamedIndividual .
-
-:quality_medium a :ProductQuality,
-        owl:NamedIndividual .
-
-:standardPedestalHeight a owl:ObjectProperty ;
-    rdfs:subPropertyOf :hasPedestalGridDimension .
-
-:takeBackProgramOriginalManufacturer a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty .
-
-:takeBackProgramOtherManufacturers a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty .
-
-:technicalRequirementsForTakeBackForRecycling a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty .
-
-:technicalRequirementsForTakeBackForReuse a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty .
+:reuse a :PolicyOnTreatment,
+        :TreatmentPolicy,
+        owl:NamedIndividual ;
+    rdfs:label "reuse" .
 
 odp:coversRequirements a owl:AnnotationProperty .
 
-:ConstructionProduct a owl:Class ;
-    rdfs:subClassOf product:Product .
+:Contaminant a owl:Class ;
+    rdfs:label "Contaminant" ;
+    rdfs:comment "A contaminant is any physical thing that is regarded as a contaminant when present in a product or product object." .
 
-:FireResistance a owl:Class .
+:DimensionalDeviation a owl:Class .
 
-:FloorTileCondition a owl:Class .
+:Condition a owl:Class ;
+    rdfs:label "Condition" ;
+    rdfs:comment "Condition is used to describe the condition of a specific product object." .
 
-:ProductQuality a owl:Class .
-
-:hasTileDimension a owl:ObjectProperty ;
+:hasUseSpan a owl:ObjectProperty ;
+    rdfs:label "has use span" ;
+    rdfs:comment "hasUseSpan describes the use span of a product or prodcut object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
 
-:hasPedestalGridDimension a owl:ObjectProperty ;
+:FireResistanceRating a owl:Class ;
+    rdfs:label "Fire resistance rating" ;
+    rdfs:comment "Fire resistance rating is expressed as 'F' followed by the minimum number of minutes in which the functionality of the product or product object can withstand fire. For example, F30 would therefore be a fire resistance duration of 30 min." .
+
+:FloorTileCondition a owl:Class ;
+    rdfs:label "Floor Tile Condition" ;
+    rdfs:comment "Floor Tile Condition is used to describe the condition of a floor tile (good, medium, bad)." ;
+    rdfs:subClassOf :Condition .
+
+:TreatmentPolicy a owl:Class ;
+    rdfs:label "treatment policy" ;
+    rdfs:comment "TreatmentPolicy is used to describe the policy for treatment for a given product or product object." .
+
+:hasDimension a owl:ObjectProperty ;
+    rdfs:label "has dimension" ;
+    rdfs:comment "hasDimension is used to describe a dimension of a product or product object." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( product:Product product:ProductObject ) ] ;
     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
+:PolicyOnTreatment a owl:Class ;
+    rdfs:comment "PolicyOnTreatment represents the the policy for treatment (reuse, refurbish or reprocessing)" .
+
+:ProductQuality a owl:Class ;
+    rdfs:label "Product quality" ;
+    rdfs:comment "ProductQuality represents the quality of a product or product object." .
 

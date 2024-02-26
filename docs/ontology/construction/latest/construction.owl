@@ -6,40 +6,27 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasReuseDeconstructability">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/FloorTileConditionRelation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasMarketValueForNewProduct">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/quantity#hasMarketValue"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasSystemWeight">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/ifcEntity">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasWidth">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasTileDimension"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasDimension"/>
+    <rdfs:comment>hasHeight is used to describe the height of a product or product object.</rdfs:comment>
+    <rdfs:label>has width</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/standardPedestalHeight">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasPedestalGridDimension"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/product_quality_low">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/ProductQuality"/>
+    <rdfs:label>Product quality low</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasProductionDate">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/FireResistanceRelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceParticipation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasCertificate">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasDismantlingMethod">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb28"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>hasCertificate is used to link a product or product object to a certificate. The certificate is represented as a string, whcih could refer to the URL, name, or identifier of a known certificate.</rdfs:comment>
+    <rdfs:label>has certificate</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -53,7 +40,7 @@
     <dcterms:contributor>Eva Blomqvist</dcterms:contributor>
     <dcterms:contributor>Huanyu Li</dcterms:contributor>
     <dcterms:contributor>Mikael Lindecrantz</dcterms:contributor>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2023-03-16</dcterms:created>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2023-09-14</dcterms:created>
     <dcterms:creator>Robin Keskisärkkä</dcterms:creator>
     <dcterms:description>The Product module of CEON (Circular Economy Ontology Network).</dcterms:description>
     <dcterms:license rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://creativecommons.org/licenses/by/4.0/</dcterms:license>
@@ -63,243 +50,615 @@
     <rdfs:seeAlso rdf:resource="https://github.com/LiUSemWeb/CEON"/>
     <owl:versionInfo>0.1</owl:versionInfo>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasTileDimension">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasProductName">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/policyOnTreatment">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasUseSpanRemaining">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasProductID">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/pedestalGridWidth">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasPedestalGridDimension"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/F60">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/F30">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/FireResistance"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/FireResistanceRating"/>
+    <rdfs:comment>F30 represents a fire resitance duration of 30 min.</rdfs:comment>
+    <rdfs:label>F30</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasProductCategory">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb39">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/RemainingUseSpan">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://qudt.org/schema/qudt/Quantity"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb27">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/quality_high">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/ProductQuality"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasRecyclingSeparability">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/condition_bad">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/FloorTileCondition"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/ProductQuality">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasContaminant">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasRecyclingPotential">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/condition_medium">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/FloorTileCondition"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/takeBackProgramOriginalManufacturer">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb44">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb45"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasProductDescription">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb37"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>has product description</rdfs:comment>
+    <rdfs:comment>hasProductDescription is used to represent a textual description of a product or product object.</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasPedestalGridDimension">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/ConstructionProduct">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/GalvanizedSteelMaterial">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasMarketValueForReusedProduct">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/quantity#hasMarketValue"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/FloorPanel">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/construction/ConstructionProduct"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/technicalRequirementsForTakeBackForReuse">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/isLoadbearing">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasPackagingRecommendationsAfterDismantling">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasPolicyOnTreatment">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/takeBackProgramOtherManufacturers">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasDimensionalDeviation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/TreatmentPolicy">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasRefurbishmentMethod">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/FireResistanceRelation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/material/Material"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasInstallationDate">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:comment>hasInstallationDate is used to represent the installation date of a specific product object.</rdfs:comment>
+    <rdfs:label>has installation date</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/isBuiltIn">
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb14">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb15"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasTakeBackProgramFromOriginalManufacturer">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>hasTakeBackProgramFromOriginalManufacturer is used to express whether the original manufacturer of a product has a take back program it (true/false).</rdfs:comment>
+    <rdfs:label>has takeback program from original manufacturer</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/quality_low">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasTechnicalRequirementsForTakeBackForReuse">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb52"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>hasTechnicalRequirmentsForTakeBackForReuse is used to represent a textual description of the technical requirements of a product or product object for take back and reuse.</rdfs:comment>
+    <rdfs:label>has technical requirements for take back and reuse</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasProductionDate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:comment>hasProductionDate is used to represent the production date of a specific product object.</rdfs:comment>
+    <rdfs:label>has production date</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/bad_condition">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/ProductQuality"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/FloorTileCondition"/>
+    <rdfs:label>bad condition</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasReusePotential">
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb9">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasRecyclingSeparability">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb16"/>
+    <rdfs:comment>has recycling separability</rdfs:comment>
+    <rdfs:comment>hasRecyclingSeparability is used to describe the amount of the product or product object that can be separated for recycling.</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/F30">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/FireResistance"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasDimensionalDeviation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/construction/DimensionalDeviation"/>
+    <rdfs:comment>hasDimensionalDeviation is used to describe the dimensional deviation class of a product.</rdfs:comment>
+    <rdfs:label>has dimensional deviation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasDismantlingMethod">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb31"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>hasDismantlingMethod is used to represent a textual description of the dismantling method for a product or product object.</rdfs:comment>
+    <rdfs:label>has dismantling method</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasReuseDeconstructability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:comment>hasReuseDeconstructability is used to describe the amount of the product hat can be deconstructed for reuse.</rdfs:comment>
+    <rdfs:label>has reuse deconstructability</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasProductQuality">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb10"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/construction/ProductQuality"/>
+    <rdfs:comment>hasProductQuality is used to represent the quality of a product or product object.</rdfs:comment>
+    <rdfs:label>has product quality</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb47">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb48"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasDimension">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb4"/>
+    <rdfs:comment>hasDimension is used to describe a dimension of a product or product object.</rdfs:comment>
+    <rdfs:label>has dimension</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb32">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb33"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb42">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasRefurbishmentMethod">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb46"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>hasRefurbishmentMethod is used to provide a textual description of the refurbishment process for a product or product object.</rdfs:comment>
+    <rdfs:label>has refurbishment method</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasTakeBackProgramOtherManufacturer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>hasTakeBackProgramFromOtherManufacturer is used to express whether another manufacturer has a take back program (true/false) for a product.</rdfs:comment>
+    <rdfs:label>has takeback program from other manufacturer</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/isContaminated">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb55"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:comment>isContaminated is used to express whether a specific product object contains any contaminants (true/false).</rdfs:comment>
+    <rdfs:label>is contaminated</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb18">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasHeight">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasTileDimension"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasDimension"/>
+    <rdfs:comment>hasHeight is used to describe the height of a product or product object.</rdfs:comment>
+    <rdfs:label>has height</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasCondition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb1"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/construction/Condition"/>
+    <rdfs:comment>hasCondition is used to describe the condiction of a specific product object.</rdfs:comment>
+    <rdfs:label>has condition</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/reuse">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/PolicyOnTreatment"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/TreatmentPolicy"/>
+    <rdfs:label>reuse</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasContaminant">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/construction/Contaminant"/>
+    <rdfs:comment>hasContaminant is used to express the presence of contaminants in a product or product object.</rdfs:comment>
+    <rdfs:label>has contaminant</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/reprocess">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/PolicyOnTreatment"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/TreatmentPolicy"/>
+    <rdfs:label>reprocess</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasProductID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb40"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:comment>has product ID</rdfs:comment>
+    <rdfs:comment>hasProductID is used to represent the product ID of a product or product object.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb49">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb50"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb40">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb41"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasThickness">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasDimension"/>
+    <rdfs:comment>hasThickness is used to describe the thickness of a product or product object.</rdfs:comment>
+    <rdfs:label>has thickness</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasProductionSite">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb43"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>hasProductionSite is used to represent the site at which a given product or product object has been produced as a string. (This property could potentially be represented as an object property. The site could then potentially be treated as a location.)</rdfs:comment>
+    <rdfs:label>has production site</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb38">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb39"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasFireResistanceRating">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb7"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/construction/FireResistanceRating"/>
+    <rdfs:comment>hasFireResistanceRating is used to represent the fire resistance rating of a product or product object.</rdfs:comment>
+    <rdfs:label>has frire resistance rating</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb8">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/product_quality_high">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/ProductQuality"/>
+    <rdfs:label>Product quality high</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasAccessories">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb25"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>hasAccessories is used to provide a text representation of the accessories related to a product or product object.</rdfs:comment>
+    <rdfs:label>has accessories</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb20">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb21"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb33">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb29">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb30"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb48">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasMarketValueForNewProduct">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/quantity#hasMarketValue"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:comment>hasMarketValueForNewProduct is used to describe the market value of a new product.</rdfs:comment>
+    <rdfs:label>has market value for new product</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasTechnicalRequirementsForTakeBackForRecycling">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb49"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>hasTechnicalRequirmentsForTakeBackForRecycling is used to represent a textual description of the technical requirements of a product or product object for take back and recycling.</rdfs:comment>
+    <rdfs:label>has technical requirements for take back and recycling</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasUseSpan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb22"/>
+    <rdfs:comment>hasUseSpan describes the use span of a product or prodcut object.</rdfs:comment>
+    <rdfs:label>has use span</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb11">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb12"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb45">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasResistanceToEarth">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:comment>hasResistanceToEarth describes the resistance to earth of a product.</rdfs:comment>
+    <rdfs:label>has resistance to earth</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/pedestalGridThickness">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasPedestalGridDimension"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/FloorTileConditionRelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceParticipation"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/condition_good">
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/good_condition">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/FloorTileCondition"/>
+    <rdfs:label>good condition</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasConductivity">
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb31">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb32"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb43">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb44"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb35">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb36"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/FloorTileCondition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/construction/Condition"/>
+    <rdfs:comment>Floor Tile Condition is used to describe the condition of a floor tile (good, medium, bad).</rdfs:comment>
+    <rdfs:label>Floor Tile Condition</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb52">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb53"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasMarketValueForReusedProduct">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/quantity#hasMarketValue"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:comment>hasMarketValueForReusedProduct is used to describe the market value of a used product.</rdfs:comment>
+    <rdfs:label>has market value for reused product</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb55">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb56"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/policyOnTreatment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/construction/PolicyOnTreatment"/>
+    <rdfs:comment>policyOnTreatment describes the policy for treatment of used product.</rdfs:comment>
+    <rdfs:label>policy on treatment</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasUseSpanTotal">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasUseSpan"/>
+    <rdfs:comment>hasUseSpanTotal describes the total use span of a product or prodcut object.</rdfs:comment>
+    <rdfs:label>has use span total</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/FloorTile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:comment>A floor tile is a type of product that used to cover a floor.</rdfs:comment>
+    <rdfs:label>Floor tile</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb54">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb25">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb26"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/FireResistanceRating">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Fire resistance rating is expressed as 'F' followed by the minimum number of minutes in which the functionality of the product or product object can withstand fire. For example, F30 would therefore be a fire resistance duration of 30 min.</rdfs:comment>
+    <rdfs:label>Fire resistance rating</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/Condition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Condition is used to describe the condition of a specific product object.</rdfs:comment>
+    <rdfs:label>Condition</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb26">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb27"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/Contaminant">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>A contaminant is any physical thing that is regarded as a contaminant when present in a product or product object.</rdfs:comment>
+    <rdfs:label>Contaminant</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb34">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb35"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasSystemWeight">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb19"/>
+    <rdfs:comment>hasSystemWeight is used to express the system weight of a product or product object.</rdfs:comment>
+    <rdfs:label>has system weight</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasCondition">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb29"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasAccessory">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasUseSpanRemaining">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasUseSpan"/>
+    <rdfs:comment>hasUseSpanRemaining describes the remaining use span of a product or prodcut object.</rdfs:comment>
+    <rdfs:label>has use span remaining</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb46">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb47"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb53">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb54"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb21">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/refurbish">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/PolicyOnTreatment"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/TreatmentPolicy"/>
+    <rdfs:label>refurbish</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/ProductQuality">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>ProductQuality represents the quality of a product or product object.</rdfs:comment>
+    <rdfs:label>Product quality</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/PolicyOnTreatment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>PolicyOnTreatment represents the the policy for treatment (reuse, refurbish or reprocessing)</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasRecyclingPotential">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb13"/>
+    <rdfs:comment>hasRecyclingPotential describes the amount of the product or product object that can potenitally be recycled.</rdfs:comment>
+    <rdfs:label>has recycling potential</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb2">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb51">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/medium_condition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/FloorTileCondition"/>
+    <rdfs:label>medium condition</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/F60">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/FireResistanceRating"/>
+    <rdfs:comment>F60</rdfs:comment>
+    <rdfs:comment>F60 represents a fire resitance duration of 60 min.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb57">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb23">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb24"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasDistanceToRecyclingPlant">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb15">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/DimensionalDeviation">
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb19">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb20"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb17"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/quality_medium">
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb37">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb38"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb24">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasPackagingRecommendationsAfterDismantling">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    <rdfs:domain rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb34"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>hasPackagingRecommendationsAfterDismantling is used to represent a textual description of the packaging recommendations after a product or product object has been dismantled.</rdfs:comment>
+    <rdfs:label>has packaging recommendations after dismantling</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb23"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/product_quality_medium">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://w3id.org/CEON/ontology/construction/ProductQuality"/>
+    <rdfs:label>Product quality medium</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasFireResistance">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/construction/FireResistance"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb13">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb14"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasThickness">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasTileDimension"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb36">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasProductionSite">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb56">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb57"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/technicalRequirementsForTakeBackForRecycling">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb6">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/hasUseSpanTotal">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://qudt.org/schema/qudt/quantityValue"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb17">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb18"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb12">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/isExternal">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/FireResistance">
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb4">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb5"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/qualityOfProduct">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/created">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb3">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb30">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/ProductObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/pedestalGridHeight">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/construction/hasPedestalGridDimension"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/FloorTileCondition">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/TreatmentPolicy">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>TreatmentPolicy is used to describe the policy for treatment for a given product or product object.</rdfs:comment>
+    <rdfs:label>treatment policy</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb50">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb51"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb5">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/construction/DimensionalDeviation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb41">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="nc092fa8090d94f7cac10172f16d5f63eb42"/>
   </rdf:Description>
 </rdf:RDF>
