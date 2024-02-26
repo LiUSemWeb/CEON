@@ -81,7 +81,7 @@ def build_pdf():
                 soup = BeautifulSoup(f, "html.parser")
                 style = soup.new_tag('style', type='text/css')
                 style.append("""
-                    /* hack to avoid lonely heading (mot of the time at least) */
+                    /* hack to avoid lonely heading (most of the time at least) */
                     h2 {
                         page-break-inside: avoid;
                     }
@@ -112,9 +112,6 @@ def build_pdf():
                     tag = soup.find(id=id)
                     if tag != None:
                         tag.decompose()
-
-            with open("test.html","w") as f:
-                f.write(soup.prettify(formatter=html_formatter))
                 
             pdfkit.from_string(soup.prettify(formatter=html_formatter), pdf_file, options = { "enable-local-file-access": "" })
     except Exception as e:
@@ -169,12 +166,36 @@ def create_documentation():
         # # Insert overview section into documentation with WebVOWL in an iframe
         with open(html_file, encoding="utf-8") as f:
             soup = BeautifulSoup(f, "html.parser")
-            overview = BeautifulSoup(f"""
+            overview = BeautifulSoup(
+                f"""
+                <style>
+                    #iframe-overview {{
+                        width: 100%;
+                        height: 600px;
+                    }}
+                    .caption {{
+                        display: flex;
+                        justify-content: space-between;
+                    }}
+                    .caption a {{
+                        text-decoration: none;
+                        color: black;
+                        font-size: 2em;
+                    }}
+                </style>
                 <div id="overview" class="section">
                     <h2>Overview</h2>
                     <div class="figure">
-                        <iframe id="iframe-overview" width="100%" height ="600px" src="{path_to_webvowl}"></iframe>
-                        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+                        <iframe id="iframe-overview" src="{path_to_webvowl}">
+                        </iframe>
+                        <div class="caption">
+                            <div>
+                                <strong>Figure 1:</strong> Ontology overview.
+                            </div>
+                            <div>
+                                <a title="Show fullscreen" href="{path_to_webvowl}">&#x26F6;</a>
+                            </div>
+                        </div>
                     </div>
                 </section>
             """, "html.parser")
