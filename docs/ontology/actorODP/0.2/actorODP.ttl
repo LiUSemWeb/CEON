@@ -53,8 +53,8 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:range :Capability .
 
 :capabilityOf a owl:ObjectProperty ;
-    rdfs:label "Relates to the actor holding the capability.",
-        "capability of" ;
+    rdfs:label "capability of" ;
+    rdfs:comment "Relates to the actor holding the capability." ;
     rdfs:domain :Capability ;
     rdfs:range :Actor .
 
@@ -82,6 +82,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:range :Actor .
 
 :participatingObject a owl:ObjectProperty ;
+    rdfs:label "participating object" ;
     rdfs:comment "Participating object in a resource participation" ;
     rdfs:domain :ResourceParticipation .
 
@@ -92,11 +93,12 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:range resourceODP:Resource .
 
 :participatingSubject a owl:ObjectProperty ;
+    rdfs:label "participating subject" ;
     rdfs:comment "Participating subject in a resource participation" ;
     rdfs:domain :ResourceParticipation .
 
 :participationEndTime a owl:DatatypeProperty ;
-    rdfs:label "end time" ;
+    rdfs:label "participation end time" ;
     rdfs:comment "The end of a time interval." ;
     rdfs:range [ a rdfs:Datatype ;
             owl:unionOf ( xsd:date xsd:dateTime xsd:gMonthYear xsd:gYear ) ] .
@@ -124,14 +126,14 @@ odp:coversRequirements a owl:AnnotationProperty .
     rdfs:comment "A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow." .
 
 :participationStartTime a owl:DatatypeProperty ;
-    rdfs:label "start time" ;
+    rdfs:label "participation start time" ;
     rdfs:comment "The start of a time interval." ;
     rdfs:domain :Participation ;
     rdfs:range [ a rdfs:Datatype ;
             owl:unionOf ( xsd:date xsd:dateTime xsd:gMonthYear xsd:gYear ) ] .
 
 :participationTimePoint a owl:DatatypeProperty ;
-    rdfs:label "time point" ;
+    rdfs:label "participation time point" ;
     rdfs:comment "The point in time when something took place or was valid." ;
     rdfs:domain :Participation ;
     rdfs:range [ a rdfs:Datatype ;
@@ -150,7 +152,7 @@ process:Process a owl:Class .
 
 :ResourceParticipation a owl:Class ;
     rdfs:label "Resource participation" ;
-    rdfs:comment "The generic relation representing the particpation of a resource in some relation. Foe example, it can be specialized to represent a reified version of an object or data property." ;
+    rdfs:comment "The generic relation representing the particpation of a resource in some relation. For example, it can be specialized to represent a reified version of an object or data property." ;
     rdfs:subClassOf :Participation .
 
 resourceODP:Resource a owl:Class .
@@ -171,6 +173,7 @@ xsd:gYear a rdfs:Datatype .
 
 :Participation a owl:Class ;
     rdfs:label "Participation" ;
+    rdfs:comment "Represents the participation of objects in some situation." ;
     rdfs:subClassOf [ a owl:Class ;
             owl:unionOf ( [ a owl:Restriction ;
                         owl:cardinality "1"^^xsd:nonNegativeInteger ;

@@ -7,27 +7,18 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasPart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
+    <rdfs:comment>A process can consists of several part, which are sub-processes.</rdfs:comment>
+    <rdfs:label>has part</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Process">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/ProcessExecution">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment xml:lang="en">An activity in the context of a circular value network, handling resources.</rdfs:comment>
-    <rdfs:label xml:lang="en">Process</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/resultingSituation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Transformation"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
-    <rdfs:comment>The situation after the execution of a process.</rdfs:comment>
-    <rdfs:label>resulting situation</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/intialSituation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Transformation"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
-    <rdfs:comment>The situation before executing a process.</rdfs:comment>
-    <rdfs:label>initial situation</rdfs:label>
+    <rdfs:comment xml:lang="en">An execution of a specific process.</rdfs:comment>
+    <rdfs:label xml:lang="en">ProcessExecution</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -47,36 +38,30 @@
     <rdfs:seeAlso rdf:resource="https://github.com/LiUSemWeb/CEON"/>
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</owl:versionInfo>
   </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/resultingSituation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Transformation"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
+    <rdfs:comment>The situation after the execution of a process.</rdfs:comment>
+    <rdfs:label>resulting situation</rdfs:label>
+  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasInput">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Transformation"/>
     <rdfs:comment>The situation before the transformation takes place, i.e. the state of affairs before the process takes places, such as the set of components before they are assembled into a product.</rdfs:comment>
     <rdfs:label>has input</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasPart">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/intialSituation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-    <rdfs:comment>A process can consists of several part, which are sub-processes.</rdfs:comment>
-    <rdfs:label>has part</rdfs:label>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Transformation"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
+    <rdfs:comment>The situation before executing a process.</rdfs:comment>
+    <rdfs:label>initial situation</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasProcessExecution">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/ProcessExecution"/>
-    <rdfs:comment xml:lang="en">A process can have  specific executions.</rdfs:comment>
-    <rdfs:label xml:lang="en">hasProcessExecution</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasProcessType">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/ProcessType"/>
-    <rdfs:comment xml:lang="en">The type of the process.</rdfs:comment>
-    <rdfs:label xml:lang="en">hasProcessType</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  <rdf:Description rdf:nodeID="naf78e843a41349c0a1b05bbc186f2b55b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participationIn"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/nextProcess">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -85,20 +70,18 @@
     <rdfs:comment>A relation between one process and the next one following it in some sequence of processes, e.g. a sequence of transformations in a material flow.</rdfs:comment>
     <rdfs:label>next process</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasProcessType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/ProcessType"/>
+    <rdfs:comment xml:lang="en">The type of the process.</rdfs:comment>
+    <rdfs:label xml:lang="en">hasProcessType</rdfs:label>
+  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/isSettingFor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
     <rdfs:comment>The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state.</rdfs:comment>
     <rdfs:label>is the setting for</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/occursInLocation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Transformation"/>
-    <rdfs:comment>The location in which a transformation takes place, e.g. the factory location where something is manufactured.</rdfs:comment>
-    <rdfs:label>occurs in location</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Transformation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -106,14 +89,31 @@
     <rdfs:comment>A process that transforms some situation into another situation, i.e. changes the state of affairs of some actor, resource etc.</rdfs:comment>
     <rdfs:label>Transformation</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ProcessParticipation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="naf78e843a41349c0a1b05bbc186f2b55b1"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/participationIn">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/occursInLocation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Transformation"/>
+    <rdfs:comment>The location in which a transformation takes place, e.g. the factory location where something is manufactured.</rdfs:comment>
+    <rdfs:label>occurs in location</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasProcessExecution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/ProcessExecution"/>
+    <rdfs:comment xml:lang="en">A process can have  specific executions.</rdfs:comment>
+    <rdfs:label xml:lang="en">hasProcessExecution</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasOutput">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -126,10 +126,18 @@
     <rdfs:comment>A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time.</rdfs:comment>
     <rdfs:label>Situation</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Resource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Process">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment xml:lang="en">An activity in the context of a circular value network, handling resources.</rdfs:comment>
+    <rdfs:label xml:lang="en">Process</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/ProcessType">
@@ -137,27 +145,19 @@
     <rdfs:comment xml:lang="en">The type of a process.</rdfs:comment>
     <rdfs:label xml:lang="en">ProcessType</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/ProcessExecution">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Resource">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment xml:lang="en">An execution of a specific process.</rdfs:comment>
-    <rdfs:label xml:lang="en">ProcessExecution</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ProcessParticipation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="n79a2f277e97c4d919a4c22477100d04ab1"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n79a2f277e97c4d919a4c22477100d04ab1">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participationIn"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/participationIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
 </rdf:RDF>
