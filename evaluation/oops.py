@@ -142,16 +142,17 @@ for module in modules:
         affected_elements = []  
         for affected_element in g.objects(pitfall_instance, URIRef(oops + "hasAffectedElement")):  
             affected_element_label = str(affected_element)  
-            affected_elements.append(affected_element_label)  
-            # Add a row to the HTML table for the pitfall instance  
-            html_output += f"""
-                <tr>
-                    <td>{module}</td>
-                    <td title=\"{pitfall_description}\">{pitfall_name}</td>
-                    <td>{pitfall_code}</td>
-                    <td>{pitfall_importance_level}</td>
-                    <td>{',<br>'.join(affected_elements)}</td>
-                </tr>""" 
+            affected_elements.append(affected_element_label) 
+             
+        # Add a row to the HTML table for the pitfall instance  
+        html_output += f"""
+            <tr>
+                <td>{module}</td>
+                <td title=\"{pitfall_description}\">{pitfall_name}</td>
+                <td>{pitfall_code}</td>
+                <td>{pitfall_importance_level}</td>
+                <td>{',<br>'.join(affected_elements)}</td>
+            </tr>""" 
         # Finish the table output  
 
 html_output += "</tbody></table>"
