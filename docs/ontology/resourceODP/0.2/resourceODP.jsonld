@@ -28,71 +28,40 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/DigitalObject",
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/hasConstituent",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "A digital object, e.g. a computer file, that is located on some server, hard drive, or on the web. Most often the digital object is the realization of some piece of information."
+        "@language": "en",
+        "@value": "hasConstitutent intends to represent that a physical object can have a collection of composing components."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "digital object"
+        "@value": "hasConstituent"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+    "http://www.w3.org/2000/01/rdf-schema#range": [
       {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/license",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A matter is a physical substance."
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Constituent"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
       {
-        "@language": "en",
-        "@value": "Matter"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "http://emmo.info/emmo#EMMO_5b2222df_4da6_442f_8244_96e9e45887d1"
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPart"
       }
     ]
   },
   {
-    "@id": "http://purl.org/dc/elements/1.1/description",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPart",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "http://www.w3.org/2002/07/owl#TransitiveProperty"
-    ]
-  },
-  {
-    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
+    "@id": "http://purl.org/dc/terms/description",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
@@ -104,9 +73,49 @@
     ]
   },
   {
-    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject",
     "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "hasPhysicalObject intends to represent that a batch of objects or a set of objects can have composing components of physical objects."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "_:n1493c731ca1c47f6b7762aa022775a83b1"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "hasPhysicalObject"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
+          },
+          {
+            "@id": "http://w3id.org/CEON/ontology/resourceODP/SetOfObjects"
+          }
+        ]
+      }
     ]
   },
   {
@@ -159,13 +168,53 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/isAbout",
+    "@id": "http://purl.org/dc/terms/title",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/batchSize",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "batchSize intends to repsent how many physical objects are belong to a batch of objects."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "batchSize"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/vocab/vann/preferredNamespaceUri",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/containsInformation",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "Connecting the information to the object (physical, virtual, imaginary) that the information is about."
+        "@value": "Indicating that some piece of information is contained in a larger collection of information, e.g. a data sheet contains a statement about a certain parameter of a product."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
@@ -175,7 +224,75 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "is about"
+        "@value": "contains information"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Information"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPart"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/hasBatch",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/SetOfObjects"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "hasBatch"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A resource able to be handled in the context of a circular value network, e.g. data generated by software systems in the CVN, materials or prooducts as physical objects handled in the CVN."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Resource"
       }
     ]
   },
@@ -201,15 +318,15 @@
         "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource"
       },
       {
-        "@id": "_:n4fb9e57f43d24591859017d6775331edb4"
+        "@id": "_:n1493c731ca1c47f6b7762aa022775a83b4"
       },
       {
-        "@id": "_:n4fb9e57f43d24591859017d6775331edb9"
+        "@id": "_:n1493c731ca1c47f6b7762aa022775a83b9"
       }
     ]
   },
   {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb4",
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b4",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -217,17 +334,17 @@
       {
         "@list": [
           {
-            "@id": "_:n4fb9e57f43d24591859017d6775331edb5"
+            "@id": "_:n1493c731ca1c47f6b7762aa022775a83b5"
           },
           {
-            "@id": "_:n4fb9e57f43d24591859017d6775331edb6"
+            "@id": "_:n1493c731ca1c47f6b7762aa022775a83b6"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb5",
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b5",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -243,7 +360,7 @@
     ]
   },
   {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb6",
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b6",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -259,7 +376,7 @@
     ]
   },
   {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb9",
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b9",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -281,6 +398,27 @@
     ]
   },
   {
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/isAbout",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Connecting the information to the object (physical, virtual, imaginary) that the information is about."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Information"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "is about"
+      }
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -295,135 +433,6 @@
       {
         "@language": "en",
         "@value": "Composition"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A physical object is a collection of matter."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "PhysicalObject"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource"
-      },
-      {
-        "@id": "_:n4fb9e57f43d24591859017d6775331edb10"
-      },
-      {
-        "@id": "_:n4fb9e57f43d24591859017d6775331edb15"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb10",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "_:n4fb9e57f43d24591859017d6775331edb11"
-          },
-          {
-            "@id": "_:n4fb9e57f43d24591859017d6775331edb12"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb11",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasConstituent"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Constituent"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb12",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#allValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Constituent"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasConstituent"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb15",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "_:n4fb9e57f43d24591859017d6775331edb16"
-          },
-          {
-            "@id": "_:n4fb9e57f43d24591859017d6775331edb17"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb16",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasMatter"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb17",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#allValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasMatter"
       }
     ]
   },
@@ -500,7 +509,277 @@
     ]
   },
   {
-    "@id": "http://purl.org/vocab/vann/preferredNamespaceUri",
+    "@id": "http://purl.org/dc/terms/license",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A physical object is a collection of matter."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "PhysicalObject"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource"
+      },
+      {
+        "@id": "_:n1493c731ca1c47f6b7762aa022775a83b10"
+      },
+      {
+        "@id": "_:n1493c731ca1c47f6b7762aa022775a83b15"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b10",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "_:n1493c731ca1c47f6b7762aa022775a83b11"
+          },
+          {
+            "@id": "_:n1493c731ca1c47f6b7762aa022775a83b12"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b11",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasConstituent"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Constituent"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b12",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#allValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Constituent"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasConstituent"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b15",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "_:n1493c731ca1c47f6b7762aa022775a83b16"
+          },
+          {
+            "@id": "_:n1493c731ca1c47f6b7762aa022775a83b17"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b16",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasMatter"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b17",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#allValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasMatter"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/SetOfObjects",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A set of object is a set of physical objects that can be different types."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Set Of Objects"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource"
+      },
+      {
+        "@id": "_:n1493c731ca1c47f6b7762aa022775a83b20"
+      },
+      {
+        "@id": "_:n1493c731ca1c47f6b7762aa022775a83b25"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b20",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "_:n1493c731ca1c47f6b7762aa022775a83b21"
+          },
+          {
+            "@id": "_:n1493c731ca1c47f6b7762aa022775a83b22"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b21",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasBatch"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b22",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#allValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasBatch"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b25",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "_:n1493c731ca1c47f6b7762aa022775a83b26"
+          },
+          {
+            "@id": "_:n1493c731ca1c47f6b7762aa022775a83b27"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b26",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1493c731ca1c47f6b7762aa022775a83b27",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#allValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/creator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/contributor",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
@@ -528,340 +807,61 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/batchSize",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "batchSize intends to repsent how many physical objects are belong to a batch of objects."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "batchSize"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource",
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/DigitalObject",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@language": "en",
-        "@value": "A resource able to be handled in the context of a circular value network, e.g. data generated by software systems in the CVN, materials or prooducts as physical objects handled in the CVN."
+        "@value": "A digital object, e.g. a computer file, that is located on some server, hard drive, or on the web. Most often the digital object is the realization of some piece of information."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "Resource"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/description",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "hasPhysicalObject intends to represent that a batch of objects or a set of objects can have composing components of physical objects."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "_:n4fb9e57f43d24591859017d6775331edb1"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "hasPhysicalObject"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb1",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
-          },
-          {
-            "@id": "http://w3id.org/CEON/ontology/resourceODP/SetOfObjects"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/contributor",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/hasBatch",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/SetOfObjects"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "hasBatch"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/SetOfObjects",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A set of object is a set of physical objects that can be different types."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Set Of Objects"
+        "@value": "digital object"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
         "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource"
-      },
-      {
-        "@id": "_:n4fb9e57f43d24591859017d6775331edb20"
-      },
-      {
-        "@id": "_:n4fb9e57f43d24591859017d6775331edb25"
       }
     ]
   },
   {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb20",
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "_:n4fb9e57f43d24591859017d6775331edb21"
-          },
-          {
-            "@id": "_:n4fb9e57f43d24591859017d6775331edb22"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb21",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasBatch"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb22",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#allValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasBatch"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb25",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "_:n4fb9e57f43d24591859017d6775331edb26"
-          },
-          {
-            "@id": "_:n4fb9e57f43d24591859017d6775331edb27"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb26",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4fb9e57f43d24591859017d6775331edb27",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#allValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/title",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/creator",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/hasConstituent",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "hasConstitutent intends to represent that a physical object can have a collection of composing components."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
+        "@value": "A matter is a physical substance."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "hasConstituent"
+        "@value": "Matter"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
       {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Constituent"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPart"
+        "@value": "http://emmo.info/emmo#EMMO_5b2222df_4da6_442f_8244_96e9e45887d1"
       }
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/containsInformation",
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPart",
     "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "Indicating that some piece of information is contained in a larger collection of information, e.g. a data sheet contains a statement about a certain parameter of a product."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Information"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "contains information"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Information"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/hasPart"
-      }
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/elements/1.1/description",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   }
 ]
