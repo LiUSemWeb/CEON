@@ -1,10 +1,10 @@
 @prefix : <http://w3id.org/CEON/ontology/electronics/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix ns1: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix ns2: <http://qudt.org/schema/qudt/> .
-@prefix ns3: <http://w3id.org/CEON/ontology/actorODP/> .
-@prefix ns4: <http://w3id.org/CEON/ontology/provenance/> .
-@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
+@prefix ns3: <http://w3id.org/CEON/ontology/product/> .
+@prefix ns4: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/provenance/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -91,19 +91,19 @@ ns2:siUnitsExpression a owl:DatatypeProperty .
     rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit>,
         <http://qudt.org/vocab/unit> .
 
-ns3:participantRole a owl:ObjectProperty .
+ns1:participantRole a owl:ObjectProperty .
 
-ns3:participatingActor a owl:ObjectProperty .
+ns1:participatingActor a owl:ObjectProperty .
 
-ns3:participatingObject a owl:AnnotationProperty .
+ns1:participatingObject a owl:AnnotationProperty .
 
-ns3:participatingResource a owl:ObjectProperty .
+ns1:participatingResource a owl:ObjectProperty .
 
-ns3:participatingSubject a owl:AnnotationProperty .
+ns1:participatingSubject a owl:AnnotationProperty .
 
-ns3:participationIn a owl:ObjectProperty .
+ns1:participationIn a owl:ObjectProperty .
 
-ns3:participationTimePoint a owl:DatatypeProperty .
+ns1:participationTimePoint a owl:DatatypeProperty .
 
 : a owl:Ontology ;
     dcterms:contributor "Eva Blomqvist",
@@ -156,7 +156,7 @@ ns3:participationTimePoint a owl:DatatypeProperty .
     rdfs:subClassOf :ElectronicsProduct .
 
 :ElectronicsProductSourcingComponentRelation a owl:Class ;
-    rdfs:subClassOf ns4:Statement .
+    rdfs:subClassOf ns5:Statement .
 
 :FibreMAterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
@@ -243,7 +243,7 @@ ns3:participationTimePoint a owl:DatatypeProperty .
 :batchNumber a owl:DatatypeProperty ;
     rdfs:label "Batch number" ;
     rdfs:comment "batchNumber represents the identical information of a batch of objects." ;
-    rdfs:domain ns1:BatchOfObjects ;
+    rdfs:domain ns4:BatchOfObjects ;
     rdfs:range xsd:integer .
 
 :componentDiameter a owl:DatatypeProperty ;
@@ -270,7 +270,7 @@ ns3:participationTimePoint a owl:DatatypeProperty .
 :dateOfProduction a owl:DatatypeProperty ;
     rdfs:label "Date of production" ;
     rdfs:comment "dateOfProduction represents the date of production of a batch of products." ;
-    rdfs:domain ns1:BatchOfObjects ;
+    rdfs:domain ns4:BatchOfObjects ;
     rdfs:range xsd:dateTime .
 
 :decommissionReason a owl:DatatypeProperty ;
@@ -282,10 +282,10 @@ ns3:participationTimePoint a owl:DatatypeProperty .
 
 :ds_issue_1 a <http://w3id.org/CEON/ontology/actor/IssuingResource>,
         owl:NamedIndividual ;
-    ns3:participantRole <http://w3id.org/CEON/ontology/actor/issuer> ;
-    ns3:participatingActor :M ;
-    ns3:participatingResource :datasheet_1 ;
-    ns3:participationTimePoint "2023-10-11"^^xsd:date ;
+    ns1:participantRole <http://w3id.org/CEON/ontology/actor/issuer> ;
+    ns1:participatingActor :M ;
+    ns1:participatingResource :datasheet_1 ;
+    ns1:participationTimePoint "2023-10-11"^^xsd:date ;
     rdfs:comment "'Data sheet 1' was issued by organization 'M' on date '2023-10-11', and contains the statement that 'Speaker x contains 300 grams of carbon materials.'" .
 
 :electricalConductivity a owl:DatatypeProperty ;
@@ -346,11 +346,11 @@ ns3:participationTimePoint a owl:DatatypeProperty .
     rdfs:range xsd:double .
 
 :q1 a ns2:Quantity,
-        ns4:Statement,
+        ns5:Statement,
         owl:NamedIndividual ;
     ns2:hasUnit <http://qudt.org/vocab/unit/PA> ;
     :fatigueResistance 8e+01 ;
-    ns4:statementAbout :speaker_x .
+    ns5:statementAbout :speaker_x .
 
 :recyclingPressure a owl:DatatypeProperty ;
     rdfs:comment "To represent the pressure condition in a recycling process." ;
@@ -379,9 +379,9 @@ ns3:participationTimePoint a owl:DatatypeProperty .
 
 :s7 a <http://w3id.org/CEON/ontology/actor/SupplyingResource>,
         owl:NamedIndividual ;
-    ns3:participantRole <http://w3id.org/CEON/ontology/actor/supplier> ;
-    ns3:participatingActor :company_x ;
-    ns3:participatingResource :boc_x ;
+    ns1:participantRole <http://w3id.org/CEON/ontology/actor/supplier> ;
+    ns1:participatingActor :company_x ;
+    ns1:participatingResource :boc_x ;
     rdfs:comment "The batch of products ('boc_x') is supplied by the 'company_x' company." .
 
 :sampleLength a owl:DatatypeProperty ;
@@ -415,23 +415,23 @@ ns3:participationTimePoint a owl:DatatypeProperty .
 
 :ss_1 a <http://w3id.org/CEON/ontology/actor/ProducingResource>,
         owl:NamedIndividual ;
-    ns3:participantRole <http://w3id.org/CEON/ontology/actor/manufacturer> ;
-    ns3:participatingActor :company_y ;
-    ns3:participatingResource :speaker_x ;
+    ns1:participantRole <http://w3id.org/CEON/ontology/actor/manufacturer> ;
+    ns1:participatingActor :company_y ;
+    ns1:participatingResource :speaker_x ;
     rdfs:comment "This 'speaker x' product is manufactured by the 'company y' company." .
 
 :ss_2 a <http://w3id.org/CEON/ontology/actor/ProducingResource>,
         owl:NamedIndividual ;
-    ns3:participantRole <http://w3id.org/CEON/ontology/actor/manufacturer> ;
-    ns3:participatingActor :company_a ;
-    ns3:participatingResource :neodymium_magnet_x ;
+    ns1:participantRole <http://w3id.org/CEON/ontology/actor/manufacturer> ;
+    ns1:participatingActor :company_a ;
+    ns1:participatingResource :neodymium_magnet_x ;
     rdfs:comment "The 'neodymium magnet x' product is manufactured by the 'company a' company." .
 
 :ss_3 a <http://w3id.org/CEON/ontology/actor/ProducingResource>,
         owl:NamedIndividual ;
-    ns3:participantRole <http://w3id.org/CEON/ontology/actor/manufacturer> ;
-    ns3:participatingActor :company_b ;
-    ns3:participatingResource :damper_x ;
+    ns1:participantRole <http://w3id.org/CEON/ontology/actor/manufacturer> ;
+    ns1:participatingActor :company_b ;
+    ns1:participatingResource :damper_x ;
     rdfs:comment "The 'damper x' product is manufactured by the 'company b' company." .
 
 :stiffness a owl:DatatypeProperty ;
@@ -451,7 +451,7 @@ ns3:participationTimePoint a owl:DatatypeProperty .
 :viscosityAt25 a owl:DatatypeProperty ;
     rdfs:range xsd:double .
 
-ns4:statementAbout a owl:AnnotationProperty .
+ns5:statementAbout a owl:AnnotationProperty .
 
 xsd:date a rdfs:Datatype .
 
@@ -500,12 +500,12 @@ ns2:DerivedUnit a owl:Class ;
 
 <http://w3id.org/CEON/ontology/actor/supplier> a owl:NamedIndividual .
 
-ns3:ResourceRelation a owl:Class .
+ns1:ResourceRelation a owl:Class .
 
 :Damper a owl:Class ;
     rdfs:subClassOf :ElectronicsProduct .
 
-:M a ns3:Actor,
+:M a ns1:Actor,
         owl:NamedIndividual .
 
 :NeodymiumMagnet a owl:Class ;
@@ -521,45 +521,45 @@ ns3:ResourceRelation a owl:Class .
 :carbon_material_a a :NonMetalMaterial,
         owl:NamedIndividual .
 
-:company_a a ns3:Actor,
+:company_a a ns1:Actor,
         owl:NamedIndividual .
 
-:company_b a ns3:Actor,
+:company_b a ns1:Actor,
         owl:NamedIndividual .
 
-:company_x a ns3:Actor,
+:company_x a ns1:Actor,
         owl:NamedIndividual .
 
-:company_y a ns3:Actor,
+:company_y a ns1:Actor,
         owl:NamedIndividual .
 
 :composition_a a ns2:Quantity,
-        ns3:ResourceRelation,
-        ns4:Statement,
+        ns1:ResourceRelation,
+        ns5:Statement,
         owl:NamedIndividual ;
     ns2:hasUnit <http://qudt.org/vocab/unit/GM> ;
     ns2:numericalValue 3e+02 ;
-    ns3:participatingObject :carbon_material_a ;
-    ns3:participatingSubject :speaker_x ;
+    ns1:participatingObject :carbon_material_a ;
+    ns1:participatingSubject :speaker_x ;
     rdfs:comment "Speaker x contains 300 grams of carbon material a." .
 
 :datasheet_1 a <http://w3id.org/CEON/ontology/datasheet/DataSheet>,
         owl:NamedIndividual ;
-    ns1:containsInformation :composition_a,
+    ns4:containsInformation :composition_a,
         :s63 .
 
-:dismantling_company_b a ns3:Actor,
+:dismantling_company_b a ns1:Actor,
         owl:NamedIndividual .
 
 :dismantling_process_1 a <http://w3id.org/CEON/ontology/processODP/Process>,
         owl:NamedIndividual ;
-    ns3:participatingResource :boc_x .
+    ns1:participatingResource :boc_x .
 
 :s63 a <http://w3id.org/CEON/ontology/actor/ProcessParticipation>,
         owl:NamedIndividual ;
-    ns3:participantRole <http://w3id.org/CEON/ontology/actor/dismantler> ;
-    ns3:participatingActor :dismantling_company_b ;
-    ns3:participationIn :dismantling_process_1 ;
+    ns1:participantRole <http://w3id.org/CEON/ontology/actor/dismantler> ;
+    ns1:participatingActor :dismantling_company_b ;
+    ns1:participationIn :dismantling_process_1 ;
     :decommissionReason "They are broken." ;
     rdfs:comment "The batch of products \"box x\" is going to be decommissioned, operated by the 'dismantling company b', because of 'They are broken'." .
 
@@ -573,18 +573,18 @@ ns3:ResourceRelation a owl:Class .
 :NonMetalMaterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
-:boc_x a ns1:BatchOfObjects,
+:boc_x a ns4:BatchOfObjects,
         owl:NamedIndividual ;
-    ns5:batchOfProduct :speaker_x .
+    ns3:batchOfProduct :speaker_x .
 
 :damper_x a :Damper,
-        ns5:Product,
+        ns3:Product,
         owl:NamedIndividual .
 
 :neodymium_magnet_x a :NeodymiumMagnet,
-        ns5:Product,
+        ns3:Product,
         owl:NamedIndividual ;
-    ns1:hasConstituent :damper_x,
+    ns4:hasConstituent :damper_x,
         :neodymium_magnet_x .
 
 <http://w3id.org/CEON/ontology/actor/ProducingResource> a owl:Class .
@@ -597,8 +597,8 @@ ns3:ResourceRelation a owl:Class .
 :speaker_x a :Speaker,
         owl:NamedIndividual .
 
-ns3:Actor a owl:Class .
+ns1:Actor a owl:Class .
 
 :ElectronicsProduct a owl:Class ;
-    rdfs:subClassOf ns5:Product .
+    rdfs:subClassOf ns3:Product .
 

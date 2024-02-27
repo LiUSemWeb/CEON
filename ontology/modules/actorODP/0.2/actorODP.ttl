@@ -17,9 +17,9 @@
                                            dcterms:contributor "Huanyu Li" ,
                                                                "Mikael Lindecrantz" ,
                                                                "Robin Keskisärkkä" ;
+                                           dcterms:created "2023-03-17"^^xsd:date ;
                                            dcterms:creator "Eva Blomqvist" ;
                                            dcterms:description "A core ODP of the CEON ontology network, defining aspects of the actor concept." ;
-                                           dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
                                            dcterms:title "Circular Economy Ontology Network (CEON) - Actor ODP" ;
                                            vann:preferredNamespacePrefix "actorODP"^^xsd:string ;
                                            vann:preferredNamespaceUri "https://w3id.org/CEON/ontoloy/actorODP/"^^xsd:string ;
@@ -34,6 +34,10 @@
 
 ###  http://purl.org/dc/terms/contributor
 dcterms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/creator
@@ -117,7 +121,9 @@ xsd:gYear rdf:type rdfs:Datatype .
                            owl:unionOf ( :Actor
                                          resourceODP:Resource
                                        )
-                         ] .
+                         ] ;
+             rdfs:comment "Defines the location of an actor or resource." ;
+             rdfs:label "has location" .
 
 
 ###  http://w3id.org/CEON/ontology/actorODP/participantRole
@@ -260,7 +266,9 @@ xsd:gYear rdf:type rdfs:Datatype .
 
 ###  http://w3id.org/CEON/ontology/actorODP/ResourceParticipation
 :ResourceParticipation rdf:type owl:Class ;
-                       rdfs:subClassOf :Participation .
+                       rdfs:subClassOf :Participation ;
+                       rdfs:comment "The generic relation representing the particpation of a resource in some relation. Foe example, it can be specialized to represent a reified version of an object or data property." ;
+                       rdfs:label "Resource participation" .
 
 
 ###  http://w3id.org/CEON/ontology/actorODP/ResourceRelation
