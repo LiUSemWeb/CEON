@@ -359,7 +359,11 @@
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
     "instances" : 0,
     "label" : {
-      "IRI-based" : "ResourceParticipation"
+      "IRI-based" : "ResourceParticipation",
+      "undefined" : "Resource participation"
+    },
+    "comment" : {
+      "undefined" : "The generic relation representing the particpation of a resource in some relation. For example, it can be specialized to represent a reified version of an object or data property."
     },
     "attributes" : [ "external" ],
     "id" : "43",
@@ -459,6 +463,9 @@
       "undefined" : "Participation"
     },
     "subClasses" : [ "19", "43", "5" ],
+    "comment" : {
+      "undefined" : "Represents the participation of objects in some situation."
+    },
     "attributes" : [ "external" ],
     "id" : "10"
   }, {
@@ -614,7 +621,7 @@
     "comment" : {
       "undefined" : "The relation involving the role of a certain actor with respect to a certain resource, e.g. an organisation or individual (actor) owning (role) a specific product (resource) at a specific point or period in time."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "5",
     "superClasses" : [ "10" ]
   }, {
@@ -956,7 +963,7 @@
     "comment" : {
       "undefined" : "The type of the actor."
     },
-    "attributes" : [ "object", "external" ],
+    "attributes" : [ "external", "object" ],
     "id" : "6"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/participationTimePoint",
@@ -964,13 +971,13 @@
     "range" : "11",
     "label" : {
       "IRI-based" : "participationTimePoint",
-      "undefined" : "time point"
+      "undefined" : "participation time point"
     },
     "domain" : "10",
     "comment" : {
       "undefined" : "The point in time when something took place or was valid."
     },
-    "attributes" : [ "datatype", "external" ],
+    "attributes" : [ "external", "datatype" ],
     "id" : "9"
   }, {
     "range" : "3",
@@ -994,7 +1001,7 @@
     "comment" : {
       "undefined" : "Holds the value of the role of the participant in this participation relation."
     },
-    "attributes" : [ "object", "external" ],
+    "attributes" : [ "external", "object" ],
     "id" : "16"
   }, {
     "range" : "19",
@@ -1039,7 +1046,7 @@
     "comment" : {
       "undefined" : "Relates some properties to the capability, such as the parameters of it, or the needed resources."
     },
-    "attributes" : [ "object", "external" ],
+    "attributes" : [ "external", "object" ],
     "id" : "29"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/participationEndTime",
@@ -1047,13 +1054,13 @@
     "range" : "35",
     "label" : {
       "IRI-based" : "participationEndTime",
-      "undefined" : "end time"
+      "undefined" : "participation end time"
     },
     "domain" : "34",
     "comment" : {
       "undefined" : "The end of a time interval."
     },
-    "attributes" : [ "datatype", "external" ],
+    "attributes" : [ "external", "datatype" ],
     "id" : "33"
   }, {
     "range" : "5",
@@ -1074,7 +1081,10 @@
       "undefined" : "capability of"
     },
     "domain" : "0",
-    "attributes" : [ "object", "external" ],
+    "comment" : {
+      "undefined" : "Relates to the actor holding the capability."
+    },
+    "attributes" : [ "external", "object" ],
     "id" : "42"
   }, {
     "range" : "5",
@@ -1086,13 +1096,14 @@
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
     "range" : "49",
     "label" : {
-      "IRI-based" : "participatingObject"
+      "IRI-based" : "participatingObject",
+      "undefined" : "participating object"
     },
     "domain" : "43",
     "comment" : {
       "undefined" : "Participating object in a resource participation"
     },
-    "attributes" : [ "object", "external" ],
+    "attributes" : [ "external", "object" ],
     "id" : "48"
   }, {
     "range" : "5",
@@ -1144,13 +1155,14 @@
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
     "range" : "49",
     "label" : {
-      "IRI-based" : "participatingSubject"
+      "IRI-based" : "participatingSubject",
+      "undefined" : "participating subject"
     },
     "domain" : "43",
     "comment" : {
       "undefined" : "Participating subject in a resource participation"
     },
-    "attributes" : [ "object", "external" ],
+    "attributes" : [ "external", "object" ],
     "id" : "64"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/participatingActor",
@@ -1164,7 +1176,7 @@
     "comment" : {
       "undefined" : "Holds the value of the actor involved in this participation relation."
     },
-    "attributes" : [ "object", "external" ],
+    "attributes" : [ "external", "object" ],
     "id" : "65"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actor/capabilityExtent",
@@ -1198,7 +1210,7 @@
     "comment" : {
       "undefined" : "An actor participates in a collaboration based on that it has some capability that is useful for the collaboration."
     },
-    "attributes" : [ "object", "external" ],
+    "attributes" : [ "external", "object" ],
     "id" : "70"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/participatingResource",
@@ -1212,7 +1224,7 @@
     "comment" : {
       "undefined" : "The resource that this participation relation relates to, i.e. for which the actor holds the specified role."
     },
-    "attributes" : [ "object", "external" ],
+    "attributes" : [ "external", "object" ],
     "id" : "71"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actor/neededResourceRelation",
@@ -1235,23 +1247,27 @@
     "range" : "66",
     "label" : {
       "IRI-based" : "participationStartTime",
-      "undefined" : "start time"
+      "undefined" : "participation start time"
     },
     "domain" : "10",
     "comment" : {
       "undefined" : "The start of a time interval."
     },
-    "attributes" : [ "datatype", "external" ],
+    "attributes" : [ "external", "datatype" ],
     "id" : "75"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/hasLocation",
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
     "range" : "67",
     "label" : {
-      "IRI-based" : "hasLocation"
+      "IRI-based" : "hasLocation",
+      "undefined" : "has location"
     },
     "domain" : "73",
-    "attributes" : [ "object", "external" ],
+    "comment" : {
+      "undefined" : "Defines the location of an actor or resource."
+    },
+    "attributes" : [ "external", "object" ],
     "id" : "76"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/participationIn",
@@ -1265,7 +1281,7 @@
     "comment" : {
       "undefined" : "The collaboration or process that this participation relates to."
     },
-    "attributes" : [ "object", "external" ],
+    "attributes" : [ "external", "object" ],
     "id" : "77"
   } ]
 }
