@@ -28,18 +28,18 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
         "Robin Keskisärkkä" ;
-    dcterms:created "2023-03-16"^^xsd:string ;
+    dcterms:created "2023-03-16" ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "The Product module of CEON (Circular Economy Ontology Network)." ;
-    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
-    dcterms:title "Circular Economy Ontology Network (CEON) - Product Module"^^xsd:string ;
-    vann:preferredNamespacePrefix "product"^^xsd:string ;
-    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/product/"^^xsd:string ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Product Module" ;
+    vann:preferredNamespacePrefix "product" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/product/" ;
     odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-2, CVN-ResrouceType-4, C11-2, C12-1, C13-3, E2-1, T8-3." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.2/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/product/0.2/> ;
-    owl:versionInfo "0.2"^^xsd:string .
+    owl:versionInfo "0.2" .
 
 :hasProductComponent a owl:ObjectProperty ;
     rdfs:label "hasProductComponent"@en ;
@@ -102,9 +102,10 @@ odp:coversRequirements a owl:AnnotationProperty .
         resourceODP:Composition .
 
 :hasComposition a owl:ObjectProperty ;
+    rdfs:label "has composition" ;
     rdfs:comment "hasComposition intends to represent that a product model or physical object can have compostition information."@en ;
-    rdfs:domain :Product,
-        resourceODP:PhysicalObject ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Product resourceODP:PhysicalObject ) ] ;
     rdfs:range resourceODP:Composition .
 
 :ProductObject a owl:Class ;
