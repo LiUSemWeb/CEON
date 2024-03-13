@@ -23,6 +23,22 @@ def copy_ontologies():
         g.serialize(destination=f"{base}.owl", format="xml")
         g.serialize(destination=f"{base}.jsonld", format="json-ld")
 
+    for source in glob("ontology/demo/*/*/*", recursive=True):
+        if not source.endswith(".ttl"):
+            continue
+
+        parts = re.match("ontology/demo/([^/]*)/([^/]*)", source)    
+        name = parts.group(1)
+        version = parts.group(2)
+        base = f"docs/demo/{name}/{version}/{name}"
+        os.makedirs(f"docs/demo/{name}/{version}/", exist_ok=True)
+        g = Graph()
+        g.parse(source)
+        g.serialize(destination=f"{base}.ttl", format="turtle")
+        g.serialize(destination=f"{base}.rdf", format="xml")
+        g.serialize(destination=f"{base}.owl", format="xml")
+        g.serialize(destination=f"{base}.jsonld", format="json-ld")
+
 
 if __name__ == "__main__":
     copy_ontologies()
