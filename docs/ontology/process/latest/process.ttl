@@ -6,9 +6,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
 
 dcterms:creator a owl:AnnotationProperty .
 
@@ -26,12 +27,13 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
         "Robin Keskisärkkä" ;
+    dcterms:created "2023-03-16" ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "The Process module of CEON (Circular Economy Ontology Network)." ;
-    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
-    dcterms:title "Circular Economy Ontology Network (CEON) - Process Module"^^xsd:string ;
-    vann:preferredNamespacePrefix "process"^^xsd:string ;
-    vann:preferredNamespaceUri "https://w3id.org/CEON/ontology/process/"^^xsd:string ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Process Module" ;
+    vann:preferredNamespacePrefix "process" ;
+    vann:preferredNamespaceUri "https://w3id.org/CEON/ontology/process/" ;
     odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: T8-2, T10-1" ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:imports <http://w3id.org/CEON/ontology/processODP/0.1/> ;
@@ -40,90 +42,112 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 :AssemblingProcess a owl:Class ;
     rdfs:label "Assembling Process" ;
+    rdfs:comment "A process of assembling." ;
     rdfs:subClassOf processODP:Transformation .
 
 :BuyResourceProcess a owl:Class ;
     rdfs:label "Buy Resource Process" ;
+    rdfs:comment "A process of buying a resource." ;
     rdfs:subClassOf processODP:Transformation .
 
 :ChangeResourceProcess a owl:Class ;
     rdfs:label "Change Resource Process" ;
+    rdfs:comment "A process of a changing resource." ;
     rdfs:subClassOf processODP:Transformation .
 
 :ContactProcess a owl:Class ;
     rdfs:label "Contact Process" ;
+    rdfs:comment "A contact process." ;
     rdfs:subClassOf processODP:Transformation .
 
 :DeconstructionProcess a owl:Class ;
     rdfs:label "Deconstruction Process" ;
+    rdfs:comment "A process of deconstruction." ;
     rdfs:subClassOf processODP:Transformation .
 
 :DismantleProcess a owl:Class ;
     rdfs:label "Dismantle Process" ;
+    rdfs:comment "A process of dismantling." ;
     rdfs:subClassOf processODP:Transformation .
 
 :EnsureClaimProcess a owl:Class ;
     rdfs:label "Ensure Claim Process" ;
+    rdfs:comment "A process of ensuring a claim." ;
     rdfs:subClassOf processODP:Transformation .
 
 :IssuingCertificateProcess a owl:Class ;
     rdfs:label "Issuing Certificate Process" ;
+    rdfs:comment "A process of issuing a certificate." ;
     rdfs:subClassOf processODP:Transformation .
 
 :ManufacturingProcess a owl:Class ;
     rdfs:label "Manufacturing Process" ;
+    rdfs:comment "A process of manufacturing." ;
     rdfs:subClassOf processODP:Transformation .
 
 :OffsetProcess a owl:Class ;
     rdfs:label "Offset Process" ;
+    rdfs:comment "A process of offsetting." ;
     rdfs:subClassOf processODP:Transformation .
 
 :ProductionProcess a owl:Class ;
     rdfs:label "Production Process" ;
+    rdfs:comment "A process of production." ;
     rdfs:subClassOf processODP:Transformation .
 
 :RecycleProcess a owl:Class ;
     rdfs:label "Recycle Process" ;
+    rdfs:comment "A process of recycling." ;
     rdfs:subClassOf processODP:Transformation .
 
 :RefurbishmentProcess a owl:Class ;
     rdfs:label "Refurbishment Process" ;
+    rdfs:comment "A process of refurbishment." ;
     rdfs:subClassOf processODP:Transformation .
 
 :RemoveProcess a owl:Class ;
     rdfs:label "Remove Process" ;
+    rdfs:comment "A process of removing." ;
     rdfs:subClassOf processODP:Transformation .
 
 :RemoveResourceProcess a owl:Class ;
     rdfs:label "Remove Resource Process" ;
+    rdfs:comment "A process of removing a resource." ;
     rdfs:subClassOf processODP:Transformation .
 
 :RepairProcess a owl:Class ;
     rdfs:label "Repair Process" ;
+    rdfs:comment "A process of repairing." ;
     rdfs:subClassOf processODP:Transformation .
 
 :ResellProcess a owl:Class ;
     rdfs:label "Resell Process" ;
+    rdfs:comment "A process of reselling." ;
     rdfs:subClassOf processODP:Transformation .
 
 :ReuseProcess a owl:Class ;
     rdfs:label "Reuse Process" ;
+    rdfs:comment "A process of reusing." ;
     rdfs:subClassOf processODP:Transformation .
 
 :SellResourceProcess a owl:Class ;
     rdfs:label "Sell Resource Process" ;
+    rdfs:comment "A process of selling a resource." ;
     rdfs:subClassOf processODP:Transformation .
 
 :ServiceProcess a owl:Class ;
     rdfs:label "Service Process" ;
+    rdfs:comment "A process of servicing." ;
     rdfs:subClassOf processODP:Transformation .
 
 :ShareResourceProcess a owl:Class ;
     rdfs:label "Share Resource Process" ;
+    rdfs:comment "A process of sharing a resource." ;
     rdfs:subClassOf processODP:Transformation .
 
 :TakeBackProcess a owl:Class ;
     rdfs:label "Take Back Process" ;
+    rdfs:comment "A process of taking back." ;
     rdfs:subClassOf processODP:Transformation .
 
 :needsEnergy a owl:ObjectProperty ;
@@ -150,6 +174,8 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:range :Cathalyst ;
     rdfs:subPropertyOf processODP:hasInput .
 
+odp:coversRequirements a owl:AnnotationProperty .
+
 :CO2Emission a owl:Class ;
     rdfs:label "CO2 emission" ;
     rdfs:comment "An amount of CO2." ;
@@ -164,4 +190,12 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:label "Energy" ;
     rdfs:comment "An amount of energy." ;
     rdfs:subClassOf resourceODP:Resource .
+
+processODP:hasInput a owl:ObjectProperty .
+
+processODP:hasOutput a owl:ObjectProperty .
+
+resourceODP:Resource a owl:Class .
+
+processODP:Transformation a owl:Class .
 

@@ -2,19 +2,20 @@
   "_comment" : "Created with OWL2VOWL (version 0.3.7), http://vowl.visualdataweb.org",
   "header" : {
     "languages" : [ "undefined" ],
-    "baseIris" : [ "http://w3id.org/CEON/ontology/process", "http://www.w3.org/2000/01/rdf-schema", "http://w3id.org/CEON/ontology/resourceODP", "http://w3id.org/CEON/ontology/cvn", "http://w3id.org/CEON/ontology/actorODP", "http://www.w3.org/2001/XMLSchema" ],
+    "baseIris" : [ "http://www.w3.org/2000/01/rdf-schema", "http://w3id.org/CEON/ontology/resourceODP", "http://w3id.org/CEON/ontology/cvn", "http://w3id.org/CEON/ontology/actorODP", "http://www.w3.org/2001/XMLSchema", "http://w3id.org/CEON/ontology/processODP" ],
     "prefixList" : {
-      "cvn" : "http://w3id.org/CEON/ontology/cvn/",
+      "processODP" : "http://w3id.org/CEON/ontology/processODP/",
       "owl" : "http://www.w3.org/2002/07/owl#",
-      "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "vann" : "http://purl.org/vocab/vann/",
       "dcterms" : "http://purl.org/dc/terms/",
       "xsd" : "http://www.w3.org/2001/XMLSchema#",
+      "odp" : "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#",
+      "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+      "cvn" : "http://w3id.org/CEON/ontology/cvn/",
+      "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "" : "http://w3id.org/CEON/ontology/actorODP/",
       "xml" : "http://www.w3.org/XML/1998/namespace",
-      "odp" : "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#",
       "process" : "http://w3id.org/CEON/ontology/process/",
-      "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
       "resourceODP" : "http://w3id.org/CEON/ontology/resourceODP/"
     },
     "title" : {
@@ -126,18 +127,21 @@
     "type" : "owl:Thing"
   }, {
     "id" : "15",
-    "type" : "rdfs:Literal"
+    "type" : "owl:Class"
   }, {
     "id" : "16",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "17",
     "type" : "owl:Thing"
   }, {
-    "id" : "18",
+    "id" : "19",
     "type" : "owl:Class"
   }, {
-    "id" : "20",
+    "id" : "21",
     "type" : "owl:Class"
   }, {
-    "id" : "24",
+    "id" : "25",
     "type" : "owl:unionOf"
   }, {
     "id" : "27",
@@ -155,13 +159,10 @@
     "id" : "6",
     "type" : "owl:Class"
   }, {
-    "id" : "22",
+    "id" : "23",
     "type" : "owl:Class"
   }, {
     "id" : "5",
-    "type" : "owl:Class"
-  }, {
-    "id" : "25",
     "type" : "owl:Class"
   } ],
   "classAttribute" : [ {
@@ -225,8 +226,17 @@
       "undefined" : "Thing"
     }
   }, {
+    "iri" : "http://w3id.org/CEON/ontology/processODP/Process",
+    "baseIri" : "http://w3id.org/CEON/ontology/processODP",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Process"
+    },
+    "attributes" : [ "external" ],
+    "id" : "15"
+  }, {
     "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
-    "id" : "15",
+    "id" : "16",
     "label" : {
       "IRI-based" : "Literal",
       "undefined" : "Literal"
@@ -234,7 +244,7 @@
   }, {
     "iri" : "http://www.w3.org/2002/07/owl#Thing",
     "baseIri" : "http://owl2vowl.de",
-    "id" : "16",
+    "id" : "17",
     "label" : {
       "undefined" : "Thing"
     }
@@ -249,7 +259,7 @@
     "comment" : {
       "undefined" : "The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time."
     },
-    "id" : "18",
+    "id" : "19",
     "superClasses" : [ "8" ]
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/Role",
@@ -262,15 +272,15 @@
     "comment" : {
       "undefined" : "A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow."
     },
-    "id" : "20"
+    "id" : "21"
   }, {
     "instances" : 0,
-    "union" : [ "25", "26" ],
+    "union" : [ "15", "26" ],
     "attributes" : [ "union", "anonymous" ],
-    "id" : "24"
+    "id" : "25"
   }, {
     "instances" : 0,
-    "union" : [ "22", "5" ],
+    "union" : [ "23", "5" ],
     "attributes" : [ "union", "anonymous" ],
     "id" : "27"
   }, {
@@ -294,7 +304,7 @@
       "IRI-based" : "Participation",
       "undefined" : "Participation"
     },
-    "subClasses" : [ "18", "2", "11" ],
+    "subClasses" : [ "19", "2", "11" ],
     "comment" : {
       "undefined" : "Represents the participation of objects in some situation."
     },
@@ -332,7 +342,7 @@
       "IRI-based" : "Resource"
     },
     "attributes" : [ "external" ],
-    "id" : "22"
+    "id" : "23"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/Actor",
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
@@ -345,15 +355,6 @@
       "undefined" : "An agent able to act in the context of a circular value network, e.g. an organisation, person."
     },
     "id" : "5"
-  }, {
-    "iri" : "http://w3id.org/CEON/ontology/process/Process",
-    "baseIri" : "http://w3id.org/CEON/ontology/process",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "Process"
-    },
-    "attributes" : [ "external" ],
-    "id" : "25"
   } ],
   "property" : [ {
     "id" : "1",
@@ -368,16 +369,16 @@
     "id" : "9",
     "type" : "owl:datatypeProperty"
   }, {
-    "id" : "17",
+    "id" : "18",
     "type" : "rdfs:SubClassOf"
   }, {
-    "id" : "19",
+    "id" : "20",
     "type" : "owl:objectProperty"
   }, {
-    "id" : "21",
+    "id" : "22",
     "type" : "owl:objectProperty"
   }, {
-    "id" : "23",
+    "id" : "24",
     "type" : "owl:objectProperty"
   }, {
     "id" : "28",
@@ -465,9 +466,9 @@
     "id" : "9"
   }, {
     "range" : "8",
-    "domain" : "18",
+    "domain" : "19",
     "attributes" : [ "object", "anonymous" ],
-    "id" : "17"
+    "id" : "18"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/basedOnCapability",
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
@@ -476,16 +477,16 @@
       "IRI-based" : "basedOnCapability",
       "undefined" : "based on capability"
     },
-    "domain" : "18",
+    "domain" : "19",
     "comment" : {
       "undefined" : "An actor participates in a collaboration based on that it has some capability that is useful for the collaboration."
     },
     "attributes" : [ "object" ],
-    "id" : "19"
+    "id" : "20"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/participatingResource",
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
-    "range" : "22",
+    "range" : "23",
     "label" : {
       "IRI-based" : "participatingResource",
       "undefined" : "has participating resource"
@@ -495,11 +496,11 @@
       "undefined" : "The resource that this participation relation relates to, i.e. for which the actor holds the specified role."
     },
     "attributes" : [ "object" ],
-    "id" : "21"
+    "id" : "22"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/participantRole",
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
-    "range" : "20",
+    "range" : "21",
     "label" : {
       "IRI-based" : "participantRole",
       "undefined" : "has participant role"
@@ -509,11 +510,11 @@
       "undefined" : "Holds the value of the role of the participant in this participation relation."
     },
     "attributes" : [ "object" ],
-    "id" : "23"
+    "id" : "24"
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/participationEndTime",
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
-    "range" : "15",
+    "range" : "16",
     "label" : {
       "IRI-based" : "participationEndTime",
       "undefined" : "participation end time"
@@ -527,7 +528,7 @@
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/capabilityProperty",
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
-    "range" : "16",
+    "range" : "17",
     "label" : {
       "IRI-based" : "capabilityProperty",
       "undefined" : "capability property"
@@ -597,12 +598,12 @@
   }, {
     "iri" : "http://w3id.org/CEON/ontology/actorODP/participationIn",
     "baseIri" : "http://w3id.org/CEON/ontology/actorODP",
-    "range" : "24",
+    "range" : "25",
     "label" : {
       "IRI-based" : "participationIn",
       "undefined" : "is a participation in"
     },
-    "domain" : "18",
+    "domain" : "19",
     "comment" : {
       "undefined" : "The collaboration or process that this participation relates to."
     },

@@ -6,7 +6,6 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 dc:description a owl:AnnotationProperty .
 
@@ -14,13 +13,13 @@ dc:description a owl:AnnotationProperty .
     dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
         "Robin Keskisärkkä" ;
-    dcterms:created "2023-03-16"^^xsd:string ;
+    dcterms:created "2023-03-16" ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "The Material module of CEON (Circular Economy Ontology Network)." ;
-    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
-    dcterms:title "Circular Economy Ontology Network (CEON) - Material Module"^^xsd:string ;
-    vann:preferredNamespacePrefix "material"^^xsd:string ;
-    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/material/"^^xsd:string ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Material Module" ;
+    vann:preferredNamespacePrefix "material" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/material/" ;
     odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-2, CVN-ResourceType-4, C3-3, E1-1, E1-3, E2-4, E5-2, T1-1, T10-2." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.1/> ;
@@ -28,6 +27,7 @@ dc:description a owl:AnnotationProperty .
     owl:versionInfo "0.1" .
 
 :AnonymousFormula a owl:DatatypeProperty ;
+    rdfs:label "anonymous formula" ;
     rdfs:comment "AnonymousFormula represents that a molecular entity has the anonymous formula in a string."@en ;
     rdfs:seeAlso "https://w3id.org/mdo/structure/AnonymousFormula" .
 
@@ -39,10 +39,12 @@ dc:description a owl:AnnotationProperty .
     rdfs:subClassOf :ChemicalEntity .
 
 :DescriptiveFormula a owl:DatatypeProperty ;
+    rdfs:label "descriptive formula" ;
     rdfs:comment "DescriptiveFormula represents that a molecular entity has the descriptive formula in a string."@en ;
     rdfs:seeAlso "https://w3id.org/mdo/structure/DescriptiveFormula" .
 
 :HillFormula a owl:DatatypeProperty ;
+    rdfs:label "hill formula" ;
     rdfs:comment "HillFormula represents that a composition has the hill formula in a string."@en ;
     rdfs:seeAlso "https://w3id.org/mdo/structure/HillFormula" .
 
@@ -54,6 +56,7 @@ dc:description a owl:AnnotationProperty .
     rdfs:subClassOf :ChemicalEntity .
 
 :ReducedChemicalFormula a owl:DatatypeProperty ;
+    rdfs:label "reduced formula" ;
     rdfs:comment "ReducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string."@en ;
     rdfs:seeAlso "https://w3id.org/mdo/structure/ReducedFormula" .
 
@@ -62,10 +65,6 @@ dc:description a owl:AnnotationProperty .
     rdfs:comment "hasMaterialComponent intends to represent that a material can have a collection of components."@en ;
     rdfs:domain :Material ;
     rdfs:range :MaterialComponent .
-
-resourceODP:PhysicalObject a owl:Class .
-
-resourceODP:Resource a owl:Class .
 
 :MaterialComponent a owl:Class ;
     rdfs:label "MaterialComponent"@en ;
