@@ -47,11 +47,6 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:domain :ProductObject ;
     rdfs:range :ProductObject .
 
-resourceODP:BatchOfObjects rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass :Product ;
-            owl:onProperty :batchOfProduct ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
-
 odp:coversRequirements a owl:AnnotationProperty .
 
 :associatedWithMatter a owl:ObjectProperty ;
@@ -68,7 +63,9 @@ odp:coversRequirements a owl:AnnotationProperty .
 
 :batchOfProduct a owl:ObjectProperty ;
     rdfs:label "batchOfProduct"@en ;
-    rdfs:comment "batchOfProduct intends to represent what is the model product of a batch of objects."@en .
+    rdfs:comment "batchOfProduct intends to represent what is the model product of a batch of objects."@en ;
+    rdfs:domain resourceODP:BatchOfObjects ;
+    rdfs:range :Product .
 
 :compositionQuantity a owl:DatatypeProperty ;
     rdfs:label "compositionQuantity"@en ;
@@ -82,6 +79,11 @@ odp:coversRequirements a owl:AnnotationProperty .
     rdfs:comment "modelledBy intends to represent that product objects follow particular product models."@en ;
     rdfs:domain :ProductObject ;
     rdfs:range :Product .
+
+resourceODP:BatchOfObjects rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :Product ;
+            owl:onProperty :batchOfProduct ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 :MatterComposition a owl:Class ;
     rdfs:label "MatterComposition"@en ;
