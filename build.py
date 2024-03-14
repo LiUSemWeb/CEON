@@ -250,8 +250,13 @@ def create_index_file():
     template_file = "index.hbs"
     index_file = "docs/index.html"
     
+    core = ["actor", "actorODP", "cvn",
+            "material", "process", "processODP",
+            "product", "resourceODP", "value"]
+    
     data = {
-        "modules": [],
+        "core": [],
+        "other": [],
         "demo": []
     }
     for type in ["modules", "demo"]:
@@ -272,12 +277,22 @@ def create_index_file():
             ontologies[name]["versions"].append(version)
             ontologies[name]["versions"].sort(reverse=True)
         
+        # Split into core, other and demo
         for name in ontologies:
-            data[type].append({
+            ontology = {
                 "name": name,
                 "versions": ontologies[name]["versions"]
-            })
-        data[type].sort(key=lambda x: x["name"])
+            }
+            if type == "demo":
+                data["demo"].append(ontology)
+            else:
+                if name in core:
+                    data["core"].append(ontology)
+                else:
+                    data["other"].append(ontology)
+    
+    for list in data.values():           
+        list.sort(key=lambda x: x["name"])
 
     # sort by name ascending, version descending
     with open(template_file, "r") as f:
