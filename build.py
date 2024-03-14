@@ -9,38 +9,51 @@ import zipfile
 from pylode.profiles.vocpub import VocPub
 import pdfkit
 from rdflib import Graph
+import logging
 
+# Configure root logger
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+logging.basicConfig(format='%(levelname)-8s [%(filename)s:%(lineno)d] %(message)s', level=logging.DEBUG)
 
 def copy_ontologies():
     """Copy ontologies to web path."""
-    latest = {}
+    map = {
+        "modules": "ontology",
+        "demo": "demo"
+    }
 
-    # publish ontologies
-    for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
-        if not source.endswith(".ttl"):
-            continue
-        
-        print(f"Copy ontology {source}")
-
-        parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
-        name = parts.group(1)
-        version = float(parts.group(2))
-        base = f"docs/ontology/{name}/{version}/{name}"
-        os.makedirs(f"docs/ontology/{name}/{version}/", exist_ok=True)
-        g = Graph()
-        g.parse(source)
-        g.serialize(destination=f"{base}.ttl", format="turtle")
-        g.serialize(destination=f"{base}.rdf", format="xml")
-        g.serialize(destination=f"{base}.owl", format="xml")
-        g.serialize(destination=f"{base}.jsonld", format="json-ld")
-        
-        if latest.get(name, 0) < version:
-            latest[name] = version
-        
-    # add latest
-    for name, version in latest.items():
-        os.makedirs(f"docs/ontology/{name}/latest/", exist_ok=True)
-        os.system(f"cp docs/ontology/{name}/{version}/* docs/ontology/{name}/latest/")
+    for type in ["modules", "demo"]:
+        latest = {}
+        # publish ontologies
+        for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
+            if not source.endswith(".ttl"):
+                continue
+            
+            parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
+            name = parts.group(1)
+            version = float(parts.group(2))
+            target = f"docs/{map[type]}/{name}/{version}/"
+            os.makedirs(target, exist_ok=True)
+            
+            logging.debug(f"Source:\t{source}")
+            logging.debug(f"Name:\t{name}")
+            logging.debug(f"Target:\t{target}")
+            
+            g = Graph()
+            g.parse(source)
+            g.serialize(destination=f"{target}{name}.ttl", format="turtle")
+            g.serialize(destination=f"{target}{name}.rdf", format="xml")
+            g.serialize(destination=f"{target}{name}.owl", format="xml")
+            g.serialize(destination=f"{target}{name}.jsonld", format="json-ld")
+            
+            if latest.get(name, 0) < version:
+                latest[name] = version
+            
+        # add latest
+        for name, version in latest.items():
+            os.makedirs(f"docs/{map[type]}/{name}/latest/", exist_ok=True)
+            os.system(f"cp docs/{map[type]}/{name}/{version}/* docs/{map[type]}/{name}/latest/")
 
 
 def download_owl2vowl():
@@ -61,59 +74,64 @@ def build_pdf():
     """Convert docs to PDF using wkhtmltopdf."""
     try:
         html_formatter = formatter.HTMLFormatter(indent=4)
-        
-        for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
-            if not source.endswith(".ttl"):
-                continue
+        map = {
+            "modules": "ontology",
+            "demo": "demo"
+        }
 
-            print(f"Generating PDF docs for {source}")
+        for type in ["modules", "demo"]:
+            for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
+                if not source.endswith(".ttl"):
+                    continue
 
-            parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
-            name = parts.group(1)
-            version = float(parts.group(2))
-        
+                logger.info(f"Generating PDF docs for {source}")
 
-            html_file = f"docs/ontology/{name}/{version}/index.html"
-            pdf_file = f"docs/ontology/{name}/{version}/{name}.pdf"
+                parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
+                name = parts.group(1)
+                version = float(parts.group(2))
             
-            # Drop TOC, logo and iframe before generating PDF 
-            with open(html_file, encoding="utf-8") as f:
-                soup = BeautifulSoup(f, "html.parser")
-                style = soup.new_tag('style', type='text/css')
-                style.append("""
-                    /* hack to avoid lonely heading (most of the time at least) */
-                    h2 {
-                        page-break-inside: avoid;
-                    }
-                    .section h2::after {
-                        content: "";
-                        display: block;
-                        height: 300px;
-                        margin-bottom: -300px;
-                    }
-                    .entity {
-                        page-break-inside: avoid;
-                    }
-                    p, dt, dd, ul {
-                        margin-top: 10px;
-                        margin-bottom: 10px;
-                        padding-top: 0;
-                        padding-bottom: 0;
-                    }
-                """)
-                soup.head.append(style)
+                target = f"docs/{map[type]}/{name}/{version}/"
+                html_file = f"{target}/index.html"
+                pdf_file = f"{target}/{name}.pdf"
                 
-                for table in soup.select("table"):
-                    table.insert(0, soup.new_tag("thead"))
-                    table.wrap(soup.new_tag("tbody")).wrap(soup.new_tag("table"))
-                    table.unwrap()
+                # Drop TOC, logo and iframe before generating PDF 
+                with open(html_file, encoding="utf-8") as f:
+                    soup = BeautifulSoup(f, "html.parser")
+                    style = soup.new_tag('style', type='text/css')
+                    style.append("""
+                        /* hack to avoid lonely heading (most of the time at least) */
+                        h2 {
+                            page-break-inside: avoid;
+                        }
+                        .section h2::after {
+                            content: "";
+                            display: block;
+                            height: 300px;
+                            margin-bottom: -300px;
+                        }
+                        .entity {
+                            page-break-inside: avoid;
+                        }
+                        p, dt, dd, ul {
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+                    """)
+                    soup.head.append(style)
                     
-                for id in ["toc", "pylode", "overview"]:
-                    tag = soup.find(id=id)
-                    if tag != None:
-                        tag.decompose()
-                
-            pdfkit.from_string(soup.prettify(formatter=html_formatter), pdf_file, options = { "enable-local-file-access": "" })
+                    for table in soup.select("table"):
+                        table.insert(0, soup.new_tag("thead"))
+                        table.wrap(soup.new_tag("tbody")).wrap(soup.new_tag("table"))
+                        table.unwrap()
+                        
+                    for id in ["toc", "pylode", "overview"]:
+                        tag = soup.find(id=id)
+                        if tag != None:
+                            tag.decompose()
+                    
+                pdfkit.from_string(soup.prettify(formatter=html_formatter), pdf_file, options = { "enable-local-file-access": "" })
     except Exception as e:
         print(e)
         print("PDF conversion cancelled. Is 'wkhtmltopdf' (https://wkhtmltopdf.org/) installed?")
@@ -121,90 +139,109 @@ def build_pdf():
 
 def generate_vowl():
     """Generate VOWL specifications."""
-    for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
-        if not source.endswith(".ttl"):
-            continue
-        
-        print(f"Generating VOWL for {source}")
+    map = {
+        "modules": "ontology",
+        "demo": "demo"
+    }
 
-        parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
-        name = parts.group(1)
-        version = float(parts.group(2))
-        
-        os.makedirs(f"docs/webvowl/data/ontology/{name}/{version}/", exist_ok=True)
-        # Note: The flag "add-opens" below fixes an issue with
-        # "InaccessibleObjectException" in later versions of Java
-        os.system(f"""
-            java -Dlog4j.configurationFile=log4j2.xml \
-                --add-opens java.base/java.lang=ALL-UNNAMED \
-                -jar temp/owl2vowl.jar \
-                -file {source} \
-                -output docs/webvowl/data/ontology/{name}/{version}/{name}.json > /dev/null
-        """)
+    for type in ["modules", "demo"]:
+        for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
+            if not source.endswith(".ttl"):
+                continue
+            
+            logger.info(f"Generating VOWL for: {source}")
+
+            parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
+            name = parts.group(1)
+            version = float(parts.group(2))
+            target = f"docs/webvowl/data/{map[type]}/{name}/{version}/"
+            os.makedirs(target, exist_ok=True)
+            
+            logging.debug(f"Source:\t{source}")
+            logging.debug(f"Name:\t{name}")
+            logging.debug(f"Target:\t{target}")
+            logging.debug(f"Output:\t{target}{name}.json")
+            
+            # Note: The flag "add-opens" below fixes an issue with
+            # "InaccessibleObjectException" in later versions of Java
+            os.system(f"""
+                java -Dlog4j.configurationFile=log4j2.xml \
+                    --add-opens java.base/java.lang=ALL-UNNAMED \
+                    -jar temp/owl2vowl.jar \
+                    -file {source} \
+                    -output {target}{name}.json > /dev/null
+            """)
 
 
 def create_documentation():
     """Generate LODE documentation and instert VOWL visualization."""
-    for source in sorted(glob("ontology/modules/*/*/*", recursive=True)):
-        if not source.endswith(".ttl"):
-            continue
-        
-        print(f"Generating docs for {source}")
+    map = {
+        "modules": "ontology",
+        "demo": "demo"
+    }
 
-        parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
-        name = parts.group(1)
-        version = float(parts.group(2))
-        os.makedirs(f"docs/ontology/{name}/{version}/", exist_ok=True)
-                
-        html_file = f"docs/ontology/{name}/{version}/index.html"
-        od = VocPub(ontology=source)
-        od.make_html(destination=html_file)
+    for type in ["modules", "demo"]:
+        for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
+            if not source.endswith(".ttl"):
+                continue
+            
+            logger.debug(f"Generating docs for {source}")
 
-        # relative path to webvowl and vowl file
-        path_to_webvowl = f"../../../webvowl/index.html#ontology/{name}/{version}/{name}"
+            parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
+            name = parts.group(1)
+            version = float(parts.group(2))
+            target = f"docs/{map[type]}/{name}/{version}/"
+            os.makedirs(target, exist_ok=True)
+                    
+            html_file = f"{target}/index.html"
+            od = VocPub(ontology=source)
+            od.make_html(destination=html_file)
 
-        # # Insert overview section into documentation with WebVOWL in an iframe
-        with open(html_file, encoding="utf-8") as f:
-            soup = BeautifulSoup(f, "html.parser")
-            overview = BeautifulSoup(
-                f"""
-                <style>
-                    #iframe-overview {{
-                        width: 100%;
-                        height: 600px;
-                    }}
-                    .caption {{
-                        display: flex;
-                        justify-content: space-between;
-                    }}
-                    .caption a {{
-                        text-decoration: none;
-                        color: black;
-                        font-size: 2em;
-                    }}
-                </style>
-                <div id="overview" class="section">
-                    <h2>Overview</h2>
-                    <div class="figure">
-                        <iframe id="iframe-overview" src="{path_to_webvowl}">
-                        </iframe>
-                        <div class="caption">
-                            <div>
-                                <strong>Figure 1:</strong> Ontology overview.
-                            </div>
-                            <div>
-                                <a title="Show fullscreen" href="{path_to_webvowl}">&#x26F6;</a>
+            # relative path to webvowl and vowl file
+            path_to_webvowl = f"../../../webvowl/index.html#{map[type]}/{name}/{version}/{name}"
+
+            # # Insert overview section into documentation with WebVOWL in an iframe
+            with open(html_file, encoding="utf-8") as f:
+                soup = BeautifulSoup(f, "html.parser")
+                overview = BeautifulSoup(
+                    f"""
+                    <style>
+                        #iframe-overview {{
+                            width: 100%;
+                            height: 600px;
+                        }}
+                        .caption {{
+                            display: flex;
+                            justify-content: space-between;
+                        }}
+                        .caption a {{
+                            text-decoration: none;
+                            color: black;
+                            font-size: 2em;
+                        }}
+                    </style>
+                    <div id="overview" class="section">
+                        <h2>Overview</h2>
+                        <div class="figure">
+                            <iframe id="iframe-overview" src="{path_to_webvowl}">
+                            </iframe>
+                            <div class="caption">
+                                <div>
+                                    <strong>Figure 1:</strong> Ontology overview.
+                                </div>
+                                <div>
+                                    <a title="Show fullscreen" href="{path_to_webvowl}">&#x26F6;</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-            """, "html.parser")
-            tag = soup.find(id='metadata')
-            tag.insert_after(overview)
+                    </section>
+                """, "html.parser")
+                tag = soup.find(id='metadata')
+                tag.insert_after(overview)
 
-            html_formatter = formatter.HTMLFormatter(indent=4)
-            with open(html_file, "w") as f:
-                f.write(soup.prettify(formatter=html_formatter))
+                html_formatter = formatter.HTMLFormatter(indent=4)
+                with open(html_file, "w") as f:
+                    f.write(soup.prettify(formatter=html_formatter))
 
 
 def create_index_file():
@@ -213,28 +250,35 @@ def create_index_file():
     template_file = "index.hbs"
     index_file = "docs/index.html"
     
-    ontologies = {}
-    for source in glob("ontology/modules/*/*/*", recursive=True):
-        if not source.endswith(".ttl"):
-            continue
-        parts = re.match("ontology/modules/([^/]*)/([^/]*)", source)    
-        name = parts.group(1)
-        version = float(parts.group(2))
+    data = {
+        "modules": [],
+        "demo": []
+    }
+    for type in ["modules", "demo"]:
+        ontologies = {}
+        for source in glob(f"ontology/{type}/*/*/*", recursive=True):
+            if not source.endswith(".ttl"):
+                continue
+            parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
+            name = parts.group(1)
+            version = float(parts.group(2))
+            
+            if not ontologies.get(name):
+                ontologies[name] = {
+                    "name": name,
+                    "versions": []
+                }
+            
+            ontologies[name]["versions"].append(version)
+            ontologies[name]["versions"].sort(reverse=True)
         
-        if not ontologies.get(name):
-            ontologies[name] = { "name": name, "versions": [] }
-        
-        ontologies[name]["versions"].append(version)
-        ontologies[name]["versions"].sort(reverse=True)
-    
-    data = []
-    for name in ontologies:
-        data.append({
-            "name": name,
-            "versions": ontologies[name]["versions"]
-        })
-    data.sort(key=lambda x: x["name"])
-        
+        for name in ontologies:
+            data[type].append({
+                "name": name,
+                "versions": ontologies[name]["versions"]
+            })
+        data[type].sort(key=lambda x: x["name"])
+
     # sort by name ascending, version descending
     with open(template_file, "r") as f:
         template = compiler.compile(f.read())
