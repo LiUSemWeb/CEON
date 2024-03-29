@@ -7,59 +7,6 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ProvidingResource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab37"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the provider of a certain resource.</rdfs:comment>
-    <rdfs:label>Providing resource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ViewingResource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab61"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the viewer of a certain resource.</rdfs:comment>
-    <rdfs:label>Viewing resource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab66">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab65"/>
-    <rdfs:comment>A relation between a resource, an actor, and the role the actor has in relation to the resource. For instance, the role of owner that a certain actor takes for a certain resource for a certain period of time. Or the seller of a certain resource, until that resource has been sold, and the actor no longer has that role in relation to the resource.</rdfs:comment>
-    <rdfs:label>Resource Relation</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ActorResourceRole">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/Role"/>
-    <rdfs:comment>The role(s) of an actor in relation to a resource.</rdfs:comment>
-    <rdfs:label>Actor resource role</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab22">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/owner"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/cvn/CVN">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/cvn/Collaboration"/>
-    <rdfs:comment>A collaboration between actors that constitute a Circular Value Newtworks, implicitly or explicitly set up.</rdfs:comment>
-    <rdfs:label>Circular Value Network</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab56">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab54"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/BuyingResource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab1"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the buyer of a certain resource.</rdfs:comment>
-    <rdfs:label>Buying resource</rdfs:label>
-  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:versionIRI rdf:resource="http://w3id.org/CEON/ontology/actor/0.1/"/>
@@ -78,16 +25,53 @@
     <rdfs:seeAlso rdf:resource="https://github.com/LiUSemWeb/CEON"/>
     <owl:versionInfo>0.1</owl:versionInfo>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab1">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab3"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/manufacturer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/SellingResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb45"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdfs:comment>The relation where the role of the actor is the seller of a certain resource.</rdfs:comment>
+    <rdfs:label>Selling resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb5">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb9"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ProducingResource">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab33"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb33"/>
     <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
     <rdfs:comment>The relation where the role of the actor is the producer of a certain resource.</rdfs:comment>
     <rdfs:label>Producing resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ActorResourceRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/Role"/>
+    <rdfs:comment>The role(s) of an actor in relation to a resource.</rdfs:comment>
+    <rdfs:label>Actor resource role</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/Capability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb51">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb52"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/BuyingResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb1"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdfs:comment>The relation where the role of the actor is the buyer of a certain resource.</rdfs:comment>
+    <rdfs:label>Buying resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/cvn/CVN">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/cvn/Collaboration"/>
+    <rdfs:comment>A collaboration between actors that constitute a Circular Value Newtworks, implicitly or explicitly set up.</rdfs:comment>
+    <rdfs:label>Circular Value Network</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ActorProcessRole">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -95,141 +79,46 @@
     <rdfs:comment>The role(s) of an actor involved in a process.</rdfs:comment>
     <rdfs:label>Actor process role</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/UpdatingResource">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ProvidingResource">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab53"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb37"/>
     <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the updater of a certain resource.</rdfs:comment>
-    <rdfs:label>Updating resource</rdfs:label>
+    <rdfs:comment>The relation where the role of the actor is the provider of a certain resource.</rdfs:comment>
+    <rdfs:label>Providing resource</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab50">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participationIn"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/process/Process"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb46">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/supplier"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/seller"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/recycler">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab68">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participatingResource"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/CVNParticipation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"/>
-    <rdfs:subClassOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab5"/>
-    <rdfs:comment>A participation-relation, that represents the participation of an actor in a CVN with a certain role. For instance, a specific company playing the role of recycler in a certain flow of a CVN. The participation may also be related to a certain time (or time interval).</rdfs:comment>
-    <rdfs:label>Circular Value Network Participation</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/manufacturer">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab53">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab55"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab27">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participatingActor"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab63">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab64"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab65">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab69"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/UsingResource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab57"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the user of a certain resource.</rdfs:comment>
-    <rdfs:label>Using resource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab37">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab39"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/IssuingResource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab17"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the issuer of a certain resource.</rdfs:comment>
-    <rdfs:label>Issuing resource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/OwningResource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab21"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the owner of a certain resource.</rdfs:comment>
-    <rdfs:label>Owning resource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab55">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab56"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab23">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab24"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab18">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb38">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/issuer"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/provider"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab59">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab60"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab17">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab19"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab57">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab59"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab34">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb14">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/producer"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/consumer"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/SupplyingResource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab49"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the supplier of a certain resource.</rdfs:comment>
-    <rdfs:label>Supplying resource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab5">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab9"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab32">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab28"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb52">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb50"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab40">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab38"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/reseller">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Process">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ResellingResource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab41"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the reseller of a certain resource.</rdfs:comment>
-    <rdfs:label>Reselling resource</rdfs:label>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/capabilityExtent">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -238,40 +127,75 @@
     <rdfs:comment>The extent of this capability, e.g. stating whether there are limist to the capability, such as a maximum amount or size of something.</rdfs:comment>
     <rdfs:label>capability extent</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab16">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab14"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ActorCVNRole">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb21">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb23"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCollaborationRole"/>
-    <rdfs:comment>The role(s) of an actor in a Circular Value Network, which is a specific type of collaboration.</rdfs:comment>
-    <rdfs:label>Actor Circular Value Network role</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab15">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ViewingResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb61"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdfs:comment>The relation where the role of the actor is the viewer of a certain resource.</rdfs:comment>
+    <rdfs:label>Viewing resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ProcessParticipation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"/>
+    <rdfs:subClassOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb25"/>
+    <rdfs:comment>Participation of a certain actor in a certain process, with a certain role. For instance, a certain department of a recycling company having the role of quality controllant, or material sorter, in a certain recycling process. The participation may also be given a time, e.g. a start and end time.</rdfs:comment>
+    <rdfs:label>Process Participation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb47">
     <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab16"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb48"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/capabilityProperty">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb29">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb30"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab36">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab34"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/SellingResource">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb37">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb39"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab45"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the seller of a certain resource.</rdfs:comment>
-    <rdfs:label>Selling resource</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ConsumingResource">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb1">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb3"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab13"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/Role">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb27">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participatingActor"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb63">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb64"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb25">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb29"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ResellingResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb41"/>
     <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdfs:comment>The relation where the role of the actor is the consumer of a certain resource.</rdfs:comment>
-    <rdfs:label>Consuming resource</rdfs:label>
+    <rdfs:comment>The relation where the role of the actor is the reseller of a certain resource.</rdfs:comment>
+    <rdfs:label>Reselling resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/IssuingResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb17"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdfs:comment>The relation where the role of the actor is the issuer of a certain resource.</rdfs:comment>
+    <rdfs:label>Issuing resource</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/neededResourceRelation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -280,111 +204,34 @@
     <rdfs:comment>In order for an actor to have a capability, it needs to have certain resources, e.g. materials, infrastrucutre, know-how, information etc.</rdfs:comment>
     <rdfs:label>needed resource relations</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab42">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/reseller"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb71">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb67"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb72"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/provider">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb33">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb35"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab47">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb3">
     <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab48"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb4"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab14">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/consumer"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab8">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participationIn"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/cvn/CVN"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab41">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab43"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab28">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participationIn"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/process/Process"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/seller">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab71">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab67"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab72"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab72">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab68"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb32">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb28"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ProcessParticipation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"/>
-    <rdfs:subClassOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab25"/>
-    <rdfs:comment>Participation of a certain actor in a certain process, with a certain role. For instance, a certain department of a recycling company having the role of quality controllant, or material sorter, in a certain recycling process. The participation may also be given a time, e.g. a start and end time.</rdfs:comment>
-    <rdfs:label>Process Participation</rdfs:label>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/participationIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab11">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab7"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab12"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participatingActor"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab4">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab2"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab46">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb66">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/seller"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab62">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/viewer"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab2">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/buyer"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab26">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab10">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab6"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab11"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab60">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab58"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab24">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab22"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/Participation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab70">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab66"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab71"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab45">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab47"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ActorCollaborationRole">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -392,228 +239,381 @@
     <rdfs:comment>The roles of an actor involved in a collaboration.</rdfs:comment>
     <rdfs:label>Actor collaboration role</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab3">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab4"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab9">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab10"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab38">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/provider"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/cvn/Collaboration">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb45">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb47"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/consumer">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/reseller">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab6">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb22">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/owner"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab35">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab36"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/UsingResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb57"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdfs:comment>The relation where the role of the actor is the user of a certain resource.</rdfs:comment>
+    <rdfs:label>Using resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/participantRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/buyer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb4">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb2"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb65">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb69"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/capabilityProperty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb42">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/reseller"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/issuer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/SupplyingResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb49"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdfs:comment>The relation where the role of the actor is the supplier of a certain resource.</rdfs:comment>
+    <rdfs:label>Supplying resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb18">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/issuer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb69">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/Participation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb70"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb67">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participatingActor"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb64">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb62"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/Participation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/participatingResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb24">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb22"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb30">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb26"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb31"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb36">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb34"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/viewer">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab25">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab29"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab52">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab50"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb72">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb68"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ConsumingResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb13"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdfs:comment>The relation where the role of the actor is the consumer of a certain resource.</rdfs:comment>
+    <rdfs:label>Consuming resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb39">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb40"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb35">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb36"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb26">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/dismantler">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb68">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participatingResource"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/seller">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/provider">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/UpdatingResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb53"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdfs:comment>The relation where the role of the actor is the updater of a certain resource.</rdfs:comment>
+    <rdfs:label>Updating resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb23">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb24"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb56">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb54"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb59">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb60"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participationIn"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/cvn/CVN"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/OwningResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb21"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdfs:comment>The relation where the role of the actor is the owner of a certain resource.</rdfs:comment>
+    <rdfs:label>Owning resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/updater">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/user">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
     <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab44">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab42"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab54">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/updater"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab51">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab52"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab49">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab51"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb65"/>
+    <rdfs:comment>A relation between a resource, an actor, and the role the actor has in relation to the resource. For instance, the role of owner that a certain actor takes for a certain resource for a certain period of time. Or the seller of a certain resource, until that resource has been sold, and the actor no longer has that role in relation to the resource.</rdfs:comment>
+    <rdfs:label>Resource Relation</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab7">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participatingActor"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb57">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb59"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/buyer">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab20">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab18"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/participatingResource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab21">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab23"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/participationIn">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab69">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/Participation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab70"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab39">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab40"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/collector">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab33">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab35"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab19">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab20"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab43">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab44"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/producer">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/Capability">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab67">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participatingActor"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab12">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab8"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/supplier">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
     <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/issuer">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/Role">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab64">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab62"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab48">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab46"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/updater">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/owner">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab61">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab63"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab58">
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb58">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
     <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/user"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab13">
-    <owl:intersectionOf rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab15"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb55">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb56"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb12">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb8"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb19">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb20"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/CVNParticipation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"/>
+    <rdfs:subClassOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb5"/>
+    <rdfs:comment>A participation-relation, that represents the participation of an actor in a CVN with a certain role. For instance, a specific company playing the role of recycler in a certain flow of a CVN. The participation may also be related to a certain time (or time interval).</rdfs:comment>
+    <rdfs:label>Circular Value Network Participation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb16">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb14"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/ActorCVNRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCollaborationRole"/>
+    <rdfs:comment>The role(s) of an actor in a Circular Value Network, which is a specific type of collaboration.</rdfs:comment>
+    <rdfs:label>Actor Circular Value Network role</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb61">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb63"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/Actor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Resource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb70">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb66"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb71"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab31">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab27"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab32"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/collector">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab29">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab30"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb20">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb18"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab30">
-    <rdf:first rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab26"/>
-    <rdf:rest rdf:nodeID="na161200f81634d32b2e0e00eee8a9d7ab31"/>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb11">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb7"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb12"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/participantRole">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb15">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb16"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb60">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb58"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/participatingActor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb62">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/viewer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb43">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb44"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb31">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb27"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb32"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/recycler">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorCVNRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/buyer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Resource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb44">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb42"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb50">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/supplier"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb34">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/producer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/consumer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb40">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb38"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb17">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb19"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb48">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb46"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/producer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb13">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb15"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb41">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb43"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb54">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
+    <owl:hasValue rdf:resource="http://w3id.org/CEON/ontology/actor/updater"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Process">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb49">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb51"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actor/owner">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/actor/ActorResourceRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb9">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb10"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb10">
+    <rdf:first rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb6"/>
+    <rdf:rest rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb53">
+    <owl:intersectionOf rdf:nodeID="nbcc91ccfd0304d22a14ab04cc4acf7bdb55"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/cvn/Collaboration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
 </rdf:RDF>
