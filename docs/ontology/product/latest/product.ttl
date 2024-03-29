@@ -42,7 +42,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     owl:versionInfo "0.2" .
 
 :hasProductComponent a owl:ObjectProperty ;
-    rdfs:label "hasProductComponent"@en ;
+    rdfs:label "has product component"@en ;
     rdfs:comment "hasProductComponent intends to represent that a product can have other product components."@en ;
     rdfs:domain :ProductObject ;
     rdfs:range :ProductObject .
@@ -50,32 +50,32 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 odp:coversRequirements a owl:AnnotationProperty .
 
 :associatedWithMatter a owl:ObjectProperty ;
-    rdfs:label "associatedWithMatter"@en ;
+    rdfs:label "associated with matter"@en ;
     rdfs:comment "associatedWithMatter intends to represent the matter to which a matter compopsition information regards to."@en ;
     rdfs:domain :MatterComposition ;
     rdfs:range resourceODP:Matter .
 
 :associatedWithProductModel a owl:ObjectProperty ;
-    rdfs:label "associatedWithProductModel"@en ;
+    rdfs:label "associated with product model"@en ;
     rdfs:comment "associatedWithProductModel intends to represent the matter to which a product compopsition information regards to."@en ;
     rdfs:domain :ProductComposition ;
     rdfs:range :Product .
 
 :batchOfProduct a owl:ObjectProperty ;
-    rdfs:label "batchOfProduct"@en ;
+    rdfs:label "batch of products"@en ;
     rdfs:comment "batchOfProduct intends to represent what is the model product of a batch of objects."@en ;
     rdfs:domain resourceODP:BatchOfObjects ;
     rdfs:range :Product .
 
 :compositionQuantity a owl:DatatypeProperty ;
-    rdfs:label "compositionQuantity"@en ;
+    rdfs:label "Composition quantity"@en ;
     rdfs:comment "compositionQuantity intends to represent the quantity value of composed elements of a composition. The quantity value can be the number of a element or the percentage of a element."@en ;
     rdfs:domain resourceODP:Composition ;
     rdfs:range [ a rdfs:Datatype ;
             owl:unionOf ( xsd:double xsd:positiveInteger ) ] .
 
 :modelledBy a owl:ObjectProperty ;
-    rdfs:label "modelledBy"@en ;
+    rdfs:label "modelled by"@en ;
     rdfs:comment "modelledBy intends to represent that product objects follow particular product models."@en ;
     rdfs:domain :ProductObject ;
     rdfs:range :Product .
@@ -86,7 +86,7 @@ resourceODP:BatchOfObjects rdfs:subClassOf [ a owl:Restriction ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 :MatterComposition a owl:Class ;
-    rdfs:label "MatterComposition"@en ;
+    rdfs:label "Matter composition"@en ;
     rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass resourceODP:Matter ;
@@ -95,7 +95,7 @@ resourceODP:BatchOfObjects rdfs:subClassOf [ a owl:Restriction ;
         resourceODP:Composition .
 
 :ProductComposition a owl:Class ;
-    rdfs:label "ProductComposition"@en ;
+    rdfs:label "Product composition"@en ;
     rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass :Product ;
@@ -111,8 +111,8 @@ resourceODP:BatchOfObjects rdfs:subClassOf [ a owl:Restriction ;
     rdfs:range resourceODP:Composition .
 
 :ProductObject a owl:Class ;
-    rdfs:label "ProductObject"@en ;
-    rdfs:comment "A product object is a physical object put into a market for sale. The product can be a thing that grows naturally or produced through some chemical or manufacturing processes."@en ;
+    rdfs:label "Product object"@en ;
+    rdfs:comment "A product object is a physical object put into a market for sale, i.e. corresponding to the notion of an item, which conforms to the abstract idea of a product model. The product can be a thing that grows naturally or produced through some chemical or manufacturing processes."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass :Product ;
             owl:onProperty :modelledBy ;
@@ -126,8 +126,8 @@ resourceODP:Composition rdfs:subClassOf [ a owl:Restriction ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 :Product a owl:Class ;
-    rdfs:label "Product Model"@en ;
-    rdfs:comment "A product model is a model that is used for manufacturing products."@en ;
+    rdfs:label "Product model"@en ;
+    rdfs:comment "Represents the common sense notion of a product, i.e. the abstract notion of a product type or product model, which is a model that is used for manufacturing products."@en ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty :hasComposition ;
             owl:someValuesFrom :MatterComposition ],
