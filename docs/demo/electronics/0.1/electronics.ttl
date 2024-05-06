@@ -3,8 +3,8 @@
 @prefix ns1: <http://qudt.org/schema/qudt/> .
 @prefix ns2: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix ns3: <http://w3id.org/CEON/ontology/resourceODP/> .
-@prefix ns4: <http://w3id.org/CEON/ontology/provenance/> .
-@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
+@prefix ns4: <http://w3id.org/CEON/ontology/product/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/provenance/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -142,7 +142,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:subClassOf :ElectronicsProduct .
 
 :ElectronicsProductSourcingComponentRelation a owl:Class ;
-    rdfs:subClassOf ns4:Statement .
+    rdfs:subClassOf ns5:Statement .
 
 :FibreMAterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
@@ -332,11 +332,11 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:range xsd:double .
 
 :q1 a ns1:Quantity,
-        ns4:Statement,
+        ns5:Statement,
         owl:NamedIndividual ;
     ns1:hasUnit <http://qudt.org/vocab/unit/PA> ;
     :fatigueResistance 8e+01 ;
-    ns4:statementAbout :speaker_x .
+    ns5:statementAbout :speaker_x .
 
 :recyclingPressure a owl:DatatypeProperty ;
     rdfs:comment "To represent the pressure condition in a recycling process." ;
@@ -451,7 +451,7 @@ ns2:participationIn a owl:ObjectProperty .
 
 ns2:participationTimePoint a owl:DatatypeProperty .
 
-ns4:statementAbout a owl:AnnotationProperty .
+ns5:statementAbout a owl:AnnotationProperty .
 
 xsd:date a rdfs:Datatype .
 
@@ -521,7 +521,7 @@ ns1:DerivedUnit a owl:Class ;
 
 :composition_a a ns1:Quantity,
         ns2:ResourceRelation,
-        ns4:Statement,
+        ns5:Statement,
         owl:NamedIndividual ;
     ns1:hasUnit <http://qudt.org/vocab/unit/GM> ;
     ns1:numericalValue 3e+02 ;
@@ -575,14 +575,14 @@ ns2:ResourceRelation a owl:Class .
 
 :boc_x a ns3:BatchOfObjects,
         owl:NamedIndividual ;
-    ns5:batchOfProduct :speaker_x .
+    ns4:batchOfProduct :speaker_x .
 
 :damper_x a :Damper,
-        ns5:Product,
+        ns4:Product,
         owl:NamedIndividual .
 
 :neodymium_magnet_x a :NeodymiumMagnet,
-        ns5:Product,
+        ns4:Product,
         owl:NamedIndividual ;
     ns3:hasConstituent :damper_x,
         :neodymium_magnet_x .
@@ -601,5 +601,5 @@ ns2:Actor a owl:Class .
 
 :ElectronicsProduct a owl:Class ;
     rdfs:label "electronics product" ;
-    rdfs:subClassOf ns5:Product .
+    rdfs:subClassOf ns4:Product .
 
