@@ -19,11 +19,13 @@ logging.basicConfig(format='%(levelname)-8s [%(filename)s:%(lineno)d] %(message)
 def copy_ontologies():
     """Copy ontologies to web path."""
     map = {
-        "modules": "ontology",
+        "core": "ontology",
+        "supplementary": "ontology",
+        "reused": "ontology",
         "demo": "demo"
     }
 
-    for type in ["modules", "demo"]:
+    for type in ["core", "supplementary", "reused", "demo"]:
         latest = {}
         # publish ontologies
         for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
@@ -75,11 +77,13 @@ def build_pdf():
     try:
         html_formatter = formatter.HTMLFormatter(indent=4)
         map = {
-            "modules": "ontology",
+            "core": "ontology",
+            "supplementary": "ontology",
+            "reused": "ontology",
             "demo": "demo"
         }
 
-        for type in ["modules", "demo"]:
+        for type in ["core", "supplementary", "reused", "demo"]:
             for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
                 if not source.endswith(".ttl"):
                     continue
@@ -140,11 +144,13 @@ def build_pdf():
 def generate_vowl():
     """Generate VOWL specifications."""
     map = {
-        "modules": "ontology",
+        "core": "ontology",
+        "supplementary": "ontology",
+        "reused": "ontology",
         "demo": "demo"
     }
 
-    for type in ["modules", "demo"]:
+    for type in ["core", "supplementary", "reused", "demo"]:
         for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
             if not source.endswith(".ttl"):
                 continue
@@ -176,11 +182,13 @@ def generate_vowl():
 def create_documentation():
     """Generate LODE documentation and instert VOWL visualization."""
     map = {
-        "modules": "ontology",
+        "core": "ontology",
+        "supplementary": "ontology",
+        "reused": "ontology",
         "demo": "demo"
     }
 
-    for type in ["modules", "demo"]:
+    for type in ["core", "supplementary", "reused", "demo"]:
         for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
             if not source.endswith(".ttl"):
                 continue
@@ -250,51 +258,33 @@ def create_index_file():
     template_file = "index.hbs"
     index_file = "docs/index.html"
     
-    core = ["actor", "actorODP", "cvn",
-            "material", "process", "processODP",
-            "product", "resourceODP", "value"]
+    def parts(path):
+        return {
+            "version": path.split("/")[-1],
+            "name": path.split("/")[-2]
+        }
+    
+    def latest(pattern):
+        map = {}
+        for path in sorted(glob(pattern), reverse=True):
+            p = parts(path)
+            if p["name"] in map:
+                continue
+            map[p["name"]] = p
+        return sorted(map.values(), key=lambda x: x["name"])
+         
+    core = latest("ontology/core/*/*")
+    supplementary = latest("ontology/supplementary/*/*")
+    reused = latest("ontology/reused/*/*")
+    demo = latest("ontology/demo/*/*")
     
     data = {
-        "core": [],
-        "other": [],
-        "demo": []
+        "core": core,
+        "supplementary": supplementary,
+        "reused":reused,
+        "demo": demo
     }
-    for type in ["modules", "demo"]:
-        ontologies = {}
-        for source in glob(f"ontology/{type}/*/*/*", recursive=True):
-            if not source.endswith(".ttl"):
-                continue
-            parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
-            name = parts.group(1)
-            version = float(parts.group(2))
-            
-            if not ontologies.get(name):
-                ontologies[name] = {
-                    "name": name,
-                    "versions": []
-                }
-            
-            ontologies[name]["versions"].append(version)
-            ontologies[name]["versions"].sort(reverse=True)
-        
-        # Split into core, other and demo
-        for name in ontologies:
-            ontology = {
-                "name": name,
-                "versions": ontologies[name]["versions"]
-            }
-            if type == "demo":
-                data["demo"].append(ontology)
-            else:
-                if name in core:
-                    data["core"].append(ontology)
-                else:
-                    data["other"].append(ontology)
     
-    for list in data.values():           
-        list.sort(key=lambda x: x["name"])
-
-    # sort by name ascending, version descending
     with open(template_file, "r") as f:
         template = compiler.compile(f.read())
         
