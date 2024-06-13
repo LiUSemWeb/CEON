@@ -13,11 +13,13 @@ logging.basicConfig(format='%(levelname)-8s [%(filename)s:%(lineno)d] %(message)
 def copy_ontologies():
     """Copy ontologies to web path."""
     map = {
-        "modules": "ontology",
+        "core": "ontology",
+        "supplementary": "ontology",
+        "reused": "ontology",
         "demo": "demo"
     }
 
-    for type in ["modules", "demo"]:
+    for type in ["core", "supplementary", "reused", "demo"]:
         # publish ontologies
         for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
             if not source.endswith(".ttl"):
