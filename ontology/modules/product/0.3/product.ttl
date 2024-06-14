@@ -97,17 +97,6 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                 rdfs:label "batch of products"@en .
 
 
-###  http://w3id.org/CEON/ontology/product/hasCertificate
-:hasCertificate rdf:type owl:ObjectProperty ;
-                rdfs:domain [ rdf:type owl:Class ;
-                              owl:unionOf ( :Product
-                                            :ProductObject
-                                          )
-                            ] ;
-                rdfs:comment "hasCertificate is used to link a product or product object to a certification that that product has, e.g. REACH or similar standard." ;
-                rdfs:label "has certificate" .
-
-
 ###  http://w3id.org/CEON/ontology/product/hasComposition
 :hasComposition rdf:type owl:ObjectProperty ;
                 rdfs:domain [ rdf:type owl:Class ;
@@ -150,6 +139,18 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                                 ] ;
                      rdfs:comment "compositionQuantity intends to represent the quantity value of composed elements of a composition. The quantity value can be the number of a element or the percentage of a element."@en ;
                      rdfs:label "Composition quantity"@en .
+
+
+###  http://w3id.org/CEON/ontology/product/hasCertificate
+:hasCertificate rdf:type owl:DatatypeProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :Product
+                                            :ProductObject
+                                          )
+                            ] ;
+                rdfs:range xsd:string ;
+                rdfs:comment "hasCertificate is used to link a product or product object to a certification that that product has, e.g. REACH or similar standard." ;
+                rdfs:label "has certificate" .
 
 
 #################################################################
