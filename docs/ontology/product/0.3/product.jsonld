@@ -40,7 +40,7 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
       {
-        "@id": "_:n498b6db6d5e445e9a4a473d29479e56db1"
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb1"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
@@ -55,7 +55,7 @@
     ]
   },
   {
-    "@id": "_:n498b6db6d5e445e9a4a473d29479e56db1",
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb1",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -67,6 +67,50 @@
           },
           {
             "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/product/hasCertificate",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "hasCertificate is used to link a product or product object to a certification that that product has, e.g. REACH or similar standard."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb7"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has certificate"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#string"
+      }
+    ]
+  },
+  {
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb7",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/product/Product"
+          },
+          {
+            "@id": "http://w3id.org/CEON/ontology/product/ProductObject"
           }
         ]
       }
@@ -94,12 +138,12 @@
         "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition"
       },
       {
-        "@id": "_:n498b6db6d5e445e9a4a473d29479e56db10"
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb13"
       }
     ]
   },
   {
-    "@id": "_:n498b6db6d5e445e9a4a473d29479e56db10",
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb13",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -183,6 +227,64 @@
     ]
   },
   {
+    "@id": "http://w3id.org/CEON/ontology/product/Product",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Represents the common sense notion of a product, i.e. the abstract notion of a product type or product model, which is a model that is used for manufacturing products."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Product model"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb11"
+      },
+      {
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb12"
+      }
+    ]
+  },
+  {
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb11",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/hasComposition"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/MatterComposition"
+      }
+    ]
+  },
+  {
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb12",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/hasComposition"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/ProductComposition"
+      }
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/product/",
     "@type": [
       "http://www.w3.org/2002/07/owl#Ontology"
@@ -250,75 +352,24 @@
     ],
     "http://www.w3.org/2002/07/owl#versionIRI": [
       {
-        "@id": "http://w3id.org/CEON/ontology/product/0.2/"
+        "@id": "http://w3id.org/CEON/ontology/product/0.3/"
       }
     ],
     "http://www.w3.org/2002/07/owl#versionInfo": [
       {
-        "@value": "0.2"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/product/Product",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "Represents the common sense notion of a product, i.e. the abstract notion of a product type or product model, which is a model that is used for manufacturing products."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Product model"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "_:n498b6db6d5e445e9a4a473d29479e56db8"
-      },
-      {
-        "@id": "_:n498b6db6d5e445e9a4a473d29479e56db9"
-      }
-    ]
-  },
-  {
-    "@id": "_:n498b6db6d5e445e9a4a473d29479e56db8",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/hasComposition"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/MatterComposition"
-      }
-    ]
-  },
-  {
-    "@id": "_:n498b6db6d5e445e9a4a473d29479e56db9",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/hasComposition"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/ProductComposition"
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "0.3"
       }
     ]
   },
   {
     "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/description",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
@@ -352,12 +403,6 @@
     ]
   },
   {
-    "@id": "http://purl.org/dc/terms/description",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
     "@id": "http://w3id.org/CEON/ontology/product/ProductObject",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -379,12 +424,12 @@
         "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
       },
       {
-        "@id": "_:n498b6db6d5e445e9a4a473d29479e56db11"
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb14"
       }
     ]
   },
   {
-    "@id": "_:n498b6db6d5e445e9a4a473d29479e56db11",
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb14",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -427,18 +472,18 @@
     "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:n498b6db6d5e445e9a4a473d29479e56db13"
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb16"
       }
     ]
   },
   {
-    "@id": "_:n498b6db6d5e445e9a4a473d29479e56db13",
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb16",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
     "http://www.w3.org/2002/07/owl#onDataRange": [
       {
-        "@id": "_:n498b6db6d5e445e9a4a473d29479e56db14"
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb17"
       }
     ],
     "http://www.w3.org/2002/07/owl#onProperty": [
@@ -454,7 +499,7 @@
     ]
   },
   {
-    "@id": "_:n498b6db6d5e445e9a4a473d29479e56db14",
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb17",
     "@type": [
       "http://www.w3.org/2000/01/rdf-schema#Datatype"
     ],
@@ -495,12 +540,12 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
-        "@id": "_:n498b6db6d5e445e9a4a473d29479e56db4"
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb4"
       }
     ]
   },
   {
-    "@id": "_:n498b6db6d5e445e9a4a473d29479e56db4",
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb4",
     "@type": [
       "http://www.w3.org/2000/01/rdf-schema#Datatype"
     ],
@@ -533,12 +578,12 @@
     "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:n498b6db6d5e445e9a4a473d29479e56db12"
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb15"
       }
     ]
   },
   {
-    "@id": "_:n498b6db6d5e445e9a4a473d29479e56db12",
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb15",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -581,12 +626,12 @@
         "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition"
       },
       {
-        "@id": "_:n498b6db6d5e445e9a4a473d29479e56db7"
+        "@id": "_:nc54d870274b84274b018a197f8076c8fb10"
       }
     ]
   },
   {
-    "@id": "_:n498b6db6d5e445e9a4a473d29479e56db7",
+    "@id": "_:nc54d870274b84274b018a197f8076c8fb10",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
