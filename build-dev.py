@@ -25,7 +25,7 @@ def copy_ontologies():
             
             parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
             name = parts.group(1)
-            version = float(parts.group(2))
+            version = parts.group(2)
             target = f"docs/{map[type]}/{name}/{version}/"
             os.makedirs(target, exist_ok=True)
             
