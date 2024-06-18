@@ -14,14 +14,13 @@
 
 <http://w3id.org/CEON/ontology/processODP/> rdf:type owl:Ontology ;
                                              owl:versionIRI <http://w3id.org/CEON/ontology/processODP/0.1/> ;
-                                             owl:imports <http://www.w3.org/2006/time#2016> ;
                                              dcterms:contributor "Eva Blomqvist" ,
                                                                  "Mikael Lindecrantz" ,
                                                                  "Robin Keskisärkkä" ;
                                              dcterms:created "2023-03-23" ;
                                              dcterms:creator "Huanyu Li" ;
                                              dcterms:description "A core ODP of the CEON ontology network, defining aspects of the process concept." ;
-                                             dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                             dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
                                              dcterms:title "Circular Economy Ontology Network (CEON) - Process ODP" ;
                                              vann:preferredNamespacePrefix "processODP" ;
                                              vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/processODP/" ;
@@ -78,18 +77,6 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 actorODP:participationIn rdf:type owl:ObjectProperty .
 
 
-###  http://w3id.org/CEON/ontology/processODP/hasExecutionInput
-:hasExecutionInput rdf:type owl:ObjectProperty ;
-                   rdfs:domain :Execution ;
-                   rdfs:label "has execution input" .
-
-
-###  http://w3id.org/CEON/ontology/processODP/hasExecutionOutput
-:hasExecutionOutput rdf:type owl:ObjectProperty ;
-                    rdfs:domain :Execution ;
-                    rdfs:label "has execution output" .
-
-
 ###  http://w3id.org/CEON/ontology/processODP/hasInput
 :hasInput rdf:type owl:ObjectProperty ;
           rdfs:domain :Transformation ;
@@ -129,13 +116,6 @@ actorODP:participationIn rdf:type owl:ObjectProperty .
                 rdfs:label "has process type"@en .
 
 
-###  http://w3id.org/CEON/ontology/processODP/hasTransformationExecution
-:hasTransformationExecution rdf:type owl:ObjectProperty ;
-                            rdfs:domain :Transformation ;
-                            rdfs:range :TransformationExecution ;
-                            rdfs:label "has transformation execution" .
-
-
 ###  http://w3id.org/CEON/ontology/processODP/intialSituation
 :intialSituation rdf:type owl:ObjectProperty ;
                  rdfs:domain :Transformation ;
@@ -151,13 +131,6 @@ actorODP:participationIn rdf:type owl:ObjectProperty .
               rdfs:label "is the setting for" .
 
 
-###  http://w3id.org/CEON/ontology/processODP/nextExecution
-:nextExecution rdf:type owl:ObjectProperty ;
-               rdfs:domain :Execution ;
-               rdfs:range :Execution ;
-               rdfs:label "next execution" .
-
-
 ###  http://w3id.org/CEON/ontology/processODP/nextProcess
 :nextProcess rdf:type owl:ObjectProperty ;
              rdfs:domain :Process ;
@@ -166,19 +139,11 @@ actorODP:participationIn rdf:type owl:ObjectProperty .
              rdfs:label "next process" .
 
 
-###  http://w3id.org/CEON/ontology/processODP/occursAtLocation
-:occursAtLocation rdf:type owl:ObjectProperty ;
+###  http://w3id.org/CEON/ontology/processODP/occursInLocation
+:occursInLocation rdf:type owl:ObjectProperty ;
                   rdfs:domain :Transformation ;
                   rdfs:comment "The location in which a transformation takes place, e.g. the factory location where something is manufactured." ;
-                  rdfs:label "occurs at location" .
-
-
-###  http://w3id.org/CEON/ontology/processODP/occursAtTime
-:occursAtTime rdf:type owl:ObjectProperty ;
-              rdfs:domain :Execution ,
-                          :Process ;
-              rdfs:range <http://www.w3.org/2006/time#TemporalEntity> ;
-              rdfs:label "occurs at time" .
+                  rdfs:label "occurs in location" .
 
 
 ###  http://w3id.org/CEON/ontology/processODP/resultingSituation
@@ -201,11 +166,6 @@ actor:ProcessParticipation rdf:type owl:Class ;
                                            ] .
 
 
-###  http://w3id.org/CEON/ontology/processODP/Execution
-:Execution rdf:type owl:Class ;
-           rdfs:label "Execution" .
-
-
 ###  http://w3id.org/CEON/ontology/processODP/Process
 :Process rdf:type owl:Class ;
          rdfs:comment "An activity in the context of a circular value network, handling resources."@en ;
@@ -214,7 +174,6 @@ actor:ProcessParticipation rdf:type owl:Class ;
 
 ###  http://w3id.org/CEON/ontology/processODP/ProcessExecution
 :ProcessExecution rdf:type owl:Class ;
-                  rdfs:subClassOf :Execution ;
                   rdfs:comment "An execution of a specific process."@en ;
                   rdfs:label "Process execution"@en .
 
@@ -238,9 +197,4 @@ actor:ProcessParticipation rdf:type owl:Class ;
                 rdfs:label "Transformation" .
 
 
-###  http://w3id.org/CEON/ontology/processODP/TransformationExecution
-:TransformationExecution rdf:type owl:Class ;
-                         rdfs:subClassOf :Execution .
-
-
-###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
