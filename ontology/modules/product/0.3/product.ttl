@@ -97,6 +97,27 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                 rdfs:label "batch of products"@en .
 
 
+###  http://w3id.org/CEON/ontology/product/complianceWith
+:complianceWith rdf:type owl:ObjectProperty ;
+                rdfs:domain :Compliance ;
+                rdfs:comment "Represents what the compliance is compliant with (e.g. a standard or regulation)." ;
+                rdfs:label "Compliance with" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasCompliance
+:hasCompliance rdf:type owl:ObjectProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( actorODP:Actor
+                                           <http://w3id.org/CEON/ontology/processODP/Process>
+                                           :Product
+                                           :ProductObject
+                                         )
+                           ] ;
+               rdfs:range :Compliance ;
+               rdfs:comment "Used to link something (e.g., product or process) to a compliance." ;
+               rdfs:label "has compliance" .
+
+
 ###  http://w3id.org/CEON/ontology/product/hasComposition
 :hasComposition rdf:type owl:ObjectProperty ;
                 rdfs:domain [ rdf:type owl:Class ;
@@ -143,19 +164,28 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/ontology/product/hasCertificate
 :hasCertificate rdf:type owl:DatatypeProperty ;
-                rdfs:domain [ rdf:type owl:Class ;
-                              owl:unionOf ( :Product
-                                            :ProductObject
-                                          )
-                            ] ;
-                rdfs:range xsd:string ;
-                rdfs:comment "hasCertificate is used to link a product or product object to a certification that that product has, e.g. REACH or similar standard." ;
+                rdfs:domain :Compliance ;
+                rdfs:comment "Link to the the certificate that certifies the compliance" ;
                 rdfs:label "has certificate" .
 
 
 #################################################################
 #    Classes
 #################################################################
+
+###  http://w3id.org/CEON/ontology/actorODP/Actor
+actorODP:Actor rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Process
+<http://w3id.org/CEON/ontology/processODP/Process> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/product/Compliance
+:Compliance rdf:type owl:Class ;
+            rdfs:comment "Represents that something is compliant with some standard or has a received a certain certification." ;
+            rdfs:label "Compliance" .
+
 
 ###  http://w3id.org/CEON/ontology/product/MatterComposition
 :MatterComposition rdf:type owl:Class ;
