@@ -106,6 +106,14 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                 rdfs:comment "batchOfProduct intends to represent what is the model product of a batch of objects."@en ;
                 rdfs:label "batch of products"@en .
 
+
+###  http://w3id.org/CEON/ontology/product/complianceWith
+:complianceWith rdf:type owl:ObjectProperty ;
+                rdfs:domain :Compliance ;
+                rdfs:comment "Represents what the compliance is compliant with (e.g. a standard or regulation)." ;
+                rdfs:label "Compliance with" .
+
+
 ###  http://w3id.org/CEON/ontology/product/compositionOf
 :compositionOf rdf:type owl:ObjectProperty ;
                rdfs:domain resourceODP:Composition ;
@@ -117,12 +125,6 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                           ] ;
                rdfs:comment "Represents what the composition is a composition of (i.e., the product, the product object or matter that is broken down into its components)." ;
                rdfs:label "composition of" .
-
-###  http://w3id.org/CEON/ontology/product/complianceWith
-:complianceWith rdf:type owl:ObjectProperty ;
-                rdfs:domain :Compliance ;
-                rdfs:comment "Represents what the compliance is compliant with (e.g. a standard or regulation)." ;
-                rdfs:label "Compliance with" .
 
 
 ###  http://w3id.org/CEON/ontology/product/hasCompliance
@@ -178,6 +180,27 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 #    Data properties
 #################################################################
 
+###  http://w3id.org/CEON/ontology/product/countryOfAssembly
+:countryOfAssembly rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :locationOfAssembly ;
+                   rdfs:comment "Used to represent the country of assembly of a product or product object" ;
+                   rdfs:label "Country of assembly" .
+
+
+###  http://w3id.org/CEON/ontology/product/countryOfManufacture
+:countryOfManufacture rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :locationOfManufacture ;
+                      rdfs:comment "Used to represent the country of manufacture of a product or product object" ;
+                      rdfs:label "Country of manufacture" .
+
+
+###  http://w3id.org/CEON/ontology/product/countryOfOrigin
+:countryOfOrigin rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :locationOfOrigin ;
+                 rdfs:comment "Used to represent the country of origin of a product or product object" ;
+                 rdfs:label "Country of origin" .
+
+
 ###  http://w3id.org/CEON/ontology/product/hasCertificate
 :hasCertificate rdf:type owl:DatatypeProperty ;
                 rdfs:domain :Compliance ;
@@ -185,15 +208,52 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                 rdfs:label "has certificate" .
 
 
+###  http://w3id.org/CEON/ontology/product/locationOfAssembly
+:locationOfAssembly rdf:type owl:DatatypeProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :Product
+                                                :ProductObject
+                                              )
+                                ] ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "Used to represent the location of assembly of a product or product object" ;
+                    rdfs:label "Location of assembly" .
+
+
+###  http://w3id.org/CEON/ontology/product/locationOfManufacture
+:locationOfManufacture rdf:type owl:DatatypeProperty ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( :Product
+                                                   :ProductObject
+                                                 )
+                                   ] ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "Used to represent the location of manufacture of a product or product object" ;
+                       rdfs:label "Location of manufacture" .
+
+
+###  http://w3id.org/CEON/ontology/product/locationOfOrigin
+:locationOfOrigin rdf:type owl:DatatypeProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :Product
+                                              :ProductObject
+                                            )
+                              ] ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "Used to represent the location of origin of a product or product object" ;
+                  rdfs:label "Location of origin" .
+
+
 #################################################################
 #    Classes
 #################################################################
 
-###  http://w3id.org/CEON/ontology/actorODP/ResourceRelation
-actorODP:ResourceRelation rdf:type owl:Class .
-
 ###  http://w3id.org/CEON/ontology/actorODP/Actor
 actorODP:Actor rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/ResourceRelation
+actorODP:ResourceRelation rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/processODP/Process
