@@ -76,6 +76,12 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
         owl:NamedIndividual ;
     rdfs:label "bad condition" .
 
+:constructionYear a owl:DatatypeProperty ;
+    rdfs:label "construction year" ;
+    rdfs:comment "the year a certain object was constructed" ;
+    rdfs:range xsd:gYear ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
 :good_condition a :FloorTileCondition,
         owl:NamedIndividual ;
     rdfs:label "good condition" .
@@ -107,6 +113,17 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:domain product:Product ;
     rdfs:range :DimensionalDeviation ;
     rdfs:subPropertyOf owl:topObjectProperty .
+
+:hasDismantlingCost a owl:ObjectProperty ;
+    rdfs:label "has dismantling cost" ;
+    rdfs:comment "The cost of dismantling, expressed as an amount of money with a currency unit." ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+:hasDismantlingInstruction a owl:DatatypeProperty ;
+    rdfs:label "has dismantling instructions" ;
+    rdfs:comment "link to dismantling instructions" ;
+    rdfs:range xsd:anyURI ;
+    rdfs:subPropertyOf owl:topDataProperty .
 
 :hasDismantlingMethod a owl:DatatypeProperty ;
     rdfs:label "has dismantling method" ;
@@ -288,6 +305,11 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:label "has width" ;
     rdfs:comment "hasHeight is used to describe the height of a product or product object." ;
     rdfs:subPropertyOf :hasDimension .
+
+:installationLocation a owl:ObjectProperty ;
+    rdfs:label "installation location" ;
+    rdfs:comment "The location of where this product is installed." ;
+    rdfs:subPropertyOf owl:topObjectProperty .
 
 :isContaminated a owl:DatatypeProperty ;
     rdfs:label "is contaminated" ;

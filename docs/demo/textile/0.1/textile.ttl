@@ -32,6 +32,15 @@
             owl:someValuesFrom :Color ],
         <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> .
 
+:BrandOfResource a owl:Class ;
+    rdfs:label "Brand of resource" ;
+    rdfs:comment "The relation where the role of the actor is the brand of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue :brand ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
 :CEmark a owl:DatatypeProperty ;
     :PCDSmapping "5001" ;
     rdfs:comment "The product has theCE mark."@en ;
@@ -40,10 +49,21 @@
 
 :CFmapping a owl:AnnotationProperty .
 
+:MSDS a <http://w3id.org/CEON/demo/textile/Regulation>,
+        owl:NamedIndividual .
+
 :PCDSmapping a owl:AnnotationProperty .
 
 :Print a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Constituent> .
+
+:REACHCompliance a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue :REACH ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ] .
+
+:Regulation a owl:Class .
 
 :TextileDataSheet a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -252,7 +272,8 @@
 
 :basicDye a :Dye,
         :PrintStuff,
-        owl:NamedIndividual .
+        owl:NamedIndividual ;
+    rdfs:label "basic dye" .
 
 :batikPrinted a :PrintingProcess,
         owl:NamedIndividual .
@@ -305,6 +326,10 @@
     rdfs:range xsd:boolean ;
     rdfs:subPropertyOf :collectionParameter .
 
+:containsMetal a owl:DatatypeProperty ;
+    rdfs:comment "The product contains metal."@en ;
+    rdfs:range xsd:boolean .
+
 :creaseResistance a :ChemicalFinishing,
         owl:NamedIndividual .
 
@@ -335,14 +360,16 @@
     rdfs:subPropertyOf :designedForReuse .
 
 :digitalPrinted a :PrintingProcess,
-        owl:NamedIndividual .
+        owl:NamedIndividual ;
+    rdfs:label "digital printed" .
 
 :directDye a :Dye,
         :PrintStuff,
         owl:NamedIndividual .
 
 :directDyed a :TextileManufacturingProcess,
-        owl:NamedIndividual .
+        owl:NamedIndividual ;
+    rdfs:label "direct dyed" .
 
 :disclosureValue a owl:ObjectProperty ;
     rdfs:domain :TextileChemicalSubstanceThresholdStatement ;
@@ -396,6 +423,9 @@
     :CFmapping "CF704" ;
     rdfs:subPropertyOf :hasTextileManufacturingProcess .
 
+:hasOrigin a owl:ObjectProperty ;
+    rdfs:range :Origin .
+
 :hasPostConsumerRecycledContentAmount a owl:ObjectProperty ;
     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/product/hasComposition> .
 
@@ -417,6 +447,10 @@
     :CFmapping "CF703" ;
     rdfs:subPropertyOf :hasProperty .
 
+:hasType a owl:DatatypeProperty ;
+    rdfs:comment "Description of the kind of product."@en ;
+    rdfs:range xsd:string .
+
 :hasWaterProperty a owl:ObjectProperty ;
     rdfs:label "Water Property"@en ;
     :CFmapping "CF706" ;
@@ -432,6 +466,10 @@
     rdfs:label "incineration"@en,
         "pyrolysis"@en ;
     rdfs:comment "Clean incineration/pyrolysis."@en .
+
+:includesTrims a owl:DatatypeProperty ;
+    rdfs:comment "The product includes trims."@en ;
+    rdfs:range xsd:boolean .
 
 :industrialComposting a :TextileRecyclingProcess,
         owl:NamedIndividual ;
@@ -492,6 +530,9 @@
 :opticalBrighteners a :ChemicalFinishing,
         owl:NamedIndividual .
 
+:original a :Origin,
+        owl:NamedIndividual .
+
 :permanentCreasing a :MechanicalFinishing,
         owl:NamedIndividual .
 
@@ -525,6 +566,10 @@
 :productCompositionDisclosureValidation a owl:ObjectProperty ;
     rdfs:comment "The product composition disclosed at the defined threshold has been validated by a third party or the product has been awarded an independent certification or standard related to its composition." .
 
+:productionSite a owl:DatatypeProperty ;
+    rdfs:comment "The location where the product was produced."@en ;
+    rdfs:range xsd:string .
+
 :public a :Availability,
         owl:NamedIndividual .
 
@@ -532,7 +577,13 @@
         :PrintStuff,
         owl:NamedIndividual .
 
+:recycled a :Origin,
+        owl:NamedIndividual .
+
 :resins a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:reused a :Origin,
         owl:NamedIndividual .
 
 :rollerPrinted a :PrintingProcess,
@@ -583,13 +634,15 @@
     rdfs:subPropertyOf :textileProductDesign .
 
 :topDyed a :TextileManufacturingProcess,
-        owl:NamedIndividual .
+        owl:NamedIndividual ;
+    rdfs:label "top dyed" .
 
 :transferPrinted a :PrintingProcess,
         owl:NamedIndividual .
 
 :undyed a :TextileManufacturingProcess,
-        owl:NamedIndividual .
+        owl:NamedIndividual ;
+    rdfs:label "undyed" .
 
 :validatedByThirdParty a :Validation,
         owl:NamedIndividual .
@@ -628,6 +681,9 @@
     rdfs:label "dyeing process" ;
     rdfs:subClassOf :TextileManufacturingProcess .
 
+:REACH a <http://w3id.org/CEON/demo/textile/Regulation>,
+        owl:NamedIndividual .
+
 :TextileChemicalSubstanceThresholdStatement a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
@@ -639,6 +695,9 @@
             owl:onProperty :recyclingAtSameQualityRange ;
             owl:someValuesFrom :RecyclingAtSameLevelAmountInterval ],
         :TextileDataSheetStatement .
+
+:brand a <http://w3id.org/CEON/ontology/actor/ActorResourceRole>,
+        owl:NamedIndividual .
 
 :certification a owl:DatatypeProperty .
 
@@ -686,6 +745,8 @@
 :AmountThreshold a owl:Class .
 
 :Color a owl:Class .
+
+:Origin a owl:Class .
 
 :WaterProperty a owl:Class ;
     rdfs:subClassOf :TextileProperty .
