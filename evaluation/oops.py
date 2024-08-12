@@ -121,11 +121,15 @@ def main(filter=[]):
         
         modules[name].append(version)
 
-    modules = [f"{name}/{max(versions)}/" for name, versions in modules.items()]
-    modules.sort()
+    mods = []
+    for name, versions in modules.items():
+        for version in versions:
+            mods.append(f"{name}/{version}/")
+
+    mods.sort()
 
     ceon_prefix = "http://w3id.org/CEON/ontology/"
-    for module in modules:
+    for module in mods:
         module_url = f"{ceon_prefix}{module}"
         print(f"Generating OOPS! report for {module_url}")
         resp = requests.post(url=oops_url,
