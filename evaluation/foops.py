@@ -4,6 +4,7 @@ import requests
 from glob import glob
 import re
 import json
+import sys
 
 def main(filter=[]):
     foops_url = "https://foops.linkeddata.es/assessOntology"
@@ -108,7 +109,7 @@ def main(filter=[]):
         if len(filter) > 0 and name not in filter:
             continue
         
-        version = float(parts.group(2))
+        version = parts.group(2)
         if not modules.get(name):
             modules[name] = []
         
@@ -165,4 +166,5 @@ def main(filter=[]):
         f.write(soup.prettify(formatter=html_formatter))
     
 if __name__ == "__main__":
-    main()
+    filter = sys.argv[1:]
+    main(filter)
