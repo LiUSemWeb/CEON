@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup, formatter
 import requests
 from glob import glob
 import re
+import sys
 
 def main(filter=[]):
     oops_url = "https://oops.linkeddata.es/rest"
@@ -113,7 +114,7 @@ def main(filter=[]):
         if len(filter) > 0 and name not in filter:
             continue
         
-        version = float(parts.group(2))
+        version = parts.group(2)
         
         if not modules.get(name):
             modules[name] = []
@@ -123,9 +124,8 @@ def main(filter=[]):
     modules = [f"{name}/{max(versions)}/" for name, versions in modules.items()]
     modules.sort()
 
-    ceon_prefix = "https://w3id.org/CEON/ontology/"
+    ceon_prefix = "http://w3id.org/CEON/ontology/"
     for module in modules:
-
         module_url = f"{ceon_prefix}{module}"
         print(f"Generating OOPS! report for {module_url}")
         resp = requests.post(url=oops_url,
@@ -175,4 +175,5 @@ def main(filter=[]):
         
 
 if __name__ == "__main__":
-    main()
+    filter = sys.argv[1:]
+    main(filter)
