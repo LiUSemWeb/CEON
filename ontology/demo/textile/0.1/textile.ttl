@@ -195,10 +195,33 @@
 :weightFractionOfDisclosedSubstances rdf:type owl:ObjectProperty ;
                                      rdfs:comment "The weight fraction of all disclosed chemical substances is 0%, 0-10%, 10-25%, 25-50%, 50-75%, 75-95%, 95-99%, over 99%." .
 
+###  http://w3id.org/CEON/demo/textile/hasOrigin
+:hasOrigin rdf:type owl:ObjectProperty ;
+            rdfs:range :Origin.
 
 #################################################################
 #    Data properties
 #################################################################
+
+###  http://w3id.org/CEON/demo/textile/hasType
+:hasType rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Description of the kind of product."@en .
+
+###  http://w3id.org/CEON/demo/textile/containsMetal
+:containsMetal rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:boolean ;
+        rdfs:comment "The product contains metal."@en .
+
+###  http://w3id.org/CEON/demo/textile/includesTrims
+:includesTrims rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:boolean ;
+        rdfs:comment "The product includes trims."@en .
+
+###  http://w3id.org/CEON/demo/textile/productionSite
+:productionSite rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:string ;
+        rdfs:comment "The location where the product was produced."@en .
 
 ###  http://w3id.org/CEON/demo/textile/CEmark
 :CEmark rdf:type owl:DatatypeProperty ;
@@ -329,6 +352,12 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://w3id.org/CEON/demo/textile/Regulation
+:Regulation rdf:type owl:Class .
+
+###  http://w3id.org/CEON/demo/textile/Origin
+:Origin rdf:type owl:Class .
 
 ###  http://w3id.org/CEON/demo/textile/AmountIntervalValue
 :AmountIntervalValue rdf:type owl:Class .
@@ -666,6 +695,30 @@
 :WaterProperty rdf:type owl:Class ;
                rdfs:subClassOf :TextileProperty .
 
+###  http://w3id.org/CEON/demo/textile/BrandOfResource
+:BrandOfResource rdf:type owl:Class ;
+                   owl:equivalentClass [ owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation>
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ;
+                                                                owl:hasValue :brand
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                   rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+                   rdfs:comment "The relation where the role of the actor is the brand of a certain resource." ;
+                   rdfs:label "Brand of resource" .
+
+###  http://w3id.org/CEON/demo/textile/Regulation
+:Regulation rdf:type owl:Class.
+
+###  http://w3id.org/CEON/demo/textile/REACHCompliance
+:REACHCompliance rdf:type owl:Class;
+          rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance>;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ;
+                                       owl:hasValue :REACH
+                                     ] .
 
 #################################################################
 #    Individuals
@@ -806,7 +859,8 @@
 ###  http://w3id.org/CEON/demo/textile/basicDye
 :basicDye rdf:type owl:NamedIndividual ,
                    :Dye ,
-                   :PrintStuff .
+                   :PrintStuff ;
+          rdfs:label "basic dye".
 
 
 ###  http://w3id.org/CEON/demo/textile/batikPrinted
@@ -869,7 +923,8 @@
 
 ###  http://w3id.org/CEON/demo/textile/digitalPrinted
 :digitalPrinted rdf:type owl:NamedIndividual ,
-                         :PrintingProcess .
+                         :PrintingProcess ;
+                rdfs:label "digital printed".
 
 
 ###  http://w3id.org/CEON/demo/textile/directDye
@@ -880,7 +935,8 @@
 
 ###  http://w3id.org/CEON/demo/textile/directDyed
 :directDyed rdf:type owl:NamedIndividual ,
-                     :TextileManufacturingProcess .
+                     :TextileManufacturingProcess ;
+            rdfs:label "direct dyed".
 
 
 ###  http://w3id.org/CEON/demo/textile/disperseDye
@@ -1119,7 +1175,8 @@
 
 ###  http://w3id.org/CEON/demo/textile/topDyed
 :topDyed rdf:type owl:NamedIndividual ,
-                  :TextileManufacturingProcess .
+                  :TextileManufacturingProcess ;
+          rdfs:label "top dyed".
 
 
 ###  http://w3id.org/CEON/demo/textile/transferPrinted
@@ -1129,7 +1186,8 @@
 
 ###  http://w3id.org/CEON/demo/textile/undyed
 :undyed rdf:type owl:NamedIndividual ,
-                 :TextileManufacturingProcess .
+                 :TextileManufacturingProcess ;
+        rdfs:label "undyed".
 
 
 ###  http://w3id.org/CEON/demo/textile/validatedByThirdParty
@@ -1180,6 +1238,30 @@
 ###  http://w3id.org/CEON/demo/textile/yarnDyed
 :yarnDyed rdf:type owl:NamedIndividual ,
                    :TextileManufacturingProcess .
+
+###  http://w3id.org/CEON/demo/textile/original
+:original rdf:type owl:NamedIndividual ,
+                   :Origin .
+
+###  http://w3id.org/CEON/demo/textile/recycled
+:recycled rdf:type owl:NamedIndividual ,
+                   :Origin .
+
+###  http://w3id.org/CEON/demo/textile/reused
+:reused rdf:type owl:NamedIndividual ,
+                   :Origin .
+
+###  http://w3id.org/CEON/demo/textile/brand
+:brand rdf:type owl:NamedIndividual ,
+                 <http://w3id.org/CEON/ontology/actor/ActorResourceRole> .
+
+###  http://w3id.org/CEON/demo/textile/REACH
+:REACH rdf:type owl:NamedIndividual ,
+                    <http://w3id.org/CEON/demo/textile/Regulation> .
+
+###  http://w3id.org/CEON/demo/textile/MSDS
+:MSDS rdf:type owl:NamedIndividual ,
+                    <http://w3id.org/CEON/demo/textile/Regulation> .
 
 
 ###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

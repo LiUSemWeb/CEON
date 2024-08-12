@@ -32,7 +32,7 @@ def copy_ontologies():
             
             parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
             name = parts.group(1)
-            version = float(parts.group(2))
+            version = parts.group(2)
             target = f"docs/{map[type]}/{name}/{version}/"
             os.makedirs(target, exist_ok=True)
             
@@ -47,7 +47,7 @@ def copy_ontologies():
             g.serialize(destination=f"{target}{name}.owl", format="xml")
             g.serialize(destination=f"{target}{name}.jsonld", format="json-ld")
             
-            if latest.get(name, 0) < version:
+            if latest.get(name, "0") < version:
                 latest[name] = version
             
         # add latest
@@ -88,7 +88,7 @@ def build_pdf():
 
                 parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
                 name = parts.group(1)
-                version = float(parts.group(2))
+                version = parts.group(2)
             
                 target = f"docs/{map[type]}/{name}/{version}/"
                 html_file = f"{target}/index.html"
@@ -153,7 +153,7 @@ def generate_vowl():
 
             parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
             name = parts.group(1)
-            version = float(parts.group(2))
+            version = parts.group(2)
             target = f"docs/webvowl/data/{map[type]}/{name}/{version}/"
             os.makedirs(target, exist_ok=True)
             
@@ -189,7 +189,7 @@ def create_documentation():
 
             parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
             name = parts.group(1)
-            version = float(parts.group(2))
+            version = parts.group(2)
             target = f"docs/{map[type]}/{name}/{version}/"
             os.makedirs(target, exist_ok=True)
                     
@@ -266,7 +266,7 @@ def create_index_file():
                 continue
             parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
             name = parts.group(1)
-            version = float(parts.group(2))
+            version = parts.group(2)
             
             if not ontologies.get(name):
                 ontologies[name] = {
