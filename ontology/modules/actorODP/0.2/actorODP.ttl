@@ -23,8 +23,8 @@
                                            dcterms:description "A core ODP of the CEON ontology network, defining aspects of the actor concept." ;
                                            dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
                                            dcterms:title "Circular Economy Ontology Network (CEON) - Actor ODP" ;
-                                           vann:preferredNamespacePrefix "actorODP"^^xsd:string ;
-                                           vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/actorODP/"^^xsd:string ;
+                                           vann:preferredNamespacePrefix "actorODP" ;
+                                           vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/actorODP/" ;
                                            odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3, CVN-Actor-1,4,6,7, CVN-Competency-3, CVN-Information-4, C11-1, C11-3, E1-6,6,6,9, E4-10" ;
                                            rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the actor concept." ;
                                            rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
@@ -70,9 +70,29 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 odp:coversRequirements rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+<http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Datatypes
 #################################################################
+
+###  http://www.opengis.net/ont/geosparql#geoJSONLiteral
+<http://www.opengis.net/ont/geosparql#geoJSONLiteral> rdf:type rdfs:Datatype .
+
+
+###  http://www.opengis.net/ont/geosparql#gmlLiteral
+<http://www.opengis.net/ont/geosparql#gmlLiteral> rdf:type rdfs:Datatype .
+
+
+###  http://www.opengis.net/ont/geosparql#wktLiteral
+<http://www.opengis.net/ont/geosparql#wktLiteral> rdf:type rdfs:Datatype .
+
 
 ###  http://www.w3.org/2001/XMLSchema#date
 xsd:date rdf:type rdfs:Datatype .
@@ -121,15 +141,12 @@ xsd:gYear rdf:type rdfs:Datatype .
                     rdfs:label "capability property" .
 
 
-###  http://w3id.org/CEON/ontology/actorODP/hasLocation
-:hasLocation rdf:type owl:ObjectProperty ;
-             rdfs:domain [ rdf:type owl:Class ;
-                           owl:unionOf ( :Actor
-                                         resourceODP:Resource
-                                       )
-                         ] ;
-             rdfs:comment "Defines the location of an actor or resource." ;
-             rdfs:label "has location" .
+###  http://w3id.org/CEON/ontology/actorODP/hasActorLocation
+:hasActorLocation rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Actor ;
+                  rdfs:range <http://www.opengis.net/ont/geosparql#Geometry> ;
+                  rdfs:comment "Defines the location of an actor." ;
+                  rdfs:label "has actor location" .
 
 
 ###  http://w3id.org/CEON/ontology/actorODP/participantRole
@@ -228,6 +245,33 @@ xsd:gYear rdf:type rdfs:Datatype .
                         rdfs:label "participation time point" .
 
 
+###  http://www.opengis.net/ont/geosparql#asGML
+<http://www.opengis.net/ont/geosparql#asGML> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://www.opengis.net/ont/geosparql#Geometry> ;
+                                             rdfs:range <http://www.opengis.net/ont/geosparql#gmlLiteral> ;
+                                             rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "The GML serialization of a Geometry."@en ;
+                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "as GML"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#asGeoJSON
+<http://www.opengis.net/ont/geosparql#asGeoJSON> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://www.opengis.net/ont/geosparql#Geometry> ;
+                                                 rdfs:range <http://www.opengis.net/ont/geosparql#geoJSONLiteral> ;
+                                                 rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+                                                 <http://www.w3.org/2004/02/skos/core#definition> "The GeoJSON serialization of a Geometry."@en ;
+                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "as GeoJSON"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#asWKT
+<http://www.opengis.net/ont/geosparql#asWKT> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://www.opengis.net/ont/geosparql#Geometry> ;
+                                             rdfs:range <http://www.opengis.net/ont/geosparql#wktLiteral> ;
+                                             rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "The WKT serialization of a Geometry."@en ;
+                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "as WKT"@en .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -308,4 +352,10 @@ processODP:Process rdf:type owl:Class .
 resourceODP:Resource rdf:type owl:Class .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  http://www.opengis.net/ont/geosparql#Geometry
+<http://www.opengis.net/ont/geosparql#Geometry> rdf:type owl:Class ;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS)."@en ;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Geometry"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
