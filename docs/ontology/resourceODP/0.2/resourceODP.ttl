@@ -1,10 +1,12 @@
 @prefix : <http://w3id.org/CEON/ontology/resourceODP/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -58,6 +60,12 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:range :Information ;
     rdfs:subPropertyOf :hasPart .
 
+:hasResourceLocation a owl:ObjectProperty ;
+    rdfs:label "has resource location" ;
+    rdfs:comment "Defines the location of a resource." ;
+    rdfs:domain :Resource ;
+    rdfs:range geo:Geometry .
+
 :isAbout a owl:ObjectProperty ;
     rdfs:label "is about" ;
     rdfs:comment "Connecting the information to the object (physical, virtual, imaginary) that the information is about." ;
@@ -70,11 +78,42 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 odp:coversRequirements a owl:AnnotationProperty .
 
+geo:asGML a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+    rdfs:range geo:gmlLiteral ;
+    skos:definition "The GML serialization of a Geometry."@en ;
+    skos:prefLabel "as GML"@en .
+
+geo:asGeoJSON a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+    rdfs:range geo:geoJSONLiteral ;
+    skos:definition "The GeoJSON serialization of a Geometry."@en ;
+    skos:prefLabel "as GeoJSON"@en .
+
+geo:asWKT a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+    rdfs:range geo:wktLiteral ;
+    skos:definition "The WKT serialization of a Geometry."@en ;
+    skos:prefLabel "as WKT"@en .
+
+skos:definition a owl:AnnotationProperty .
+
+skos:prefLabel a owl:AnnotationProperty .
+
 :batchSize a owl:DatatypeProperty ;
     rdfs:label "batch size"@en ;
     rdfs:comment "batchSize intends to repsent how many physical objects are belong to a batch of objects."@en ;
     rdfs:domain :BatchOfObjects ;
     rdfs:range xsd:nonNegativeInteger .
+
+geo:geoJSONLiteral a rdfs:Datatype .
+
+geo:gmlLiteral a rdfs:Datatype .
+
+geo:wktLiteral a rdfs:Datatype .
 
 :SetOfObjects a owl:Class ;
     rdfs:label "Set of objects"@en ;
@@ -139,6 +178,10 @@ odp:coversRequirements a owl:AnnotationProperty .
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( :BatchOfObjects :SetOfObjects ) ] ;
     rdfs:range :PhysicalObject .
+
+geo:Geometry a owl:Class ;
+    skos:definition "A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS)."@en ;
+    skos:prefLabel "Geometry"@en .
 
 :BatchOfObjects a owl:Class ;
     rdfs:label "Batch of objects"@en ;
