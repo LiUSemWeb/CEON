@@ -109,9 +109,13 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/ontology/resourceODP/hasBatch
 :hasBatch rdf:type owl:ObjectProperty ;
-          rdfs:domain :SetOfObjects ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :BatchOfObjects
+                                      :SetOfObjects
+                                    )
+                      ] ;
           rdfs:range :BatchOfObjects ;
-          rdfs:comment "hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects."@en ;
+          rdfs:comment "hasBatch intends to represent that a set or batch of objects can be captured by a number of batches where each batch contains a number of physical objects."@en ;
           rdfs:label "has batch"@en .
 
 

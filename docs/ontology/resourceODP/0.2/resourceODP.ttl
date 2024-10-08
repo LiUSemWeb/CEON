@@ -134,8 +134,9 @@ geo:wktLiteral a rdfs:Datatype .
 
 :hasBatch a owl:ObjectProperty ;
     rdfs:label "has batch"@en ;
-    rdfs:comment "hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects."@en ;
-    rdfs:domain :SetOfObjects ;
+    rdfs:comment "hasBatch intends to represent that a set or batch of objects can be captured by a number of batches where each batch contains a number of physical objects."@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :BatchOfObjects :SetOfObjects ) ] ;
     rdfs:range :BatchOfObjects .
 
 :hasConstituent a owl:ObjectProperty ;
@@ -186,16 +187,16 @@ geo:Geometry a owl:Class ;
 :BatchOfObjects a owl:Class ;
     rdfs:label "Batch of objects"@en ;
     rdfs:comment "A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product objects) adhering to the same product model."@en ;
-    rdfs:subClassOf [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty :batchSize ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty :hasPhysicalObject ;
                         owl:someValuesFrom :PhysicalObject ] [ a owl:Restriction ;
                         owl:allValuesFrom :PhysicalObject ;
                         owl:onProperty :hasPhysicalObject ] ) ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty :batchSize ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         :Resource .
 
 :Resource a owl:Class ;
