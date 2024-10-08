@@ -141,16 +141,12 @@ xsd:gYear rdf:type rdfs:Datatype .
                     rdfs:label "capability property" .
 
 
-###  http://w3id.org/CEON/ontology/actorODP/hasLocation
-:hasLocation rdf:type owl:ObjectProperty ;
-             rdfs:domain [ rdf:type owl:Class ;
-                           owl:unionOf ( :Actor
-                                         resourceODP:Resource
-                                       )
-                         ] ;
-             rdfs:range <http://www.opengis.net/ont/geosparql#Geometry> ;
-             rdfs:comment "Defines the location of an actor or resource." ;
-             rdfs:label "has location" .
+###  http://w3id.org/CEON/ontology/actorODP/hasActorLocation
+:hasActorLocation rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Actor ;
+                  rdfs:range <http://www.opengis.net/ont/geosparql#Geometry> ;
+                  rdfs:comment "Defines the location of an actor." ;
+                  rdfs:label "has actor location" .
 
 
 ###  http://w3id.org/CEON/ontology/actorODP/participantRole
@@ -207,15 +203,6 @@ xsd:gYear rdf:type rdfs:Datatype .
 #    Data properties
 #################################################################
 
-###  http://www.opengis.net/ont/geosparql#asGeoJSON
-<http://www.opengis.net/ont/geosparql#asGeoJSON> rdf:type owl:DatatypeProperty ;
-           rdfs:domain <http://www.opengis.net/ont/geosparql#Geometry> ;
-           rdfs:range <http://www.opengis.net/ont/geosparql#geoJSONLiteral> ;
-           rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
-           <http://www.w3.org/2004/02/skos/core#definition> "The GeoJSON serialization of a Geometry."@en ;
-           <http://www.w3.org/2004/02/skos/core#prefLabel> "as GeoJSON"@en .
-
-
 ###  http://w3id.org/CEON/ontology/actorODP/participationEndTime
 :participationEndTime rdf:type owl:DatatypeProperty ;
                       rdfs:domain :Participation ;
@@ -265,6 +252,15 @@ xsd:gYear rdf:type rdfs:Datatype .
                                              rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
                                              <http://www.w3.org/2004/02/skos/core#definition> "The GML serialization of a Geometry."@en ;
                                              <http://www.w3.org/2004/02/skos/core#prefLabel> "as GML"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#asGeoJSON
+<http://www.opengis.net/ont/geosparql#asGeoJSON> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://www.opengis.net/ont/geosparql#Geometry> ;
+                                                 rdfs:range <http://www.opengis.net/ont/geosparql#geoJSONLiteral> ;
+                                                 rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+                                                 <http://www.w3.org/2004/02/skos/core#definition> "The GeoJSON serialization of a Geometry."@en ;
+                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "as GeoJSON"@en .
 
 
 ###  http://www.opengis.net/ont/geosparql#asWKT
