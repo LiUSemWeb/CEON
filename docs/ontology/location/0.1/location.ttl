@@ -1,0 +1,91 @@
+@prefix : <http://w3id.org/CEON/ontology/location/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+: a owl:Ontology ;
+    dcterms:contributor "Huanyu Li",
+        "Mikael Lindecrantz",
+        "Robin Keskisärkkä" ;
+    dcterms:created "2023-03-17"^^xsd:date ;
+    dcterms:creator "Eva Blomqvist" ;
+    dcterms:description "A core ODP of the CEON ontology network, defining aspects of the actor concept." ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Actor ODP" ;
+    vann:preferredNamespacePrefix "location" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/location/" ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3, CVN-Actor-1,4,6,7, CVN-Competency-3, CVN-Information-4, C11-1, C11-3, E1-6,6,6,9, E4-10" ;
+    rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the actor concept." ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/location/0.1/> ;
+    owl:versionInfo 0.1 .
+
+:hasLocation a owl:ObjectProperty ;
+    rdfs:label "has location" ;
+    rdfs:comment "Defines the location of an actor or resource." ;
+    rdfs:range geo:Geometry .
+
+odp:coversRequirements a owl:AnnotationProperty .
+
+geo:asGML a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+    rdfs:range geo:gmlLiteral ;
+    skos:definition "The GML serialization of a Geometry."@en ;
+    skos:prefLabel "as GML"@en .
+
+geo:asGeoJSON a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+    rdfs:range geo:geoJSONLiteral ;
+    skos:definition "The GeoJSON serialization of a Geometry."@en ;
+    skos:prefLabel "as GeoJSON"@en .
+
+geo:asWKT a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+    rdfs:range geo:wktLiteral ;
+    skos:definition "The WKT serialization of a Geometry."@en ;
+    skos:prefLabel "as WKT"@en .
+
+xsd:date a rdfs:Datatype .
+
+xsd:gMonthYear a rdfs:Datatype .
+
+xsd:gYear a rdfs:Datatype .
+
+skos:definition a owl:AnnotationProperty .
+
+skos:prefLabel a owl:AnnotationProperty .
+
+geo:geoJSONLiteral a rdfs:Datatype .
+
+geo:gmlLiteral a rdfs:Datatype .
+
+geo:wktLiteral a rdfs:Datatype .
+
+geo:Geometry a owl:Class ;
+    skos:definition "A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS)."@en ;
+    skos:prefLabel "Geometry"@en .
+
