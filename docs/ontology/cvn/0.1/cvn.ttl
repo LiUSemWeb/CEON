@@ -3,7 +3,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix process: <http://w3id.org/CEON/ontology/process/> .
+@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
@@ -52,15 +52,15 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:label "composed of" ;
     rdfs:comment "Both a CVN and a process can be composed of other CVNs or processes." ;
     rdfs:domain [ a owl:Class ;
-            owl:unionOf ( :CVN process:Process ) ] ;
+            owl:unionOf ( :CVN processODP:Process ) ] ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( :CVN process:Process ) ] .
+            owl:unionOf ( :CVN processODP:Process ) ] .
 
 :createsValue a owl:ObjectProperty ;
     rdfs:label "creates value" ;
     rdfs:comment "Value creation can be captured at the actor level, i.e. value created by an actor's participation in a collaboration, or at the process or complete CVN level." ;
     rdfs:domain [ a owl:Class ;
-            owl:unionOf ( actorODP:Participation :CVN process:Process ) ] ;
+            owl:unionOf ( actorODP:Participation :CVN processODP:Process ) ] ;
     rdfs:range value:Value .
 
 :implementsBlueprint a owl:ObjectProperty ;
@@ -111,7 +111,7 @@ value:ValueProposition a owl:Class .
     rdfs:label "Circular Value Network Blueprint" ;
     rdfs:comment "A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs." .
 
-process:Process a owl:Class .
+processODP:Process a owl:Class .
 
 :CVN a owl:Class ;
     rdfs:label "Circular Value Network" ;
