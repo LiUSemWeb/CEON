@@ -1,0 +1,76 @@
+@prefix : <http://w3id.org/CEON/ontology/value/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+: a owl:Ontology ;
+    dcterms:contributor "Huanyu Li",
+        "Mikael Lindecrantz",
+        "Robin Keskisärkkä" ;
+    dcterms:created "2023-03-30" ;
+    dcterms:creator "Eva Blomqvist" ;
+    dcterms:description "A core ODP of the CEON ontology network, defining aspects of the value concept." ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Value Module" ;
+    vann:preferredNamespacePrefix "value" ;
+    vann:preferredNamespaceUri "https://w3id.org/CEON/ontoloy/value/" ;
+    rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the value concept." ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/value/0.2/> ;
+    owl:versionInfo "0.2" .
+
+:EconomicValue a owl:Class ;
+    rdfs:label "Economic Value" ;
+    rdfs:subClassOf :Value ;
+    owl:equivalentClass :UseValue .
+
+:EnvironmentalValue a owl:Class ;
+    rdfs:label "Environmental Value" ;
+    rdfs:subClassOf :Value .
+
+:ExchangeValue a owl:Class ;
+    rdfs:label "Exchange Value" ;
+    rdfs:comment "Exchange value represents the worth of a product, resource, service in a exchange setting, i.e., a product, resource, service is traded or sold." ;
+    rdfs:subClassOf :Value .
+
+:SocialValue a owl:Class ;
+    rdfs:label "Social Value" ;
+    rdfs:subClassOf :Value .
+
+:ValueProposition a owl:Class ;
+    rdfs:label "Value Proposition" ;
+    rdfs:comment "Proposed or intended value outcome of some process, action or collaboration." .
+
+xsd:date a rdfs:Datatype .
+
+xsd:gMonthYear a rdfs:Datatype .
+
+xsd:gYear a rdfs:Datatype .
+
+:UseValue a owl:Class ;
+    rdfs:label "Use Value" ;
+    rdfs:comment "Use value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
+    rdfs:subClassOf :Value .
+
+:Value a owl:Class ;
+    rdfs:label "Value" ;
+    rdfs:comment "Some notion of value." .
+
