@@ -4,6 +4,7 @@ import requests
 from glob import glob
 import re
 import json
+import sys
 
 def main(filter=[]):
     foops_url = "https://foops.linkeddata.es/assessOntology"
@@ -108,17 +109,21 @@ def main(filter=[]):
         if len(filter) > 0 and name not in filter:
             continue
         
-        version = float(parts.group(2))
+        version = parts.group(2)
         if not modules.get(name):
             modules[name] = []
         
         modules[name].append(version)
 
-    modules = [f"{name}/{max(versions)}/" for name, versions in modules.items()]
-    modules.sort()
+    mods = []
+    for name, versions in modules.items():
+        for version in versions:
+            mods.append(f"{name}/{version}/")
+
+    mods.sort()
 
     ceon_prefix = "https://w3id.org/CEON/ontology/"
-    for module in modules:
+    for module in mods:
         module_url = f"{ceon_prefix}{module}"
         print(f"Generating FOOPS! report for {module_url}")
         resp = requests.post(url=foops_url,
@@ -165,4 +170,5 @@ def main(filter=[]):
         f.write(soup.prettify(formatter=html_formatter))
     
 if __name__ == "__main__":
-    main()
+    filter = sys.argv[1:]
+    main(filter)
