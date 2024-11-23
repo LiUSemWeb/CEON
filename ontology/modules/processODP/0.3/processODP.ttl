@@ -6,9 +6,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
-@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
 @base <http://w3id.org/CEON/ontology/processODP/> .
 
@@ -73,10 +71,6 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://w3id.org/CEON/ontology/actorODP/participationIn
-actorODP:participationIn rdf:type owl:ObjectProperty .
-
-
 ###  http://w3id.org/CEON/ontology/processODP/hasExecutionInput
 :hasExecutionInput rdf:type owl:ObjectProperty ;
                    rdfs:domain :ProcessExecution ;
@@ -93,15 +87,15 @@ actorODP:participationIn rdf:type owl:ObjectProperty .
 
 ###  http://w3id.org/CEON/ontology/processODP/hasInput
 :hasInput rdf:type owl:ObjectProperty ;
-          rdfs:domain :Transformation ;
-          rdfs:comment "The situation before the transformation takes place, i.e. the state of affairs before the process takes places, such as the set of components before they are assembled into a product." ;
+          rdfs:domain :Process ;
+          rdfs:comment "The situation before the process has an execution, i.e. the state of affairs before the process takes places, such as the set of components before they are assembled into a product." ;
           rdfs:label "has input" .
 
 
 ###  http://w3id.org/CEON/ontology/processODP/hasOutput
 :hasOutput rdf:type owl:ObjectProperty ;
-           rdfs:domain :Transformation ;
-           rdfs:comment "The output situation of a transformation, i.e. the state of affairs after the transformation took place." ;
+           rdfs:domain :Process ;
+           rdfs:comment "The output situation of after the process is executed, i.e. the state of affairs after the process is executed." ;
            rdfs:label "has output" .
 
 
@@ -132,9 +126,10 @@ actorODP:participationIn rdf:type owl:ObjectProperty .
 
 ###  http://w3id.org/CEON/ontology/processODP/hasTransformationExecution
 :hasTransformationExecution rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :hasProcessExecution ;
                             rdfs:domain :Transformation ;
                             rdfs:range :TransformationExecution ;
-                            rdfs:comment "A process can have specific transformation executions." ;
+                            rdfs:comment "A transformation can have specific transformation executions." ;
                             rdfs:label "has transformation execution" .
 
 
@@ -202,13 +197,25 @@ actorODP:participationIn rdf:type owl:ObjectProperty .
 
 ###  http://w3id.org/CEON/ontology/processODP/Process
 :Process rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasProcessExecution ;
+                           owl:someValuesFrom :ProcessExecution
+                         ] ;
          rdfs:comment "An activity in the context of a circular value network, handling resources." ;
          rdfs:label "Process" .
 
 
 ###  http://w3id.org/CEON/ontology/processODP/ProcessExecution
 :ProcessExecution rdf:type owl:Class ;
-                  rdfs:comment "An execution of a specific process." ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasExecutionInput ;
+                                    owl:someValuesFrom owl:Thing
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasExecutionOutput ;
+                                    owl:someValuesFrom owl:Thing
+                                  ] ;
+                  rdfs:comment "An execution of a specific process at a specific location and time point." ;
                   rdfs:label "Process execution" .
 
 
@@ -220,13 +227,21 @@ actorODP:participationIn rdf:type owl:ObjectProperty .
 
 ###  http://w3id.org/CEON/ontology/processODP/Situation
 :Situation rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :isSettingFor ;
+                             owl:someValuesFrom owl:Thing
+                           ] ;
            rdfs:comment "A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time." ;
            rdfs:label "Situation" .
 
 
 ###  http://w3id.org/CEON/ontology/processODP/Transformation
 :Transformation rdf:type owl:Class ;
-                rdfs:subClassOf :Process ;
+                rdfs:subClassOf :Process ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasTransformationExecution ;
+                                  owl:someValuesFrom :TransformationExecution
+                                ] ;
                 rdfs:comment "A process that transforms some situation into another situation, i.e. changes the state of affairs of some actor, resource etc." ;
                 rdfs:label "Transformation" .
 
@@ -234,7 +249,7 @@ actorODP:participationIn rdf:type owl:ObjectProperty .
 ###  http://w3id.org/CEON/ontology/processODP/TransformationExecution
 :TransformationExecution rdf:type owl:Class ;
                          rdfs:subClassOf :ProcessExecution ;
-                         rdfs:comment "An execution of a specific transformation." ;
+                         rdfs:comment "An execution of a specific transformation at a specific location and time point or period." ;
                          rdfs:label "Transformation execution" .
 
 

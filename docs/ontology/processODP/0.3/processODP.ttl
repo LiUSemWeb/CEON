@@ -1,5 +1,4 @@
 @prefix : <http://w3id.org/CEON/ontology/processODP/> .
-@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -23,8 +22,6 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 vann:preferredNamespaceUri a owl:AnnotationProperty .
 
-actorODP:participationIn a owl:ObjectProperty .
-
 : a owl:Ontology ;
     dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
@@ -42,25 +39,15 @@ actorODP:participationIn a owl:ObjectProperty .
     owl:versionIRI <http://w3id.org/CEON/ontology/processODP/0.3/> ;
     owl:versionInfo 0.3 .
 
-:hasExecutionInput a owl:ObjectProperty ;
-    rdfs:label "has execution input" ;
-    rdfs:comment "The situation before the execution takes place, i.e. the state of affairs before the process takes places, such as the set of components before they are assembled into a product object." ;
-    rdfs:domain :ProcessExecution .
-
-:hasExecutionOutput a owl:ObjectProperty ;
-    rdfs:label "has execution output" ;
-    rdfs:comment "The situation after the execution takes place, i.e. the state of affairs before the process takes places, such as the assembled product object." ;
-    rdfs:domain :ProcessExecution .
-
 :hasInput a owl:ObjectProperty ;
     rdfs:label "has input" ;
-    rdfs:comment "The situation before the transformation takes place, i.e. the state of affairs before the process takes places, such as the set of components before they are assembled into a product." ;
-    rdfs:domain :Transformation .
+    rdfs:comment "The situation before the process has an execution, i.e. the state of affairs before the process takes places, such as the set of components before they are assembled into a product." ;
+    rdfs:domain :Process .
 
 :hasOutput a owl:ObjectProperty ;
     rdfs:label "has output" ;
-    rdfs:comment "The output situation of a transformation, i.e. the state of affairs after the transformation took place." ;
-    rdfs:domain :Transformation .
+    rdfs:comment "The output situation of after the process is executed, i.e. the state of affairs after the process is executed." ;
+    rdfs:domain :Process .
 
 :hasPart a owl:ObjectProperty,
         owl:TransitiveProperty ;
@@ -69,34 +56,17 @@ actorODP:participationIn a owl:ObjectProperty .
     rdfs:domain :Process ;
     rdfs:range :Process .
 
-:hasProcessExecution a owl:ObjectProperty ;
-    rdfs:label "has process execution"@en ;
-    rdfs:comment "A process can have specific executions."@en ;
-    rdfs:domain :Process ;
-    rdfs:range :ProcessExecution .
-
 :hasProcessType a owl:ObjectProperty ;
     rdfs:label "has process type" ;
     rdfs:comment "The type of the process." ;
     rdfs:domain :Process ;
     rdfs:range :ProcessType .
 
-:hasTransformationExecution a owl:ObjectProperty ;
-    rdfs:label "has transformation execution" ;
-    rdfs:comment "A process can have specific transformation executions." ;
-    rdfs:domain :Transformation ;
-    rdfs:range :TransformationExecution .
-
 :intialSituation a owl:ObjectProperty ;
     rdfs:label "initial situation" ;
     rdfs:comment "The situation before executing a process." ;
     rdfs:domain :ProcessExecution ;
     rdfs:range :Situation .
-
-:isSettingFor a owl:ObjectProperty ;
-    rdfs:label "is the setting for" ;
-    rdfs:comment "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state." ;
-    rdfs:domain :Situation .
 
 :nextExecution a owl:ObjectProperty ;
     rdfs:label "next execution" ;
@@ -133,25 +103,68 @@ odp:coversRequirements a owl:AnnotationProperty .
     rdfs:label "Process type" ;
     rdfs:comment "The type of a process." .
 
-:TransformationExecution a owl:Class ;
-    rdfs:label "Transformation execution" ;
-    rdfs:comment "An execution of a specific transformation." ;
-    rdfs:subClassOf :ProcessExecution .
-
-:Situation a owl:Class ;
-    rdfs:label "Situation" ;
-    rdfs:comment "A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time." .
-
 :Transformation a owl:Class ;
     rdfs:label "Transformation" ;
     rdfs:comment "A process that transforms some situation into another situation, i.e. changes the state of affairs of some actor, resource etc." ;
-    rdfs:subClassOf :Process .
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasTransformationExecution ;
+            owl:someValuesFrom :TransformationExecution ],
+        :Process .
+
+:hasExecutionInput a owl:ObjectProperty ;
+    rdfs:label "has execution input" ;
+    rdfs:comment "The situation before the execution takes place, i.e. the state of affairs before the process takes places, such as the set of components before they are assembled into a product object." ;
+    rdfs:domain :ProcessExecution .
+
+:hasExecutionOutput a owl:ObjectProperty ;
+    rdfs:label "has execution output" ;
+    rdfs:comment "The situation after the execution takes place, i.e. the state of affairs before the process takes places, such as the assembled product object." ;
+    rdfs:domain :ProcessExecution .
+
+:hasTransformationExecution a owl:ObjectProperty ;
+    rdfs:label "has transformation execution" ;
+    rdfs:comment "A transformation can have specific transformation executions." ;
+    rdfs:domain :Transformation ;
+    rdfs:range :TransformationExecution ;
+    rdfs:subPropertyOf :hasProcessExecution .
+
+:isSettingFor a owl:ObjectProperty ;
+    rdfs:label "is the setting for" ;
+    rdfs:comment "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state." ;
+    rdfs:domain :Situation .
+
+:TransformationExecution a owl:Class ;
+    rdfs:label "Transformation execution" ;
+    rdfs:comment "An execution of a specific transformation at a specific location and time point or period." ;
+    rdfs:subClassOf :ProcessExecution .
+
+:hasProcessExecution a owl:ObjectProperty ;
+    rdfs:label "has process execution"@en ;
+    rdfs:comment "A process can have specific executions."@en ;
+    rdfs:domain :Process ;
+    rdfs:range :ProcessExecution .
+
+:Situation a owl:Class ;
+    rdfs:label "Situation" ;
+    rdfs:comment "A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :isSettingFor ;
+            owl:someValuesFrom owl:Thing ] .
 
 :Process a owl:Class ;
     rdfs:label "Process" ;
-    rdfs:comment "An activity in the context of a circular value network, handling resources." .
+    rdfs:comment "An activity in the context of a circular value network, handling resources." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasProcessExecution ;
+            owl:someValuesFrom :ProcessExecution ] .
 
 :ProcessExecution a owl:Class ;
     rdfs:label "Process execution" ;
-    rdfs:comment "An execution of a specific process." .
+    rdfs:comment "An execution of a specific process at a specific location and time point." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasExecutionInput ;
+            owl:someValuesFrom owl:Thing ],
+        [ a owl:Restriction ;
+            owl:onProperty :hasExecutionOutput ;
+            owl:someValuesFrom owl:Thing ] .
 
