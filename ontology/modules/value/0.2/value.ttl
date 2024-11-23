@@ -101,8 +101,16 @@ xsd:gYear rdf:type rdfs:Datatype .
 
 ###  http://w3id.org/CEON/ontology/value/hasVPTargets
 :hasVPTargets rdf:type owl:ObjectProperty ;
-              rdfs:comment "A value proposition is proposed about specific actors and participations." ;
+              rdfs:comment "A value proposition is proposed about specific actors, participations or resources." ;
               rdfs:label "has value proposition targets" .
+
+
+###  http://w3id.org/CEON/ontology/value/hasValuableResource
+:hasValuableResource rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain :ValueParticipation ;
+                     rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
+                     rdfs:label "has valuable resource" .
 
 
 ###  http://w3id.org/CEON/ontology/value/hasValueEnabler
@@ -132,6 +140,15 @@ xsd:gYear rdf:type rdfs:Datatype .
                  rdfs:label "targets actor" .
 
 
+###  http://w3id.org/CEON/ontology/value/targettingResource
+:targettingResource rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasVPTargets ;
+                    rdfs:domain :ValueProposition ;
+                    rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
+                    rdfs:comment "A value proposition is about some resources." ;
+                    rdfs:label "targets resource" .
+
+
 ###  http://w3id.org/CEON/ontology/value/targettingValueParticipation
 :targettingValueParticipation rdf:type owl:ObjectProperty ;
                               rdfs:subPropertyOf :hasVPTargets ;
@@ -147,6 +164,10 @@ xsd:gYear rdf:type rdfs:Datatype .
 
 ###  http://w3id.org/CEON/ontology/actorODP/Participation
 actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collaboration> .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/Resource
+<http://w3id.org/CEON/ontology/resourceODP/Resource> rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/value/EconomicValue
