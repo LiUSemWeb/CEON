@@ -1,4 +1,5 @@
 @prefix : <http://w3id.org/CEON/ontology/value/> .
+@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -34,6 +35,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     vann:preferredNamespaceUri "https://w3id.org/CEON/ontoloy/value/" ;
     rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the value concept." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/value/0.2/> ;
     owl:versionInfo "0.2" .
 
@@ -55,9 +57,18 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:label "Social Value" ;
     rdfs:subClassOf :Value .
 
-:ValueProposition a owl:Class ;
-    rdfs:label "Value Proposition" ;
-    rdfs:comment "Proposed or intended value outcome of some process, action or collaboration." .
+:hasValuableResource a owl:ObjectProperty ;
+    rdfs:label "has valuable resource" ;
+    rdfs:domain :ValueParticipation ;
+    rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+:targettingResource a owl:ObjectProperty ;
+    rdfs:label "targets resource" ;
+    rdfs:comment "A value proposition is about some resources." ;
+    rdfs:domain :ValueProposition ;
+    rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
+    rdfs:subPropertyOf :hasVPTargets .
 
 xsd:date a rdfs:Datatype .
 
@@ -65,10 +76,86 @@ xsd:gMonthYear a rdfs:Datatype .
 
 xsd:gYear a rdfs:Datatype .
 
+actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collaboration> .
+
 :UseValue a owl:Class ;
     rdfs:label "Use Value" ;
     rdfs:comment "Use value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
     rdfs:subClassOf :Value .
+
+:createsValue a owl:ObjectProperty ;
+    rdfs:label "creates value" ;
+    rdfs:comment "a value participation creates some value." ;
+    rdfs:domain :ValueParticipation ;
+    rdfs:range :Value ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+:hasAimedValue a owl:ObjectProperty ;
+    rdfs:label "has aimed value" ;
+    rdfs:comment "A value proposition has value statements." ;
+    rdfs:domain :ValueProposition ;
+    rdfs:range :Value .
+
+:hasValueEnabler a owl:ObjectProperty ;
+    rdfs:label "has value enabler" ;
+    rdfs:comment "an actor that trigger a value participation" ;
+    rdfs:domain :ValueParticipation ;
+    rdfs:range actorODP:Actor ;
+    rdfs:subPropertyOf actorODP:participatingActor .
+
+:hasValueReceiver a owl:ObjectProperty ;
+    rdfs:label "has value receiver" ;
+    rdfs:comment "an actor that receivers some values" ;
+    rdfs:domain :ValueParticipation ;
+    rdfs:range actorODP:Actor ;
+    rdfs:subPropertyOf actorODP:participatingActor .
+
+:targettingActor a owl:ObjectProperty ;
+    rdfs:label "targets actor" ;
+    rdfs:comment "A value proposition is about some actors." ;
+    rdfs:domain :ValueProposition ;
+    rdfs:range actorODP:Actor ;
+    rdfs:subPropertyOf :hasVPTargets .
+
+:targettingValueParticipation a owl:ObjectProperty ;
+    rdfs:label "targets value participation" ;
+    rdfs:comment "A value proposition is about some participation." ;
+    rdfs:domain :ValueProposition ;
+    rdfs:range :ValueParticipation ;
+    rdfs:subPropertyOf :hasVPTargets .
+
+<http://w3id.org/CEON/ontology/resourceODP/Resource> a owl:Class .
+
+:hasVPTargets a owl:ObjectProperty ;
+    rdfs:label "has value proposition targets" ;
+    rdfs:comment "A value proposition is proposed about specific actors, participations or resources." .
+
+:ValueProposition a owl:Class ;
+    rdfs:label "Value Proposition" ;
+    rdfs:comment "Proposed or intended value outcome of some process, action or collaboration." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasAimedValue ;
+            owl:someValuesFrom :Value ],
+        [ a owl:Restriction ;
+            owl:onProperty :targettingActor ;
+            owl:someValuesFrom actorODP:Actor ],
+        [ a owl:Restriction ;
+            owl:onProperty :targettingValueParticipation ;
+            owl:someValuesFrom :ValueParticipation ] .
+
+:ValueParticipation a owl:Class ;
+    rdfs:label "Value Participation" ;
+    rdfs:comment "A participation that will create value." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :createsValue ;
+            owl:someValuesFrom :Value ],
+        [ a owl:Restriction ;
+            owl:onProperty :hasValueEnabler ;
+            owl:someValuesFrom actorODP:Actor ],
+        [ a owl:Restriction ;
+            owl:onProperty :hasValueReceiver ;
+            owl:someValuesFrom actorODP:Actor ],
+        actorODP:Participation .
 
 :Value a owl:Class ;
     rdfs:label "Value" ;
