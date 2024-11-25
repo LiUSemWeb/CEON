@@ -82,21 +82,21 @@ xsd:gYear rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-###  http://w3id.org/CEON/ontology/value/createsValue
-:createsValue rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty ;
-              rdfs:domain :ValueParticipation ;
-              rdfs:range :Value ;
-              rdfs:comment "a value participation creates some value." ;
-              rdfs:label "creates value" .
-
-
 ###  http://w3id.org/CEON/ontology/value/hasAimedValue
 :hasAimedValue rdf:type owl:ObjectProperty ;
                rdfs:domain :ValueProposition ;
                rdfs:range :Value ;
                rdfs:comment "A value proposition has value statements." ;
                rdfs:label "has aimed value" .
+
+
+###  http://w3id.org/CEON/ontology/value/hasAssociatedValue
+:hasAssociatedValue rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain :ValueParticipation ;
+                    rdfs:range :Value ;
+                    rdfs:comment "a value participation creates/destorys/misses some value." ;
+                    rdfs:label "has associated value" .
 
 
 ###  http://w3id.org/CEON/ontology/value/hasVPTargets
@@ -111,24 +111,6 @@ xsd:gYear rdf:type rdfs:Datatype .
                      rdfs:domain :ValueParticipation ;
                      rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
                      rdfs:label "has valuable resource" .
-
-
-###  http://w3id.org/CEON/ontology/value/hasValueEnabler
-:hasValueEnabler rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf actorODP:participatingActor ;
-                 rdfs:domain :ValueParticipation ;
-                 rdfs:range actorODP:Actor ;
-                 rdfs:comment "an actor that trigger a value participation" ;
-                 rdfs:label "has value enabler" .
-
-
-###  http://w3id.org/CEON/ontology/value/hasValueReceiver
-:hasValueReceiver rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf actorODP:participatingActor ;
-                  rdfs:domain :ValueParticipation ;
-                  rdfs:range actorODP:Actor ;
-                  rdfs:comment "an actor that receivers some values" ;
-                  rdfs:label "has value receiver" .
 
 
 ###  http://w3id.org/CEON/ontology/value/targettingActor
@@ -156,6 +138,15 @@ xsd:gYear rdf:type rdfs:Datatype .
                               rdfs:range :ValueParticipation ;
                               rdfs:comment "A value proposition is about some participation." ;
                               rdfs:label "targets value participation" .
+
+
+###  http://w3id.org/CEON/ontology/value/valueParticipantRole
+:valueParticipantRole rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf actorODP:participantRole ;
+                      rdfs:domain :ValueParticipation ;
+                      rdfs:range :ValueParticipationRole ;
+                      rdfs:comment "Holds the value of the role of the value participant in this value participation relation." ;
+                      rdfs:label "value participant role" .
 
 
 #################################################################
@@ -213,19 +204,24 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
 :ValueParticipation rdf:type owl:Class ;
                     rdfs:subClassOf actorODP:Participation ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty :createsValue ;
+                                      owl:onProperty :hasAssociatedValue ;
                                       owl:someValuesFrom :Value
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasValueEnabler ;
-                                      owl:someValuesFrom actorODP:Actor
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasValueReceiver ;
-                                      owl:someValuesFrom actorODP:Actor
                                     ] ;
-                    rdfs:comment "A participation that will create value." ;
+                    rdfs:comment "A participation that may create/destory/miss value." ;
                     rdfs:label "Value Participation" .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueParticipationRole
+:ValueParticipationRole rdf:type owl:Class ;
+                        rdfs:subClassOf actorODP:Role ;
+                        rdfs:comment "A role that a value participant can take." ,
+                                     "Value Participation Role" .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueParticipationType
+:ValueParticipationType rdf:type owl:Class ;
+                        rdfs:comment "Different value participation types that may create, destory or miss values." ;
+                        rdfs:label "Value Participation Type" .
 
 
 ###  http://w3id.org/CEON/ontology/value/ValueProposition
@@ -244,6 +240,45 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
                                   ] ;
                   rdfs:comment "Proposed or intended value outcome of some process, action or collaboration." ;
                   rdfs:label "Value Proposition" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://w3id.org/CEON/ontology/value/ValueConsumer
+:ValueConsumer rdf:type owl:NamedIndividual ,
+                        :ValueParticipationRole .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueContributor
+:ValueContributor rdf:type owl:NamedIndividual ,
+                           :ValueParticipationRole .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueCreation
+:ValueCreation rdf:type owl:NamedIndividual ,
+                        :ValueParticipationType .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueCreator
+:ValueCreator rdf:type owl:NamedIndividual ,
+                       :ValueParticipationRole .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueDestroyer
+:ValueDestroyer rdf:type owl:NamedIndividual ,
+                         :ValueParticipationRole .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueDistributor
+:ValueDistributor rdf:type owl:NamedIndividual ,
+                           :ValueParticipationRole .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueEvaluator
+:ValueEvaluator rdf:type owl:NamedIndividual ,
+                         :ValueParticipationRole .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
