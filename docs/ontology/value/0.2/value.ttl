@@ -57,6 +57,27 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:label "Social Value" ;
     rdfs:subClassOf :Value .
 
+:ValueConsumer a :ValueParticipationRole,
+        owl:NamedIndividual .
+
+:ValueContributor a :ValueParticipationRole,
+        owl:NamedIndividual .
+
+:ValueCreation a :ValueParticipationType,
+        owl:NamedIndividual .
+
+:ValueCreator a :ValueParticipationRole,
+        owl:NamedIndividual .
+
+:ValueDestroyer a :ValueParticipationRole,
+        owl:NamedIndividual .
+
+:ValueDistributor a :ValueParticipationRole,
+        owl:NamedIndividual .
+
+:ValueEvaluator a :ValueParticipationRole,
+        owl:NamedIndividual .
+
 :hasValuableResource a owl:ObjectProperty ;
     rdfs:label "has valuable resource" ;
     rdfs:domain :ValueParticipation ;
@@ -69,6 +90,13 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:domain :ValueProposition ;
     rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
     rdfs:subPropertyOf :hasVPTargets .
+
+:valueParticipantRole a owl:ObjectProperty ;
+    rdfs:label "value participant role" ;
+    rdfs:comment "Holds the value of the role of the value participant in this value participation relation." ;
+    rdfs:domain :ValueParticipation ;
+    rdfs:range :ValueParticipationRole ;
+    rdfs:subPropertyOf actorODP:participantRole .
 
 xsd:date a rdfs:Datatype .
 
@@ -83,12 +111,9 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
     rdfs:comment "Use value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
     rdfs:subClassOf :Value .
 
-:createsValue a owl:ObjectProperty ;
-    rdfs:label "creates value" ;
-    rdfs:comment "a value participation creates some value." ;
-    rdfs:domain :ValueParticipation ;
-    rdfs:range :Value ;
-    rdfs:subPropertyOf owl:topObjectProperty .
+:ValueParticipationType a owl:Class ;
+    rdfs:label "Value Participation Type" ;
+    rdfs:comment "Different value participation types that may create, destory or miss values." .
 
 :hasAimedValue a owl:ObjectProperty ;
     rdfs:label "has aimed value" ;
@@ -96,19 +121,12 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
     rdfs:domain :ValueProposition ;
     rdfs:range :Value .
 
-:hasValueEnabler a owl:ObjectProperty ;
-    rdfs:label "has value enabler" ;
-    rdfs:comment "an actor that trigger a value participation" ;
+:hasAssociatedValue a owl:ObjectProperty ;
+    rdfs:label "has associated value" ;
+    rdfs:comment "a value participation creates/destorys/misses some value." ;
     rdfs:domain :ValueParticipation ;
-    rdfs:range actorODP:Actor ;
-    rdfs:subPropertyOf actorODP:participatingActor .
-
-:hasValueReceiver a owl:ObjectProperty ;
-    rdfs:label "has value receiver" ;
-    rdfs:comment "an actor that receivers some values" ;
-    rdfs:domain :ValueParticipation ;
-    rdfs:range actorODP:Actor ;
-    rdfs:subPropertyOf actorODP:participatingActor .
+    rdfs:range :Value ;
+    rdfs:subPropertyOf owl:topObjectProperty .
 
 :targettingActor a owl:ObjectProperty ;
     rdfs:label "targets actor" ;
@@ -145,17 +163,16 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
 
 :ValueParticipation a owl:Class ;
     rdfs:label "Value Participation" ;
-    rdfs:comment "A participation that will create value." ;
+    rdfs:comment "A participation that may create/destory/miss value." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty :createsValue ;
+            owl:onProperty :hasAssociatedValue ;
             owl:someValuesFrom :Value ],
-        [ a owl:Restriction ;
-            owl:onProperty :hasValueEnabler ;
-            owl:someValuesFrom actorODP:Actor ],
-        [ a owl:Restriction ;
-            owl:onProperty :hasValueReceiver ;
-            owl:someValuesFrom actorODP:Actor ],
         actorODP:Participation .
+
+:ValueParticipationRole a owl:Class ;
+    rdfs:comment "A role that a value participant can take.",
+        "Value Participation Role" ;
+    rdfs:subClassOf actorODP:Role .
 
 :Value a owl:Class ;
     rdfs:label "Value" ;
