@@ -252,7 +252,8 @@ def create_index_file():
     
     core = ["actor", "actorODP", "cvn",
             "material", "process", "processODP",
-            "product", "resourceODP", "value"]
+            "product", "resourceODP", "value", 
+            "energy", "quantity", "energy"]
     
     data = {
         "core": [],
