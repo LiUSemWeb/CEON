@@ -25,26 +25,21 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 : a owl:Ontology ;
-    dcterms:contributor "Huanyu Li",
+    dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
         "Robin Keskisärkkä" ;
-    dcterms:created "2023-03-16"^^xsd:string ;
-    dcterms:creator "Eva Blomqvist" ;
+    dcterms:created "2024-11-13" ;
+    dcterms:creator "Huanyu Li" ;
     dcterms:description "The Actor module of CEON (Circular Economy Ontology Network)." ;
-    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
-    dcterms:title "Circular Economy Ontology Network (CEON) - Actor Module"^^xsd:string ;
-    vann:preferredNamespacePrefix "actor"^^xsd:string ;
-    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/actor/"^^xsd:string ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Actor Module" ;
+    vann:preferredNamespacePrefix "actor" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/actor/" ;
     odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: C0-1, C0-2, C3-4, T3-4" ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
-    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.2/> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/actor/0.2/> ;
-    owl:versionInfo 0.2 .
-
-:ActorProcessRole a owl:Class ;
-    rdfs:label "Actor process role" ;
-    rdfs:comment "The role(s) of an actor involved in a process." ;
-    rdfs:subClassOf :ActorCollaborationRole .
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/actor/0.3/> ;
+    owl:versionInfo 0.3 .
 
 :BuyingResource a owl:Class ;
     rdfs:label "Buying resource" ;
@@ -86,6 +81,15 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
                         owl:hasValue :issuer ;
                         owl:onProperty actorODP:participantRole ] ) ] .
 
+:ManufacturingResource a owl:Class ;
+    rdfs:label "Manufacturing resource" ;
+    rdfs:comment "The relation where the role of the actor is the manufacturer of a certain resource." ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue :manufacturer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
 :OwningResource a owl:Class ;
     rdfs:label "Owning resource" ;
     rdfs:comment "The relation where the role of the actor is the owner of a certain resource." ;
@@ -101,7 +105,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( actorODP:CollaborationParticipation [ a owl:Restriction ;
                         owl:onProperty actorODP:participantRole ;
-                        owl:someValuesFrom :ActorCVNRole ] [ a owl:Restriction ;
+                        owl:someValuesFrom :ActorProcessRole ] [ a owl:Restriction ;
                         owl:onProperty actorODP:participatingActor ;
                         owl:someValuesFrom actorODP:Actor ] [ a owl:Restriction ;
                         owl:onProperty actorODP:participationIn ;
@@ -192,9 +196,6 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 :dismantler a :ActorCVNRole,
         owl:NamedIndividual .
 
-:manufacturer a :ActorCVNRole,
-        owl:NamedIndividual .
-
 :neededResourceRelation a owl:ObjectProperty ;
     rdfs:label "needed resource relations" ;
     rdfs:comment "In order for an actor to have a capability, it needs to have certain resources, e.g. materials, infrastrucutre, know-how, information etc." ;
@@ -206,6 +207,11 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 odp:coversRequirements a owl:AnnotationProperty .
 
+:ActorProcessRole a owl:Class ;
+    rdfs:label "Actor process role" ;
+    rdfs:comment "The role(s) of an actor involved in a process." ;
+    rdfs:subClassOf :ActorCollaborationRole .
+
 :buyer a :ActorResourceRole,
         owl:NamedIndividual .
 
@@ -213,6 +219,9 @@ odp:coversRequirements a owl:AnnotationProperty .
         owl:NamedIndividual .
 
 :issuer a :ActorResourceRole,
+        owl:NamedIndividual .
+
+:manufacturer a :ActorCVNRole,
         owl:NamedIndividual .
 
 :owner a :ActorResourceRole,

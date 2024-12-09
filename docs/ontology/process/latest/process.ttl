@@ -27,7 +27,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
         "Robin Keskisärkkä" ;
-    dcterms:created "2023-03-16" ;
+    dcterms:created "2024-11-23" ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "The Process module of CEON (Circular Economy Ontology Network)." ;
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
@@ -36,9 +36,9 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     vann:preferredNamespaceUri "https://w3id.org/CEON/ontology/process/" ;
     odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: T8-2" ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
-    owl:imports <http://w3id.org/CEON/ontology/processODP/0.2/> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/process/0.2/> ;
-    owl:versionInfo "0.2" .
+    owl:imports <http://w3id.org/CEON/ontology/processODP/0.3/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/process/0.3/> ;
+    owl:versionInfo "0.3" .
 
 :AssemblingProcess a owl:Class ;
     rdfs:label "Assembling Process" ;
@@ -63,6 +63,11 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 :DeconstructionProcess a owl:Class ;
     rdfs:label "Deconstruction Process" ;
     rdfs:comment "A process of deconstruction." ;
+    rdfs:subClassOf processODP:Transformation .
+
+:DisassemblingProcess a owl:Class ;
+    rdfs:label "Disassembling Process" ;
+    rdfs:comment "A process of disassembling." ;
     rdfs:subClassOf processODP:Transformation .
 
 :DismantleProcess a owl:Class ;
@@ -153,7 +158,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 :needsEnergy a owl:ObjectProperty ;
     rdfs:label "needs energy" ;
     rdfs:comment "The energy needed to perform a certain process." ;
-    rdfs:range :Energy ;
+    rdfs:range <http://w3id.org/CEON/ontology/energy/Energy> ;
     rdfs:subPropertyOf processODP:hasInput .
 
 :producesCO2 a owl:ObjectProperty ;
@@ -162,8 +167,8 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:range :CO2Emission ;
     rdfs:subPropertyOf processODP:hasOutput .
 
-:resultingProduct a owl:ObjectProperty ;
-    rdfs:label "resulting product" ;
+:resultingResource a owl:ObjectProperty ;
+    rdfs:label "resulting resource" ;
     rdfs:comment "The resource that is the output (product, i.e. what is produced) from a certain process." ;
     rdfs:range resourceODP:Resource ;
     rdfs:subPropertyOf processODP:hasOutput .
@@ -176,6 +181,11 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 odp:coversRequirements a owl:AnnotationProperty .
 
+<http://w3id.org/CEON/ontology/energy/Energy> a owl:Class ;
+    rdfs:label "Energy" ;
+    rdfs:comment "An amount of energy." ;
+    rdfs:subClassOf resourceODP:Resource .
+
 :CO2Emission a owl:Class ;
     rdfs:label "CO2 emission" ;
     rdfs:comment "An amount of CO2." ;
@@ -186,16 +196,12 @@ odp:coversRequirements a owl:AnnotationProperty .
     rdfs:comment "A resource that is needed as a cathalyst by a process, but that is not considered the direct input or output of it." ;
     rdfs:subClassOf resourceODP:Resource .
 
-:Energy a owl:Class ;
-    rdfs:label "Energy" ;
-    rdfs:comment "An amount of energy." ;
-    rdfs:subClassOf resourceODP:Resource .
-
 processODP:hasInput a owl:ObjectProperty .
 
 processODP:hasOutput a owl:ObjectProperty .
 
-resourceODP:Resource a owl:Class .
+resourceODP:Resource a owl:Class ;
+    rdfs:comment "Some resources can be specifically associated with processes." .
 
 processODP:Transformation a owl:Class .
 
