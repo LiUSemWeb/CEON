@@ -94,7 +94,7 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 :associatedWithProductObject rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf owl:topObjectProperty ;
                              rdfs:domain :ProductObjectComposition ;
-                             rdfs:range :Item ;
+                             rdfs:range :ProductObject ;
                              rdfs:comment "associatedWithProductObject intends to represent the item (product object) to which a product object compopsition information regards to." ;
                              rdfs:label "associated with product object" .
 
@@ -118,8 +118,8 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 :compositionOf rdf:type owl:ObjectProperty ;
                rdfs:domain resourceODP:Composition ;
                rdfs:range [ rdf:type owl:Class ;
-                            owl:unionOf ( :Item
-                                          :Product
+                            owl:unionOf ( :Product
+                                          :ProductObject
                                           resourceODP:Matter
                                         )
                           ] ;
@@ -132,8 +132,8 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                rdfs:domain [ rdf:type owl:Class ;
                              owl:unionOf ( actorODP:Actor
                                            <http://w3id.org/CEON/ontology/processODP/Process>
-                                           :Item
                                            :Product
+                                           :ProductObject
                                          )
                            ] ;
                rdfs:range :Compliance ;
@@ -163,14 +163,14 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/ontology/product/hasProductObjectComponent
 :hasProductObjectComponent rdf:type owl:ObjectProperty ;
-                           rdfs:domain :Item ;
-                           rdfs:range :Item ;
+                           rdfs:domain :ProductObject ;
+                           rdfs:range :ProductObject ;
                            rdfs:label "has product object component" .
 
 
 ###  http://w3id.org/CEON/ontology/product/modelledBy
 :modelledBy rdf:type owl:ObjectProperty ;
-            rdfs:domain :Item ;
+            rdfs:domain :ProductObject ;
             rdfs:range :Product ;
             rdfs:comment "modelledBy intends to represent that product objects follow particular product models."@en ;
             rdfs:label "modelled by"@en .
@@ -180,13 +180,13 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 #    Data properties
 #################################################################
 
+
 ###  http://w3id.org/CEON/ontology/product/compositionQuantity
 :compositionQuantity rdf:type owl:DatatypeProperty ;
                      rdfs:domain resourceODP:Composition ;
                      rdfs:range xsd:double ;
                      rdfs:comment "compositionQuantity represents the quantity of elements of a composition." ;
                      rdfs:label "Composition quantity"@en .
-
 
 ###  http://w3id.org/CEON/ontology/product/countryOfAssembly
 :countryOfAssembly rdf:type owl:DatatypeProperty ;
@@ -219,8 +219,8 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/ontology/product/locationOfAssembly
 :locationOfAssembly rdf:type owl:DatatypeProperty ;
                     rdfs:domain [ rdf:type owl:Class ;
-                                  owl:unionOf ( :Item
-                                                :Product
+                                  owl:unionOf ( :Product
+                                                :ProductObject
                                               )
                                 ] ;
                     rdfs:range xsd:string ;
@@ -231,8 +231,8 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/ontology/product/locationOfManufacture
 :locationOfManufacture rdf:type owl:DatatypeProperty ;
                        rdfs:domain [ rdf:type owl:Class ;
-                                     owl:unionOf ( :Item
-                                                   :Product
+                                     owl:unionOf ( :Product
+                                                   :ProductObject
                                                  )
                                    ] ;
                        rdfs:range xsd:string ;
@@ -243,8 +243,8 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/ontology/product/locationOfOrigin
 :locationOfOrigin rdf:type owl:DatatypeProperty ;
                   rdfs:domain [ rdf:type owl:Class ;
-                                owl:unionOf ( :Item
-                                              :Product
+                                owl:unionOf ( :Product
+                                              :ProductObject
                                             )
                               ] ;
                   rdfs:range xsd:string ;
@@ -274,18 +274,6 @@ actorODP:ResourceRelation rdf:type owl:Class .
             rdfs:label "Compliance" .
 
 
-###  http://w3id.org/CEON/ontology/product/Item
-:Item rdf:type owl:Class ;
-      rdfs:subClassOf resourceODP:PhysicalObject ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :modelledBy ;
-                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass :Product
-                      ] ;
-      rdfs:comment "An item is a physical object put into a market for sale, i.e. corresponding to the instance of a product (model/type). The item can be a thing that grows naturally or produced through some chemical or manufacturing processes."@en ;
-      rdfs:label "Item"@en .
-
-
 ###  http://w3id.org/CEON/ontology/product/MatterComposition
 :MatterComposition rdf:type owl:Class ;
                    rdfs:subClassOf resourceODP:Composition ,
@@ -308,8 +296,8 @@ actorODP:ResourceRelation rdf:type owl:Class .
                            owl:onProperty :hasComposition ;
                            owl:someValuesFrom :ProductComposition
                          ] ;
-         rdfs:comment "Represents the common sense notion of a product, i.e. the abstract notion of a product type or product model, which is a model that is used for manufacturing items of that product."@en ;
-         rdfs:label "Product"@en .
+         rdfs:comment "Represents the common sense notion of a product, i.e. the abstract notion of a product type or product model, which is a model that is used for manufacturing products."@en ;
+         rdfs:label "Product model"@en .
 
 
 ###  http://w3id.org/CEON/ontology/product/ProductComposition
@@ -324,13 +312,25 @@ actorODP:ResourceRelation rdf:type owl:Class .
                     rdfs:label "Product composition"@en .
 
 
+###  http://w3id.org/CEON/ontology/product/ProductObject
+:ProductObject rdf:type owl:Class ;
+               rdfs:subClassOf resourceODP:PhysicalObject ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :modelledBy ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Product
+                               ] ;
+               rdfs:comment "A product object is a physical object put into a market for sale, i.e. corresponding to the notion of an item, which conforms to the abstract idea of a product model. The product can be a thing that grows naturally or produced through some chemical or manufacturing processes."@en ;
+               rdfs:label "Product object"@en .
+
+
 ###  http://w3id.org/CEON/ontology/product/ProductObjectComposition
 :ProductObjectComposition rdf:type owl:Class ;
                           rdfs:subClassOf resourceODP:Composition ,
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty :associatedWithProductObject ;
                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onClass :Item
+                                            owl:onClass :ProductObject
                                           ] ;
                           rdfs:comment "A product object composition is the composed information of a product object in terms of a specific component, in which such a component is also a product object." ;
                           rdfs:label "Product Object Composition" .
@@ -348,4 +348,4 @@ resourceODP:BatchOfObjects rdfs:subClassOf [ rdf:type owl:Restriction ;
 resourceODP:Composition rdfs:subClassOf actorODP:ResourceRelation .
 
 
-###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
