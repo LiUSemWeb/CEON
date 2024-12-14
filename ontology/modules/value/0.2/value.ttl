@@ -93,10 +93,27 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  http://w3id.org/CEON/ontology/value/hasAssociatedValue
 :hasAssociatedValue rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf owl:topObjectProperty ;
-                    rdfs:domain :ValueParticipation ;
+                    rdfs:domain :ValuePerception ;
                     rdfs:range :Value ;
-                    rdfs:comment "a value participation creates/destorys/misses some value." ;
+                    rdfs:comment "a value perception about creating/destorings/missing some value." ;
                     rdfs:label "has associated value" .
+
+
+###  http://w3id.org/CEON/ontology/value/hasPerception
+:hasPerception rdf:type owl:ObjectProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( actorODP:Actor
+                                           :ValueProposition
+                                         )
+                           ] ;
+               rdfs:range :ValuePerception ;
+               rdfs:label "has perception" .
+
+
+###  http://w3id.org/CEON/ontology/value/hasPerceptionType
+:hasPerceptionType rdf:type owl:ObjectProperty ;
+                   rdfs:comment "a perception has a specific type in terms of how a propostion or actor perceive values" ;
+                   rdfs:label "has perception type" .
 
 
 ###  http://w3id.org/CEON/ontology/value/hasVPTargets
@@ -111,6 +128,21 @@ xsd:gYear rdf:type rdfs:Datatype .
                      rdfs:domain :ValueParticipation ;
                      rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
                      rdfs:label "has valuable resource" .
+
+
+###  http://w3id.org/CEON/ontology/value/onParticipation
+:onParticipation rdf:type owl:ObjectProperty ;
+                 rdfs:domain :ValuePerception ;
+                 rdfs:range :ValueParticipation ;
+                 rdfs:comment "perceptions on specific value participations" ;
+                 rdfs:label "on participation" .
+
+
+###  http://w3id.org/CEON/ontology/value/proposedBy
+:proposedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :ValueProposition ;
+            rdfs:range actorODP:Actor ;
+            rdfs:label "proposed by" .
 
 
 ###  http://w3id.org/CEON/ontology/value/targettingActor
@@ -214,14 +246,18 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
 ###  http://w3id.org/CEON/ontology/value/ValueParticipationRole
 :ValueParticipationRole rdf:type owl:Class ;
                         rdfs:subClassOf actorODP:Role ;
-                        rdfs:comment "A role that a value participant can take." ,
-                                     "Value Participation Role" .
+                        rdfs:comment "A role that a value participant can take." ;
+                        rdfs:label "Value Participation Role" .
 
 
-###  http://w3id.org/CEON/ontology/value/ValueParticipationType
-:ValueParticipationType rdf:type owl:Class ;
-                        rdfs:comment "Different value participation types that may create, destory or miss values." ;
-                        rdfs:label "Value Participation Type" .
+###  http://w3id.org/CEON/ontology/value/ValuePerception
+:ValuePerception rdf:type owl:Class ;
+                 rdfs:label "Value Perception" .
+
+
+###  http://w3id.org/CEON/ontology/value/ValuePerceptionType
+:ValuePerceptionType rdf:type owl:Class ;
+                     rdfs:label "Value Perception Type" .
 
 
 ###  http://w3id.org/CEON/ontology/value/ValueProposition
@@ -257,8 +293,7 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
 
 
 ###  http://w3id.org/CEON/ontology/value/ValueCreation
-:ValueCreation rdf:type owl:NamedIndividual ,
-                        :ValueParticipationType .
+:ValueCreation rdf:type owl:NamedIndividual .
 
 
 ###  http://w3id.org/CEON/ontology/value/ValueCreator
