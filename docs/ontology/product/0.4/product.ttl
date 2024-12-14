@@ -116,6 +116,11 @@ actorODP:ResourceRelation a owl:Class .
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         resourceODP:Composition .
 
+:Solution a owl:Class ;
+    rdfs:label "Solution"@en ;
+    rdfs:comment "Product or service, or a combination thereof, that fulfils a need of an interested party."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.2.1 solution" .
+
 :associatedWithMatter a owl:ObjectProperty ;
     rdfs:label "associated with matter"@en ;
     rdfs:comment "associatedWithMatter intends to represent the matter to which a matter compopsition information regards to."@en ;
@@ -221,11 +226,14 @@ resourceODP:Composition a owl:Class ;
 
 :Product a owl:Class ;
     rdfs:label "Product"@en ;
-    rdfs:comment "Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product."@en ;
+    rdfs:comment "Physical-based object designed for or utilized with a purpose. A product can be, for example: goods of any type; hardware (e.g. engine mechanical part, spare parts, consumables); electrical or electronic hardware devices or components (e.g. computers, communication equipment and sensors); processed materials (e.g. lubricant, cement)."@en,
+        "Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024 -3.2.2 product" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty :hasComposition ;
             owl:someValuesFrom :MatterComposition ],
         [ a owl:Restriction ;
             owl:onProperty :hasComposition ;
-            owl:someValuesFrom :ProductComposition ] .
+            owl:someValuesFrom :ProductComposition ],
+        :Solution .
 

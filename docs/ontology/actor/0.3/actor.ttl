@@ -148,6 +148,14 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
                         owl:hasValue :seller ;
                         owl:onProperty actorODP:participantRole ] ) ] .
 
+:Stakeholder a owl:Class ;
+    rdfs:label "Interested party"@en,
+        "Stakeholder"@en ;
+    rdfs:comment "Person or organization that can affect, be affected by, or perceive itself to be affected by a decision or activity. To “perceive itself to be affected” means the perception has been made known to the organization."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.4.2 interested party, stakeholder" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( :Organisation :Person ) ] .
+
 :SupplyingResource a owl:Class ;
     rdfs:label "Supplying resource" ;
     rdfs:comment "The relation where the role of the actor is the supplier of a certain resource." ;
@@ -212,6 +220,16 @@ odp:coversRequirements a owl:AnnotationProperty .
     rdfs:comment "The role(s) of an actor involved in a process." ;
     rdfs:subClassOf :ActorCollaborationRole .
 
+:Organisation a owl:Class ;
+    rdfs:label "Organisation"@en ;
+    rdfs:comment "Person or group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives. The concept of organization includes, but is not limited to sole-trader, company, corporation, firm, enterprise, authority, partnership, charity or institution, or part or combination thereof, whether incorporated or not, public or private (e.g. foundation, union, association, agency, municipality, region, country, intergovernmental agencies). A group of organizations can also be considered as	an organization that has, alone or collectively,their own objectives."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.4.1 organization" ;
+    rdfs:subClassOf actorODP:Actor .
+
+:Person a owl:Class ;
+    rdfs:label "Person"@en ;
+    rdfs:subClassOf actorODP:Actor .
+
 :buyer a :ActorResourceRole,
         owl:NamedIndividual .
 
@@ -260,8 +278,6 @@ actorODP:Participation a owl:Class .
 actorODP:participatingResource a owl:ObjectProperty .
 
 <http://w3id.org/CEON/ontology/cvn/CVN> a owl:Class ;
-    rdfs:label "Circular Value Network" ;
-    rdfs:comment "A collaboration between actors that constitute a Circular Value Newtworks, implicitly or explicitly set up." ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collaboration> .
 
 <http://w3id.org/CEON/ontology/cvn/Collaboration> a owl:Class .
@@ -283,11 +299,11 @@ actorODP:capabilityProperty a owl:ObjectProperty .
 
 actorODP:participationIn a owl:ObjectProperty .
 
-actorODP:Actor a owl:Class .
-
 actorODP:participatingActor a owl:ObjectProperty .
 
 actorODP:CollaborationParticipation a owl:Class .
+
+actorODP:Actor a owl:Class .
 
 :ActorCVNRole a owl:Class ;
     rdfs:label "Actor Circular Value Network role" ;
