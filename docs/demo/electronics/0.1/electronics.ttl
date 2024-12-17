@@ -2,8 +2,8 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ns1: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix ns2: <http://qudt.org/schema/qudt/> .
-@prefix ns3: <http://w3id.org/CEON/ontology/provenance/> .
-@prefix ns4: <http://w3id.org/CEON/ontology/product/> .
+@prefix ns3: <http://w3id.org/CEON/ontology/product/> .
+@prefix ns4: <http://w3id.org/CEON/ontology/provenance/> .
 @prefix ns5: <http://w3id.org/CEON/ontology/resourceODP/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -142,7 +142,7 @@ ns2:siUnitsExpression a owl:DatatypeProperty .
     rdfs:subClassOf :ElectronicsProduct .
 
 :ElectronicsProductSourcingComponentRelation a owl:Class ;
-    rdfs:subClassOf ns3:Statement .
+    rdfs:subClassOf ns4:Statement .
 
 :FibreMAterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
@@ -212,7 +212,7 @@ ns2:siUnitsExpression a owl:DatatypeProperty .
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 :REACHCompliance a owl:Class ;
-    rdfs:subClassOf ns4:Compliance ;
+    rdfs:subClassOf ns3:Compliance ;
     owl:equivalentClass [ a owl:Restriction ;
             owl:hasValue :REACH ;
             owl:onProperty :complianceWith ] .
@@ -342,11 +342,11 @@ ns2:siUnitsExpression a owl:DatatypeProperty .
     rdfs:range xsd:double .
 
 :q1 a ns2:Quantity,
-        ns3:Statement,
+        ns4:Statement,
         owl:NamedIndividual ;
     ns2:hasUnit <http://qudt.org/vocab/unit/PA> ;
     :fatigueResistance 8e+01 ;
-    ns3:statementAbout :speaker_x .
+    ns4:statementAbout :speaker_x .
 
 :recyclingPressure a owl:DatatypeProperty ;
     rdfs:comment "To represent the pressure condition in a recycling process." ;
@@ -461,7 +461,7 @@ ns1:participationIn a owl:ObjectProperty .
 
 ns1:participationTimePoint a owl:DatatypeProperty .
 
-ns3:statementAbout a owl:AnnotationProperty .
+ns4:statementAbout a owl:AnnotationProperty .
 
 xsd:date a rdfs:Datatype .
 
@@ -532,7 +532,7 @@ ns2:DerivedUnit a owl:Class ;
 
 :composition_a a ns2:Quantity,
         ns1:ResourceRelation,
-        ns3:Statement,
+        ns4:Statement,
         owl:NamedIndividual ;
     ns2:hasUnit <http://qudt.org/vocab/unit/GM> ;
     ns2:numericalValue 3e+02 ;
@@ -586,14 +586,14 @@ ns1:ResourceRelation a owl:Class .
 
 :boc_x a ns5:BatchOfObjects,
         owl:NamedIndividual ;
-    ns4:batchOfProduct :speaker_x .
+    ns3:batchOfProduct :speaker_x .
 
 :damper_x a :Damper,
-        ns4:Product,
+        ns3:Product,
         owl:NamedIndividual .
 
 :neodymium_magnet_x a :NeodymiumMagnet,
-        ns4:Product,
+        ns3:Product,
         owl:NamedIndividual ;
     ns5:hasConstituent :damper_x,
         :neodymium_magnet_x .
@@ -612,5 +612,5 @@ ns1:Actor a owl:Class .
 
 :ElectronicsProduct a owl:Class ;
     rdfs:label "electronics product" ;
-    rdfs:subClassOf ns4:Product .
+    rdfs:subClassOf ns3:Product .
 

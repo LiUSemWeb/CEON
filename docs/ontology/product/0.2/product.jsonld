@@ -1,36 +1,281 @@
 [
   {
-    "@id": "http://purl.org/dc/terms/license",
+    "@id": "http://purl.org/dc/terms/created",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/product/modelledBy",
+    "@id": "http://purl.org/dc/terms/creator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/product/batchOfProduct",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "modelledBy intends to represent that product objects follow particular product models."
+        "@value": "batchOfProduct intends to represent what is the model product of a batch of objects."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
       {
-        "@id": "http://w3id.org/CEON/ontology/product/ProductObject"
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "modelled by"
+        "@value": "batch of products"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
         "@id": "http://w3id.org/CEON/ontology/product/Product"
       }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/product/associatedWithProductModel",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "associatedWithProductModel intends to represent the matter to which a product compopsition information regards to."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/ProductComposition"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "associated with product model"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/Product"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/description",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/product/MatterComposition",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Matter composition"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition"
+      },
+      {
+        "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb7"
+      }
+    ]
+  },
+  {
+    "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb7",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onClass": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/associatedWithMatter"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#qualifiedCardinality": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "@value": "1"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/product/ProductObject",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A product object is a physical object put into a market for sale, i.e. corresponding to the notion of an item, which conforms to the abstract idea of a product model. The product can be a thing that grows naturally or produced through some chemical or manufacturing processes."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Product object"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
+      },
+      {
+        "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb11"
+      }
+    ]
+  },
+  {
+    "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb11",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onClass": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/Product"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/modelledBy"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#qualifiedCardinality": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "@value": "1"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/product/hasComposition",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "hasComposition intends to represent that a product model or physical object can have compostition information."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb1"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has composition"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition"
+      }
+    ]
+  },
+  {
+    "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/product/Product"
+          },
+          {
+            "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/product/associatedWithMatter",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "associatedWithMatter intends to represent the matter to which a matter compopsition information regards to."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/MatterComposition"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "associated with matter"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb12"
+      }
+    ]
+  },
+  {
+    "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb12",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onClass": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/Product"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/product/batchOfProduct"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#qualifiedCardinality": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "@value": "1"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/contributor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
@@ -52,15 +297,15 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:n82962bc438884c31861854d82de8e1c4b8"
+        "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb8"
       },
       {
-        "@id": "_:n82962bc438884c31861854d82de8e1c4b9"
+        "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb9"
       }
     ]
   },
   {
-    "@id": "_:n82962bc438884c31861854d82de8e1c4b8",
+    "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb8",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -76,7 +321,7 @@
     ]
   },
   {
-    "@id": "_:n82962bc438884c31861854d82de8e1c4b9",
+    "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb9",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -88,54 +333,6 @@
     "http://www.w3.org/2002/07/owl#someValuesFrom": [
       {
         "@id": "http://w3id.org/CEON/ontology/product/ProductComposition"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/product/ProductComposition",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Product composition"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition"
-      },
-      {
-        "@id": "_:n82962bc438884c31861854d82de8e1c4b10"
-      }
-    ]
-  },
-  {
-    "@id": "_:n82962bc438884c31861854d82de8e1c4b10",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onClass": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/Product"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/associatedWithProductModel"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#qualifiedCardinality": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
-        "@value": "1"
       }
     ]
   },
@@ -217,25 +414,37 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/product/batchOfProduct",
+    "@id": "http://purl.org/dc/terms/title",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/product/modelledBy",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "batchOfProduct intends to represent what is the model product of a batch of objects."
+        "@value": "modelledBy intends to represent that product objects follow particular product models."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
       {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects"
+        "@id": "http://w3id.org/CEON/ontology/product/ProductObject"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "batch of products"
+        "@value": "modelled by"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
@@ -245,25 +454,7 @@
     ]
   },
   {
-    "@id": "http://purl.org/dc/terms/title",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/contributor",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/description",
+    "@id": "http://purl.org/dc/terms/license",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
@@ -320,12 +511,12 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
-        "@id": "_:n82962bc438884c31861854d82de8e1c4b4"
+        "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb4"
       }
     ]
   },
   {
-    "@id": "_:n82962bc438884c31861854d82de8e1c4b4",
+    "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb4",
     "@type": [
       "http://www.w3.org/2000/01/rdf-schema#Datatype"
     ],
@@ -343,15 +534,33 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects",
+    "@id": "http://w3id.org/CEON/ontology/product/ProductComposition",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Product composition"
+      }
+    ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:n82962bc438884c31861854d82de8e1c4b12"
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition"
+      },
+      {
+        "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb10"
       }
     ]
   },
   {
-    "@id": "_:n82962bc438884c31861854d82de8e1c4b12",
+    "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb10",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -362,92 +571,13 @@
     ],
     "http://www.w3.org/2002/07/owl#onProperty": [
       {
-        "@id": "http://w3id.org/CEON/ontology/product/batchOfProduct"
+        "@id": "http://w3id.org/CEON/ontology/product/associatedWithProductModel"
       }
     ],
     "http://www.w3.org/2002/07/owl#qualifiedCardinality": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
         "@value": "1"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/created",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/product/hasComposition",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "hasComposition intends to represent that a product model or physical object can have compostition information."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "_:n82962bc438884c31861854d82de8e1c4b1"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has composition"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition"
-      }
-    ]
-  },
-  {
-    "@id": "_:n82962bc438884c31861854d82de8e1c4b1",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/product/Product"
-          },
-          {
-            "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/product/associatedWithProductModel",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "associatedWithProductModel intends to represent the matter to which a product compopsition information regards to."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/ProductComposition"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "associated with product model"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/Product"
       }
     ]
   },
@@ -458,157 +588,21 @@
     ]
   },
   {
-    "@id": "http://purl.org/dc/terms/creator",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/product/associatedWithMatter",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "associatedWithMatter intends to represent the matter to which a matter compopsition information regards to."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/MatterComposition"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "associated with matter"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/product/ProductObject",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A product object is a physical object put into a market for sale, i.e. corresponding to the notion of an item, which conforms to the abstract idea of a product model. The product can be a thing that grows naturally or produced through some chemical or manufacturing processes."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Product object"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"
-      },
-      {
-        "@id": "_:n82962bc438884c31861854d82de8e1c4b11"
-      }
-    ]
-  },
-  {
-    "@id": "_:n82962bc438884c31861854d82de8e1c4b11",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onClass": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/Product"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/modelledBy"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#qualifiedCardinality": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
-        "@value": "1"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/product/MatterComposition",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Matter composition"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition"
-      },
-      {
-        "@id": "_:n82962bc438884c31861854d82de8e1c4b7"
-      }
-    ]
-  },
-  {
-    "@id": "_:n82962bc438884c31861854d82de8e1c4b7",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onClass": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/product/associatedWithMatter"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#qualifiedCardinality": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
-        "@value": "1"
-      }
-    ]
-  },
-  {
     "@id": "http://w3id.org/CEON/ontology/resourceODP/Composition",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:n82962bc438884c31861854d82de8e1c4b13"
+        "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb13"
       }
     ]
   },
   {
-    "@id": "_:n82962bc438884c31861854d82de8e1c4b13",
+    "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb13",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
     "http://www.w3.org/2002/07/owl#onDataRange": [
       {
-        "@id": "_:n82962bc438884c31861854d82de8e1c4b14"
+        "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb14"
       }
     ],
     "http://www.w3.org/2002/07/owl#onProperty": [
@@ -624,7 +618,7 @@
     ]
   },
   {
-    "@id": "_:n82962bc438884c31861854d82de8e1c4b14",
+    "@id": "_:n8f43e2d5e38c43539edd0fd6085f75fbb14",
     "@type": [
       "http://www.w3.org/2000/01/rdf-schema#Datatype"
     ],
@@ -639,6 +633,12 @@
           }
         ]
       }
+    ]
+  },
+  {
+    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   }
 ]
