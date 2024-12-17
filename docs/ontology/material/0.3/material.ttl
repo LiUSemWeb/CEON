@@ -1,0 +1,148 @@
+@prefix : <http://w3id.org/CEON/ontology/material/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+dc:description a owl:AnnotationProperty .
+
+: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist",
+        "Mikael Lindecrantz",
+        "Robin Keskisärkkä" ;
+    dcterms:created "2024-12-17" ;
+    dcterms:creator "Huanyu Li" ;
+    dcterms:description "The Material module of CEON (Circular Economy Ontology Network)." ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Material Module" ;
+    vann:preferredNamespacePrefix "material" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/material/" ;
+    odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-2, CVN-ResourceType-4, C3-3, E1-3, E2-4, E5-2, T1-1, T10-2." ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.4/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/material/0.3/> ;
+    owl:versionInfo "0.3" .
+
+:Aluminum a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:AnonymousFormula a owl:DatatypeProperty ;
+    rdfs:label "anonymous formula" ;
+    rdfs:comment "AnonymousFormula represents that a molecular entity has the anonymous formula in a string."@en ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/AnonymousFormula" .
+
+:Boron a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:Celulose a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:Chromium a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:Copper a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:DescriptiveFormula a owl:DatatypeProperty ;
+    rdfs:label "descriptive formula" ;
+    rdfs:comment "DescriptiveFormula represents that a molecular entity has the descriptive formula in a string."@en ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/DescriptiveFormula" .
+
+:Dysprosium a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:HillFormula a owl:DatatypeProperty ;
+    rdfs:label "hill formula" ;
+    rdfs:comment "HillFormula represents that a composition has the hill formula in a string."@en ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/HillFormula" .
+
+:Iron a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:Magnesium a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:Manganese a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:MolecularEntity a owl:Class ;
+    rdfs:label "Molecular entity"@en ;
+    rdfs:comment "A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion."@en ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a",
+        "http://purl.obolibrary.org/obo/chebi#23367" ;
+    rdfs:subClassOf :ChemicalEntity .
+
+:Neodymium a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:Nickel a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:Niobium a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:ReducedChemicalFormula a owl:DatatypeProperty ;
+    rdfs:label "reduced formula" ;
+    rdfs:comment "ReducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string."@en ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/ReducedFormula" .
+
+:Silicon a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:Titanium a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:Zinc a owl:Class ;
+    rdfs:subClassOf :ChemicalElement .
+
+:hasMaterialComponent a owl:ObjectProperty ;
+    rdfs:label "has material component"@en ;
+    rdfs:comment "hasMaterialComponent intends to represent that a material can have a collection of components."@en ;
+    rdfs:domain :Material ;
+    rdfs:range :MaterialComponent .
+
+:ChemicalSubstance a owl:Class ;
+    rdfs:label "Chemical substance"@en ;
+    rdfs:comment "A chemical substance is made up of a collection of molecular entities."@en ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea",
+        "http://purl.obolibrary.org/obo/chebi#59999" ;
+    rdfs:subClassOf :ChemicalEntity .
+
+:MaterialComponent a owl:Class ;
+    rdfs:label "Material component"@en ;
+    rdfs:comment "A material component is a part of a material."@en ;
+    rdfs:subClassOf resourceODP:Constituent .
+
+:hasChemicalEntity a owl:ObjectProperty ;
+    rdfs:label "has chemical entity"@en ;
+    rdfs:comment "hasChemicalEntity intends to represent that a material can have a collection of chemical entities."@en ;
+    rdfs:domain :Material ;
+    rdfs:range :ChemicalEntity .
+
+resourceODP:Constituent a owl:Class .
+
+:Material a owl:Class ;
+    rdfs:label "Material"@en ;
+    rdfs:comment "Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of."@en ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94",
+        "https://w3id.org/mdo/core/Material" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasChemicalEntity ;
+            owl:someValuesFrom :ChemicalEntity ],
+        resourceODP:Matter .
+
+resourceODP:Matter a owl:Class .
+
+:ChemicalEntity a owl:Class ;
+    rdfs:label "Chemical entity"@en ;
+    rdfs:comment "A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance."@en ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0",
+        "http://purl.obolibrary.org/obo/chebi#24431" ;
+    rdfs:subClassOf resourceODP:Matter .
+
+:ChemicalElement a owl:Class ;
+    rdfs:subClassOf :ChemicalSubstance .
+
