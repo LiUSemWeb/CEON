@@ -337,6 +337,27 @@ ul, p {
   }
 ]
         </script>
+        <style type="text/css">
+            /* hack to avoid lonely heading (most of the time at least) */
+                        h2 {
+                            page-break-inside: avoid;
+                        }
+                        .section h2::after {
+                            content: "";
+                            display: block;
+                            height: 300px;
+                            margin-bottom: -300px;
+                        }
+                        .entity {
+                            page-break-inside: avoid;
+                        }
+                        p, dt, dd, ul {
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+        </style>
     </head>
     <body>
         <div id="content">
@@ -501,9 +522,18 @@ ul, p {
                             </a>
                         </dt>
                         <dd>
-                            <p>
-                                In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: C0-1, C0-2, C3-4, T3-4
-                            </p>
+                            <ul>
+                                <li>
+                                    <p>
+                                        In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: C0-1, C0-2, C3-4, T3-4
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D2.3: C0-1, C0-2, C3-4, T3-4
+                                    </p>
+                                </li>
+                            </ul>
                         </dd>
                     </div>
                 </dl>
@@ -523,28 +553,6 @@ ul, p {
                             font-size: 2em;
                         }
             </style>
-            <div class="section" id="overview">
-                <h2>
-                    Overview
-                </h2>
-                <div class="figure">
-                    <iframe id="iframe-overview" src="../../../webvowl/index.html#ontology/actor/0.3/actor">
-                    </iframe>
-                    <div class="caption">
-                        <div>
-                            <strong>
-                                Figure 1:
-                            </strong>
-                            Ontology overview.
-                        </div>
-                        <div>
-                            <a href="../../../webvowl/index.html#ontology/actor/0.3/actor" title="Show fullscreen">
-                                ⛶
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="section" id="classes">
                 <h2>
                     Classes
@@ -993,6 +1001,17 @@ ul, p {
                             </th>
                             <td>
                                 <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
+                                        actorODP:ResourceRelation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                                <span class="cardinality">
+                                    and
+                                </span>
+                                <span>
                                     <span>
                                         <span>
                                             <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
@@ -1014,17 +1033,6 @@ ul, p {
                                             </span>
                                         </span>
                                     </span>
-                                </span>
-                                <span class="cardinality">
-                                    and
-                                </span>
-                                <span>
-                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
-                                        actorODP:ResourceRelation
-                                    </a>
-                                    <sup class="sup-c" title="OWL/RDFS Class">
-                                        c
-                                    </sup>
                                 </span>
                             </td>
                         </tr>
@@ -1081,32 +1089,6 @@ ul, p {
                                         <span>
                                             <span>
                                                 <span>
-                                                    <a href="http://w3id.org/CEON/ontology/actorODP/participatingActor">
-                                                        actorODP:participatingActor
-                                                    </a>
-                                                    <sup class="sup-op" title="OWL Object Property">
-                                                        op
-                                                    </sup>
-                                                </span>
-                                                some
-                                                <span>
-                                                    <span>
-                                                        <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
-                                                            actorODP:Actor
-                                                        </a>
-                                                        <sup class="sup-c" title="OWL/RDFS Class">
-                                                            c
-                                                        </sup>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </span>
-                                        <span class="cardinality">
-                                            and
-                                        </span>
-                                        <span>
-                                            <span>
-                                                <span>
                                                     <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
                                                         actorODP:participantRole
                                                     </a>
@@ -1145,6 +1127,32 @@ ul, p {
                                                     <span>
                                                         <a href="http://w3id.org/CEON/ontology/cvn/CVN">
                                                             http://w3id.org/CEON/ontology/cvn/CVN
+                                                        </a>
+                                                        <sup class="sup-c" title="OWL/RDFS Class">
+                                                            c
+                                                        </sup>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span class="cardinality">
+                                            and
+                                        </span>
+                                        <span>
+                                            <span>
+                                                <span>
+                                                    <a href="http://w3id.org/CEON/ontology/actorODP/participatingActor">
+                                                        actorODP:participatingActor
+                                                    </a>
+                                                    <sup class="sup-op" title="OWL Object Property">
+                                                        op
+                                                    </sup>
+                                                </span>
+                                                some
+                                                <span>
+                                                    <span>
+                                                        <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
+                                                            actorODP:Actor
                                                         </a>
                                                         <sup class="sup-c" title="OWL/RDFS Class">
                                                             c
@@ -1399,6 +1407,67 @@ ul, p {
                         </tr>
                     </table>
                 </div>
+                <div class="property entity" id="Organisation">
+                    <h3>
+                        Organisation
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/actor/Organisation
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Is Defined By
+                                </a>
+                            </th>
+                            <td>
+                                <p>
+                                    ISO 59004:2024 - 3.4.1 organization
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">
+                                    Description
+                                </a>
+                            </th>
+                            <td>
+                                <p>
+                                    Person or group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives. The concept of organization includes, but is not limited to sole-trader, company, corporation, firm, enterprise, authority, partnership, charity or institution, or part or combination thereof, whether incorporated or not, public or private (e.g. foundation, union, association, agency, municipality, region, country, intergovernmental agencies). A group of organizations can also be considered as  an organization that has, alone or collectively,their own objectives.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
+                                        actorODP:Actor
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 <div class="property entity" id="OwningResource">
                     <h3>
                         Owning Resource
@@ -1442,17 +1511,6 @@ ul, p {
                             </th>
                             <td>
                                 <span>
-                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
-                                        actorODP:ResourceRelation
-                                    </a>
-                                    <sup class="sup-c" title="OWL/RDFS Class">
-                                        c
-                                    </sup>
-                                </span>
-                                <span class="cardinality">
-                                    and
-                                </span>
-                                <span>
                                     <span>
                                         <span>
                                             <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
@@ -1474,6 +1532,54 @@ ul, p {
                                             </span>
                                         </span>
                                     </span>
+                                </span>
+                                <span class="cardinality">
+                                    and
+                                </span>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
+                                        actorODP:ResourceRelation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="Person">
+                    <h3>
+                        Person
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/actor/Person
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
+                                        actorODP:Actor
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
                                 </span>
                             </td>
                         </tr>
@@ -1556,8 +1662,8 @@ ul, p {
                                         <span>
                                             <span>
                                                 <span>
-                                                    <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
-                                                        actorODP:participantRole
+                                                    <a href="http://w3id.org/CEON/ontology/actorODP/participationIn">
+                                                        actorODP:participationIn
                                                     </a>
                                                     <sup class="sup-op" title="OWL Object Property">
                                                         op
@@ -1566,8 +1672,8 @@ ul, p {
                                                 some
                                                 <span>
                                                     <span>
-                                                        <a href="#ActorProcessRole">
-                                                            ActorProcessRole
+                                                        <a href="http://w3id.org/CEON/ontology/processODP/Process">
+                                                            http://w3id.org/CEON/ontology/processODP/Process
                                                         </a>
                                                         <sup class="sup-c" title="OWL/RDFS Class">
                                                             c
@@ -1582,8 +1688,8 @@ ul, p {
                                         <span>
                                             <span>
                                                 <span>
-                                                    <a href="http://w3id.org/CEON/ontology/actorODP/participationIn">
-                                                        actorODP:participationIn
+                                                    <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
+                                                        actorODP:participantRole
                                                     </a>
                                                     <sup class="sup-op" title="OWL Object Property">
                                                         op
@@ -1592,8 +1698,8 @@ ul, p {
                                                 some
                                                 <span>
                                                     <span>
-                                                        <a href="http://w3id.org/CEON/ontology/processODP/Process">
-                                                            http://w3id.org/CEON/ontology/processODP/Process
+                                                        <a href="#ActorProcessRole">
+                                                            ActorProcessRole
                                                         </a>
                                                         <sup class="sup-c" title="OWL/RDFS Class">
                                                             c
@@ -1651,6 +1757,17 @@ ul, p {
                             </th>
                             <td>
                                 <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
+                                        actorODP:ResourceRelation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                                <span class="cardinality">
+                                    and
+                                </span>
+                                <span>
                                     <span>
                                         <span>
                                             <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
@@ -1672,17 +1789,6 @@ ul, p {
                                             </span>
                                         </span>
                                     </span>
-                                </span>
-                                <span class="cardinality">
-                                    and
-                                </span>
-                                <span>
-                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
-                                        actorODP:ResourceRelation
-                                    </a>
-                                    <sup class="sup-c" title="OWL/RDFS Class">
-                                        c
-                                    </sup>
                                 </span>
                             </td>
                         </tr>
@@ -1731,17 +1837,6 @@ ul, p {
                             </th>
                             <td>
                                 <span>
-                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
-                                        actorODP:ResourceRelation
-                                    </a>
-                                    <sup class="sup-c" title="OWL/RDFS Class">
-                                        c
-                                    </sup>
-                                </span>
-                                <span class="cardinality">
-                                    and
-                                </span>
-                                <span>
                                     <span>
                                         <span>
                                             <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
@@ -1763,6 +1858,17 @@ ul, p {
                                             </span>
                                         </span>
                                     </span>
+                                </span>
+                                <span class="cardinality">
+                                    and
+                                </span>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
+                                        actorODP:ResourceRelation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
                                 </span>
                             </td>
                         </tr>
@@ -1811,17 +1917,6 @@ ul, p {
                             </th>
                             <td>
                                 <span>
-                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
-                                        actorODP:ResourceRelation
-                                    </a>
-                                    <sup class="sup-c" title="OWL/RDFS Class">
-                                        c
-                                    </sup>
-                                </span>
-                                <span class="cardinality">
-                                    and
-                                </span>
-                                <span>
                                     <span>
                                         <span>
                                             <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
@@ -1843,6 +1938,17 @@ ul, p {
                                             </span>
                                         </span>
                                     </span>
+                                </span>
+                                <span class="cardinality">
+                                    and
+                                </span>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
+                                        actorODP:ResourceRelation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
                                 </span>
                             </td>
                         </tr>
@@ -1919,6 +2025,78 @@ ul, p {
                                 <span>
                                     <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
                                         actorODP:ResourceRelation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="Interestedparty">
+                    <h3>
+                        Interested partyStakeholder
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/actor/Stakeholder
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Is Defined By
+                                </a>
+                            </th>
+                            <td>
+                                <p>
+                                    ISO 59004:2024 - 3.4.2 interested party, stakeholder
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">
+                                    Description
+                                </a>
+                            </th>
+                            <td>
+                                <p>
+                                    Person or organization that can affect, be affected by, or perceive itself to be affected by a decision or activity. To “perceive itself to be affected” means the perception has been made known to the organization.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="#Organisation">
+                                        Organisation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                                <span class="cardinality">
+                                    or
+                                </span>
+                                <span>
+                                    <a href="#Person">
+                                        Person
                                     </a>
                                     <sup class="sup-c" title="OWL/RDFS Class">
                                         c
@@ -2051,6 +2229,17 @@ ul, p {
                             </th>
                             <td>
                                 <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
+                                        actorODP:ResourceRelation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                                <span class="cardinality">
+                                    and
+                                </span>
+                                <span>
                                     <span>
                                         <span>
                                             <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
@@ -2072,17 +2261,6 @@ ul, p {
                                             </span>
                                         </span>
                                     </span>
-                                </span>
-                                <span class="cardinality">
-                                    and
-                                </span>
-                                <span>
-                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
-                                        actorODP:ResourceRelation
-                                    </a>
-                                    <sup class="sup-c" title="OWL/RDFS Class">
-                                        c
-                                    </sup>
                                 </span>
                             </td>
                         </tr>
@@ -2131,6 +2309,17 @@ ul, p {
                             </th>
                             <td>
                                 <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
+                                        actorODP:ResourceRelation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                                <span class="cardinality">
+                                    and
+                                </span>
+                                <span>
                                     <span>
                                         <span>
                                             <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
@@ -2152,17 +2341,6 @@ ul, p {
                                             </span>
                                         </span>
                                     </span>
-                                </span>
-                                <span class="cardinality">
-                                    and
-                                </span>
-                                <span>
-                                    <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
-                                        actorODP:ResourceRelation
-                                    </a>
-                                    <sup class="sup-c" title="OWL/RDFS Class">
-                                        c
-                                    </sup>
                                 </span>
                             </td>
                         </tr>
@@ -2264,6 +2442,37 @@ ul, p {
                                 <code>
                                     http://w3id.org/CEON/ontology/actorODP/Actor
                                 </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="#Organisation">
+                                                Organisation
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="#Person">
+                                                Person
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
                             </td>
                         </tr>
                     </table>
@@ -3246,6 +3455,22 @@ ul, p {
                 </span>
             </span>
             <span>
+                <a href="#Organisation">
+                    Organisation
+                </a>
+                <sup class="sup-c" title="OWL/RDFS Class">
+                    c
+                </sup>
+            </span>
+            <span>
+                <a href="#Person">
+                    Person
+                </a>
+                <sup class="sup-c" title="OWL/RDFS Class">
+                    c
+                </sup>
+            </span>
+            <span>
                 <a href="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
                     actorODP:ResourceRelation
                 </a>
@@ -3991,362 +4216,6 @@ ul, p {
                     </tr>
                 </table>
             </div>
-        </div>
-        <div id="pylode">
-            <p>
-                made by
-                <a href="https://github.com/rdflib/pyLODE">
-                    <span id="p">
-                        p
-                    </span>
-                    <span id="y">
-                        y
-                    </span>
-                    <span>
-                        LODE
-                    </span>
-                </a>
-                <a href="https://github.com/rdflib/pyLODE/release/3.0.5a" id="version">
-                    3.0.5a
-                </a>
-                <span>
-                    with the
-                </span>
-                <a href="https://w3id.org/profile/vocpub" id="profile">
-                    VocPub
-                </a>
-                <span>
-                    profile
-                </span>
-            </p>
-        </div>
-        <div id="toc">
-            <h3>
-                Table of Contents
-            </h3>
-            <ul class="first">
-                <li>
-                    <h4>
-                        <a href="#metadata">
-                            Metadata
-                        </a>
-                    </h4>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#classes">
-                            Classes
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#ActorCVNRole">
-                                Actor Cvn Role
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ActorCollaborationRole">
-                                Actor Collaboration Role
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ActorProcessRole">
-                                Actor Process Role
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ActorResourceRole">
-                                Actor Resource Role
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#BuyingResource">
-                                Buying Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#CVNParticipation">
-                                Cvn Participation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ConsumingResource">
-                                Consuming Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#IssuingResource">
-                                Issuing Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ManufacturingResource">
-                                Manufacturing Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#OwningResource">
-                                Owning Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ProcessParticipation">
-                                Process Participation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ProducingResource">
-                                Producing Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ProvidingResource">
-                                Providing Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ResellingResource">
-                                Reselling Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#SellingResource">
-                                Selling Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#SupplyingResource">
-                                Supplying Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#UpdatingResource">
-                                Updating Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#UsingResource">
-                                Using Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ViewingResource">
-                                Viewing Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Actor">
-                                Actor
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Capability">
-                                Capability
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#CollaborationParticipation">
-                                Collaboration Participation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Participation">
-                                Participation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ResourceRelation">
-                                Resource Relation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Role">
-                                Role
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#CVN">
-                                Cvn
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Collaboration">
-                                Collaboration
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Process">
-                                Process
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Resource">
-                                Resource
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#objectproperties">
-                            Object Properties
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#capabilityExtent">
-                                capability extent
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#neededResourceRelation">
-                                needed resource relation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#capabilityProperty">
-                                capability property
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#participantRole">
-                                participant role
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#participatingActor">
-                                participating actor
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#participatingResource">
-                                participating resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#participationIn">
-                                participation in
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#annotationproperties">
-                            Annotation Properties
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#contributor">
-                                contributor
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#created">
-                                created
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creator">
-                                creator
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#description">
-                                description
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#license">
-                                license
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#title">
-                                title
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#preferredNamespacePrefix">
-                                preferred namespace prefix
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#preferredNamespaceUri">
-                                preferred namespace uri
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#coversRequirements">
-                                covers requirements
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#namespaces">
-                            Namespaces
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#actorODP">
-                                actorODP
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#dcterms">
-                                dcterms
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#odp">
-                                odp
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#owl">
-                                owl
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#prov">
-                                prov
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#rdf">
-                                rdf
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#rdfs">
-                                rdfs
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#vann">
-                                vann
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#legend">
-                            Legend
-                        </a>
-                    </h4>
-                    <ul class="second">
-                    </ul>
-                </li>
-            </ul>
         </div>
     </body>
 </html>

@@ -2,10 +2,10 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix provenance: <http://w3id.org/CEON/ontology/provenance/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix statement: <http://w3id.org/CEON/ontology/statement/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -20,10 +20,10 @@
     dcterms:title "Circular Economy Ontology Network (CEON) - Data Sheet" ;
     vann:preferredNamespacePrefix "datasheet" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/datasheet/" ;
-    owl:imports <http://w3id.org/CEON/ontology/provenance/0.1/>,
-        <http://w3id.org/CEON/ontology/resourceODP/0.2/> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/datasheet/0.1/> ;
-    owl:versionInfo "0.1" .
+    owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.4/>,
+        <http://w3id.org/CEON/ontology/statement/0.1/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/datasheet/0.2/> ;
+    owl:versionInfo "0.2" .
 
 :DataSheet a owl:Class ;
     rdfs:label "Data Sheet" ;
@@ -31,7 +31,7 @@
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( resourceODP:Information [ a owl:Restriction ;
                         owl:onProperty resourceODP:containsInformation ;
-                        owl:someValuesFrom provenance:Statement ] ) ],
+                        owl:someValuesFrom statement:Statement ] ) ],
         resourceODP:Information .
 
 prov:Entity a owl:Class .

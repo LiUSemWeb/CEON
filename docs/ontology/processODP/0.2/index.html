@@ -337,6 +337,27 @@ ul, p {
   }
 ]
         </script>
+        <style type="text/css">
+            /* hack to avoid lonely heading (most of the time at least) */
+                        h2 {
+                            page-break-inside: avoid;
+                        }
+                        .section h2::after {
+                            content: "";
+                            display: block;
+                            height: 300px;
+                            margin-bottom: -300px;
+                        }
+                        .entity {
+                            page-break-inside: avoid;
+                        }
+                        p, dt, dd, ul {
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+        </style>
     </head>
     <body>
         <div id="content">
@@ -523,28 +544,6 @@ ul, p {
                             font-size: 2em;
                         }
             </style>
-            <div class="section" id="overview">
-                <h2>
-                    Overview
-                </h2>
-                <div class="figure">
-                    <iframe id="iframe-overview" src="../../../webvowl/index.html#ontology/processODP/0.2/processODP">
-                    </iframe>
-                    <div class="caption">
-                        <div>
-                            <strong>
-                                Figure 1:
-                            </strong>
-                            Ontology overview.
-                        </div>
-                        <div>
-                            <a href="../../../webvowl/index.html#ontology/processODP/0.2/processODP" title="Show fullscreen">
-                                ⛶
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="section" id="classes">
                 <h2>
                     Classes
@@ -2167,306 +2166,6 @@ ul, p {
                     </tr>
                 </table>
             </div>
-        </div>
-        <div id="pylode">
-            <p>
-                made by
-                <a href="https://github.com/rdflib/pyLODE">
-                    <span id="p">
-                        p
-                    </span>
-                    <span id="y">
-                        y
-                    </span>
-                    <span>
-                        LODE
-                    </span>
-                </a>
-                <a href="https://github.com/rdflib/pyLODE/release/3.0.5a" id="version">
-                    3.0.5a
-                </a>
-                <span>
-                    with the
-                </span>
-                <a href="https://w3id.org/profile/vocpub" id="profile">
-                    VocPub
-                </a>
-                <span>
-                    profile
-                </span>
-            </p>
-        </div>
-        <div id="toc">
-            <h3>
-                Table of Contents
-            </h3>
-            <ul class="first">
-                <li>
-                    <h4>
-                        <a href="#metadata">
-                            Metadata
-                        </a>
-                    </h4>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#classes">
-                            Classes
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#Process">
-                                Process
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Processexecution">
-                                Process execution
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Processtype">
-                                Process type
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Situation">
-                                Situation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Transformation">
-                                Transformation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#TransformationExecution">
-                                Transformation Execution
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#objectproperties">
-                            Object Properties
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#participationIn">
-                                participation in
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasExecutionInput">
-                                has execution input
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasExecutionOutput">
-                                has execution output
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasInput">
-                                has input
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasOutput">
-                                has output
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasPart">
-                                has part
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasProcessExecution">
-                                has process execution
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasProcessType">
-                                has process type
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasTransformationExecution">
-                                has transformation execution
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#intialSituation">
-                                intial situation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#isSettingFor">
-                                is setting for
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#nextExecution">
-                                next execution
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#nextProcess">
-                                next process
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#occursAtLocation">
-                                occurs at location
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#resultingSituation">
-                                resulting situation
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#datatypeproperties">
-                            Datatype Properties
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#occursAtTime">
-                                occurs at time
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#annotationproperties">
-                            Annotation Properties
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#contributor">
-                                contributor
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#created">
-                                created
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creator">
-                                creator
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#description">
-                                description
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#license">
-                                license
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#title">
-                                title
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#preferredNamespacePrefix">
-                                preferred namespace prefix
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#preferredNamespaceUri">
-                                preferred namespace uri
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#coversRequirements">
-                                covers requirements
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#namespaces">
-                            Namespaces
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#actorODP">
-                                actorODP
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#dcterms">
-                                dcterms
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#odp">
-                                odp
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#owl">
-                                owl
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#prov">
-                                prov
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#rdf">
-                                rdf
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#rdfs">
-                                rdfs
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#vann">
-                                vann
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#xsd">
-                                xsd
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#legend">
-                            Legend
-                        </a>
-                    </h4>
-                    <ul class="second">
-                    </ul>
-                </li>
-            </ul>
         </div>
     </body>
 </html>

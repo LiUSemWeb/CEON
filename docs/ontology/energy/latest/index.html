@@ -337,6 +337,27 @@ ul, p {
   }
 ]
         </script>
+        <style type="text/css">
+            /* hack to avoid lonely heading (most of the time at least) */
+                        h2 {
+                            page-break-inside: avoid;
+                        }
+                        .section h2::after {
+                            content: "";
+                            display: block;
+                            height: 300px;
+                            margin-bottom: -300px;
+                        }
+                        .entity {
+                            page-break-inside: avoid;
+                        }
+                        p, dt, dd, ul {
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+        </style>
     </head>
     <body>
         <div id="content">
@@ -502,7 +523,7 @@ ul, p {
                         </dt>
                         <dd>
                             <p>
-                                Covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-1,3, CVN-Composition-1,2, CVN-ResrouceType-4, C7-3, E2-2, E4-6, E5-1, E6-3, T3-1.
+                                Covers the following requirements from Onto-DESIDE D2.3: CE1-2, CE4-3, CE6-3, CE7-4, CE8-2, CE10-7, CE10-9, CE11-6, CE12-5.
                             </p>
                         </dd>
                     </div>
@@ -523,28 +544,6 @@ ul, p {
                             font-size: 2em;
                         }
             </style>
-            <div class="section" id="overview">
-                <h2>
-                    Overview
-                </h2>
-                <div class="figure">
-                    <iframe id="iframe-overview" src="../../../webvowl/index.html#ontology/energy/0.1/energy">
-                    </iframe>
-                    <div class="caption">
-                        <div>
-                            <strong>
-                                Figure 1:
-                            </strong>
-                            Ontology overview.
-                        </div>
-                        <div>
-                            <a href="../../../webvowl/index.html#ontology/energy/0.1/energy" title="Show fullscreen">
-                                ⛶
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="section" id="classes">
                 <h2>
                     Classes
@@ -1817,8 +1816,8 @@ ul, p {
                             </th>
                             <td>
                                 <span>
-                                    <a href="#RenewableEnergy">
-                                        RenewableEnergy
+                                    <a href="#NonRenewableEnergy">
+                                        NonRenewableEnergy
                                     </a>
                                     <sup class="sup-c" title="OWL/RDFS Class">
                                         c
@@ -1828,8 +1827,8 @@ ul, p {
                                     or
                                 </span>
                                 <span>
-                                    <a href="#NonRenewableEnergy">
-                                        NonRenewableEnergy
+                                    <a href="#RenewableEnergy">
+                                        RenewableEnergy
                                     </a>
                                     <sup class="sup-c" title="OWL/RDFS Class">
                                         c
@@ -2407,361 +2406,6 @@ ul, p {
                     </tr>
                 </table>
             </div>
-        </div>
-        <div id="pylode">
-            <p>
-                made by
-                <a href="https://github.com/rdflib/pyLODE">
-                    <span id="p">
-                        p
-                    </span>
-                    <span id="y">
-                        y
-                    </span>
-                    <span>
-                        LODE
-                    </span>
-                </a>
-                <a href="https://github.com/rdflib/pyLODE/release/3.0.5a" id="version">
-                    3.0.5a
-                </a>
-                <span>
-                    with the
-                </span>
-                <a href="https://w3id.org/profile/vocpub" id="profile">
-                    VocPub
-                </a>
-                <span>
-                    profile
-                </span>
-            </p>
-        </div>
-        <div id="toc">
-            <h3>
-                Table of Contents
-            </h3>
-            <ul class="first">
-                <li>
-                    <h4>
-                        <a href="#metadata">
-                            Metadata
-                        </a>
-                    </h4>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#classes">
-                            Classes
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#Anergy">
-                                Anergy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Biofuel">
-                                Biofuel
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Biogas">
-                                Biogas
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Biomass">
-                                Biomass
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Coal">
-                                Coal
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Energy">
-                                Energy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#EnergyComposition">
-                                Energy Composition
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#EnergyConversion">
-                                Energy Conversion
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#EnergyInfrastructure">
-                                Energy Infrastructure
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#EnergySource">
-                                Energy Source
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Exergy">
-                                Exergy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#FossilFuel">
-                                Fossil Fuel
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#GeothermalEnergySource">
-                                Geothermal Energy Source
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Hydropower">
-                                Hydropower
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#NaturalGas">
-                                Natural Gas
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#NonRenewableEnergy">
-                                Non Renewable Energy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Petroleum">
-                                Petroleum
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#RenewableEnergy">
-                                Renewable Energy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#SolarEnergySource">
-                                Solar Energy Source
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Wind">
-                                Wind
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#objectproperties">
-                            Object Properties
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#hasAnergy">
-                                has anergy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasConvertedEnergy">
-                                has converted energy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasEnergySource">
-                                has energy source
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasExergy">
-                                has exergy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasOriginalEnergy">
-                                has original energy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#participatingEnergy">
-                                participating energy
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#datatypeproperties">
-                            Datatype Properties
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#hasCarbonIntensity">
-                                has carbon intensity
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasEnergyComponentPercentage">
-                                has energy component percentage
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasSustainability">
-                                has sustainability
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#annotationproperties">
-                            Annotation Properties
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#description">
-                                description
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#contributor">
-                                contributor
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#created">
-                                created
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creator">
-                                creator
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#description1">
-                                description
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#license">
-                                license
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#title">
-                                title
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#preferredNamespacePrefix">
-                                preferred namespace prefix
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#preferredNamespaceUri">
-                                preferred namespace uri
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#coversRequirements">
-                                covers requirements
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#definition">
-                                definition
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#prefLabel">
-                                pref label
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#namespaces">
-                            Namespaces
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#dc">
-                                dc
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#dcterms">
-                                dcterms
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#geo">
-                                geo
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#odp">
-                                odp
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#owl">
-                                owl
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#prov">
-                                prov
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#rdf">
-                                rdf
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#rdfs">
-                                rdfs
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#skos">
-                                skos
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#vann">
-                                vann
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#legend">
-                            Legend
-                        </a>
-                    </h4>
-                    <ul class="second">
-                    </ul>
-                </li>
-            </ul>
         </div>
     </body>
 </html>

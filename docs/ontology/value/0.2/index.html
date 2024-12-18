@@ -337,6 +337,27 @@ ul, p {
   }
 ]
         </script>
+        <style type="text/css">
+            /* hack to avoid lonely heading (most of the time at least) */
+                        h2 {
+                            page-break-inside: avoid;
+                        }
+                        .section h2::after {
+                            content: "";
+                            display: block;
+                            height: 300px;
+                            margin-bottom: -300px;
+                        }
+                        .entity {
+                            page-break-inside: avoid;
+                        }
+                        p, dt, dd, ul {
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+        </style>
     </head>
     <body>
         <div id="content">
@@ -494,6 +515,18 @@ ul, p {
                             </p>
                         </dd>
                     </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements" title="None. Defined in None">
+                                Covers Requirements
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                Covers the following requirements from Onto-DESIDE D2.3: CE1-3, CE5-16, CE5-17.
+                            </p>
+                        </dd>
+                    </div>
                 </dl>
             </div>
             <style>
@@ -511,28 +544,6 @@ ul, p {
                             font-size: 2em;
                         }
             </style>
-            <div class="section" id="overview">
-                <h2>
-                    Overview
-                </h2>
-                <div class="figure">
-                    <iframe id="iframe-overview" src="../../../webvowl/index.html#ontology/value/0.2/value">
-                    </iframe>
-                    <div class="caption">
-                        <div>
-                            <strong>
-                                Figure 1:
-                            </strong>
-                            Ontology overview.
-                        </div>
-                        <div>
-                            <a href="../../../webvowl/index.html#ontology/value/0.2/value" title="Show fullscreen">
-                                ⛶
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="section" id="classes">
                 <h2>
                     Classes
@@ -810,6 +821,30 @@ ul, p {
                         </tr>
                         <tr>
                             <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Is Defined By
+                                </a>
+                            </th>
+                            <td>
+                                <p>
+                                    ISO 59004:2024 - 3.1.7 value
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">
+                                    Description
+                                </a>
+                            </th>
+                            <td>
+                                <p>
+                                    Gain(s) or benefit(s) from satisfying needs and expectations,   in relation to the use  and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">
                                     In Range Of
                                 </a>
@@ -942,16 +977,6 @@ ul, p {
                                 <ul>
                                     <li>
                                         <span>
-                                            <a href="http://w3id.org/CEON/ontology/value/hasAssociatedValue">
-                                                hasAssociatedValue
-                                            </a>
-                                            <sup class="sup-op" title="OWL Object Property">
-                                                op
-                                            </sup>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
                                             <a href="http://w3id.org/CEON/ontology/value/hasValuableResource">
                                                 hasValuableResource
                                             </a>
@@ -980,14 +1005,28 @@ ul, p {
                                 </a>
                             </th>
                             <td>
-                                <span>
-                                    <a href="http://w3id.org/CEON/ontology/value/targettingValueParticipation">
-                                        targettingValueParticipation
-                                    </a>
-                                    <sup class="sup-op" title="OWL Object Property">
-                                        op
-                                    </sup>
-                                </span>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/onParticipation">
+                                                onParticipation
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/targettingValueParticipation">
+                                                targettingValueParticipation
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
                             </td>
                         </tr>
                         <tr>
@@ -1144,9 +1183,9 @@ ul, p {
                         </tr>
                     </table>
                 </div>
-                <div class="property entity" id="ValueParticipationType">
+                <div class="property entity" id="ValuePerception">
                     <h3>
-                        Value Participation Type
+                        Value Perception
                         <sup class="sup-c" title="OWL/RDFS Class">
                             c
                         </sup>
@@ -1158,25 +1197,76 @@ ul, p {
                             </th>
                             <td>
                                 <code>
-                                    http://w3id.org/CEON/ontology/value/ValueParticipationType
+                                    http://w3id.org/CEON/ontology/value/ValuePerception
                                 </code>
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                <a class="hover_property" href="http://www.w3.org/2002/07/owl#NamedIndividual" title="Named Individuals. Defined in The OWL 2 Schema vocabulary (OWL 2)">
-                                    Named Individuals
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">
+                                    In Domain Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/hasAssociatedValue">
+                                                hasAssociatedValue
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/onParticipation">
+                                                onParticipation
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">
+                                    In Range Of
                                 </a>
                             </th>
                             <td>
                                 <span>
-                                    <a href="http://w3id.org/CEON/ontology/value/ValueCreation">
-                                        ValueCreation
+                                    <a href="http://w3id.org/CEON/ontology/value/hasPerception">
+                                        hasPerception
                                     </a>
-                                    <sup class="sup-ni" title="OWL Named Individual">
-                                        ni
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
                                     </sup>
                                 </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ValuePerceptionType">
+                    <h3>
+                        Value Perception Type
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/ValuePerceptionType
+                                </code>
                             </td>
                         </tr>
                     </table>
@@ -1211,6 +1301,16 @@ ul, p {
                                         <span>
                                             <a href="http://w3id.org/CEON/ontology/value/hasAimedValue">
                                                 hasAimedValue
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/proposedBy">
+                                                proposedBy
                                             </a>
                                             <sup class="sup-op" title="OWL Object Property">
                                                 op
@@ -1440,8 +1540,8 @@ ul, p {
                             </th>
                             <td>
                                 <span>
-                                    <a href="http://w3id.org/CEON/ontology/value/ValueParticipation">
-                                        ValueParticipation
+                                    <a href="http://w3id.org/CEON/ontology/value/ValuePerception">
+                                        ValuePerception
                                     </a>
                                     <sup class="sup-c" title="OWL/RDFS Class">
                                         c
@@ -1464,6 +1564,91 @@ ul, p {
                                         c
                                     </sup>
                                 </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="hasPerception">
+                    <h3>
+                        has perception
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/hasPerception
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                        ValueProposition
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                                <span class="cardinality">
+                                    or
+                                </span>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
+                                        actorODP:Actor
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValuePerception">
+                                        ValuePerception
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="hasPerceptionType">
+                    <h3>
+                        has perception type
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/hasPerceptionType
+                                </code>
                             </td>
                         </tr>
                     </table>
@@ -1596,6 +1781,109 @@ ul, p {
                                         c
                                     </sup>
                                 </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="onParticipation">
+                    <h3>
+                        on participation
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/onParticipation
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValuePerception">
+                                        ValuePerception
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueParticipation">
+                                        ValueParticipation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="proposedBy">
+                    <h3>
+                        proposed by
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/proposedBy
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                        ValueProposition
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
+                                    actorODP:Actor
+                                </a>
                             </td>
                         </tr>
                     </table>
@@ -1875,6 +2163,22 @@ ul, p {
                     </table>
                 </div>
             </div>
+            <span>
+                <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
+                    actorODP:Actor
+                </a>
+                <sup class="sup-c" title="OWL/RDFS Class">
+                    c
+                </sup>
+            </span>
+            <span>
+                <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                    ValueProposition
+                </a>
+                <sup class="sup-c" title="OWL/RDFS Class">
+                    c
+                </sup>
+            </span>
             <div class="section" id="annotationproperties">
                 <h2>
                     Annotation Properties
@@ -2069,6 +2373,14 @@ ul, p {
                             http://purl.org/dc/terms/
                         </code>
                     </dd>
+                    <dt id="odp">
+                        odp
+                    </dt>
+                    <dd>
+                        <code>
+                            http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#
+                        </code>
+                    </dd>
                     <dt id="owl">
                         owl
                     </dt>
@@ -2156,272 +2468,6 @@ ul, p {
                     </tr>
                 </table>
             </div>
-        </div>
-        <div id="pylode">
-            <p>
-                made by
-                <a href="https://github.com/rdflib/pyLODE">
-                    <span id="p">
-                        p
-                    </span>
-                    <span id="y">
-                        y
-                    </span>
-                    <span>
-                        LODE
-                    </span>
-                </a>
-                <a href="https://github.com/rdflib/pyLODE/release/3.0.5a" id="version">
-                    3.0.5a
-                </a>
-                <span>
-                    with the
-                </span>
-                <a href="https://w3id.org/profile/vocpub" id="profile">
-                    VocPub
-                </a>
-                <span>
-                    profile
-                </span>
-            </p>
-        </div>
-        <div id="toc">
-            <h3>
-                Table of Contents
-            </h3>
-            <ul class="first">
-                <li>
-                    <h4>
-                        <a href="#metadata">
-                            Metadata
-                        </a>
-                    </h4>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#classes">
-                            Classes
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#Resource">
-                                Resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#EconomicValue">
-                                Economic Value
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#EnvironmentalValue">
-                                Environmental Value
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ExchangeValue">
-                                Exchange Value
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#SocialValue">
-                                Social Value
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#UseValue">
-                                Use Value
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#Value">
-                                Value
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ValueParticipation">
-                                Value Participation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ValueParticipationRole">
-                                Value Participation Role
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ValueParticipationType">
-                                Value Participation Type
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#ValueProposition">
-                                Value Proposition
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#objectproperties">
-                            Object Properties
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#hasAimedValue">
-                                has aimed value
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasAssociatedValue">
-                                has associated value
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasVPTargets">
-                                has vp targets
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#hasValuableResource">
-                                has valuable resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#targettingActor">
-                                targetting actor
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#targettingResource">
-                                targetting resource
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#targettingValueParticipation">
-                                targetting value participation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#valueParticipantRole">
-                                value participant role
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#annotationproperties">
-                            Annotation Properties
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#contributor">
-                                contributor
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#created">
-                                created
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creator">
-                                creator
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#description">
-                                description
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#license">
-                                license
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#title">
-                                title
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#preferredNamespacePrefix">
-                                preferred namespace prefix
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#preferredNamespaceUri">
-                                preferred namespace uri
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#namespaces">
-                            Namespaces
-                        </a>
-                    </h4>
-                    <ul class="second">
-                        <li>
-                            <a href="#">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#actorODP">
-                                actorODP
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#dcterms">
-                                dcterms
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#owl">
-                                owl
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#prov">
-                                prov
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#rdf">
-                                rdf
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#rdfs">
-                                rdfs
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#vann">
-                                vann
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#xsd">
-                                xsd
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>
-                        <a href="#legend">
-                            Legend
-                        </a>
-                    </h4>
-                    <ul class="second">
-                    </ul>
-                </li>
-            </ul>
         </div>
     </body>
 </html>

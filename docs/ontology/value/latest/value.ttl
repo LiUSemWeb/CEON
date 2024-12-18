@@ -1,7 +1,9 @@
 @prefix : <http://w3id.org/CEON/ontology/value/> .
 @prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -33,6 +35,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     dcterms:title "Circular Economy Ontology Network (CEON) - Value Module" ;
     vann:preferredNamespacePrefix "value" ;
     vann:preferredNamespaceUri "https://w3id.org/CEON/ontoloy/value/" ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D2.3: CE1-3, CE5-16, CE5-17." ;
     rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the value concept." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/> ;
@@ -63,8 +66,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 :ValueContributor a :ValueParticipationRole,
         owl:NamedIndividual .
 
-:ValueCreation a :ValueParticipationType,
-        owl:NamedIndividual .
+:ValueCreation a owl:NamedIndividual .
 
 :ValueCreator a :ValueParticipationRole,
         owl:NamedIndividual .
@@ -78,11 +80,35 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 :ValueEvaluator a :ValueParticipationRole,
         owl:NamedIndividual .
 
+:ValuePerceptionType a owl:Class ;
+    rdfs:label "Value Perception Type" .
+
+:hasPerception a owl:ObjectProperty ;
+    rdfs:label "has perception" ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( actorODP:Actor :ValueProposition ) ] ;
+    rdfs:range :ValuePerception .
+
+:hasPerceptionType a owl:ObjectProperty ;
+    rdfs:label "has perception type" ;
+    rdfs:comment "a perception has a specific type in terms of how a propostion or actor perceive values" .
+
 :hasValuableResource a owl:ObjectProperty ;
     rdfs:label "has valuable resource" ;
     rdfs:domain :ValueParticipation ;
     rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
     rdfs:subPropertyOf owl:topObjectProperty .
+
+:onParticipation a owl:ObjectProperty ;
+    rdfs:label "on participation" ;
+    rdfs:comment "perceptions on specific value participations" ;
+    rdfs:domain :ValuePerception ;
+    rdfs:range :ValueParticipation .
+
+:proposedBy a owl:ObjectProperty ;
+    rdfs:label "proposed by" ;
+    rdfs:domain :ValueProposition ;
+    rdfs:range actorODP:Actor .
 
 :targettingResource a owl:ObjectProperty ;
     rdfs:label "targets resource" ;
@@ -111,10 +137,6 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
     rdfs:comment "Use value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
     rdfs:subClassOf :Value .
 
-:ValueParticipationType a owl:Class ;
-    rdfs:label "Value Participation Type" ;
-    rdfs:comment "Different value participation types that may create, destory or miss values." .
-
 :hasAimedValue a owl:ObjectProperty ;
     rdfs:label "has aimed value" ;
     rdfs:comment "A value proposition has value statements." ;
@@ -123,8 +145,8 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
 
 :hasAssociatedValue a owl:ObjectProperty ;
     rdfs:label "has associated value" ;
-    rdfs:comment "a value participation creates/destorys/misses some value." ;
-    rdfs:domain :ValueParticipation ;
+    rdfs:comment "a value perception about creating/destorings/missing some value." ;
+    rdfs:domain :ValuePerception ;
     rdfs:range :Value ;
     rdfs:subPropertyOf owl:topObjectProperty .
 
@@ -144,9 +166,20 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
 
 <http://w3id.org/CEON/ontology/resourceODP/Resource> a owl:Class .
 
+:ValuePerception a owl:Class ;
+    rdfs:label "Value Perception" .
+
 :hasVPTargets a owl:ObjectProperty ;
     rdfs:label "has value proposition targets" ;
     rdfs:comment "A value proposition is proposed about specific actors, participations or resources." .
+
+:ValueParticipation a owl:Class ;
+    rdfs:label "Value Participation" ;
+    rdfs:comment "A participation that may create/destory/miss value." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasAssociatedValue ;
+            owl:someValuesFrom :Value ],
+        actorODP:Participation .
 
 :ValueProposition a owl:Class ;
     rdfs:label "Value Proposition" ;
@@ -161,20 +194,13 @@ actorODP:Participation rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collab
             owl:onProperty :targettingValueParticipation ;
             owl:someValuesFrom :ValueParticipation ] .
 
-:ValueParticipation a owl:Class ;
-    rdfs:label "Value Participation" ;
-    rdfs:comment "A participation that may create/destory/miss value." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty :hasAssociatedValue ;
-            owl:someValuesFrom :Value ],
-        actorODP:Participation .
-
 :ValueParticipationRole a owl:Class ;
-    rdfs:comment "A role that a value participant can take.",
-        "Value Participation Role" ;
+    rdfs:label "Value Participation Role" ;
+    rdfs:comment "A role that a value participant can take." ;
     rdfs:subClassOf actorODP:Role .
 
 :Value a owl:Class ;
     rdfs:label "Value" ;
-    rdfs:comment "Some notion of value." .
+    rdfs:comment "Gain(s) or benefit(s) from satisfying needs and expectations,	in relation to the use	and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.1.7 value" .
 
