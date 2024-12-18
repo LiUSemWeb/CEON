@@ -1,0 +1,92 @@
+@prefix : <http://w3id.org/CEON/ontology/quantity#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix qudt-unit: <http://qudt.org/vocab/unit/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+qudt-unit:EURO-PER-KiloM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Euro Per Kilometer"@en ;
+    dcterms:description "Euro Per Kilometer (€/km) is a unit used to represent the cost or value associated with transporting a resource."^^rdf:HTML ;
+    qudt:symbol "€/km" .
+
+qudt-unit:EURO-PER-M2 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Euro Per Square Meter"@en ;
+    dcterms:description "Euro Per Square Meter (€/km) is a unit used to represent the cost or value of resource per square meter."^^rdf:HTML ;
+    qudt:symbol "€/m²" .
+
+:Cost a owl:NamedIndividual .
+
+:FloorPanel1 a owl:NamedIndividual .
+
+:HIGH_QUALITY a owl:NamedIndividual .
+
+:LOW_QUALITY a owl:NamedIndividual .
+
+:MEDIUM_QUALITY a owl:NamedIndividual .
+
+:Value a owl:NamedIndividual .
+
+:hasDismantlingCost a owl:ObjectProperty ;
+    rdfs:label "has dismantling cost" ;
+    rdfs:comment "The cost of dismantling, expressed as an amount of money with a currency unit." ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasMarketValue a owl:ObjectProperty ;
+    rdfs:label "has market value" ;
+    rdfs:comment "The market value, expressed as an amount of money with a currency unit." ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasRefurbishmentCost a owl:ObjectProperty ;
+    rdfs:label "has refurbishment cost" ;
+    rdfs:comment "The cost of refurbishment, expressed as an amount of money with a currency unit." ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasTestingCost a owl:ObjectProperty ;
+    rdfs:comment "The cost of testing, expressed as an amount of money with a currency unit.",
+        "has testing cost" ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasTransportCost a owl:ObjectProperty ;
+    rdfs:comment "The cost of transportation, expressed as an amount of money with a currency unit.",
+        "has transport cost" ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:numericalMaxValue a owl:DatatypeProperty ;
+    rdfs:range xsd:double .
+
+:numericalMinValue a owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:objectValue a owl:ObjectProperty ;
+    rdfs:comment "objectValue is analogous to qudt:numericalValue" ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+<http://w3id.org/CEON/ontology/quantity/> a owl:Ontology ;
+    dcterms:creator "Robin Keskisärkkä" ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module"@en ;
+    vann:preferredNamespacePrefix "quantity" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/quantity/" ;
+    rdfs:comment "This module defines base properties to describe quantitites with standardized units."@en ;
+    rdfs:seeAlso "https://github.com/LiUSemWeb/Materials-Design-Ontology" ;
+    owl:imports <http://w3id.org/CEON/ontology/qudtunit/2.1/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/quantity/0.1/> ;
+    owl:versionInfo "0.1"@en .
+

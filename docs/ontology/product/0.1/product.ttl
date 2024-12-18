@@ -1,0 +1,75 @@
+@prefix : <http://w3id.org/CEON/ontology/product/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist",
+        "Mikael Lindecrantz",
+        "Robin Keskisärkkä" ;
+    dcterms:created "2023-03-16"^^xsd:string ;
+    dcterms:creator "Huanyu Li" ;
+    dcterms:description "The Product module of CEON (Circular Economy Ontology Network)." ;
+    dcterms:license "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Product Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "product"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/product/"^^xsd:string ;
+    odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-2, CVN-ResrouceType-4, C11-2, C12-1, C13-3, E2-1, T8-3." ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.1/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/product/0.1/> ;
+    owl:versionInfo "0.1"^^xsd:string .
+
+resourceODP:Matter a owl:Class .
+
+resourceODP:Resource a owl:Class .
+
+odp:coversRequirements a owl:AnnotationProperty .
+
+:Product a owl:Class ;
+    rdfs:label "Product"@en ;
+    rdfs:comment "A product is a physical object put into a market for sale. The product can be a thing that grows naturally or produced through some chemical or manufacturing processes."@en ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasProductComponent ;
+                        owl:someValuesFrom :ProductComponent ] [ a owl:Restriction ;
+                        owl:allValuesFrom :ProductComponent ;
+                        owl:onProperty :hasProductComponent ] ) ],
+        resourceODP:PhysicalObject .
+
+resourceODP:Constituent a owl:Class .
+
+resourceODP:PhysicalObject a owl:Class .
+
+:hasProductComponent a owl:ObjectProperty ;
+    rdfs:label "hasProductComponent"@en ;
+    rdfs:comment "hasProductComponent intends to represent that a product can have a collection of components."@en ;
+    rdfs:domain :Product ;
+    rdfs:range :ProductComponent .
+
+:ProductComponent a owl:Class ;
+    rdfs:label "ProductComponent"@en ;
+    rdfs:comment "A product component is a part of a product."@en ;
+    rdfs:subClassOf resourceODP:Constituent .
+

@@ -1,0 +1,130 @@
+@prefix : <http://w3id.org/CEON/ontology/processODP/> .
+@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
+@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+actor:ProcessParticipation a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty actorODP:participationIn ;
+            owl:someValuesFrom :Process ] .
+
+: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist",
+        "Mikael Lindecrantz",
+        "Robin Keskisärkkä" ;
+    dcterms:created "2023-03-23" ;
+    dcterms:creator "Huanyu Li" ;
+    dcterms:description "A core ODP of the CEON ontology network, defining aspects of the process concept." ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Process ODP" ;
+    vann:preferredNamespacePrefix "processODP" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/processODP/" ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3,4,5, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6" ;
+    rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the process concept." ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/processODP/0.1/> ;
+    owl:versionInfo 0.1 .
+
+:hasInput a owl:ObjectProperty ;
+    rdfs:label "has input" ;
+    rdfs:comment "The situation before the transformation takes place, i.e. the state of affairs before the process takes places, such as the set of components before they are assembled into a product." ;
+    rdfs:domain :Transformation .
+
+:hasOutput a owl:ObjectProperty ;
+    rdfs:label "has output" ;
+    rdfs:comment "The output situation of a transformation, i.e. the state of affairs after the transformation took place." ;
+    rdfs:domain :Transformation .
+
+:hasPart a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "has part" ;
+    rdfs:comment "A process can consists of several part, which are sub-processes." ;
+    rdfs:domain :Process ;
+    rdfs:range :Process .
+
+:hasProcessExecution a owl:ObjectProperty ;
+    rdfs:label "has process execution"@en ;
+    rdfs:comment "A process can have  specific executions."@en ;
+    rdfs:domain :Process ;
+    rdfs:range :ProcessExecution .
+
+:hasProcessType a owl:ObjectProperty ;
+    rdfs:label "has process type"@en ;
+    rdfs:comment "The type of the process."@en ;
+    rdfs:domain :Process ;
+    rdfs:range :ProcessType .
+
+:intialSituation a owl:ObjectProperty ;
+    rdfs:label "initial situation" ;
+    rdfs:comment "The situation before executing a process." ;
+    rdfs:domain :Transformation ;
+    rdfs:range :Situation .
+
+:isSettingFor a owl:ObjectProperty ;
+    rdfs:label "is the setting for" ;
+    rdfs:comment "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state." ;
+    rdfs:domain :Situation .
+
+:nextProcess a owl:ObjectProperty ;
+    rdfs:label "next process" ;
+    rdfs:comment "A relation between one process and the next one following it in some sequence of processes, e.g. a sequence of transformations in a material flow." ;
+    rdfs:domain :Process ;
+    rdfs:range :Process .
+
+:occursInLocation a owl:ObjectProperty ;
+    rdfs:label "occurs in location" ;
+    rdfs:comment "The location in which a transformation takes place, e.g. the factory location where something is manufactured." ;
+    rdfs:domain :Transformation .
+
+:resultingSituation a owl:ObjectProperty ;
+    rdfs:label "resulting situation" ;
+    rdfs:comment "The situation after the execution of a process." ;
+    rdfs:domain :Transformation ;
+    rdfs:range :Situation .
+
+odp:coversRequirements a owl:AnnotationProperty .
+
+actorODP:participationIn a owl:ObjectProperty .
+
+:ProcessExecution a owl:Class ;
+    rdfs:label "Process execution"@en ;
+    rdfs:comment "An execution of a specific process."@en .
+
+:ProcessType a owl:Class ;
+    rdfs:label "Process type"@en ;
+    rdfs:comment "The type of a process."@en .
+
+:Situation a owl:Class ;
+    rdfs:label "Situation" ;
+    rdfs:comment "A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time." .
+
+:Transformation a owl:Class ;
+    rdfs:label "Transformation" ;
+    rdfs:comment "A process that transforms some situation into another situation, i.e. changes the state of affairs of some actor, resource etc." ;
+    rdfs:subClassOf :Process .
+
+:Process a owl:Class ;
+    rdfs:label "Process"@en ;
+    rdfs:comment "An activity in the context of a circular value network, handling resources."@en .
+

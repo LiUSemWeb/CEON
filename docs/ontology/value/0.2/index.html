@@ -1,0 +1,2473 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Circular Economy Ontology Network (CEON) - Value Module
+        </title>
+        <style>
+            #pylode {
+            position: fixed;
+            top: 205px;
+            left: -150px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        #metadata ul,
+        #classes ul {
+            list-style-type: none;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-left: -40px;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: left;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor:help;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        sup {
+            margin-left: -3px;
+        }
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+
+#toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    border: solid 1px navy;
+    font-size: small;
+    width: 180px;
+}
+#toc h3 {
+    margin-top: 5px;
+}
+
+#toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#toc .first > li {
+    margin-top: 5px;
+}
+
+#toc .second,
+#toc .third {
+    padding-left: 10px;
+}
+
+#content {
+    width: calc(100% - 150px);
+}
+
+.hover_property {
+    cursor: help;
+    text-decoration: none;
+    border-bottom: dashed 1px;
+}
+
+.setclass {
+    list-style-type: none;
+}
+
+code{
+    word-wrap: break-word;
+  }
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+td {
+    word-wrap: break-word;
+}
+#legend table.entity {
+    width: 25%;
+}
+
+/* hide duplicate restictions bug */
+#content > span {
+    display: none;
+}
+
+ul, p {
+    margin: 0;
+}
+        </style>
+        <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png"/>
+        <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png"/>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <script id="schema.org" type="application/ld+json">
+            [
+  {
+    "@id": "http://w3id.org/CEON/ontology/value/",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/contributor": [
+      {
+        "@value": "Huanyu Li"
+      },
+      {
+        "@value": "Mikael Lindecrantz"
+      },
+      {
+        "@value": "Robin Keskisärkkä"
+      }
+    ],
+    "https://schema.org/creator": [
+      {
+        "@value": "Eva Blomqvist"
+      }
+    ],
+    "https://schema.org/dateCreated": [
+      {
+        "@value": "2023-03-30"
+      }
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "A core ODP of the CEON ontology network, defining aspects of the value concept."
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@value": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Circular Economy Ontology Network (CEON) - Value Module"
+      }
+    ]
+  }
+]
+        </script>
+        <style type="text/css">
+            /* hack to avoid lonely heading (most of the time at least) */
+                        h2 {
+                            page-break-inside: avoid;
+                        }
+                        .section h2::after {
+                            content: "";
+                            display: block;
+                            height: 300px;
+                            margin-bottom: -300px;
+                        }
+                        .entity {
+                            page-break-inside: avoid;
+                        }
+                        p, dt, dd, ul {
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <div class="section" id="metadata">
+                <h1>
+                    Circular Economy Ontology Network (CEON) - Value Module
+                </h1>
+                <h2>
+                    Metadata
+                </h2>
+                <dl>
+                    <div>
+                        <dt>
+                            <strong>
+                                IRI
+                            </strong>
+                        </dt>
+                        <dd>
+                            <code>
+                                http://w3id.org/CEON/ontology/value/
+                            </code>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">
+                                Title
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                Circular Economy Ontology Network (CEON) - Value Module
+                            </p>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">
+                                Creator
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                Eva Blomqvist
+                            </p>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/dc/terms/contributor" title="An entity responsible for making contributions to the resource. Defined in DCMI Metadata Terms">
+                                Contributor
+                            </a>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>
+                                    <p>
+                                        Huanyu Li
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Mikael Lindecrantz
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Robin Keskisärkkä
+                                    </p>
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/dc/terms/created" title="Date of creation of the resource. Defined in DCMI Metadata Terms">
+                                Date Created
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                2023-03-30
+                            </p>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">
+                                License
+                            </a>
+                        </dt>
+                        <dd>
+                            <a href="https://creativecommons.org/licenses/by/4.0/">
+                                https://creativecommons.org/licenses/by/4.0/
+                            </a>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://www.w3.org/2002/07/owl#versionIRI" title="The property that identifies the version IRI of an ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">
+                                Version Iri
+                            </a>
+                        </dt>
+                        <dd>
+                            <a href="http://w3id.org/CEON/ontology/value/0.2/">
+                                http://w3id.org/CEON/ontology/value/0.2/
+                            </a>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://www.w3.org/2002/07/owl#versionInfo" title="The annotation property that provides version information for an ontology or another OWL construct. Defined in The OWL 2 Schema vocabulary (OWL 2)">
+                                Version Info
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                0.2
+                            </p>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespacePrefix" title="None. Defined in None">
+                                Preferred Namespace Prefix
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                value
+                            </p>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespaceUri" title="None. Defined in None">
+                                Preferred Namespace Uri
+                            </a>
+                        </dt>
+                        <dd>
+                            <a href="https://w3id.org/CEON/ontoloy/value/">
+                                https://w3id.org/CEON/ontoloy/value/
+                            </a>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">
+                                Description
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                A core ODP of the CEON ontology network, defining aspects of the value concept.
+                            </p>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <a class="hover_property" href="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements" title="None. Defined in None">
+                                Covers Requirements
+                            </a>
+                        </dt>
+                        <dd>
+                            <p>
+                                Covers the following requirements from Onto-DESIDE D2.3: CE1-3, CE5-16, CE5-17.
+                            </p>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+            <style>
+                #iframe-overview {
+                            width: 100%;
+                            height: 600px;
+                        }
+                        .caption {
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                        .caption a {
+                            text-decoration: none;
+                            color: black;
+                            font-size: 2em;
+                        }
+            </style>
+            <div class="section" id="classes">
+                <h2>
+                    Classes
+                </h2>
+                <div class="property entity" id="Resource">
+                    <h3>
+                        Resource
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/resourceODP/Resource
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">
+                                    In Range Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/hasValuableResource">
+                                                hasValuableResource
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/targettingResource">
+                                                targettingResource
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="EconomicValue">
+                    <h3>
+                        Economic Value
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/EconomicValue
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/Value">
+                                        Value
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2002/07/owl#equivalentClass" title="The property that determines that two given classes are equivalent, and that is used to specify datatype definitions. Defined in The OWL 2 Schema vocabulary (OWL 2)">
+                                    Equivalentclass
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/UseValue">
+                                        UseValue
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="EnvironmentalValue">
+                    <h3>
+                        Environmental Value
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/EnvironmentalValue
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/Value">
+                                        Value
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ExchangeValue">
+                    <h3>
+                        Exchange Value
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/ExchangeValue
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/Value">
+                                        Value
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="SocialValue">
+                    <h3>
+                        Social Value
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/SocialValue
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/Value">
+                                        Value
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="UseValue">
+                    <h3>
+                        Use Value
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/UseValue
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/Value">
+                                        Value
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="Value">
+                    <h3>
+                        Value
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/Value
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Is Defined By
+                                </a>
+                            </th>
+                            <td>
+                                <p>
+                                    ISO 59004:2024 - 3.1.7 value
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">
+                                    Description
+                                </a>
+                            </th>
+                            <td>
+                                <p>
+                                    Gain(s) or benefit(s) from satisfying needs and expectations,   in relation to the use  and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">
+                                    In Range Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/hasAimedValue">
+                                                hasAimedValue
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/hasAssociatedValue">
+                                                hasAssociatedValue
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">
+                                    Super Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/EconomicValue">
+                                                EconomicValue
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/EnvironmentalValue">
+                                                EnvironmentalValue
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/ExchangeValue">
+                                                ExchangeValue
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/SocialValue">
+                                                SocialValue
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/UseValue">
+                                                UseValue
+                                            </a>
+                                            <sup class="sup-c" title="OWL/RDFS Class">
+                                                c
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ValueParticipation">
+                    <h3>
+                        Value Participation
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/ValueParticipation
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <a href="http://w3id.org/CEON/ontology/actorODP/Participation">
+                                    actorODP:Participation
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">
+                                    In Domain Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/hasValuableResource">
+                                                hasValuableResource
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/valueParticipantRole">
+                                                valueParticipantRole
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">
+                                    In Range Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/onParticipation">
+                                                onParticipation
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/targettingValueParticipation">
+                                                targettingValueParticipation
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">
+                                    Restriction
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <span>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/hasAssociatedValue">
+                                                hasAssociatedValue
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                        some
+                                        <span>
+                                            <span>
+                                                <a href="http://w3id.org/CEON/ontology/value/ValueParticipation">
+                                                    ValueParticipation
+                                                </a>
+                                                <sup class="sup-c" title="OWL/RDFS Class">
+                                                    c
+                                                </sup>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ValueParticipationRole">
+                    <h3>
+                        Value Participation Role
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/ValueParticipationRole
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Class Of
+                                </a>
+                            </th>
+                            <td>
+                                <a href="http://w3id.org/CEON/ontology/actorODP/Role">
+                                    actorODP:Role
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">
+                                    In Range Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/valueParticipantRole">
+                                        valueParticipantRole
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2002/07/owl#NamedIndividual" title="Named Individuals. Defined in The OWL 2 Schema vocabulary (OWL 2)">
+                                    Named Individuals
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/ValueConsumer">
+                                                ValueConsumer
+                                            </a>
+                                            <sup class="sup-ni" title="OWL Named Individual">
+                                                ni
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/ValueContributor">
+                                                ValueContributor
+                                            </a>
+                                            <sup class="sup-ni" title="OWL Named Individual">
+                                                ni
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/ValueCreator">
+                                                ValueCreator
+                                            </a>
+                                            <sup class="sup-ni" title="OWL Named Individual">
+                                                ni
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/ValueDestroyer">
+                                                ValueDestroyer
+                                            </a>
+                                            <sup class="sup-ni" title="OWL Named Individual">
+                                                ni
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/ValueDistributor">
+                                                ValueDistributor
+                                            </a>
+                                            <sup class="sup-ni" title="OWL Named Individual">
+                                                ni
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/ValueEvaluator">
+                                                ValueEvaluator
+                                            </a>
+                                            <sup class="sup-ni" title="OWL Named Individual">
+                                                ni
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ValuePerception">
+                    <h3>
+                        Value Perception
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/ValuePerception
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">
+                                    In Domain Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/hasAssociatedValue">
+                                                hasAssociatedValue
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/onParticipation">
+                                                onParticipation
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">
+                                    In Range Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/hasPerception">
+                                        hasPerception
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ValuePerceptionType">
+                    <h3>
+                        Value Perception Type
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/ValuePerceptionType
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="ValueProposition">
+                    <h3>
+                        Value Proposition
+                        <sup class="sup-c" title="OWL/RDFS Class">
+                            c
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/ValueProposition
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">
+                                    In Domain Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/hasAimedValue">
+                                                hasAimedValue
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/proposedBy">
+                                                proposedBy
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/targettingActor">
+                                                targettingActor
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/targettingResource">
+                                                targettingResource
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/targettingValueParticipation">
+                                                targettingValueParticipation
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">
+                                    Restriction
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <span>
+                                                <span>
+                                                    <a href="http://w3id.org/CEON/ontology/value/hasAimedValue">
+                                                        hasAimedValue
+                                                    </a>
+                                                    <sup class="sup-op" title="OWL Object Property">
+                                                        op
+                                                    </sup>
+                                                </span>
+                                                some
+                                                <span>
+                                                    <span>
+                                                        <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                                            ValueProposition
+                                                        </a>
+                                                        <sup class="sup-c" title="OWL/RDFS Class">
+                                                            c
+                                                        </sup>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <span>
+                                                <span>
+                                                    <a href="http://w3id.org/CEON/ontology/value/targettingActor">
+                                                        targettingActor
+                                                    </a>
+                                                    <sup class="sup-op" title="OWL Object Property">
+                                                        op
+                                                    </sup>
+                                                </span>
+                                                some
+                                                <span>
+                                                    <span>
+                                                        <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                                            ValueProposition
+                                                        </a>
+                                                        <sup class="sup-c" title="OWL/RDFS Class">
+                                                            c
+                                                        </sup>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <span>
+                                                <span>
+                                                    <a href="http://w3id.org/CEON/ontology/value/targettingValueParticipation">
+                                                        targettingValueParticipation
+                                                    </a>
+                                                    <sup class="sup-op" title="OWL Object Property">
+                                                        op
+                                                    </sup>
+                                                </span>
+                                                some
+                                                <span>
+                                                    <span>
+                                                        <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                                            ValueProposition
+                                                        </a>
+                                                        <sup class="sup-c" title="OWL/RDFS Class">
+                                                            c
+                                                        </sup>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="section" id="objectproperties">
+                <h2>
+                    Object Properties
+                </h2>
+                <div class="property entity" id="hasAimedValue">
+                    <h3>
+                        has aimed value
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/hasAimedValue
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                        ValueProposition
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/Value">
+                                        Value
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="hasAssociatedValue">
+                    <h3>
+                        has associated value
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/hasAssociatedValue
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Property Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">
+                                        topObjectProperty
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValuePerception">
+                                        ValuePerception
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/Value">
+                                        Value
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="hasPerception">
+                    <h3>
+                        has perception
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/hasPerception
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
+                                        actorODP:Actor
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                                <span class="cardinality">
+                                    or
+                                </span>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                        ValueProposition
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValuePerception">
+                                        ValuePerception
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="hasPerceptionType">
+                    <h3>
+                        has perception type
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/hasPerceptionType
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="hasVPTargets">
+                    <h3>
+                        has vp targets
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/hasVPTargets
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="https://w3id.org/profile/ontdoc/superPropertyOf" title="Inverse of RDFS' subPropertyOf. Defined in Ontology Documentation Profile">
+                                    Super Property Of
+                                </a>
+                            </th>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/targettingActor">
+                                                targettingActor
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/targettingResource">
+                                                targettingResource
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            <a href="http://w3id.org/CEON/ontology/value/targettingValueParticipation">
+                                                targettingValueParticipation
+                                            </a>
+                                            <sup class="sup-op" title="OWL Object Property">
+                                                op
+                                            </sup>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="hasValuableResource">
+                    <h3>
+                        has valuable resource
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/hasValuableResource
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Property Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">
+                                        topObjectProperty
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueParticipation">
+                                        ValueParticipation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/resourceODP/Resource">
+                                        http://w3id.org/CEON/ontology/resourceODP/Resource
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="onParticipation">
+                    <h3>
+                        on participation
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/onParticipation
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValuePerception">
+                                        ValuePerception
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueParticipation">
+                                        ValueParticipation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="proposedBy">
+                    <h3>
+                        proposed by
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/proposedBy
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                        ValueProposition
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
+                                    actorODP:Actor
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="targettingActor">
+                    <h3>
+                        targetting actor
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/targettingActor
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Property Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/hasVPTargets">
+                                        hasVPTargets
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                        ValueProposition
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
+                                    actorODP:Actor
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="targettingResource">
+                    <h3>
+                        targetting resource
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/targettingResource
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Property Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/hasVPTargets">
+                                        hasVPTargets
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                        ValueProposition
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/resourceODP/Resource">
+                                        http://w3id.org/CEON/ontology/resourceODP/Resource
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="targettingValueParticipation">
+                    <h3>
+                        targetting value participation
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/targettingValueParticipation
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Property Of
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/hasVPTargets">
+                                        hasVPTargets
+                                    </a>
+                                    <sup class="sup-op" title="OWL Object Property">
+                                        op
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                                        ValueProposition
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueParticipation">
+                                        ValueParticipation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="valueParticipantRole">
+                    <h3>
+                        value participant role
+                        <sup class="sup-op" title="OWL Object Property">
+                            op
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://w3id.org/CEON/ontology/value/valueParticipantRole
+                                </code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Sub Property Of
+                                </a>
+                            </th>
+                            <td>
+                                <a href="http://w3id.org/CEON/ontology/actorODP/participantRole">
+                                    actorODP:participantRole
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Domain
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueParticipation">
+                                        ValueParticipation
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">
+                                    Range
+                                </a>
+                            </th>
+                            <td>
+                                <span>
+                                    <a href="http://w3id.org/CEON/ontology/value/ValueParticipationRole">
+                                        ValueParticipationRole
+                                    </a>
+                                    <sup class="sup-c" title="OWL/RDFS Class">
+                                        c
+                                    </sup>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <span>
+                <a href="http://w3id.org/CEON/ontology/actorODP/Actor">
+                    actorODP:Actor
+                </a>
+                <sup class="sup-c" title="OWL/RDFS Class">
+                    c
+                </sup>
+            </span>
+            <span>
+                <a href="http://w3id.org/CEON/ontology/value/ValueProposition">
+                    ValueProposition
+                </a>
+                <sup class="sup-c" title="OWL/RDFS Class">
+                    c
+                </sup>
+            </span>
+            <div class="section" id="annotationproperties">
+                <h2>
+                    Annotation Properties
+                </h2>
+                <div class="property entity" id="contributor">
+                    <h3>
+                        contributor
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/contributor
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="created">
+                    <h3>
+                        created
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/created
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="creator">
+                    <h3>
+                        creator
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/creator
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="description">
+                    <h3>
+                        description
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/description
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="license">
+                    <h3>
+                        license
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/license
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="title">
+                    <h3>
+                        title
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/dc/terms/title
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="preferredNamespacePrefix">
+                    <h3>
+                        preferred namespace prefix
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/vocab/vann/preferredNamespacePrefix
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="property entity" id="preferredNamespaceUri">
+                    <h3>
+                        preferred namespace uri
+                        <sup class="sup-ap" title="OWL Annotation Property">
+                            ap
+                        </sup>
+                    </h3>
+                    <table>
+                        <tr>
+                            <th>
+                                IRI
+                            </th>
+                            <td>
+                                <code>
+                                    http://purl.org/vocab/vann/preferredNamespaceUri
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="namespaces">
+                <h2>
+                    Namespaces
+                </h2>
+                <dl>
+                    <dt id=":">
+                        :
+                    </dt>
+                    <dd>
+                        <code>
+                            http://w3id.org/CEON/ontology/value/
+                        </code>
+                    </dd>
+                    <dt id="actorODP">
+                        actorODP
+                    </dt>
+                    <dd>
+                        <code>
+                            http://w3id.org/CEON/ontology/actorODP/
+                        </code>
+                    </dd>
+                    <dt id="dcterms">
+                        dcterms
+                    </dt>
+                    <dd>
+                        <code>
+                            http://purl.org/dc/terms/
+                        </code>
+                    </dd>
+                    <dt id="odp">
+                        odp
+                    </dt>
+                    <dd>
+                        <code>
+                            http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#
+                        </code>
+                    </dd>
+                    <dt id="owl">
+                        owl
+                    </dt>
+                    <dd>
+                        <code>
+                            http://www.w3.org/2002/07/owl#
+                        </code>
+                    </dd>
+                    <dt id="prov">
+                        prov
+                    </dt>
+                    <dd>
+                        <code>
+                            http://www.w3.org/ns/prov#
+                        </code>
+                    </dd>
+                    <dt id="rdf">
+                        rdf
+                    </dt>
+                    <dd>
+                        <code>
+                            http://www.w3.org/1999/02/22-rdf-syntax-ns#
+                        </code>
+                    </dd>
+                    <dt id="rdfs">
+                        rdfs
+                    </dt>
+                    <dd>
+                        <code>
+                            http://www.w3.org/2000/01/rdf-schema#
+                        </code>
+                    </dd>
+                    <dt id="vann">
+                        vann
+                    </dt>
+                    <dd>
+                        <code>
+                            http://purl.org/vocab/vann/
+                        </code>
+                    </dd>
+                    <dt id="xsd">
+                        xsd
+                    </dt>
+                    <dd>
+                        <code>
+                            http://www.w3.org/2001/XMLSchema#
+                        </code>
+                    </dd>
+                </dl>
+            </div>
+            <div id="legend">
+                <h2>
+                    Legend
+                </h2>
+                <table class="entity">
+                    <tr>
+                        <td>
+                            <sup class="sup-c" title="OWL/RDFS Class">
+                                c
+                            </sup>
+                        </td>
+                        <td>
+                            Classes
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sup class="sup-op" title="OWL Object Property">
+                                op
+                            </sup>
+                        </td>
+                        <td>
+                            Object Properties
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <sup class="sup-ap" title="OWL Annotation Property">
+                                ap
+                            </sup>
+                        </td>
+                        <td>
+                            Annotation Properties
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
