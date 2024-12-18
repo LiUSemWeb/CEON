@@ -314,7 +314,7 @@ def html_to_pdf_with_playwright(html_file, pdf_file):
             page.goto(f"file://{os.path.abspath(html_file)}")
 
             # Generate PDF
-            page.pdf(path=pdf_file, format="A4", margin={"top": "20mm", "bottom": "20mm", "left": "20mm", "right": "20mm"})
+            page.pdf(path=pdf_file, format="A4", margin={"top": "10mm", "bottom": "0mm", "left": "0mm", "right": "0mm"}, scale=0.7)
             browser.close()
     except Exception as e:
         logger.error(f"Failed to generate PDF for {html_file}: {e}")
