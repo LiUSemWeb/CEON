@@ -10,6 +10,7 @@ from pylode.profiles.vocpub import VocPub
 import pdfkit
 from rdflib import Graph
 import logging
+from playwright.sync_api import sync_playwright
 
 # Configure root logger
 logger = logging.getLogger()
@@ -302,11 +303,96 @@ def create_index_file():
     with open(index_file, "w") as f:
         f.write(template({"data": data}))
 
+def html_to_pdf_with_playwright(html_file, pdf_file):
+    """Convert HTML file to a PDF file using Playwright."""
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page()
+
+            # Load the HTML file
+            page.goto(f"file://{os.path.abspath(html_file)}")
+
+            # Generate PDF
+            page.pdf(path=pdf_file, format="A4", margin={"top": "20mm", "bottom": "20mm", "left": "20mm", "right": "20mm"})
+            browser.close()
+    except Exception as e:
+        logger.error(f"Failed to generate PDF for {html_file}: {e}")
+
+
+def build_pdf_playwright():
+    """Convert docs to PDF using Playwright."""
+    try:
+        html_formatter = formatter.HTMLFormatter(indent=4)
+        map = {
+            "modules": "ontology",
+            "demo": "demo"
+        }
+
+        for type in ["modules", "demo"]:
+            for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
+                if not source.endswith(".ttl"):
+                    continue
+
+                logger.info(f"Generating PDF docs for {source}")
+
+                parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
+                name = parts.group(1)
+                version = parts.group(2)
+            
+                target = f"docs/{map[type]}/{name}/{version}/"
+                html_file = f"{target}/index.html"
+                pdf_file = f"{target}/{name}.pdf"
+                
+                # Drop TOC, logo, and iframe before generating PDF 
+                with open(html_file, encoding="utf-8") as f:
+                    soup = BeautifulSoup(f, "html.parser")
+                    style = soup.new_tag('style', type='text/css')
+                    style.append("""
+                        /* hack to avoid lonely heading (most of the time at least) */
+                        h2 {
+                            page-break-inside: avoid;
+                        }
+                        .section h2::after {
+                            content: "";
+                            display: block;
+                            height: 300px;
+                            margin-bottom: -300px;
+                        }
+                        .entity {
+                            page-break-inside: avoid;
+                        }
+                        p, dt, dd, ul {
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            padding-top: 0;
+                            padding-bottom: 0;
+                        }
+                    """)
+                    soup.head.append(style)
+                    
+                    for id in ["toc", "pylode", "overview"]:
+                        tag = soup.find(id=id)
+                        if tag is not None:
+                            tag.decompose()
+                
+                # Write modified HTML back to the file (if necessary)
+                with open(html_file, "w", encoding="utf-8") as f:
+                    f.write(soup.prettify(formatter=html_formatter))
+                
+                # Generate PDF using Playwright
+                html_to_pdf_with_playwright(html_file, pdf_file)
+    except Exception as e:
+        logger.error(e)
+        logger.error("PDF conversion cancelled. Ensure Playwright is installed and configured properly.")
+
+
 def main():
     download_owl2vowl()
     generate_vowl()
     create_documentation()
-    build_pdf()
+    #build_pdf()
+    build_pdf_playwright()
     create_index_file()
     copy_ontologies()
 
