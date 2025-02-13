@@ -1,5 +1,98 @@
 [
   {
+    "@id": "http://w3id.org/CEON/ontology/material/ChemicalEntity",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Chemical entity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@value": "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0"
+      },
+      {
+        "@value": "http://purl.obolibrary.org/obo/chebi#24431"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/material/hasChemicalEntity",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "hasChemicalEntity intends to represent that a material can have a collection of chemical entities."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/material/Material"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has chemical entity"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/material/ChemicalEntity"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/material/hasMaterialComponent",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "hasMaterialComponent intends to represent that a material can have a collection of components."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/material/Material"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "has material component"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/material/MaterialComponent"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/material/HillFormula",
     "@type": [
       "http://www.w3.org/2002/07/owl#DatatypeProperty"
@@ -22,56 +115,9 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/material/DescriptiveFormula",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "DescriptiveFormula represents that a molecular entity has the descriptive formula in a string."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "descriptive formula"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "https://w3id.org/mdo/structure/DescriptiveFormula"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/material/ChemicalSubstance",
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/Constituent",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A chemical substance is made up of a collection of molecular entities."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Chemical substance"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea"
-      },
-      {
-        "@value": "http://purl.obolibrary.org/obo/chebi#59999"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/material/ChemicalEntity"
-      }
     ]
   },
   {
@@ -152,52 +198,33 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/material/hasChemicalEntity",
+    "@id": "http://w3id.org/CEON/ontology/material/ChemicalSubstance",
     "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
+      "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "hasChemicalEntity intends to represent that a material can have a collection of chemical entities."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/material/Material"
+        "@value": "A chemical substance is made up of a collection of molecular entities."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@language": "en",
-        "@value": "has chemical entity"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/material/ChemicalEntity"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/material/ReducedChemicalFormula",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "ReducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "reduced formula"
+        "@value": "Chemical substance"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
       {
-        "@value": "https://w3id.org/mdo/structure/ReducedFormula"
+        "@value": "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea"
+      },
+      {
+        "@value": "http://purl.obolibrary.org/obo/chebi#59999"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/material/ChemicalEntity"
       }
     ]
   },
@@ -231,12 +258,12 @@
         "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
       },
       {
-        "@id": "_:n221ec485e5324ccba2195675d76f0d77b1"
+        "@id": "_:nbef5f8d99fd94afb8db195a740ac6882b1"
       }
     ]
   },
   {
-    "@id": "_:n221ec485e5324ccba2195675d76f0d77b1",
+    "@id": "_:nbef5f8d99fd94afb8db195a740ac6882b1",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -252,42 +279,46 @@
     ]
   },
   {
-    "@id": "http://purl.org/dc/elements/1.1/description",
+    "@id": "http://w3id.org/CEON/ontology/material/DescriptiveFormula",
     "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/material/hasMaterialComponent",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "hasMaterialComponent intends to represent that a material can have a collection of components."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/material/Material"
+        "@value": "DescriptiveFormula represents that a molecular entity has the descriptive formula in a string."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@language": "en",
-        "@value": "has material component"
+        "@value": "descriptive formula"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
       {
-        "@id": "http://w3id.org/CEON/ontology/material/MaterialComponent"
+        "@value": "https://w3id.org/mdo/structure/DescriptiveFormula"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/material/AnonymousFormula",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "AnonymousFormula represents that a molecular entity has the anonymous formula in a string."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "anonymous formula"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@value": "https://w3id.org/mdo/structure/AnonymousFormula"
       }
     ]
   },
@@ -346,62 +377,31 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/material/AnonymousFormula",
+    "@id": "http://w3id.org/CEON/ontology/material/ReducedChemicalFormula",
     "@type": [
       "http://www.w3.org/2002/07/owl#DatatypeProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
         "@language": "en",
-        "@value": "AnonymousFormula represents that a molecular entity has the anonymous formula in a string."
+        "@value": "ReducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "anonymous formula"
+        "@value": "reduced formula"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
       {
-        "@value": "https://w3id.org/mdo/structure/AnonymousFormula"
+        "@value": "https://w3id.org/mdo/structure/ReducedFormula"
       }
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/material/ChemicalEntity",
+    "@id": "http://purl.org/dc/elements/1.1/description",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Chemical entity"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0"
-      },
-      {
-        "@value": "http://purl.obolibrary.org/obo/chebi#24431"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Matter"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/Constituent",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   }
 ]
