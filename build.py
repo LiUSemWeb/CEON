@@ -235,7 +235,7 @@ def create_documentation():
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
                 """, "html.parser")
                 tag = soup.find(id='metadata')
                 tag.insert_after(overview)
