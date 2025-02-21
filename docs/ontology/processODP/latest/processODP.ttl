@@ -59,12 +59,6 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:comment "A plan can have specific executions."@en ;
     owl:inverseOf :satisfiesPlan .
 
-:hasProcessType a owl:ObjectProperty ;
-    rdfs:label "has process type" ;
-    rdfs:comment "The type of the process." ;
-    rdfs:domain :Process ;
-    rdfs:range :ProcessType .
-
 :occursAtLocation a owl:ObjectProperty ;
     rdfs:label "occurs at location" ;
     rdfs:comment "The location in which something (e.g. an execution/transition) takes place, e.g. the factory location where something is manufactured." ;
@@ -84,10 +78,6 @@ odp:coversRequirements a owl:AnnotationProperty .
 For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations.""" .
 
 :Event a owl:Class .
-
-:ProcessType a owl:Class ;
-    rdfs:label "Process type" ;
-    rdfs:comment "The type of a process." .
 
 :TransformationProcess a owl:Class ;
     rdfs:label "Transformation" ;
@@ -153,6 +143,12 @@ For example, a Plan is a Description of some actions to be executed by agents in
     rdfs:comment "A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan.",
         "satisfies plan" .
 
+:Process a owl:Class ;
+    rdfs:label "Process" ;
+    rdfs:comment "Set of interrelated or interacting activities that transforms inputs into outputs."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024  - 3.5.5 process" ;
+    rdfs:subClassOf :Event .
+
 :Situation a owl:Class ;
     rdfs:label "Situation" ;
     rdfs:comment "A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time." ;
@@ -187,12 +183,6 @@ For example, a Plan is a Description of some actions to be executed by agents in
             owl:onProperty :isSettingFor ;
             owl:someValuesFrom :Process ],
         :Situation .
-
-:Process a owl:Class ;
-    rdfs:label "Process" ;
-    rdfs:comment "Set of interrelated or interacting activities that transforms inputs into outputs."@en ;
-    rdfs:isDefinedBy "ISO 59004:2024  - 3.5.5 process" ;
-    rdfs:subClassOf :Event .
 
 :isSettingFor a owl:ObjectProperty ;
     rdfs:label "is the setting for" ;
