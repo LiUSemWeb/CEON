@@ -206,22 +206,22 @@ def create_documentation():
                 soup = BeautifulSoup(f, "html.parser")
                 overview = BeautifulSoup(
                     f"""
-                    <style>
-                        #iframe-overview {{
-                            width: 100%;
-                            height: 600px;
-                        }}
-                        .caption {{
-                            display: flex;
-                            justify-content: space-between;
-                        }}
-                        .caption a {{
-                            text-decoration: none;
-                            color: black;
-                            font-size: 2em;
-                        }}
-                    </style>
                     <div id="overview" class="section">
+                        <style>
+                            #iframe-overview {{
+                                width: 100%;
+                                height: 600px;
+                            }}
+                            .caption {{
+                                display: flex;
+                                justify-content: space-between;
+                            }}
+                            .caption a {{
+                                text-decoration: none;
+                                color: black;
+                                font-size: 2em;
+                            }}
+                        </style>
                         <h2>Overview</h2>
                         <div class="figure">
                             <iframe id="iframe-overview" src="{path_to_webvowl}">
@@ -388,13 +388,13 @@ def build_pdf_playwright():
 
 
 def main():
-    download_owl2vowl()
+    # download_owl2vowl()
     generate_vowl()
     create_documentation()
     #build_pdf()
-    build_pdf_playwright()
-    create_index_file()
-    copy_ontologies()
+    # build_pdf_playwright()
+    # create_index_file()
+    # copy_ontologies()
 
 if __name__ == "__main__":
     main()
