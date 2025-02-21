@@ -388,13 +388,13 @@ def build_pdf_playwright():
 
 
 def main():
-    # download_owl2vowl()
+    download_owl2vowl()
     generate_vowl()
     create_documentation()
     #build_pdf()
-    # build_pdf_playwright()
-    # create_index_file()
-    # copy_ontologies()
+    build_pdf_playwright()
+    create_index_file()
+    copy_ontologies()
 
 if __name__ == "__main__":
     main()
