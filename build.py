@@ -376,12 +376,13 @@ def build_pdf_playwright():
                         if tag is not None:
                             tag.decompose()
                 
-                # Write modified HTML back to the file (if necessary)
-                with open(html_file, "w", encoding="utf-8") as f:
-                    f.write(soup.prettify(formatter=html_formatter))
+                # Write modified HTML back to temp file
+                temp_file = "temp/html_to_pdf.html"
+                with open(temp_file, "w", encoding="utf-8") as f:
+                   f.write(soup.prettify(formatter=html_formatter))
                 
                 # Generate PDF using Playwright
-                html_to_pdf_with_playwright(html_file, pdf_file)
+                html_to_pdf_with_playwright(temp_file, pdf_file)
     except Exception as e:
         logger.error(e)
         logger.error("PDF conversion cancelled. Ensure Playwright is installed and configured properly.")
