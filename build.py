@@ -7,7 +7,6 @@ import re
 import urllib.request
 import zipfile
 from pylode.profiles.vocpub import VocPub
-import pdfkit
 from rdflib import Graph
 import logging
 from playwright.sync_api import sync_playwright
@@ -69,73 +68,6 @@ def download_owl2vowl():
 
         with zipfile.ZipFile(path_to_zip, 'r') as zip_ref:
             zip_ref.extractall("temp/")
-
-
-def build_pdf():
-    """Convert docs to PDF using wkhtmltopdf."""
-    try:
-        html_formatter = formatter.HTMLFormatter(indent=4)
-        map = {
-            "modules": "ontology",
-            "demo": "demo"
-        }
-
-        for type in ["modules", "demo"]:
-            for source in sorted(glob(f"ontology/{type}/*/*/*", recursive=True)):
-                if not source.endswith(".ttl"):
-                    continue
-
-                logger.info(f"Generating PDF docs for {source}")
-
-                parts = re.match(f"ontology/{type}/([^/]*)/([^/]*)", source)    
-                name = parts.group(1)
-                version = parts.group(2)
-            
-                target = f"docs/{map[type]}/{name}/{version}/"
-                html_file = f"{target}/index.html"
-                pdf_file = f"{target}/{name}.pdf"
-                
-                # Drop TOC, logo and iframe before generating PDF 
-                with open(html_file, encoding="utf-8") as f:
-                    soup = BeautifulSoup(f, "html.parser")
-                    style = soup.new_tag('style', type='text/css')
-                    style.append("""
-                        /* hack to avoid lonely heading (most of the time at least) */
-                        h2 {
-                            page-break-inside: avoid;
-                        }
-                        .section h2::after {
-                            content: "";
-                            display: block;
-                            height: 300px;
-                            margin-bottom: -300px;
-                        }
-                        .entity {
-                            page-break-inside: avoid;
-                        }
-                        p, dt, dd, ul {
-                            margin-top: 10px;
-                            margin-bottom: 10px;
-                            padding-top: 0;
-                            padding-bottom: 0;
-                        }
-                    """)
-                    soup.head.append(style)
-                    
-                    for table in soup.select("table"):
-                        table.insert(0, soup.new_tag("thead"))
-                        table.wrap(soup.new_tag("tbody")).wrap(soup.new_tag("table"))
-                        table.unwrap()
-                        
-                    for id in ["toc", "pylode", "overview"]:
-                        tag = soup.find(id=id)
-                        if tag != None:
-                            tag.decompose()
-                    
-                pdfkit.from_string(soup.prettify(formatter=html_formatter), pdf_file, options = { "enable-local-file-access": "" })
-    except Exception as e:
-        print(e)
-        print("PDF conversion cancelled. Is 'wkhtmltopdf' (https://wkhtmltopdf.org/) installed?")
 
 
 def generate_vowl():
@@ -392,7 +324,6 @@ def main():
     download_owl2vowl()
     generate_vowl()
     create_documentation()
-    #build_pdf()
     build_pdf_playwright()
     create_index_file()
     copy_ontologies()
