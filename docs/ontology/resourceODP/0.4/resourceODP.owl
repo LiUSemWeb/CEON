@@ -7,15 +7,32 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b2"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasMatter">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
-    <rdfs:comment xml:lang="en">hasMatter intends to represent that a physical object can have a collection of matter.</rdfs:comment>
-    <rdfs:label xml:lang="en">has matter</rdfs:label>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b27">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"/>
+    <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/batchSize">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Batch"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    <rdfs:comment xml:lang="en">batchSize intends to repsent how many physical objects are belong to a batch of objects.</rdfs:comment>
+    <rdfs:label xml:lang="en">batch size</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b29">
+    <rdf:first rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b27"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Resource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Asset"/>
+    <rdfs:comment xml:lang="en">Asset from which a solution is created or implemented. Depending on the context, reference to “resource” includes “raw material”, “feedstock”, “material” or “component”. Resource includes any energy type (e.g. the energy content or energy potential of materials). Note 4 to entry: Resources can be considered concerning both stocks and flows.</rdfs:comment>
+    <rdfs:isDefinedBy>ISO 59004:2024 - 3.1.5 resource</rdfs:isDefinedBy>
+    <rdfs:label xml:lang="en">Resource</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -35,116 +52,26 @@
     <rdfs:seeAlso rdf:resource="https://github.com/LiUSemWeb/CEON"/>
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.4</owl:versionInfo>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b21">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasBatch"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Batch"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Resource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Asset"/>
-    <rdfs:comment xml:lang="en">Asset from which a solution is created or implemented. Depending on the context, reference to “resource” includes “raw material”, “feedstock”, “material” or “component”. Resource includes any energy type (e.g. the energy content or energy potential of materials). Note 4 to entry: Resources can be considered concerning both stocks and flows.</rdfs:comment>
-    <rdfs:isDefinedBy>ISO 59004:2024 - 3.1.5 resource</rdfs:isDefinedBy>
-    <rdfs:label xml:lang="en">Resource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b27">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"/>
-    <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/batchSize">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Batch"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
-    <rdfs:comment xml:lang="en">batchSize intends to repsent how many physical objects are belong to a batch of objects.</rdfs:comment>
-    <rdfs:label xml:lang="en">batch size</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Information">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Asset"/>
-    <rdfs:comment xml:lang="en">Information is an abstract concept that represents any kind of interpretations. For instance, information can be data generated by software systems or data used by people for communications.</rdfs:comment>
-    <rdfs:label xml:lang="en">Information</rdfs:label>
-    <rdfs:seeAlso>http://emmo.info/emmo#EMMO_64c72d00_7582_44ea_a0b5_3a14e50acc36</rdfs:seeAlso>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Asset">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Asset</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b5">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasConstituent">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasPart"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Constituent"/>
-    <rdfs:comment xml:lang="en">hasConstitutent intends to represent that a physical object can have a collection of composing components.</rdfs:comment>
-    <rdfs:label xml:lang="en">has constituent</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
-    <rdfs:subClassOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b10"/>
-    <rdfs:subClassOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b15"/>
-    <rdfs:comment xml:lang="en">A physical object is a collection of matter.</rdfs:comment>
-    <rdfs:label xml:lang="en">Physical object</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Matter">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:comment xml:lang="en">A matter is a physical substance.</rdfs:comment>
     <rdfs:label xml:lang="en">Matter</rdfs:label>
     <rdfs:seeAlso>http://emmo.info/emmo#EMMO_5b2222df_4da6_442f_8244_96e9e45887d1</rdfs:seeAlso>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b24">
-    <rdf:first rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b22"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Batch">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
-    <rdfs:subClassOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b4"/>
-    <rdfs:subClassOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b9"/>
-    <rdfs:comment xml:lang="en">A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product instances) adhering to the same product model.</rdfs:comment>
-    <rdfs:label xml:lang="en">Batch</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasBatch">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/SetOfObjects"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Batch"/>
-    <rdfs:comment xml:lang="en">hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects.</rdfs:comment>
-    <rdfs:label xml:lang="en">has batch</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b26">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b16">
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b17">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasMatter"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
+    <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b29">
-    <rdf:first rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b27"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  <rdf:Description rdf:about="http://www.opengis.net/ont/geosparql#gmlLiteral">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/location/hasLocation">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b13">
-    <rdf:first rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b11"/>
-    <rdf:rest rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b14"/>
+    <rdfs:domain rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b1"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
+    <rdfs:comment xml:lang="en">hasPhysicalObject intends to represent that a batch of objects or a set of objects can have composing components of physical objects.</rdfs:comment>
+    <rdfs:label xml:lang="en">has physical object</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/isAbout">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -152,17 +79,47 @@
     <rdfs:comment>Connecting the information to the object (physical, virtual, imaginary) that the information is about.</rdfs:comment>
     <rdfs:label>is about</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/batchSize"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasConstituent"/>
+    <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Constituent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/isRealizationOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Information"/>
+    <rdfs:comment>Relates a thing, e.g. a digital object, or a physical object, to the information it is a realization of. C.f. a physical book that is the realization of a novel, or a pdf or Excel-file that is a realization of a certain data sheet.</rdfs:comment>
+    <rdfs:label xml:lang="en">is realization of</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b26">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b8">
+    <rdf:first rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b6"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b13">
+    <rdf:first rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b11"/>
+    <rdf:rest rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b14"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b20">
+    <owl:intersectionOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b23"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/SetOfObjects">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
-    <rdfs:subClassOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b20"/>
-    <rdfs:subClassOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b25"/>
+    <rdfs:subClassOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b20"/>
+    <rdfs:subClassOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b25"/>
     <rdfs:comment xml:lang="en">A set of objects is a set of physical objects (items) that can be of different types, i.e. different kinds of items.</rdfs:comment>
     <rdfs:label xml:lang="en">Set of objects</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b10">
-    <owl:intersectionOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b13"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasResourceLocation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -172,29 +129,136 @@
     <rdfs:comment>Defines the location of a resource.</rdfs:comment>
     <rdfs:label>has resource location</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b4">
-    <owl:intersectionOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b7"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b3">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/resourceODP/SetOfObjects"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject">
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b14">
+    <rdf:first rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b12"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasBatch">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b1"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
-    <rdfs:comment xml:lang="en">hasPhysicalObject intends to represent that a batch of objects or a set of objects can have composing components of physical objects.</rdfs:comment>
-    <rdfs:label xml:lang="en">has physical object</rdfs:label>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/SetOfObjects"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Batch"/>
+    <rdfs:comment xml:lang="en">hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects.</rdfs:comment>
+    <rdfs:label xml:lang="en">has batch</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b23">
-    <rdf:first rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b21"/>
-    <rdf:rest rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b24"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasPart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:comment>Indicating that something is part of or is contained by something else.</rdfs:comment>
+    <rdfs:label>has part</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b17">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
+    <rdfs:subClassOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b10"/>
+    <rdfs:subClassOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b15"/>
+    <rdfs:comment xml:lang="en">A physical object is a collection of matter.</rdfs:comment>
+    <rdfs:label xml:lang="en">Physical object</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b16">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasMatter"/>
-    <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b8">
-    <rdf:first rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b6"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b10">
+    <owl:intersectionOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b13"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasBatch"/>
+    <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Batch"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#definition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/location/Location">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Information">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Asset"/>
+    <rdfs:comment xml:lang="en">Information is an abstract concept that represents any kind of interpretations. For instance, information can be data generated by software systems or data used by people for communications.</rdfs:comment>
+    <rdfs:label xml:lang="en">Information</rdfs:label>
+    <rdfs:seeAlso>http://emmo.info/emmo#EMMO_64c72d00_7582_44ea_a0b5_3a14e50acc36</rdfs:seeAlso>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/DigitalObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
+    <rdfs:comment>A digital object, e.g. a computer file, that is located on some server, hard drive, or on the web. Most often the digital object is the realization of some piece of information.</rdfs:comment>
+    <rdfs:label xml:lang="en">Digital object</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b7">
+    <rdf:first rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b5"/>
+    <rdf:rest rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b8"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasConstituent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasPart"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Constituent"/>
+    <rdfs:comment xml:lang="en">hasConstitutent intends to represent that a physical object can have a collection of composing components.</rdfs:comment>
+    <rdfs:label xml:lang="en">has constituent</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasConstituent"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Constituent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/location/hasLocation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Batch">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
+    <rdfs:subClassOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b4"/>
+    <rdfs:subClassOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b9"/>
+    <rdfs:comment xml:lang="en">A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product instances) adhering to the same product model.</rdfs:comment>
+    <rdfs:label xml:lang="en">Batch</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b25">
+    <owl:intersectionOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b28"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasMatter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
+    <rdfs:comment xml:lang="en">hasMatter intends to represent that a physical object can have a collection of matter.</rdfs:comment>
+    <rdfs:label xml:lang="en">has matter</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b28">
+    <rdf:first rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b26"/>
+    <rdf:rest rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b29"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b23">
+    <rdf:first rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b21"/>
+    <rdf:rest rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b24"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b18">
+    <rdf:first rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b16"/>
+    <rdf:rest rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b19"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b4">
+    <owl:intersectionOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b7"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.opengis.net/ont/geosparql#wktLiteral">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/containsInformation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -204,93 +268,33 @@
     <rdfs:comment>Indicating that some piece of information is contained in a larger collection of information, e.g. a data sheet contains a statement about a certain parameter of a product.</rdfs:comment>
     <rdfs:label>contains information</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b3">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/resourceODP/SetOfObjects"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/isRealizationOf">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Information"/>
-    <rdfs:comment>Relates a thing, e.g. a digital object, or a physical object, to the information it is a realization of. C.f. a physical book that is the realization of a novel, or a pdf or Excel-file that is a realization of a certain data sheet.</rdfs:comment>
-    <rdfs:label xml:lang="en">is realization of</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b12">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasConstituent"/>
-    <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Constituent"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/DigitalObject">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
-    <rdfs:comment>A digital object, e.g. a computer file, that is located on some server, hard drive, or on the web. Most often the digital object is the realization of some piece of information.</rdfs:comment>
-    <rdfs:label xml:lang="en">Digital object</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b14">
-    <rdf:first rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b12"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b9">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/batchSize"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b20">
-    <owl:intersectionOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b23"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b2">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Batch"/>
-    <rdf:rest rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b3"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/hasPart">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-    <rdfs:comment>Indicating that something is part of or is contained by something else.</rdfs:comment>
-    <rdfs:label>has part</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b11">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasConstituent"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Constituent"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#definition">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.opengis.net/ont/geosparql#geoJSONLiteral">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.opengis.net/ont/geosparql#wktLiteral">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b22">
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b21">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasBatch"/>
-    <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Batch"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Batch"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b28">
-    <rdf:first rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b26"/>
-    <rdf:rest rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b29"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b6">
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b6">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject"/>
     <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b18">
-    <rdf:first rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b16"/>
-    <rdf:rest rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b19"/>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b2">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Batch"/>
+    <rdf:rest rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b3"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b19">
-    <rdf:first rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b17"/>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b19">
+    <rdf:first rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b17"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b25">
-    <owl:intersectionOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b28"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b24">
+    <rdf:first rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b22"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Constituent">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -298,37 +302,33 @@
     <rdfs:label xml:lang="en">Constituent</rdfs:label>
     <rdfs:seeAlso>http://emmo.info/emmo#EMMO_ceaaf9f7_fd11_424b_8fda_9afa186af186</rdfs:seeAlso>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b7">
-    <rdf:first rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b5"/>
-    <rdf:rest rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b8"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b1">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:unionOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b2"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/location/Location">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b15">
-    <owl:intersectionOf rdf:nodeID="n9299c0a14e044151b87e4971a6584e22b18"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.opengis.net/ont/geosparql#gmlLiteral">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/description">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Asset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Asset</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b15">
+    <owl:intersectionOf rdf:nodeID="nb39eeb7cd5c54e7db96a0066d742e7c5b18"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.opengis.net/ont/geosparql#geoJSONLiteral">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
