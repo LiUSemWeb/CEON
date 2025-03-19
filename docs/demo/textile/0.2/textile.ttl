@@ -1,0 +1,867 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://w3id.org/CEON/demo/textile/> a owl:Ontology ;
+    dcterms:contributor "Huanyu Li",
+        "Mikael Lindecrantz",
+        "Robin Keskisärkkä" ;
+    dcterms:creator "Eva Blomqvist" ;
+    dcterms:description "The Textile module of CEON (Circular Economy Ontology Network)." ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Textile Module" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/demo/textile/" ;
+    ns1:prefix "textile" ;
+    rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/>,
+        <http://w3id.org/CEON/ontology/datasheet/0.2/>,
+        <http://w3id.org/CEON/ontology/product/0.4/>,
+        <http://w3id.org/CEON/ontology/quantity/0.1/>,
+        <http://w3id.org/CEON/ontology/statement/0.1/> ;
+    owl:versionIRI <http://w3id.org/CEON/demo/textile/0.2/> ;
+    owl:versionInfo 0.2 .
+
+:BatchOfTextileObjects a owl:Class ;
+    rdfs:label "Batch of Textile Objects" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasColor ;
+            owl:someValuesFrom :Color ],
+        <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> .
+
+:BrandOfResource a owl:Class ;
+    rdfs:label "Brand of resource" ;
+    rdfs:comment "The relation where the role of the actor is the brand of a certain resource." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://w3id.org/CEON/ontology/actorODP/ResourceRelation> [ a owl:Restriction ;
+                        owl:hasValue :brand ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participantRole> ] ) ] .
+
+:CEmark a owl:DatatypeProperty ;
+    :PCDSmapping "5001" ;
+    rdfs:comment "The product has theCE mark."@en ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :certification .
+
+:CFmapping a owl:AnnotationProperty .
+
+:MSDS a :Regulation,
+        owl:NamedIndividual .
+
+:PCDSmapping a owl:AnnotationProperty .
+
+:Print a owl:Class ;
+    rdfs:label "Print" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Constituent> .
+
+:REACHCompliance a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue :REACH ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ] .
+
+:TextileDataSheet a owl:Class ;
+    rdfs:label "Textile Data Sheet" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/resourceODP/isAbout> ;
+            owl:someValuesFrom :TextileProduct ],
+        [ a owl:Restriction ;
+            owl:onProperty :hasProperty ;
+            owl:someValuesFrom :TextileDataSheetStatement ],
+        <http://w3id.org/CEON/ontology/datasheet/DataSheet> .
+
+:TextileDataSheetIssuingStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileDataSheetUpdateStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileManufacturerStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileManufacturingSiteStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductCertification a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductComponentRelation a owl:Class ;
+    rdfs:label "Textile Product Component Relation" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingObject> ;
+                        owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Constituent> ] [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingSubject> ;
+                        owl:someValuesFrom :TextileProduct ] [ a owl:Restriction ;
+                        owl:onProperty ns1:numericalValue ;
+                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
+        ns1:Quantity,
+        <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>,
+        :TextileDataSheetStatement .
+
+:TextileProductCompositionOfConcern a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductCompositionWeightFraction a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDataSheet a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignForRefurbishment a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignForRemanufacturing a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignForReuseMethod a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignToBeCleanlyRemoved a owl:Class ;
+    rdfs:subClassOf :TextileProductDesignForDisassembly .
+
+:TextileProductDesignToBeDismantled a owl:Class ;
+    rdfs:subClassOf :TextileProductDesignForDisassembly .
+
+:TextileProductDesignedForBetterUse a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductManufacturingMethod a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductMatterCompositionRelation a owl:Class ;
+    rdfs:label "Textile Product Matter Composition Relation" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingObject> ;
+                        owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Matter> ] [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/actorODP/participatingSubject> ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ] ) ],
+        ns1:Quantity,
+        <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>,
+        :TextileDataSheetStatement .
+
+:TextileProductObject a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasColor ;
+            owl:someValuesFrom :Color ],
+        <http://w3id.org/CEON/ontology/product/Item> .
+
+:TextileProductRecycledContent a owl:Class ;
+    rdfs:label "Textile Product Recycled Content" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ] [ a owl:Restriction ;
+                        owl:onProperty ns1:numericalValue ;
+                        owl:someValuesFrom [ a rdfs:Datatype ;
+                                owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
+        ns1:Quantity,
+        <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation>,
+        :TextileDataSheetStatement .
+
+:TextileProductRenewableContet a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:_0.01perc a :AmountThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "0.01%",
+        "100ppm" .
+
+:_0.1perc a :AmountThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "0.1%",
+        "1000ppm" .
+
+:_0perc a :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "0%" .
+
+:_0to10Perc a :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "0-10%" .
+
+:_10to25Perc a :LeakageAmountInterval,
+        :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "10-25%" .
+
+:_1perc a :AmountThreshold,
+        owl:NamedIndividual ;
+    rdfs:label "1%",
+        "10000ppm" .
+
+:_1to10Perc a :LeakageAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "1-10%" .
+
+:_25to50Perc a :LeakageAmountInterval,
+        :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "25-50%" .
+
+:_50-75Perc a :LeakageAmountInterval,
+        :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "50-75%" .
+
+:_75to95Perc a :LeakageAmountInterval,
+        :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "75-95%" .
+
+:_95to99Perc a :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label "95-99%" .
+
+:above95Perc a :LeakageAmountInterval,
+        :PostConsumerRecycledContentInterval,
+        :PreConsumerRecycledContentInterval,
+        owl:NamedIndividual ;
+    rdfs:label ">95%" .
+
+:above99Perc a :RecyclingAtSameLevelAmountInterval,
+        owl:NamedIndividual ;
+    rdfs:label ">99%" .
+
+:acidDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:analineDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:anti-pilling a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:antiStaticFinishing a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:antibacterialFinishing a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:anticipatedLeakageDuringUse a owl:ObjectProperty ;
+    rdfs:label "anticipated leakage during use" ;
+    :PCDSmapping "5040-5046" ;
+    rdfs:comment "Percentage of the product content anticipated to become leakage during the use phase due to for example wear & tear, oxidation, erosion, etc."@en ;
+    rdfs:subPropertyOf :hasProperty .
+
+:azoDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:basicDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual ;
+    rdfs:label "basic dye" .
+
+:batikPrinted a :PrintingProcess,
+        owl:NamedIndividual .
+
+:biodegradabilityTestAvailable a owl:DatatypeProperty ;
+    :CFmapping "CF600" ;
+    rdfs:comment "Biodegradability test is available."@en ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :availableInformation .
+
+:biodigestion a :TextileRecyclingProcess,
+        owl:NamedIndividual ;
+    rdfs:comment "Clean biodigestion."@en .
+
+:biosphereCascading a :TextileRecyclingProcess,
+        owl:NamedIndividual ;
+    rdfs:comment "Industrial cascading in the biosphere."@en .
+
+:calendering a :MechanicalFinishing,
+        owl:NamedIndividual .
+
+:certified a :Validation,
+        owl:NamedIndividual .
+
+:chemicalCompliance a owl:DatatypeProperty ;
+    rdfs:label "chemical compliance" ;
+    :CFmapping "CF707" .
+
+:chemicalSubstanceDisclosureThreshold a owl:ObjectProperty ;
+    rdfs:label "chemical substance disclosure threshold" ;
+    rdfs:range :TextileProductCompositionDisclosureStatement .
+
+:chromeDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:coating a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:coatingAcrylic a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:coatingPU a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:coatingPVC a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:collectionSystem a owl:DatatypeProperty ;
+    rdfs:label "collection system" ;
+    :PCDSmapping "5050" ;
+    rdfs:comment "The manufacturer/ industry association has a dedicated collection system in place to gather and deliver products for recycling."@en ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :collectionParameter .
+
+:containsMetal a owl:DatatypeProperty ;
+    rdfs:label "contains metal" ;
+    rdfs:comment "The product contains metal."@en ;
+    rdfs:range xsd:boolean .
+
+:creaseResistance a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:designedForRecycling a owl:DatatypeProperty ;
+    rdfs:label "designed for recycling" ;
+    rdfs:comment "The product is designed for recycling?e"@en ;
+    rdfs:subPropertyOf :designForProperties .
+
+:designedForRecyclingAtSameQuality a owl:ObjectProperty ;
+    rdfs:label "desinged for recycling at the same level of quality"@en ;
+    :PCDSmapping "5030-5037" ;
+    rdfs:comment "Percentage of the product that is designed for recycling at the same level of quality. The remainder of the materials is foreseen by the manufacturer to be recycled at a lower quality than the original content."@en ;
+    rdfs:range :TextileProductDesignForRecycling ;
+    rdfs:subPropertyOf :hasProperty .
+
+:designedForRefurbishment a owl:DatatypeProperty ;
+    rdfs:label "designed for refurbishment" ;
+    :PCDSmapping "5010" ;
+    rdfs:comment "The product is desinged for refurbishment?"@en ;
+    rdfs:subPropertyOf :designForProperties .
+
+:designedForRemanufacturing a owl:DatatypeProperty ;
+    rdfs:label "designed for remanufacturing" ;
+    :PCDSmapping "5020" ;
+    rdfs:comment "The product is designed for remanufacturing?"@en ;
+    rdfs:subPropertyOf :designForProperties .
+
+:designedForReuseWMinimalMod a owl:DatatypeProperty ;
+    :PCDSmapping "5000" ;
+    rdfs:comment "The product is designed for re-use as-is or with minimal modification."@en ;
+    rdfs:subPropertyOf :designedForReuse .
+
+:digitalPrinted a :PrintingProcess,
+        owl:NamedIndividual ;
+    rdfs:label "digital printed" .
+
+:directDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:directDyed a :TextileManufacturingProcess,
+        owl:NamedIndividual ;
+    rdfs:label "direct dyed" .
+
+:disclosureValue a owl:ObjectProperty ;
+    rdfs:label "disclosure value" ;
+    rdfs:domain :TextileChemicalSubstanceThresholdStatement ;
+    rdfs:range :AmountThreshold ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity#objectValue> .
+
+:disperseDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:dopeDyed a :TextileManufacturingProcess,
+        owl:NamedIndividual .
+
+:embossing a :MechanicalFinishing,
+        owl:NamedIndividual .
+
+:emissionByDesign a owl:DatatypeProperty ;
+    rdfs:label "emission by design" ;
+    :PCDSmapping "5060" ;
+    rdfs:comment "The portion of the product known to be emitted into the environment during use is designed for that purpose.  "@en ;
+    rdfs:subPropertyOf :designForRecyclingAmounts .
+
+:enzymeFinishing a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:finishingSteps a owl:DatatypeProperty ;
+    rdfs:label "finishing steps" ;
+    :CFmapping "CF705" .
+
+:flameRetardant a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:handPainted a :PrintingProcess,
+        owl:NamedIndividual .
+
+:hasDyeMethod a owl:ObjectProperty ;
+    rdfs:label "Dye Method"@en ;
+    :CFmapping "CF700" ;
+    rdfs:range :DyeingProcess ;
+    rdfs:subPropertyOf :hasTextileManufacturingProcess .
+
+:hasDyeStuff a owl:ObjectProperty ;
+    rdfs:label "Dye Stuff"@en ;
+    :CFmapping "CF701" ;
+    rdfs:subPropertyOf :hasProperty .
+
+:hasFinishing a owl:ObjectProperty ;
+    rdfs:label "has finishing" ;
+    rdfs:range :TextileFinishing ;
+    rdfs:subPropertyOf :hasProperty .
+
+:hasFinishingStep a owl:ObjectProperty ;
+    rdfs:label "Finishing Step"@en ;
+    :CFmapping "CF704" ;
+    rdfs:subPropertyOf :hasTextileManufacturingProcess .
+
+:hasOrigin a owl:ObjectProperty ;
+    rdfs:label "has origin" ;
+    rdfs:range :Origin .
+
+:hasPostConsumerRecycledContentAmount a owl:ObjectProperty ;
+    rdfs:label "has post consumer recycled content amount" ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/product/hasComposition> .
+
+:hasPreConsumerRecycledContentAmount a owl:ObjectProperty ;
+    rdfs:label "has pre consumer recycled content amount" ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/product/hasComposition> .
+
+:hasPrintFinishing a owl:ObjectProperty ;
+    rdfs:label "Print Finishing"@en ;
+    rdfs:subPropertyOf :hasProperty .
+
+:hasPrintMethod a owl:ObjectProperty ;
+    rdfs:label "Print Method"@en ;
+    :CFmapping "CF702" ;
+    rdfs:range :PrintingProcess ;
+    rdfs:subPropertyOf :hasTextileManufacturingProcess .
+
+:hasPrintStuff a owl:ObjectProperty ;
+    rdfs:label "Print Stuff"@en ;
+    :CFmapping "CF703" ;
+    rdfs:subPropertyOf :hasProperty .
+
+:hasType a owl:DatatypeProperty ;
+    rdfs:label "has type" ;
+    rdfs:comment "Description of the kind of product."@en ;
+    rdfs:range xsd:string .
+
+:hasWaterProperty a owl:ObjectProperty ;
+    rdfs:label "has water property" ;
+    :CFmapping "CF706" ;
+    rdfs:range :WaterProperty ;
+    rdfs:subPropertyOf :hasProperty .
+
+:homeComposting a :TextileRecyclingProcess,
+        owl:NamedIndividual ;
+    rdfs:comment "Composting in a home composter."@en .
+
+:incineration a :TextileRecyclingProcess,
+        owl:NamedIndividual ;
+    rdfs:label "incineration"@en,
+        "pyrolysis"@en ;
+    rdfs:comment "Clean incineration/pyrolysis."@en .
+
+:includesTrims a owl:DatatypeProperty ;
+    rdfs:label "includes trims" ;
+    rdfs:comment "The product includes trims."@en ;
+    rdfs:range xsd:boolean .
+
+:industrialComposting a :TextileRecyclingProcess,
+        owl:NamedIndividual ;
+    rdfs:comment "Composting in an industrial facility."@en .
+
+:inkjetPrinted a :PrintingProcess,
+        owl:NamedIndividual .
+
+:lessThan1Perc a :LeakageAmountInterval,
+        owl:NamedIndividual .
+
+:materialSafetyDataSheetAvailable a owl:DatatypeProperty ;
+    :CFmapping "CF603" ;
+    rdfs:comment "Material Safety Data Sheet for the product is available."@en ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :availableInformation .
+
+:materialSafetyDataSheetForDyeingAvailable a owl:DatatypeProperty ;
+    :CFmapping "CF602" ;
+    rdfs:comment "Material Safety Data Sheets for Dyeing are available."@en ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :availableInformation .
+
+:materialSafetyDataSheetForFinishingAvailable a owl:DatatypeProperty ;
+    :CFmapping "CF601" ;
+    rdfs:comment "Material Safety Data Sheets for Finishing are available."@en ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :availableInformation .
+
+:mattingAgent a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:mercerizing a owl:NamedIndividual .
+
+:millWashing a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:millingAgent a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:moistureManagemnet a owl:NamedIndividual .
+
+:mordantDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:mothproof a owl:NamedIndividual .
+
+:nanoFinishing a owl:NamedIndividual .
+
+:narturalDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:naturalOiling a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:opticalBrighteners a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:original a :Origin,
+        owl:NamedIndividual .
+
+:permanentCreasing a :MechanicalFinishing,
+        owl:NamedIndividual .
+
+:permanentPress a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:pieceDyed a :TextileManufacturingProcess,
+        owl:NamedIndividual .
+
+:pigmentBiosynthetic a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:pigmentNatural a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:pigmentSynthetic a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:pre-shrinking a :MechanicalFinishing,
+        owl:NamedIndividual .
+
+:prepareForDyeing a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:productCompositionDisclosureAvailability a owl:ObjectProperty ;
+    rdfs:label "product composition disclosure availability" ;
+    rdfs:comment "A product composition disclosed at the defined threshold is publicly available or a product composition disclosed at the defined threshold is available to the customer under secrecy agreement." .
+
+:productCompositionDisclosureValidation a owl:ObjectProperty ;
+    rdfs:label "product composition disclosure validation" ;
+    rdfs:comment "The product composition disclosed at the defined threshold has been validated by a third party or the product has been awarded an independent certification or standard related to its composition." .
+
+:productionSite a owl:DatatypeProperty ;
+    rdfs:comment "The location where the product was produced."@en ;
+    rdfs:range xsd:string .
+
+:public a :Availability,
+        owl:NamedIndividual .
+
+:reactiveDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:recycled a :Origin,
+        owl:NamedIndividual .
+
+:resins a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:reused a :Origin,
+        owl:NamedIndividual .
+
+:rollerPrinted a :PrintingProcess,
+        owl:NamedIndividual .
+
+:scratchAndSniff a owl:NamedIndividual .
+
+:screenPrinted a :PrintingProcess,
+        owl:NamedIndividual .
+
+:secrecyAgreement a :Availability,
+        owl:NamedIndividual .
+
+:shearing a owl:NamedIndividual .
+
+:silicones a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:singeing a owl:NamedIndividual .
+
+:softeningAgent a owl:NamedIndividual .
+
+:soilRelease a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:stainResistance a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:steaming a :MechanicalFinishing,
+        owl:NamedIndividual .
+
+:sueding a :MechanicalFinishing,
+        owl:NamedIndividual .
+
+:sulfurDye a :PrintStuff,
+        owl:NamedIndividual .
+
+:technicalDataSheetAvailable a owl:DatatypeProperty ;
+    :CFmapping "CF604" ;
+    rdfs:comment "The Technical Data Sheet is available."@en ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :availableInformation .
+
+:textileProductDesignForRecycling a owl:ObjectProperty ;
+    rdfs:label "textile product design for recycling" ;
+    :PCDSmapping "5070, 5080, 5081, 5090, 5091" ;
+    rdfs:comment "Product designed for a certain recycling method."@en ;
+    rdfs:range :TextileRecyclingProcess ;
+    rdfs:subPropertyOf :textileProductDesign .
+
+:topDyed a :TextileManufacturingProcess,
+        owl:NamedIndividual ;
+    rdfs:label "top dyed" .
+
+:transferPrinted a :PrintingProcess,
+        owl:NamedIndividual .
+
+:undyed a :TextileManufacturingProcess,
+        owl:NamedIndividual ;
+    rdfs:label "undyed" .
+
+:validatedByThirdParty a :Validation,
+        owl:NamedIndividual .
+
+:vatDye a :Dye,
+        :PrintStuff,
+        owl:NamedIndividual .
+
+:washAndWear a owl:NamedIndividual .
+
+:waterAndOilRepellency a owl:NamedIndividual .
+
+:waterRepellent a :WaterProperty,
+        owl:NamedIndividual ;
+    rdfs:label "Water repellent"@en .
+
+:waterResistant a :WaterProperty,
+        owl:NamedIndividual ;
+    rdfs:label "Water resistant"@en .
+
+:waterproof a :WaterProperty,
+        owl:NamedIndividual ;
+    rdfs:label "Waterproof"@en .
+
+:waxing a owl:NamedIndividual .
+
+:weightFractionOfDisclosedSubstances a owl:ObjectProperty ;
+    rdfs:label "weight fraction of disclosed sudstances" ;
+    rdfs:comment "The weight fraction of all disclosed chemical substances is 0%, 0-10%, 10-25%, 25-50%, 50-75%, 75-95%, 95-99%, over 99%." .
+
+:wrinkleResistance a owl:NamedIndividual .
+
+:yarnDyed a :TextileManufacturingProcess,
+        owl:NamedIndividual .
+
+<http://w3id.org/CEON/ontology/actor/ActorResourceRole> a owl:Class .
+
+:DyeingProcess a owl:Class ;
+    rdfs:label "dyeing process" ;
+    rdfs:subClassOf :TextileManufacturingProcess .
+
+:REACH a :Regulation,
+        owl:NamedIndividual .
+
+:TextileChemicalSubstanceThresholdStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductCompositionDisclosureStatement a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductDesignForRecycling a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :recyclingAtSameQualityRange ;
+            owl:someValuesFrom :RecyclingAtSameLevelAmountInterval ],
+        :TextileDataSheetStatement .
+
+:brand a <http://w3id.org/CEON/ontology/actor/ActorResourceRole>,
+        owl:NamedIndividual .
+
+:certification a owl:DatatypeProperty .
+
+:collectionParameter a owl:DatatypeProperty ;
+    rdfs:label "collection parameter" .
+
+:designForRecyclingAmounts a owl:DatatypeProperty ;
+    rdfs:label "designed for recycling amounts" .
+
+:designedForReuse a owl:DatatypeProperty ;
+    rdfs:label "designed for reuse" ;
+    rdfs:comment "The product is designed for reused?" ;
+    rdfs:subPropertyOf :designForProperties .
+
+:hasTextileProductType a owl:ObjectProperty ;
+    rdfs:label "has textile product type" ;
+    rdfs:domain :TextileProduct ;
+    rdfs:range :TextileProductType .
+
+:recyclingAtSameQualityRange a owl:ObjectProperty ;
+    rdfs:label "recycling at same quality range" ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity#objectValue> .
+
+:textileProductDesign a owl:ObjectProperty ;
+    rdfs:label "textile product design" .
+
+ns1:numericalValue a owl:DatatypeProperty .
+
+:Availability a owl:Class .
+
+:Regulation a owl:Class .
+
+:TextileProductDesignForDisassembly a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductType a owl:Class ;
+    rdfs:label "Textile Product Type" .
+
+:Validation a owl:Class ;
+    rdfs:label "Validation" .
+
+:TextileFinishing a owl:Class ;
+    rdfs:label "Textile Finishing" ;
+    rdfs:subClassOf :TextileProperty .
+
+:TextileProperty a owl:Class ;
+    rdfs:label "Textile Property" .
+
+:hasColor a owl:ObjectProperty ;
+    rdfs:label "has color" ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( <http://w3id.org/CEON/ontology/product/Item> <http://w3id.org/CEON/ontology/product/Product> <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> ) ] ;
+    rdfs:range :Color .
+
+:hasTextileManufacturingProcess a owl:ObjectProperty ;
+    rdfs:label "has textile manufacturing process" ;
+    rdfs:range :TextileManufacturingProcess .
+
+:AmountIntervalValue a owl:Class ;
+    rdfs:label "Amount Interval Value" .
+
+:AmountThreshold a owl:Class ;
+    rdfs:label "Amount Threshold" .
+
+:Color a owl:Class ;
+    rdfs:label "Color" .
+
+:Origin a owl:Class ;
+    rdfs:label "Origin" .
+
+:WaterProperty a owl:Class ;
+    rdfs:label "Water Property" ;
+    rdfs:subClassOf :TextileProperty .
+
+:designForProperties a owl:DatatypeProperty ;
+    rdfs:label "design for properties" .
+
+:TextileProduct a owl:Class ;
+    rdfs:label "Textile Product" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasColor ;
+            owl:someValuesFrom :Color ],
+        [ a owl:Restriction ;
+            owl:onProperty :hasTextileProductType ;
+            owl:someValuesFrom :TextileProductType ],
+        <http://w3id.org/CEON/ontology/product/Product> .
+
+:availableInformation a owl:DatatypeProperty .
+
+:MechanicalFinishing a owl:Class ;
+    rdfs:label "Mechanical Finishing" ;
+    rdfs:subClassOf :TextileFinishing .
+
+:TextileRecyclingProcess a owl:Class ;
+    rdfs:label "Textile Recycling Process" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
+
+:LeakageAmountInterval a owl:Class ;
+    rdfs:label "Leakage Amount Interval" ;
+    rdfs:subClassOf :AmountIntervalValue .
+
+:PostConsumerRecycledContentInterval a owl:Class ;
+    rdfs:label "Post Consumer Recycled Content Interval" ;
+    rdfs:subClassOf :AmountIntervalValue .
+
+:PreConsumerRecycledContentInterval a owl:Class ;
+    rdfs:label "Pre Consumer Recycled Content Interval" ;
+    rdfs:subClassOf :AmountIntervalValue .
+
+:PrintingProcess a owl:Class ;
+    rdfs:subClassOf :TextileManufacturingProcess .
+
+:hasProperty a owl:ObjectProperty ;
+    rdfs:label "has property" ;
+    rdfs:domain <http://w3id.org/CEON/ontology/datasheet/DataSheet> ;
+    rdfs:range <http://w3id.org/CEON/ontology/statement/Statement> .
+
+:RecyclingAtSameLevelAmountInterval a owl:Class ;
+    rdfs:label "Recycling At Same Level Amount Interval" ;
+    rdfs:subClassOf :AmountIntervalValue .
+
+:TextileManufacturingProcess a owl:Class ;
+    rdfs:label "Textile Manufacturing Process" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
+
+:Dye a owl:Class ;
+    rdfs:label "Dye" ;
+    rdfs:subClassOf :TextileProperty .
+
+:PrintStuff a owl:Class ;
+    rdfs:label "Print Stuff" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Matter> .
+
+:ChemicalFinishing a owl:Class ;
+    rdfs:label "Chemical Finishing" ;
+    rdfs:subClassOf :TextileFinishing .
+
+:TextileDataSheetStatement a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/Statement> .
+
