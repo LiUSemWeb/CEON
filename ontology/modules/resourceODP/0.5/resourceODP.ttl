@@ -307,7 +307,40 @@ location:Location rdf:type owl:Class .
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Resource
 :Resource rdf:type owl:Class ;
-          rdfs:subClassOf :Asset ;
+          rdfs:subClassOf :Asset ,
+                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasResourceCondition ;
+                                                   owl:someValuesFrom :ResourceCondition
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasResourceCondition ;
+                                                   owl:allValuesFrom :ResourceCondition
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ,
+                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasResourceProperty ;
+                                                   owl:someValuesFrom :ResourceProperty
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasResourceProperty ;
+                                                   owl:allValuesFrom :ResourceProperty
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ,
+                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasResourceQuality ;
+                                                   owl:someValuesFrom :ResourceQuality
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasResourceQuality ;
+                                                   owl:allValuesFrom :ResourceQuality
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ;
           rdfs:comment "Asset from which a solution is created or implemented. Depending on the context, reference to “resource” includes “raw material”, “feedstock”, “material” or “component”. Resource includes any energy type (e.g. the energy content or energy potential of materials). Note 4 to entry: Resources can be considered concerning both stocks and flows."@en ;
           rdfs:isDefinedBy "ISO 59004:2024 - 3.1.5 resource" ;
           rdfs:label "Resource"@en .
@@ -315,51 +348,18 @@ location:Location rdf:type owl:Class .
 
 ###  http://w3id.org/CEON/ontology/resourceODP/ResourceCondition
 :ResourceCondition rdf:type owl:Class ;
-                   rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasResourceCondition ;
-                                                            owl:someValuesFrom :ResourceCondition
-                                                          ]
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasResourceCondition ;
-                                                            owl:allValuesFrom :ResourceCondition
-                                                          ]
-                                                        ) ;
-                                     rdf:type owl:Class
-                                   ] ;
                    rdfs:comment "The status of a resource." ;
                    rdfs:label "Resource Condition" .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/ResourceProperty
 :ResourceProperty rdf:type owl:Class ;
-                  rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                           owl:onProperty :hasResourceProperty ;
-                                                           owl:someValuesFrom :ResourceProperty
-                                                         ]
-                                                         [ rdf:type owl:Restriction ;
-                                                           owl:onProperty :hasResourceProperty ;
-                                                           owl:allValuesFrom :ResourceProperty
-                                                         ]
-                                                       ) ;
-                                    rdf:type owl:Class
-                                  ] ;
                   rdfs:comment "The characteristics or attribuets of a resource." ;
                   rdfs:label "Resource Property" .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/ResourceQuality
 :ResourceQuality rdf:type owl:Class ;
-                 rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hasResourceQuality ;
-                                                          owl:someValuesFrom :ResourceQuality
-                                                        ]
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :hasResourceQuality ;
-                                                          owl:allValuesFrom :ResourceQuality
-                                                        ]
-                                                      ) ;
-                                   rdf:type owl:Class
-                                 ] ;
                  rdfs:comment "Resource quality is derived based on assessments of resources considering the conditions and properties." ;
                  rdfs:label "Resource Quality" .
 

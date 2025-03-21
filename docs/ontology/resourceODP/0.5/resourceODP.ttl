@@ -166,33 +166,15 @@ location:hasLocation a owl:ObjectProperty .
 
 :ResourceCondition a owl:Class ;
     rdfs:label "Resource Condition" ;
-    rdfs:comment "The status of a resource." ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty :hasResourceCondition ;
-                        owl:someValuesFrom :ResourceCondition ] [ a owl:Restriction ;
-                        owl:allValuesFrom :ResourceCondition ;
-                        owl:onProperty :hasResourceCondition ] ) ] .
+    rdfs:comment "The status of a resource." .
 
 :ResourceProperty a owl:Class ;
     rdfs:label "Resource Property" ;
-    rdfs:comment "The characteristics or attribuets of a resource." ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty :hasResourceProperty ;
-                        owl:someValuesFrom :ResourceProperty ] [ a owl:Restriction ;
-                        owl:allValuesFrom :ResourceProperty ;
-                        owl:onProperty :hasResourceProperty ] ) ] .
+    rdfs:comment "The characteristics or attribuets of a resource." .
 
 :ResourceQuality a owl:Class ;
     rdfs:label "Resource Quality" ;
-    rdfs:comment "Resource quality is derived based on assessments of resources considering the conditions and properties." ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty :hasResourceQuality ;
-                        owl:someValuesFrom :ResourceQuality ] [ a owl:Restriction ;
-                        owl:allValuesFrom :ResourceQuality ;
-                        owl:onProperty :hasResourceQuality ] ) ] .
+    rdfs:comment "Resource quality is derived based on assessments of resources considering the conditions and properties." .
 
 :Information a owl:Class ;
     rdfs:label "Information"@en ;
@@ -243,5 +225,23 @@ location:hasLocation a owl:ObjectProperty .
     rdfs:label "Resource"@en ;
     rdfs:comment "Asset from which a solution is created or implemented. Depending on the context, reference to “resource” includes “raw material”, “feedstock”, “material” or “component”. Resource includes any energy type (e.g. the energy content or energy potential of materials). Note 4 to entry: Resources can be considered concerning both stocks and flows."@en ;
     rdfs:isDefinedBy "ISO 59004:2024 - 3.1.5 resource" ;
-    rdfs:subClassOf :Asset .
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasResourceCondition ;
+                        owl:someValuesFrom :ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom :ResourceCondition ;
+                        owl:onProperty :hasResourceCondition ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasResourceProperty ;
+                        owl:someValuesFrom :ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom :ResourceProperty ;
+                        owl:onProperty :hasResourceProperty ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasResourceQuality ;
+                        owl:someValuesFrom :ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom :ResourceQuality ;
+                        owl:onProperty :hasResourceQuality ] ) ],
+        :Asset .
 
