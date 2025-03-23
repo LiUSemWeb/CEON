@@ -80,6 +80,28 @@ xsd:date rdf:type rdfs:Datatype .
 :complianceWith rdf:type owl:ObjectProperty .
 
 
+###  http://w3id.org/CEON/demo/electronics/hasCatalystCompositionValue
+:hasCatalystCompositionValue rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                             rdfs:domain :CatalystComposition ;
+                             rdfs:range :CatalystCompositionValue ;
+                             rdfs:label "has catalyst composition value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasChemicalElement
+:hasChemicalElement rdf:type owl:ObjectProperty ;
+                    rdfs:range <http://w3id.org/CEON/ontology/material/ChemicalElement> ;
+                    rdfs:label "has chemical element" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasChemicalElementCompositionValue
+:hasChemicalElementCompositionValue rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                                    rdfs:domain :ChemicalElementComposition ;
+                                    rdfs:range :ChemicalElementCompositionValue ;
+                                    rdfs:label "has chemical element composition value" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/hasConductivity
 :hasConductivity rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
@@ -96,6 +118,194 @@ xsd:date rdf:type rdfs:Datatype .
                       rdfs:range :ConductivityValue ;
                       rdfs:label "has conductivity value" .
 
+###  http://w3id.org/CEON/demo/electronics/RatedPowerOutput
+:RatedPowerOutput rdf:type owl:Class ;
+              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                              <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasRatedPowerOutputValue ;
+                                owl:allValuesFrom :RatedPowerOutputValue
+                              ] ;
+              rdfs:label "Rated Power Output" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RatedPowerOutputValue
+:RatedPowerOutputValue rdf:type owl:Class ;
+                   rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                            owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                          ]
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                            owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                     owl:allValuesFrom xsd:double
+                                   ] ;
+                   rdfs:label "Rated Power Output Value" .
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedPowerOutput
+:hasRatedPowerOutput rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
+                 rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
+                 rdfs:range :RatedPowerOutput ;
+                 rdfs:label "has rated power output" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedPowerOutputValue
+:hasRatedPowerOutputValue rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                      rdfs:domain :RatedPowerOutput ,
+                                  <http://w3id.org/CEON/ontology/product/Item> ;
+                      rdfs:range :RatedPowerOutputValue ;
+                      rdfs:label "has rated power output value" .
+
+###  http://w3id.org/CEON/demo/electronics/RatedRPM
+:RatedRPM rdf:type owl:Class ;
+              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                              <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasRatedRPMValue ;
+                                owl:allValuesFrom :RatedRPMValue
+                              ] ;
+              rdfs:label "Rated RPM" .
+
+###  http://w3id.org/CEON/demo/electronics/OperatingVoltage
+:OperatingVoltage rdf:type owl:Class ;
+              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                              <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasOperatingVoltageValue ;
+                                owl:allValuesFrom :OperatingVoltageValue
+                              ] ;
+              rdfs:label "Operating Voltage" .
+
+
+###  http://w3id.org/CEON/demo/electronics/OperatingVoltageValue
+:OperatingVoltageValue rdf:type owl:Class ;
+                   rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                            owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                          ]
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                            owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                     owl:allValuesFrom xsd:double
+                                   ] ;
+                   rdfs:label "Operating Voltage Value" .
+
+###  http://w3id.org/CEON/demo/electronics/hasOperatingVoltage
+:hasOperatingVoltage rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
+                 rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
+                 rdfs:range :OperatingVoltage ;
+                 rdfs:label "has operating voltage" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasOperatingVoltageValue
+:hasOperatingVoltageValue rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                      rdfs:domain :OperatingVoltage ,
+                                  <http://w3id.org/CEON/ontology/product/Item> ;
+                      rdfs:range :OperatingVoltageValue ;
+                      rdfs:label "has operating voltage value" .
+
+###  http://w3id.org/CEON/demo/electronics/RatedLoadAmps
+:RatedLoadAmps rdf:type owl:Class ;
+              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                              <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasRatedLoadAmpsValue ;
+                                owl:allValuesFrom :RatedLoadAmpsValue
+                              ] ;
+              rdfs:label "Rated Load Amps" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RatedLoadAmpsValue
+:RatedLoadAmpsValue rdf:type owl:Class ;
+                   rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                            owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                          ]
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                            owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                     owl:allValuesFrom xsd:double
+                                   ] ;
+                   rdfs:label "Rated Load Amps Value" .
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedLoadAmps
+:hasRatedLoadAmps rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
+                 rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
+                 rdfs:range :RatedLoadAmps ;
+                 rdfs:label "has rated load amps" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedLoadAmpsValue
+:hasRatedLoadAmpsValue rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                      rdfs:domain :RatedLoadAmps ,
+                                  <http://w3id.org/CEON/ontology/product/Item> ;
+                      rdfs:range :RatedLoadAmpsValue ;
+                      rdfs:label "has rated load amps value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RatedRPMValue
+:RatedRPMValue rdf:type owl:Class ;
+                   rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                            owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                          ]
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                            owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                     owl:allValuesFrom xsd:double
+                                   ] ;
+                   rdfs:label "Rated RPM Value" .
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedRPM
+:hasRatedRPM rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
+                 rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
+                 rdfs:range :RatedRPM ;
+                 rdfs:label "has rpm output" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedRPMValue
+:hasRatedRPMValue rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                      rdfs:domain :RatedRPM ,
+                                  <http://w3id.org/CEON/ontology/product/Item> ;
+                      rdfs:range :RatedRPMValue ;
+                      rdfs:label "has rpm value" .
+
 
 ###  http://w3id.org/CEON/demo/electronics/hasDensityAt25
 :hasDensityAt25 rdf:type owl:ObjectProperty ;
@@ -110,7 +320,38 @@ xsd:date rdf:type rdfs:Datatype .
                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
                      rdfs:domain :DensityAt25 ,
                                  <http://w3id.org/CEON/ontology/product/Item> ;
+                     rdfs:range :DensityAt25Value ;
                      rdfs:label "has density value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDepth
+:hasDepth rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
+          rdfs:range :Depth ;
+          rdfs:label "has depth" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDepthValue
+:hasDepthValue rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+               rdfs:domain :Depth ;
+               rdfs:range :DepthValue ;
+               rdfs:label "has depth value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDiameter
+:hasDiameter rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
+             rdfs:range :Diameter ;
+             rdfs:label "has diameter" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDiameterValue
+:hasDiameterValue rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                  rdfs:domain :Diameter ;
+                  rdfs:range :DiameterValue ;
+                  rdfs:label "has diameter value" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/hasFiberElongationAtBreak
@@ -155,44 +396,79 @@ xsd:date rdf:type rdfs:Datatype .
                       rdfs:label "has hazardous material" .
 
 
-###  http://w3id.org/CEON/demo/electronics/hasItemDiameter
-:hasItemDiameter rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
-                 rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
-                 rdfs:range :ItemDiameter ;
-                 rdfs:label "has item diameter" .
-
-
-###  http://w3id.org/CEON/demo/electronics/hasItemDiameterValue
-:hasItemDiameterValue rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                      rdfs:domain :ItemDiameter ,
-                                  <http://w3id.org/CEON/ontology/product/Item> ;
-                      rdfs:range :ItemDiameterValue ;
-                      rdfs:label "has item diameter value" .
-
-
-###  http://w3id.org/CEON/demo/electronics/hasItemLength
-:hasItemLength rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
-               rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
-               rdfs:range :ItemLength ;
-               rdfs:label "has item length" .
-
-
-###  http://w3id.org/CEON/demo/electronics/hasItemLengthValue
-:hasItemLengthValue rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                    rdfs:domain :ItemLength ,
-                                <http://w3id.org/CEON/ontology/product/Item> ;
-                    rdfs:range :ItemLengthValue ;
-                    rdfs:label "has Item length value" .
-
-
 ###  http://w3id.org/CEON/demo/electronics/hasLCAValue
 :hasLCAValue rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
              rdfs:label "has LCA value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasLength
+:hasLength rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
+           rdfs:range :Length ;
+           rdfs:label "has length" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasLengthValue
+:hasLengthValue rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                rdfs:domain :Length ;
+                rdfs:range :LengthValue ;
+                rdfs:label "has length value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasLifeSpanTime
+:hasLifeSpanTime rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
+                 rdfs:range :LifeSpanTime ;
+                 rdfs:label "has life span time" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasLifeSpanTimeValue
+:hasLifeSpanTimeValue rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                      rdfs:domain :LifeSpanTime ;
+                      rdfs:range :LifeSpanTimeValue ;
+                      rdfs:label "has life span time value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMetalCompositionValue
+:hasMetalCompositionValue rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                          rdfs:domain :MetalComposition ;
+                          rdfs:range :MetalCompositionValue ;
+                          rdfs:label "has metal composition value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasOuterDiameter
+:hasOuterDiameter rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasDiameter .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasPostConsumerRecycledContentValue
+:hasPostConsumerRecycledContentValue rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                                     rdfs:domain :PostConsumerRecycledContent ,
+                                                 <http://w3id.org/CEON/ontology/product/Item> ;
+                                     rdfs:range :PostConsumerRecycledContentValue ;
+                                     rdfs:label "has post consumer recycled content value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasPreConsumerRecycledContentValue
+:hasPreConsumerRecycledContentValue rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                                    rdfs:domain :PreConsumerRecycledContent ,
+                                                <http://w3id.org/CEON/ontology/product/Item> ;
+                                    rdfs:range :PreConsumerRecycledContentValue ;
+                                    rdfs:label "has pre consumer recycled content value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRareEarthCompositionValue
+:hasRareEarthCompositionValue rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                              rdfs:domain :RareEarthComposition ;
+                              rdfs:range :RareEarthCompositionValue ;
+                              rdfs:label "has rare earth composition value" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/hasRecyclingPressureValue
@@ -223,6 +499,15 @@ xsd:date rdf:type rdfs:Datatype .
                         rdfs:label "has refractive index at 25" .
 
 
+###  http://w3id.org/CEON/demo/electronics/hasRenewableContentValue
+:hasRenewableContentValue rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                          rdfs:domain :RenewableContent ,
+                                      <http://w3id.org/CEON/ontology/product/Item> ;
+                          rdfs:range :RenewableContentValue ;
+                          rdfs:label "has renewable content value" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/hasResistivityValue
 :hasResistivityValue rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
@@ -230,6 +515,13 @@ xsd:date rdf:type rdfs:Datatype .
                                  <http://w3id.org/CEON/ontology/product/Item> ;
                      rdfs:range :ResistivityValue ;
                      rdfs:label "has resistivity value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasShape
+:hasShape rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
+          rdfs:range :Shape ;
+          rdfs:label "has shape" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/hasShearStrength
@@ -317,6 +609,23 @@ xsd:date rdf:type rdfs:Datatype .
                                rdfs:label "has transition temperature value" .
 
 
+###  http://w3id.org/CEON/demo/electronics/hasUnknownAcuteToxicity
+:hasUnknownAcuteToxicity rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                         rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
+                         rdfs:range :UnknownAcuteToxicityPercentage ;
+                         rdfs:label "has unknown acute toxicity" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasVirginFosilContentValue
+:hasVirginFosilContentValue rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                            rdfs:domain :VirginFosilContent ,
+                                        <http://w3id.org/CEON/ontology/product/Item> ;
+                            rdfs:range :VirginFosilContentValue ;
+                            rdfs:label "has virgin fosil content value" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/hasViscosityAt25
 :hasViscosityAt25 rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
@@ -332,6 +641,21 @@ xsd:date rdf:type rdfs:Datatype .
                                    <http://w3id.org/CEON/ontology/product/Item> ;
                        rdfs:range :ViscosityAt25Value ;
                        rdfs:label "has viscosity at 25 value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasWidth
+:hasWidth rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
+          rdfs:range :Width ;
+          rdfs:label "has width" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasWidthValue
+:hasWidthValue rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+               rdfs:domain :Width ;
+               rdfs:range :WidthValue ;
+               rdfs:label "has width value" .
 
 
 ###  http://w3id.org/CEON/ontology/actorODP/participantRole
@@ -392,11 +716,28 @@ xsd:date rdf:type rdfs:Datatype .
                        rdfs:label "has decommission reason" .
 
 
+###  http://w3id.org/CEON/demo/electronics/hasEfficiencyClass
+:hasEfficiencyClass rdf:type owl:DatatypeProperty ;
+                    rdfs:label "has efficiency class" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/hasInstallationDate
 :hasInstallationDate rdf:type owl:DatatypeProperty ;
                      rdfs:range xsd:dateTime ;
                      rdfs:comment "hasInstallationDate represents the date of installation of a batch of products." ;
                      rdfs:label "has installation date" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasInstallationInstructions
+:hasInstallationInstructions rdf:type owl:DatatypeProperty ;
+                             rdfs:range xsd:string ;
+                             rdfs:label "has installation instructions" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasIntendedApplication
+:hasIntendedApplication rdf:type owl:DatatypeProperty ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "has intended application" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/hasLayUpSequence
@@ -411,10 +752,22 @@ xsd:date rdf:type rdfs:Datatype .
                             rdfs:label "has maintenance instructions" .
 
 
+###  http://w3id.org/CEON/demo/electronics/hasMaintenanceMeasures
+:hasMaintenanceMeasures rdf:type owl:DatatypeProperty ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "has maintenance measures" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/hasMaintenanceReport
 :hasMaintenanceReport rdf:type owl:DatatypeProperty ;
                       rdfs:range xsd:string ;
                       rdfs:label "has maintenance report" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMaintenanceTrigger
+:hasMaintenanceTrigger rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "has maintenance trigger" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/hasManufacturingSequence
@@ -474,6 +827,12 @@ xsd:date rdf:type rdfs:Datatype .
 :hasUseAndAssemblyInstructions rdf:type owl:DatatypeProperty ;
                                rdfs:range xsd:string ;
                                rdfs:label "has use and assembly instructions" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasdisassemblyInstructions
+:hasdisassemblyInstructions rdf:type owl:DatatypeProperty ;
+                            rdfs:range xsd:string ;
+                            rdfs:label "has disassembly instructions" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/isFlameRetardancy
@@ -541,9 +900,39 @@ xsd:date rdf:type rdfs:Datatype .
                  rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 
+###  http://w3id.org/CEON/demo/electronics/CatalystComposition
+:CatalystComposition rdf:type owl:Class ;
+                     rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                     <http://w3id.org/CEON/ontology/product/MatterComposition> ;
+                     rdfs:label "Catalyst Composition" .
+
+
+###  http://w3id.org/CEON/demo/electronics/CatalystCompositionValue
+:CatalystCompositionValue rdf:type owl:Class ;
+                          rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ;
+                          rdfs:label "Catalyst Composition Value" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/CatalystMaterial
 :CatalystMaterial rdf:type owl:Class ;
                   rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/ChemicalElementComposition
+:ChemicalElementComposition rdf:type owl:Class ;
+                            rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                            <http://w3id.org/CEON/ontology/product/MatterComposition> ;
+                            rdfs:label "Chemical Element Composition" .
+
+
+###  http://w3id.org/CEON/demo/electronics/ChemicalElementCompositionValue
+:ChemicalElementCompositionValue rdf:type owl:Class ;
+                                 rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                   owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                                 ] ;
+                                 rdfs:label "Chemical Element Composition Value" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/Conductivity
@@ -628,6 +1017,71 @@ xsd:date rdf:type rdfs:Datatype .
                   rdfs:label "Density At 25 Value" .
 
 
+###  http://w3id.org/CEON/demo/electronics/Depth
+:Depth rdf:type owl:Class ;
+       rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                       <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasDepthValue ;
+                         owl:allValuesFrom :DepthValue
+                       ] ;
+       rdfs:label "Depth" .
+
+
+###  http://w3id.org/CEON/demo/electronics/DepthValue
+:DepthValue rdf:type owl:Class ;
+            rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                     owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                     owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                              owl:allValuesFrom xsd:double
+                            ] ;
+            rdfs:label "Depth Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/Diameter
+:Diameter rdf:type owl:Class ;
+          rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                          <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasDiameterValue ;
+                            owl:allValuesFrom :DiameterValue
+                          ] ;
+          rdfs:label "Diameter" .
+
+
+###  http://w3id.org/CEON/demo/electronics/DiameterValue
+:DiameterValue rdf:type owl:Class ;
+               rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                        owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                        owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                 owl:allValuesFrom xsd:double
+                               ] ;
+               rdfs:comment "The value of diameter of a component." ;
+               rdfs:label "Diameter Value" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/DoubleMagnet
 :DoubleMagnet rdf:type owl:Class ;
               rdfs:subClassOf :ElectronicsProduct ;
@@ -644,6 +1098,11 @@ xsd:date rdf:type rdfs:Datatype .
 :ElectronicsProductSourcingComponentRelation rdf:type owl:Class ;
                                              rdfs:subClassOf <http://w3id.org/CEON/ontology/provenance/Statement> ;
                                              rdfs:label "Electronics product sourcing component relation" .
+
+
+###  http://w3id.org/CEON/demo/electronics/FasteningMethod
+:FasteningMethod rdf:type owl:Class ;
+                 rdfs:label "Fastening Method" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/FiberElongationAtBreak
@@ -734,87 +1193,15 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://w3id.org/CEON/demo/electronics/HazardousMaterialPercentage
 :HazardousMaterialPercentage rdf:type owl:Class ;
                              rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                      owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                    ]
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                      owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                    ]
-                                                                  ) ;
-                                               rdf:type owl:Class
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                               owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
                                              ] ,
                                              [ rdf:type owl:Restriction ;
                                                owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
                                                owl:allValuesFrom xsd:double
                                              ] ;
                              rdfs:label "Hazardous Material Percentage" .
-
-
-###  http://w3id.org/CEON/demo/electronics/ItemDiameter
-:ItemDiameter rdf:type owl:Class ;
-              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                              <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasItemDiameterValue ;
-                                owl:allValuesFrom :ItemDiameterValue
-                              ] ;
-              rdfs:label "Item Diameter" .
-
-
-###  http://w3id.org/CEON/demo/electronics/ItemDiameterValue
-:ItemDiameterValue rdf:type owl:Class ;
-                   rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                            owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                          ]
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                            owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                          ]
-                                                        ) ;
-                                     rdf:type owl:Class
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                     owl:allValuesFrom xsd:double
-                                   ] ;
-                   rdfs:comment "The value of diameter of a component." ;
-                   rdfs:label "Item Diameter Value" .
-
-
-###  http://w3id.org/CEON/demo/electronics/ItemLength
-:ItemLength rdf:type owl:Class ;
-            rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                            <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasItemLengthValue ;
-                              owl:allValuesFrom :ItemLengthValue
-                            ] ;
-            rdfs:label "Item Length" .
-
-
-###  http://w3id.org/CEON/demo/electronics/ItemLengthValue
-:ItemLengthValue rdf:type owl:Class ;
-                 rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                          owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                          owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                        ]
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                          owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                        ]
-                                                      ) ;
-                                   rdf:type owl:Class
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                   owl:allValuesFrom xsd:double
-                                 ] ;
-                 rdfs:label "Item Length Value" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/LCAAcidification
@@ -1060,14 +1447,94 @@ xsd:date rdf:type rdfs:Datatype .
                   rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 
+###  http://w3id.org/CEON/demo/electronics/Length
+:Length rdf:type owl:Class ;
+        rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                        <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasLengthValue ;
+                          owl:allValuesFrom :LengthValue
+                        ] ;
+        rdfs:label "Length" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LengthValue
+:LengthValue rdf:type owl:Class ;
+             rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                      owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                      owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                               owl:allValuesFrom xsd:double
+                             ] ;
+             rdfs:label "Length Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LifeSpanTime
+:LifeSpanTime rdf:type owl:Class ;
+              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                              <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasLifeSpanTimeValue ;
+                                owl:allValuesFrom :LifeSpanTimeValue
+                              ] ;
+              rdfs:label "Life Span Time" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LifeSpanTimeValue
+:LifeSpanTimeValue rdf:type owl:Class ;
+                   rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                     owl:hasValue <http://qudt.org/vocab/unit/YR>
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                     owl:allValuesFrom xsd:double
+                                   ] ;
+                   rdfs:label "Life Span Time Value" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/MatrixAdditiveMAterial
 :MatrixAdditiveMAterial rdf:type owl:Class ;
                         rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 
+###  http://w3id.org/CEON/demo/electronics/MetalComposition
+:MetalComposition rdf:type owl:Class ;
+                  rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                  <http://w3id.org/CEON/ontology/product/MatterComposition> ;
+                  rdfs:label "Metal Composition" .
+
+
+###  http://w3id.org/CEON/demo/electronics/MetalCompositionValue
+:MetalCompositionValue rdf:type owl:Class ;
+                       rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ;
+                       rdfs:label "Metal Composition Value" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/MetalMaterial
 :MetalMaterial rdf:type owl:Class ;
                rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/MotorSpeedType
+:MotorSpeedType rdf:type owl:Class ;
+                rdfs:label "Motor Speed Type" .
+
+
+###  http://w3id.org/CEON/demo/electronics/MotorType
+:MotorType rdf:type owl:Class ;
+           rdfs:label "Motor Type" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/NeodymiumMagnet
@@ -1088,6 +1555,20 @@ xsd:date rdf:type rdfs:Datatype .
                              rdfs:seeAlso "The finished goods or products have been used by a consumer, and then the material has been recycled." .
 
 
+###  http://w3id.org/CEON/demo/electronics/PostConsumerRecycledContentValue
+:PostConsumerRecycledContentValue rdf:type owl:Class ;
+                                  rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                    owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                                    owl:allValuesFrom xsd:double
+                                                  ] ;
+                                  rdfs:label "Post Consumer Recycled Content Value" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/PostCustomerRecycledContent
 :PostCustomerRecycledContent rdf:type owl:Class .
 
@@ -1098,6 +1579,20 @@ xsd:date rdf:type rdfs:Datatype .
                             rdfs:comment "The recycled content has been retained during the process of manufacturing or delivering products, before delivering to a customer." ;
                             rdfs:label "Pre consumer recycled content" ;
                             rdfs:seeAlso "https://en.wikipedia.org/wiki/Pre-consumer_recycling" .
+
+
+###  http://w3id.org/CEON/demo/electronics/PreConsumerRecycledContentValue
+:PreConsumerRecycledContentValue rdf:type owl:Class ;
+                                 rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                   owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                                   owl:allValuesFrom xsd:double
+                                                 ] ;
+                                 rdfs:label "Pre Consumer Recycled Content Value" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/PrepregMaterial
@@ -1114,6 +1609,19 @@ xsd:date rdf:type rdfs:Datatype .
                  rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
                  rdfs:label "REACH compliance" ;
                  rdfs:seeAlso "https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RareEarthComposition
+:RareEarthComposition rdf:type owl:Class ;
+                      rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                      <http://w3id.org/CEON/ontology/product/MatterComposition> ;
+                      rdfs:label "Rare Earth Composition" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RareEarthCompositionValue
+:RareEarthCompositionValue rdf:type owl:Class ;
+                           rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ;
+                           rdfs:label "Rare Earth Composition Value" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/RareEarthMaterial
@@ -1220,6 +1728,20 @@ xsd:date rdf:type rdfs:Datatype .
                   rdfs:label "Renewable content" .
 
 
+###  http://w3id.org/CEON/demo/electronics/RenewableContentValue
+:RenewableContentValue rdf:type owl:Class ;
+                       rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                         owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                         owl:allValuesFrom xsd:double
+                                       ] ;
+                       rdfs:label "Renewable Content Value" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/ResinMaterial
 :ResinMaterial rdf:type owl:Class ;
                rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
@@ -1244,6 +1766,11 @@ xsd:date rdf:type rdfs:Datatype .
                                     owl:allValuesFrom xsd:double
                                   ] ;
                   rdfs:label "Resistivity Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/Shape
+:Shape rdf:type owl:Class ;
+       rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> .
 
 
 ###  http://w3id.org/CEON/demo/electronics/ShearStrength
@@ -1422,6 +1949,38 @@ xsd:date rdf:type rdfs:Datatype .
                    rdfs:subClassOf :MetalMaterial .
 
 
+###  http://w3id.org/CEON/demo/electronics/UnknownAcuteToxicityPercentage
+:UnknownAcuteToxicityPercentage rdf:type owl:Class ;
+                                rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                  owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                                  owl:allValuesFrom xsd:double
+                                                ] ;
+                                rdfs:label "Unknown Acute Toxicity Percentage" .
+
+
+###  http://w3id.org/CEON/demo/electronics/VirginFosilContent
+:VirginFosilContent rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/demo/electronics/VirginFosilContentValue
+:VirginFosilContentValue rdf:type owl:Class ;
+                         rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                           owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                           owl:allValuesFrom xsd:double
+                                         ] ;
+                         rdfs:label "Virgin Fosil Content Value" .
+
+
 ###  http://w3id.org/CEON/demo/electronics/VirginFossilContent
 :VirginFossilContent rdf:type owl:Class ;
                      rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
@@ -1458,6 +2017,38 @@ xsd:date rdf:type rdfs:Datatype .
                                       owl:allValuesFrom xsd:double
                                     ] ;
                     rdfs:label "Viscosity At 25 Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/Width
+:Width rdf:type owl:Class ;
+       rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                       <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasWidthValue ;
+                         owl:allValuesFrom :WidthValue
+                       ] ;
+       rdfs:label "Width" .
+
+
+###  http://w3id.org/CEON/demo/electronics/WidthValue
+:WidthValue rdf:type owl:Class ;
+            rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                     owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                     owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                              owl:allValuesFrom xsd:double
+                            ] ;
+            rdfs:label "Width Value" .
 
 
 ###  http://w3id.org/CEON/ontology/actor/IssuingResource
@@ -1605,9 +2196,19 @@ xsd:date rdf:type rdfs:Datatype .
                                     rdfs:label "pascal second"@en .
 
 
+###  http://w3id.org/CEON/demo/electronics/Induction
+:Induction rdf:type owl:NamedIndividual ,
+                    :MotorType .
+
+
 ###  http://w3id.org/CEON/demo/electronics/M
 :M rdf:type owl:NamedIndividual ,
             <http://w3id.org/CEON/ontology/actorODP/Actor> .
+
+
+###  http://w3id.org/CEON/demo/electronics/PressFitOrFriction
+:PressFitOrFriction rdf:type owl:NamedIndividual ,
+                             :FasteningMethod .
 
 
 ###  http://w3id.org/CEON/demo/electronics/REACH
@@ -1663,6 +2264,16 @@ xsd:date rdf:type rdfs:Datatype .
                     :PostCustomerRecycledContent ;
            <http://qudt.org/schema/qudt/hasUnit> <https://qudt.org/vocab/unit/PERCENT> ;
            <http://qudt.org/schema/qudt/numericalValue> "50.0"^^xsd:double .
+
+
+###  http://w3id.org/CEON/demo/electronics/continuous_variable_speed
+:continuous_variable_speed rdf:type owl:NamedIndividual ,
+                                    :MotorSpeedType .
+
+
+###  http://w3id.org/CEON/demo/electronics/cylinder
+:cylinder rdf:type owl:NamedIndividual ,
+                   :Shape .
 
 
 ###  http://w3id.org/CEON/demo/electronics/damper_x
