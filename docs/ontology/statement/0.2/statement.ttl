@@ -1,0 +1,45 @@
+@prefix : <http://w3id.org/CEON/ontology/statement/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+<http://w3id.org/CEON/ontology/actorODP/Role> rdfs:subClassOf prov:Role .
+
+resourceODP:Resource rdfs:subClassOf prov:Entity .
+
+: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist" ;
+    dcterms:created "2025-03-23" ;
+    dcterms:creator "Huanyu Li" ;
+    dcterms:description "A module to represent statements of CEON resources." ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Statement Module" ;
+    vann:preferredNamespacePrefix "statement" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/statement/" ;
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/>,
+        <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/statement/0.2/> ;
+    owl:versionInfo "0.2" .
+
+:statementAbout a owl:ObjectProperty ;
+    rdfs:label "statement about" ;
+    rdfs:comment "Generic property to express what the statement is about, i.e. what is involved in the statement." ;
+    rdfs:domain :Statement .
+
+:statementValue a owl:DatatypeProperty ;
+    rdfs:label "statement value" ;
+    rdfs:comment "Generic property to express values, e.g. literals, that are involved in this statement." ;
+    rdfs:domain :Statement .
+
+prov:Role a owl:Class .
+
+:Statement a owl:Class ;
+    rdfs:label "Statement" ;
+    rdfs:comment "Generic class representing the concept of a statement, i.e. some piece of information, fact etc that is expressed in the data. Effectively used to reify relations (triples) in the data, and express information about them." ;
+    rdfs:subClassOf prov:Entity .
+
+prov:Entity a owl:Class .
+

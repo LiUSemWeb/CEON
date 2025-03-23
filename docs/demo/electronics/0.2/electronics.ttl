@@ -2,9 +2,9 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ns1: <http://qudt.org/schema/qudt/> .
 @prefix ns2: <http://w3id.org/CEON/ontology/actorODP/> .
-@prefix ns3: <http://w3id.org/CEON/ontology/product/> .
+@prefix ns3: <http://w3id.org/CEON/ontology/statement/> .
 @prefix ns4: <http://w3id.org/CEON/ontology/resourceODP/> .
-@prefix ns5: <http://w3id.org/CEON/ontology/statement/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -319,7 +319,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 :REACHCompliance a owl:Class ;
     rdfs:label "REACH compliance" ;
     rdfs:seeAlso "https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en" ;
-    rdfs:subClassOf ns3:Compliance ;
+    rdfs:subClassOf ns5:Compliance ;
     owl:equivalentClass [ a owl:Restriction ;
             owl:hasValue :REACH ;
             owl:onProperty :complianceWith ] .
@@ -379,7 +379,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 
 :hasConductivity a owl:ObjectProperty ;
     rdfs:label "has conductivity" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :Conductivity ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
@@ -395,25 +395,25 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 
 :hasDensityAt25 a owl:ObjectProperty ;
     rdfs:label "has density at 25" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :DensityAt25 ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
 :hasFiberElongationAtBreak a owl:ObjectProperty ;
     rdfs:label "has fiber elongation at break" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :FiberElongationAtBreak ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
 :hasFiberVolumeContent a owl:ObjectProperty ;
     rdfs:label "has fiber volume content" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :FiberVolumeContent ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
 :hasHazardousMaterial a owl:ObjectProperty ;
     rdfs:label "has hazardous material" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :HazardousMaterialPercentage ;
     rdfs:subPropertyOf ns1:quantityValue .
 
@@ -424,13 +424,13 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 
 :hasItemDiameter a owl:ObjectProperty ;
     rdfs:label "has item diameter" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :ItemDiameter ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
 :hasItemLength a owl:ObjectProperty ;
     rdfs:label "has item length" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :ItemLength ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
@@ -500,7 +500,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 
 :hasShearStrength a owl:ObjectProperty ;
     rdfs:label "has shear strength" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :ShearStrength ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
@@ -515,25 +515,25 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 
 :hasStiffness a owl:ObjectProperty ;
     rdfs:label "has stiffness" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :Stiffness ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
 :hasTensileModulus a owl:ObjectProperty ;
     rdfs:label "has tensile modulus" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :TensileModulus ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
 :hasTensileStrength a owl:ObjectProperty ;
     rdfs:label "has tensile strength" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :TensileStrength ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
 :hasTransitionTemperature a owl:ObjectProperty ;
     rdfs:label "has transition temperature" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :TransitionTemperature ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
@@ -543,7 +543,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 
 :hasViscosityAt25 a owl:ObjectProperty ;
     rdfs:label "has viscosity at 25" ;
-    rdfs:domain ns3:Item ;
+    rdfs:domain ns5:Item ;
     rdfs:range :ViscosityAt25 ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
@@ -566,7 +566,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         <http://w3id.org/CEON/ontology/provenance/Statement>,
         owl:NamedIndividual ;
     ns1:hasUnit <http://qudt.org/vocab/unit/PA> ;
-    ns5:statementAbout :speaker_x .
+    ns3:statementAbout :speaker_x .
 
 :s7 a <http://w3id.org/CEON/ontology/actor/SupplyingResource>,
         owl:NamedIndividual ;
@@ -610,7 +610,7 @@ ns2:participationIn a owl:ObjectProperty .
 
 ns2:participationTimePoint a owl:DatatypeProperty .
 
-ns5:statementAbout a owl:AnnotationProperty .
+ns3:statementAbout a owl:AnnotationProperty .
 
 xsd:date a rdfs:Datatype .
 
@@ -791,90 +791,90 @@ ns1:DerivedUnit a owl:Class ;
 :hasConductivityValue a owl:ObjectProperty ;
     rdfs:label "has conductivity value" ;
     rdfs:domain :Conductivity,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :ConductivityValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasDensityAt25Value a owl:ObjectProperty ;
     rdfs:label "has density value" ;
     rdfs:domain :DensityAt25,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasFiberElongationAtBreakValue a owl:ObjectProperty ;
     rdfs:label "has fiber elongation at break value" ;
     rdfs:domain :FiberElongationAtBreak,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :FiberElongationAtBreakValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasFiberVolumeContentValue a owl:ObjectProperty ;
     rdfs:label "has fiber volume content value" ;
     rdfs:domain :FiberVolumeContent,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :FiberVolumeContentValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasItemDiameterValue a owl:ObjectProperty ;
     rdfs:label "has item diameter value" ;
     rdfs:domain :ItemDiameter,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :ItemDiameterValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasItemLengthValue a owl:ObjectProperty ;
     rdfs:label "has Item length value" ;
     rdfs:domain :ItemLength,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :ItemLengthValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasResistivityValue a owl:ObjectProperty ;
     rdfs:label "has resistivity value" ;
     rdfs:domain :Resistivity,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :ResistivityValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasShearStrengthValue a owl:ObjectProperty ;
     rdfs:label "has shear strength value" ;
     rdfs:domain :ShearStrength,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :ShearStrengthValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasStiffnessValue a owl:ObjectProperty ;
     rdfs:label "has stiffness value" ;
     rdfs:domain :Stiffness,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :StiffnessValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasTensileModulusValue a owl:ObjectProperty ;
     rdfs:label "has tensile modulus value" ;
     rdfs:domain :TensileModulus,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :TensileModulusValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasTensileStrengthValue a owl:ObjectProperty ;
     rdfs:label "has tensile strength value" ;
     rdfs:domain :TensileStrength,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :TensileStrengthValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasTransitionTemperatureValue a owl:ObjectProperty ;
     rdfs:label "has transition temperature value" ;
     rdfs:domain :TransitionTemperature,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :TransitionTemperatureValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasViscosityAt25Value a owl:ObjectProperty ;
     rdfs:label "has viscosity at 25 value" ;
     rdfs:domain :ViscosityAt25,
-        ns3:Item ;
+        ns5:Item ;
     rdfs:range :ViscosityAt25Value ;
     rdfs:subPropertyOf ns1:quantityValue .
 
@@ -1159,14 +1159,14 @@ ns2:ResourceRelation a owl:Class .
 
 :boc_x a ns4:BatchOfObjects,
         owl:NamedIndividual ;
-    ns3:batchOfProduct :speaker_x .
+    ns5:batchOfProduct :speaker_x .
 
 :damper_x a :Damper,
-        ns3:Product,
+        ns5:Product,
         owl:NamedIndividual .
 
 :neodymium_magnet_x a :NeodymiumMagnet,
-        ns3:Product,
+        ns5:Product,
         owl:NamedIndividual ;
     ns4:hasConstituent :damper_x,
         :neodymium_magnet_x .
@@ -1185,7 +1185,7 @@ ns2:ResourceRelation a owl:Class .
 
 :ElectronicsProduct a owl:Class ;
     rdfs:label "Electronics Product" ;
-    rdfs:subClassOf ns3:Product .
+    rdfs:subClassOf ns5:Product .
 
 ns2:Actor a owl:Class .
 
