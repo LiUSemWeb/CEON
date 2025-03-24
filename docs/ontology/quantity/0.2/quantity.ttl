@@ -52,6 +52,30 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
     rdfs:comment "The market value, expressed as an amount of money with a currency unit." ;
     rdfs:subPropertyOf qudt:quantityValue .
 
+:hasMaximalValueIncludedOfInterval a owl:ObjectProperty ;
+    rdfs:label "has maximal value included of interval" ;
+    rdfs:domain :QuantityInterval ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasMaximalValueNotIncludedOfInterval a owl:ObjectProperty ;
+    rdfs:label "has maximal value not included of interval" ;
+    rdfs:domain :QuantityInterval ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasMinimalValueIncludedOfInterval a owl:ObjectProperty ;
+    rdfs:label "has minimal value included of interval" ;
+    rdfs:domain :QuantityInterval ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasMinimalValueNotIncludedOfInterval a owl:ObjectProperty ;
+    rdfs:label "has minimal value not included of interval" ;
+    rdfs:domain :QuantityInterval ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
 :hasRefurbishmentCost a owl:ObjectProperty ;
     rdfs:label "has refurbishment cost" ;
     rdfs:comment "The cost of refurbishment, expressed as an amount of money with a currency unit." ;
@@ -90,54 +114,6 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
     owl:versionIRI <http://w3id.org/CEON/ontology/quantity/0.2/> ;
     owl:versionInfo "0.2"@en .
 
-:hasMaximalValueIncludedOfInterval a owl:ObjectProperty ;
-    rdfs:label "has maximal value included of interval" ;
-    rdfs:domain :QuantityInterval ;
-    rdfs:range :MaximalValueOfInterval ;
-    rdfs:subPropertyOf qudt:quantityValue .
-
-:hasMaximalValueNotIncludedOfInterval a owl:ObjectProperty ;
-    rdfs:label "has maximal value not included of interval" ;
-    rdfs:domain :QuantityInterval ;
-    rdfs:range :MaximalValueOfInterval ;
-    rdfs:subPropertyOf qudt:quantityValue .
-
-:hasMinimalValueIncludedOfInterval a owl:ObjectProperty ;
-    rdfs:label "has minimal value included of interval" ;
-    rdfs:domain :QuantityInterval ;
-    rdfs:range :MinimalValueOfInterval ;
-    rdfs:subPropertyOf qudt:quantityValue .
-
-:hasMinimalValueNotIncludedOfInterval a owl:ObjectProperty ;
-    rdfs:label "has minimal value not included of interval" ;
-    rdfs:domain :QuantityInterval ;
-    rdfs:range :MinimalValueOfInterval ;
-    rdfs:subPropertyOf qudt:quantityValue .
-
-:MaximalValueOfInterval a owl:Class ;
-    rdfs:label "Maximal Value Of Interval" ;
-    rdfs:subClassOf qudt:QuantityValue .
-
-:MinimalValueOfInterval a owl:Class ;
-    rdfs:label "Minimal Value Of Interval" ;
-    rdfs:subClassOf qudt:QuantityValue .
-
 :QuantityInterval a owl:Class ;
-    rdfs:label "Quantity Interval" ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:unionOf ( [ a owl:Restriction ;
-                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass :MaximalValueOfInterval ;
-                        owl:onProperty :hasMaximalValueIncludedOfInterval ] [ a owl:Restriction ;
-                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass :MaximalValueOfInterval ;
-                        owl:onProperty :hasMaximalValueNotIncludedOfInterval ] ) ],
-        [ a owl:Class ;
-            owl:unionOf ( [ a owl:Restriction ;
-                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass :MinimalValueOfInterval ;
-                        owl:onProperty :hasMinimalValueIncludedOfInterval ] [ a owl:Restriction ;
-                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass :MinimalValueOfInterval ;
-                        owl:onProperty :hasMinimalValueNotIncludedOfInterval ] ) ] .
+    rdfs:label "Quantity Interval" .
 
