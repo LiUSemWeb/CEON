@@ -1,0 +1,36 @@
+@prefix : <http://w3id.org/CEON/ontology/datasheet/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix statement: <http://w3id.org/CEON/ontology/statement/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist" ;
+    dcterms:created "2025-03-24" ;
+    dcterms:creator "Huanyu Li" ;
+    dcterms:description "A general representation of a CE data sheet, e.g. a product data sheet, a PCDS or similar." ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Data Sheet" ;
+    vann:preferredNamespacePrefix "datasheet" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/datasheet/" ;
+    owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.5/>,
+        <http://w3id.org/CEON/ontology/statement/0.2/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/datasheet/0.3/> ;
+    owl:versionInfo "0.3" .
+
+:DataSheet a owl:Class ;
+    rdfs:label "Data Sheet" ;
+    rdfs:comment "A data sheet is a collection of data about something, e.g. a set of facts about a product." ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( resourceODP:Information [ a owl:Restriction ;
+                        owl:onProperty resourceODP:containsInformation ;
+                        owl:someValuesFrom statement:Statement ] ) ],
+        resourceODP:Information .
+
+prov:Entity a owl:Class .
+
