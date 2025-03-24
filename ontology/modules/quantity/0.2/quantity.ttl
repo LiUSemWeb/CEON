@@ -68,7 +68,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :hasMaximalValueIncludedOfInterval rdf:type owl:ObjectProperty ;
                                    rdfs:subPropertyOf qudt:quantityValue ;
                                    rdfs:domain :QuantityInterval ;
-                                   rdfs:range :MaximalValueOfInterval ;
+                                   rdfs:range qudt:QuantityValue ;
                                    rdfs:label "has maximal value included of interval" .
 
 
@@ -76,7 +76,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :hasMaximalValueNotIncludedOfInterval rdf:type owl:ObjectProperty ;
                                       rdfs:subPropertyOf qudt:quantityValue ;
                                       rdfs:domain :QuantityInterval ;
-                                      rdfs:range :MaximalValueOfInterval ;
+                                      rdfs:range qudt:QuantityValue ;
                                       rdfs:label "has maximal value not included of interval" .
 
 
@@ -84,7 +84,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :hasMinimalValueIncludedOfInterval rdf:type owl:ObjectProperty ;
                                    rdfs:subPropertyOf qudt:quantityValue ;
                                    rdfs:domain :QuantityInterval ;
-                                   rdfs:range :MinimalValueOfInterval ;
+                                   rdfs:range qudt:QuantityValue ;
                                    rdfs:label "has minimal value included of interval" .
 
 
@@ -92,7 +92,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :hasMinimalValueNotIncludedOfInterval rdf:type owl:ObjectProperty ;
                                       rdfs:subPropertyOf qudt:quantityValue ;
                                       rdfs:domain :QuantityInterval ;
-                                      rdfs:range :MinimalValueOfInterval ;
+                                      rdfs:range qudt:QuantityValue ;
                                       rdfs:label "has minimal value not included of interval" .
 
 
@@ -142,46 +142,8 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
-###  http://w3id.org/CEON/ontology/quantity#MaximalValueOfInterval
-:MaximalValueOfInterval rdf:type owl:Class ;
-                        rdfs:subClassOf qudt:QuantityValue ;
-                        rdfs:label "Maximal Value Of Interval" .
-
-
-###  http://w3id.org/CEON/ontology/quantity#MinimalValueOfInterval
-:MinimalValueOfInterval rdf:type owl:Class ;
-                        rdfs:subClassOf qudt:QuantityValue ;
-                        rdfs:label "Minimal Value Of Interval" .
-
-
 ###  http://w3id.org/CEON/ontology/quantity#QuantityInterval
 :QuantityInterval rdf:type owl:Class ;
-                  rdfs:subClassOf [ rdf:type owl:Class ;
-                                    owl:unionOf ( [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasMaximalValueIncludedOfInterval ;
-                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                    owl:onClass :MaximalValueOfInterval
-                                                  ]
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasMaximalValueNotIncludedOfInterval ;
-                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                    owl:onClass :MaximalValueOfInterval
-                                                  ]
-                                                )
-                                  ] ,
-                                  [ rdf:type owl:Class ;
-                                    owl:unionOf ( [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasMinimalValueIncludedOfInterval ;
-                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                    owl:onClass :MinimalValueOfInterval
-                                                  ]
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasMinimalValueNotIncludedOfInterval ;
-                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                    owl:onClass :MinimalValueOfInterval
-                                                  ]
-                                                )
-                                  ] ;
                   rdfs:label "Quantity Interval" .
 
 
