@@ -19,9 +19,8 @@
     rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
     owl:imports <http://w3id.org/CEON/ontology/actor/0.4/>,
         <http://w3id.org/CEON/ontology/actorODP/0.3/>,
-        <http://w3id.org/CEON/ontology/datasheet/0.2/>,
+        <http://w3id.org/CEON/ontology/datasheet/0.3/>,
         <http://w3id.org/CEON/ontology/product/0.5/>,
-        <http://w3id.org/CEON/ontology/quantity/0.1/>,
         <http://w3id.org/CEON/ontology/statement/0.2/> ;
     owl:versionIRI <http://w3id.org/CEON/demo/textile/0.2/> ;
     owl:versionInfo 0.2 .
@@ -239,6 +238,9 @@
         owl:NamedIndividual ;
     rdfs:comment "Industrial cascading in the biosphere."@en .
 
+:blue a :Color,
+        owl:NamedIndividual .
+
 :calendering a :MechanicalFinishing,
         owl:NamedIndividual .
 
@@ -340,9 +342,22 @@
 :handPainted a :PrintingProcess,
         owl:NamedIndividual .
 
+:hasCASNumber a owl:DatatypeProperty ;
+    rdfs:label "has CAS number" ;
+    rdfs:seeAlso "https://www.cas.org/cas-data/cas-registry" .
+
 :hasChemicalCompliance a owl:DatatypeProperty ;
     rdfs:label "has chemical compliance" ;
     :CFmapping "CF707" .
+
+:hasCompanyName a owl:DatatypeProperty ;
+    rdfs:label "has company name" ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actor/hasOrganisationName> .
+
+:hasCountrySpecificCorporateIdentificationNumber a owl:DatatypeProperty ;
+    rdfs:label "has country specific corporate identification number" ;
+    rdfs:range xsd:string .
 
 :hasDyeMethod a owl:ObjectProperty ;
     rdfs:label "Dye Method"@en ;
@@ -368,6 +383,10 @@
 :hasFinishingSteps a owl:DatatypeProperty ;
     rdfs:label "has finishing steps" ;
     :CFmapping "CF705" .
+
+:hasGlobalLocationNumber a owl:DatatypeProperty ;
+    rdfs:label "has global location number" ;
+    rdfs:range xsd:string .
 
 :hasOrigin a owl:ObjectProperty ;
     rdfs:label "has origin" ;
@@ -398,14 +417,18 @@
     :CFmapping "CF703" ;
     rdfs:subPropertyOf :hasProperty .
 
+:hasProductIDCode a owl:DatatypeProperty ;
+    rdfs:label "has product ID code" ;
+    rdfs:range xsd:string .
+
 :hasProductionSite a owl:DatatypeProperty ;
     rdfs:label "has production site" ;
     rdfs:comment "The location where the product was produced."@en ;
     rdfs:range xsd:string .
 
-:hasType a owl:DatatypeProperty ;
-    rdfs:label "has type" ;
-    rdfs:comment "Description of the kind of product."@en ;
+:hasTextileType a owl:DatatypeProperty ;
+    rdfs:label "has textile product type" ;
+    rdfs:comment "Description of the kind of textile product."@en ;
     rdfs:range xsd:string .
 
 :hasWaterProperty a owl:ObjectProperty ;
@@ -572,6 +595,9 @@
 :recycled a :TextileProductOrigin,
         owl:NamedIndividual .
 
+:red a :Color,
+        owl:NamedIndividual .
+
 :resins a :ChemicalFinishing,
         owl:NamedIndividual .
 
@@ -663,6 +689,9 @@
 :wrinkleResistance a owl:NamedIndividual .
 
 :yarnDyed a :TextileManufacturingProcess,
+        owl:NamedIndividual .
+
+:yellow a :Color,
         owl:NamedIndividual .
 
 <http://w3id.org/CEON/ontology/actor/ActorResourceRole> a owl:Class .
@@ -855,15 +884,15 @@ ns1:numericalValue a owl:DatatypeProperty .
 
 :AmountThreshold a owl:Class ;
     rdfs:label "Amount Threshold" ;
-    rdfs:subClassOf [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty ns1:numericValue ],
+        [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty ns1:hasUnit ;
                         owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
                         owl:allValuesFrom ns1:Unit ;
                         owl:onProperty ns1:hasUnit ] ) ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty ns1:numericValue ],
         ns1:QuantityValue .
 
 :TextileProductOrigin a owl:Class ;
@@ -878,7 +907,7 @@ ns1:numericalValue a owl:DatatypeProperty .
 
 :TextileProperty a owl:Class ;
     rdfs:label "Textile Property" ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceQuality> .
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> .
 
 :availableInformation a owl:DatatypeProperty .
 
@@ -913,10 +942,6 @@ ns1:numericalValue a owl:DatatypeProperty .
     rdfs:range :Color ;
     rdfs:subPropertyOf :hasProperty .
 
-:Color a owl:Class ;
-    rdfs:label "Color" ;
-    rdfs:subClassOf :TextileProperty .
-
 :LeakageAmountInterval a owl:Class ;
     rdfs:label "Leakage Amount Interval" ;
     rdfs:subClassOf :AmountIntervalValue .
@@ -945,6 +970,10 @@ ns1:numericalValue a owl:DatatypeProperty .
     rdfs:label "has property" ;
     rdfs:domain <http://w3id.org/CEON/ontology/datasheet/DataSheet> ;
     rdfs:range <http://w3id.org/CEON/ontology/statement/Statement> .
+
+:Color a owl:Class ;
+    rdfs:label "Color" ;
+    rdfs:subClassOf :TextileProperty .
 
 :Dye a owl:Class ;
     rdfs:label "Dye" ;

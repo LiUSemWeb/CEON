@@ -11,9 +11,8 @@
                                       owl:versionIRI <http://w3id.org/CEON/demo/textile/0.2/> ;
                                       owl:imports <http://w3id.org/CEON/ontology/actor/0.4/> ,
                                                   <http://w3id.org/CEON/ontology/actorODP/0.3/> ,
-                                                  <http://w3id.org/CEON/ontology/datasheet/0.2/> ,
+                                                  <http://w3id.org/CEON/ontology/datasheet/0.3/> ,
                                                   <http://w3id.org/CEON/ontology/product/0.5/> ,
-                                                  <http://w3id.org/CEON/ontology/quantity/0.1/> ,
                                                   <http://w3id.org/CEON/ontology/statement/0.2/> ;
                                       <http://purl.org/dc/terms/contributor> "Eva Blomqvist" ;
                                       <http://purl.org/dc/terms/creator> "Huanyu Li" ;
@@ -40,30 +39,6 @@
 #################################################################
 #    Object Properties
 #################################################################
-
-###  http://w3id.org/CEON/demo/textile/hasTextileProductComponentValue
-:hasTextileProductComponentValue rdf:type owl:ObjectProperty ;
-                                 rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                                 rdfs:domain :TextileProductComponentRelation ;
-                                 rdfs:range :TextileProductComponentValue ;
-                                 rdfs:label "has textile product component value" .
-
-
-###  http://w3id.org/CEON/demo/textile/hasTextileProductMatterCompositionValue
-:hasTextileProductMatterCompositionValue rdf:type owl:ObjectProperty ;
-                                         rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                                         rdfs:domain :TextileProductMatterCompositionRelation ;
-                                         rdfs:range :TextileProductMatterCompositionValue ;
-                                         rdfs:label "has textile product matter composition value" .
-
-
-###  http://w3id.org/CEON/demo/textile/hasTextileProductRecycledContent
-:hasTextileProductRecycledContent rdf:type owl:ObjectProperty ;
-                                  rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                                  rdfs:domain :TextileProductRecycledContent ;
-                                  rdfs:range :TextileProductRecycledContentValue ;
-                                  rdfs:label "has textile product recycled content" .
-
 
 ###  http://w3id.org/CEON/ontology/textile/anticipatedLeakageDuringUse
 :anticipatedLeakageDuringUse rdf:type owl:ObjectProperty ;
@@ -195,6 +170,30 @@
                                 rdfs:label "has textile manufacturing process" .
 
 
+###  http://w3id.org/CEON/ontology/textile/hasTextileProductComponentValue
+:hasTextileProductComponentValue rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                                 rdfs:domain :TextileProductComponentRelation ;
+                                 rdfs:range :TextileProductComponentValue ;
+                                 rdfs:label "has textile product component value" .
+
+
+###  http://w3id.org/CEON/ontology/textile/hasTextileProductMatterCompositionValue
+:hasTextileProductMatterCompositionValue rdf:type owl:ObjectProperty ;
+                                         rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                                         rdfs:domain :TextileProductMatterCompositionRelation ;
+                                         rdfs:range :TextileProductMatterCompositionValue ;
+                                         rdfs:label "has textile product matter composition value" .
+
+
+###  http://w3id.org/CEON/ontology/textile/hasTextileProductRecycledContent
+:hasTextileProductRecycledContent rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                                  rdfs:domain :TextileProductRecycledContent ;
+                                  rdfs:range :TextileProductRecycledContentValue ;
+                                  rdfs:label "has textile product recycled content" .
+
+
 ###  http://w3id.org/CEON/ontology/textile/hasTextileProductType
 :hasTextileProductType rdf:type owl:ObjectProperty ;
                        rdfs:domain :TextileProduct ;
@@ -254,6 +253,37 @@
 
 ###  http://qudt.org/schema/qudt/numericalValue
 <http://qudt.org/schema/qudt/numericalValue> rdf:type owl:DatatypeProperty .
+
+
+###  http://w3id.org/CEON/demo/textile/hasCASNumber
+:hasCASNumber rdf:type owl:DatatypeProperty ;
+              rdfs:label "has CAS number" ;
+              rdfs:seeAlso "https://www.cas.org/cas-data/cas-registry" .
+
+
+###  http://w3id.org/CEON/demo/textile/hasCompanyName
+:hasCompanyName rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actor/hasOrganisationName> ;
+                rdfs:range xsd:string ;
+                rdfs:label "has company name" .
+
+
+###  http://w3id.org/CEON/demo/textile/hasCountrySpecificCorporateIdentificationNumber
+:hasCountrySpecificCorporateIdentificationNumber rdf:type owl:DatatypeProperty ;
+                                                 rdfs:range xsd:string ;
+                                                 rdfs:label "has country specific corporate identification number" .
+
+
+###  http://w3id.org/CEON/demo/textile/hasGlobalLocationNumber
+:hasGlobalLocationNumber rdf:type owl:DatatypeProperty ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "has global location number" .
+
+
+###  http://w3id.org/CEON/demo/textile/hasProductIDCode
+:hasProductIDCode rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "has product ID code" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/availableInformation
@@ -344,11 +374,11 @@
                    rdfs:label "has production site" .
 
 
-###  http://w3id.org/CEON/ontology/textile/hasType
-:hasType rdf:type owl:DatatypeProperty ;
-         rdfs:range xsd:string ;
-         rdfs:comment "Description of the kind of product."@en ;
-         rdfs:label "has type" .
+###  http://w3id.org/CEON/ontology/textile/hasTextileType
+:hasTextileType rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Description of the kind of textile product."@en ;
+                rdfs:label "has textile product type" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/isBiodegradabilityTestAvailable
@@ -431,69 +461,6 @@
 #################################################################
 #    Classes
 #################################################################
-
-###  http://w3id.org/CEON/demo/textile/TextileProductComponentValue
-:TextileProductComponentValue rdf:type owl:Class ;
-                              rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                       owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                     ]
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty <http://qudt.org/schema/qudt/numericalValue> ;
-                                                                       owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                                                            owl:unionOf ( xsd:double
-                                                                                                          xsd:integer
-                                                                                                        )
-                                                                                          ]
-                                                                     ]
-                                                                   ) ;
-                                                rdf:type owl:Class
-                                              ] ;
-                              rdfs:label "Textile Product Component Value" .
-
-
-###  http://w3id.org/CEON/demo/textile/TextileProductMatterCompositionValue
-:TextileProductMatterCompositionValue rdf:type owl:Class ;
-                                      rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                                      [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                               owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                             ]
-                                                                             [ rdf:type owl:Restriction ;
-                                                                               owl:onProperty <http://qudt.org/schema/qudt/numericalValue> ;
-                                                                               owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                                                                    owl:unionOf ( xsd:double
-                                                                                                                  xsd:integer
-                                                                                                                )
-                                                                                                  ]
-                                                                             ]
-                                                                           ) ;
-                                                        rdf:type owl:Class
-                                                      ] ;
-                                      rdfs:label "Textile Product Matter Composition Value" .
-
-
-###  http://w3id.org/CEON/demo/textile/TextileProductRecycledContentValue
-:TextileProductRecycledContentValue rdf:type owl:Class ;
-                                    rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                             owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                           ]
-                                                                           [ rdf:type owl:Restriction ;
-                                                                             owl:onProperty <http://qudt.org/schema/qudt/numericalValue> ;
-                                                                             owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                                                                  owl:unionOf ( xsd:double
-                                                                                                                xsd:integer
-                                                                                                              )
-                                                                                                ]
-                                                                           ]
-                                                                         ) ;
-                                                      rdf:type owl:Class
-                                                    ] ;
-                                    rdfs:label "Textile Product Recycled Content Value" .
-
 
 ###  http://w3id.org/CEON/ontology/actor/ActorResourceRole
 <http://w3id.org/CEON/ontology/actor/ActorResourceRole> rdf:type owl:Class .
@@ -759,6 +726,27 @@
                                  rdfs:label "Textile Product Component Relation" .
 
 
+###  http://w3id.org/CEON/ontology/textile/TextileProductComponentValue
+:TextileProductComponentValue rdf:type owl:Class ;
+                              rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                       owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://qudt.org/schema/qudt/numericalValue> ;
+                                                                       owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                            owl:unionOf ( xsd:double
+                                                                                                          xsd:integer
+                                                                                                        )
+                                                                                          ]
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ] ;
+                              rdfs:label "Textile Product Component Value" .
+
+
 ###  http://w3id.org/CEON/ontology/textile/TextileProductCompositionDisclosureStatement
 :TextileProductCompositionDisclosureStatement rdf:type owl:Class ;
                                               rdfs:subClassOf :TextileDataSheetStatement .
@@ -856,6 +844,27 @@
                                          rdfs:label "Textile Product Matter Composition Relation" .
 
 
+###  http://w3id.org/CEON/ontology/textile/TextileProductMatterCompositionValue
+:TextileProductMatterCompositionValue rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                                      [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                               owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://qudt.org/schema/qudt/numericalValue> ;
+                                                                               owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                                    owl:unionOf ( xsd:double
+                                                                                                                  xsd:integer
+                                                                                                                )
+                                                                                                  ]
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ] ;
+                                      rdfs:label "Textile Product Matter Composition Value" .
+
+
 ###  http://w3id.org/CEON/ontology/textile/TextileProductObject
 :TextileProductObject rdf:type owl:Class ;
                       rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Item> ,
@@ -899,6 +908,27 @@
                                rdfs:label "Textile Product Recycled Content" .
 
 
+###  http://w3id.org/CEON/ontology/textile/TextileProductRecycledContentValue
+:TextileProductRecycledContentValue rdf:type owl:Class ;
+                                    rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                             owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <http://qudt.org/schema/qudt/numericalValue> ;
+                                                                             owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                                  owl:unionOf ( xsd:double
+                                                                                                                xsd:integer
+                                                                                                              )
+                                                                                                ]
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ] ;
+                                    rdfs:label "Textile Product Recycled Content Value" .
+
+
 ###  http://w3id.org/CEON/ontology/textile/TextileProductRenewableContet
 :TextileProductRenewableContet rdf:type owl:Class ;
                                rdfs:subClassOf :TextileDataSheetStatement .
@@ -917,7 +947,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/TextileProperty
 :TextileProperty rdf:type owl:Class ;
-                 rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceQuality> ;
+                 rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
                  rdfs:label "Textile Property" .
 
 
@@ -940,6 +970,21 @@
 ###  http://qudt.org/vocab/unit/PERCENT
 <http://qudt.org/vocab/unit/PERCENT> rdf:type owl:NamedIndividual ,
                                               <http://qudt.org/schema/qudt/Unit> .
+
+
+###  http://w3id.org/CEON/demo/textile/blue
+:blue rdf:type owl:NamedIndividual ,
+               :Color .
+
+
+###  http://w3id.org/CEON/demo/textile/red
+:red rdf:type owl:NamedIndividual ,
+              :Color .
+
+
+###  http://w3id.org/CEON/demo/textile/yellow
+:yellow rdf:type owl:NamedIndividual ,
+                 :Color .
 
 
 ###  http://w3id.org/CEON/ontology/textile/MSDS
