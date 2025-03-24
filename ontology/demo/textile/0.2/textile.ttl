@@ -12,6 +12,7 @@
                                       owl:imports <http://w3id.org/CEON/ontology/actor/0.4/> ,
                                                   <http://w3id.org/CEON/ontology/actorODP/0.3/> ,
                                                   <http://w3id.org/CEON/ontology/datasheet/0.3/> ,
+                                                  <http://w3id.org/CEON/ontology/material/0.3/> ,
                                                   <http://w3id.org/CEON/ontology/product/0.5/> ,
                                                   <http://w3id.org/CEON/ontology/statement/0.2/> ;
                                       <http://purl.org/dc/terms/contributor> "Eva Blomqvist" ;
@@ -255,35 +256,46 @@
 <http://qudt.org/schema/qudt/numericalValue> rdf:type owl:DatatypeProperty .
 
 
-###  http://w3id.org/CEON/demo/textile/hasCASNumber
-:hasCASNumber rdf:type owl:DatatypeProperty ;
-              rdfs:label "has CAS number" ;
-              rdfs:seeAlso "https://www.cas.org/cas-data/cas-registry" .
+###  http://w3id.org/CEON/demo/textile/isContainedSubstanceFromREACHVeryHighConcernList
+:isContainedSubstanceFromREACHVeryHighConcernList rdf:type owl:DatatypeProperty ;
+                                                  rdfs:range xsd:boolean ;
+                                                  rdfs:label "is contained substance from REACH very high concern list" .
 
 
-###  http://w3id.org/CEON/demo/textile/hasCompanyName
-:hasCompanyName rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actor/hasOrganisationName> ;
-                rdfs:range xsd:string ;
-                rdfs:label "has company name" .
+###  http://w3id.org/CEON/demo/textile/isContainedSubstanceInCMRHarmonizedClassfication
+:isContainedSubstanceInCMRHarmonizedClassfication rdf:type owl:DatatypeProperty ;
+                                                  rdfs:range xsd:boolean ;
+                                                  rdfs:label "is contained substance in CMR harmonized classfication" .
 
 
-###  http://w3id.org/CEON/demo/textile/hasCountrySpecificCorporateIdentificationNumber
-:hasCountrySpecificCorporateIdentificationNumber rdf:type owl:DatatypeProperty ;
-                                                 rdfs:range xsd:string ;
-                                                 rdfs:label "has country specific corporate identification number" .
+###  http://w3id.org/CEON/demo/textile/isMaintainedOrRepairedByTrainedPerson
+:isMaintainedOrRepairedByTrainedPerson rdf:type owl:DatatypeProperty ;
+                                       rdfs:range xsd:boolean ;
+                                       rdfs:label "is maintained or repaired by trained person" .
 
 
-###  http://w3id.org/CEON/demo/textile/hasGlobalLocationNumber
-:hasGlobalLocationNumber rdf:type owl:DatatypeProperty ;
-                         rdfs:range xsd:string ;
-                         rdfs:label "has global location number" .
+###  http://w3id.org/CEON/demo/textile/isMaintainedOrRepairedByUntrainedPerson
+:isMaintainedOrRepairedByUntrainedPerson rdf:type owl:DatatypeProperty ;
+                                         rdfs:range xsd:boolean ;
+                                         rdfs:label "is maintained or repaired by untrained person" .
 
 
-###  http://w3id.org/CEON/demo/textile/hasProductIDCode
-:hasProductIDCode rdf:type owl:DatatypeProperty ;
-                  rdfs:range xsd:string ;
-                  rdfs:label "has product ID code" .
+###  http://w3id.org/CEON/demo/textile/isRestricedSusbtanceContainedOutOfREACHXVII
+:isRestricedSusbtanceContainedOutOfREACHXVII rdf:type owl:DatatypeProperty ;
+                                             rdfs:range xsd:boolean ;
+                                             rdfs:label "is restriced susbtance contained out of REACH XVII" .
+
+
+###  http://w3id.org/CEON/demo/textile/isWarnedUnderCaliforniaProposition65
+:isWarnedUnderCaliforniaProposition65 rdf:type owl:DatatypeProperty ;
+                                      rdfs:range xsd:boolean ;
+                                      rdfs:label "is warned under California Proposition 65" .
+
+
+###  http://w3id.org/CEON/demo/textile/needsMaintenanceOrRepair
+:needsMaintenanceOrRepair rdf:type owl:DatatypeProperty ;
+                          rdfs:range xsd:boolean ;
+                          rdfs:label "needs maintenance or repair" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/availableInformation
@@ -345,6 +357,12 @@
                   rdfs:label "emission by design" .
 
 
+###  http://w3id.org/CEON/ontology/textile/hasCASNumber
+:hasCASNumber rdf:type owl:DatatypeProperty ;
+              rdfs:label "has CAS number" ;
+              rdfs:seeAlso "https://www.cas.org/cas-data/cas-registry" .
+
+
 ###  http://w3id.org/CEON/ontology/textile/hasCertification
 :hasCertification rdf:type owl:DatatypeProperty ;
                   rdfs:label "has certification" .
@@ -361,10 +379,35 @@
                         rdfs:label "has collection parameter" .
 
 
+###  http://w3id.org/CEON/ontology/textile/hasCompanyName
+:hasCompanyName rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actor/hasOrganisationName> ;
+                rdfs:range xsd:string ;
+                rdfs:label "has company name" .
+
+
+###  http://w3id.org/CEON/ontology/textile/hasCountrySpecificCorporateIdentificationNumber
+:hasCountrySpecificCorporateIdentificationNumber rdf:type owl:DatatypeProperty ;
+                                                 rdfs:range xsd:string ;
+                                                 rdfs:label "has country specific corporate identification number" .
+
+
 ###  http://w3id.org/CEON/ontology/textile/hasFinishingSteps
 :hasFinishingSteps rdf:type owl:DatatypeProperty ;
                    :CFmapping "CF705" ;
                    rdfs:label "has finishing steps" .
+
+
+###  http://w3id.org/CEON/ontology/textile/hasGlobalLocationNumber
+:hasGlobalLocationNumber rdf:type owl:DatatypeProperty ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "has global location number" .
+
+
+###  http://w3id.org/CEON/ontology/textile/hasProductIDCode
+:hasProductIDCode rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "has product ID code" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/hasProductionSite
@@ -461,6 +504,42 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://w3id.org/CEON/demo/textile/EthylVinylAcetateFilm
+:EthylVinylAcetateFilm rdf:type owl:Class ;
+                       rdfs:subClassOf :TextileMaterial ;
+                       rdfs:label "Ethyl Vinyl Acetate Film" .
+
+
+###  http://w3id.org/CEON/demo/textile/EthylVinylAcetateResin
+:EthylVinylAcetateResin rdf:type owl:Class ;
+                        rdfs:subClassOf :TextileMaterial ;
+                        rdfs:label "Ethyl Vinyl Acetate Resin" .
+
+
+###  http://w3id.org/CEON/demo/textile/InorganicFIller
+:InorganicFIller rdf:type owl:Class ;
+                 rdfs:subClassOf :TextileMaterial ;
+                 rdfs:label "Inorganic FIller" .
+
+
+###  http://w3id.org/CEON/demo/textile/PolyesterFibres
+:PolyesterFibres rdf:type owl:Class ;
+                 rdfs:subClassOf :TextileMaterial ;
+                 rdfs:label "Polyester Fibres" .
+
+
+###  http://w3id.org/CEON/demo/textile/StyreneButadieneLatex
+:StyreneButadieneLatex rdf:type owl:Class ;
+                       rdfs:subClassOf :TextileMaterial ;
+                       rdfs:label "Styrene Butadiene Latex" .
+
+
+###  http://w3id.org/CEON/demo/textile/TextileMaterial
+:TextileMaterial rdf:type owl:Class ;
+                 rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
+                 rdfs:label "Textile Material" .
+
 
 ###  http://w3id.org/CEON/ontology/actor/ActorResourceRole
 <http://w3id.org/CEON/ontology/actor/ActorResourceRole> rdf:type owl:Class .
@@ -972,21 +1051,6 @@
                                               <http://qudt.org/schema/qudt/Unit> .
 
 
-###  http://w3id.org/CEON/demo/textile/blue
-:blue rdf:type owl:NamedIndividual ,
-               :Color .
-
-
-###  http://w3id.org/CEON/demo/textile/red
-:red rdf:type owl:NamedIndividual ,
-              :Color .
-
-
-###  http://w3id.org/CEON/demo/textile/yellow
-:yellow rdf:type owl:NamedIndividual ,
-                 :Color .
-
-
 ###  http://w3id.org/CEON/ontology/textile/MSDS
 :MSDS rdf:type owl:NamedIndividual ,
                :Regulation .
@@ -1154,6 +1218,11 @@
 :biosphereCascading rdf:type owl:NamedIndividual ,
                              :TextileRecyclingProcess ;
                     rdfs:comment "Industrial cascading in the biosphere."@en .
+
+
+###  http://w3id.org/CEON/ontology/textile/blue
+:blue rdf:type owl:NamedIndividual ,
+               :Color .
 
 
 ###  http://w3id.org/CEON/ontology/textile/brand
@@ -1398,6 +1467,11 @@
                    :TextileProductOrigin .
 
 
+###  http://w3id.org/CEON/ontology/textile/red
+:red rdf:type owl:NamedIndividual ,
+              :Color .
+
+
 ###  http://w3id.org/CEON/ontology/textile/resins
 :resins rdf:type owl:NamedIndividual ,
                  :ChemicalFinishing .
@@ -1534,6 +1608,11 @@
 ###  http://w3id.org/CEON/ontology/textile/yarnDyed
 :yarnDyed rdf:type owl:NamedIndividual ,
                    :TextileManufacturingProcess .
+
+
+###  http://w3id.org/CEON/ontology/textile/yellow
+:yellow rdf:type owl:NamedIndividual ,
+                 :Color .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
