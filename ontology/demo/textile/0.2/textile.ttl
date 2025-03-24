@@ -49,11 +49,6 @@
                              rdfs:label "anticipated leakage during use" .
 
 
-###  http://w3id.org/CEON/ontology/textile/chemicalSubstanceDisclosureThreshold
-:chemicalSubstanceDisclosureThreshold rdf:type owl:ObjectProperty ;
-                                      rdfs:label "chemical substance disclosure threshold" .
-
-
 ###  http://w3id.org/CEON/ontology/textile/designedForRecyclingAtSameQuality
 :designedForRecyclingAtSameQuality rdf:type owl:ObjectProperty ;
                                    rdfs:subPropertyOf :hasProperty ;
@@ -218,12 +213,14 @@
 
 ###  http://w3id.org/CEON/ontology/textile/productCompositionDisclosureAvailability
 :productCompositionDisclosureAvailability rdf:type owl:ObjectProperty ;
+                                          rdfs:range <http://w3id.org/CEON/ontology/statement/Availability> ;
                                           rdfs:comment "A product composition disclosed at the defined threshold is publicly available or a product composition disclosed at the defined threshold is available to the customer under secrecy agreement." ;
                                           rdfs:label "product composition disclosure availability" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/productCompositionDisclosureValidation
 :productCompositionDisclosureValidation rdf:type owl:ObjectProperty ;
+                                        rdfs:range <http://w3id.org/CEON/ontology/statement/Validation> ;
                                         rdfs:comment "The product composition disclosed at the defined threshold has been validated by a third party or the product has been awarded an independent certification or standard related to its composition." ;
                                         rdfs:label "product composition disclosure validation" .
 
@@ -552,26 +549,12 @@
 #    Classes
 #################################################################
 
-###  http://w3id.org/CEON/demo/textile/GRSCompliance
-:GRSCompliance rdf:type owl:Class ;
-               owl:equivalentClass [ rdf:type owl:Restriction ;
-                                     owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ;
-                                     owl:hasValue :GRS
-                                   ] ;
-               rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
-               rdfs:label "GRS Compliance" .
-
-
 ###  http://w3id.org/CEON/ontology/actor/ActorResourceRole
 <http://w3id.org/CEON/ontology/actor/ActorResourceRole> rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects
 <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> rdfs:label "Batch Of Objects" .
-
-
-###  http://w3id.org/CEON/ontology/textile/Availability
-:Availability rdf:type owl:Class .
 
 
 ###  http://w3id.org/CEON/ontology/textile/BatchOfTextileObjects
@@ -640,6 +623,16 @@
 :EthylVinylAcetateResin rdf:type owl:Class ;
                         rdfs:subClassOf :TextileMaterial ;
                         rdfs:label "Ethyl Vinyl Acetate Resin" .
+
+
+###  http://w3id.org/CEON/ontology/textile/GRSCompliance
+:GRSCompliance rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ;
+                                     owl:hasValue :GRS
+                                   ] ;
+               rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
+               rdfs:label "GRS Compliance" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/InorganicFIller
@@ -1051,11 +1044,6 @@
                     rdfs:label "Textile Product Type" .
 
 
-###  http://w3id.org/CEON/ontology/textile/TextileProductValidation
-:TextileProductValidation rdf:type owl:Class ;
-                          rdfs:label "Textile Product Validation" .
-
-
 ###  http://w3id.org/CEON/ontology/textile/TextileProperty
 :TextileProperty rdf:type owl:Class ;
                  rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
@@ -1093,21 +1081,6 @@
                                               <http://qudt.org/schema/qudt/Unit> .
 
 
-###  http://w3id.org/CEON/demo/textile/GRS
-:GRS rdf:type owl:NamedIndividual ,
-              <http://w3id.org/CEON/ontology/product/Regulation> .
-
-
-###  http://w3id.org/CEON/demo/textile/MSDS
-:MSDS rdf:type owl:NamedIndividual ,
-               <http://w3id.org/CEON/ontology/product/Regulation> .
-
-
-###  http://w3id.org/CEON/demo/textile/ZDHC
-:ZDHC rdf:type owl:NamedIndividual ,
-               <http://w3id.org/CEON/ontology/product/Regulation> .
-
-
 ###  http://w3id.org/CEON/demo/textile/0ge-1le
 <http://w3id.org/CEON/demo/textile/0ge-1le> rdf:type owl:NamedIndividual ,
                                                      <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
@@ -1129,8 +1102,23 @@
                                                <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/95p> .
 
 
+###  http://w3id.org/CEON/ontology/textile/GRS
+:GRS rdf:type owl:NamedIndividual ,
+              <http://w3id.org/CEON/ontology/product/Regulation> .
+
+
+###  http://w3id.org/CEON/ontology/textile/MSDS
+:MSDS rdf:type owl:NamedIndividual ,
+               <http://w3id.org/CEON/ontology/product/Regulation> .
+
+
 ###  http://w3id.org/CEON/ontology/textile/REACH
 :REACH rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/ontology/textile/ZDHC
+:ZDHC rdf:type owl:NamedIndividual ,
+               <http://w3id.org/CEON/ontology/product/Regulation> .
 
 
 ###  http://w3id.org/CEON/ontology/textile/_0.01perc
@@ -1277,8 +1265,7 @@
 
 
 ###  http://w3id.org/CEON/ontology/textile/certified
-:certified rdf:type owl:NamedIndividual ,
-                    :TextileProductValidation .
+:certified rdf:type owl:NamedIndividual .
 
 
 ###  http://w3id.org/CEON/ontology/textile/chromeDye
@@ -1492,8 +1479,7 @@
 
 
 ###  http://w3id.org/CEON/ontology/textile/public
-:public rdf:type owl:NamedIndividual ,
-                 :Availability .
+:public rdf:type owl:NamedIndividual .
 
 
 ###  http://w3id.org/CEON/ontology/textile/reactiveDye
@@ -1537,8 +1523,7 @@
 
 
 ###  http://w3id.org/CEON/ontology/textile/secrecyAgreement
-:secrecyAgreement rdf:type owl:NamedIndividual ,
-                           :Availability .
+:secrecyAgreement rdf:type owl:NamedIndividual .
 
 
 ###  http://w3id.org/CEON/ontology/textile/shearing
@@ -1601,8 +1586,7 @@
 
 
 ###  http://w3id.org/CEON/ontology/textile/validatedByThirdParty
-:validatedByThirdParty rdf:type owl:NamedIndividual ,
-                                :TextileProductValidation .
+:validatedByThirdParty rdf:type owl:NamedIndividual .
 
 
 ###  http://w3id.org/CEON/ontology/textile/vatDye
