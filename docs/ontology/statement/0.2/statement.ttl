@@ -1,10 +1,18 @@
 @prefix : <http://w3id.org/CEON/ontology/statement/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <http://w3id.org/CEON/ontology/quantity#> .
+@prefix ns2: <http://qudt.org/schema/qudt/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns2:hasUnit a owl:AnnotationProperty .
+
+ns2:numericValue a owl:AnnotationProperty .
 
 <http://w3id.org/CEON/ontology/actorODP/Role> rdfs:subClassOf prov:Role .
 
@@ -20,9 +28,19 @@ resourceODP:Resource rdfs:subClassOf prov:Entity .
     vann:preferredNamespacePrefix "statement" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/statement/" ;
     owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/>,
+        <http://w3id.org/CEON/ontology/quantity/0.2/>,
         <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/statement/0.2/> ;
     owl:versionInfo "0.2" .
+
+:1p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 1e+00 .
+
+:isStatementTrue a owl:DatatypeProperty ;
+    rdfs:label "is statement true" ;
+    rdfs:range xsd:boolean .
 
 :statementAbout a owl:ObjectProperty ;
     rdfs:label "statement about" ;
@@ -34,12 +52,555 @@ resourceODP:Resource rdfs:subClassOf prov:Entity .
     rdfs:comment "Generic property to express values, e.g. literals, that are involved in this statement." ;
     rdfs:domain :Statement .
 
+:0.001p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 1e-03 .
+
+:0.01p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 1e-02 .
+
+:0gt-0.001le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :0.001p ;
+    ns1:hasMinimalValueNotIncludedOfInterval :0p .
+
+:0gt-0.01le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :0.01p ;
+    ns1:hasMinimalValueNotIncludedOfInterval :0p .
+
+:0gt-0.1le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :0.1p ;
+    ns1:hasMinimalValueNotIncludedOfInterval :0p .
+
+:100p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 1e+02 .
+
+:1ge a ns1:QuantityInterval,
+        owl:NamedIndividual .
+
+:DemountingStatement a owl:Class ;
+    rdfs:label "Demounting Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionForDemounting ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionForDemounting ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionForDemounting ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionForDemounting ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionForDemounting ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionForDemounting ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionForDemounting ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionForDemounting ] ) ],
+        :PCDSStatement .
+
+:DisassemblyStatement a owl:Class ;
+    rdfs:label "Disassembly Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionForDisassembly ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionForDisassembly ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionForDisassembly ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionForDisassembly ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionForDisassembly ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionForDisassembly ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionForDisassembly ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionForDisassembly ] ) ],
+        :PCDSStatement .
+
+:DismantlingStatement a owl:Class ;
+    rdfs:label "Dismantling Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ] ) ],
+        :PCDSStatement .
+
+:RecyclingStatement a owl:Class ;
+    rdfs:label "Recycling Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ] ) ],
+        :PCDSStatement .
+
+:ReleasedIntoEnvironmentStatement a owl:Class ;
+    rdfs:label "Released Into Environment Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ] ) ],
+        :PCDSStatement .
+
+:RenewableEnergyStatement a owl:Class ;
+    rdfs:label "Renewable Energy Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ] ) ],
+        :PCDSStatement .
+
+:ReusedContentStatement a owl:Class ;
+    rdfs:label "Reused Content Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ] ) ],
+        :PCDSStatement .
+
+:SustainablyProducedRenewableMaterialStatement a owl:Class ;
+    rdfs:label "Sustainably Produced Renewable Material Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ] ) ],
+        :PCDSStatement .
+
+:hasPostConsumerRecycledMaterialThreshold a owl:ObjectProperty ;
+    rdfs:label "has post consumer recycled material threshold" ;
+    rdfs:domain :RecycledMaterialStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasPreConsumerRecycledMaterialThreshold a owl:ObjectProperty ;
+    rdfs:label "has pre consumer recycled material threshold" ;
+    rdfs:domain :RecycledMaterialStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
 prov:Role a owl:Class .
+
+:0.1ge-0.1le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :0.1p ;
+    ns1:hasMinimalValueIncludedOfInterval :0.1p .
+
+:10p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 1e+01 .
+
+:25p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 2.5e+01 .
+
+:50p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 5e+01 .
+
+:75p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 7.5e+01 .
+
+:95p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 9.5e+01 .
+
+:99p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 9.9e+01 .
+
+:ProductCompositionStatement a owl:Class ;
+    rdfs:label "Product Composition Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0gt-0.001le ;
+                        owl:onProperty :hasChemicalSubstanceThresholdUsedByManufacturer ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-0.01le ;
+                        owl:onProperty :hasChemicalSubstanceThresholdUsedByManufacturer ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-0.1le ;
+                        owl:onProperty :hasChemicalSubstanceThresholdUsedByManufacturer ] [ a owl:Restriction ;
+                        owl:hasValue :1ge ;
+                        owl:onProperty :hasChemicalSubstanceThresholdUsedByManufacturer ] ) ],
+        [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ] ) ],
+        :PCDSStatement .
+
+:WaterReuseOrRecirculationStatement a owl:Class ;
+    rdfs:label "Water Reuse Or Recirculation Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ] ) ],
+        [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ] ) ],
+        :PCDSStatement .
+
+prov:Entity a owl:Class .
+
+:0.1p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 1e-01 .
 
 :Statement a owl:Class ;
     rdfs:label "Statement" ;
     rdfs:comment "Generic class representing the concept of a statement, i.e. some piece of information, fact etc that is expressed in the data. Effectively used to reify relations (triples) in the data, and express information about them." ;
     rdfs:subClassOf prov:Entity .
 
-prov:Entity a owl:Class .
+:hasChemicalSubstanceThresholdUsedByManufacturer a owl:ObjectProperty ;
+    rdfs:label "has chemical substance threshold used by manufacturer" ;
+    rdfs:domain :ProductCompositionStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:RecycledMaterialStatement a owl:Class ;
+    rdfs:label "Recycled Material Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ] ) ],
+        [ a owl:Restriction ;
+            owl:hasValue :0.1ge-0.1le ;
+            owl:onProperty :hasPostConsumerRecycledMaterialThreshold ],
+        [ a owl:Restriction ;
+            owl:hasValue :0.1ge-0.1le ;
+            owl:onProperty :hasPreConsumerRecycledMaterialThreshold ],
+        [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ] ) ],
+        [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue :0ge-0le ;
+                        owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :0gt-10le ;
+                        owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :10gt-25le ;
+                        owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :25gt-50le ;
+                        owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :50gt-75le ;
+                        owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :75gt-95le ;
+                        owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :95gt-99le ;
+                        owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ] [ a owl:Restriction ;
+                        owl:hasValue :99gt-100le ;
+                        owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ] ) ],
+        :PCDSStatement .
+
+:0p a ns2:QuantityValue,
+        owl:NamedIndividual ;
+    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns2:numericValue 0e+00 .
+
+:hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix a owl:ObjectProperty ;
+    rdfs:label "has fraction of renewable energy out of the total production energy mix" ;
+    rdfs:domain :RenewableEnergyStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionForDemounting a owl:ObjectProperty ;
+    rdfs:label "has mass fraction for demounting" ;
+    rdfs:domain :DemountingStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionForDisassembly a owl:ObjectProperty ;
+    rdfs:label "has mass fraction for disassembly" ;
+    rdfs:domain :DisassemblyStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionOfAllDisclosedChemicalSubstance a owl:ObjectProperty ;
+    rdfs:label "has mass fraction of all disclosed chemical substance" ;
+    rdfs:domain :ProductCompositionStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionOfDismantableComponentsForReuseAndRecycle a owl:ObjectProperty ;
+    rdfs:label "has mass fraction of dismantable components for reuse and recycle" ;
+    rdfs:domain :DismantlingStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass a owl:ObjectProperty ;
+    rdfs:label "has mass fraction of post consumer recycled materials out of the total product mass" ;
+    rdfs:domain :RecycledMaterialStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass a owl:ObjectProperty ;
+    rdfs:label "has mass fraction of pre consumer recycled materials out of the total product mass" ;
+    rdfs:domain :RecycledMaterialStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionOfProductDesignedForRecyclingToOriginalInput a owl:ObjectProperty ;
+    rdfs:label "has mass fraction of product designed for recycling to original input" ;
+    rdfs:domain :RecyclingStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionOfProductReleasedIntoEnvironment a owl:ObjectProperty ;
+    rdfs:label "has mass fraction of product released into environment" ;
+    rdfs:domain :ReleasedIntoEnvironmentStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass a owl:ObjectProperty ;
+    rdfs:label "has mass fraction of recycled materials out of the total product mass" ;
+    rdfs:domain :RecycledMaterialStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass a owl:ObjectProperty ;
+    rdfs:label "has mass fraction of renewable materials out of the total product mass" ;
+    rdfs:domain :SustainablyProducedRenewableMaterialStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasMassFractionOfReusedPartsOutOfTheTotalProduct a owl:ObjectProperty ;
+    rdfs:label "has mass fraction of reused parts out of the total product" ;
+    rdfs:domain :ReusedContentStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction a owl:ObjectProperty ;
+    rdfs:label "has volume fraction of reduction of direct water consumption used in production" ;
+    rdfs:domain :WaterReuseOrRecirculationStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction a owl:ObjectProperty ;
+    rdfs:label "has volume fraction of reused or recirculated water used in production" ;
+    rdfs:domain :WaterReuseOrRecirculationStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf :hasQuantityInterval .
+
+:PCDSStatement a owl:Class ;
+    rdfs:label "PCDS Statement" ;
+    rdfs:subClassOf :Statement .
+
+<https://qudt.org/vocab/unit/PERCENT> a ns2:Unit,
+        owl:NamedIndividual .
+
+:0ge-0le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :0p ;
+    ns1:hasMinimalValueIncludedOfInterval :0p .
+
+:0gt-10le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :10p ;
+    ns1:hasMinimalValueNotIncludedOfInterval :0p .
+
+:10gt-25le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :25p ;
+    ns1:hasMinimalValueNotIncludedOfInterval :10p .
+
+:25gt-50le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :50p ;
+    ns1:hasMinimalValueNotIncludedOfInterval :25p .
+
+:50gt-75le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :75p ;
+    ns1:hasMinimalValueNotIncludedOfInterval :50p .
+
+:75gt-95le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :95p ;
+    ns1:hasMinimalValueNotIncludedOfInterval :75p .
+
+:95gt-99le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :99p ;
+    ns1:hasMinimalValueNotIncludedOfInterval :95p .
+
+:99gt-100le a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval :100p ;
+    ns1:hasMinimalValueNotIncludedOfInterval :99p .
+
+:hasQuantityInterval a owl:ObjectProperty ;
+    rdfs:label "has quantity interval" ;
+    rdfs:range ns1:QuantityInterval .
 
