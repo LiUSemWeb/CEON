@@ -43,15 +43,26 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     owl:versionIRI <http://w3id.org/CEON/ontology/product/0.5/> ;
     owl:versionInfo 0.5 .
 
+:REACHCompliance a owl:Class ;
+    rdfs:label "REACH Compliance" ;
+    rdfs:seeAlso "https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en" ;
+    rdfs:subClassOf :Compliance ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue :REACH ;
+            owl:onProperty :complianceWith ] .
+
+:RoHSCompliance a owl:Class ;
+    rdfs:label "RoHS Compliance" ;
+    rdfs:seeAlso "https://environment.ec.europa.eu/topics/waste-and-recycling/rohs-directive_en" ;
+    rdfs:subClassOf :Compliance ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue :RoHS ;
+            owl:onProperty :complianceWith ] .
+
 :SupplierLocation a owl:Class ;
     rdfs:label "Supplier Location" ;
     rdfs:comment "The location of supplier of a product or item." ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/location/Location> .
-
-:complianceWith a owl:ObjectProperty ;
-    rdfs:label "Compliance with" ;
-    rdfs:comment "Represents what the compliance is compliant with (e.g. a standard or regulation)." ;
-    rdfs:domain :Compliance .
 
 :compositionOf a owl:ObjectProperty ;
     rdfs:label "composition of" ;
@@ -120,6 +131,12 @@ actorODP:ResourceRelation a owl:Class .
             owl:onProperty :associatedWithProductObject ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         resourceODP:Composition .
+
+:REACH a :Regulation,
+        owl:NamedIndividual .
+
+:RoHS a :Regulation,
+        owl:NamedIndividual .
 
 :Solution a owl:Class ;
     rdfs:label "Solution"@en ;
@@ -264,6 +281,15 @@ resourceODP:BatchOfObjects a owl:Class ;
             owl:onProperty :productionSiteName ],
         <http://w3id.org/CEON/ontology/location/Location> .
 
+:Regulation a owl:Class ;
+    rdfs:label "Regulation" ;
+    rdfs:comment "The rules or restrictions made or maintained by authorities." .
+
+:complianceWith a owl:ObjectProperty ;
+    rdfs:label "Compliance with" ;
+    rdfs:comment "Represents what the compliance is compliant with (e.g. a standard or regulation)." ;
+    rdfs:domain :Compliance .
+
 :hasComposition a owl:ObjectProperty ;
     rdfs:label "has composition" ;
     rdfs:comment "hasComposition intends to represent that a product model or physical object can have compostition information."@en ;
@@ -293,10 +319,6 @@ resourceODP:PhysicalObject a owl:Class .
             owl:onDataRange xsd:string ;
             owl:onProperty :countryOfAssembly ],
         <http://w3id.org/CEON/ontology/location/Location> .
-
-:Compliance a owl:Class ;
-    rdfs:label "Compliance" ;
-    rdfs:comment "Represents that something is compliant with some standard or has a received a certain certification." .
 
 :ManufactureLocation a owl:Class ;
     rdfs:label "Manufacture Location" ;
@@ -341,6 +363,10 @@ resourceODP:PhysicalObject a owl:Class .
         <http://w3id.org/CEON/ontology/location/Location> .
 
 resourceODP:Matter a owl:Class .
+
+:Compliance a owl:Class ;
+    rdfs:label "Compliance" ;
+    rdfs:comment "Represents that something is compliant with some standard or has a received a certain certification." .
 
 resourceODP:Composition a owl:Class ;
     rdfs:subClassOf actorODP:ResourceRelation .
