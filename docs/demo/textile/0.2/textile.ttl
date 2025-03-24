@@ -20,6 +20,7 @@
     owl:imports <http://w3id.org/CEON/ontology/actor/0.4/>,
         <http://w3id.org/CEON/ontology/actorODP/0.3/>,
         <http://w3id.org/CEON/ontology/datasheet/0.3/>,
+        <http://w3id.org/CEON/ontology/material/0.3/>,
         <http://w3id.org/CEON/ontology/product/0.5/>,
         <http://w3id.org/CEON/ontology/statement/0.2/> ;
     owl:versionIRI <http://w3id.org/CEON/demo/textile/0.2/> ;
@@ -46,10 +47,26 @@
 
 :CFmapping a owl:AnnotationProperty .
 
+:EthylVinylAcetateFilm a owl:Class ;
+    rdfs:label "Ethyl Vinyl Acetate Film" ;
+    rdfs:subClassOf :TextileMaterial .
+
+:EthylVinylAcetateResin a owl:Class ;
+    rdfs:label "Ethyl Vinyl Acetate Resin" ;
+    rdfs:subClassOf :TextileMaterial .
+
+:InorganicFIller a owl:Class ;
+    rdfs:label "Inorganic FIller" ;
+    rdfs:subClassOf :TextileMaterial .
+
 :MSDS a :Regulation,
         owl:NamedIndividual .
 
 :PCDSmapping a owl:AnnotationProperty .
+
+:PolyesterFibres a owl:Class ;
+    rdfs:label "Polyester Fibres" ;
+    rdfs:subClassOf :TextileMaterial .
 
 :Print a owl:Class ;
     rdfs:label "Print" ;
@@ -60,6 +77,10 @@
     owl:equivalentClass [ a owl:Restriction ;
             owl:hasValue :REACH ;
             owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ] .
+
+:StyreneButadieneLatex a owl:Class ;
+    rdfs:label "Styrene Butadiene Latex" ;
+    rdfs:subClassOf :TextileMaterial .
 
 :TextileDataSheet a owl:Class ;
     rdfs:label "Textile Data Sheet" ;
@@ -475,6 +496,22 @@
     rdfs:range xsd:boolean ;
     rdfs:subPropertyOf :hasCollectionParameter .
 
+:isContainedSubstanceFromREACHVeryHighConcernList a owl:DatatypeProperty ;
+    rdfs:label "is contained substance from REACH very high concern list" ;
+    rdfs:range xsd:boolean .
+
+:isContainedSubstanceInCMRHarmonizedClassfication a owl:DatatypeProperty ;
+    rdfs:label "is contained substance in CMR harmonized classfication" ;
+    rdfs:range xsd:boolean .
+
+:isMaintainedOrRepairedByTrainedPerson a owl:DatatypeProperty ;
+    rdfs:label "is maintained or repaired by trained person" ;
+    rdfs:range xsd:boolean .
+
+:isMaintainedOrRepairedByUntrainedPerson a owl:DatatypeProperty ;
+    rdfs:label "is maintained or repaired by untrained person" ;
+    rdfs:range xsd:boolean .
+
 :isMaterialSafetyDataSheetAvailable a owl:DatatypeProperty ;
     rdfs:label "is material safety datasheet available" ;
     :CFmapping "CF603" ;
@@ -501,6 +538,10 @@
     rdfs:comment "The product contains metal."@en ;
     rdfs:range xsd:boolean .
 
+:isRestricedSusbtanceContainedOutOfREACHXVII a owl:DatatypeProperty ;
+    rdfs:label "is restriced susbtance contained out of REACH XVII" ;
+    rdfs:range xsd:boolean .
+
 :isTechnicalDataSheetAvailable a owl:DatatypeProperty ;
     rdfs:label "is technical datasheet available" ;
     :CFmapping "CF604" ;
@@ -511,6 +552,10 @@
 :isTrimsIncluded a owl:DatatypeProperty ;
     rdfs:label "is trims included" ;
     rdfs:comment "The product includes trims."@en ;
+    rdfs:range xsd:boolean .
+
+:isWarnedUnderCaliforniaProposition65 a owl:DatatypeProperty ;
+    rdfs:label "is warned under California Proposition 65" ;
     rdfs:range xsd:boolean .
 
 :lessThan1Perc a :LeakageAmountInterval,
@@ -543,6 +588,10 @@
 
 :naturalOiling a :ChemicalFinishing,
         owl:NamedIndividual .
+
+:needsMaintenanceOrRepair a owl:DatatypeProperty ;
+    rdfs:label "needs maintenance or repair" ;
+    rdfs:range xsd:boolean .
 
 :opticalBrighteners a :ChemicalFinishing,
         owl:NamedIndividual .
@@ -904,6 +953,10 @@ ns1:numericalValue a owl:DatatypeProperty .
 
 :designForProperties a owl:DatatypeProperty ;
     rdfs:label "design for properties" .
+
+:TextileMaterial a owl:Class ;
+    rdfs:label "Textile Material" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 :TextileProperty a owl:Class ;
     rdfs:label "Textile Property" ;
