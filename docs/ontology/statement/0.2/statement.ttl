@@ -38,9 +38,26 @@ resourceODP:Resource rdfs:subClassOf prov:Entity .
     ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
     ns2:numericValue 1e+00 .
 
+:certified a :Validation,
+        owl:NamedIndividual .
+
+:hasAvailability a owl:ObjectProperty ;
+    rdfs:label "has availability" ;
+    rdfs:range :Availability .
+
+:hasValidation a owl:ObjectProperty ;
+    rdfs:label "has validation" ;
+    rdfs:range :Validation .
+
 :isPCDSStatementTrue a owl:DatatypeProperty ;
     rdfs:label "is PCDS statement true" ;
     rdfs:range xsd:boolean .
+
+:public a :Availability,
+        owl:NamedIndividual .
+
+:secrectAgreement a :Availability,
+        owl:NamedIndividual .
 
 :statementAbout a owl:ObjectProperty ;
     rdfs:label "statement about" ;
@@ -51,6 +68,9 @@ resourceODP:Resource rdfs:subClassOf prov:Entity .
     rdfs:label "statement value" ;
     rdfs:comment "Generic property to express values, e.g. literals, that are involved in this statement." ;
     rdfs:domain :Statement .
+
+:validatedByThirdParty a :Validation,
+        owl:NamedIndividual .
 
 :0.001p a ns2:QuantityValue,
         owl:NamedIndividual ;
@@ -389,10 +409,16 @@ prov:Entity a owl:Class .
     ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
     ns2:numericValue 1e-01 .
 
+:Availability a owl:Class ;
+    rdfs:label "Availability" .
+
 :Statement a owl:Class ;
     rdfs:label "Statement" ;
     rdfs:comment "Generic class representing the concept of a statement, i.e. some piece of information, fact etc that is expressed in the data. Effectively used to reify relations (triples) in the data, and express information about them." ;
     rdfs:subClassOf prov:Entity .
+
+:Validation a owl:Class ;
+    rdfs:label "Validation" .
 
 :hasChemicalSubstanceThresholdUsedByManufacturer a owl:ObjectProperty ;
     rdfs:label "has chemical substance threshold used by manufacturer" ;
