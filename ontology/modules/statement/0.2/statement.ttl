@@ -40,6 +40,12 @@
 #    Object Properties
 #################################################################
 
+###  http://w3id.org/CEON/ontology/statement/hasAvailability
+:hasAvailability rdf:type owl:ObjectProperty ;
+                 rdfs:range :Availability ;
+                 rdfs:label "has availability" .
+
+
 ###  http://w3id.org/CEON/ontology/statement/hasChemicalSubstanceThresholdUsedByManufacturer
 :hasChemicalSubstanceThresholdUsedByManufacturer rdf:type owl:ObjectProperty ;
                                                  rdfs:subPropertyOf :hasQuantityInterval ;
@@ -166,6 +172,12 @@
                      rdfs:label "has quantity interval" .
 
 
+###  http://w3id.org/CEON/ontology/statement/hasValidation
+:hasValidation rdf:type owl:ObjectProperty ;
+               rdfs:range :Validation ;
+               rdfs:label "has validation" .
+
+
 ###  http://w3id.org/CEON/ontology/statement/hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction
 :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction rdf:type owl:ObjectProperty ;
                                                                       rdfs:subPropertyOf :hasQuantityInterval ;
@@ -216,6 +228,11 @@
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Resource
 resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
+
+
+###  http://w3id.org/CEON/ontology/statement/Availability
+:Availability rdf:type owl:Class ;
+              rdfs:label "Availability" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/DemountingStatement
@@ -738,6 +755,11 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
                                                rdfs:label "Sustainably Produced Renewable Material Statement" .
 
 
+###  http://w3id.org/CEON/ontology/statement/Validation
+:Validation rdf:type owl:Class ;
+            rdfs:label "Validation" .
+
+
 ###  http://w3id.org/CEON/ontology/statement/WaterReuseOrRecirculationStatement
 :WaterReuseOrRecirculationStatement rdf:type owl:Class ;
                                     rdfs:subClassOf :PCDSStatement ,
@@ -825,6 +847,26 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://w3id.org/CEON/ontology/statement/certified
+:certified rdf:type owl:NamedIndividual ,
+                    :Validation .
+
+
+###  http://w3id.org/CEON/ontology/statement/public
+:public rdf:type owl:NamedIndividual ,
+                 :Availability .
+
+
+###  http://w3id.org/CEON/ontology/statement/secrectAgreement
+:secrectAgreement rdf:type owl:NamedIndividual ,
+                           :Availability .
+
+
+###  http://w3id.org/CEON/ontology/statement/validatedByThirdParty
+:validatedByThirdParty rdf:type owl:NamedIndividual ,
+                                :Validation .
+
 
 ###  http://w3id.org/CEON/ontology/statement/0ge-0le
 <http://w3id.org/CEON/ontology/statement/0ge-0le> rdf:type owl:NamedIndividual ,
