@@ -210,15 +210,15 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 
 :LCAEcotoxicityFreshWater a owl:Class ;
     rdfs:label "LCA Ecotoxicity Fresh Water" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty ns1:numericValue ],
-        [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty ns1:hasUnit ;
                         owl:someValuesFrom :LCAUnit ] [ a owl:Restriction ;
                         owl:allValuesFrom :LCAUnit ;
                         owl:onProperty ns1:hasUnit ] ) ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty ns1:numericValue ],
         ns1:QuantityValue .
 
 :LCAEutrophicationFreshWater a owl:Class ;
@@ -304,6 +304,10 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 
 :MatrixAdditiveMAterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+:N35H a :MaterialGrade,
+        owl:NamedIndividual ;
+    rdfs:comment "The material grade for neodymium (NdFeB) magnets." .
 
 :PrepregMaterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
@@ -468,6 +472,11 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:range :LifeSpanTime ;
     rdfs:subPropertyOf ns4:hasResourceProperty .
 
+:hasMagnetLocation a owl:DatatypeProperty ;
+    rdfs:label "has magnet location" ;
+    rdfs:comment "The placement of a magnet." ;
+    rdfs:range xsd:string .
+
 :hasMaintenanceInstructions a owl:DatatypeProperty ;
     rdfs:label "has maintenance instructions" ;
     rdfs:range xsd:string .
@@ -487,6 +496,12 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 :hasManufacturingSequence a owl:DatatypeProperty ;
     rdfs:label "has manufacturing sequence" ;
     rdfs:range xsd:string .
+
+:hasMaximumEnergyProduct a owl:ObjectProperty ;
+    rdfs:label "has maximum energy product" ;
+    rdfs:domain ns3:Item ;
+    rdfs:range :MaximumEnergyProduct ;
+    rdfs:subPropertyOf ns4:hasResourceProperty .
 
 :hasMetalCompositionValue a owl:ObjectProperty ;
     rdfs:label "has metal composition value" ;
@@ -522,6 +537,10 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:comment "hasProductionDate represents the date of production of a batch of products." ;
     rdfs:domain ns4:BatchOfObjects ;
     rdfs:range xsd:dateTime .
+
+:hasQualityTestLink a owl:DatatypeProperty ;
+    rdfs:label "has quality test link" ;
+    rdfs:range xsd:string .
 
 :hasRareEarthCompositionValue a owl:ObjectProperty ;
     rdfs:label "has rare earth composition value" ;
@@ -570,6 +589,12 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:label "has refractive index at 25" ;
     rdfs:range :RefractiveIndexAt25 ;
     rdfs:subPropertyOf ns1:quantityValue .
+
+:hasRemanentMagneticFluxDensity a owl:ObjectProperty ;
+    rdfs:label "has remanent magnetic flux fensity" ;
+    rdfs:domain ns3:Item ;
+    rdfs:range :RemanentMagneticFluxDensity ;
+    rdfs:subPropertyOf ns4:hasResourceProperty .
 
 :hasRenewableContentValue a owl:ObjectProperty ;
     rdfs:label "has renewable content value" ;
@@ -812,6 +837,9 @@ ns1:DerivedUnit a owl:Class ;
 
 :M a ns2:Actor,
         owl:NamedIndividual .
+
+:MaterialGrade a owl:Class ;
+    rdfs:label "Material Grade" .
 
 :MetalComposition a owl:Class ;
     rdfs:label "Metal Composition" ;
@@ -1065,6 +1093,13 @@ ns1:DerivedUnit a owl:Class ;
     rdfs:range :LifeSpanTimeValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
+:hasMaximumEnergyProductValue a owl:ObjectProperty ;
+    rdfs:label "has maximum energy product value" ;
+    rdfs:domain :MaximumEnergyProduct,
+        ns3:Item ;
+    rdfs:range :MaximumEnergyProductValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
 :hasOperatingVoltageValue a owl:ObjectProperty ;
     rdfs:label "has operating voltage value" ;
     rdfs:domain :OperatingVoltage,
@@ -1091,6 +1126,13 @@ ns1:DerivedUnit a owl:Class ;
     rdfs:domain :RatedRPM,
         ns3:Item ;
     rdfs:range :RatedRPMValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
+:hasRemanentMagneticFluxDensityValue a owl:ObjectProperty ;
+    rdfs:label "has remanent magnetic flux density value" ;
+    rdfs:domain :RemanentMagneticFluxDensity,
+        ns3:Item ;
+    rdfs:range :RemanentMagneticFluxDensityValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasResistivityValue a owl:ObjectProperty ;
@@ -1341,6 +1383,28 @@ ns2:ResourceRelation a owl:Class .
             owl:onProperty ns1:numericValue ],
         ns1:QuantityValue .
 
+:MaximumEnergyProduct a owl:Class ;
+    rdfs:label "Maximum Energy Product" ;
+    rdfs:comment "Valore (BH)max [KJ/m3; MGOe]" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :MaximumEnergyProductValue ;
+            owl:onProperty :hasMaximumEnergyProductValue ],
+        ns1:Quantity,
+        ns4:ResourceProperty .
+
+:MaximumEnergyProductValue a owl:Class ;
+    rdfs:label "Maximum Energy Product Value" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
+                        owl:allValuesFrom ns1:Unit ;
+                        owl:onProperty ns1:hasUnit ] ) ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty ns1:numericValue ],
+        ns1:QuantityValue .
+
 :NonMetalMaterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
@@ -1417,6 +1481,30 @@ ns2:ResourceRelation a owl:Class .
 
 :RatedRPMValue a owl:Class ;
     rdfs:label "Rated RPM Value" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
+                        owl:allValuesFrom ns1:Unit ;
+                        owl:onProperty ns1:hasUnit ] ) ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty ns1:numericValue ],
+        ns1:QuantityValue .
+
+:RemanentMagneticFluxDensity a owl:Class ;
+    rdfs:label "Remanence",
+        "Remanent Magnetic Flux Density" ;
+    rdfs:comment "Valore Br(mT;Gs)" ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Remanence" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :RemanentMagneticFluxDensityValue ;
+            owl:onProperty :hasRemanentMagneticFluxDensityValue ],
+        ns1:Quantity,
+        ns4:ResourceProperty .
+
+:RemanentMagneticFluxDensityValue a owl:Class ;
+    rdfs:label "Remanent Magnetic Flux Density Value" ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty ns1:hasUnit ;
