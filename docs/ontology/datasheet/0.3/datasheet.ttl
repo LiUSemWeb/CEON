@@ -14,7 +14,7 @@
     dcterms:created "2025-03-24" ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "A general representation of a CE data sheet, e.g. a product data sheet, a PCDS or similar." ;
-    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Data Sheet" ;
     vann:preferredNamespacePrefix "datasheet" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/datasheet/" ;
@@ -22,6 +22,30 @@
         <http://w3id.org/CEON/ontology/statement/0.2/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/datasheet/0.3/> ;
     owl:versionInfo "0.3" .
+
+:hasIssuingDate a owl:DatatypeProperty ;
+    rdfs:label "has issuing date" ;
+    rdfs:domain :DataSheet ;
+    rdfs:range xsd:date .
+
+:hasResponsibleEmail a owl:DatatypeProperty ;
+    rdfs:label "has responsible phone number" ;
+    rdfs:domain :DataSheet .
+
+:hasResponsibleParty a owl:DatatypeProperty ;
+    rdfs:label "has responsible party" ;
+    rdfs:domain :DataSheet .
+
+:hasResponsiblePhoneNumber a owl:DatatypeProperty ;
+    rdfs:label "has responsible phone number" ;
+    rdfs:domain :DataSheet .
+
+:hasVersionNumber a owl:DatatypeProperty ;
+    rdfs:label "has version number" ;
+    rdfs:domain :DataSheet ;
+    rdfs:range xsd:string .
+
+prov:Entity a owl:Class .
 
 :DataSheet a owl:Class ;
     rdfs:label "Data Sheet" ;
@@ -31,6 +55,4 @@
                         owl:onProperty resourceODP:containsInformation ;
                         owl:someValuesFrom statement:Statement ] ) ],
         resourceODP:Information .
-
-prov:Entity a owl:Class .
 
