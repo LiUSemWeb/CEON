@@ -1,7 +1,8 @@
 @prefix : <http://w3id.org/CEON/ontology/textile/> .
 @prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <http://qudt.org/schema/qudt/> .
+@prefix ns1: <http://w3id.org/CEON/ontology/quantity#> .
+@prefix ns2: <http://qudt.org/schema/qudt/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -15,7 +16,7 @@
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Textile Module" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/demo/textile/" ;
-    ns1:prefix "textile" ;
+    ns2:prefix "textile" ;
     rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
     owl:imports <http://w3id.org/CEON/ontology/actor/0.4/>,
         <http://w3id.org/CEON/ontology/actorODP/0.3/>,
@@ -55,11 +56,18 @@
     rdfs:label "Ethyl Vinyl Acetate Resin" ;
     rdfs:subClassOf :TextileMaterial .
 
+:GRSCompliance a owl:Class ;
+    rdfs:label "GRS Compliance" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue :GRS ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ] .
+
 :InorganicFIller a owl:Class ;
     rdfs:label "Inorganic FIller" ;
     rdfs:subClassOf :TextileMaterial .
 
-:MSDS a :Regulation,
+:MSDS a <http://w3id.org/CEON/ontology/product/Regulation>,
         owl:NamedIndividual .
 
 :PCDSmapping a owl:AnnotationProperty .
@@ -72,11 +80,7 @@
     rdfs:label "Print" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Constituent> .
 
-:REACHCompliance a owl:Class ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:hasValue :REACH ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ] .
+:REACH a owl:NamedIndividual .
 
 :StyreneButadieneLatex a owl:Class ;
     rdfs:label "Styrene Butadiene Latex" ;
@@ -105,6 +109,9 @@
     rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileProductCertification a owl:Class ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextileProductCompositionDisclosureStatement a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileProductCompositionOfConcern a owl:Class ;
@@ -140,80 +147,56 @@
 :TextileProductRenewableContet a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
-:_0.01perc a :AmountThreshold,
-        owl:NamedIndividual ;
+:ZDHCCompliance a owl:Class ;
+    rdfs:label "ZDHC Compliance" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue :ZDHC ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ] .
+
+:_0.01perc a owl:NamedIndividual ;
     rdfs:label "0.01%" ;
-    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> ;
+    ns2:hasUnit <http://qudt.org/vocab/unit/PERCENT> ;
     rdfs:seeAlso "100ppm" .
 
-:_0.1perc a :AmountThreshold,
-        owl:NamedIndividual ;
+:_0.1perc a owl:NamedIndividual ;
     rdfs:label "0.1%" ;
-    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> ;
+    ns2:hasUnit <http://qudt.org/vocab/unit/PERCENT> ;
     rdfs:seeAlso "1000ppm" .
 
-:_0perc a :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual ;
+:_0perc a owl:NamedIndividual ;
     rdfs:label "0%" .
 
-:_0to10Perc a :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual ;
+:_0to10Perc a owl:NamedIndividual ;
     rdfs:label "0-10%" .
 
-:_10to25Perc a :LeakageAmountInterval,
-        :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual ;
+:_10to25Perc a owl:NamedIndividual ;
     rdfs:label "10-25%" .
 
-:_1perc a :AmountThreshold,
-        owl:NamedIndividual ;
+:_1perc a owl:NamedIndividual ;
     rdfs:label "1%",
         "10000ppm" ;
-    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+    ns2:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
 
-:_1to10Perc a :LeakageAmountInterval,
-        owl:NamedIndividual ;
+:_1to10Perc a owl:NamedIndividual ;
     rdfs:label "1-10%" .
 
-:_25to50Perc a :LeakageAmountInterval,
-        :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual ;
+:_25to50Perc a owl:NamedIndividual ;
     rdfs:label "25-50%" .
 
-:_50-75Perc a :LeakageAmountInterval,
-        :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual ;
+:_50-75Perc a owl:NamedIndividual ;
     rdfs:label "50-75%" .
 
-:_75to95Perc a :LeakageAmountInterval,
-        :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual ;
+:_75to95Perc a owl:NamedIndividual ;
     rdfs:label "75-95%" .
 
-:_95to99Perc a :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual ;
+:_95to99Perc a owl:NamedIndividual ;
     rdfs:label "95-99%" .
 
-:above95Perc a :LeakageAmountInterval,
-        :PostConsumerRecycledContentInterval,
-        :PreConsumerRecycledContentInterval,
-        owl:NamedIndividual ;
+:above95Perc a owl:NamedIndividual ;
     rdfs:label ">95%" .
 
-:above99Perc a :RecyclingAtSameLevelAmountInterval,
-        owl:NamedIndividual ;
+:above99Perc a owl:NamedIndividual ;
     rdfs:label ">99%" .
 
 :acidDye a :Dye,
@@ -269,8 +252,7 @@
         owl:NamedIndividual .
 
 :chemicalSubstanceDisclosureThreshold a owl:ObjectProperty ;
-    rdfs:label "chemical substance disclosure threshold" ;
-    rdfs:range :TextileProductCompositionDisclosureStatement .
+    rdfs:label "chemical substance disclosure threshold" .
 
 :chromeDye a :Dye,
         :PrintStuff,
@@ -291,9 +273,34 @@
 :creaseResistance a :ChemicalFinishing,
         owl:NamedIndividual .
 
+:designedForCleanBiodigestion a owl:DatatypeProperty ;
+    rdfs:label "designed for clean biodigestion" ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :designForProperties .
+
+:designedForCleanIncinerationPyrolysis a owl:DatatypeProperty ;
+    rdfs:label "designed for clean incineration pyrolysis" ;
+    rdfs:subPropertyOf :designForProperties .
+
+:designedForCompostingInHomeComposter a owl:DatatypeProperty ;
+    rdfs:label "designed for composting in home composter" ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :designForProperties .
+
+:designedForCompostingInIndustrialFacility a owl:DatatypeProperty ;
+    rdfs:label "designed for composting in industrial facility" ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :designForProperties .
+
+:designedForIndustrialCascading a owl:DatatypeProperty ;
+    rdfs:label "designed for industrial cascading" ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :designForProperties .
+
 :designedForRecycling a owl:DatatypeProperty ;
     rdfs:label "designed for recycling" ;
     rdfs:comment "The product is designed for recycling?e"@en ;
+    rdfs:range xsd:boolean ;
     rdfs:subPropertyOf :designForProperties .
 
 :designedForRecyclingAtSameQuality a owl:ObjectProperty ;
@@ -306,19 +313,29 @@
 :designedForRefurbishment a owl:DatatypeProperty ;
     rdfs:label "designed for refurbishment" ;
     :PCDSmapping "5010" ;
-    rdfs:comment "The product is desinged for refurbishment?"@en ;
+    rdfs:comment "The product is desinged for refurbishment." ;
+    rdfs:range xsd:boolean ;
     rdfs:subPropertyOf :designForProperties .
 
 :designedForRemanufacturing a owl:DatatypeProperty ;
     rdfs:label "designed for remanufacturing" ;
     :PCDSmapping "5020" ;
-    rdfs:comment "The product is designed for remanufacturing?"@en ;
+    rdfs:comment "The product is designed for remanufacturing." ;
+    rdfs:range xsd:boolean ;
     rdfs:subPropertyOf :designForProperties .
 
-:designedForReuseWMinimalMod a owl:DatatypeProperty ;
+:designedForReuse a owl:DatatypeProperty ;
+    rdfs:label "designed for reuse" ;
+    rdfs:comment "The product is designed for reused?" ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :designForProperties .
+
+:designedForReuseWithMinimalModification a owl:DatatypeProperty ;
+    rdfs:label "designed for reuse with minimal modification" ;
     :PCDSmapping "5000" ;
-    rdfs:comment "The product is designed for re-use as-is or with minimal modification."@en ;
-    rdfs:subPropertyOf :designedForReuse .
+    rdfs:comment "The product is designed for re-use as-is or with minimal modification." ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :designForProperties .
 
 :digitalPrinted a :PrintingProcess,
         owl:NamedIndividual ;
@@ -335,8 +352,7 @@
 :disclosureValue a owl:ObjectProperty ;
     rdfs:label "disclosure value" ;
     rdfs:domain :TextileChemicalSubstanceThresholdStatement ;
-    rdfs:range :AmountThreshold ;
-    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity#objectValue> .
+    rdfs:subPropertyOf ns1:objectValue .
 
 :disperseDye a :Dye,
         :PrintStuff,
@@ -379,6 +395,10 @@
 :hasCountrySpecificCorporateIdentificationNumber a owl:DatatypeProperty ;
     rdfs:label "has country specific corporate identification number" ;
     rdfs:range xsd:string .
+
+:hasDedicatedCollectionSystem a owl:DatatypeProperty ;
+    rdfs:label "has dedicated collection system" ;
+    rdfs:range xsd:boolean .
 
 :hasDyeMethod a owl:ObjectProperty ;
     rdfs:label "Dye Method"@en ;
@@ -568,8 +588,7 @@
     rdfs:label "is warned under California Proposition 65" ;
     rdfs:range xsd:boolean .
 
-:lessThan1Perc a :LeakageAmountInterval,
-        owl:NamedIndividual .
+:lessThan1Perc a owl:NamedIndividual .
 
 :mattingAgent a :ChemicalFinishing,
         owl:NamedIndividual .
@@ -654,6 +673,10 @@
 :recycled a :TextileProductOrigin,
         owl:NamedIndividual .
 
+:recyclingAtSameQualityRange a owl:ObjectProperty ;
+    rdfs:label "recycling at same quality range" ;
+    rdfs:subPropertyOf ns1:objectValue .
+
 :red a :Color,
         owl:NamedIndividual .
 
@@ -698,13 +721,6 @@
 :sulfurDye a :PrintStuff,
         owl:NamedIndividual .
 
-:textileProductDesignForRecycling a owl:ObjectProperty ;
-    rdfs:label "textile product design for recycling" ;
-    :PCDSmapping "5070, 5080, 5081, 5090, 5091" ;
-    rdfs:comment "Product designed for a certain recycling method."@en ;
-    rdfs:range :TextileRecyclingProcess ;
-    rdfs:subPropertyOf :textileProductDesign .
-
 :topDyed a :TextileManufacturingProcess,
         owl:NamedIndividual ;
     rdfs:label "top dyed" .
@@ -741,10 +757,6 @@
 
 :waxing a owl:NamedIndividual .
 
-:weightFractionOfDisclosedSubstances a owl:ObjectProperty ;
-    rdfs:label "weight fraction of disclosed sudstances" ;
-    rdfs:comment "The weight fraction of all disclosed chemical substances is 0%, 0-10%, 10-25%, 25-50%, 50-75%, 75-95%, 95-99%, over 99%." .
-
 :wrinkleResistance a owl:NamedIndividual .
 
 :yarnDyed a :TextileManufacturingProcess,
@@ -753,14 +765,49 @@
 :yellow a :Color,
         owl:NamedIndividual .
 
+<http://w3id.org/CEON/demo/textile/0ge-1le> a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/0p> ;
+    ns1:hasMinimalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/1p> .
+
+<http://w3id.org/CEON/demo/textile/1gt-10le> a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/10p> ;
+    ns1:hasMinimalValueNotIncludedOfInterval <http://w3id.org/CEON/ontology/statement/1p> .
+
+<http://w3id.org/CEON/demo/textile/95gt-100le> a ns1:QuantityInterval,
+        owl:NamedIndividual ;
+    ns1:hasMaximalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/100p> ;
+    ns1:hasMinimalValueNotIncludedOfInterval <http://w3id.org/CEON/ontology/statement/95p> .
+
 <http://w3id.org/CEON/ontology/actor/ActorResourceRole> a owl:Class .
 
 :DyeingProcess a owl:Class ;
     rdfs:label "Dyeing Process" ;
     rdfs:subClassOf :TextileManufacturingProcess .
 
-:REACH a :Regulation,
+:GRS a <http://w3id.org/CEON/ontology/product/Regulation>,
         owl:NamedIndividual .
+
+:ProductToLeakageStatement a owl:Class ;
+    rdfs:label "Product To Leakage Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:hasValue <http://w3id.org/CEON/demo/textile/0ge-1le> ;
+                        owl:onProperty :hasFractionOfProductToLeakageDuringUse ] [ a owl:Restriction ;
+                        owl:hasValue <http://w3id.org/CEON/demo/textile/1gt-10le> ;
+                        owl:onProperty :hasFractionOfProductToLeakageDuringUse ] [ a owl:Restriction ;
+                        owl:hasValue <http://w3id.org/CEON/demo/textile/95gt-100le> ;
+                        owl:onProperty :hasFractionOfProductToLeakageDuringUse ] [ a owl:Restriction ;
+                        owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le> ;
+                        owl:onProperty :hasFractionOfProductToLeakageDuringUse ] [ a owl:Restriction ;
+                        owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le> ;
+                        owl:onProperty :hasFractionOfProductToLeakageDuringUse ] [ a owl:Restriction ;
+                        owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le> ;
+                        owl:onProperty :hasFractionOfProductToLeakageDuringUse ] [ a owl:Restriction ;
+                        owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le> ;
+                        owl:onProperty :hasFractionOfProductToLeakageDuringUse ] ) ],
+        <http://w3id.org/CEON/ontology/statement/PCDSStatement> .
 
 :TextileChemicalSubstanceThresholdStatement a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
@@ -777,18 +824,12 @@
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass :TextileProductComponentValue ;
             owl:onProperty :hasTextileProductComponentValue ],
-        ns1:Quantity,
+        ns2:Quantity,
         actorODP:ResourceParticipation,
         :TextileDataSheetStatement .
 
-:TextileProductCompositionDisclosureStatement a owl:Class ;
-    rdfs:subClassOf :TextileDataSheetStatement .
-
 :TextileProductDesignForRecycling a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty :recyclingAtSameQualityRange ;
-            owl:someValuesFrom :RecyclingAtSameLevelAmountInterval ],
-        :TextileDataSheetStatement .
+    rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileProductMatterCompositionRelation a owl:Class ;
     rdfs:label "Textile Product Matter Composition Relation" ;
@@ -803,7 +844,7 @@
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass :TextileProductMatterCompositionValue ;
             owl:onProperty :hasTextileProductMatterCompositionValue ],
-        ns1:Quantity,
+        ns2:Quantity,
         actorODP:ResourceParticipation,
         :TextileDataSheetStatement .
 
@@ -827,20 +868,18 @@
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass :TextileProductRecycledContentValue ;
             owl:onProperty :hasTextileProductRecycledContent ],
-        ns1:Quantity,
+        ns2:Quantity,
         actorODP:ResourceParticipation,
         :TextileDataSheetStatement .
+
+:ZDHC a <http://w3id.org/CEON/ontology/product/Regulation>,
+        owl:NamedIndividual .
 
 :brand a <http://w3id.org/CEON/ontology/actor/ActorResourceRole>,
         owl:NamedIndividual .
 
 :designForRecyclingAmounts a owl:DatatypeProperty ;
     rdfs:label "designed for recycling amounts" .
-
-:designedForReuse a owl:DatatypeProperty ;
-    rdfs:label "designed for reuse" ;
-    rdfs:comment "The product is designed for reused?" ;
-    rdfs:subPropertyOf :designForProperties .
 
 :hasCertification a owl:DatatypeProperty ;
     rdfs:label "has certification" .
@@ -852,41 +891,34 @@
     rdfs:label "has textile product component value" ;
     rdfs:domain :TextileProductComponentRelation ;
     rdfs:range :TextileProductComponentValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
+    rdfs:subPropertyOf ns2:quantityValue .
 
 :hasTextileProductMatterCompositionValue a owl:ObjectProperty ;
     rdfs:label "has textile product matter composition value" ;
     rdfs:domain :TextileProductMatterCompositionRelation ;
     rdfs:range :TextileProductMatterCompositionValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
+    rdfs:subPropertyOf ns2:quantityValue .
 
 :hasTextileProductRecycledContent a owl:ObjectProperty ;
     rdfs:label "has textile product recycled content" ;
     rdfs:domain :TextileProductRecycledContent ;
     rdfs:range :TextileProductRecycledContentValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
+    rdfs:subPropertyOf ns2:quantityValue .
 
-:recyclingAtSameQualityRange a owl:ObjectProperty ;
-    rdfs:label "recycling at same quality range" ;
-    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity#objectValue> .
-
-:textileProductDesign a owl:ObjectProperty ;
-    rdfs:label "textile product design" .
+<http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> rdfs:label "Batch Of Objects" .
 
 :Availability a owl:Class .
-
-:Regulation a owl:Class .
 
 :TextileProductComponentValue a owl:Class ;
     rdfs:label "Textile Product Component Value" ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty ns1:hasUnit ;
-                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
-                        owl:onProperty ns1:numericalValue ;
+                        owl:onProperty ns2:hasUnit ;
+                        owl:someValuesFrom ns2:Unit ] [ a owl:Restriction ;
+                        owl:onProperty ns2:numericalValue ;
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
-        ns1:QuantityValue .
+        ns2:QuantityValue .
 
 :TextileProductDesignForDisassembly a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
@@ -895,23 +927,23 @@
     rdfs:label "Textile Product Matter Composition Value" ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty ns1:hasUnit ;
-                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
-                        owl:onProperty ns1:numericalValue ;
+                        owl:onProperty ns2:hasUnit ;
+                        owl:someValuesFrom ns2:Unit ] [ a owl:Restriction ;
+                        owl:onProperty ns2:numericalValue ;
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
-        ns1:QuantityValue .
+        ns2:QuantityValue .
 
 :TextileProductRecycledContentValue a owl:Class ;
     rdfs:label "Textile Product Recycled Content Value" ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty ns1:hasUnit ;
-                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
-                        owl:onProperty ns1:numericalValue ;
+                        owl:onProperty ns2:hasUnit ;
+                        owl:someValuesFrom ns2:Unit ] [ a owl:Restriction ;
+                        owl:onProperty ns2:numericalValue ;
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
-        ns1:QuantityValue .
+        ns2:QuantityValue .
 
 :TextileProductValidation a owl:Class ;
     rdfs:label "Textile Product Validation" .
@@ -921,38 +953,26 @@
     rdfs:domain :TextileProduct ;
     rdfs:range :TextileProductType .
 
-ns1:numericalValue a owl:DatatypeProperty .
+ns2:numericalValue a owl:DatatypeProperty .
 
-<http://qudt.org/vocab/unit/PERCENT> a ns1:Unit,
+<http://qudt.org/vocab/unit/PERCENT> a ns2:Unit,
         owl:NamedIndividual .
 
 :TextileFinishing a owl:Class ;
     rdfs:label "Textile Finishing" ;
-    rdfs:subClassOf :TextileProperty .
+    rdfs:subClassOf :TextileManufacturingProcess .
 
 :TextileProductType a owl:Class ;
     rdfs:label "Textile Product Type" ;
     rdfs:subClassOf :TextileProperty .
 
+:TextileProperty a owl:Class ;
+    rdfs:label "Textile Property" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> .
+
 :hasTextileManufacturingProcess a owl:ObjectProperty ;
     rdfs:label "has textile manufacturing process" ;
     rdfs:range :TextileManufacturingProcess .
-
-:AmountIntervalValue a owl:Class ;
-    rdfs:label "Amount Interval Value" .
-
-:AmountThreshold a owl:Class ;
-    rdfs:label "Amount Threshold" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty ns1:numericValue ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty ns1:hasUnit ;
-                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
-                        owl:allValuesFrom ns1:Unit ;
-                        owl:onProperty ns1:hasUnit ] ) ],
-        ns1:QuantityValue .
 
 :TextileProductOrigin a owl:Class ;
     rdfs:label "Textile Product Origin" .
@@ -961,19 +981,19 @@ ns1:numericalValue a owl:DatatypeProperty .
     rdfs:label "Water Property" ;
     rdfs:subClassOf :TextileProperty .
 
-:TextileMaterial a owl:Class ;
-    rdfs:label "Textile Material" ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
-
-:TextileProperty a owl:Class ;
-    rdfs:label "Textile Property" ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> .
+:TextileRecyclingProcess a owl:Class ;
+    rdfs:label "Textile Recycling Process" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
 
 :availableInformation a owl:DatatypeProperty .
 
 :MechanicalFinishing a owl:Class ;
     rdfs:label "Mechanical Finishing" ;
     rdfs:subClassOf :TextileFinishing .
+
+:TextileMaterial a owl:Class ;
+    rdfs:label "Textile Material" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 :TextileProduct a owl:Class ;
     rdfs:label "Textile Product" ;
@@ -991,13 +1011,6 @@ ns1:numericalValue a owl:DatatypeProperty .
                         owl:onProperty :hasTextileProductType ] ) ],
         <http://w3id.org/CEON/ontology/product/Product> .
 
-:TextileRecyclingProcess a owl:Class ;
-    rdfs:label "Textile Recycling Process" ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
-
-:designForProperties a owl:DatatypeProperty ;
-    rdfs:label "design for properties" .
-
 :hasColor a owl:ObjectProperty ;
     rdfs:label "has color" ;
     rdfs:domain [ a owl:Class ;
@@ -1005,29 +1018,15 @@ ns1:numericalValue a owl:DatatypeProperty .
     rdfs:range :Color ;
     rdfs:subPropertyOf :hasProperty .
 
-:LeakageAmountInterval a owl:Class ;
-    rdfs:label "Leakage Amount Interval" ;
-    rdfs:subClassOf :AmountIntervalValue .
-
-:PostConsumerRecycledContentInterval a owl:Class ;
-    rdfs:label "Post Consumer Recycled Content Interval" ;
-    rdfs:subClassOf :AmountIntervalValue .
-
-:PreConsumerRecycledContentInterval a owl:Class ;
-    rdfs:label "Pre Consumer Recycled Content Interval" ;
-    rdfs:subClassOf :AmountIntervalValue .
+:hasFractionOfProductToLeakageDuringUse a owl:ObjectProperty ;
+    rdfs:label "has fraction of product to leakage during use" ;
+    rdfs:domain :ProductToLeakageStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/statement/hasQuantityInterval> .
 
 :PrintingProcess a owl:Class ;
     rdfs:label "Printing Process" ;
     rdfs:subClassOf :TextileManufacturingProcess .
-
-:RecyclingAtSameLevelAmountInterval a owl:Class ;
-    rdfs:label "Recycling At Same Level Amount Interval" ;
-    rdfs:subClassOf :AmountIntervalValue .
-
-:TextileManufacturingProcess a owl:Class ;
-    rdfs:label "Textile Manufacturing Process" ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
 
 :hasProperty a owl:ObjectProperty ;
     rdfs:label "has property" ;
@@ -1038,18 +1037,27 @@ ns1:numericalValue a owl:DatatypeProperty .
     rdfs:label "Color" ;
     rdfs:subClassOf :TextileProperty .
 
+:TextileManufacturingProcess a owl:Class ;
+    rdfs:label "Textile Manufacturing Process" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
+
+:designForProperties a owl:DatatypeProperty ;
+    rdfs:label "design for properties" ;
+    rdfs:range xsd:boolean .
+
 :Dye a owl:Class ;
     rdfs:label "Dye" ;
-    rdfs:subClassOf :TextileProperty .
+    rdfs:subClassOf :TextileMaterial .
 
 :PrintStuff a owl:Class ;
     rdfs:label "Print Stuff" ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Matter> .
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 :ChemicalFinishing a owl:Class ;
     rdfs:label "Chemical Finishing" ;
     rdfs:subClassOf :TextileFinishing .
 
 :TextileDataSheetStatement a owl:Class ;
+    rdfs:comment "Textile DataSheet Statement" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/Statement> .
 
