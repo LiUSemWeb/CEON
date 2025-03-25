@@ -1,7 +1,7 @@
 @prefix : <http://w3id.org/CEON/ontology/statement/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <http://w3id.org/CEON/ontology/quantity#> .
-@prefix ns2: <http://qudt.org/schema/qudt/> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
+@prefix ns2: <http://w3id.org/CEON/ontology/quantity#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -10,17 +10,17 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ns2:hasUnit a owl:AnnotationProperty .
+ns1:hasUnit a owl:AnnotationProperty .
 
-ns2:numericValue a owl:AnnotationProperty .
+ns1:numericValue a owl:AnnotationProperty .
 
 <http://w3id.org/CEON/ontology/actorODP/Role> rdfs:subClassOf prov:Role .
 
-ns1:hasMaximalValueIncludedOfInterval a owl:AnnotationProperty .
+ns2:hasMaximalValueIncludedOfInterval a owl:AnnotationProperty .
 
-ns1:hasMinimalValueIncludedOfInterval a owl:AnnotationProperty .
+ns2:hasMinimalValueIncludedOfInterval a owl:AnnotationProperty .
 
-ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
+ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 
 resourceODP:Resource rdfs:subClassOf prov:Entity .
 
@@ -39,10 +39,10 @@ resourceODP:Resource rdfs:subClassOf prov:Entity .
     owl:versionIRI <http://w3id.org/CEON/ontology/statement/0.2/> ;
     owl:versionInfo "0.2" .
 
-:1p a ns2:QuantityValue,
+:1p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 1e+00 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 1e+00 .
 
 :DisclosedChemicalSubtanceStatement a owl:Class ;
     rdfs:label "Disclosed Chemical Substance Statement" ;
@@ -523,94 +523,94 @@ resourceODP:Resource rdfs:subClassOf prov:Entity .
 :validatedByThirdParty a :Validation,
         owl:NamedIndividual .
 
-:0.001p a ns2:QuantityValue,
+:0.001p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 1e-03 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 1e-03 .
 
-:0.01p a ns2:QuantityValue,
+:0.01p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 1e-02 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 1e-02 .
 
-:0gt-0.001le a ns1:QuantityInterval,
+:0gt-0.001le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :0.001p ;
-    ns1:hasMinimalValueNotIncludedOfInterval :0p .
+    ns2:hasMaximalValueIncludedOfInterval :0.001p ;
+    ns2:hasMinimalValueNotIncludedOfInterval :0p .
 
-:0gt-0.01le a ns1:QuantityInterval,
+:0gt-0.01le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :0.01p ;
-    ns1:hasMinimalValueNotIncludedOfInterval :0p .
+    ns2:hasMaximalValueIncludedOfInterval :0.01p ;
+    ns2:hasMinimalValueNotIncludedOfInterval :0p .
 
-:0gt-0.1le a ns1:QuantityInterval,
+:0gt-0.1le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :0.1p ;
-    ns1:hasMinimalValueNotIncludedOfInterval :0p .
+    ns2:hasMaximalValueIncludedOfInterval :0.1p ;
+    ns2:hasMinimalValueNotIncludedOfInterval :0p .
 
-:100p a ns2:QuantityValue,
+:100p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 1e+02 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 1e+02 .
 
-:1ge a ns1:QuantityInterval,
+:1ge a ns2:QuantityInterval,
         owl:NamedIndividual .
 
 :hasPostConsumerRecycledMaterialCompositionThreshold a owl:ObjectProperty ;
     rdfs:label "has post consumer recycled material composition threshold" ;
     rdfs:domain :RecycledMaterialStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasPreConsumerRecycledMaterialCompositionThreshold a owl:ObjectProperty ;
     rdfs:label "has pre consumer recycled material composition threshold" ;
     rdfs:domain :RecycledMaterialStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 prov:Role a owl:Class .
 
-:0.1ge-0.1le a ns1:QuantityInterval,
+:0.1ge-0.1le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :0.1p ;
-    ns1:hasMinimalValueIncludedOfInterval :0.1p .
+    ns2:hasMaximalValueIncludedOfInterval :0.1p ;
+    ns2:hasMinimalValueIncludedOfInterval :0.1p .
 
-:10p a ns2:QuantityValue,
+:10p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 1e+01 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 1e+01 .
 
-:25p a ns2:QuantityValue,
+:25p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 2.5e+01 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 2.5e+01 .
 
-:50p a ns2:QuantityValue,
+:50p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 5e+01 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 5e+01 .
 
-:75p a ns2:QuantityValue,
+:75p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 7.5e+01 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 7.5e+01 .
 
-:95p a ns2:QuantityValue,
+:95p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 9.5e+01 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 9.5e+01 .
 
-:99p a ns2:QuantityValue,
+:99p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 9.9e+01 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 9.9e+01 .
 
 prov:Entity a owl:Class .
 
-:0.1p a ns2:QuantityValue,
+:0.1p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 1e-01 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 1e-01 .
 
 :Availability a owl:Class ;
     rdfs:label "Availability" .
@@ -658,13 +658,13 @@ prov:Entity a owl:Class .
 :hasChemicalSubstanceThresholdUsedByManufacturer a owl:ObjectProperty ;
     rdfs:label "has chemical substance threshold used by manufacturer" ;
     rdfs:domain :ProductCompositionStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
-:0p a ns2:QuantityValue,
+:0p a ns1:QuantityValue,
         owl:NamedIndividual ;
-    ns2:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
-    ns2:numericValue 0e+00 .
+    ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+    ns1:numericValue 0e+00 .
 
 :WaterReuseOrRecirculationStatement a owl:Class ;
     rdfs:label "Water Reuse Or Recirculation Statement" ;
@@ -673,85 +673,85 @@ prov:Entity a owl:Class .
 :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix a owl:ObjectProperty ;
     rdfs:label "has fraction of renewable energy out of the total production energy mix" ;
     rdfs:domain :RenewableEnergyStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionForDemounting a owl:ObjectProperty ;
     rdfs:label "has mass fraction for demounting" ;
     rdfs:domain :DemountingStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionForDisassembly a owl:ObjectProperty ;
     rdfs:label "has mass fraction for disassembly" ;
     rdfs:domain :DisassemblyStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionOfAllDisclosedChemicalSubstance a owl:ObjectProperty ;
     rdfs:label "has mass fraction of all disclosed chemical substance" ;
     rdfs:domain :ProductCompositionStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionOfDismantableComponentsForReuseAndRecycle a owl:ObjectProperty ;
     rdfs:label "has mass fraction of dismantable components for reuse and recycle" ;
     rdfs:domain :DismantlingStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass a owl:ObjectProperty ;
     rdfs:label "has mass fraction of post consumer recycled materials out of the total product mass" ;
     rdfs:domain :RecycledMaterialStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass a owl:ObjectProperty ;
     rdfs:label "has mass fraction of pre consumer recycled materials out of the total product mass" ;
     rdfs:domain :RecycledMaterialStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionOfProductDesignedForRecyclingToOriginalInput a owl:ObjectProperty ;
     rdfs:label "has mass fraction of product designed for recycling to original input" ;
     rdfs:domain :RecyclingStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionOfProductReleasedIntoEnvironment a owl:ObjectProperty ;
     rdfs:label "has mass fraction of product released into environment" ;
     rdfs:domain :ReleasedIntoEnvironmentStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass a owl:ObjectProperty ;
     rdfs:label "has mass fraction of recycled materials out of the total product mass" ;
     rdfs:domain :RecycledMaterialStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass a owl:ObjectProperty ;
     rdfs:label "has mass fraction of renewable materials out of the total product mass" ;
     rdfs:domain :SustainablyProducedRenewableMaterialStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasMassFractionOfReusedPartsOutOfTheTotalProduct a owl:ObjectProperty ;
     rdfs:label "has mass fraction of reused parts out of the total product" ;
     rdfs:domain :ReusedContentStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction a owl:ObjectProperty ;
     rdfs:label "has volume fraction of reduction of direct water consumption used in production" ;
     rdfs:domain :WaterReuseOrRecirculationStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction a owl:ObjectProperty ;
     rdfs:label "has volume fraction of reused or recirculated water used in production" ;
     rdfs:domain :WaterReuseOrRecirculationStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf :hasQuantityInterval .
 
 :ProductCompositionStatement a owl:Class ;
@@ -763,48 +763,48 @@ prov:Entity a owl:Class .
     rdfs:label "PCDS Statement" ;
     rdfs:subClassOf :Statement .
 
-<https://qudt.org/vocab/unit/PERCENT> a ns2:Unit,
+<https://qudt.org/vocab/unit/PERCENT> a ns1:Unit,
         owl:NamedIndividual .
 
-:0ge-0le a ns1:QuantityInterval,
+:0ge-0le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :0p ;
-    ns1:hasMinimalValueIncludedOfInterval :0p .
+    ns2:hasMaximalValueIncludedOfInterval :0p ;
+    ns2:hasMinimalValueIncludedOfInterval :0p .
 
-:0gt-10le a ns1:QuantityInterval,
+:0gt-10le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :10p ;
-    ns1:hasMinimalValueNotIncludedOfInterval :0p .
+    ns2:hasMaximalValueIncludedOfInterval :10p ;
+    ns2:hasMinimalValueNotIncludedOfInterval :0p .
 
-:10gt-25le a ns1:QuantityInterval,
+:10gt-25le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :25p ;
-    ns1:hasMinimalValueNotIncludedOfInterval :10p .
+    ns2:hasMaximalValueIncludedOfInterval :25p ;
+    ns2:hasMinimalValueNotIncludedOfInterval :10p .
 
-:25gt-50le a ns1:QuantityInterval,
+:25gt-50le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :50p ;
-    ns1:hasMinimalValueNotIncludedOfInterval :25p .
+    ns2:hasMaximalValueIncludedOfInterval :50p ;
+    ns2:hasMinimalValueNotIncludedOfInterval :25p .
 
-:50gt-75le a ns1:QuantityInterval,
+:50gt-75le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :75p ;
-    ns1:hasMinimalValueNotIncludedOfInterval :50p .
+    ns2:hasMaximalValueIncludedOfInterval :75p ;
+    ns2:hasMinimalValueNotIncludedOfInterval :50p .
 
-:75gt-95le a ns1:QuantityInterval,
+:75gt-95le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :95p ;
-    ns1:hasMinimalValueNotIncludedOfInterval :75p .
+    ns2:hasMaximalValueIncludedOfInterval :95p ;
+    ns2:hasMinimalValueNotIncludedOfInterval :75p .
 
-:95gt-99le a ns1:QuantityInterval,
+:95gt-99le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :99p ;
-    ns1:hasMinimalValueNotIncludedOfInterval :95p .
+    ns2:hasMaximalValueIncludedOfInterval :99p ;
+    ns2:hasMinimalValueNotIncludedOfInterval :95p .
 
-:99gt-100le a ns1:QuantityInterval,
+:99gt-100le a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval :100p ;
-    ns1:hasMinimalValueNotIncludedOfInterval :99p .
+    ns2:hasMaximalValueIncludedOfInterval :100p ;
+    ns2:hasMinimalValueNotIncludedOfInterval :99p .
 
 :RecycledMaterialStatement a owl:Class ;
     rdfs:label "Recycled Material Statement" ;
@@ -812,7 +812,7 @@ prov:Entity a owl:Class .
 
 :hasQuantityInterval a owl:ObjectProperty ;
     rdfs:label "has quantity interval" ;
-    rdfs:range ns1:QuantityInterval .
+    rdfs:range ns2:QuantityInterval .
 
-ns1:QuantityInterval a owl:Class .
+ns2:QuantityInterval a owl:Class .
 

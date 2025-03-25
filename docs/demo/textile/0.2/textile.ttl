@@ -184,6 +184,25 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :TextileManufacturingSiteStatement a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
+:TextilePostConsumerRecycledCompositionStatement a owl:Class ;
+    :LDTmapping "2510" ;
+    rdfs:subClassOf :TextileDataSheetStatement .
+
+:TextilePostConsumerRecycledContentWeightStatement a owl:Class ;
+    :LDTmapping "2500, 2501, 2502, 2503, 2504, 2505, 2506" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/MFOfPostConsumerRecycledMaterialContentStatement>,
+        :TextileDataSheetStatement .
+
+:TextilePreConsumerRecycledCompositionStatement a owl:Class ;
+    :LDTmapping "2410" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/PreConsumerRecycledMaterialCompositionStatement>,
+        :TextileDataSheetStatement .
+
+:TextilePreConsumerRecycledContentWeightStatement a owl:Class ;
+    :LDTmapping "2400, 2401, 2402, 2403, 2404, 2405, 2406" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/MFOfPreConsumerRecycledMaterialContentStatement>,
+        :TextileDataSheetStatement .
+
 :TextileProductCertification a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
@@ -197,11 +216,12 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
                         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                         owl:onClass :TextileProductMatterCompositionRelation ;
                         owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ] ) ],
-        <http://w3id.org/CEON/ontology/statement/ProductCompositionStatement>,
         :TextileDataSheetStatement .
 
 :TextileProductCompositionDisclosureStatement a owl:Class ;
-    rdfs:subClassOf :TextileDataSheetStatement .
+    :LDTmapping "2200, 2201, 2202, 2203, 2204, 2205, 2206, 2207" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/MassFractionOfDisclosedChemicalSubstanceStatement>,
+        :TextileDataSheetStatement .
 
 :TextileProductCompositionOfConcern a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
@@ -238,6 +258,7 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 
 :TextileProductRenewableContet a owl:Class ;
     rdfs:label "Textile Product Renewable Content" ;
+    :LDTmapping "2600, 2601, 2602, 2603, 2604, 2605, 2606" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
             owl:someValuesFrom :TextileProductRenewableContent ],
@@ -245,7 +266,7 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
             owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ],
-        <http://w3id.org/CEON/ontology/statement/SustainablyProducedRenewableMaterialStatement>,
+        <http://w3id.org/CEON/ontology/statement/MassFractionOfRenewableMaterialStatement>,
         :TextileDataSheetStatement .
 
 :TrimProduction a owl:Class ;
@@ -911,8 +932,9 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 
 :TextileChemicalSubstanceThresholdStatement a owl:Class ;
     rdfs:label "Textile Chemical Substance Threshold Statement" ;
-    :LDTmapping "2000" ;
-    rdfs:subClassOf :TextileDataSheetStatement .
+    :LDTmapping "2000, 2001, 2002" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/DisclosedChemicalSubtanceStatement>,
+        :TextileDataSheetStatement .
 
 :TextileProductDesignForRecycling a owl:Class ;
     rdfs:label "Textile Product Design For Recycling" ;
@@ -998,6 +1020,8 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:domain :TextileProductRenewableContent ;
     rdfs:range :TextileProductRenewableContentValue ;
     rdfs:subPropertyOf ns2:quantityValue .
+
+ns1:objectValue a owl:ObjectProperty .
 
 <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> rdfs:label "Batch Of Objects" .
 
@@ -1186,6 +1210,7 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :hasTextileProductionProcess a owl:ObjectProperty ;
     rdfs:label "has textile production process" ;
     :LDTmapping "CF206" ;
+    rdfs:domain :TextileProduct ;
     rdfs:range :TextileProductionProcess .
 
 ns2:numericalValue a owl:DatatypeProperty .
@@ -1229,6 +1254,12 @@ ns2:numericalValue a owl:DatatypeProperty .
     rdfs:range :Color ;
     rdfs:subPropertyOf :hasProperty .
 
+:hasFractionOfProductToLeakageDuringUse a owl:ObjectProperty ;
+    rdfs:label "has fraction of product to leakage during use" ;
+    rdfs:domain :TextileProductToLeakageStatement ;
+    rdfs:range ns1:QuantityInterval ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/statement/hasQuantityInterval> .
+
 :TextileProduct a owl:Class ;
     rdfs:label "Textile Product" ;
     rdfs:subClassOf [ a owl:Class ;
@@ -1244,12 +1275,6 @@ ns2:numericalValue a owl:DatatypeProperty .
                         owl:allValuesFrom :TextileProductType ;
                         owl:onProperty :hasTextileProductType ] ) ],
         <http://w3id.org/CEON/ontology/product/Product> .
-
-:hasFractionOfProductToLeakageDuringUse a owl:ObjectProperty ;
-    rdfs:label "has fraction of product to leakage during use" ;
-    rdfs:domain :TextileProductToLeakageStatement ;
-    rdfs:range ns1:QuantityInterval ;
-    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/statement/hasQuantityInterval> .
 
 :designForBetterUse a owl:DatatypeProperty ;
     rdfs:label "design for better use" ;

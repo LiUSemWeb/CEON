@@ -55,6 +55,10 @@
 #    Object Properties
 #################################################################
 
+###  http://w3id.org/CEON/ontology/quantity#objectValue
+<http://w3id.org/CEON/ontology/quantity#objectValue> rdf:type owl:ObjectProperty .
+
+
 ###  http://w3id.org/CEON/ontology/textile/anticipatedLeakageDuringUse
 :anticipatedLeakageDuringUse rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf :hasProperty ;
@@ -234,6 +238,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/hasTextileProductionProcess
 :hasTextileProductionProcess rdf:type owl:ObjectProperty ;
+                             rdfs:domain :TextileProduct ;
                              rdfs:range :TextileProductionProcess ;
                              :LDTmapping "CF206" ;
                              rdfs:label "has textile production process" .
@@ -644,24 +649,31 @@
 #    Classes
 #################################################################
 
-###  http://w3id.org/CEON/demo/textile/TextileProductComponentStatement
-:TextileProductComponentStatement rdf:type owl:Class ;
-                                  rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/ProductCompositionStatement> ,
-                                                  :TextileDataSheetStatement ,
-                                                  [ rdf:type owl:Class ;
-                                                    owl:unionOf ( [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
-                                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                    owl:onClass :TextileProductComponentRelation
-                                                                  ]
-                                                                  [ rdf:type owl:Restriction ;
-                                                                    owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
-                                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                    owl:onClass :TextileProductMatterCompositionRelation
-                                                                  ]
-                                                                )
-                                                  ] ;
-                                  rdfs:label "Textile Product Component Statement" .
+###  http://w3id.org/CEON/demo/textile/TextilePostConsumerRecycledCompositionStatement
+:TextilePostConsumerRecycledCompositionStatement rdf:type owl:Class ;
+                                                 rdfs:subClassOf :TextileDataSheetStatement ;
+                                                 :LDTmapping "2510" .
+
+
+###  http://w3id.org/CEON/demo/textile/TextilePostConsumerRecycledContentWeightStatement
+:TextilePostConsumerRecycledContentWeightStatement rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/MFOfPostConsumerRecycledMaterialContentStatement> ,
+                                                                   :TextileDataSheetStatement ;
+                                                   :LDTmapping "2500, 2501, 2502, 2503, 2504, 2505, 2506" .
+
+
+###  http://w3id.org/CEON/demo/textile/TextilePreConsumerRecycledCompositionStatement
+:TextilePreConsumerRecycledCompositionStatement rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/PreConsumerRecycledMaterialCompositionStatement> ,
+                                                                :TextileDataSheetStatement ;
+                                                :LDTmapping "2410" .
+
+
+###  http://w3id.org/CEON/demo/textile/TextilePreConsumerRecycledContentWeightStatement
+:TextilePreConsumerRecycledContentWeightStatement rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/MFOfPreConsumerRecycledMaterialContentStatement> ,
+                                                                  :TextileDataSheetStatement ;
+                                                  :LDTmapping "2400, 2401, 2402, 2403, 2404, 2405, 2406" .
 
 
 ###  http://w3id.org/CEON/ontology/actor/ActorResourceRole
@@ -918,8 +930,9 @@
 
 ###  http://w3id.org/CEON/ontology/textile/TextileChemicalSubstanceThresholdStatement
 :TextileChemicalSubstanceThresholdStatement rdf:type owl:Class ;
-                                            rdfs:subClassOf :TextileDataSheetStatement ;
-                                            :LDTmapping "2000" ;
+                                            rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/DisclosedChemicalSubtanceStatement> ,
+                                                            :TextileDataSheetStatement ;
+                                            :LDTmapping "2000, 2001, 2002" ;
                                             rdfs:label "Textile Chemical Substance Threshold Statement" .
 
 
@@ -1021,6 +1034,25 @@
                                  rdfs:label "Textile Product Component Relation" .
 
 
+###  http://w3id.org/CEON/ontology/textile/TextileProductComponentStatement
+:TextileProductComponentStatement rdf:type owl:Class ;
+                                  rdfs:subClassOf :TextileDataSheetStatement ,
+                                                  [ rdf:type owl:Class ;
+                                                    owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
+                                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                    owl:onClass :TextileProductComponentRelation
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
+                                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                    owl:onClass :TextileProductMatterCompositionRelation
+                                                                  ]
+                                                                )
+                                                  ] ;
+                                  rdfs:label "Textile Product Component Statement" .
+
+
 ###  http://w3id.org/CEON/ontology/textile/TextileProductComponentValue
 :TextileProductComponentValue rdf:type owl:Class ;
                               rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
@@ -1044,7 +1076,9 @@
 
 ###  http://w3id.org/CEON/ontology/textile/TextileProductCompositionDisclosureStatement
 :TextileProductCompositionDisclosureStatement rdf:type owl:Class ;
-                                              rdfs:subClassOf :TextileDataSheetStatement .
+                                              rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/MassFractionOfDisclosedChemicalSubstanceStatement> ,
+                                                              :TextileDataSheetStatement ;
+                                              :LDTmapping "2200, 2201, 2202, 2203, 2204, 2205, 2206, 2207" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/TextileProductCompositionOfConcern
@@ -1275,7 +1309,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/TextileProductRenewableContet
 :TextileProductRenewableContet rdf:type owl:Class ;
-                               rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/SustainablyProducedRenewableMaterialStatement> ,
+                               rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/MassFractionOfRenewableMaterialStatement> ,
                                                :TextileDataSheetStatement ,
                                                [ rdf:type owl:Restriction ;
                                                  owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
@@ -1289,6 +1323,7 @@
                                                                                   )
                                                                     ]
                                                ] ;
+                               :LDTmapping "2600, 2601, 2602, 2603, 2604, 2605, 2606" ;
                                rdfs:label "Textile Product Renewable Content" .
 
 
