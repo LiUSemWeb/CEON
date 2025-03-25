@@ -7,9 +7,18 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb3">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/value/ValueProposition"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasPerception">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b1"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/value/ValuePerception"/>
+    <rdfs:label>has perception</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/onParticipation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/value/ValuePerception"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipation"/>
+    <rdfs:comment>perceptions on specific value participations</rdfs:comment>
+    <rdfs:label>on participation</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -30,79 +39,13 @@
     <rdfs:seeAlso rdf:resource="https://github.com/LiUSemWeb/CEON"/>
     <owl:versionInfo>0.2</owl:versionInfo>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueProposition">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb5"/>
-    <rdfs:subClassOf rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb6"/>
-    <rdfs:subClassOf rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb7"/>
-    <rdfs:comment>Proposed or intended value outcome of some process, action or collaboration.</rdfs:comment>
-    <rdfs:label>Value Proposition</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValuePerception">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>Value Perception</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueParticipation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/Participation"/>
-    <rdfs:subClassOf rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb4"/>
-    <rdfs:comment>A participation that may create/destory/miss value.</rdfs:comment>
-    <rdfs:label>Value Participation</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/onParticipation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/value/ValuePerception"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipation"/>
-    <rdfs:comment>perceptions on specific value participations</rdfs:comment>
-    <rdfs:label>on participation</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ExchangeValue">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
-    <rdfs:comment>Exchange value represents the worth of a product, resource, service in a exchange setting, i.e., a product, resource, service is traded or sold.</rdfs:comment>
-    <rdfs:label>Exchange Value</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueEvaluator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb2">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
-    <rdf:rest rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb3"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/EconomicValue">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:equivalentClass rdf:resource="http://w3id.org/CEON/ontology/value/UseValue"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
-    <rdfs:label>Economic Value</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueParticipationRole">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/Role"/>
-    <rdfs:comment>A role that a value participant can take.</rdfs:comment>
-    <rdfs:label>Value Participation Role</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueDestroyer">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasValuableResource">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasPerceptionType">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipation"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
-    <rdfs:label>has valuable resource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/targettingValueParticipation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/value/hasVPTargets"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/value/ValueProposition"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipation"/>
-    <rdfs:comment>A value proposition is about some participation.</rdfs:comment>
-    <rdfs:label>targets value participation</rdfs:label>
+    <rdfs:comment>a perception has a specific type in terms of how a propostion or actor perceive values</rdfs:comment>
+    <rdfs:label>has perception type</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/targettingResource">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -112,27 +55,28 @@
     <rdfs:comment>A value proposition is about some resources.</rdfs:comment>
     <rdfs:label>targets resource</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#gYear">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/UseValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
+    <rdfs:comment>Use value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.</rdfs:comment>
+    <rdfs:label>Use Value</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb6">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/value/targettingActor"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueParticipationRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/Role"/>
+    <rdfs:comment>A role that a value participant can take.</rdfs:comment>
+    <rdfs:label>Value Participation Role</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasVPTargets">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:comment>A value proposition is proposed about specific actors, participations or resources.</rdfs:comment>
-    <rdfs:label>has value proposition targets</rdfs:label>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueCreator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasPerception">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb1"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/value/ValuePerception"/>
-    <rdfs:label>has perception</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueDistributor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasAssociatedValue">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -142,97 +86,61 @@
     <rdfs:comment>a value perception about creating/destorings/missing some value.</rdfs:comment>
     <rdfs:label>has associated value</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/value/hasAssociatedValue"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/targettingValueParticipation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/value/hasVPTargets"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/value/ValueProposition"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipation"/>
+    <rdfs:comment>A value proposition is about some participation.</rdfs:comment>
+    <rdfs:label>targets value participation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ExchangeValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
+    <rdfs:comment>Exchange value represents the worth of a product, resource, service in a exchange setting, i.e., a product, resource, service is traded or sold.</rdfs:comment>
+    <rdfs:label>Exchange Value</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueProposition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b5"/>
+    <rdfs:subClassOf rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b6"/>
+    <rdfs:subClassOf rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b7"/>
+    <rdfs:comment>Proposed or intended value outcome of some process, action or collaboration.</rdfs:comment>
+    <rdfs:label>Value Proposition</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueEvaluator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValuePerceptionType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Value Perception Type</rdfs:label>
+  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/Value">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:comment xml:lang="en">Gain(s) or benefit(s) from satisfying needs and expectations,	in relation to the use	and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time.</rdfs:comment>
     <rdfs:isDefinedBy>ISO 59004:2024 - 3.1.7 value</rdfs:isDefinedBy>
     <rdfs:label>Value</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/EnvironmentalValue">
+  <rdf:Description rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b1">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
-    <rdfs:label>Environmental Value</rdfs:label>
+    <owl:unionOf rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b2"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#date">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasAimedValue">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/value/ValueProposition"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
-    <rdfs:comment>A value proposition has value statements.</rdfs:comment>
-    <rdfs:label>has aimed value</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueContributor">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueDestroyer">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb5">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/value/hasAimedValue"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueDistributor">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/valueParticipantRole">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipation"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
-    <rdfs:comment>Holds the value of the role of the value participant in this value participation relation.</rdfs:comment>
-    <rdfs:label>value participant role</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/Participation">
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/cvn/Collaboration"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb4">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/value/hasAssociatedValue"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/UseValue">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValuePerception">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
-    <rdfs:comment>Use value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.</rdfs:comment>
-    <rdfs:label>Use Value</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueCreator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb1">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:unionOf rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb2"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Resource">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueConsumer">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValuePerceptionType">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>Value Perception Type</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasPerceptionType">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:comment>a perception has a specific type in terms of how a propostion or actor perceive values</rdfs:comment>
-    <rdfs:label>has perception type</rdfs:label>
+    <rdfs:label>Value Perception</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/proposedBy">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -240,13 +148,10 @@
     <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
     <rdfs:label>proposed by</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n3f168bc5463e47d8b6f75d99b8c5baecb7">
+  <rdf:Description rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b7">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/value/targettingValueParticipation"/>
     <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/targettingActor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -256,18 +161,113 @@
     <rdfs:comment>A value proposition is about some actors.</rdfs:comment>
     <rdfs:label>targets actor</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasVPTargets">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>A value proposition is proposed about specific actors, participations or resources.</rdfs:comment>
+    <rdfs:label>has value proposition targets</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Resource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/SocialValue">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
     <rdfs:label>Social Value</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#gMonthYear">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasAimedValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/value/ValueProposition"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
+    <rdfs:comment>A value proposition has value statements.</rdfs:comment>
+    <rdfs:label>has aimed value</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueConsumer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueParticipation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/Participation"/>
+    <rdfs:subClassOf rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b4"/>
+    <rdfs:comment>A participation that may create/destory/miss value.</rdfs:comment>
+    <rdfs:label>Value Participation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/hasValuableResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipation"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Resource"/>
+    <rdfs:label>has valuable resource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#date">
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b3">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/value/ValueProposition"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/Participation">
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/cvn/Collaboration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueContributor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/EconomicValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:resource="http://w3id.org/CEON/ontology/value/UseValue"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
+    <rdfs:label>Economic Value</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b2">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
+    <rdf:rest rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/value/targettingActor"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/EnvironmentalValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
+    <rdfs:label>Environmental Value</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfcd5f3d400da4a07a327f394b9fd5237b5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/value/hasAimedValue"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/value/Value"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/valueParticipantRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/participantRole"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipation"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/value/ValueParticipationRole"/>
+    <rdfs:comment>Holds the value of the role of the value participant in this value participation relation.</rdfs:comment>
+    <rdfs:label>value participant role</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/value/ValueCreation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#gYear">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#gMonthYear">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
 </rdf:RDF>

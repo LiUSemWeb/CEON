@@ -38,7 +38,8 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: C0-1, C0-2, C3-4, T3-4",
         "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: C0-1, C0-2, C3-4, T3-4" ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
-    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/> ;
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/>,
+        <http://w3id.org/CEON/ontology/location/0.2/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/actor/0.3/> ;
     owl:versionInfo 0.3 .
 
@@ -150,7 +151,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
                         owl:onProperty actorODP:participantRole ] ) ] .
 
 :Stakeholder a owl:Class ;
-    rdfs:label "Interested party"@en,
+    rdfs:label "Interested Party",
         "Stakeholder"@en ;
     rdfs:comment "Person or organization that can affect, be affected by, or perceive itself to be affected by a decision or activity. To “perceive itself to be affected” means the perception has been made known to the organization."@en ;
     rdfs:isDefinedBy "ISO 59004:2024 - 3.4.2 interested party, stakeholder" ;
@@ -221,12 +222,6 @@ odp:coversRequirements a owl:AnnotationProperty .
     rdfs:comment "The role(s) of an actor involved in a process." ;
     rdfs:subClassOf :ActorCollaborationRole .
 
-:Organisation a owl:Class ;
-    rdfs:label "Organisation"@en ;
-    rdfs:comment "Person or group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives. The concept of organization includes, but is not limited to sole-trader, company, corporation, firm, enterprise, authority, partnership, charity or institution, or part or combination thereof, whether incorporated or not, public or private (e.g. foundation, union, association, agency, municipality, region, country, intergovernmental agencies). A group of organizations can also be considered as	an organization that has, alone or collectively,their own objectives."@en ;
-    rdfs:isDefinedBy "ISO 59004:2024 - 3.4.1 organization" ;
-    rdfs:subClassOf actorODP:Actor .
-
 :Person a owl:Class ;
     rdfs:label "Person"@en ;
     rdfs:subClassOf actorODP:Actor .
@@ -236,6 +231,12 @@ odp:coversRequirements a owl:AnnotationProperty .
 
 :consumer a :ActorResourceRole,
         owl:NamedIndividual .
+
+:hasOrganisationName a owl:DatatypeProperty ;
+    rdfs:label "Represent name of an organisation.",
+        "has organisation name" ;
+    rdfs:domain :Organisation ;
+    rdfs:range xsd:string .
 
 :issuer a :ActorResourceRole,
         owl:NamedIndividual .
@@ -292,6 +293,13 @@ actorODP:participatingResource a owl:ObjectProperty .
     rdfs:comment "The roles of an actor involved in a collaboration." ;
     rdfs:subClassOf actorODP:Role .
 
+:hasOrganisationLocation a owl:ObjectProperty ;
+    rdfs:label "has organisation location" ;
+    rdfs:comment "Represent that an organisation has some locations." ;
+    rdfs:domain :Organisation ;
+    rdfs:range :OrganisationLocation ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/location/hasLocation> .
+
 actorODP:Capability a owl:Class .
 
 actorODP:Role a owl:Class .
@@ -299,6 +307,42 @@ actorODP:Role a owl:Class .
 actorODP:capabilityProperty a owl:ObjectProperty .
 
 actorODP:participationIn a owl:ObjectProperty .
+
+:Organisation a owl:Class ;
+    rdfs:label "Organisation"@en ;
+    rdfs:comment "Person or group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives. The concept of organization includes, but is not limited to sole-trader, company, corporation, firm, enterprise, authority, partnership, charity or institution, or part or combination thereof, whether incorporated or not, public or private (e.g. foundation, union, association, agency, municipality, region, country, intergovernmental agencies). A group of organizations can also be considered as	an organization that has, alone or collectively,their own objectives."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.4.1 organization" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasOrganisationLocation ;
+                        owl:someValuesFrom :OrganisationLocation ] [ a owl:Restriction ;
+                        owl:allValuesFrom :OrganisationLocation ;
+                        owl:onProperty :hasOrganisationLocation ] ) ],
+        [ a owl:Restriction ;
+            owl:onProperty :hasOrganisationName ;
+            owl:someValuesFrom xsd:string ],
+        actorODP:Actor .
+
+:OrganisationLocation a owl:Class ;
+    rdfs:label "Organisation Location" ;
+    rdfs:comment "Location of an organisation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/location/hasCity> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/location/hasCountry> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/location/hasPostalCode> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/location/hasStreetAddress> ],
+        <http://w3id.org/CEON/ontology/location/Location> .
 
 actorODP:participatingActor a owl:ObjectProperty .
 

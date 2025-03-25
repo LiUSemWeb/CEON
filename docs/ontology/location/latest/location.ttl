@@ -25,29 +25,41 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 : a owl:Ontology ;
-    dcterms:contributor "Huanyu Li",
-        "Mikael Lindecrantz",
-        "Robin Keskisärkkä" ;
-    dcterms:created "2023-03-17"^^xsd:date ;
-    dcterms:creator "Eva Blomqvist" ;
+    dcterms:contributor "Eva Blomqvist" ;
+    dcterms:created "2025-03-19" ;
+    dcterms:creator "Huanyu Li" ;
     dcterms:description "A module the CEON ontology network, defining aspects of the location concept." ;
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Location Module" ;
     vann:preferredNamespacePrefix "location" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/location/" ;
     odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE3-3" ;
-    rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the actor concept." ;
+    rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the location concept." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/location/0.1/> ;
-    owl:versionInfo 0.1 .
+    owl:versionIRI <http://w3id.org/CEON/ontology/location/0.2/> ;
+    owl:versionInfo 0.2 .
 
 :hasCity a owl:DatatypeProperty ;
-    rdfs:label "city" ;
+    rdfs:label "has city" ;
+    rdfs:comment "Represent name of a city" ;
+    rdfs:range xsd:string .
+
+:hasCountry a owl:DatatypeProperty ;
+    rdfs:label "has country" ;
+    rdfs:comment "Represent name of a country" ;
     rdfs:range xsd:string .
 
 :hasCountryCode a owl:DatatypeProperty ;
-    rdfs:label "country code" ;
-    rdfs:range xsd:string .
+    rdfs:label "has country code" ;
+    rdfs:comment "Represent code of a country's name." ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso "ISO 3166-1 (Codes for the representation of names of countries and their subdivisions – Part 1: Country code)" .
+
+:hasGlobalLocationNumber a owl:DatatypeProperty ;
+    rdfs:label "has global location number" ;
+    rdfs:comment "The Global Location Number (GLN) is part of the GS1 systems of standards." ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso "https://www.gs1.org/standards/id-keys/gln" .
 
 :hasLocation a owl:ObjectProperty ;
     rdfs:label "has location" ;
@@ -55,12 +67,14 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:range :Location .
 
 :hasPostalCode a owl:DatatypeProperty ;
-    rdfs:label "postal code" ;
-    rdfs:range xsd:string .
+    rdfs:label "has postal code" ;
+    rdfs:comment "Represent postal code" ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso "Universal Postal Union (UPU) S42 standard" .
 
-:hasStreet a owl:DatatypeProperty ;
-    rdfs:label "street" ;
-    rdfs:comment "street number and name" ;
+:hasStreetAddress a owl:DatatypeProperty ;
+    rdfs:label "has street address" ;
+    rdfs:comment "Represent address of a street, including e.g., street number and name" ;
     rdfs:range xsd:string .
 
 odp:coversRequirements a owl:AnnotationProperty .

@@ -1,4 +1,4 @@
-@prefix : <http://w3id.org/CEON/ontology/quantity#> .
+@prefix : <http://w3id.org/CEON/ontology/quantity/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
@@ -30,6 +30,18 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
     dcterms:description "Euro Per Square Meter (€/km) is a unit used to represent the cost or value of resource per square meter."^^rdf:HTML ;
     qudt:symbol "€/m²" .
 
+: a owl:Ontology ;
+    dcterms:creator "Huanyu Li" ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module"@en ;
+    vann:preferredNamespacePrefix "quantity" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/quantity/" ;
+    rdfs:comment "This module defines base properties to describe quantitites with standardized units."@en ;
+    rdfs:seeAlso "https://github.com/LiUSemWeb/Materials-Design-Ontology" ;
+    owl:imports <http://w3id.org/CEON/ontology/qudtunit/2.1/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/quantity/0.2/> ;
+    owl:versionInfo "0.2"@en .
+
 :Cost a owl:NamedIndividual .
 
 :FloorPanel1 a owl:NamedIndividual .
@@ -52,19 +64,43 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
     rdfs:comment "The market value, expressed as an amount of money with a currency unit." ;
     rdfs:subPropertyOf qudt:quantityValue .
 
+:hasMaximalValueIncludedOfInterval a owl:ObjectProperty ;
+    rdfs:label "has maximal value included of interval" ;
+    rdfs:domain :QuantityInterval ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasMaximalValueNotIncludedOfInterval a owl:ObjectProperty ;
+    rdfs:label "has maximal value not included of interval" ;
+    rdfs:domain :QuantityInterval ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasMinimalValueIncludedOfInterval a owl:ObjectProperty ;
+    rdfs:label "has minimal value included of interval" ;
+    rdfs:domain :QuantityInterval ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasMinimalValueNotIncludedOfInterval a owl:ObjectProperty ;
+    rdfs:label "has minimal value not included of interval" ;
+    rdfs:domain :QuantityInterval ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
 :hasRefurbishmentCost a owl:ObjectProperty ;
     rdfs:label "has refurbishment cost" ;
     rdfs:comment "The cost of refurbishment, expressed as an amount of money with a currency unit." ;
     rdfs:subPropertyOf qudt:quantityValue .
 
 :hasTestingCost a owl:ObjectProperty ;
-    rdfs:comment "The cost of testing, expressed as an amount of money with a currency unit.",
-        "has testing cost" ;
+    rdfs:label "has testing cost" ;
+    rdfs:comment "The cost of testing, expressed as an amount of money with a currency unit." ;
     rdfs:subPropertyOf qudt:quantityValue .
 
 :hasTransportCost a owl:ObjectProperty ;
-    rdfs:comment "The cost of transportation, expressed as an amount of money with a currency unit.",
-        "has transport cost" ;
+    rdfs:label "has transport cost" ;
+    rdfs:comment "The cost of transportation, expressed as an amount of money with a currency unit." ;
     rdfs:subPropertyOf qudt:quantityValue .
 
 :numericalMaxValue a owl:DatatypeProperty ;
@@ -78,15 +114,6 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
     rdfs:comment "objectValue is analogous to qudt:numericalValue" ;
     rdfs:subPropertyOf owl:topObjectProperty .
 
-<http://w3id.org/CEON/ontology/quantity/> a owl:Ontology ;
-    dcterms:creator "Robin Keskisärkkä" ;
-    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
-    dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module"@en ;
-    vann:preferredNamespacePrefix "quantity" ;
-    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/quantity/" ;
-    rdfs:comment "This module defines base properties to describe quantitites with standardized units."@en ;
-    rdfs:seeAlso "https://github.com/LiUSemWeb/Materials-Design-Ontology" ;
-    owl:imports <http://w3id.org/CEON/ontology/qudtunit/2.1/> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/quantity/0.1/> ;
-    owl:versionInfo "0.1"@en .
+:QuantityInterval a owl:Class ;
+    rdfs:label "Quantity Interval" .
 

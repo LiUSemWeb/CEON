@@ -10,20 +10,47 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 : a owl:Ontology ;
-    dcterms:contributor "Huanyu Li",
-        "Mikael Lindecrantz",
-        "Robin Keskisärkkä" ;
-    dcterms:created "2023-09-11" ;
-    dcterms:creator "Eva Blomqvist" ;
+    dcterms:contributor "Eva Blomqvist" ;
+    dcterms:created "2025-03-24" ;
+    dcterms:creator "Huanyu Li" ;
     dcterms:description "A general representation of a CE data sheet, e.g. a product data sheet, a PCDS or similar." ;
-    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Data Sheet" ;
     vann:preferredNamespacePrefix "datasheet" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/datasheet/" ;
-    owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.4/>,
-        <http://w3id.org/CEON/ontology/statement/0.1/> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/datasheet/0.2/> ;
-    owl:versionInfo "0.2" .
+    owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.5/>,
+        <http://w3id.org/CEON/ontology/statement/0.2/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/datasheet/0.3/> ;
+    owl:versionInfo "0.3" .
+
+:hasIssuingDate a owl:DatatypeProperty ;
+    rdfs:label "has issuing date" ;
+    rdfs:domain :DataSheet ;
+    rdfs:range xsd:date .
+
+:hasResponsibleEmail a owl:DatatypeProperty ;
+    rdfs:label "has responsible email" ;
+    rdfs:domain :DataSheet .
+
+:hasResponsibleParty a owl:DatatypeProperty ;
+    rdfs:label "has responsible party" ;
+    rdfs:domain :DataSheet .
+
+:hasResponsiblePhoneNumber a owl:DatatypeProperty ;
+    rdfs:label "has responsible phone number" ;
+    rdfs:domain :DataSheet .
+
+:hasUpdatingDate a owl:DatatypeProperty ;
+    rdfs:label "has updating date" ;
+    rdfs:domain :DataSheet ;
+    rdfs:range xsd:date .
+
+:hasVersionNumber a owl:DatatypeProperty ;
+    rdfs:label "has version number" ;
+    rdfs:domain :DataSheet ;
+    rdfs:range xsd:string .
+
+prov:Entity a owl:Class .
 
 :DataSheet a owl:Class ;
     rdfs:label "Data Sheet" ;
@@ -33,6 +60,4 @@
                         owl:onProperty resourceODP:containsInformation ;
                         owl:someValuesFrom statement:Statement ] ) ],
         resourceODP:Information .
-
-prov:Entity a owl:Class .
 
