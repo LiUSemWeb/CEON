@@ -167,7 +167,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LCAClimateChange a owl:Class ;
     rdfs:label "LCA Climate Change" ;
@@ -180,20 +180,20 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LCAClimateChangeBiogenic a owl:Class ;
     rdfs:label "LCA Climate Change Biogenic" ;
-    rdfs:subClassOf [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty ns1:numericValue ],
+        [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty ns1:hasUnit ;
                         owl:someValuesFrom :LCAUnit ] [ a owl:Restriction ;
                         owl:allValuesFrom :LCAUnit ;
                         owl:onProperty ns1:hasUnit ] ) ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LCAClimateChangeFossil a owl:Class ;
     rdfs:label "LCA Climate Change Fossil" ;
@@ -206,7 +206,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LCAEcotoxicityFreshWater a owl:Class ;
     rdfs:label "LCA Ecotoxicity Fresh Water" ;
@@ -219,7 +219,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LCAEutrophicationFreshWater a owl:Class ;
     rdfs:label "LCA Eutrophication Fresh Water" ;
@@ -232,7 +232,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LCAEutrophicationMarine a owl:Class ;
     rdfs:label "LCA Eutrophication Marine" ;
@@ -245,7 +245,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LCAHumanToxicityCancer a owl:Class ;
     rdfs:label "LCA Human Toxicity Cancer" ;
@@ -258,7 +258,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LCALonisingRaditionHumanHealth a owl:Class ;
     rdfs:label "LCA Lonising Radition Human Health" ;
@@ -271,7 +271,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LCAMineralUse a owl:Class ;
     rdfs:label "LCA Mineral Use" ;
@@ -284,7 +284,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LCAWaterUse a owl:Class ;
     rdfs:label "LCA Water Use" ;
@@ -297,7 +297,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+        :LCAValue .
 
 :LaminateMaterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
@@ -320,18 +320,12 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 :RareEarthMaterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
-:RefractiveIndexAt25Value a owl:Class ;
-    rdfs:label "Refractive Index At 25 Value" ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty ns1:hasUnit ;
-                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
-                        owl:allValuesFrom ns1:Unit ;
-                        owl:onProperty ns1:hasUnit ] ) ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+:RecyclingPressure a owl:Class ;
+    rdfs:label "Recycling Pressure" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :RecyclingPressureValue ;
+            owl:onProperty :hasRecyclingPressureValue ],
+        ns1:Quantity .
 
 :ResinMaterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
@@ -343,8 +337,12 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:subClassOf :MetalMaterial .
 
 :VirginFossilContent a owl:Class ;
-    rdfs:label "Virgin fossil content" ;
-    rdfs:subClassOf ns1:Quantity .
+    rdfs:label "Virgin Fossil Content" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :VirginFosilContentValue ;
+            owl:onProperty :hasVirginFosilContentValue ],
+        ns1:Quantity,
+        ns5:ProductComposition .
 
 :complianceWith a owl:ObjectProperty .
 
@@ -396,21 +394,9 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:range xsd:string ;
     rdfs:subPropertyOf :hasFileUrl .
 
-:hasCatalystCompositionValue a owl:ObjectProperty ;
-    rdfs:label "has catalyst composition value" ;
-    rdfs:domain :CatalystComposition ;
-    rdfs:range :CatalystCompositionValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
-
 :hasChemicalElement a owl:ObjectProperty ;
     rdfs:label "has chemical element" ;
     rdfs:range <http://w3id.org/CEON/ontology/material/ChemicalElement> .
-
-:hasChemicalElementCompositionValue a owl:ObjectProperty ;
-    rdfs:label "has chemical element composition value" ;
-    rdfs:domain :ChemicalElementComposition ;
-    rdfs:range :ChemicalElementCompositionValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
 
 :hasConductivity a owl:ObjectProperty ;
     rdfs:label "has conductivity" ;
@@ -466,7 +452,8 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 
 :hasHazardousMaterial a owl:ObjectProperty ;
     rdfs:label "has hazardous material" ;
-    rdfs:domain ns5:Item ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ] ;
     rdfs:range :HazardousMaterialPercentage ;
     rdfs:subPropertyOf ns1:quantityValue .
 
@@ -500,6 +487,7 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 
 :hasLCAValue a owl:ObjectProperty ;
     rdfs:label "has LCA value" ;
+    rdfs:range :LCAValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasLayUpSequence a owl:DatatypeProperty ;
@@ -552,12 +540,6 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:range :MaximumEnergyProduct ;
     rdfs:subPropertyOf ns3:hasResourceProperty .
 
-:hasMetalCompositionValue a owl:ObjectProperty ;
-    rdfs:label "has metal composition value" ;
-    rdfs:domain :MetalComposition ;
-    rdfs:range :MetalCompositionValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
-
 :hasNormativeReferenceFileUrl a owl:DatatypeProperty ;
     rdfs:label "has normative reference file url" ;
     rdfs:range xsd:string ;
@@ -581,20 +563,6 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:range xsd:string ;
     rdfs:subPropertyOf :hasFileUrl .
 
-:hasPostConsumerRecycledContentValue a owl:ObjectProperty ;
-    rdfs:label "has post consumer recycled content value" ;
-    rdfs:domain :PostConsumerRecycledContent,
-        ns5:Item ;
-    rdfs:range :PostConsumerRecycledContentValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
-
-:hasPreConsumerRecycledContentValue a owl:ObjectProperty ;
-    rdfs:label "has pre consumer recycled content value" ;
-    rdfs:domain :PreConsumerRecycledContent,
-        ns5:Item ;
-    rdfs:range :PreConsumerRecycledContentValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
-
 :hasProductionDate a owl:DatatypeProperty ;
     rdfs:label "has production date" ;
     rdfs:comment "hasProductionDate represents the date of production of a batch of products." ;
@@ -609,12 +577,6 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:label "has REACH compliance file url" ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf :hasFileUrl .
-
-:hasRareEarthCompositionValue a owl:ObjectProperty ;
-    rdfs:label "has rare earth composition value" ;
-    rdfs:domain :RareEarthComposition ;
-    rdfs:range :RareEarthCompositionValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
 
 :hasRatedLoadAmps a owl:ObjectProperty ;
     rdfs:label "has rated load amps" ;
@@ -634,11 +596,6 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:range :RatedRPM ;
     rdfs:subPropertyOf ns3:hasResourceProperty .
 
-:hasRecyclingPressureValue a owl:ObjectProperty ;
-    rdfs:label "has recycling pressure value" ;
-    rdfs:range :RecyclingPressureValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
-
 :hasRecyclingProcessDuration a owl:ObjectProperty ;
     rdfs:label "has recycling process duration" ;
     rdfs:range :RecyclingProcessDuration ;
@@ -653,23 +610,11 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
     rdfs:range :RecyclingTemperatureValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
-:hasRefractiveIndexAt25 a owl:ObjectProperty ;
-    rdfs:label "has refractive index at 25" ;
-    rdfs:range :RefractiveIndexAt25 ;
-    rdfs:subPropertyOf ns1:quantityValue .
-
 :hasRemanentMagneticFluxDensity a owl:ObjectProperty ;
     rdfs:label "has remanent magnetic flux fensity" ;
     rdfs:domain ns5:Item ;
     rdfs:range :RemanentMagneticFluxDensity ;
     rdfs:subPropertyOf ns3:hasResourceProperty .
-
-:hasRenewableContentValue a owl:ObjectProperty ;
-    rdfs:label "has renewable content value" ;
-    rdfs:domain :RenewableContent,
-        ns5:Item ;
-    rdfs:range :RenewableContentValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
 
 :hasRepairInstructions a owl:DatatypeProperty ;
     rdfs:label "has repair instructions" ;
@@ -763,13 +708,6 @@ ns1:siUnitsExpression a owl:DatatypeProperty .
 :hasUseAndAssemblyInstructions a owl:DatatypeProperty ;
     rdfs:label "has use and assembly instructions" ;
     rdfs:range xsd:string .
-
-:hasVirginFosilContentValue a owl:ObjectProperty ;
-    rdfs:label "has virgin fosil content value" ;
-    rdfs:domain :VirginFosilContent,
-        ns5:Item ;
-    rdfs:range :VirginFosilContentValue ;
-    rdfs:subPropertyOf ns1:quantityValue .
 
 :hasViscosityAt25 a owl:ObjectProperty ;
     rdfs:label "has viscosity at 25" ;
@@ -940,24 +878,19 @@ ns1:DerivedUnit a owl:Class ;
 
 :CatalystComposition a owl:Class ;
     rdfs:label "Catalyst Composition" ;
-    rdfs:subClassOf ns1:Quantity,
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :CatalystCompositionValue ;
+            owl:onProperty :hasCatalystCompositionValue ],
+        ns1:Quantity,
         ns5:MatterComposition .
-
-:CatalystCompositionValue a owl:Class ;
-    rdfs:label "Catalyst Composition Value" ;
-    rdfs:subClassOf ns1:QuantityValue .
 
 :ChemicalElementComposition a owl:Class ;
     rdfs:label "Chemical Element Composition" ;
-    rdfs:subClassOf ns1:Quantity,
-        ns5:MatterComposition .
-
-:ChemicalElementCompositionValue a owl:Class ;
-    rdfs:label "Chemical Element Composition Value" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue <https://qudt.org/vocab/unit/PERCENT> ;
-            owl:onProperty ns1:hasUnit ],
-        ns1:QuantityValue .
+            owl:allValuesFrom :ChemicalElementCompositionValue ;
+            owl:onProperty :hasChemicalElementCompositionValue ],
+        ns1:Quantity,
+        ns5:MatterComposition .
 
 :Damper a owl:Class ;
     rdfs:label "Damper" ;
@@ -988,12 +921,11 @@ ns1:DerivedUnit a owl:Class ;
 
 :MetalComposition a owl:Class ;
     rdfs:label "Metal Composition" ;
-    rdfs:subClassOf ns1:Quantity,
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :MetalCompositionValue ;
+            owl:onProperty :hasMetalCompositionValue ],
+        ns1:Quantity,
         ns5:MatterComposition .
-
-:MetalCompositionValue a owl:Class ;
-    rdfs:label "Metal Composition Value" ;
-    rdfs:subClassOf ns1:QuantityValue .
 
 :MotorSpeedType a owl:Class ;
     rdfs:label "Motor Speed Type" .
@@ -1006,59 +938,33 @@ ns1:DerivedUnit a owl:Class ;
     rdfs:subClassOf :ElectronicsProduct .
 
 :PostConsumerRecycledContent a owl:Class ;
-    rdfs:label "Post consumer recycled content" ;
+    rdfs:label "Post Consumer Recycled Content" ;
     rdfs:seeAlso "The finished goods or products have been used by a consumer, and then the material has been recycled." ;
-    rdfs:subClassOf ns1:Quantity .
-
-:PostConsumerRecycledContentValue a owl:Class ;
-    rdfs:label "Post Consumer Recycled Content Value" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue <https://qudt.org/vocab/unit/PERCENT> ;
-            owl:onProperty ns1:hasUnit ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+            owl:allValuesFrom :PostConsumerRecycledContentValue ;
+            owl:onProperty :hasPostConsumerRecycledContentValue ],
+        ns1:Quantity,
+        ns5:ProductComposition .
 
 :PostCustomerRecycledContent a owl:Class .
 
 :PreConsumerRecycledContent a owl:Class ;
-    rdfs:label "Pre consumer recycled content" ;
+    rdfs:label "Pre Consumer Recycled Content" ;
     rdfs:comment "The recycled content has been retained during the process of manufacturing or delivering products, before delivering to a customer." ;
     rdfs:seeAlso "https://en.wikipedia.org/wiki/Pre-consumer_recycling" ;
-    rdfs:subClassOf ns1:Quantity .
-
-:PreConsumerRecycledContentValue a owl:Class ;
-    rdfs:label "Pre Consumer Recycled Content Value" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue <https://qudt.org/vocab/unit/PERCENT> ;
-            owl:onProperty ns1:hasUnit ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
+            owl:allValuesFrom :PreConsumerRecycledContentValue ;
+            owl:onProperty :hasPreConsumerRecycledContentValue ],
+        ns1:Quantity,
+        ns5:ProductComposition .
 
 :RareEarthComposition a owl:Class ;
     rdfs:label "Rare Earth Composition" ;
-    rdfs:subClassOf ns1:Quantity,
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :RareEarthCompositionValue ;
+            owl:onProperty :hasRareEarthCompositionValue ],
+        ns1:Quantity,
         ns5:MatterComposition .
-
-:RareEarthCompositionValue a owl:Class ;
-    rdfs:label "Rare Earth Composition Value" ;
-    rdfs:subClassOf ns1:QuantityValue .
-
-:RecyclingPressureValue a owl:Class ;
-    rdfs:label "Recycling Pressure Value" ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty ns1:hasUnit ;
-                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
-                        owl:allValuesFrom ns1:Unit ;
-                        owl:onProperty ns1:hasUnit ] ) ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
 
 :RecyclingProcessDuration a owl:Class ;
     rdfs:label "Recycling Process Duration" ;
@@ -1086,22 +992,35 @@ ns1:DerivedUnit a owl:Class ;
             owl:onProperty ns1:numericValue ],
         ns1:QuantityValue .
 
-:RefractiveIndexAt25 a owl:Class .
-
-:RenewableContent a owl:Class ;
-    rdfs:label "Renewable content" ;
-    rdfs:comment "The content of product/material that can be renewed." ;
-    rdfs:subClassOf ns1:Quantity .
-
-:RenewableContentValue a owl:Class ;
-    rdfs:label "Renewable Content Value" ;
+:RefractiveIndexAt25 a owl:Class ;
+    rdfs:label "Refractive Index At 25" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue <https://qudt.org/vocab/unit/PERCENT> ;
-            owl:onProperty ns1:hasUnit ],
+            owl:allValuesFrom :RefractiveIndexAt25Value ;
+            owl:onProperty :hasRefractiveIndexAt25 ],
+        ns1:Quantity,
+        ns3:ResourceProperty .
+
+:RefractiveIndexAt25Value a owl:Class ;
+    rdfs:label "Refractive Index At 25 Value" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
+                        owl:allValuesFrom ns1:Unit ;
+                        owl:onProperty ns1:hasUnit ] ) ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
         ns1:QuantityValue .
+
+:RenewableContent a owl:Class ;
+    rdfs:label "Renewable Content" ;
+    rdfs:comment "The content of product/material that can be renewed." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :RenewableContentValue ;
+            owl:onProperty :hasRenewableContentValue ],
+        ns1:Quantity,
+        ns5:ProductComposition .
 
 :Resistivity a owl:Class ;
     rdfs:label "Resistivity" ;
@@ -1126,16 +1045,6 @@ ns1:DerivedUnit a owl:Class ;
         ns1:QuantityValue .
 
 :VirginFosilContent a owl:Class .
-
-:VirginFosilContentValue a owl:Class ;
-    rdfs:label "Virgin Fosil Content Value" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue <https://qudt.org/vocab/unit/PERCENT> ;
-            owl:onProperty ns1:hasUnit ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:double ;
-            owl:onProperty ns1:numericValue ],
-        ns1:QuantityValue .
 
 :carbon_material_a a :NonMetalMaterial,
         owl:NamedIndividual .
@@ -1174,23 +1083,39 @@ ns1:DerivedUnit a owl:Class ;
         owl:NamedIndividual ;
     ns2:participatingResource :boc_x .
 
+:hasCatalystCompositionValue a owl:ObjectProperty ;
+    rdfs:label "has catalyst composition value" ;
+    rdfs:domain :CatalystComposition ;
+    rdfs:range :CatalystCompositionValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
+:hasChemicalElementCompositionValue a owl:ObjectProperty ;
+    rdfs:label "has chemical element composition value" ;
+    rdfs:domain :ChemicalElementComposition ;
+    rdfs:range :ChemicalElementCompositionValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
 :hasConductivityValue a owl:ObjectProperty ;
     rdfs:label "has conductivity value" ;
-    rdfs:domain :Conductivity,
-        ns5:Item ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :Conductivity ;
     rdfs:range :ConductivityValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasDensityAt25Value a owl:ObjectProperty ;
     rdfs:label "has density value" ;
-    rdfs:domain :DensityAt25,
-        ns5:Item ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :DensityAt25 ;
     rdfs:range :DensityAt25Value ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasDepthValue a owl:ObjectProperty ;
     rdfs:label "has depth value" ;
-    rdfs:domain :Depth ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :Depth ;
     rdfs:range :DepthValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
@@ -1201,61 +1126,97 @@ ns1:DerivedUnit a owl:Class ;
 
 :hasDiameterValue a owl:ObjectProperty ;
     rdfs:label "has diameter value" ;
-    rdfs:domain :Diameter ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :Diameter ;
     rdfs:range :DiameterValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasFiberElongationAtBreakValue a owl:ObjectProperty ;
     rdfs:label "has fiber elongation at break value" ;
-    rdfs:domain :FiberElongationAtBreak,
-        ns5:Item ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :FiberElongationAtBreak ;
     rdfs:range :FiberElongationAtBreakValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasFiberVolumeContentValue a owl:ObjectProperty ;
     rdfs:label "has fiber volume content value" ;
-    rdfs:domain :FiberVolumeContent,
-        ns5:Item ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :FiberVolumeContent ;
     rdfs:range :FiberVolumeContentValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasLengthValue a owl:ObjectProperty ;
     rdfs:label "has length value" ;
-    rdfs:domain :Length ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :Length ;
     rdfs:range :LengthValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasLifeSpanTimeValue a owl:ObjectProperty ;
     rdfs:label "has life span time value" ;
-    rdfs:domain :LifeSpanTime ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :LifeSpanTime ;
     rdfs:range :LifeSpanTimeValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasMaximumEnergyProductValue a owl:ObjectProperty ;
     rdfs:label "has maximum energy product value" ;
-    rdfs:domain :MaximumEnergyProduct,
-        ns5:Item ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :MaximumEnergyProduct ;
     rdfs:range :MaximumEnergyProductValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
+:hasMetalCompositionValue a owl:ObjectProperty ;
+    rdfs:label "has metal composition value" ;
+    rdfs:domain :MetalComposition ;
+    rdfs:range :MetalCompositionValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasOperatingVoltageValue a owl:ObjectProperty ;
     rdfs:label "has operating voltage value" ;
-    rdfs:domain :OperatingVoltage,
-        ns5:Item ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :OperatingVoltage ;
     rdfs:range :OperatingVoltageValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
+:hasPostConsumerRecycledContentValue a owl:ObjectProperty ;
+    rdfs:label "has post consumer recycled content value" ;
+    rdfs:domain :PostConsumerRecycledContent ;
+    rdfs:range :PostConsumerRecycledContentValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
+:hasPreConsumerRecycledContentValue a owl:ObjectProperty ;
+    rdfs:label "has pre consumer recycled content value" ;
+    rdfs:domain :PreConsumerRecycledContent ;
+    rdfs:range :PreConsumerRecycledContentValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
+:hasRareEarthCompositionValue a owl:ObjectProperty ;
+    rdfs:label "has rare earth composition value" ;
+    rdfs:domain :RareEarthComposition ;
+    rdfs:range :RareEarthCompositionValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasRatedLoadAmpsValue a owl:ObjectProperty ;
     rdfs:label "has rated load amps value" ;
-    rdfs:domain :RatedLoadAmps,
-        ns5:Item ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :RatedLoadAmps ;
     rdfs:range :RatedLoadAmpsValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasRatedPowerOutputValue a owl:ObjectProperty ;
     rdfs:label "has rated power output value" ;
-    rdfs:domain :RatedPowerOutput,
-        ns5:Item ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ns5:Item ns5:Product ) ],
+        :RatedPowerOutput ;
     rdfs:range :RatedPowerOutputValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
@@ -1266,11 +1227,28 @@ ns1:DerivedUnit a owl:Class ;
     rdfs:range :RatedRPMValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
+:hasRecyclingPressureValue a owl:ObjectProperty ;
+    rdfs:label "has recycling pressure value" ;
+    rdfs:range :RecyclingPressureValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
+:hasRefractiveIndexAt25 a owl:ObjectProperty ;
+    rdfs:label "has refractive index at 25" ;
+    rdfs:range :RefractiveIndexAt25 ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
 :hasRemanentMagneticFluxDensityValue a owl:ObjectProperty ;
     rdfs:label "has remanent magnetic flux density value" ;
     rdfs:domain :RemanentMagneticFluxDensity,
         ns5:Item ;
     rdfs:range :RemanentMagneticFluxDensityValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
+:hasRenewableContentValue a owl:ObjectProperty ;
+    rdfs:label "has renewable content value" ;
+    rdfs:domain :RenewableContent,
+        ns5:Item ;
+    rdfs:range :RenewableContentValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
 :hasResistivityValue a owl:ObjectProperty ;
@@ -1315,6 +1293,13 @@ ns1:DerivedUnit a owl:Class ;
     rdfs:range :TransitionTemperatureValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
+:hasVirginFosilContentValue a owl:ObjectProperty ;
+    rdfs:label "has virgin fosil content value" ;
+    rdfs:domain :VirginFosilContent,
+        ns5:Item ;
+    rdfs:range :VirginFosilContentValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
 :hasViscosityAt25Value a owl:ObjectProperty ;
     rdfs:label "has viscosity at 25 value" ;
     rdfs:domain :ViscosityAt25,
@@ -1353,6 +1338,17 @@ ns2:ResourceRelation a owl:Class .
 <http://w3id.org/CEON/ontology/processODP/Process> a owl:Class .
 
 <http://qudt.org/vocab/sou/SI> a owl:NamedIndividual .
+
+:CatalystCompositionValue a owl:Class ;
+    rdfs:label "Catalyst Composition Value" ;
+    rdfs:subClassOf ns1:QuantityValue .
+
+:ChemicalElementCompositionValue a owl:Class ;
+    rdfs:label "Chemical Element Composition Value" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue <https://qudt.org/vocab/unit/PERCENT> ;
+            owl:onProperty ns1:hasUnit ],
+        ns1:QuantityValue .
 
 :Conductivity a owl:Class ;
     rdfs:label "Conductivity" ;
@@ -1543,6 +1539,10 @@ ns2:ResourceRelation a owl:Class .
             owl:onProperty ns1:numericValue ],
         ns1:QuantityValue .
 
+:MetalCompositionValue a owl:Class ;
+    rdfs:label "Metal Composition Value" ;
+    rdfs:subClassOf ns1:QuantityValue .
+
 :NonMetalMaterial a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
@@ -1566,6 +1566,30 @@ ns2:ResourceRelation a owl:Class .
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
         ns1:QuantityValue .
+
+:PostConsumerRecycledContentValue a owl:Class ;
+    rdfs:label "Post Consumer Recycled Content Value" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue <https://qudt.org/vocab/unit/PERCENT> ;
+            owl:onProperty ns1:hasUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty ns1:numericValue ],
+        ns1:QuantityValue .
+
+:PreConsumerRecycledContentValue a owl:Class ;
+    rdfs:label "Pre Consumer Recycled Content Value" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue <https://qudt.org/vocab/unit/PERCENT> ;
+            owl:onProperty ns1:hasUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty ns1:numericValue ],
+        ns1:QuantityValue .
+
+:RareEarthCompositionValue a owl:Class ;
+    rdfs:label "Rare Earth Composition Value" ;
+    rdfs:subClassOf ns1:QuantityValue .
 
 :RatedLoadAmps a owl:Class ;
     rdfs:label "Rated Load Amps" ;
@@ -1630,6 +1654,19 @@ ns2:ResourceRelation a owl:Class .
             owl:onProperty ns1:numericValue ],
         ns1:QuantityValue .
 
+:RecyclingPressureValue a owl:Class ;
+    rdfs:label "Recycling Pressure Value" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
+                        owl:allValuesFrom ns1:Unit ;
+                        owl:onProperty ns1:hasUnit ] ) ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty ns1:numericValue ],
+        ns1:QuantityValue .
+
 :RemanentMagneticFluxDensity a owl:Class ;
     rdfs:label "Remanence",
         "Remanent Magnetic Flux Density" ;
@@ -1649,6 +1686,16 @@ ns2:ResourceRelation a owl:Class .
                         owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
                         owl:allValuesFrom ns1:Unit ;
                         owl:onProperty ns1:hasUnit ] ) ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty ns1:numericValue ],
+        ns1:QuantityValue .
+
+:RenewableContentValue a owl:Class ;
+    rdfs:label "Renewable Content Value" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue <https://qudt.org/vocab/unit/PERCENT> ;
+            owl:onProperty ns1:hasUnit ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:double ;
             owl:onProperty ns1:numericValue ],
@@ -1769,6 +1816,16 @@ ns2:ResourceRelation a owl:Class .
             owl:onProperty ns1:numericValue ],
         ns1:QuantityValue .
 
+:VirginFosilContentValue a owl:Class ;
+    rdfs:label "Virgin Fosil Content Value" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue <https://qudt.org/vocab/unit/PERCENT> ;
+            owl:onProperty ns1:hasUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty ns1:numericValue ],
+        ns1:QuantityValue .
+
 :ViscosityAt25 a owl:Class ;
     rdfs:label "Viscosity At 25" ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -1845,6 +1902,10 @@ ns2:Actor a owl:Class .
 
 <https://qudt.org/vocab/unit/PERCENT> a ns1:Unit,
         owl:NamedIndividual .
+
+:LCAValue a owl:Class ;
+    rdfs:label "LCA Value" ;
+    rdfs:subClassOf ns1:QuantityValue .
 
 :hasFileUrl a owl:DatatypeProperty ;
     rdfs:label "has file url" ;

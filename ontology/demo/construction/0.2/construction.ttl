@@ -98,14 +98,23 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasConductivityValue
 :hasConductivityValue rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                      rdfs:domain :Conductivity ;
+                      rdfs:domain :Conductivity ,
+                                  [ rdf:type owl:Class ;
+                                    owl:unionOf ( product:Item
+                                                  product:Product
+                                                )
+                                  ] ;
                       rdfs:range :ConductivityValue ;
                       rdfs:label "has conductivity value" .
 
 
 ###  http://w3id.org/CEON/demo/construction/hasContaminant
 :hasContaminant rdf:type owl:ObjectProperty ;
-                rdfs:domain product:Product ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( product:Item
+                                            product:Product
+                                          )
+                            ] ;
                 rdfs:range :Contaminant ;
                 rdfs:comment "hasContaminant is used to express the presence of contaminants in a product or product object." ;
                 rdfs:label "has contaminant" .
@@ -121,7 +130,11 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasDimensionalDeviation
 :hasDimensionalDeviation rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf owl:topObjectProperty ;
-                         rdfs:domain product:Product ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( product:Item
+                                                     product:Product
+                                                   )
+                                     ] ;
                          rdfs:range :DimensionalDeviation ;
                          rdfs:comment "hasDimensionalDeviation is used to describe the dimensional deviation class of a product." ;
                          rdfs:label "has dimensional deviation" .
@@ -130,6 +143,11 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasDistanceToRecyclingPlant
 :hasDistanceToRecyclingPlant rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                             rdfs:domain [ rdf:type owl:Class ;
+                                           owl:unionOf ( product:Item
+                                                         product:Product
+                                                       )
+                                         ] ;
                              rdfs:range :LocalRecyclingPlantDistance ;
                              rdfs:label "has distance to recycling plant" .
 
@@ -150,7 +168,12 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasGlobalWarmingPotential
 :hasGlobalWarmingPotential rdf:type owl:ObjectProperty ;
                            rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                           rdfs:domain :LifeCycleAssessmentImpact ;
+                           rdfs:domain :LifeCycleAssessmentImpact ,
+                                       [ rdf:type owl:Class ;
+                                         owl:unionOf ( product:Item
+                                                       product:Product
+                                                     )
+                                       ] ;
                            rdfs:range :GlobalWarmingPotential ;
                            rdfs:label "has global warming potential" .
 
@@ -158,6 +181,16 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasHeight
 :hasHeight rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :hasDimension ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( :FloorPanelHeight
+                                       :PedestalHeight
+                                     )
+                       ] ,
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( product:Item
+                                       product:Product
+                                     )
+                       ] ;
            rdfs:range [ rdf:type owl:Class ;
                         owl:unionOf ( :FloorPanelHeightValue
                                       :PedestalHeightValue
@@ -182,6 +215,16 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasLength
 :hasLength rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :hasDimension ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( :FloorPanelLength
+                                       :PedestalLength
+                                     )
+                       ] ,
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( product:Item
+                                       product:Product
+                                     )
+                       ] ;
            rdfs:range [ rdf:type owl:Class ;
                         owl:unionOf ( :FloorPanelLengthValue
                                       :PedestalLengthValue
@@ -194,7 +237,11 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasMarketValueForNewProduct
 :hasMarketValueForNewProduct rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf quantity:hasMarketValue ;
-                             rdfs:domain product:Product ;
+                             rdfs:domain [ rdf:type owl:Class ;
+                                           owl:unionOf ( product:Item
+                                                         product:Product
+                                                       )
+                                         ] ;
                              rdfs:range :MarketValueForProduct ;
                              rdfs:comment "hasMarketValueForNewProduct is used to describe the market value of a new product." ;
                              rdfs:label "has market value for new product" .
@@ -203,7 +250,11 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasMarketValueForReusedProduct
 :hasMarketValueForReusedProduct rdf:type owl:ObjectProperty ;
                                 rdfs:subPropertyOf quantity:hasMarketValue ;
-                                rdfs:domain product:Product ;
+                                rdfs:domain [ rdf:type owl:Class ;
+                                              owl:unionOf ( product:Item
+                                                            product:Product
+                                                          )
+                                            ] ;
                                 rdfs:range :MarketValueForProduct ;
                                 rdfs:comment "hasMarketValueForReusedProduct is used to describe the market value of a used product." ;
                                 rdfs:label "has market value for reused product" .
@@ -260,7 +311,12 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasResistanceToEarth
 :hasResistanceToEarth rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                      rdfs:domain :ResistanceToEarth ;
+                      rdfs:domain :ResistanceToEarth ,
+                                  [ rdf:type owl:Class ;
+                                    owl:unionOf ( product:Item
+                                                  product:Product
+                                                )
+                                  ] ;
                       rdfs:range :ResistanceToEarthValue ;
                       rdfs:comment "hasResistanceToEarth describes the resistance to earth of a product." ;
                       rdfs:label "has resistance to earth" .
@@ -269,7 +325,12 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasReuseDeconstructability
 :hasReuseDeconstructability rdf:type owl:ObjectProperty ;
                             rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                            rdfs:domain :ReuseDeconstructability ;
+                            rdfs:domain :ReuseDeconstructability ,
+                                        [ rdf:type owl:Class ;
+                                          owl:unionOf ( product:Item
+                                                        product:Product
+                                                      )
+                                        ] ;
                             rdfs:range :RecyclingDeconstructabilityValue ;
                             rdfs:comment "hasReuseDeconstructability is used to describe the amount of the product hat can be deconstructed for reuse." ;
                             rdfs:label "has reuse deconstructability" .
@@ -309,6 +370,13 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasThickness
 :hasThickness rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :hasDimension ;
+              rdfs:domain :Thickness ,
+                          [ rdf:type owl:Class ;
+                            owl:unionOf ( product:Item
+                                          product:Product
+                                        )
+                          ] ;
+              rdfs:range :ThicknessValue ;
               rdfs:comment "hasThickness is used to describe the thickness of a product or product object." ;
               rdfs:label "has thickness" .
 
@@ -345,6 +413,16 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasWidth
 :hasWidth rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :hasDimension ;
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :FloorPanelWidth
+                                      :PedestalWidth
+                                    )
+                      ] ,
+                      [ rdf:type owl:Class ;
+                        owl:unionOf ( product:Item
+                                      product:Product
+                                    )
+                      ] ;
           rdfs:range [ rdf:type owl:Class ;
                        owl:unionOf ( :FloorPanelWidthValue
                                      :PedestalWidthValue
@@ -357,7 +435,11 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/policyOnTreatment
 :policyOnTreatment rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
-                   rdfs:domain product:Product ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( product:Item
+                                               product:Product
+                                             )
+                               ] ;
                    rdfs:range :TreatmentPolicy ;
                    rdfs:comment "policyOnTreatment describes the policy for treatment of used product." ;
                    rdfs:label "policy on treatment" .
@@ -368,7 +450,13 @@ quantity:hasMarketValue rdfs:range :MarketValueForProduct .
 
 
 ###  http://w3id.org/CEON/ontology/quantity#hasRefurbishmentCost
-quantity:hasRefurbishmentCost rdfs:range :RefurbishmentCostValue .
+quantity:hasRefurbishmentCost rdfs:domain :FloorPanelHeight ,
+                                          [ rdf:type owl:Class ;
+                                            owl:unionOf ( product:Item
+                                                          product:Product
+                                                        )
+                                          ] ;
+                              rdfs:range :RefurbishmentCostValue .
 
 
 ###  http://w3id.org/CEON/ontology/quantity#hasTestingCost
@@ -406,6 +494,11 @@ quantity:hasTransportCost rdfs:range :TransportCostValue .
 ###  http://w3id.org/CEON/demo/construction/hasDismantlingInstruction
 :hasDismantlingInstruction rdf:type owl:DatatypeProperty ;
                            rdfs:subPropertyOf owl:topDataProperty ;
+                           rdfs:domain [ rdf:type owl:Class ;
+                                         owl:unionOf ( product:Item
+                                                       product:Product
+                                                     )
+                                       ] ;
                            rdfs:range xsd:anyURI ;
                            rdfs:comment "link to dismantling instructions" ;
                            rdfs:label "has dismantling instructions" .
@@ -939,7 +1032,8 @@ quantity:hasTransportCost rdfs:range :TransportCostValue .
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty :hasGlobalWarmingPotential ;
                                              owl:allValuesFrom :GlobalWarmingPotential
-                                           ] .
+                                           ] ;
+                           rdfs:label "Life Cycle Assessment Impact" .
 
 
 ###  http://w3id.org/CEON/demo/construction/LocalRecyclingPlantDistance
@@ -1477,6 +1571,38 @@ quantity:hasTransportCost rdfs:range :TransportCostValue .
                                   ] ;
                   rdfs:comment "The cost value of testing." ;
                   rdfs:label "Testing Cost Value" .
+
+
+###  http://w3id.org/CEON/demo/construction/Thickness
+:Thickness rdf:type owl:Class ;
+           rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                           <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasThickness ;
+                             owl:allValuesFrom :ThicknessValue
+                           ] ;
+           rdfs:label "Thickness" .
+
+
+###  http://w3id.org/CEON/demo/construction/ThicknessValue
+:ThicknessValue rdf:type owl:Class ;
+                rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                         owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                         owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                  owl:allValuesFrom xsd:double
+                                ] ;
+                rdfs:label "Thickness Value" .
 
 
 ###  http://w3id.org/CEON/demo/construction/TransportCostValue
