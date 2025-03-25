@@ -187,6 +187,19 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :TextileProductCertification a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
+:TextileProductComponentStatement a owl:Class ;
+    rdfs:label "Textile Product Component Statement" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :TextileProductComponentRelation ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ] [ a owl:Restriction ;
+                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :TextileProductMatterCompositionRelation ;
+                        owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ] ) ],
+        <http://w3id.org/CEON/ontology/statement/ProductCompositionStatement>,
+        :TextileDataSheetStatement .
+
 :TextileProductCompositionDisclosureStatement a owl:Class ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
@@ -224,7 +237,16 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:subClassOf :TextileDataSheetStatement .
 
 :TextileProductRenewableContet a owl:Class ;
-    rdfs:subClassOf :TextileDataSheetStatement .
+    rdfs:label "Textile Product Renewable Content" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
+            owl:someValuesFrom :TextileProductRenewableContent ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ],
+        <http://w3id.org/CEON/ontology/statement/SustainablyProducedRenewableMaterialStatement>,
+        :TextileDataSheetStatement .
 
 :TrimProduction a owl:Class ;
     rdfs:label "Trim Production" ;
@@ -892,52 +914,23 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     :LDTmapping "2000" ;
     rdfs:subClassOf :TextileDataSheetStatement .
 
-:TextileProductComponentRelation a owl:Class ;
-    rdfs:label "Textile Product Component Relation" ;
-    :LDTmapping "2000, 2001, 2002, 2200, 2201, 2202, 2203, 2204, 2205, 2206, 2207" ;
-    rdfs:comment "a statement about textile product component" ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty actorODP:participatingObject ;
-                        owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Constituent> ] [ a owl:Restriction ;
-                        owl:onProperty actorODP:participatingSubject ;
-                        owl:someValuesFrom :TextileProduct ] ) ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass :TextileProductComponentValue ;
-            owl:onProperty :hasTextileProductComponentValue ],
-        ns2:Quantity,
-        actorODP:ResourceParticipation,
-        <http://w3id.org/CEON/ontology/statement/ProductCompositionStatement>,
-        :TextileDataSheetStatement .
-
 :TextileProductDesignForRecycling a owl:Class ;
     rdfs:label "Textile Product Design For Recycling" ;
     :LDTmapping "5030, 5031, 5032, 5033, 5034, 5035, 5036, 5037" ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/RecyclingStatement>,
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
+            owl:someValuesFrom :TextileProductRecycledContent ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ],
+        <http://w3id.org/CEON/ontology/statement/RecyclingStatement>,
         :TextileDataSheetStatement .
 
 :TextileProductDesignedForBetterUse a owl:Class ;
     rdfs:label "Textile Product Designed For Better Use" ;
     :LDTmapping "3000, 3001, 3002, 3003, 3010, 3020, 3100, 3200" ;
     rdfs:subClassOf :TextileDataSheetStatement .
-
-:TextileProductMatterCompositionRelation a owl:Class ;
-    rdfs:label "Textile Product Matter Composition Relation" ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty actorODP:participatingObject ;
-                        owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Matter> ] [ a owl:Restriction ;
-                        owl:onProperty actorODP:participatingSubject ;
-                        owl:someValuesFrom [ a owl:Class ;
-                                owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ] ) ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass :TextileProductMatterCompositionValue ;
-            owl:onProperty :hasTextileProductMatterCompositionValue ],
-        ns2:Quantity,
-        actorODP:ResourceParticipation,
-        :TextileDataSheetStatement .
 
 :TextileProductObject a owl:Class ;
     rdfs:label "Textile Product Object" ;
@@ -1013,6 +1006,23 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     :LDTmapping "CF707" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> .
 
+:TextileProductComponentRelation a owl:Class ;
+    rdfs:label "Textile Product Component Relation" ;
+    :LDTmapping "2000, 2001, 2002, 2200, 2201, 2202, 2203, 2204, 2205, 2206, 2207" ;
+    rdfs:comment "a statement about textile product component" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty actorODP:participatingObject ;
+                        owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Constituent> ] [ a owl:Restriction ;
+                        owl:onProperty actorODP:participatingSubject ;
+                        owl:someValuesFrom :TextileProduct ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass :TextileProductComponentValue ;
+            owl:onProperty :hasTextileProductComponentValue ],
+        ns2:Quantity,
+        actorODP:ResourceParticipation .
+
 :TextileProductComponentValue a owl:Class ;
     rdfs:label "Textile Product Component Value" ;
     rdfs:subClassOf [ a owl:Class ;
@@ -1023,6 +1033,22 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
         ns2:QuantityValue .
+
+:TextileProductMatterCompositionRelation a owl:Class ;
+    rdfs:label "Textile Product Matter Composition Relation" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty actorODP:participatingObject ;
+                        owl:someValuesFrom <http://w3id.org/CEON/ontology/resourceODP/Matter> ] [ a owl:Restriction ;
+                        owl:onProperty actorODP:participatingSubject ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ] ) ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass :TextileProductMatterCompositionValue ;
+            owl:onProperty :hasTextileProductMatterCompositionValue ],
+        ns2:Quantity,
+        actorODP:ResourceParticipation .
 
 :TextileProductMatterCompositionValue a owl:Class ;
     rdfs:label "Textile Product Matter Composition Value" ;
@@ -1045,22 +1071,6 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
         ns2:QuantityValue .
-
-:TextileProductRenewableContent a owl:Class ;
-    rdfs:label "Textile Product Renewable Content" ;
-    :LDTmapping "2600, 2601, 2602, 2603, 2604, 2605, 2606" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass :TextileProductRenewableContentValue ;
-            owl:onProperty :hasTextileProductRenewableContent ],
-        [ a owl:Restriction ;
-            owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ],
-        ns2:Quantity,
-        actorODP:ResourceParticipation,
-        <http://w3id.org/CEON/ontology/statement/SustainablyProducedRenewableMaterialStatement>,
-        :TextileDataSheetStatement .
 
 :TextileProductRenewableContentValue a owl:Class ;
     rdfs:label "Textile Product Renewable Content Value" ;
@@ -1154,21 +1164,15 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/DisassemblyStatement>,
         :TextileDataSheetStatement .
 
-:TextileProductRecycledContent a owl:Class ;
-    rdfs:label "Textile Product Recycled Content" ;
-    :LDTmapping "2400, 2401, 2402, 2403, 2404, 2405, 2406, 2410, 2411, 2500, 2501, 2502, 2503, 2504, 2505, 2506, 2510, 2510, 2511" ;
+:TextileProductRenewableContent a owl:Class ;
+    rdfs:label "Textile Product Renewable Content" ;
+    :LDTmapping "2600, 2601, 2602, 2603, 2604, 2605, 2606" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty <http://w3id.org/CEON/ontology/statement/statementAbout> ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass :TextileProductRecycledContentValue ;
-            owl:onProperty :hasTextileProductRecycledContent ],
+            owl:onClass :TextileProductRenewableContentValue ;
+            owl:onProperty :hasTextileProductRenewableContent ],
         ns2:Quantity,
-        actorODP:ResourceParticipation,
-        <http://w3id.org/CEON/ontology/statement/RecycledMaterialStatement>,
-        :TextileDataSheetStatement .
+        actorODP:ResourceParticipation .
 
 :TextileProductType a owl:Class ;
     rdfs:label "Textile Product Type" ;
@@ -1188,6 +1192,16 @@ ns2:numericalValue a owl:DatatypeProperty .
 
 :TextileProductOrigin a owl:Class ;
     rdfs:label "Textile Product Origin" .
+
+:TextileProductRecycledContent a owl:Class ;
+    rdfs:label "Textile Product Recycled Content" ;
+    :LDTmapping "2400, 2401, 2402, 2403, 2404, 2405, 2406, 2410, 2411, 2500, 2501, 2502, 2503, 2504, 2505, 2506, 2510, 2510, 2511" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass :TextileProductRecycledContentValue ;
+            owl:onProperty :hasTextileProductRecycledContent ],
+        ns2:Quantity,
+        actorODP:ResourceParticipation .
 
 :WaterProperty a owl:Class ;
     rdfs:label "Water Property" ;
