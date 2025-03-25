@@ -41,6 +41,38 @@
 #    Object Properties
 #################################################################
 
+###  http://w3id.org/CEON/demo/textile/hasDyeMethod
+:hasDyeMethod rdf:type owl:ObjectProperty ;
+              rdfs:domain :DyeingProcess ;
+              rdfs:range :DyeMethod ;
+              :CFmapping "CF700" ;
+              rdfs:label "has dye method" .
+
+
+###  http://w3id.org/CEON/demo/textile/hasDyeStuff
+:hasDyeStuff rdf:type owl:ObjectProperty ;
+             rdfs:domain :DyeingProcess ;
+             rdfs:range :DyeStuff ;
+             :CFmapping "CF701" ;
+             rdfs:label "has dye stuff" .
+
+
+###  http://w3id.org/CEON/demo/textile/hasPrintMethod
+:hasPrintMethod rdf:type owl:ObjectProperty ;
+                rdfs:domain :PrintingProcess ;
+                rdfs:range :PrintMethod ;
+                :CFmapping "CF702" ;
+                rdfs:label "has print method" .
+
+
+###  http://w3id.org/CEON/demo/textile/hasPrintStuff
+:hasPrintStuff rdf:type owl:ObjectProperty ;
+               rdfs:domain :PrintingProcess ;
+               rdfs:range :PrintStuff ;
+               :CFmapping "CF703" ;
+               rdfs:label "has print stuff" .
+
+
 ###  http://w3id.org/CEON/ontology/textile/anticipatedLeakageDuringUse
 :anticipatedLeakageDuringUse rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf :hasProperty ;
@@ -80,7 +112,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/hasDyeMethod
 :hasDyeMethod rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :hasTextileManufacturingProcess ;
+              rdfs:subPropertyOf :hasTextileProductionProcess ;
               rdfs:range :DyeingProcess ;
               :CFmapping "CF700" ;
               rdfs:label "Dye Method"@en .
@@ -96,13 +128,13 @@
 ###  http://w3id.org/CEON/ontology/textile/hasFinishing
 :hasFinishing rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :hasProperty ;
-              rdfs:range :TextileFinishing ;
+              rdfs:range :FinishingProcess ;
               rdfs:label "has finishing" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/hasFinishingStep
 :hasFinishingStep rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf :hasTextileManufacturingProcess ;
+                  rdfs:subPropertyOf :hasTextileProductionProcess ;
                   :CFmapping "CF704" ;
                   rdfs:label "Finishing Step"@en .
 
@@ -146,7 +178,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/hasPrintMethod
 :hasPrintMethod rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasTextileManufacturingProcess ;
+                rdfs:subPropertyOf :hasTextileProductionProcess ;
                 rdfs:range :PrintingProcess ;
                 :CFmapping "CF702" ;
                 rdfs:label "Print Method"@en .
@@ -164,12 +196,6 @@
              rdfs:domain <http://w3id.org/CEON/ontology/datasheet/DataSheet> ;
              rdfs:range <http://w3id.org/CEON/ontology/statement/Statement> ;
              rdfs:label "has property" .
-
-
-###  http://w3id.org/CEON/ontology/textile/hasTextileManufacturingProcess
-:hasTextileManufacturingProcess rdf:type owl:ObjectProperty ;
-                                rdfs:range :TextileManufacturingProcess ;
-                                rdfs:label "has textile manufacturing process" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/hasTextileProductComponentValue
@@ -200,7 +226,15 @@
 :hasTextileProductType rdf:type owl:ObjectProperty ;
                        rdfs:domain :TextileProduct ;
                        rdfs:range :TextileProductType ;
+                       :CFmapping "CF100" ;
                        rdfs:label "has textile product type" .
+
+
+###  http://w3id.org/CEON/ontology/textile/hasTextileProductionProcess
+:hasTextileProductionProcess rdf:type owl:ObjectProperty ;
+                             rdfs:range :TextileProductionProcess ;
+                             :CFmapping "CF206" ;
+                             rdfs:label "has textile production process" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/hasWaterProperty
@@ -416,7 +450,7 @@
 :isBiodegradabilityTestAvailable rdf:type owl:DatatypeProperty ;
                                  rdfs:subPropertyOf :availableInformation ;
                                  rdfs:range xsd:boolean ;
-                                 :CFmapping "CF600" ;
+                                 :CFmapping "CF604" ;
                                  rdfs:comment "Biodegradability test is available."@en ;
                                  rdfs:label "is biodegradability test available" .
 
@@ -477,20 +511,11 @@
                                          rdfs:label "is maintained or repaired by untrained person" .
 
 
-###  http://w3id.org/CEON/ontology/textile/isMaterialSafetyDataSheetAvailable
-:isMaterialSafetyDataSheetAvailable rdf:type owl:DatatypeProperty ;
-                                    rdfs:subPropertyOf :availableInformation ;
-                                    rdfs:range xsd:boolean ;
-                                    :CFmapping "CF603" ;
-                                    rdfs:comment "Material Safety Data Sheet for the product is available."@en ;
-                                    rdfs:label "is material safety datasheet available" .
-
-
 ###  http://w3id.org/CEON/ontology/textile/isMaterialSafetyDataSheetForDyeingAvailable
 :isMaterialSafetyDataSheetForDyeingAvailable rdf:type owl:DatatypeProperty ;
                                              rdfs:subPropertyOf :availableInformation ;
                                              rdfs:range xsd:boolean ;
-                                             :CFmapping "CF602" ;
+                                             :CFmapping "CF601" ;
                                              rdfs:comment "Material Safety Data Sheets for Dyeing are available."@en ;
                                              rdfs:label "is material safety datasheet for dyeing available" .
 
@@ -499,9 +524,18 @@
 :isMaterialSafetyDataSheetForFinishingAvailable rdf:type owl:DatatypeProperty ;
                                                 rdfs:subPropertyOf :availableInformation ;
                                                 rdfs:range xsd:boolean ;
-                                                :CFmapping "CF601" ;
+                                                :CFmapping "CF602" ;
                                                 rdfs:comment "Material Safety Data Sheets for Finishing are available."@en ;
                                                 rdfs:label "is material safety datasheet for finishing available" .
+
+
+###  http://w3id.org/CEON/ontology/textile/isMaterialSafetyDataSheetForProductAvailable
+:isMaterialSafetyDataSheetForProductAvailable rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf :availableInformation ;
+                                              rdfs:range xsd:boolean ;
+                                              :CFmapping "CF603" ;
+                                              rdfs:comment "Material Safety Data Sheet for the product is available."@en ;
+                                              rdfs:label "is material safety datasheet for product available" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/isMetalContained
@@ -521,7 +555,7 @@
 :isTechnicalDataSheetAvailable rdf:type owl:DatatypeProperty ;
                                rdfs:subPropertyOf :availableInformation ;
                                rdfs:range xsd:boolean ;
-                               :CFmapping "CF604" ;
+                               :CFmapping "CF600" ;
                                rdfs:comment "The Technical Data Sheet is available."@en ;
                                rdfs:label "is technical datasheet available" .
 
@@ -548,6 +582,84 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://w3id.org/CEON/demo/textile/AdhesiveFinishing
+:AdhesiveFinishing rdf:type owl:Class ;
+                   rdfs:subClassOf :FinishingProcess ;
+                   :CFmapping "CF157" ;
+                   rdfs:label "Adhesive Finishing" .
+
+
+###  http://w3id.org/CEON/demo/textile/ChemicalCompliance
+:ChemicalCompliance rdf:type owl:Class ;
+                    rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
+                    :CFmapping "CF707" ;
+                    rdfs:label "Chemical Compliance" .
+
+
+###  http://w3id.org/CEON/demo/textile/DoubleAdhesiveCoatedMaterial
+:DoubleAdhesiveCoatedMaterial rdf:type owl:Class ;
+                              rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
+                              :CFmapping "CF205" ;
+                              rdfs:label "Double Adhesive Coated Material" .
+
+
+###  http://w3id.org/CEON/demo/textile/DyeMethod
+:DyeMethod rdf:type owl:Class ;
+           :CFmapping "CF700" ;
+           rdfs:comment "A method of how to add color to a textile." ;
+           rdfs:label "Dye Method" .
+
+
+###  http://w3id.org/CEON/demo/textile/FabricProduction
+:FabricProduction rdf:type owl:Class ;
+                  rdfs:subClassOf :TextileProductionProcess ;
+                  rdfs:label "Fabric Production" .
+
+
+###  http://w3id.org/CEON/demo/textile/PrintMethod
+:PrintMethod rdf:type owl:Class ;
+             :CFmapping "CF702" ;
+             rdfs:label "Print Method" .
+
+
+###  http://w3id.org/CEON/demo/textile/RawHideProcessing
+:RawHideProcessing rdf:type owl:Class ;
+                   rdfs:subClassOf :TextileProductionProcess ;
+                   rdfs:label "Raw Hide Processing" .
+
+
+###  http://w3id.org/CEON/demo/textile/RawMaterialProduction
+:RawMaterialProduction rdf:type owl:Class ;
+                       rdfs:subClassOf :TextileProductionProcess ;
+                       rdfs:label "Raw Material Production" .
+
+
+###  http://w3id.org/CEON/demo/textile/SingleAdhesiveCoatedMaterial
+:SingleAdhesiveCoatedMaterial rdf:type owl:Class ;
+                              rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
+                              :CFmapping "CF205" ;
+                              rdfs:label "Single Adhesive Coated Material" .
+
+
+###  http://w3id.org/CEON/demo/textile/SkivedFinishing
+:SkivedFinishing rdf:type owl:Class ;
+                 rdfs:subClassOf :FinishingProcess ;
+                 :CFmapping "CF705" ;
+                 rdfs:label "Skived Finishing" .
+
+
+###  http://w3id.org/CEON/demo/textile/SpinningProcess
+:SpinningProcess rdf:type owl:Class ;
+                 rdfs:subClassOf :TextileProductionProcess ;
+                 rdfs:label "Spinning Process" .
+
+
+###  http://w3id.org/CEON/demo/textile/TrimProduction
+:TrimProduction rdf:type owl:Class ;
+                rdfs:subClassOf :TextileProductionProcess ;
+                rdfs:label "Trim Production" .
+
 
 ###  http://w3id.org/CEON/ontology/actor/ActorResourceRole
 <http://w3id.org/CEON/ontology/actor/ActorResourceRole> rdf:type owl:Class .
@@ -591,38 +703,70 @@
 
 ###  http://w3id.org/CEON/ontology/textile/ChemicalFinishing
 :ChemicalFinishing rdf:type owl:Class ;
-                   rdfs:subClassOf :TextileFinishing ;
+                   rdfs:subClassOf :FinishingProcess ;
                    rdfs:label "Chemical Finishing" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/Color
 :Color rdf:type owl:Class ;
        rdfs:subClassOf :TextileProperty ;
+       :CFmapping "CF101" ;
        rdfs:label "Color" .
 
 
-###  http://w3id.org/CEON/ontology/textile/Dye
-:Dye rdf:type owl:Class ;
-     rdfs:subClassOf :TextileMaterial ;
-     rdfs:label "Dye" .
+###  http://w3id.org/CEON/ontology/textile/DyeStuff
+:DyeStuff rdf:type owl:Class ;
+          rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
+          :CFmapping "CF701" ;
+          rdfs:label "Dye Stuff" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/DyeingProcess
 :DyeingProcess rdf:type owl:Class ;
-               rdfs:subClassOf :TextileManufacturingProcess ;
+               rdfs:subClassOf :TextileProductionProcess ,
+                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasDyeMethod ;
+                                                        owl:someValuesFrom :DyeMethod
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasDyeMethod ;
+                                                        owl:allValuesFrom :DyeMethod
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ,
+                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasDyeStuff ;
+                                                        owl:someValuesFrom :DyeStuff
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :hasDyeStuff ;
+                                                        owl:allValuesFrom :DyeStuff
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
                rdfs:label "Dyeing Process" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/EthylVinylAcetateFilm
 :EthylVinylAcetateFilm rdf:type owl:Class ;
-                       rdfs:subClassOf :TextileMaterial ;
+                       rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
+                       :CFmapping "CF201" ;
                        rdfs:label "Ethyl Vinyl Acetate Film" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/EthylVinylAcetateResin
 :EthylVinylAcetateResin rdf:type owl:Class ;
-                        rdfs:subClassOf :TextileMaterial ;
+                        rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
+                        :CFmapping "CF203" ;
                         rdfs:label "Ethyl Vinyl Acetate Resin" .
+
+
+###  http://w3id.org/CEON/ontology/textile/FinishingProcess
+:FinishingProcess rdf:type owl:Class ;
+                  rdfs:subClassOf :TextileProductionProcess ;
+                  rdfs:label "Finishing Process" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/GRSCompliance
@@ -631,43 +775,62 @@
                                      owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ;
                                      owl:hasValue :GRS
                                    ] ;
-               rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
+               rdfs:subClassOf :ChemicalCompliance ;
                rdfs:label "GRS Compliance" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/InorganicFIller
 :InorganicFIller rdf:type owl:Class ;
-                 rdfs:subClassOf :TextileMaterial ;
+                 rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
+                 :CFmapping "CF204" ;
                  rdfs:label "Inorganic FIller" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/MechanicalFinishing
 :MechanicalFinishing rdf:type owl:Class ;
-                     rdfs:subClassOf :TextileFinishing ;
+                     rdfs:subClassOf :FinishingProcess ;
                      rdfs:label "Mechanical Finishing" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/PolyesterFibres
 :PolyesterFibres rdf:type owl:Class ;
-                 rdfs:subClassOf :TextileMaterial ;
+                 rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
+                 :CFmapping "CF200" ;
                  rdfs:label "Polyester Fibres" .
-
-
-###  http://w3id.org/CEON/ontology/textile/Print
-:Print rdf:type owl:Class ;
-       rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Constituent> ;
-       rdfs:label "Print" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/PrintStuff
 :PrintStuff rdf:type owl:Class ;
             rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
+            :CFmapping "CF703" ;
             rdfs:label "Print Stuff" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/PrintingProcess
 :PrintingProcess rdf:type owl:Class ;
-                 rdfs:subClassOf :TextileManufacturingProcess ;
+                 rdfs:subClassOf :TextileProductionProcess ,
+                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasPrintMethod ;
+                                                          owl:someValuesFrom :PrintMethod
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasPrintMethod ;
+                                                          owl:allValuesFrom :PrintMethod
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ,
+                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasPrintStuff ;
+                                                          owl:someValuesFrom :PrintStuff
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasPrintStuff ;
+                                                          owl:allValuesFrom :PrintStuff
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
                  rdfs:label "Printing Process" .
 
 
@@ -710,7 +873,8 @@
 
 ###  http://w3id.org/CEON/ontology/textile/StyreneButadieneLatex
 :StyreneButadieneLatex rdf:type owl:Class ;
-                       rdfs:subClassOf :TextileMaterial ;
+                       rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
+                       :CFmapping "CF202" ;
                        rdfs:label "Styrene Butadiene Latex" .
 
 
@@ -749,32 +913,14 @@
                                  rdfs:subClassOf :TextileDataSheetStatement .
 
 
-###  http://w3id.org/CEON/ontology/textile/TextileFinishing
-:TextileFinishing rdf:type owl:Class ;
-                  rdfs:subClassOf :TextileManufacturingProcess ;
-                  rdfs:label "Textile Finishing" .
-
-
 ###  http://w3id.org/CEON/ontology/textile/TextileManufacturerStatement
 :TextileManufacturerStatement rdf:type owl:Class ;
                               rdfs:subClassOf :TextileDataSheetStatement .
 
 
-###  http://w3id.org/CEON/ontology/textile/TextileManufacturingProcess
-:TextileManufacturingProcess rdf:type owl:Class ;
-                             rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> ;
-                             rdfs:label "Textile Manufacturing Process" .
-
-
 ###  http://w3id.org/CEON/ontology/textile/TextileManufacturingSiteStatement
 :TextileManufacturingSiteStatement rdf:type owl:Class ;
                                    rdfs:subClassOf :TextileDataSheetStatement .
-
-
-###  http://w3id.org/CEON/ontology/textile/TextileMaterial
-:TextileMaterial rdf:type owl:Class ;
-                 rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
-                 rdfs:label "Textile Material" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/TextileProduct
@@ -1041,7 +1187,15 @@
 ###  http://w3id.org/CEON/ontology/textile/TextileProductType
 :TextileProductType rdf:type owl:Class ;
                     rdfs:subClassOf :TextileProperty ;
+                    :CFmapping "CF100" ;
                     rdfs:label "Textile Product Type" .
+
+
+###  http://w3id.org/CEON/ontology/textile/TextileProductionProcess
+:TextileProductionProcess rdf:type owl:Class ;
+                          rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> ;
+                          :CFmapping "CF206" ;
+                          rdfs:label "Textile Production Process" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/TextileProperty
@@ -1059,6 +1213,7 @@
 ###  http://w3id.org/CEON/ontology/textile/WaterProperty
 :WaterProperty rdf:type owl:Class ;
                rdfs:subClassOf :TextileProperty ;
+               :CFmapping "CF706" ;
                rdfs:label "Water Property" .
 
 
@@ -1068,7 +1223,7 @@
                                       owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ;
                                       owl:hasValue :ZDHC
                                     ] ;
-                rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
+                rdfs:subClassOf :ChemicalCompliance ;
                 rdfs:label "ZDHC Compliance" .
 
 
@@ -1194,13 +1349,13 @@
 
 ###  http://w3id.org/CEON/ontology/textile/acidDye
 :acidDye rdf:type owl:NamedIndividual ,
-                  :Dye ,
+                  :DyeStuff ,
                   :PrintStuff .
 
 
 ###  http://w3id.org/CEON/ontology/textile/analineDye
 :analineDye rdf:type owl:NamedIndividual ,
-                     :Dye ,
+                     :DyeStuff ,
                      :PrintStuff .
 
 
@@ -1221,20 +1376,20 @@
 
 ###  http://w3id.org/CEON/ontology/textile/azoDye
 :azoDye rdf:type owl:NamedIndividual ,
-                 :Dye ,
+                 :DyeStuff ,
                  :PrintStuff .
 
 
 ###  http://w3id.org/CEON/ontology/textile/basicDye
 :basicDye rdf:type owl:NamedIndividual ,
-                   :Dye ,
+                   :DyeStuff ,
                    :PrintStuff ;
           rdfs:label "basic dye" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/batikPrinted
 :batikPrinted rdf:type owl:NamedIndividual ,
-                       :PrintingProcess .
+                       :PrintMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/biodigestion
@@ -1270,7 +1425,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/chromeDye
 :chromeDye rdf:type owl:NamedIndividual ,
-                    :Dye ,
+                    :DyeStuff ,
                     :PrintStuff .
 
 
@@ -1301,31 +1456,31 @@
 
 ###  http://w3id.org/CEON/ontology/textile/digitalPrinted
 :digitalPrinted rdf:type owl:NamedIndividual ,
-                         :PrintingProcess ;
+                         :PrintMethod ;
                 rdfs:label "digital printed" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/directDye
 :directDye rdf:type owl:NamedIndividual ,
-                    :Dye ,
+                    :DyeStuff ,
                     :PrintStuff .
 
 
 ###  http://w3id.org/CEON/ontology/textile/directDyed
 :directDyed rdf:type owl:NamedIndividual ,
-                     :TextileManufacturingProcess ;
+                     :DyeMethod ;
             rdfs:label "direct dyed" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/disperseDye
 :disperseDye rdf:type owl:NamedIndividual ,
-                      :Dye ,
+                      :DyeStuff ,
                       :PrintStuff .
 
 
 ###  http://w3id.org/CEON/ontology/textile/dopeDyed
 :dopeDyed rdf:type owl:NamedIndividual ,
-                   :TextileManufacturingProcess .
+                   :DyeMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/embossing
@@ -1345,7 +1500,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/handPainted
 :handPainted rdf:type owl:NamedIndividual ,
-                      :PrintingProcess .
+                      :PrintMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/homeComposting
@@ -1370,7 +1525,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/inkjetPrinted
 :inkjetPrinted rdf:type owl:NamedIndividual ,
-                        :PrintingProcess .
+                        :PrintMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/lessThan1Perc
@@ -1402,7 +1557,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/mordantDye
 :mordantDye rdf:type owl:NamedIndividual ,
-                     :Dye ,
+                     :DyeStuff ,
                      :PrintStuff .
 
 
@@ -1416,7 +1571,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/narturalDye
 :narturalDye rdf:type owl:NamedIndividual ,
-                      :Dye ,
+                      :DyeStuff ,
                       :PrintStuff .
 
 
@@ -1447,24 +1602,24 @@
 
 ###  http://w3id.org/CEON/ontology/textile/pieceDyed
 :pieceDyed rdf:type owl:NamedIndividual ,
-                    :TextileManufacturingProcess .
+                    :DyeMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/pigmentBiosynthetic
 :pigmentBiosynthetic rdf:type owl:NamedIndividual ,
-                              :Dye ,
+                              :DyeStuff ,
                               :PrintStuff .
 
 
 ###  http://w3id.org/CEON/ontology/textile/pigmentNatural
 :pigmentNatural rdf:type owl:NamedIndividual ,
-                         :Dye ,
+                         :DyeStuff ,
                          :PrintStuff .
 
 
 ###  http://w3id.org/CEON/ontology/textile/pigmentSynthetic
 :pigmentSynthetic rdf:type owl:NamedIndividual ,
-                           :Dye ,
+                           :DyeStuff ,
                            :PrintStuff .
 
 
@@ -1484,7 +1639,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/reactiveDye
 :reactiveDye rdf:type owl:NamedIndividual ,
-                      :Dye ,
+                      :DyeStuff ,
                       :PrintStuff .
 
 
@@ -1510,7 +1665,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/rollerPrinted
 :rollerPrinted rdf:type owl:NamedIndividual ,
-                        :PrintingProcess .
+                        :PrintMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/scratchAndSniff
@@ -1519,7 +1674,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/screenPrinted
 :screenPrinted rdf:type owl:NamedIndividual ,
-                        :PrintingProcess .
+                        :PrintMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/secrecyAgreement
@@ -1570,18 +1725,18 @@
 
 ###  http://w3id.org/CEON/ontology/textile/topDyed
 :topDyed rdf:type owl:NamedIndividual ,
-                  :TextileManufacturingProcess ;
+                  :DyeMethod ;
          rdfs:label "top dyed" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/transferPrinted
 :transferPrinted rdf:type owl:NamedIndividual ,
-                          :PrintingProcess .
+                          :PrintMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/undyed
 :undyed rdf:type owl:NamedIndividual ,
-                 :TextileManufacturingProcess ;
+                 :DyeMethod ;
         rdfs:label "undyed" .
 
 
@@ -1591,7 +1746,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/vatDye
 :vatDye rdf:type owl:NamedIndividual ,
-                 :Dye ,
+                 :DyeStuff ,
                  :PrintStuff .
 
 
@@ -1631,7 +1786,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/yarnDyed
 :yarnDyed rdf:type owl:NamedIndividual ,
-                   :TextileManufacturingProcess .
+                   :DyeMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/yellow
