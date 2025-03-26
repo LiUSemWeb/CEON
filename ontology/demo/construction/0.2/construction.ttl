@@ -235,6 +235,13 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                    rdfs:label "has product quality" .
 
 
+###  http://w3id.org/CEON/demo/construction/hasRecycledContentValue
+:hasRecycledContentValue rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                         rdfs:range :RecycledContentValue ;
+                         rdfs:label "has recycled content value" .
+
+
 ###  http://w3id.org/CEON/demo/construction/hasRecyclingPlant
 :hasRecyclingPlant rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
@@ -363,6 +370,12 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                  rdfs:label "has use span total" .
 
 
+###  http://w3id.org/CEON/demo/construction/installationLocation
+:installationLocation rdf:type owl:ObjectProperty ;
+                      rdfs:range :InstallationLocation ;
+                      rdfs:label "installation location" .
+
+
 ###  http://w3id.org/CEON/demo/construction/policyOnTreatment
 :policyOnTreatment rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
@@ -384,6 +397,14 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 <http://qudt.org/schema/qudt/numericValue> rdf:type owl:DatatypeProperty .
 
 
+###  http://w3id.org/CEON/demo/construction/constructionYear
+:constructionYear rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:range xsd:gYear ;
+                  rdfs:comment "the year a certain object was constructed" ;
+                  rdfs:label "construction year" .
+
+
 ###  http://w3id.org/CEON/demo/construction/hasAccessories
 :hasAccessories rdf:type owl:DatatypeProperty ;
                 rdfs:domain [ rdf:type owl:Class ;
@@ -394,14 +415,6 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                 rdfs:range xsd:string ;
                 rdfs:comment "hasAccessories is used to provide a text representation of the accessories related to a product or product object." ;
                 rdfs:label "has accessories" .
-
-
-###  http://w3id.org/CEON/demo/construction/hasConstructionYear
-:hasConstructionYear rdf:type owl:DatatypeProperty ;
-                     rdfs:subPropertyOf owl:topDataProperty ;
-                     rdfs:range xsd:gYear ;
-                     rdfs:comment "the year a certain object was constructed" ;
-                     rdfs:label "has construction year" .
 
 
 ###  http://w3id.org/CEON/demo/construction/hasDismantlingInstruction
@@ -1179,6 +1192,26 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/ProductStageImpact
 :ProductStageImpact rdf:type owl:Class ;
                     rdfs:subClassOf :LifeCycleAssessmentImpact .
+
+
+###  http://w3id.org/CEON/demo/construction/RecycledContent
+:RecycledContent rdf:type owl:Class ;
+                 rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ;
+                 rdfs:label "Recycled Content" .
+
+
+###  http://w3id.org/CEON/demo/construction/RecycledContentValue
+:RecycledContentValue rdf:type owl:Class ;
+                      rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                        owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                        owl:allValuesFrom xsd:double
+                                      ] ;
+                      rdfs:label "Recycled Content Value" .
 
 
 ###  http://w3id.org/CEON/demo/construction/RecyclingDeconstructabilityValue
