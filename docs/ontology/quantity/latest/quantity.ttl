@@ -57,7 +57,17 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
 :hasDismantlingCost a owl:ObjectProperty ;
     rdfs:label "has dismantling cost" ;
     rdfs:comment "The cost of dismantling, expressed as an amount of money with a currency unit." ;
-    rdfs:subPropertyOf qudt:quantityValue .
+    rdfs:subPropertyOf :hasProcessCost .
+
+:hasHeight a owl:ObjectProperty ;
+    rdfs:label "has height" ;
+    rdfs:comment "hasHeight is used to describe the height of a product or product object." ;
+    rdfs:subPropertyOf :hasDimension .
+
+:hasLength a owl:ObjectProperty ;
+    rdfs:label "has length" ;
+    rdfs:comment "hasLength is used to describe the length of a product or product object." ;
+    rdfs:subPropertyOf :hasDimension .
 
 :hasMarketValue a owl:ObjectProperty ;
     rdfs:label "has market value" ;
@@ -88,20 +98,46 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
     rdfs:range qudt:QuantityValue ;
     rdfs:subPropertyOf qudt:quantityValue .
 
+:hasPrice a owl:ObjectProperty ;
+    rdfs:label "has price" ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasRecyclingCost a owl:ObjectProperty ;
+    rdfs:label "has recycling cost" ;
+    rdfs:subPropertyOf :hasProcessCost .
+
 :hasRefurbishmentCost a owl:ObjectProperty ;
     rdfs:label "has refurbishment cost" ;
     rdfs:comment "The cost of refurbishment, expressed as an amount of money with a currency unit." ;
-    rdfs:subPropertyOf qudt:quantityValue .
+    rdfs:subPropertyOf :hasProcessCost .
 
 :hasTestingCost a owl:ObjectProperty ;
     rdfs:label "has testing cost" ;
     rdfs:comment "The cost of testing, expressed as an amount of money with a currency unit." ;
-    rdfs:subPropertyOf qudt:quantityValue .
+    rdfs:subPropertyOf :hasProcessCost .
+
+:hasThickness a owl:ObjectProperty ;
+    rdfs:label "has thickness" ;
+    rdfs:comment "hasThickness is used to describe the thickness of a product or product object." ;
+    rdfs:subPropertyOf :hasDimension .
 
 :hasTransportCost a owl:ObjectProperty ;
     rdfs:label "has transport cost" ;
     rdfs:comment "The cost of transportation, expressed as an amount of money with a currency unit." ;
+    rdfs:subPropertyOf :hasProcessCost .
+
+:hasVolume a owl:ObjectProperty ;
+    rdfs:label "has volume" ;
     rdfs:subPropertyOf qudt:quantityValue .
+
+:hasWeight a owl:ObjectProperty ;
+    rdfs:label "has weight" ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasWidth a owl:ObjectProperty ;
+    rdfs:label "has width" ;
+    rdfs:comment "hasWidth is used to describe the width of a product or product object." ;
+    rdfs:subPropertyOf :hasDimension .
 
 :numericalMaxValue a owl:DatatypeProperty ;
     rdfs:range xsd:double .
@@ -116,4 +152,13 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
 
 :QuantityInterval a owl:Class ;
     rdfs:label "Quantity Interval" .
+
+:hasDimension a owl:ObjectProperty ;
+    rdfs:label "has dimension" ;
+    rdfs:comment "hasDimension is used to describe a dimension of a product or product object." ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+:hasProcessCost a owl:ObjectProperty ;
+    rdfs:label "has process cost" ;
+    rdfs:subPropertyOf qudt:quantityValue .
 
