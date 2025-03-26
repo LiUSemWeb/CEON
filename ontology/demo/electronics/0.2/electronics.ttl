@@ -12,7 +12,7 @@
                                                       <http://w3id.org/CEON/ontology/datasheet/0.2/> ,
                                                       <http://w3id.org/CEON/ontology/material/0.4/> ,
                                                       <http://w3id.org/CEON/ontology/product/0.5/> ,
-                                                      <http://w3id.org/CEON/ontology/quantity/0.1/> ,
+                                                      <http://w3id.org/CEON/ontology/quantity/0.2/> ,
                                                       <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
                                           <http://purl.org/dc/terms/contributor> "Eva Blomqvist" ;
                                           <http://purl.org/dc/terms/creator> "Huanyu Li" ;
@@ -153,7 +153,7 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://w3id.org/CEON/demo/electronics/hasDepthValue
 :hasDepthValue rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+               rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> ;
                rdfs:domain :Depth ,
                            [ rdf:type owl:Class ;
                              owl:unionOf ( <http://w3id.org/CEON/ontology/product/Item>
@@ -173,7 +173,7 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://w3id.org/CEON/demo/electronics/hasDiameterValue
 :hasDiameterValue rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                  rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> ;
                   rdfs:domain :Diameter ,
                               [ rdf:type owl:Class ;
                                 owl:unionOf ( <http://w3id.org/CEON/ontology/product/Item>
@@ -250,19 +250,6 @@ xsd:date rdf:type rdfs:Datatype .
            rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
            rdfs:range :Length ;
            rdfs:label "has length" .
-
-
-###  http://w3id.org/CEON/demo/electronics/hasLengthValue
-:hasLengthValue rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                rdfs:domain :Length ,
-                            [ rdf:type owl:Class ;
-                              owl:unionOf ( <http://w3id.org/CEON/ontology/product/Item>
-                                            <http://w3id.org/CEON/ontology/product/Product>
-                                          )
-                            ] ;
-                rdfs:range :LengthValue ;
-                rdfs:label "has length value" .
 
 
 ###  http://w3id.org/CEON/demo/electronics/hasLifeSpanTime
@@ -617,14 +604,6 @@ xsd:date rdf:type rdfs:Datatype .
           rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> ;
           rdfs:range :Width ;
           rdfs:label "has width" .
-
-
-###  http://w3id.org/CEON/demo/electronics/hasWidthValue
-:hasWidthValue rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-               rdfs:domain :Width ;
-               rdfs:range :WidthValue ;
-               rdfs:label "has width value" .
 
 
 ###  http://w3id.org/CEON/ontology/actorODP/participantRole
@@ -1667,11 +1646,7 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://w3id.org/CEON/demo/electronics/Length
 :Length rdf:type owl:Class ;
         rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                        <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasLengthValue ;
-                          owl:allValuesFrom :LengthValue
-                        ] ;
+                        <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
         rdfs:label "Length" .
 
 
@@ -2470,11 +2445,7 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://w3id.org/CEON/demo/electronics/Width
 :Width rdf:type owl:Class ;
        rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                       <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasWidthValue ;
-                         owl:allValuesFrom :WidthValue
-                       ] ;
+                       <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
        rdfs:label "Width" .
 
 
@@ -2673,6 +2644,11 @@ xsd:date rdf:type rdfs:Datatype .
 :boc_x rdf:type owl:NamedIndividual ,
                 <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> ;
        <http://w3id.org/CEON/ontology/product/batchOfProduct> :speaker_x .
+
+
+###  http://w3id.org/CEON/demo/electronics/broken
+:broken rdf:type owl:NamedIndividual ,
+                 <http://w3id.org/CEON/ontology/resourceODP/ResourceCondition> .
 
 
 ###  http://w3id.org/CEON/demo/electronics/carbon_material_a
