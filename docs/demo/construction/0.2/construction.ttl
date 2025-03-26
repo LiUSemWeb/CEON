@@ -204,10 +204,6 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:label "Galvanized Steel Material" ;
     rdfs:subClassOf material:Material .
 
-:InstallationLocation a owl:Class ;
-    rdfs:label "Installation Location" ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/location/Location> .
-
 :MaximalDismantlingCostPerSqm a owl:Class ;
     rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> .
 
@@ -330,6 +326,10 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
             owl:onProperty <http://qudt.org/schema/qudt/numericValue> ],
         <http://qudt.org/schema/qudt/QuantityValue> .
 
+:RecycledContent a owl:Class ;
+    rdfs:label "Recycled Content" ;
+    rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> .
+
 :RefurbishmentCostValue a owl:Class ;
     rdfs:label "Refurbishment Cost Value" ;
     rdfs:comment "The cost value of refurbishment." ;
@@ -402,6 +402,12 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
         owl:NamedIndividual ;
     rdfs:label "bad condition" .
 
+:constructionYear a owl:DatatypeProperty ;
+    rdfs:label "construction year" ;
+    rdfs:comment "the year a certain object was constructed" ;
+    rdfs:range xsd:gYear ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
 :construction_product_quality_high a :ConstructionProductQuality,
         owl:NamedIndividual ;
     rdfs:label "Construction Product quality high" .
@@ -434,12 +440,6 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
             owl:unionOf ( product:Item product:Product ) ] ;
     rdfs:range :Conductivity ;
     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty> .
-
-:hasConstructionYear a owl:DatatypeProperty ;
-    rdfs:label "has construction year" ;
-    rdfs:comment "the year a certain object was constructed" ;
-    rdfs:range xsd:gYear ;
-    rdfs:subPropertyOf owl:topDataProperty .
 
 :hasContaminant a owl:ObjectProperty ;
     rdfs:label "has contaminant" ;
@@ -567,6 +567,11 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:range xsd:string ;
     rdfs:subPropertyOf owl:topDataProperty .
 
+:hasRecycledContentValue a owl:ObjectProperty ;
+    rdfs:label "has recycled content value" ;
+    rdfs:range :RecycledContentValue ;
+    rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> .
+
 :hasRecyclingPlant a owl:ObjectProperty ;
     rdfs:label "has recycling plant" ;
     rdfs:range :LocalRecyclingPlantDistance ;
@@ -629,6 +634,10 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 :high_reuse_potential a :ReusePotential,
         owl:NamedIndividual .
+
+:installationLocation a owl:ObjectProperty ;
+    rdfs:label "installation location" ;
+    rdfs:range :InstallationLocation .
 
 :isContaminated a owl:DatatypeProperty ;
     rdfs:label "is contaminated" ;
@@ -697,6 +706,20 @@ owl:maxQualifiedCardinality a owl:AnnotationProperty .
 :EnvironmentalImpact a owl:Class ;
     rdfs:label "Environmental Impact" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> .
+
+:InstallationLocation a owl:Class ;
+    rdfs:label "Installation Location" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/location/Location> .
+
+:RecycledContentValue a owl:Class ;
+    rdfs:label "Recycled Content Value" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <http://qudt.org/schema/qudt/Unit> ;
+            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty <http://qudt.org/schema/qudt/numericValue> ],
+        <http://qudt.org/schema/qudt/QuantityValue> .
 
 :RecyclingPotentialValue a owl:Class ;
     rdfs:label "Recycling Potential Value" ;
