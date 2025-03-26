@@ -7,32 +7,92 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/ProductObjectComposition">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b6">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
+    <rdf:rest rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/countryOfAssembly">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/product/locationOfAssembly"/>
+    <rdfs:comment>Used to represent the country of assembly of a product or product object</rdfs:comment>
+    <rdfs:label>Country of assembly</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/Item">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
+    <rdfs:subClassOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b22"/>
+    <rdfs:comment xml:lang="en">An item is a physical object put into a market for sale, i.e. corresponding to an individual of a product. The item can be a thing that grows naturally or produced through some chemical or manufacturing processes.</rdfs:comment>
+    <rdfs:label xml:lang="en">Item</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/ProductComposition">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
-    <rdfs:subClassOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b27"/>
-    <rdfs:comment>A product object composition is the composed information of a product object in terms of a specific component, in which such a component is also a product object.</rdfs:comment>
-    <rdfs:label>Product Object Composition</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b26"/>
+    <rdfs:comment xml:lang="en">A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product.</rdfs:comment>
+    <rdfs:label xml:lang="en">Product composition</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/hasCompliance">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b5"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Compliance"/>
-    <rdfs:comment>Used to link something (e.g., product or process) to a compliance.</rdfs:comment>
-    <rdfs:label>has compliance</rdfs:label>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/hasCertificate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Compliance"/>
+    <rdfs:comment>Link to the the certificate that certifies the compliance</rdfs:comment>
+    <rdfs:label>has certificate</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b26">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/Product">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/product/Solution"/>
+    <rdfs:subClassOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b24"/>
+    <rdfs:subClassOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b25"/>
+    <rdfs:comment xml:lang="en">Physical-based object designed for or utilized with a purpose. A product can be, for example: goods of any type; hardware (e.g. engine mechanical part, spare parts, consumables); electrical or electronic hardware devices or components (e.g. computers, communication equipment and sensors); processed materials (e.g. lubricant, cement).</rdfs:comment>
+    <rdfs:comment xml:lang="en">Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product.</rdfs:comment>
+    <rdfs:isDefinedBy>ISO 59004:2024 -3.2.2 product</rdfs:isDefinedBy>
+    <rdfs:label xml:lang="en">Product</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b26">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/associatedWithProductModel"/>
     <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     <owl:onClass rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/MatterComposition">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/compositionQuantity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:comment>compositionQuantity represents the quantity of elements of a composition.</rdfs:comment>
+    <rdfs:label xml:lang="en">Composition quantity</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/countryOfOrigin">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/product/locationOfOrigin"/>
+    <rdfs:comment>Used to represent the country of origin of a product or product object</rdfs:comment>
+    <rdfs:label>Country of origin</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Composition">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
-    <rdfs:subClassOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b23"/>
-    <rdfs:comment xml:lang="en">A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter.</rdfs:comment>
-    <rdfs:label xml:lang="en">Matter composition</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/hasComposition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b10"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
+    <rdfs:comment xml:lang="en">hasComposition intends to represent that a product model or physical object can have compostition information.</rdfs:comment>
+    <rdfs:label>has composition</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/compositionOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
+    <rdfs:range rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b1"/>
+    <rdfs:comment>Represents what the composition is a composition of (i.e., the product, the product object or matter that is broken down into its components).</rdfs:comment>
+    <rdfs:label>composition of</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/hasProductComponent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:comment xml:lang="en">hasProductComponent intends to represent that a product can have other product components.</rdfs:comment>
+    <rdfs:label xml:lang="en">has product component</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -54,17 +114,20 @@
     <rdfs:seeAlso rdf:resource="https://github.com/LiUSemWeb/CEON"/>
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.4</owl:versionInfo>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/ProductComposition">
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b10">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
-    <rdfs:subClassOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b26"/>
-    <rdfs:comment xml:lang="en">A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product.</rdfs:comment>
-    <rdfs:label xml:lang="en">Product composition</rdfs:label>
+    <owl:unionOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b11"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/Compliance">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>Represents that something is compliant with some standard or has a received a certain certification.</rdfs:comment>
-    <rdfs:label>Compliance</rdfs:label>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b12">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/modelledBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:comment xml:lang="en">modelledBy intends to represent that product objects follow particular product models.</rdfs:comment>
+    <rdfs:label xml:lang="en">modelled by</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/associatedWithMatter">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -73,55 +136,38 @@
     <rdfs:comment xml:lang="en">associatedWithMatter intends to represent the matter to which a matter compopsition information regards to.</rdfs:comment>
     <rdfs:label xml:lang="en">associated with matter</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/Product">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/product/Solution"/>
-    <rdfs:subClassOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b24"/>
-    <rdfs:subClassOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b25"/>
-    <rdfs:comment xml:lang="en">Physical-based object designed for or utilized with a purpose. A product can be, for example: goods of any type; hardware (e.g. engine mechanical part, spare parts, consumables); electrical or electronic hardware devices or components (e.g. computers, communication equipment and sensors); processed materials (e.g. lubricant, cement).</rdfs:comment>
-    <rdfs:comment xml:lang="en">Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product.</rdfs:comment>
-    <rdfs:isDefinedBy>ISO 59004:2024 -3.2.2 product</rdfs:isDefinedBy>
-    <rdfs:label xml:lang="en">Product</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/compositionQuantity">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    <rdfs:comment>compositionQuantity represents the quantity of elements of a composition.</rdfs:comment>
-    <rdfs:label xml:lang="en">Composition quantity</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/hasComposition">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/hasCompliance">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b10"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
-    <rdfs:comment xml:lang="en">hasComposition intends to represent that a product model or physical object can have compostition information.</rdfs:comment>
-    <rdfs:label>has composition</rdfs:label>
+    <rdfs:domain rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b5"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Compliance"/>
+    <rdfs:comment>Used to link something (e.g., product or process) to a compliance.</rdfs:comment>
+    <rdfs:label>has compliance</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b24">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/countryOfManufacture">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/product/locationOfManufacture"/>
+    <rdfs:comment>Used to represent the country of manufacture of a product or product object</rdfs:comment>
+    <rdfs:label>Country of manufacture</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b24">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/hasComposition"/>
     <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/product/MatterComposition"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b17">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
-    <rdf:rest rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b18"/>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b13">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b14"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b25">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/hasComposition"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/product/ProductComposition"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/hasProductObjectComponent">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/associatedWithProductModel">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
-    <rdfs:label>has product object component</rdfs:label>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/ProductComposition"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdfs:comment xml:lang="en">associatedWithProductModel intends to represent the product model to which a product compopsition information regards to.</rdfs:comment>
+    <rdfs:label xml:lang="en">associated with product model</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b18">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/complianceWith">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -129,92 +175,8 @@
     <rdfs:comment>Represents what the compliance is compliant with (e.g. a standard or regulation).</rdfs:comment>
     <rdfs:label>Compliance with</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/Item">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
-    <rdfs:subClassOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b22"/>
-    <rdfs:comment xml:lang="en">An item is a physical object put into a market for sale, i.e. corresponding to an individual of a product. The item can be a thing that grows naturally or produced through some chemical or manufacturing processes.</rdfs:comment>
-    <rdfs:label xml:lang="en">Item</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/hasProductComponent">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-    <rdfs:comment xml:lang="en">hasProductComponent intends to represent that a product can have other product components.</rdfs:comment>
-    <rdfs:label xml:lang="en">has product component</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b18">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/Actor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/hasCertificate">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Compliance"/>
-    <rdfs:comment>Link to the the certificate that certifies the compliance</rdfs:comment>
-    <rdfs:label>has certificate</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/locationOfAssembly">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b13"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:comment>Used to represent the location of assembly of a product or product object</rdfs:comment>
-    <rdfs:label>Location of assembly</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b3">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-    <rdf:rest rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b4"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b28">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/batchOfProduct"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onClass rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/compositionOf">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
-    <rdfs:range rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b1"/>
-    <rdfs:comment>Represents what the composition is a composition of (i.e., the product, the product object or matter that is broken down into its components).</rdfs:comment>
-    <rdfs:label>composition of</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b23">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/associatedWithMatter"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onClass rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/locationOfManufacture">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b16"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:comment>Used to represent the location of manufacture of a product or product object</rdfs:comment>
-    <rdfs:label>Location of manufacture</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/countryOfAssembly">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/product/locationOfAssembly"/>
-    <rdfs:comment>Used to represent the country of assembly of a product or product object</rdfs:comment>
-    <rdfs:label>Country of assembly</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/associatedWithProductObject">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/ProductObjectComposition"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
-    <rdfs:comment>associatedWithProductObject intends to represent the item (product object) to which a product object compopsition information regards to.</rdfs:comment>
-    <rdfs:label>associated with product object</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b22">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/modelledBy"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onClass rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/batchOfProduct">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -225,28 +187,149 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/locationOfOrigin">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b19"/>
+    <rdfs:domain rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b19"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:comment>Used to represent the location of origin of a product or product object</rdfs:comment>
     <rdfs:label>Location of origin</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b16">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:unionOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b17"/>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b3">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b4"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/modelledBy">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/associatedWithProductObject">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-    <rdfs:comment xml:lang="en">modelledBy intends to represent that product objects follow particular product models.</rdfs:comment>
-    <rdfs:label xml:lang="en">modelled by</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/ProductObjectComposition"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
+    <rdfs:comment>associatedWithProductObject intends to represent the item (product object) to which a product object compopsition information regards to.</rdfs:comment>
+    <rdfs:label>associated with product object</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/MatterComposition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
+    <rdfs:subClassOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b23"/>
+    <rdfs:comment xml:lang="en">A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter.</rdfs:comment>
+    <rdfs:label xml:lang="en">Matter composition</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b27">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/associatedWithProductObject"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/created">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b7">
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b8">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
+    <rdf:rest rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b23">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/associatedWithMatter"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b25">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/hasComposition"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/product/ProductComposition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b28"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/ProductObjectComposition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Composition"/>
+    <rdfs:subClassOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b27"/>
+    <rdfs:comment>A product object composition is the composed information of a product object in terms of a specific component, in which such a component is also a product object.</rdfs:comment>
+    <rdfs:label>Product Object Composition</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b20">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
+    <rdf:rest rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b21"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/locationOfManufacture">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b16"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Used to represent the location of manufacture of a product or product object</rdfs:comment>
+    <rdfs:label>Location of manufacture</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b20"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/modelledBy"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/batchOfProduct"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Matter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b14">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
+    <rdf:rest rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b15"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b17"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b11">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b12"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b21">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/locationOfAssembly">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b13"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment>Used to represent the location of assembly of a product or product object</rdfs:comment>
+    <rdfs:label>Location of assembly</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/Compliance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Represents that something is compliant with some standard or has a received a certain certification.</rdfs:comment>
+    <rdfs:label>Compliance</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/hasProductObjectComponent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
+    <rdfs:label>has product object component</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Process">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b7">
     <rdf:first rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-    <rdf:rest rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b8"/>
+    <rdf:rest rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b8"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/Solution">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -254,128 +337,45 @@
     <rdfs:isDefinedBy>ISO 59004:2024 - 3.2.1 solution</rdfs:isDefinedBy>
     <rdfs:label xml:lang="en">Solution</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b1">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:unionOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b2"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b4">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b12">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b21">
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b9">
     <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/associatedWithProductModel">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/product/ProductComposition"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-    <rdfs:comment xml:lang="en">associatedWithProductModel intends to represent the product model to which a product compopsition information regards to.</rdfs:comment>
-    <rdfs:label xml:lang="en">associated with product model</rdfs:label>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b17">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
+    <rdf:rest rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b18"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b4">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b2">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
+    <rdf:rest rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b3"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b27">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/product/associatedWithProductObject"/>
-    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    <owl:onClass rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b2">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
-    <rdf:rest rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b3"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b5">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:unionOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b6"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b28"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b14">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
-    <rdf:rest rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b15"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b11">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-    <rdf:rest rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b12"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b6">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/actorODP/Actor"/>
-    <rdf:rest rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b7"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b8">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
-    <rdf:rest rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b9"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Composition">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/actorODP/ResourceRelation"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b15">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b20">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Item"/>
-    <rdf:rest rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b21"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Matter">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/PhysicalObject">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b9">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/actorODP/ResourceRelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b10">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:unionOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b11"/>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n7faeb482cb854f1ead22208eed0649a2b15">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/product/Product"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/license">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/countryOfManufacture">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/product/locationOfManufacture"/>
-    <rdfs:comment>Used to represent the country of manufacture of a product or product object</rdfs:comment>
-    <rdfs:label>Country of manufacture</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/product/countryOfOrigin">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/product/locationOfOrigin"/>
-    <rdfs:comment>Used to represent the country of origin of a product or product object</rdfs:comment>
-    <rdfs:label>Country of origin</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b13">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:unionOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b14"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Process">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b19">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:unionOf rdf:nodeID="nacce0fa2587c41789cbb162213b48d82b20"/>
   </rdf:Description>
 </rdf:RDF>

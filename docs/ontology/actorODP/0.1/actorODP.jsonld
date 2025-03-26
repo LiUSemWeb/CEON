@@ -1,12 +1,18 @@
 [
   {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole",
+    "@id": "http://www.w3.org/2001/XMLSchema#gMonthYear",
     "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participationTimePoint",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "Holds the value of the role of the participant in this participation relation."
+        "@value": "The point in time when something took place or was valid."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
@@ -16,12 +22,36 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "has participant role"
+        "@value": "time point"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Role"
+        "@id": "_:n4af20dd222814be696a05a14bc9144e1b17"
+      }
+    ]
+  },
+  {
+    "@id": "_:n4af20dd222814be696a05a14bc9144e1b17",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#date"
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#gMonthYear"
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#gYear"
+          }
+        ]
       }
     ]
   },
@@ -42,9 +72,19 @@
     ]
   },
   {
-    "@id": "http://purl.org/vocab/vann/preferredNamespaceUri",
+    "@id": "http://w3id.org/CEON/ontology/actorODP/Role",
     "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Role"
+      }
     ]
   },
   {
@@ -54,64 +94,27 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/hasLocation",
+    "@id": "http://w3id.org/CEON/ontology/actorODP/capabilityOf",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
       {
-        "@id": "_:n4977b43cf093460e99283929bfb4e3afb1"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4977b43cf093460e99283929bfb4e3afb1",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/actorODP/Actor"
-          },
-          {
-            "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participatingActor",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "Holds the value of the actor involved in this participation relation."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Capability"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "has participating actor"
+        "@value": "Relates to the actor holding the capability."
+      },
+      {
+        "@value": "capability of"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
         "@id": "http://w3id.org/CEON/ontology/actorODP/Actor"
       }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/2001/XMLSchema#gMonthYear",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
     ]
   },
   {
@@ -141,39 +144,110 @@
     ]
   },
   {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participationStartTime",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The start of a time interval."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "start time"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "_:n4af20dd222814be696a05a14bc9144e1b12"
+      }
+    ]
+  },
+  {
+    "@id": "_:n4af20dd222814be696a05a14bc9144e1b12",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#date"
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#gMonthYear"
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#gYear"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/hasLocation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "_:n4af20dd222814be696a05a14bc9144e1b1"
+      }
+    ]
+  },
+  {
+    "@id": "_:n4af20dd222814be696a05a14bc9144e1b1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/actorODP/Actor"
+          },
+          {
+            "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/description",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participatingResource",
+    "@id": "http://www.w3.org/2001/XMLSchema#date",
     "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The resource that this participation relation relates to, i.e. for which the actor holds the specified role."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has participating resource"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource"
-      }
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
     ]
   },
   {
-    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
+    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/title",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
@@ -196,381 +270,6 @@
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
         "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/capabilityProperty",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "Relates some properties to the capability, such as the parameters of it, or the needed resources."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Capability"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "capability property"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/basedOnCapability",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "An actor participates in a collaboration based on that it has some capability that is useful for the collaboration."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "based on capability"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Capability"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/Capability",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "Something that the actor is capable of doing, e.g. perfomring a certain role in a process, based on some properties, such as access to infrastructure, resources and know-how."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Capability"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participationIn",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The collaboration or process that this participation relates to."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "is a participation in"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "_:n4977b43cf093460e99283929bfb4e3afb4"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4977b43cf093460e99283929bfb4e3afb4",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/cvn/Collaboration"
-          },
-          {
-            "@id": "http://w3id.org/CEON/ontology/process/Process"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/creator",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/Role",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Role"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Collaboration participation"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participationStartTime",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The start of a time interval."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "start time"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "_:n4977b43cf093460e99283929bfb4e3afb12"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4977b43cf093460e99283929bfb4e3afb12",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#date"
-          },
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
-          },
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#gMonthYear"
-          },
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#gYear"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/capabilityOf",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Capability"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Relates to the actor holding the capability."
-      },
-      {
-        "@value": "capability of"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Actor"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/2001/XMLSchema#date",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participationTimePoint",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The point in time when something took place or was valid."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "time point"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "_:n4977b43cf093460e99283929bfb4e3afb17"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4977b43cf093460e99283929bfb4e3afb17",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#date"
-          },
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
-          },
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#gMonthYear"
-          },
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#gYear"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/description",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participationEndTime",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The end of a time interval."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "end time"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "_:n4977b43cf093460e99283929bfb4e3afb7"
-      }
-    ]
-  },
-  {
-    "@id": "_:n4977b43cf093460e99283929bfb4e3afb7",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#date"
-          },
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
-          },
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#gMonthYear"
-          },
-          {
-            "@id": "http://www.w3.org/2001/XMLSchema#gYear"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/title",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/ActorType",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The type of an actor, e.g. the type of company, or a specific subtype based on the organisations capabilities."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Actor Type"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/Actor",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "An agent able to act in the context of a circular value network, e.g. an organisation, person."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Actor"
       }
     ]
   },
@@ -642,6 +341,187 @@
     ]
   },
   {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participationEndTime",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The end of a time interval."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "end time"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "_:n4af20dd222814be696a05a14bc9144e1b7"
+      }
+    ]
+  },
+  {
+    "@id": "_:n4af20dd222814be696a05a14bc9144e1b7",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#date"
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#gMonthYear"
+          },
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#gYear"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/contributor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/ActorType",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The type of an actor, e.g. the type of company, or a specific subtype based on the organisations capabilities."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Actor Type"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/Actor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "An agent able to act in the context of a circular value network, e.g. an organisation, person."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Actor"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Collaboration participation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/capabilityProperty",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Relates some properties to the capability, such as the parameters of it, or the needed resources."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Capability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "capability property"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participationIn",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The collaboration or process that this participation relates to."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "is a participation in"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "_:n4af20dd222814be696a05a14bc9144e1b4"
+      }
+    ]
+  },
+  {
+    "@id": "_:n4af20dd222814be696a05a14bc9144e1b4",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/cvn/Collaboration"
+          },
+          {
+            "@id": "http://w3id.org/CEON/ontology/process/Process"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2001/XMLSchema#gYear",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/actorODP/Participation",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -653,12 +533,12 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:n4977b43cf093460e99283929bfb4e3afb22"
+        "@id": "_:n4af20dd222814be696a05a14bc9144e1b22"
       }
     ]
   },
   {
-    "@id": "_:n4977b43cf093460e99283929bfb4e3afb22",
+    "@id": "_:n4af20dd222814be696a05a14bc9144e1b22",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -666,17 +546,17 @@
       {
         "@list": [
           {
-            "@id": "_:n4977b43cf093460e99283929bfb4e3afb23"
+            "@id": "_:n4af20dd222814be696a05a14bc9144e1b23"
           },
           {
-            "@id": "_:n4977b43cf093460e99283929bfb4e3afb24"
+            "@id": "_:n4af20dd222814be696a05a14bc9144e1b24"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n4977b43cf093460e99283929bfb4e3afb23",
+    "@id": "_:n4af20dd222814be696a05a14bc9144e1b23",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -693,7 +573,7 @@
     ]
   },
   {
-    "@id": "_:n4977b43cf093460e99283929bfb4e3afb24",
+    "@id": "_:n4af20dd222814be696a05a14bc9144e1b24",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -710,13 +590,133 @@
     ]
   },
   {
-    "@id": "http://www.w3.org/2001/XMLSchema#gYear",
+    "@id": "http://w3id.org/CEON/ontology/actorODP/basedOnCapability",
     "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "An actor participates in a collaboration based on that it has some capability that is useful for the collaboration."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "based on capability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Capability"
+      }
     ]
   },
   {
-    "@id": "http://purl.org/dc/terms/contributor",
+    "@id": "http://w3id.org/CEON/ontology/actorODP/Capability",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Something that the actor is capable of doing, e.g. perfomring a certain role in a process, based on some properties, such as access to infrastructure, resources and know-how."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Capability"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Holds the value of the role of the participant in this participation relation."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has participant role"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Role"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participatingActor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Holds the value of the actor involved in this participation relation."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has participating actor"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Actor"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/creator",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participatingResource",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The resource that this participation relation relates to, i.e. for which the actor holds the specified role."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has participating resource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/vocab/vann/preferredNamespaceUri",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
