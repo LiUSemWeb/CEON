@@ -116,7 +116,7 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/ontology/product/compositionOf
 :compositionOf rdf:type owl:ObjectProperty ;
-               rdfs:domain resourceODP:Composition ;
+               rdfs:domain :Composition ;
                rdfs:range [ rdf:type owl:Class ;
                             owl:unionOf ( :Item
                                           :Product
@@ -161,7 +161,7 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
                                             resourceODP:PhysicalObject
                                           )
                             ] ;
-                rdfs:range resourceODP:Composition ;
+                rdfs:range :Composition ;
                 rdfs:comment "hasComposition intends to represent that a product model or physical object can have compostition information."@en ;
                 rdfs:label "has composition" .
 
@@ -221,7 +221,7 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/ontology/product/compositionQuantity
 :compositionQuantity rdf:type owl:DatatypeProperty ;
-                     rdfs:domain resourceODP:Composition ;
+                     rdfs:domain :Composition ;
                      rdfs:range xsd:double ;
                      rdfs:comment "compositionQuantity represents the quantity of elements of a composition." ;
                      rdfs:label "Composition quantity"@en .
@@ -348,6 +348,11 @@ actorODP:ResourceRelation rdf:type owl:Class .
             rdfs:label "Compliance" .
 
 
+###  http://w3id.org/CEON/ontology/product/Composition
+:Composition rdf:type owl:Class ;
+             rdfs:subClassOf actorODP:ResourceParticipation .
+
+
 ###  http://w3id.org/CEON/ontology/product/ISOCompliance
 :ISOCompliance rdf:type owl:Class ;
                rdfs:subClassOf :Compliance ;
@@ -395,7 +400,7 @@ actorODP:ResourceRelation rdf:type owl:Class .
 
 ###  http://w3id.org/CEON/ontology/product/MatterComposition
 :MatterComposition rdf:type owl:Class ;
-                   rdfs:subClassOf resourceODP:Composition ,
+                   rdfs:subClassOf :Composition ,
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty :associatedWithMatter ;
                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -464,7 +469,7 @@ actorODP:ResourceRelation rdf:type owl:Class .
 
 ###  http://w3id.org/CEON/ontology/product/ProductComposition
 :ProductComposition rdf:type owl:Class ;
-                    rdfs:subClassOf resourceODP:Composition ,
+                    rdfs:subClassOf :Composition ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :associatedWithProductModel ;
                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -476,7 +481,7 @@ actorODP:ResourceRelation rdf:type owl:Class .
 
 ###  http://w3id.org/CEON/ontology/product/ProductObjectComposition
 :ProductObjectComposition rdf:type owl:Class ;
-                          rdfs:subClassOf resourceODP:Composition ,
+                          rdfs:subClassOf :Composition ,
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty :associatedWithProductObject ;
                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -567,11 +572,6 @@ resourceODP:BatchOfObjects rdf:type owl:Class ;
                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                              owl:onClass :Product
                                            ] .
-
-
-###  http://w3id.org/CEON/ontology/resourceODP/Composition
-resourceODP:Composition rdf:type owl:Class ;
-                        rdfs:subClassOf actorODP:ResourceRelation .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Matter
