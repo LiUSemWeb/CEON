@@ -1,8 +1,8 @@
 @prefix : <http://w3id.org/CEON/ontology/textile/> .
 @prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ns1: <http://w3id.org/CEON/ontology/quantity#> .
-@prefix ns2: <http://qudt.org/schema/qudt/> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
+@prefix ns2: <http://w3id.org/CEON/ontology/quantity#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -16,7 +16,7 @@
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Textile Module" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/demo/textile/" ;
-    ns2:prefix "textile" ;
+    ns1:prefix "textile" ;
     rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
     owl:imports <http://w3id.org/CEON/ontology/actor/0.4/>,
         <http://w3id.org/CEON/ontology/actorODP/0.3/>,
@@ -57,16 +57,11 @@
 
 <http://w3id.org/CEON/ontology/product/productionSiteName> :LDTmapping "1300" .
 
-ns1:hasMaximalValueIncludedOfInterval a owl:AnnotationProperty .
+ns2:hasMaximalValueIncludedOfInterval a owl:AnnotationProperty .
 
-ns1:hasMinimalValueIncludedOfInterval a owl:AnnotationProperty .
+ns2:hasMinimalValueIncludedOfInterval a owl:AnnotationProperty .
 
-ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
-
-:AdhesiveFinishing a owl:Class ;
-    rdfs:label "Adhesive Finishing" ;
-    :LDTmapping "CF157" ;
-    rdfs:subClassOf :FinishingProcess .
+ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 
 :BatchOfTextileObjects a owl:Class ;
     rdfs:label "Batch of Textile Objects" ;
@@ -94,6 +89,8 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :CottonMaterial a owl:Class ;
     rdfs:label "Cotton Material" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+:DisassemblyMethod a owl:Class .
 
 :DoubleAdhesiveCoatedMaterial a owl:Class ;
     rdfs:label "Double Adhesive Coated Material" ;
@@ -163,23 +160,10 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:label "Raw Material Production" ;
     rdfs:subClassOf :TextileProductionProcess .
 
-:ShoeLace a owl:Class ;
-    rdfs:label "Shoe Lace" ;
-    rdfs:subClassOf :TextileProduct .
-
-:ShoeSole a owl:Class ;
-    rdfs:label "Shoe Sole" ;
-    rdfs:subClassOf :TextileProduct .
-
 :SingleAdhesiveCoatedMaterial a owl:Class ;
     rdfs:label "Single Adhesive Coated Material" ;
     :LDTmapping "CF205" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
-
-:SkivedFinishing a owl:Class ;
-    rdfs:label "Skived Finishing" ;
-    :LDTmapping "CF705" ;
-    rdfs:subClassOf :FinishingProcess .
 
 :SpinningProcess a owl:Class ;
     rdfs:label "Spinning Process" ;
@@ -310,12 +294,12 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 
 :_0.01perc a owl:NamedIndividual ;
     rdfs:label "0.01%" ;
-    ns2:hasUnit <http://qudt.org/vocab/unit/PERCENT> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> ;
     rdfs:seeAlso "100ppm" .
 
 :_0.1perc a owl:NamedIndividual ;
     rdfs:label "0.1%" ;
-    ns2:hasUnit <http://qudt.org/vocab/unit/PERCENT> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> ;
     rdfs:seeAlso "1000ppm" .
 
 :_0perc a owl:NamedIndividual ;
@@ -330,7 +314,7 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :_1perc a owl:NamedIndividual ;
     rdfs:label "1%",
         "10000ppm" ;
-    ns2:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
 
 :_1to10Perc a owl:NamedIndividual ;
     rdfs:label "1-10%" .
@@ -357,6 +341,9 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
         :PrintStuff,
         owl:NamedIndividual ;
     rdfs:label "acid dye" .
+
+:adhesive_finishing a :FinishingProcess,
+        owl:NamedIndividual .
 
 :analineDye a :DyeStuff,
         :PrintStuff,
@@ -390,6 +377,13 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 
 :batikPrinted a :PrintMethod,
         owl:NamedIndividual .
+
+:biodegradabilityTestAvailable a owl:DatatypeProperty ;
+    rdfs:label "is biodegradability test available" ;
+    :LDTmapping "CF604" ;
+    rdfs:comment "Biodegradability test is available."@en ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :availableInformation .
 
 :biodigestion a :TextileRecyclingProcess,
         owl:NamedIndividual ;
@@ -434,6 +428,11 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:label "contains hazardous substance above 0.1 for pre consumer recycled content" ;
     :LDTmapping "2420" ;
     rdfs:domain :TextileProductRecycledContent ;
+    rdfs:range xsd:boolean .
+
+:containsMetal a owl:DatatypeProperty ;
+    rdfs:label "contains metal" ;
+    rdfs:comment "The product contains metal."@en ;
     rdfs:range xsd:boolean .
 
 :creaseResistance a :ChemicalFinishing,
@@ -536,7 +535,7 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :disclosureValue a owl:ObjectProperty ;
     rdfs:label "disclosure value" ;
     rdfs:domain :TextileChemicalSubstanceThresholdStatement ;
-    rdfs:subPropertyOf ns1:objectValue .
+    rdfs:subPropertyOf ns2:objectValue .
 
 :disperseDye a :DyeStuff,
         :PrintStuff,
@@ -562,8 +561,16 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :flameRetardant a :ChemicalFinishing,
         owl:NamedIndividual .
 
+:good_condition a <http://w3id.org/CEON/ontology/resourceODP/ResourceCondition>,
+        owl:NamedIndividual .
+
 :handPainted a :PrintMethod,
         owl:NamedIndividual .
+
+:hasAssemblyMethod a owl:ObjectProperty .
+
+:hasBiodegradabilityTest a owl:DatatypeProperty ;
+    rdfs:range xsd:anyURI .
 
 :hasCASNumber a owl:DatatypeProperty ;
     rdfs:label "has CAS number" ;
@@ -580,10 +587,15 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:range xsd:string ;
     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actor/hasOrganisationName> .
 
+:hasContainedSubstanceFromREACHVeryHighConcernList a owl:DatatypeProperty ;
+    rdfs:range xsd:anyURI .
+
 :hasCountrySpecificCorporateIdentificationNumber a owl:DatatypeProperty ;
     rdfs:label "has country specific corporate identification number" ;
     :LDTmapping "1205" ;
     rdfs:range xsd:string .
+
+:hasDisassemblyMethod a owl:ObjectProperty .
 
 :hasFinishing a owl:ObjectProperty ;
     rdfs:label "has finishing" ;
@@ -644,6 +656,11 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
         "pyrolysis"@en ;
     rdfs:comment "Clean incineration/pyrolysis."@en .
 
+:includesTrims a owl:DatatypeProperty ;
+    rdfs:label "includes trims" ;
+    rdfs:comment "The product includes trims."@en ;
+    rdfs:range xsd:boolean .
+
 :industrialComposting a :TextileRecyclingProcess,
         owl:NamedIndividual ;
     rdfs:comment "Composting in an industrial facility."@en .
@@ -651,12 +668,8 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :inkjetPrinted a :PrintMethod,
         owl:NamedIndividual .
 
-:isBiodegradabilityTestAvailable a owl:DatatypeProperty ;
-    rdfs:label "is biodegradability test available" ;
-    :LDTmapping "CF604" ;
-    rdfs:comment "Biodegradability test is available."@en ;
-    rdfs:range xsd:boolean ;
-    rdfs:subPropertyOf :availableInformation .
+:insole a :TextileProductType,
+        owl:NamedIndividual .
 
 :isCEMarked a owl:DatatypeProperty ;
     rdfs:label "is CE Marked" ;
@@ -720,11 +733,6 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:range xsd:boolean ;
     rdfs:subPropertyOf :availableInformation .
 
-:isMetalContained a owl:DatatypeProperty ;
-    rdfs:label "is metal contained" ;
-    rdfs:comment "The product contains metal."@en ;
-    rdfs:range xsd:boolean .
-
 :isRestricedSusbtanceContainedOutOfREACHXVII a owl:DatatypeProperty ;
     rdfs:label "is restriced susbtance contained out of REACH XVII" ;
     :LDTmapping "2320, 2321" ;
@@ -742,17 +750,18 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:range xsd:boolean ;
     rdfs:subPropertyOf :availableInformation .
 
-:isTrimsIncluded a owl:DatatypeProperty ;
-    rdfs:label "is trims included" ;
-    rdfs:comment "The product includes trims."@en ;
-    rdfs:range xsd:boolean .
-
 :isWarnedUnderCaliforniaProposition65 a owl:DatatypeProperty ;
     rdfs:label "is warned under California Proposition 65" ;
     :LDTmapping "2330, 2331" ;
     rdfs:range xsd:boolean .
 
+:laces a :TextileProductType,
+        owl:NamedIndividual .
+
 :lessThan1Perc a owl:NamedIndividual .
+
+:manual_assembly a :AssemblyMethod,
+        owl:NamedIndividual .
 
 :mattingAgent a :ChemicalFinishing,
         owl:NamedIndividual .
@@ -789,6 +798,9 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     :LDTmapping "3002" ;
     rdfs:range xsd:boolean ;
     rdfs:subPropertyOf :designForBetterUse .
+
+:new_condition a <http://w3id.org/CEON/ontology/resourceODP/ResourceCondition>,
+        owl:NamedIndividual .
 
 :opticalBrighteners a :ChemicalFinishing,
         owl:NamedIndividual .
@@ -847,9 +859,12 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 
 :recyclingAtSameQualityRange a owl:ObjectProperty ;
     rdfs:label "recycling at same quality range" ;
-    rdfs:subPropertyOf ns1:objectValue .
+    rdfs:subPropertyOf ns2:objectValue .
 
 :red a :Color,
+        owl:NamedIndividual .
+
+:regular_stich_assembly a :AssemblyMethod,
         owl:NamedIndividual .
 
 :reneableContentManagedInSustainableWay a owl:DatatypeProperty ;
@@ -868,6 +883,9 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :rollerPrinted a :PrintMethod,
         owl:NamedIndividual .
 
+:rubber_layer a :TextileProductType,
+        owl:NamedIndividual .
+
 :scratchAndSniff a owl:NamedIndividual .
 
 :screenPrinted a :PrintMethod,
@@ -877,14 +895,23 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 
 :shearing a owl:NamedIndividual .
 
+:shoe a :TextileProductType,
+        owl:NamedIndividual .
+
 :silicones a :ChemicalFinishing,
         owl:NamedIndividual .
 
 :singeing a owl:NamedIndividual .
 
+:skived_finishing a :FinishingProcess,
+        owl:NamedIndividual .
+
 :softeningAgent a owl:NamedIndividual .
 
 :soilRelease a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:sole a :TextileProductType,
         owl:NamedIndividual .
 
 :stainResistance a :ChemicalFinishing,
@@ -893,11 +920,16 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :steaming a :MechanicalFinishing,
         owl:NamedIndividual .
 
+:stiched_with_Resortec_thermo-dissolvable_stitch_assembly a :AssemblyMethod,
+        owl:NamedIndividual .
+
 :sueding a :MechanicalFinishing,
         owl:NamedIndividual .
 
 :sulfurDye a :PrintStuff,
         owl:NamedIndividual .
+
+:textileProductDesignForRecycling a owl:ObjectProperty .
 
 :topDyed a :DyeMethod,
         owl:NamedIndividual ;
@@ -909,6 +941,9 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :undyed a :DyeMethod,
         owl:NamedIndividual ;
     rdfs:label "undyed" .
+
+:upper_part_fabric a :TextileProductType,
+        owl:NamedIndividual .
 
 :validatedByThirdParty a owl:NamedIndividual .
 
@@ -949,28 +984,60 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :yellow a :Color,
         owl:NamedIndividual .
 
-<http://w3id.org/CEON/demo/textile/0ge-1le> a ns1:QuantityInterval,
+<http://w3id.org/CEON/demo/textile/0ge-1le> a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/0p> ;
-    ns1:hasMinimalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/1p> .
+    ns2:hasMaximalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/0p> ;
+    ns2:hasMinimalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/1p> .
 
-<http://w3id.org/CEON/demo/textile/1gt-10le> a ns1:QuantityInterval,
+<http://w3id.org/CEON/demo/textile/1gt-10le> a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/10p> ;
-    ns1:hasMinimalValueNotIncludedOfInterval <http://w3id.org/CEON/ontology/statement/1p> .
+    ns2:hasMaximalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/10p> ;
+    ns2:hasMinimalValueNotIncludedOfInterval <http://w3id.org/CEON/ontology/statement/1p> .
 
-<http://w3id.org/CEON/demo/textile/95gt-100le> a ns1:QuantityInterval,
+<http://w3id.org/CEON/demo/textile/95gt-100le> a ns2:QuantityInterval,
         owl:NamedIndividual ;
-    ns1:hasMaximalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/100p> ;
-    ns1:hasMinimalValueNotIncludedOfInterval <http://w3id.org/CEON/ontology/statement/95p> .
+    ns2:hasMaximalValueIncludedOfInterval <http://w3id.org/CEON/ontology/statement/100p> ;
+    ns2:hasMinimalValueNotIncludedOfInterval <http://w3id.org/CEON/ontology/statement/95p> .
 
 <http://w3id.org/CEON/ontology/actor/ActorResourceRole> a owl:Class .
+
+:DyeingProcess a owl:Class ;
+    rdfs:label "Dyeing Process" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasDyeMethod ;
+                        owl:someValuesFrom :DyeMethod ] [ a owl:Restriction ;
+                        owl:allValuesFrom :DyeMethod ;
+                        owl:onProperty :hasDyeMethod ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasDyeStuff ;
+                        owl:someValuesFrom :DyeStuff ] [ a owl:Restriction ;
+                        owl:allValuesFrom :DyeStuff ;
+                        owl:onProperty :hasDyeStuff ] ) ],
+        :TextileProductionProcess .
 
 :GRS a <http://w3id.org/CEON/ontology/product/Regulation>,
         owl:NamedIndividual .
 
 :MSDS a <http://w3id.org/CEON/ontology/product/Regulation>,
         owl:NamedIndividual .
+
+:PrintingProcess a owl:Class ;
+    rdfs:label "Printing Process" ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasPrintMethod ;
+                        owl:someValuesFrom :PrintMethod ] [ a owl:Restriction ;
+                        owl:allValuesFrom :PrintMethod ;
+                        owl:onProperty :hasPrintMethod ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasPrintStuff ;
+                        owl:someValuesFrom :PrintStuff ] [ a owl:Restriction ;
+                        owl:allValuesFrom :PrintStuff ;
+                        owl:onProperty :hasPrintStuff ] ) ],
+        :TextileProductionProcess .
 
 :TextileChemicalSubstanceThresholdStatement a owl:Class ;
     rdfs:label "Textile Chemical Substance Threshold Statement" ;
@@ -1043,25 +1110,25 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:label "has textile product component value" ;
     rdfs:domain :TextileProductComponentRelation ;
     rdfs:range :TextileProductComponentValue ;
-    rdfs:subPropertyOf ns2:quantityValue .
+    rdfs:subPropertyOf ns1:quantityValue .
 
 :hasTextileProductMatterCompositionValue a owl:ObjectProperty ;
     rdfs:label "has textile product matter composition value" ;
     rdfs:domain :TextileProductMatterCompositionRelation ;
     rdfs:range :TextileProductMatterCompositionValue ;
-    rdfs:subPropertyOf ns2:quantityValue .
+    rdfs:subPropertyOf ns1:quantityValue .
 
 :hasTextileProductRecycledContent a owl:ObjectProperty ;
     rdfs:label "has textile product recycled content" ;
     rdfs:domain :TextileProductRecycledContent ;
     rdfs:range :TextileProductRecycledContentValue ;
-    rdfs:subPropertyOf ns2:quantityValue .
+    rdfs:subPropertyOf ns1:quantityValue .
 
 :hasTextileProductRenewableContent a owl:ObjectProperty ;
     rdfs:label "has textile product renewable content" ;
     rdfs:domain :TextileProductRenewableContent ;
     rdfs:range :TextileProductRenewableContentValue ;
-    rdfs:subPropertyOf ns2:quantityValue .
+    rdfs:subPropertyOf ns1:quantityValue .
 
 :hasTextileProductionProcess a owl:ObjectProperty ;
     rdfs:label "has textile production process" ;
@@ -1069,7 +1136,7 @@ ns1:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:domain :TextileProduct ;
     rdfs:range :TextileProductionProcess .
 
-ns1:objectValue a owl:ObjectProperty .
+ns2:objectValue a owl:ObjectProperty .
 
 <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> rdfs:label "Batch Of Objects" .
 
@@ -1077,38 +1144,6 @@ ns1:objectValue a owl:ObjectProperty .
     rdfs:label "Chemical Compliance" ;
     :LDTmapping "CF707" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> .
-
-:DyeingProcess a owl:Class ;
-    rdfs:label "Dyeing Process" ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty :hasDyeMethod ;
-                        owl:someValuesFrom :DyeMethod ] [ a owl:Restriction ;
-                        owl:allValuesFrom :DyeMethod ;
-                        owl:onProperty :hasDyeMethod ] ) ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty :hasDyeStuff ;
-                        owl:someValuesFrom :DyeStuff ] [ a owl:Restriction ;
-                        owl:allValuesFrom :DyeStuff ;
-                        owl:onProperty :hasDyeStuff ] ) ],
-        :TextileProductionProcess .
-
-:PrintingProcess a owl:Class ;
-    rdfs:label "Printing Process" ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty :hasPrintMethod ;
-                        owl:someValuesFrom :PrintMethod ] [ a owl:Restriction ;
-                        owl:allValuesFrom :PrintMethod ;
-                        owl:onProperty :hasPrintMethod ] ) ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty :hasPrintStuff ;
-                        owl:someValuesFrom :PrintStuff ] [ a owl:Restriction ;
-                        owl:allValuesFrom :PrintStuff ;
-                        owl:onProperty :hasPrintStuff ] ) ],
-        :TextileProductionProcess .
 
 :TextileProductComponentRelation a owl:Class ;
     rdfs:label "Textile Product Component Relation" ;
@@ -1124,19 +1159,19 @@ ns1:objectValue a owl:ObjectProperty .
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass :TextileProductComponentValue ;
             owl:onProperty :hasTextileProductComponentValue ],
-        ns2:Quantity,
+        ns1:Quantity,
         actorODP:ResourceParticipation .
 
 :TextileProductComponentValue a owl:Class ;
     rdfs:label "Textile Product Component Value" ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty ns2:hasUnit ;
-                        owl:someValuesFrom ns2:Unit ] [ a owl:Restriction ;
-                        owl:onProperty ns2:numericalValue ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
+                        owl:onProperty ns1:numericalValue ;
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
-        ns2:QuantityValue .
+        ns1:QuantityValue .
 
 :TextileProductMatterCompositionRelation a owl:Class ;
     rdfs:label "Textile Product Matter Composition Relation" ;
@@ -1151,41 +1186,45 @@ ns1:objectValue a owl:ObjectProperty .
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass :TextileProductMatterCompositionValue ;
             owl:onProperty :hasTextileProductMatterCompositionValue ],
-        ns2:Quantity,
+        ns1:Quantity,
         actorODP:ResourceParticipation .
 
 :TextileProductMatterCompositionValue a owl:Class ;
     rdfs:label "Textile Product Matter Composition Value" ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty ns2:hasUnit ;
-                        owl:someValuesFrom ns2:Unit ] [ a owl:Restriction ;
-                        owl:onProperty ns2:numericalValue ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
+                        owl:onProperty ns1:numericalValue ;
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
-        ns2:QuantityValue .
+        ns1:QuantityValue .
 
 :TextileProductRecycledContentValue a owl:Class ;
     rdfs:label "Textile Product Recycled Content Value" ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty ns2:hasUnit ;
-                        owl:someValuesFrom ns2:Unit ] [ a owl:Restriction ;
-                        owl:onProperty ns2:numericalValue ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
+                        owl:onProperty ns1:numericalValue ;
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
-        ns2:QuantityValue .
+        ns1:QuantityValue .
 
 :TextileProductRenewableContentValue a owl:Class ;
     rdfs:label "Textile Product Renewable Content Value" ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty ns2:hasUnit ;
-                        owl:someValuesFrom ns2:Unit ] [ a owl:Restriction ;
-                        owl:onProperty ns2:numericalValue ;
+                        owl:onProperty ns1:hasUnit ;
+                        owl:someValuesFrom ns1:Unit ] [ a owl:Restriction ;
+                        owl:onProperty ns1:numericalValue ;
                         owl:someValuesFrom [ a rdfs:Datatype ;
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
-        ns2:QuantityValue .
+        ns1:QuantityValue .
+
+:TextileProperty a owl:Class ;
+    rdfs:label "Textile Property" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> .
 
 :hasDyeMethod a owl:ObjectProperty ;
     rdfs:label "has dye method" ;
@@ -1197,7 +1236,6 @@ ns1:objectValue a owl:ObjectProperty .
 :hasDyeStuff a owl:ObjectProperty ;
     rdfs:label "has dye stuff" ;
     :LDTmapping "CF701" ;
-    rdfs:domain :DyeingProcess ;
     rdfs:range :DyeStuff ;
     rdfs:subPropertyOf :hasProperty .
 
@@ -1217,7 +1255,6 @@ ns1:objectValue a owl:ObjectProperty .
 :hasPrintStuff a owl:ObjectProperty ;
     rdfs:label "has print stuff" ;
     :LDTmapping "CF703" ;
-    rdfs:domain :PrintingProcess ;
     rdfs:range :PrintStuff ;
     rdfs:subPropertyOf :hasProperty .
 
@@ -1227,8 +1264,10 @@ ns1:objectValue a owl:ObjectProperty .
     rdfs:domain :TextileProduct ;
     rdfs:range :TextileProductType .
 
-<http://qudt.org/vocab/unit/PERCENT> a ns2:Unit,
+<http://qudt.org/vocab/unit/PERCENT> a ns1:Unit,
         owl:NamedIndividual .
+
+:AssemblyMethod a owl:Class .
 
 :TextileProductDesignForDisassembly a owl:Class ;
     rdfs:label "Textile Product Design For Disassembly" ;
@@ -1243,19 +1282,10 @@ ns1:objectValue a owl:ObjectProperty .
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass :TextileProductRenewableContentValue ;
             owl:onProperty :hasTextileProductRenewableContent ],
-        ns2:Quantity,
+        ns1:Quantity,
         actorODP:ResourceParticipation .
 
-:TextileProductType a owl:Class ;
-    rdfs:label "Textile Product Type" ;
-    :LDTmapping "CF100" ;
-    rdfs:subClassOf :TextileProperty .
-
-:TextileProperty a owl:Class ;
-    rdfs:label "Textile Property" ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> .
-
-ns2:numericalValue a owl:DatatypeProperty .
+ns1:numericalValue a owl:DatatypeProperty .
 
 :TextileProductRecycledContent a owl:Class ;
     rdfs:label "Textile Product Recycled Content" ;
@@ -1264,7 +1294,7 @@ ns2:numericalValue a owl:DatatypeProperty .
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass :TextileProductRecycledContentValue ;
             owl:onProperty :hasTextileProductRecycledContent ],
-        ns2:Quantity,
+        ns1:Quantity,
         actorODP:ResourceParticipation .
 
 :WaterProperty a owl:Class ;
@@ -1299,36 +1329,8 @@ ns2:numericalValue a owl:DatatypeProperty .
 :hasFractionOfProductToLeakageDuringUse a owl:ObjectProperty ;
     rdfs:label "has fraction of product to leakage during use" ;
     rdfs:domain :TextileProductToLeakageStatement ;
-    rdfs:range ns1:QuantityInterval ;
+    rdfs:range ns2:QuantityInterval ;
     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/statement/hasQuantityInterval> .
-
-:designForBetterUse a owl:DatatypeProperty ;
-    rdfs:label "design for better use" ;
-    rdfs:domain :TextileProductDesignedForBetterUse ;
-    rdfs:range xsd:boolean ;
-    rdfs:subPropertyOf owl:topDataProperty .
-
-:DyeMethod a owl:Class ;
-    rdfs:label "Dye Method" ;
-    :LDTmapping "CF700" ;
-    rdfs:comment "A method of how to add color to a textile." .
-
-:TextileProductionProcess a owl:Class ;
-    rdfs:label "Textile Production Process" ;
-    :LDTmapping "CF206" ;
-    rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
-
-:hasProperty a owl:ObjectProperty ;
-    rdfs:label "has property" .
-
-:Color a owl:Class ;
-    rdfs:label "Color" ;
-    :LDTmapping "CF101" ;
-    rdfs:subClassOf :TextileProperty .
-
-:PrintMethod a owl:Class ;
-    rdfs:label "Print Method" ;
-    :LDTmapping "CF702" .
 
 :TextileProduct a owl:Class ;
     rdfs:label "Textile Product" ;
@@ -1351,6 +1353,38 @@ ns2:numericalValue a owl:DatatypeProperty .
                         owl:allValuesFrom :TextileProductType ;
                         owl:onProperty :hasTextileProductType ] ) ],
         <http://w3id.org/CEON/ontology/product/Product> .
+
+:designForBetterUse a owl:DatatypeProperty ;
+    rdfs:label "design for better use" ;
+    rdfs:domain :TextileProductDesignedForBetterUse ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+:DyeMethod a owl:Class ;
+    rdfs:label "Dye Method" ;
+    :LDTmapping "CF700" ;
+    rdfs:comment "A method of how to add color to a textile." .
+
+:TextileProductType a owl:Class ;
+    rdfs:label "Textile Product Type" ;
+    :LDTmapping "CF100" .
+
+:TextileProductionProcess a owl:Class ;
+    rdfs:label "Textile Production Process" ;
+    :LDTmapping "CF206" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
+
+:hasProperty a owl:ObjectProperty ;
+    rdfs:label "has property" .
+
+:Color a owl:Class ;
+    rdfs:label "Color" ;
+    :LDTmapping "CF101" ;
+    rdfs:subClassOf :TextileProperty .
+
+:PrintMethod a owl:Class ;
+    rdfs:label "Print Method" ;
+    :LDTmapping "CF702" .
 
 :designForProperties a owl:DatatypeProperty ;
     rdfs:label "design for properties" ;

@@ -104,20 +104,20 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                                                      product:Product
                                                    )
                                      ] ;
-                         rdfs:range :Conductivity ;
+                         rdfs:range :ConductivityProperty ;
                          rdfs:label "has conductivity property" .
 
 
 ###  http://w3id.org/CEON/demo/construction/hasConductivityValue
 :hasConductivityValue rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                      rdfs:domain :Conductivity ,
+                      rdfs:domain :ConductivityProperty ,
                                   [ rdf:type owl:Class ;
                                     owl:unionOf ( product:Item
                                                   product:Product
                                                 )
                                   ] ;
-                      rdfs:range :ConductivityValue ;
+                      rdfs:range :Conductivity ;
                       rdfs:label "has conductivity value" .
 
 
@@ -266,13 +266,13 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasRecyclingSeparability
 :hasRecyclingSeparability rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                          rdfs:domain :RecyclingSeparability ,
+                          rdfs:domain :RecyclingSeparabilityProperty ,
                                       [ rdf:type owl:Class ;
                                         owl:unionOf ( product:Item
                                                       product:Product
                                                     )
                                       ] ;
-                          rdfs:range :RecyclingSeparabilityValue ;
+                          rdfs:range :RecyclingSeparability ;
                           rdfs:comment "hasRecyclingSeparability is used to describe the amount of the product or product object that can be separated for recycling." ;
                           rdfs:label "has recycling separability" .
 
@@ -280,13 +280,13 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasResistanceToEarth
 :hasResistanceToEarth rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                      rdfs:domain :ResistanceToEarth ,
+                      rdfs:domain :ResistanceToEarthProperty ,
                                   [ rdf:type owl:Class ;
                                     owl:unionOf ( product:Item
                                                   product:Product
                                                 )
                                   ] ;
-                      rdfs:range :ResistanceToEarthValue ;
+                      rdfs:range :ResistanceToEarth ;
                       rdfs:comment "hasResistanceToEarth describes the resistance to earth of a product." ;
                       rdfs:label "has resistance to earth" .
 
@@ -294,13 +294,13 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasReuseDeconstructability
 :hasReuseDeconstructability rdf:type owl:ObjectProperty ;
                             rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                            rdfs:domain :ReuseDeconstructability ,
+                            rdfs:domain :ReuseDeconstructabilityProperty ,
                                         [ rdf:type owl:Class ;
                                           owl:unionOf ( product:Item
                                                         product:Product
                                                       )
                                         ] ;
-                            rdfs:range :RecyclingDeconstructabilityValue ;
+                            rdfs:range :RecyclingDeconstructability ;
                             rdfs:comment "hasReuseDeconstructability is used to describe the amount of the product hat can be deconstructed for reuse." ;
                             rdfs:label "has reuse deconstructability" .
 
@@ -321,9 +321,9 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 :hasSystemWeight rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
                  rdfs:domain [ rdf:type owl:Class ;
-                               owl:unionOf ( :SystemMaximalWeight
-                                             :SystemMinimalWeight
-                                             :SystemWeight
+                               owl:unionOf ( :SystemMaximalWeightProperty
+                                             :SystemMinimalWeightProperty
+                                             :SystemWeightProperty
                                            )
                              ] ,
                              [ rdf:type owl:Class ;
@@ -331,7 +331,7 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                                              product:Product
                                            )
                              ] ;
-                 rdfs:range :SystemWeightValue ;
+                 rdfs:range :SystemWeight ;
                  rdfs:comment "hasSystemWeight is used to express the system weight of a product or product object." ;
                  rdfs:label "has system weight" .
 
@@ -339,6 +339,11 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/hasTakeBackProgram
 :hasTakeBackProgram rdf:type owl:ObjectProperty ;
                     rdfs:label "has take back program" .
+
+
+###  http://w3id.org/CEON/demo/construction/hasTakebackPrice
+:hasTakebackPrice rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasPrice> .
 
 
 ###  http://w3id.org/CEON/demo/construction/hasUseSpan
@@ -372,8 +377,27 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/demo/construction/installationLocation
 :installationLocation rdf:type owl:ObjectProperty ;
-                      rdfs:range :InstallationLocation ;
                       rdfs:label "installation location" .
+
+
+###  http://w3id.org/CEON/demo/construction/locatedInBuilding
+:locatedInBuilding rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :locatedInZone .
+
+
+###  http://w3id.org/CEON/demo/construction/locatedInRoom
+:locatedInRoom rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :locatedInZone .
+
+
+###  http://w3id.org/CEON/demo/construction/locatedInStorey
+:locatedInStorey rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :locatedInZone .
+
+
+###  http://w3id.org/CEON/demo/construction/locatedInZone
+:locatedInZone rdf:type owl:ObjectProperty ;
+               rdfs:range <https://w3id.org/bot#Zone> .
 
 
 ###  http://w3id.org/CEON/demo/construction/policyOnTreatment
@@ -415,6 +439,10 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                 rdfs:range xsd:string ;
                 rdfs:comment "hasAccessories is used to provide a text representation of the accessories related to a product or product object." ;
                 rdfs:label "has accessories" .
+
+
+###  http://w3id.org/CEON/demo/construction/hasDeconstructabilityDescription
+:hasDeconstructabilityDescription rdf:type owl:DatatypeProperty .
 
 
 ###  http://w3id.org/CEON/demo/construction/hasDismantlingInstruction
@@ -468,6 +496,10 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                                              rdfs:range xsd:string ;
                                              rdfs:comment "hasPackagingRecommendationsAfterDismantling is used to represent a textual description of the packaging recommendations after a product or product object has been dismantled." ;
                                              rdfs:label "has packaging recommendations after dismantling" .
+
+
+###  http://w3id.org/CEON/demo/construction/hasPreuseDescription
+:hasPreuseDescription rdf:type owl:DatatypeProperty .
 
 
 ###  http://w3id.org/CEON/demo/construction/hasProductDescription
@@ -531,6 +563,19 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                         rdfs:label "has refurbishment method" .
 
 
+###  http://w3id.org/CEON/demo/construction/hasReusabilityDescription
+:hasReusabilityDescription rdf:type owl:DatatypeProperty .
+
+
+###  http://w3id.org/CEON/demo/construction/hasTakeBackProgramFromOriginalManufacturer
+:hasTakeBackProgramFromOriginalManufacturer rdf:type owl:DatatypeProperty ;
+                                            rdfs:subPropertyOf owl:topDataProperty ;
+                                            rdfs:domain product:Product ;
+                                            rdfs:range xsd:boolean ;
+                                            rdfs:comment "isTakeBackProgramFromOriginalManufacturerAvailable is used to express whether the original manufacturer of a product has a take back program it (true/false)." ;
+                                            rdfs:label "has takeback program from original manufacturer" .
+
+
 ###  http://w3id.org/CEON/demo/construction/hasTechnicalRequirementsForTakeBackForRecycling
 :hasTechnicalRequirementsForTakeBackForRecycling rdf:type owl:DatatypeProperty ;
                                                  rdfs:subPropertyOf owl:topDataProperty ;
@@ -570,15 +615,6 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                 rdfs:label "is contaminated" .
 
 
-###  http://w3id.org/CEON/demo/construction/isTakeBackProgramFromOriginalManufacturerAvailable
-:isTakeBackProgramFromOriginalManufacturerAvailable rdf:type owl:DatatypeProperty ;
-                                                    rdfs:subPropertyOf owl:topDataProperty ;
-                                                    rdfs:domain product:Product ;
-                                                    rdfs:range xsd:boolean ;
-                                                    rdfs:comment "isTakeBackProgramFromOriginalManufacturerAvailable is used to express whether the original manufacturer of a product has a take back program it (true/false)." ;
-                                                    rdfs:label "is takeback program from original manufacturer available" .
-
-
 ###  http://w3id.org/CEON/demo/construction/isTakeBackProgramFromOtherManufacturerAvailable
 :isTakeBackProgramFromOtherManufacturerAvailable rdf:type owl:DatatypeProperty ;
                                                  rdfs:subPropertyOf owl:topDataProperty ;
@@ -586,6 +622,10 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                                                  rdfs:range xsd:boolean ;
                                                  rdfs:comment "isTakeBackProgramFromOtherManufacturerAvailable is used to express whether another manufacturer has a take back program (true/false) for a product." ;
                                                  rdfs:label "is takeback program from other manufacturer available" .
+
+
+###  http://w3id.org/CEON/demo/construction/needsRefurbishmentBeforeReuse
+:needsRefurbishmentBeforeReuse rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -627,6 +667,11 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/demo/construction/A5TheConstructionPhaseImpact
 :A5TheConstructionPhaseImpact rdf:type owl:Class ;
                               rdfs:subClassOf :ProductStageImpact .
+
+
+###  http://w3id.org/CEON/demo/construction/AcousticLayer
+:AcousticLayer rdf:type owl:Class ;
+               rdfs:subClassOf product:Product .
 
 
 ###  http://w3id.org/CEON/demo/construction/B1InstalledProductImpact
@@ -678,7 +723,7 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 :C2CMHSilverCompliance rdf:type owl:Class ;
                        owl:equivalentClass [ rdf:type owl:Restriction ;
                                              owl:onProperty product:complianceWith ;
-                                             owl:hasValue :C2CMHSilver
+                                             owl:hasValue :C2C_MH_Silver
                                            ] ;
                        rdfs:subClassOf product:Compliance ;
                        rdfs:label "C2CMHSilver Compliance" .
@@ -706,35 +751,35 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/demo/construction/Conductivity
 :Conductivity rdf:type owl:Class ;
-              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                              <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+              rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                       owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                       owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                       owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasConductivityValue ;
-                                owl:allValuesFrom :ConductivityValue
+                                owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                owl:allValuesFrom xsd:double
                               ] ;
+              rdfs:comment "The value of Conductivity." ;
               rdfs:label "Conductivity" .
 
 
-###  http://w3id.org/CEON/demo/construction/ConductivityValue
-:ConductivityValue rdf:type owl:Class ;
-                   rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                            owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                          ]
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                            owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                          ]
-                                                        ) ;
-                                     rdf:type owl:Class
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                     owl:allValuesFrom xsd:double
-                                   ] ;
-                   rdfs:comment "The value of Conductivity." ;
-                   rdfs:label "Conductivity Value" .
+###  http://w3id.org/CEON/demo/construction/ConductivityProperty
+:ConductivityProperty rdf:type owl:Class ;
+                      rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                      <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasConductivityValue ;
+                                        owl:allValuesFrom :Conductivity
+                                      ] ;
+                      rdfs:label "Conductivity Property" .
 
 
 ###  http://w3id.org/CEON/demo/construction/ConstructionProductQuality
@@ -756,26 +801,26 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                       rdfs:label "Dimensional Deviation" .
 
 
-###  http://w3id.org/CEON/demo/construction/DismantlingCostValue
-:DismantlingCostValue rdf:type owl:Class ;
-                      rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                      [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                               owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                               owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                             ]
-                                                             [ rdf:type owl:Restriction ;
-                                                               owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                               owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                             ]
-                                                           ) ;
-                                        rdf:type owl:Class
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                        owl:allValuesFrom xsd:double
-                                      ] ;
-                      rdfs:comment "The cost value of dismantling." ;
-                      rdfs:label "Dismantling Cost Value" .
+###  http://w3id.org/CEON/demo/construction/DismantlingCost
+:DismantlingCost rdf:type owl:Class ;
+                 rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                          owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                          owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                          owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                   owl:allValuesFrom xsd:double
+                                 ] ;
+                 rdfs:comment "The cost value of dismantling." ;
+                 rdfs:label "Dismantling Cost" .
 
 
 ###  http://w3id.org/CEON/demo/construction/EndOfLifeStage
@@ -804,92 +849,97 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/demo/construction/FloorPanelHeight
 :FloorPanelHeight rdf:type owl:Class ;
-                  rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                                  <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
-                  rdfs:comment "The height of a floor panel." ;
+                  rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                           owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                           owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                           owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                    owl:allValuesFrom xsd:double
+                                  ] ;
+                  rdfs:comment "The quantity value of floor panel height." ;
                   rdfs:label "Floor Panel Height" .
 
 
-###  http://w3id.org/CEON/demo/construction/FloorPanelHeightValue
-:FloorPanelHeightValue rdf:type owl:Class ;
-                       rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                              ]
-                                                              [ rdf:type owl:Restriction ;
-                                                                owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                              ]
-                                                            ) ;
-                                         rdf:type owl:Class
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                         owl:allValuesFrom xsd:double
-                                       ] ;
-                       rdfs:comment "The quantity value of floor panel height." ;
-                       rdfs:label "Floor Panel Height Value" .
+###  http://w3id.org/CEON/demo/construction/FloorPanelHeightProperty
+:FloorPanelHeightProperty rdf:type owl:Class ;
+                          rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                          <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
+                          rdfs:comment "The height of a floor panel." ;
+                          rdfs:label "Floor Panel Height Property" .
 
 
 ###  http://w3id.org/CEON/demo/construction/FloorPanelLength
 :FloorPanelLength rdf:type owl:Class ;
-                  rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                                  <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
-                  rdfs:comment "The length of a floor panel." ;
+                  rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                           owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                           owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                           owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                    owl:allValuesFrom xsd:double
+                                  ] ;
+                  rdfs:comment "The quantity value of floor panel length." ;
                   rdfs:label "Floor Panel Length" .
 
 
-###  http://w3id.org/CEON/demo/construction/FloorPanelLengthValue
-:FloorPanelLengthValue rdf:type owl:Class ;
-                       rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                              ]
-                                                              [ rdf:type owl:Restriction ;
-                                                                owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                              ]
-                                                            ) ;
-                                         rdf:type owl:Class
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                         owl:allValuesFrom xsd:double
-                                       ] ;
-                       rdfs:comment "The quantity value of floor panel length." ;
-                       rdfs:label "Floor Panel Length Value" .
+###  http://w3id.org/CEON/demo/construction/FloorPanelLengthFloorProperty
+:FloorPanelLengthFloorProperty rdf:type owl:Class ;
+                               rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                               <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
+                               rdfs:comment "The length of a floor panel." ;
+                               rdfs:label "Floor Panel Length Property" .
 
 
 ###  http://w3id.org/CEON/demo/construction/FloorPanelWidth
 :FloorPanelWidth rdf:type owl:Class ;
-                 rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                                 <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
-                 rdfs:comment "The width of a floor panel." ;
+                 rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                          owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                          owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                          owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                   owl:allValuesFrom xsd:double
+                                 ] ;
+                 rdfs:comment "The quantity value of floor panel width." ;
                  rdfs:label "Floor Panel Width" .
 
 
-###  http://w3id.org/CEON/demo/construction/FloorPanelWidthValue
-:FloorPanelWidthValue rdf:type owl:Class ;
-                      rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                      [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                               owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                               owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                             ]
-                                                             [ rdf:type owl:Restriction ;
-                                                               owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                               owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                             ]
-                                                           ) ;
-                                        rdf:type owl:Class
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                        owl:allValuesFrom xsd:double
-                                      ] ;
-                      rdfs:comment "The quantity value of floor panel width." ;
-                      rdfs:label "Floor Panel Width Value" .
+###  http://w3id.org/CEON/demo/construction/FloorPanelWidthProperty
+:FloorPanelWidthProperty rdf:type owl:Class ;
+                         rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                         <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
+                         rdfs:comment "The width of a floor panel." ;
+                         rdfs:label "Floor Panel Width Property" .
+
+
+###  http://w3id.org/CEON/demo/construction/FloorSystem
+:FloorSystem rdf:type owl:Class ;
+             rdfs:subClassOf product:Product .
 
 
 ###  http://w3id.org/CEON/demo/construction/FloorTile
@@ -999,194 +1049,179 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                        rdfs:label "Market Value for Product" .
 
 
+###  http://w3id.org/CEON/demo/construction/MaximalDismantlingCost
+:MaximalDismantlingCost rdf:type owl:Class ;
+                        rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                 owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                 owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                          owl:allValuesFrom xsd:double
+                                        ] ;
+                        rdfs:comment "The maximal cost value of dismantling." ;
+                        rdfs:label "Maximal Dismantling Cost" .
+
+
 ###  http://w3id.org/CEON/demo/construction/MaximalDismantlingCostPerSqm
 :MaximalDismantlingCostPerSqm rdf:type owl:Class ;
-                              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> .
+                              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                              <http://qudt.org/schema/qudt/QuantityValue> ,
+                                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                       owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                       owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ] ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                                owl:allValuesFrom xsd:double
+                                              ] .
 
 
-###  http://w3id.org/CEON/demo/construction/MaximalDismantlingCostPerSqmValue
-:MaximalDismantlingCostPerSqmValue rdf:type owl:Class ;
-                                   rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                            owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                          ]
-                                                                          [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                            owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                          ]
-                                                                        ) ;
-                                                     rdf:type owl:Class
-                                                   ] ,
-                                                   [ rdf:type owl:Restriction ;
-                                                     owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                                     owl:allValuesFrom xsd:double
-                                                   ] .
-
-
-###  http://w3id.org/CEON/demo/construction/MaximalDismantlingCostValue
-:MaximalDismantlingCostValue rdf:type owl:Class ;
-                             rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                      owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                    ]
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                      owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                    ]
-                                                                  ) ;
-                                               rdf:type owl:Class
-                                             ] ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                               owl:allValuesFrom xsd:double
-                                             ] ;
-                             rdfs:comment "The maximal cost value of dismantling." ;
-                             rdfs:label "Maximal Dismantling Cost Value" .
+###  http://w3id.org/CEON/demo/construction/MinimalDismantlingCost
+:MinimalDismantlingCost rdf:type owl:Class ;
+                        rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                 owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                 owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                          owl:allValuesFrom xsd:double
+                                        ] ;
+                        rdfs:comment "The minimal cost value of dismantling." ;
+                        rdfs:label "Minimal Dismantling Cost" .
 
 
 ###  http://w3id.org/CEON/demo/construction/MinimalDismantlingCostPerSqm
 :MinimalDismantlingCostPerSqm rdf:type owl:Class ;
-                              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> .
-
-
-###  http://w3id.org/CEON/demo/construction/MinimalDismantlingCostPerSqmValue
-:MinimalDismantlingCostPerSqmValue rdf:type owl:Class ;
-                                   rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                            owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                          ]
-                                                                          [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                            owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                          ]
-                                                                        ) ;
-                                                     rdf:type owl:Class
-                                                   ] ,
-                                                   [ rdf:type owl:Restriction ;
-                                                     owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                                     owl:allValuesFrom xsd:double
-                                                   ] .
-
-
-###  http://w3id.org/CEON/demo/construction/MinimalDismantlingCostValue
-:MinimalDismantlingCostValue rdf:type owl:Class ;
-                             rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                      owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                    ]
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                      owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                    ]
-                                                                  ) ;
-                                               rdf:type owl:Class
-                                             ] ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                               owl:allValuesFrom xsd:double
-                                             ] ;
-                             rdfs:comment "The minimal cost value of dismantling." ;
-                             rdfs:label "Minimal Dismantling Cost Value" .
+                              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                              <http://qudt.org/schema/qudt/QuantityValue> ,
+                                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                       owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                       owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ] ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                                owl:allValuesFrom xsd:double
+                                              ] .
 
 
 ###  http://w3id.org/CEON/demo/construction/Pedestal
 :Pedestal rdf:type owl:Class ;
-          rdfs:subClassOf product:Item ;
+          rdfs:subClassOf product:Product ;
           rdfs:label "Pedestal" .
+
+
+###  http://w3id.org/CEON/demo/construction/PedestalGlue
+:PedestalGlue rdf:type owl:Class ;
+              rdfs:subClassOf product:Product .
 
 
 ###  http://w3id.org/CEON/demo/construction/PedestalHeight
 :PedestalHeight rdf:type owl:Class ;
-                rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                                <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
-                rdfs:comment "The height of a pedestal." ;
+                rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                         owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                         owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                  owl:allValuesFrom xsd:double
+                                ] ;
+                rdfs:comment "The quantity value of pedestal height." ;
                 rdfs:label "Pedestal Height" .
 
 
-###  http://w3id.org/CEON/demo/construction/PedestalHeightValue
-:PedestalHeightValue rdf:type owl:Class ;
-                     rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                     [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                              owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                              owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                            ]
-                                                            [ rdf:type owl:Restriction ;
-                                                              owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                              owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                            ]
-                                                          ) ;
-                                       rdf:type owl:Class
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                       owl:allValuesFrom xsd:double
-                                     ] ;
-                     rdfs:comment "The quantity value of pedestal height." ;
-                     rdfs:label "Pedestal Height Value" .
+###  http://w3id.org/CEON/demo/construction/PedestalHeightProperty
+:PedestalHeightProperty rdf:type owl:Class ;
+                        rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                        <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
+                        rdfs:comment "The height of a pedestal." ;
+                        rdfs:label "Pedestal Height Property" .
 
 
 ###  http://w3id.org/CEON/demo/construction/PedestalLength
 :PedestalLength rdf:type owl:Class ;
-                rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                                <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
-                rdfs:comment "The length of a pedestal." ;
+                rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                         owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                         owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                  owl:allValuesFrom xsd:double
+                                ] ;
+                rdfs:comment "The length of a pedestal." ,
+                             "The quantity value of Pedestal length." ;
                 rdfs:label "Pedestal Length" .
-
-
-###  http://w3id.org/CEON/demo/construction/PedestalLengthValue
-:PedestalLengthValue rdf:type owl:Class ;
-                     rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                     [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                              owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                              owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                            ]
-                                                            [ rdf:type owl:Restriction ;
-                                                              owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                              owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                            ]
-                                                          ) ;
-                                       rdf:type owl:Class
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                       owl:allValuesFrom xsd:double
-                                     ] ;
-                     rdfs:comment "The quantity value of Pedestal length." ;
-                     rdfs:label "Pedestal Length Value" .
 
 
 ###  http://w3id.org/CEON/demo/construction/PedestalWidth
 :PedestalWidth rdf:type owl:Class ;
-               rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                               <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
-               rdfs:comment "The width of a pedestal." ;
+               rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                               <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                        owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                        owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                 owl:allValuesFrom xsd:double
+                               ] ;
+               rdfs:comment "The quantity value of pedestal width." ,
+                            "The width of a pedestal." ;
                rdfs:label "Pedestal Width" .
-
-
-###  http://w3id.org/CEON/demo/construction/PedestalWidthValue
-:PedestalWidthValue rdf:type owl:Class ;
-                    rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                             owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                             owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                           ]
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                             owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                           ]
-                                                         ) ;
-                                      rdf:type owl:Class
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                      owl:allValuesFrom xsd:double
-                                    ] ;
-                    rdfs:comment "The quantity value of pedestal width." ;
-                    rdfs:label "Pedestal Width Value" .
 
 
 ###  http://w3id.org/CEON/demo/construction/ProductStageImpact
@@ -1214,26 +1249,26 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                       rdfs:label "Recycled Content Value" .
 
 
-###  http://w3id.org/CEON/demo/construction/RecyclingDeconstructabilityValue
-:RecyclingDeconstructabilityValue rdf:type owl:Class ;
-                                  rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                           owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                         ]
-                                                                         [ rdf:type owl:Restriction ;
-                                                                           owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                           owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                         ]
-                                                                       ) ;
-                                                    rdf:type owl:Class
-                                                  ] ,
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                                    owl:allValuesFrom xsd:double
-                                                  ] ;
-                                  rdfs:comment "The reuse deconstructability value." ;
-                                  rdfs:label "Reuse Deconstructability Value" .
+###  http://w3id.org/CEON/demo/construction/RecyclingDeconstructability
+:RecyclingDeconstructability rdf:type owl:Class ;
+                             rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                      owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                      owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                               owl:allValuesFrom xsd:double
+                                             ] ;
+                             rdfs:comment "The reuse deconstructability value." ;
+                             rdfs:label "Reuse Deconstructability" .
 
 
 ###  http://w3id.org/CEON/demo/construction/RecyclingPotentialValue
@@ -1259,199 +1294,40 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/demo/construction/RecyclingSeparability
 :RecyclingSeparability rdf:type owl:Class ;
-                       rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                                       <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                       rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                              ]
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                                owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ,
                                        [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasRecyclingSeparability ;
-                                         owl:allValuesFrom :RecyclingSeparabilityValue
+                                         owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                         owl:allValuesFrom xsd:double
                                        ] ;
-                       rdfs:comment "The recycling separability." ;
+                       rdfs:comment "The recycling separability value." ;
                        rdfs:label "Recycling Separability" .
 
 
-###  http://w3id.org/CEON/demo/construction/RecyclingSeparabilityValue
-:RecyclingSeparabilityValue rdf:type owl:Class ;
-                            rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                     owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                   ]
-                                                                   [ rdf:type owl:Restriction ;
-                                                                     owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                     owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                   ]
-                                                                 ) ;
-                                              rdf:type owl:Class
-                                            ] ,
-                                            [ rdf:type owl:Restriction ;
-                                              owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                              owl:allValuesFrom xsd:double
-                                            ] ;
-                            rdfs:comment "The recycling separability value." ;
-                            rdfs:label "Recycling Separability Value" .
+###  http://w3id.org/CEON/demo/construction/RecyclingSeparabilityProperty
+:RecyclingSeparabilityProperty rdf:type owl:Class ;
+                               rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                               <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :hasRecyclingSeparability ;
+                                                 owl:allValuesFrom :RecyclingSeparability
+                                               ] ;
+                               rdfs:comment "The recycling separability." ;
+                               rdfs:label "Recycling Separability Property" .
 
 
-###  http://w3id.org/CEON/demo/construction/RefurbishmentCostValue
-:RefurbishmentCostValue rdf:type owl:Class ;
-                        rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                 owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                               ]
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                 owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                          owl:allValuesFrom xsd:double
-                                        ] ;
-                        rdfs:comment "The cost value of refurbishment." ;
-                        rdfs:label "Refurbishment Cost Value" .
-
-
-###  http://w3id.org/CEON/demo/construction/ResistanceToEarth
-:ResistanceToEarth rdf:type owl:Class ;
-                   rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                                   <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :hasResistanceToEarth ;
-                                     owl:allValuesFrom :ResistanceToEarthValue
-                                   ] ;
-                   rdfs:label "Resistance To Earth" .
-
-
-###  http://w3id.org/CEON/demo/construction/ResistanceToEarthValue
-:ResistanceToEarthValue rdf:type owl:Class ;
-                        rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                 owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                               ]
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                 owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                          owl:allValuesFrom xsd:double
-                                        ] ;
-                        rdfs:comment "The value of Resistance to Earth." ;
-                        rdfs:label "Resistance To Earth Value" .
-
-
-###  http://w3id.org/CEON/demo/construction/ReuseDeconstructability
-:ReuseDeconstructability rdf:type owl:Class ;
-                         rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                                         <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :hasReuseDeconstructability ;
-                                           owl:allValuesFrom :RecyclingDeconstructabilityValue
-                                         ] ;
-                         rdfs:comment "The Reuse Deconstructability." ;
-                         rdfs:label "Reuse Deconstructability" .
-
-
-###  http://w3id.org/CEON/demo/construction/ReusePotential
-:ReusePotential rdf:type owl:Class ;
-                rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
-                rdfs:label "Reuse Potential" .
-
-
-###  http://w3id.org/CEON/demo/construction/Screw
-:Screw rdf:type owl:Class ;
-       rdfs:subClassOf product:Item ;
-       rdfs:label "Screw" .
-
-
-###  http://w3id.org/CEON/demo/construction/SystemMaximalWeight
-:SystemMaximalWeight rdf:type owl:Class ;
-                     rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                                     <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :hasSystemWeight ;
-                                       owl:allValuesFrom :SystemMaximalWeightValue
-                                     ] ;
-                     rdfs:comment "The maximal allowed weight of a system." ;
-                     rdfs:label "System Maximal Weight" .
-
-
-###  http://w3id.org/CEON/demo/construction/SystemMaximalWeightValue
-:SystemMaximalWeightValue rdf:type owl:Class ;
-                          rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                   owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                 ]
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                   owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                 ]
-                                                               ) ;
-                                            rdf:type owl:Class
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                            owl:allValuesFrom xsd:double
-                                          ] ;
-                          rdfs:comment "The maximal allowed weight value of a system." ;
-                          rdfs:label "System Maximal Weight Value" .
-
-
-###  http://w3id.org/CEON/demo/construction/SystemMinimalWeight
-:SystemMinimalWeight rdf:type owl:Class ;
-                     rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                                     <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :hasSystemWeight ;
-                                       owl:allValuesFrom :SystemMinimalWeightValue
-                                     ] ;
-                     rdfs:comment "The minimal allowed weight of a system." ;
-                     rdfs:label "System Minimal Weight" .
-
-
-###  http://w3id.org/CEON/demo/construction/SystemMinimalWeightValue
-:SystemMinimalWeightValue rdf:type owl:Class ;
-                          rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                   owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                 ]
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                                   owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                                 ]
-                                                               ) ;
-                                            rdf:type owl:Class
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                            owl:allValuesFrom xsd:double
-                                          ] ;
-                          rdfs:comment "The minimal allowed weight value of a system." ;
-                          rdfs:label "System Minimal Weight Value" .
-
-
-###  http://w3id.org/CEON/demo/construction/SystemWeight
-:SystemWeight rdf:type owl:Class ;
-              rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                              <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasSystemWeight ;
-                                owl:allValuesFrom :SystemWeightValue
-                              ] ;
-              rdfs:comment "The weight of a system." ;
-              rdfs:label "System Weight" .
-
-
-###  http://w3id.org/CEON/demo/construction/SystemWeightValue
-:SystemWeightValue rdf:type owl:Class ;
+###  http://w3id.org/CEON/demo/construction/RefurbishmentCost
+:RefurbishmentCost rdf:type owl:Class ;
                    rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                             owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
@@ -1468,8 +1344,167 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                                      owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
                                      owl:allValuesFrom xsd:double
                                    ] ;
-                   rdfs:comment "The weight value of a system." ;
-                   rdfs:label "System Weight Value" .
+                   rdfs:comment "The cost value of refurbishment." ;
+                   rdfs:label "Refurbishment Cost" .
+
+
+###  http://w3id.org/CEON/demo/construction/ResistanceToEarth
+:ResistanceToEarth rdf:type owl:Class ;
+                   rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                   [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                            owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                          ]
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                            owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                     owl:allValuesFrom xsd:double
+                                   ] ;
+                   rdfs:comment "The value of Resistance to Earth." ;
+                   rdfs:label "Resistance To Earth" .
+
+
+###  http://w3id.org/CEON/demo/construction/ResistanceToEarthProperty
+:ResistanceToEarthProperty rdf:type owl:Class ;
+                           rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                           <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :hasResistanceToEarth ;
+                                             owl:allValuesFrom :ResistanceToEarth
+                                           ] ;
+                           rdfs:label "Resistance To Earth Property" .
+
+
+###  http://w3id.org/CEON/demo/construction/ReuseDeconstructabilityProperty
+:ReuseDeconstructabilityProperty rdf:type owl:Class ;
+                                 rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                                 <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasReuseDeconstructability ;
+                                                   owl:allValuesFrom :RecyclingDeconstructability
+                                                 ] ;
+                                 rdfs:comment "The Reuse Deconstructability." ;
+                                 rdfs:label "Reuse Deconstructability Property" .
+
+
+###  http://w3id.org/CEON/demo/construction/ReusePotential
+:ReusePotential rdf:type owl:Class ;
+                rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
+                rdfs:label "Reuse Potential" .
+
+
+###  http://w3id.org/CEON/demo/construction/Screw
+:Screw rdf:type owl:Class ;
+       rdfs:subClassOf product:Item ;
+       rdfs:label "Screw" .
+
+
+###  http://w3id.org/CEON/demo/construction/SystemMaximalWeight
+:SystemMaximalWeight rdf:type owl:Class ;
+                     rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                     [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                              owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                              owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                       owl:allValuesFrom xsd:double
+                                     ] ;
+                     rdfs:comment "The maximal allowed weight value of a system." ;
+                     rdfs:label "System Maximal Weight" .
+
+
+###  http://w3id.org/CEON/demo/construction/SystemMaximalWeightProperty
+:SystemMaximalWeightProperty rdf:type owl:Class ;
+                             rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                             <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasSystemWeight ;
+                                               owl:allValuesFrom :SystemMaximalWeight
+                                             ] ;
+                             rdfs:comment "The maximal allowed weight of a system." ;
+                             rdfs:label "System Maximal Weight Property" .
+
+
+###  http://w3id.org/CEON/demo/construction/SystemMinimalWeight
+:SystemMinimalWeight rdf:type owl:Class ;
+                     rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                                     [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                              owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                              owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                       owl:allValuesFrom xsd:double
+                                     ] ;
+                     rdfs:comment "The minimal allowed weight value of a system." ;
+                     rdfs:label "System Minimal Weight" .
+
+
+###  http://w3id.org/CEON/demo/construction/SystemMinimalWeightProperty
+:SystemMinimalWeightProperty rdf:type owl:Class ;
+                             rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                             <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasSystemWeight ;
+                                               owl:allValuesFrom :SystemMinimalWeight
+                                             ] ;
+                             rdfs:comment "The minimal allowed weight of a system." ;
+                             rdfs:label "System Minimal Weight Property" .
+
+
+###  http://w3id.org/CEON/demo/construction/SystemWeight
+:SystemWeight rdf:type owl:Class ;
+              rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                       owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                       owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                       owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                owl:allValuesFrom xsd:double
+                              ] ;
+              rdfs:comment "The weight value of a system." ;
+              rdfs:label "System Weight" .
+
+
+###  http://w3id.org/CEON/demo/construction/SystemWeightProperty
+:SystemWeightProperty rdf:type owl:Class ;
+                      rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                      <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasSystemWeight ;
+                                        owl:allValuesFrom :SystemWeight
+                                      ] ;
+                      rdfs:comment "The weight of a system." ;
+                      rdfs:label "System Weight Property" .
 
 
 ###  http://w3id.org/CEON/demo/construction/TakeBackProgramFromOriginalManufacturer
@@ -1478,76 +1513,76 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                                          rdfs:label "Take Back Program From Original Manufacturer" .
 
 
-###  http://w3id.org/CEON/demo/construction/TestingCostValue
-:TestingCostValue rdf:type owl:Class ;
-                  rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                           owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                           owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                         ]
-                                                         [ rdf:type owl:Restriction ;
-                                                           owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                           owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                         ]
-                                                       ) ;
-                                    rdf:type owl:Class
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                    owl:allValuesFrom xsd:double
-                                  ] ;
-                  rdfs:comment "The cost value of testing." ;
-                  rdfs:label "Testing Cost Value" .
+###  http://w3id.org/CEON/demo/construction/TestingCost
+:TestingCost rdf:type owl:Class ;
+             rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                      owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                      owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                               owl:allValuesFrom xsd:double
+                             ] ;
+             rdfs:comment "The cost value of testing." ;
+             rdfs:label "Testing Cost" .
 
 
 ###  http://w3id.org/CEON/demo/construction/Thickness
 :Thickness rdf:type owl:Class ;
-           rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
-                           <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
+           rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                    owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                    owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                             owl:allValuesFrom xsd:double
+                           ] ;
            rdfs:label "Thickness" .
 
 
-###  http://w3id.org/CEON/demo/construction/ThicknessValue
-:ThicknessValue rdf:type owl:Class ;
-                rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                         owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                         owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                       ]
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                         owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                       ]
-                                                     ) ;
-                                  rdf:type owl:Class
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                  owl:allValuesFrom xsd:double
-                                ] ;
-                rdfs:label "Thickness Value" .
+###  http://w3id.org/CEON/demo/construction/ThicknessProperty
+:ThicknessProperty rdf:type owl:Class ;
+                   rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
+                                   <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> ;
+                   rdfs:label "Thickness Property" .
 
 
-###  http://w3id.org/CEON/demo/construction/TransportCostValue
-:TransportCostValue rdf:type owl:Class ;
-                    rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
-                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                             owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                             owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                           ]
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
-                                                             owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
-                                                           ]
-                                                         ) ;
-                                      rdf:type owl:Class
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
-                                      owl:allValuesFrom xsd:double
-                                    ] ;
-                    rdfs:comment "The cost value of transport." ;
-                    rdfs:label "Transport Cost Value" .
+###  http://w3id.org/CEON/demo/construction/TransportCost
+:TransportCost rdf:type owl:Class ;
+               rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> ,
+                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                        owl:someValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty <http://qudt.org/schema/qudt/hasUnit> ;
+                                                        owl:allValuesFrom <http://qudt.org/schema/qudt/Unit>
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://qudt.org/schema/qudt/numericValue> ;
+                                 owl:allValuesFrom xsd:double
+                               ] ;
+               rdfs:comment "The cost value of transport." ;
+               rdfs:label "Transport Cost" .
 
 
 ###  http://w3id.org/CEON/demo/construction/TreatmentPolicy
@@ -1587,9 +1622,9 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
 #    Individuals
 #################################################################
 
-###  http://w3id.org/CEON/demo/construction/C2CMHSilver
-:C2CMHSilver rdf:type owl:NamedIndividual ,
-                      product:Regulation .
+###  http://w3id.org/CEON/demo/construction/C2C_MH_Silver
+:C2C_MH_Silver rdf:type owl:NamedIndividual ,
+                        product:Regulation .
 
 
 ###  http://w3id.org/CEON/demo/construction/F30
@@ -1612,24 +1647,6 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                rdfs:label "bad condition" .
 
 
-###  http://w3id.org/CEON/demo/construction/construction_product_quality_high
-:construction_product_quality_high rdf:type owl:NamedIndividual ,
-                                            :ConstructionProductQuality ;
-                                   rdfs:label "Construction Product quality high" .
-
-
-###  http://w3id.org/CEON/demo/construction/construction_product_quality_low
-:construction_product_quality_low rdf:type owl:NamedIndividual ,
-                                           :ConstructionProductQuality ;
-                                  rdfs:label "Construction Product quality low" .
-
-
-###  http://w3id.org/CEON/demo/construction/construction_product_quality_medium
-:construction_product_quality_medium rdf:type owl:NamedIndividual ,
-                                              :ConstructionProductQuality ;
-                                     rdfs:label "Construction Product quality medium" .
-
-
 ###  http://w3id.org/CEON/demo/construction/good_condition
 :good_condition rdf:type owl:NamedIndividual ,
                          :FloorTileCondition ;
@@ -1647,9 +1664,36 @@ owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
                   rdfs:label "medium condition" .
 
 
+###  http://w3id.org/CEON/demo/construction/moderate_reuse_potential
+:moderate_reuse_potential rdf:type owl:NamedIndividual ,
+                                   :ReusePotential .
+
+
 ###  http://w3id.org/CEON/demo/construction/needs_refurbishment_before_reuse
-:needs_refurbishment_before_reuse rdf:type owl:NamedIndividual ,
-                                           :ReusePotential .
+:needs_refurbishment_before_reuse rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/demo/construction/no_reuse
+:no_reuse rdf:type owl:NamedIndividual ,
+                   :ReusePotential .
+
+
+###  http://w3id.org/CEON/demo/construction/product_quality_high
+:product_quality_high rdf:type owl:NamedIndividual ,
+                               :ConstructionProductQuality ;
+                      rdfs:label "Product quality high" .
+
+
+###  http://w3id.org/CEON/demo/construction/product_quality_low
+:product_quality_low rdf:type owl:NamedIndividual ,
+                              :ConstructionProductQuality ;
+                     rdfs:label "Product quality low" .
+
+
+###  http://w3id.org/CEON/demo/construction/product_quality_medium
+:product_quality_medium rdf:type owl:NamedIndividual ,
+                                 :ConstructionProductQuality ;
+                        rdfs:label "Product quality medium" .
 
 
 ###  http://w3id.org/CEON/demo/construction/refurbish

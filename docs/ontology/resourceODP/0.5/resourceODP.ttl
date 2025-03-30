@@ -100,7 +100,7 @@ location:hasLocation a owl:ObjectProperty .
 :batchSize a owl:DatatypeProperty ;
     rdfs:label "batch size"@en ;
     rdfs:comment "batchSize intends to repsent how many physical objects are belong to a batch of objects."@en ;
-    rdfs:domain :Batch ;
+    rdfs:domain :BatchOfObjects ;
     rdfs:range xsd:nonNegativeInteger .
 
 :Asset a owl:Class ;
@@ -112,8 +112,8 @@ location:hasLocation a owl:ObjectProperty .
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty :hasBatch ;
-                        owl:someValuesFrom :Batch ] [ a owl:Restriction ;
-                        owl:allValuesFrom :Batch ;
+                        owl:someValuesFrom :BatchOfObjects ] [ a owl:Restriction ;
+                        owl:allValuesFrom :BatchOfObjects ;
                         owl:onProperty :hasBatch ] ) ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
@@ -127,7 +127,7 @@ location:hasLocation a owl:ObjectProperty .
     rdfs:label "has batch"@en ;
     rdfs:comment "hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects."@en ;
     rdfs:domain :SetOfObjects ;
-    rdfs:range :Batch .
+    rdfs:range :BatchOfObjects .
 
 :hasConstituent a owl:ObjectProperty ;
     rdfs:label "has constituent"@en ;
@@ -194,11 +194,11 @@ location:hasLocation a owl:ObjectProperty .
     rdfs:label "has physical object"@en ;
     rdfs:comment "hasPhysicalObject intends to represent that a batch of objects or a set of objects can have composing components of physical objects."@en ;
     rdfs:domain [ a owl:Class ;
-            owl:unionOf ( :Batch :SetOfObjects ) ] ;
+            owl:unionOf ( :BatchOfObjects :SetOfObjects ) ] ;
     rdfs:range :PhysicalObject .
 
-:Batch a owl:Class ;
-    rdfs:label "Batch"@en ;
+:BatchOfObjects a owl:Class ;
+    rdfs:label "Batch Of Objects"@en ;
     rdfs:comment "A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product instances) adhering to the same product model."@en ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
