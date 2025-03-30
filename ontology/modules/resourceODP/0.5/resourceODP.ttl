@@ -114,7 +114,7 @@ location:hasLocation rdf:type owl:ObjectProperty .
 ###  http://w3id.org/CEON/ontology/resourceODP/hasBatch
 :hasBatch rdf:type owl:ObjectProperty ;
           rdfs:domain :SetOfObjects ;
-          rdfs:range :Batch ;
+          rdfs:range :BatchOfObjects ;
           rdfs:comment "hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects."@en ;
           rdfs:label "has batch"@en .
 
@@ -146,7 +146,7 @@ location:hasLocation rdf:type owl:ObjectProperty .
 ###  http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject
 :hasPhysicalObject rdf:type owl:ObjectProperty ;
                    rdfs:domain [ rdf:type owl:Class ;
-                                 owl:unionOf ( :Batch
+                                 owl:unionOf ( :BatchOfObjects
                                                :SetOfObjects
                                              )
                                ] ;
@@ -217,7 +217,7 @@ location:hasLocation rdf:type owl:ObjectProperty .
 
 ###  http://w3id.org/CEON/ontology/resourceODP/batchSize
 :batchSize rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Batch ;
+           rdfs:domain :BatchOfObjects ;
            rdfs:range xsd:nonNegativeInteger ;
            rdfs:comment "batchSize intends to repsent how many physical objects are belong to a batch of objects."@en ;
            rdfs:label "batch size"@en .
@@ -236,27 +236,27 @@ location:Location rdf:type owl:Class .
        rdfs:label "Asset"@en .
 
 
-###  http://w3id.org/CEON/ontology/resourceODP/Batch
-:Batch rdf:type owl:Class ;
-       rdfs:subClassOf :Resource ,
-                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                owl:onProperty :hasPhysicalObject ;
-                                                owl:someValuesFrom :PhysicalObject
-                                              ]
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :hasPhysicalObject ;
-                                                owl:allValuesFrom :PhysicalObject
-                                              ]
-                                            ) ;
-                         rdf:type owl:Class
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :batchSize ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:nonNegativeInteger
-                       ] ;
-       rdfs:comment "A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product instances) adhering to the same product model."@en ;
-       rdfs:label "Batch"@en .
+###  http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects
+:BatchOfObjects rdf:type owl:Class ;
+                rdfs:subClassOf :Resource ,
+                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :hasPhysicalObject ;
+                                                         owl:someValuesFrom :PhysicalObject
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :hasPhysicalObject ;
+                                                         owl:allValuesFrom :PhysicalObject
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :batchSize ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:nonNegativeInteger
+                                ] ;
+                rdfs:comment "A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product instances) adhering to the same product model."@en ;
+                rdfs:label "Batch Of Objects"@en .
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Constituent
@@ -381,11 +381,11 @@ location:Location rdf:type owl:Class .
               rdfs:subClassOf :Resource ,
                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                        owl:onProperty :hasBatch ;
-                                                       owl:someValuesFrom :Batch
+                                                       owl:someValuesFrom :BatchOfObjects
                                                      ]
                                                      [ rdf:type owl:Restriction ;
                                                        owl:onProperty :hasBatch ;
-                                                       owl:allValuesFrom :Batch
+                                                       owl:allValuesFrom :BatchOfObjects
                                                      ]
                                                    ) ;
                                 rdf:type owl:Class
