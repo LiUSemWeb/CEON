@@ -69,7 +69,7 @@
 
 ###  http://w3id.org/CEON/ontology/textile/designedForRecyclingAtSameQuality
 :designedForRecyclingAtSameQuality rdf:type owl:ObjectProperty ;
-                                   rdfs:subPropertyOf :hasProperty ;
+                                   rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
                                    rdfs:range :TextileProductDesignForRecycling ;
                                    :PCDSmapping "5030-5037" ;
                                    rdfs:comment "Percentage of the product that is designed for recycling at the same level of quality. The remainder of the materials is foreseen by the manufacturer to be recycled at a lower quality than the original content."@en ;
@@ -211,20 +211,18 @@
                                          rdfs:label "has textile product matter composition value" .
 
 
-###  http://w3id.org/CEON/ontology/textile/hasTextileProductRecycledContent
-:hasTextileProductRecycledContent rdf:type owl:ObjectProperty ;
-                                  rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                                  rdfs:domain :TextileProductRecycledContent ;
-                                  rdfs:range :TextileProductRecycledContentValue ;
-                                  rdfs:label "has textile product recycled content" .
+###  http://w3id.org/CEON/ontology/textile/hasTextileProductRecycledContentValue
+:hasTextileProductRecycledContentValue rdf:type owl:ObjectProperty ;
+                                       rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                                       rdfs:range :TextileProductRecycledContentValue ;
+                                       rdfs:label "has textile product recycled content" .
 
 
-###  http://w3id.org/CEON/ontology/textile/hasTextileProductRenewableContent
-:hasTextileProductRenewableContent rdf:type owl:ObjectProperty ;
-                                   rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
-                                   rdfs:domain :TextileProductRenewableContent ;
-                                   rdfs:range :TextileProductRenewableContentValue ;
-                                   rdfs:label "has textile product renewable content" .
+###  http://w3id.org/CEON/ontology/textile/hasTextileProductRenewableContentValue
+:hasTextileProductRenewableContentValue rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf <http://qudt.org/schema/qudt/quantityValue> ;
+                                        rdfs:range :TextileProductRenewableContentValue ;
+                                        rdfs:label "has textile product renewable content" .
 
 
 ###  http://w3id.org/CEON/ontology/textile/hasTextileProductType
@@ -283,16 +281,6 @@
 <http://qudt.org/schema/qudt/numericalValue> rdf:type owl:DatatypeProperty .
 
 
-###  http://w3id.org/CEON/demo/textile/hasBiodegradabilityTest
-:hasBiodegradabilityTest rdf:type owl:DatatypeProperty ;
-                         rdfs:range xsd:anyURI .
-
-
-###  http://w3id.org/CEON/demo/textile/hasContainedSubstanceFromREACHVeryHighConcernList
-:hasContainedSubstanceFromREACHVeryHighConcernList rdf:type owl:DatatypeProperty ;
-                                                   rdfs:range xsd:anyURI .
-
-
 ###  http://w3id.org/CEON/ontology/textile/availableInformation
 :availableInformation rdf:type owl:DatatypeProperty .
 
@@ -335,6 +323,12 @@
                     rdfs:domain :TextileProductDesignedForBetterUse ;
                     rdfs:range xsd:boolean ;
                     rdfs:label "design for better use" .
+
+
+###  http://w3id.org/CEON/ontology/textile/designForDemounting
+:designForDemounting rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf :designForProperties ;
+                     rdfs:range xsd:boolean .
 
 
 ###  http://w3id.org/CEON/ontology/textile/designForProperties
@@ -384,6 +378,18 @@
                                            rdfs:range xsd:boolean ;
                                            :LDTmapping "5080" ;
                                            rdfs:label "designed for composting in industrial facility" .
+
+
+###  http://w3id.org/CEON/ontology/textile/designedForCyclingInTechnicalCycle
+:designedForCyclingInTechnicalCycle rdf:type owl:DatatypeProperty ;
+                                    rdfs:subPropertyOf :designForProperties ;
+                                    rdfs:range xsd:boolean .
+
+
+###  http://w3id.org/CEON/ontology/textile/designedForFullBiodegradability
+:designedForFullBiodegradability rdf:type owl:DatatypeProperty ;
+                                 rdfs:subPropertyOf :designForProperties ;
+                                 rdfs:range xsd:boolean .
 
 
 ###  http://w3id.org/CEON/ontology/textile/designedForIndustrialCascading
@@ -454,6 +460,11 @@
                   rdfs:label "emission by design" .
 
 
+###  http://w3id.org/CEON/ontology/textile/hasBiodegradabilityTest
+:hasBiodegradabilityTest rdf:type owl:DatatypeProperty ;
+                         rdfs:range xsd:anyURI .
+
+
 ###  http://w3id.org/CEON/ontology/textile/hasCASNumber
 :hasCASNumber rdf:type owl:DatatypeProperty ;
               :LDTmapping "1102" ;
@@ -478,6 +489,11 @@
                 rdfs:range xsd:string ;
                 :LDTmapping "1200" ;
                 rdfs:label "has company name" .
+
+
+###  http://w3id.org/CEON/ontology/textile/hasContainedSubstanceFromREACHVeryHighConcernList
+:hasContainedSubstanceFromREACHVeryHighConcernList rdf:type owl:DatatypeProperty ;
+                                                   rdfs:range xsd:anyURI .
 
 
 ###  http://w3id.org/CEON/ontology/textile/hasCountrySpecificCorporateIdentificationNumber
@@ -658,9 +674,19 @@
                                     rdfs:label "without harmful dispersion or emission" .
 
 
+###  http://w3id.org/CEON/ontology/textile/withoutKnownHazardousSubstanceBasedOnStandardRegulation
+:withoutKnownHazardousSubstanceBasedOnStandardRegulation rdf:type owl:DatatypeProperty ;
+                                                         rdfs:range xsd:boolean .
+
+
 #################################################################
 #    Classes
 #################################################################
+
+###  http://w3id.org/CEON/demo/textile/TextileProductVirginContentValue
+:TextileProductVirginContentValue rdf:type owl:Class ;
+                                  rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityValue> .
+
 
 ###  http://w3id.org/CEON/ontology/actor/ActorResourceRole
 <http://w3id.org/CEON/ontology/actor/ActorResourceRole> rdf:type owl:Class .
@@ -668,6 +694,11 @@
 
 ###  http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects
 <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> rdfs:label "Batch Of Objects" .
+
+
+###  http://w3id.org/CEON/ontology/textile/Adhesive
+:Adhesive rdf:type owl:Class ;
+          rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 
 ###  http://w3id.org/CEON/ontology/textile/AssemblyMethod
@@ -689,6 +720,11 @@
                                          rdf:type owl:Class
                                        ] ;
                        rdfs:label "Batch of Textile Objects" .
+
+
+###  http://w3id.org/CEON/ontology/textile/BioDerivedEVA
+:BioDerivedEVA rdf:type owl:Class ;
+               rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 
 ###  http://w3id.org/CEON/ontology/textile/BrandOfResource
@@ -723,6 +759,11 @@
 :ChemicalFinishing rdf:type owl:Class ;
                    rdfs:subClassOf :FinishingProcess ;
                    rdfs:label "Chemical Finishing" .
+
+
+###  http://w3id.org/CEON/ontology/textile/CoPolymerRaisin
+:CoPolymerRaisin rdf:type owl:Class ;
+                 rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 
 ###  http://w3id.org/CEON/ontology/textile/Color
@@ -856,10 +897,20 @@
                      rdfs:label "Mechanical Finishing" .
 
 
+###  http://w3id.org/CEON/ontology/textile/Nylon
+:Nylon rdf:type owl:Class ;
+       rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
 ###  http://w3id.org/CEON/ontology/textile/PlasticMaterial
 :PlasticMaterial rdf:type owl:Class ;
                  rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> ;
                  rdfs:label "Plastic Material" .
+
+
+###  http://w3id.org/CEON/ontology/textile/Polyester
+:Polyester rdf:type owl:Class ;
+           rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 
 ###  http://w3id.org/CEON/ontology/textile/PolyesterFibres
@@ -920,6 +971,21 @@
 :RawMaterialProduction rdf:type owl:Class ;
                        rdfs:subClassOf :TextileProductionProcess ;
                        rdfs:label "Raw Material Production" .
+
+
+###  http://w3id.org/CEON/ontology/textile/RecycledPESFibres
+:RecycledPESFibres rdf:type owl:Class ;
+                   rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/ontology/textile/RecycledPolyester
+:RecycledPolyester rdf:type owl:Class ;
+                   rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/ontology/textile/Rubber
+:Rubber rdf:type owl:Class ;
+        rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 
 ###  http://w3id.org/CEON/ontology/textile/SingleAdhesiveCoatedMaterial
@@ -1296,7 +1362,7 @@
                                rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
                                                actorODP:ResourceParticipation ,
                                                [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :hasTextileProductRecycledContent ;
+                                                 owl:onProperty :hasTextileProductRecycledContentValue ;
                                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                  owl:onClass :TextileProductRecycledContentValue
                                                ] ;
@@ -1330,7 +1396,7 @@
                                 rdfs:subClassOf <http://qudt.org/schema/qudt/Quantity> ,
                                                 actorODP:ResourceParticipation ,
                                                 [ rdf:type owl:Restriction ;
-                                                  owl:onProperty :hasTextileProductRenewableContent ;
+                                                  owl:onProperty :hasTextileProductRenewableContentValue ;
                                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                   owl:onClass :TextileProductRenewableContentValue
                                                 ] ;
@@ -1472,21 +1538,6 @@
 ###  http://qudt.org/vocab/unit/PERCENT
 <http://qudt.org/vocab/unit/PERCENT> rdf:type owl:NamedIndividual ,
                                               <http://qudt.org/schema/qudt/Unit> .
-
-
-###  http://w3id.org/CEON/demo/textile/good_condition
-:good_condition rdf:type owl:NamedIndividual ,
-                         <http://w3id.org/CEON/ontology/resourceODP/ResourceCondition> .
-
-
-###  http://w3id.org/CEON/demo/textile/new_condition
-:new_condition rdf:type owl:NamedIndividual ,
-                        <http://w3id.org/CEON/ontology/resourceODP/ResourceCondition> .
-
-
-###  http://w3id.org/CEON/demo/textile/rubber_layer
-:rubber_layer rdf:type owl:NamedIndividual ,
-                       :TextileProductType .
 
 
 ###  http://w3id.org/CEON/demo/textile/0ge-1le
@@ -1717,6 +1768,16 @@
                            :ChemicalFinishing .
 
 
+###  http://w3id.org/CEON/ontology/textile/cut_lining_fabric_disassembly
+:cut_lining_fabric_disassembly rdf:type owl:NamedIndividual ,
+                                        :DisassemblyMethod .
+
+
+###  http://w3id.org/CEON/ontology/textile/cut_stitches_disassembly
+:cut_stitches_disassembly rdf:type owl:NamedIndividual ,
+                                   :DisassemblyMethod .
+
+
 ###  http://w3id.org/CEON/ontology/textile/digitalPrinted
 :digitalPrinted rdf:type owl:NamedIndividual ,
                          :PrintMethod ;
@@ -1764,9 +1825,29 @@
                          :ChemicalFinishing .
 
 
+###  http://w3id.org/CEON/ontology/textile/glued_assembly
+:glued_assembly rdf:type owl:NamedIndividual ,
+                         :AssemblyMethod .
+
+
+###  http://w3id.org/CEON/ontology/textile/good_condition
+:good_condition rdf:type owl:NamedIndividual ,
+                         <http://w3id.org/CEON/ontology/resourceODP/ResourceCondition> .
+
+
 ###  http://w3id.org/CEON/ontology/textile/handPainted
 :handPainted rdf:type owl:NamedIndividual ,
                       :PrintMethod .
+
+
+###  http://w3id.org/CEON/ontology/textile/heat_bonding_assembly
+:heat_bonding_assembly rdf:type owl:NamedIndividual ,
+                                :AssemblyMethod .
+
+
+###  http://w3id.org/CEON/ontology/textile/heel_counter_toe_puff_area
+:heel_counter_toe_puff_area rdf:type owl:NamedIndividual ,
+                                     :TextileProductType .
 
 
 ###  http://w3id.org/CEON/ontology/textile/homeComposting
@@ -1808,9 +1889,19 @@
 :lessThan1Perc rdf:type owl:NamedIndividual .
 
 
+###  http://w3id.org/CEON/ontology/textile/machine_assembly
+:machine_assembly rdf:type owl:NamedIndividual ,
+                           :AssemblyMethod .
+
+
 ###  http://w3id.org/CEON/ontology/textile/manual_assembly
 :manual_assembly rdf:type owl:NamedIndividual ,
                           :AssemblyMethod .
+
+
+###  http://w3id.org/CEON/ontology/textile/manual_disassembly
+:manual_disassembly rdf:type owl:NamedIndividual ,
+                             :DisassemblyMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/mattingAgent
@@ -1820,6 +1911,11 @@
 
 ###  http://w3id.org/CEON/ontology/textile/mercerizing
 :mercerizing rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/ontology/textile/midsole
+:midsole rdf:type owl:NamedIndividual ,
+                  :TextileProductType .
 
 
 ###  http://w3id.org/CEON/ontology/textile/millWashing
@@ -1863,6 +1959,11 @@
                         :ChemicalFinishing .
 
 
+###  http://w3id.org/CEON/ontology/textile/new_condition
+:new_condition rdf:type owl:NamedIndividual ,
+                        <http://w3id.org/CEON/ontology/resourceODP/ResourceCondition> .
+
+
 ###  http://w3id.org/CEON/ontology/textile/opticalBrighteners
 :opticalBrighteners rdf:type owl:NamedIndividual ,
                              :ChemicalFinishing .
@@ -1871,6 +1972,16 @@
 ###  http://w3id.org/CEON/ontology/textile/original
 :original rdf:type owl:NamedIndividual ,
                    :TextileProductOrigin .
+
+
+###  http://w3id.org/CEON/ontology/textile/outsole
+:outsole rdf:type owl:NamedIndividual ,
+                  :TextileProductType .
+
+
+###  http://w3id.org/CEON/ontology/textile/peel_out_heel_counter_disassembly
+:peel_out_heel_counter_disassembly rdf:type owl:NamedIndividual ,
+                                            :DisassemblyMethod .
 
 
 ###  http://w3id.org/CEON/ontology/textile/permanentCreasing
@@ -1957,6 +2068,11 @@
                         :PrintMethod .
 
 
+###  http://w3id.org/CEON/ontology/textile/rubber_layer
+:rubber_layer rdf:type owl:NamedIndividual ,
+                       :TextileProductType .
+
+
 ###  http://w3id.org/CEON/ontology/textile/scratchAndSniff
 :scratchAndSniff rdf:type owl:NamedIndividual .
 
@@ -2007,6 +2123,11 @@
                :TextileProductType .
 
 
+###  http://w3id.org/CEON/ontology/textile/solvent_separation_disassembly
+:solvent_separation_disassembly rdf:type owl:NamedIndividual ,
+                                         :DisassemblyMethod .
+
+
 ###  http://w3id.org/CEON/ontology/textile/stainResistance
 :stainResistance rdf:type owl:NamedIndividual ,
                           :ChemicalFinishing .
@@ -2052,6 +2173,11 @@
 ###  http://w3id.org/CEON/ontology/textile/upper_part_fabric
 :upper_part_fabric rdf:type owl:NamedIndividual ,
                             :TextileProductType .
+
+
+###  http://w3id.org/CEON/ontology/textile/upper_shoe_component
+:upper_shoe_component rdf:type owl:NamedIndividual ,
+                               :TextileProductType .
 
 
 ###  http://w3id.org/CEON/ontology/textile/validatedByThirdParty
