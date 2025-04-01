@@ -63,6 +63,9 @@ ns2:hasMinimalValueIncludedOfInterval a owl:AnnotationProperty .
 
 ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 
+:Adhesive a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
 :BatchOfTextileObjects a owl:Class ;
     rdfs:label "Batch of Textile Objects" ;
     rdfs:subClassOf [ a owl:Class ;
@@ -72,6 +75,9 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
                         owl:allValuesFrom :Color ;
                         owl:onProperty :hasColor ] ) ],
         <http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects> .
+
+:BioDerivedEVA a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 :BrandOfResource a owl:Class ;
     rdfs:label "Brand of resource" ;
@@ -86,11 +92,12 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:label "Cellulose Material" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
+:CoPolymerRaisin a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
 :CottonMaterial a owl:Class ;
     rdfs:label "Cotton Material" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
-
-:DisassemblyMethod a owl:Class .
 
 :DoubleAdhesiveCoatedMaterial a owl:Class ;
     rdfs:label "Double Adhesive Coated Material" ;
@@ -138,10 +145,16 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
             owl:hasValue :MSDS ;
             owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ] .
 
+:Nylon a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
 :PCDSmapping a owl:AnnotationProperty .
 
 :PlasticMaterial a owl:Class ;
     rdfs:label "Plastic Material" ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+:Polyester a owl:Class ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 :PolyesterFibres a owl:Class ;
@@ -159,6 +172,15 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :RawMaterialProduction a owl:Class ;
     rdfs:label "Raw Material Production" ;
     rdfs:subClassOf :TextileProductionProcess .
+
+:RecycledPESFibres a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+:RecycledPolyester a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+:Rubber a owl:Class ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
 :SingleAdhesiveCoatedMaterial a owl:Class ;
     rdfs:label "Single Adhesive Coated Material" ;
@@ -280,6 +302,9 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
                     owl:unionOf ( <http://w3id.org/CEON/ontology/resourceODP/Constituent> :TextileProduct ) ] ],
         <http://w3id.org/CEON/ontology/statement/MassFractionOfRenewableMaterialStatement>,
         :TextileDataSheetStatement .
+
+:TextileProductVirginContentValue a owl:Class ;
+    rdfs:subClassOf ns1:QuantityValue .
 
 :TrimProduction a owl:Class ;
     rdfs:label "Trim Production" ;
@@ -438,6 +463,16 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :creaseResistance a :ChemicalFinishing,
         owl:NamedIndividual .
 
+:cut_lining_fabric_disassembly a :DisassemblyMethod,
+        owl:NamedIndividual .
+
+:cut_stitches_disassembly a :DisassemblyMethod,
+        owl:NamedIndividual .
+
+:designForDemounting a owl:DatatypeProperty ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :designForProperties .
+
 :designedForActivelyPositiveImpact a owl:DatatypeProperty ;
     rdfs:label "designed for actively positive impact" ;
     :LDTmapping "3200" ;
@@ -466,6 +501,14 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:range xsd:boolean ;
     rdfs:subPropertyOf :designForProperties .
 
+:designedForCyclingInTechnicalCycle a owl:DatatypeProperty ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :designForProperties .
+
+:designedForFullBiodegradability a owl:DatatypeProperty ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf :designForProperties .
+
 :designedForIndustrialCascading a owl:DatatypeProperty ;
     rdfs:label "designed for industrial cascading" ;
     :LDTmapping "5070" ;
@@ -483,7 +526,7 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     :PCDSmapping "5030-5037" ;
     rdfs:comment "Percentage of the product that is designed for recycling at the same level of quality. The remainder of the materials is foreseen by the manufacturer to be recycled at a lower quality than the original content."@en ;
     rdfs:range :TextileProductDesignForRecycling ;
-    rdfs:subPropertyOf :hasProperty .
+    rdfs:subPropertyOf ns1:quantityValue .
 
 :designedForRefurbishment a owl:DatatypeProperty ;
     rdfs:label "designed for refurbishment" ;
@@ -559,6 +602,9 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
         owl:NamedIndividual .
 
 :flameRetardant a :ChemicalFinishing,
+        owl:NamedIndividual .
+
+:glued_assembly a :AssemblyMethod,
         owl:NamedIndividual .
 
 :good_condition a <http://w3id.org/CEON/ontology/resourceODP/ResourceCondition>,
@@ -640,6 +686,12 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     :LDTmapping "CF706" ;
     rdfs:range :WaterProperty ;
     rdfs:subPropertyOf :hasProperty .
+
+:heat_bonding_assembly a :AssemblyMethod,
+        owl:NamedIndividual .
+
+:heel_counter_toe_puff_area a :TextileProductType,
+        owl:NamedIndividual .
 
 :homeComposting a :TextileRecyclingProcess,
         owl:NamedIndividual ;
@@ -760,13 +812,22 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 
 :lessThan1Perc a owl:NamedIndividual .
 
+:machine_assembly a :AssemblyMethod,
+        owl:NamedIndividual .
+
 :manual_assembly a :AssemblyMethod,
+        owl:NamedIndividual .
+
+:manual_disassembly a :DisassemblyMethod,
         owl:NamedIndividual .
 
 :mattingAgent a :ChemicalFinishing,
         owl:NamedIndividual .
 
 :mercerizing a owl:NamedIndividual .
+
+:midsole a :TextileProductType,
+        owl:NamedIndividual .
 
 :millWashing a :ChemicalFinishing,
         owl:NamedIndividual .
@@ -806,6 +867,12 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
         owl:NamedIndividual .
 
 :original a :TextileProductOrigin,
+        owl:NamedIndividual .
+
+:outsole a :TextileProductType,
+        owl:NamedIndividual .
+
+:peel_out_heel_counter_disassembly a :DisassemblyMethod,
         owl:NamedIndividual .
 
 :permanentCreasing a :MechanicalFinishing,
@@ -914,6 +981,9 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :sole a :TextileProductType,
         owl:NamedIndividual .
 
+:solvent_separation_disassembly a :DisassemblyMethod,
+        owl:NamedIndividual .
+
 :stainResistance a :ChemicalFinishing,
         owl:NamedIndividual .
 
@@ -945,6 +1015,9 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
 :upper_part_fabric a :TextileProductType,
         owl:NamedIndividual .
 
+:upper_shoe_component a :TextileProductType,
+        owl:NamedIndividual .
+
 :validatedByThirdParty a owl:NamedIndividual .
 
 :vatDye a :DyeStuff,
@@ -974,6 +1047,9 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:label "without harmful dispersion or emission" ;
     :LDTmapping "3100" ;
     rdfs:subPropertyOf :designForBetterUse .
+
+:withoutKnownHazardousSubstanceBasedOnStandardRegulation a owl:DatatypeProperty ;
+    rdfs:range xsd:boolean .
 
 :wrinkleResistance a owl:NamedIndividual .
 
@@ -1118,15 +1194,13 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     rdfs:range :TextileProductMatterCompositionValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
-:hasTextileProductRecycledContent a owl:ObjectProperty ;
+:hasTextileProductRecycledContentValue a owl:ObjectProperty ;
     rdfs:label "has textile product recycled content" ;
-    rdfs:domain :TextileProductRecycledContent ;
     rdfs:range :TextileProductRecycledContentValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
-:hasTextileProductRenewableContent a owl:ObjectProperty ;
+:hasTextileProductRenewableContentValue a owl:ObjectProperty ;
     rdfs:label "has textile product renewable content" ;
-    rdfs:domain :TextileProductRenewableContent ;
     rdfs:range :TextileProductRenewableContentValue ;
     rdfs:subPropertyOf ns1:quantityValue .
 
@@ -1211,6 +1285,16 @@ ns2:objectValue a owl:ObjectProperty .
                                 owl:unionOf ( xsd:double xsd:integer ) ] ] ) ],
         ns1:QuantityValue .
 
+:TextileProductRenewableContent a owl:Class ;
+    rdfs:label "Textile Product Renewable Content" ;
+    :LDTmapping "2600, 2601, 2602, 2603, 2604, 2605, 2606" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass :TextileProductRenewableContentValue ;
+            owl:onProperty :hasTextileProductRenewableContentValue ],
+        ns1:Quantity,
+        actorODP:ResourceParticipation .
+
 :TextileProductRenewableContentValue a owl:Class ;
     rdfs:label "Textile Product Renewable Content Value" ;
     rdfs:subClassOf [ a owl:Class ;
@@ -1267,25 +1351,11 @@ ns2:objectValue a owl:ObjectProperty .
 <http://qudt.org/vocab/unit/PERCENT> a ns1:Unit,
         owl:NamedIndividual .
 
-:AssemblyMethod a owl:Class .
-
 :TextileProductDesignForDisassembly a owl:Class ;
     rdfs:label "Textile Product Design For Disassembly" ;
     :LDTmapping "4000, 4100, 4101, 4102, 4103, 4104, 4105, 4106" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/statement/DisassemblyStatement>,
         :TextileDataSheetStatement .
-
-:TextileProductRenewableContent a owl:Class ;
-    rdfs:label "Textile Product Renewable Content" ;
-    :LDTmapping "2600, 2601, 2602, 2603, 2604, 2605, 2606" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass :TextileProductRenewableContentValue ;
-            owl:onProperty :hasTextileProductRenewableContent ],
-        ns1:Quantity,
-        actorODP:ResourceParticipation .
-
-ns1:numericalValue a owl:DatatypeProperty .
 
 :TextileProductRecycledContent a owl:Class ;
     rdfs:label "Textile Product Recycled Content" ;
@@ -1293,20 +1363,26 @@ ns1:numericalValue a owl:DatatypeProperty .
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass :TextileProductRecycledContentValue ;
-            owl:onProperty :hasTextileProductRecycledContent ],
+            owl:onProperty :hasTextileProductRecycledContentValue ],
         ns1:Quantity,
         actorODP:ResourceParticipation .
+
+ns1:numericalValue a owl:DatatypeProperty .
 
 :WaterProperty a owl:Class ;
     rdfs:label "Water Property" ;
     :LDTmapping "CF706" ;
     rdfs:subClassOf :TextileProperty .
 
+:DisassemblyMethod a owl:Class .
+
 :TextileRecyclingProcess a owl:Class ;
     rdfs:label "Textile Recycling Process" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
 
 :availableInformation a owl:DatatypeProperty .
+
+:AssemblyMethod a owl:Class .
 
 :FinishingProcess a owl:Class ;
     rdfs:label "Finishing Process" ;
@@ -1360,22 +1436,18 @@ ns1:numericalValue a owl:DatatypeProperty .
     rdfs:range xsd:boolean ;
     rdfs:subPropertyOf owl:topDataProperty .
 
+:hasProperty a owl:ObjectProperty ;
+    rdfs:label "has property" .
+
 :DyeMethod a owl:Class ;
     rdfs:label "Dye Method" ;
     :LDTmapping "CF700" ;
     rdfs:comment "A method of how to add color to a textile." .
 
-:TextileProductType a owl:Class ;
-    rdfs:label "Textile Product Type" ;
-    :LDTmapping "CF100" .
-
 :TextileProductionProcess a owl:Class ;
     rdfs:label "Textile Production Process" ;
     :LDTmapping "CF206" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
-
-:hasProperty a owl:ObjectProperty ;
-    rdfs:label "has property" .
 
 :Color a owl:Class ;
     rdfs:label "Color" ;
@@ -1385,6 +1457,10 @@ ns1:numericalValue a owl:DatatypeProperty .
 :PrintMethod a owl:Class ;
     rdfs:label "Print Method" ;
     :LDTmapping "CF702" .
+
+:TextileProductType a owl:Class ;
+    rdfs:label "Textile Product Type" ;
+    :LDTmapping "CF100" .
 
 :designForProperties a owl:DatatypeProperty ;
     rdfs:label "design for properties" ;
