@@ -25,6 +25,8 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 vann:preferredNamespaceUri a owl:AnnotationProperty .
 
+actorODP:ResourceRelation a owl:Class .
+
 : a owl:Ontology ;
     dcterms:contributor "Eva Blomqvist" ;
     dcterms:created "2025-03-19" ;
@@ -71,14 +73,14 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 :compositionOf a owl:ObjectProperty ;
     rdfs:label "composition of" ;
     rdfs:comment "Represents what the composition is a composition of (i.e., the product, the product object or matter that is broken down into its components)." ;
-    rdfs:domain resourceODP:Composition ;
+    rdfs:domain :Composition ;
     rdfs:range [ a owl:Class ;
             owl:unionOf ( :Item :Product resourceODP:Matter ) ] .
 
 :compositionQuantity a owl:DatatypeProperty ;
     rdfs:label "Composition quantity"@en ;
     rdfs:comment "compositionQuantity represents the quantity of elements of a composition." ;
-    rdfs:domain resourceODP:Composition ;
+    rdfs:domain :Composition ;
     rdfs:range xsd:double .
 
 :hasBrand a owl:DatatypeProperty ;
@@ -123,8 +125,6 @@ odp:coversRequirements a owl:AnnotationProperty .
 
 actorODP:Actor a owl:Class .
 
-actorODP:ResourceRelation a owl:Class .
-
 <http://w3id.org/CEON/ontology/processODP/Process> a owl:Class .
 
 :ProductObjectComposition a owl:Class ;
@@ -134,7 +134,7 @@ actorODP:ResourceRelation a owl:Class .
             owl:onClass :Item ;
             owl:onProperty :associatedWithProductObject ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        resourceODP:Composition .
+        :Composition .
 
 :REACH a :Regulation,
         owl:NamedIndividual .
@@ -230,8 +230,8 @@ actorODP:ResourceRelation a owl:Class .
     rdfs:domain :Item ;
     rdfs:range :Product .
 
-:productionSiteName a owl:DatatypeProperty ;
-    rdfs:label "Production Site Name" ;
+:productionSite a owl:DatatypeProperty ;
+    rdfs:label "production site" ;
     rdfs:comment "The name of a production site location" ;
     rdfs:domain :ProductionLocation ;
     rdfs:range xsd:string .
@@ -249,7 +249,7 @@ resourceODP:BatchOfObjects a owl:Class ;
             owl:onClass resourceODP:Matter ;
             owl:onProperty :associatedWithMatter ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        resourceODP:Composition .
+        :Composition .
 
 :ProductComposition a owl:Class ;
     rdfs:label "Product composition"@en ;
@@ -258,7 +258,7 @@ resourceODP:BatchOfObjects a owl:Class ;
             owl:onClass :Product ;
             owl:onProperty :associatedWithProductModel ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        resourceODP:Composition .
+        :Composition .
 
 :ProductionLocation a owl:Class ;
     rdfs:label "Production Location" ;
@@ -282,7 +282,7 @@ resourceODP:BatchOfObjects a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty :productionSiteName ],
+            owl:onProperty :productionSite ],
         <http://w3id.org/CEON/ontology/location/Location> .
 
 :Regulation a owl:Class ;
@@ -299,7 +299,7 @@ resourceODP:BatchOfObjects a owl:Class ;
     rdfs:comment "hasComposition intends to represent that a product model or physical object can have compostition information."@en ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( :Product resourceODP:PhysicalObject ) ] ;
-    rdfs:range resourceODP:Composition .
+    rdfs:range :Composition .
 
 resourceODP:PhysicalObject a owl:Class .
 
@@ -372,8 +372,8 @@ resourceODP:Matter a owl:Class .
     rdfs:label "Compliance" ;
     rdfs:comment "Represents that something is compliant with some standard or has a received a certain certification." .
 
-resourceODP:Composition a owl:Class ;
-    rdfs:subClassOf actorODP:ResourceRelation .
+:Composition a owl:Class ;
+    rdfs:subClassOf actorODP:ResourceParticipation .
 
 :Item a owl:Class ;
     rdfs:label "Item"@en ;
