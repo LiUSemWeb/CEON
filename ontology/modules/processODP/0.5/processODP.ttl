@@ -1,0 +1,315 @@
+@prefix : <http://w3id.org/CEON/ontology/processODP/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@base <http://w3id.org/CEON/ontology/processODP/> .
+
+<http://w3id.org/CEON/ontology/processODP/> rdf:type owl:Ontology ;
+                                             owl:versionIRI <http://w3id.org/CEON/ontology/processODP/0.5/> ;
+                                             dcterms:contributor "Eva Blomqvist" ,
+                                                                 "Mikael Lindecrantz" ,
+                                                                 "Robin Keskisärkkä" ;
+                                             dcterms:created "2025-05-20" ;
+                                             dcterms:creator "Huanyu Li" ;
+                                             dcterms:description "A core ODP of the CEON ontology network, defining aspects of the process concept." ;
+                                             dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                             dcterms:title "Circular Economy Ontology Network (CEON) - Process ODP" ;
+                                             vann:preferredNamespacePrefix "processODP" ;
+                                             vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/processODP/" ;
+                                             odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3,4,5, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6" ,
+                                                                    "Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE3-5, CE7-4, CE7-5, CE8-2, CE10-7, CE12-1, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6" ;
+                                             rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the process concept." ;
+                                             rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+                                             owl:versionInfo 0.5 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements
+odp:coversRequirements rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/processODP/affectedObject
+:affectedObject rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :isSettingFor ;
+                rdfs:domain :Transition ;
+                rdfs:comment "The object that is affected by a certain transition, e.g. material that changes its state from one situation to another." ;
+                rdfs:label "affected object" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/duringTime
+:duringTime rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :isSettingFor ;
+            rdfs:domain :Transition ;
+            rdfs:range :TimeInterval ;
+            rdfs:comment "The time interval during which a transition takes place." ;
+            rdfs:label "during time" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/followsExecution
+:followsExecution rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :isSettingFor ;
+                  rdfs:domain :PlanExecution ;
+                  rdfs:comment "The situation after the execution takes place, i.e. the state of affairs after the process event, such as the product being assembled, or the material being recycled." ;
+                  rdfs:label "follows execution" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/hasInput
+:hasInput rdf:type owl:ObjectProperty ;
+          rdfs:domain :Process ;
+          rdfs:comment "The inputs to this process event." ;
+          rdfs:label "has input" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/hasOutput
+:hasOutput rdf:type owl:ObjectProperty ;
+           rdfs:domain :Process ;
+           rdfs:comment "The output to this process event." ;
+           rdfs:label "has output" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/hasPart
+:hasPart rdf:type owl:ObjectProperty ,
+                  owl:TransitiveProperty ;
+         rdfs:domain [ rdf:type owl:Class ;
+                       owl:unionOf ( :Plan
+                                     :PlanExecution
+                                   )
+                     ] ;
+         rdfs:range [ rdf:type owl:Class ;
+                      owl:unionOf ( :Plan
+                                    :PlanExecution
+                                  )
+                    ] ;
+         rdfs:comment "A plan or execution can consists of several parts, which are sub-plans (or execution steps)." ;
+         rdfs:label "has part" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/hasPlanExecution
+:hasPlanExecution rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :satisfiesPlan ;
+                  rdfs:domain :Plan ;
+                  rdfs:range :PlanExecution ;
+                  rdfs:comment "A plan can have specific executions."@en ;
+                  rdfs:label "has plan execution"@en .
+
+
+###  http://w3id.org/CEON/ontology/processODP/isSettingFor
+:isSettingFor rdf:type owl:ObjectProperty ;
+              rdfs:domain :Situation ;
+              rdfs:comment "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state." ;
+              rdfs:label "is the setting for" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/occursAtLocation
+:occursAtLocation rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :isSettingFor ;
+                  rdfs:range <http://w3id.org/CEON/ontology/location/Location> ;
+                  rdfs:comment "The location in which something (e.g. an execution/transition) takes place, e.g. the factory location where something is manufactured." ;
+                  rdfs:label "occurs at location" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/precedesExecution
+:precedesExecution rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :isSettingFor ;
+                   rdfs:domain :PlanExecution ;
+                   rdfs:comment "The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled." ;
+                   rdfs:label "precedes execution" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/satisfiesPlan
+:satisfiesPlan rdf:type owl:ObjectProperty ;
+               rdfs:domain :Situation ;
+               rdfs:range :Description ;
+               rdfs:comment "A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan." ;
+               rdfs:label "satisfies plan" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/processODP/endTime
+:endTime rdf:type owl:DatatypeProperty ;
+         rdfs:domain :TimeInterval ;
+         rdfs:range xsd:dateTime ;
+         rdfs:comment "Represents the end time of a time interval." ;
+         rdfs:label "end time" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/occursAtTime
+:occursAtTime rdf:type owl:DatatypeProperty ;
+              rdfs:domain :PlanExecution ;
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "Represents the time at which something takes place." ;
+              rdfs:label "occurs at time" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/startTime
+:startTime rdf:type owl:DatatypeProperty ;
+           rdfs:domain :TimeInterval ;
+           rdfs:range xsd:dateTime ;
+           rdfs:comment "Represents the start time of a time interval." ;
+           rdfs:label "start time" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/location/Location
+<http://w3id.org/CEON/ontology/location/Location> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Description
+:Description rdf:type owl:Class ;
+             rdfs:comment """A Description is a SocialObject that represents a conceptualization. 
+For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations.""" ;
+             rdfs:label "Description" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Event
+:Event rdf:type owl:Class ;
+       rdfs:comment "Activities that take place within a given context or timeframe." ;
+       rdfs:label "Event" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Plan
+:Plan rdf:type owl:Class ;
+      rdfs:subClassOf :Description ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasPart ;
+                        owl:someValuesFrom :Plan
+                      ] ;
+      rdfs:comment "A Description having an explicit goal, to be achieved by executing the plan." ;
+      rdfs:label "Plan" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/PlanExecution
+:PlanExecution rdf:type owl:Class ;
+               rdfs:subClassOf :Situation ,
+                               [ rdf:type owl:Class ;
+                                 owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :duringTime ;
+                                                 owl:someValuesFrom :TimeInterval
+                                               ]
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :occursAtTime ;
+                                                 owl:someValuesFrom xsd:dateTime
+                                               ]
+                                             )
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :followsExecution ;
+                                 owl:someValuesFrom :Situation
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasPart ;
+                                 owl:someValuesFrom :PlanExecution
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :isSettingFor ;
+                                 owl:someValuesFrom :Process
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :precedesExecution ;
+                                 owl:someValuesFrom :Situation
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :satisfiesPlan ;
+                                 owl:someValuesFrom :Plan
+                               ] ;
+               rdfs:comment "Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution." ;
+               rdfs:label "Plan Execution" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Process
+:Process rdf:type owl:Class ;
+         rdfs:subClassOf :Event ;
+         rdfs:comment "Set of interrelated or interacting activities that transforms inputs into outputs."@en ;
+         rdfs:isDefinedBy "ISO 59004:2024  - 3.5.5 process" ;
+         rdfs:label "Process" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Situation
+:Situation rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :isSettingFor ;
+                             owl:someValuesFrom owl:Thing
+                           ] ;
+           rdfs:comment "A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time." ;
+           rdfs:label "Situation" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/TimeInterval
+:TimeInterval rdf:type owl:Class ;
+              rdfs:comment "A temporal entity has a starting time and an ending time." ;
+              rdfs:label "Time Interval" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/TransformationProcess
+:TransformationProcess rdf:type owl:Class ;
+                       rdfs:subClassOf :Process ;
+                       rdfs:comment "A process that transforms some situation into another situation, i.e. changes the state of affairs of some actor, resource etc." ;
+                       rdfs:label "Transformation" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Transition
+:Transition rdf:type owl:Class ;
+            rdfs:subClassOf :PlanExecution ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isSettingFor ;
+                              owl:someValuesFrom :TransformationProcess
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :affectedObject ;
+                              owl:minCardinality "1"^^xsd:nonNegativeInteger
+                            ] ;
+            rdfs:comment "A transition is a situation that creates a context for two additional different Situations, one Process, and at least one Object: one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions, in which at least one Object is situated. Finally, one or more time interval(s) may position the situations and the transitional event in time, and we may include the event that triggered the transition as well." ;
+            rdfs:label "Transition" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
