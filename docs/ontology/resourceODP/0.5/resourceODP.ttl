@@ -1,4 +1,4 @@
-@prefix base: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix : <http://w3id.org/CEON/ontology/resourceODP/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
@@ -29,7 +29,7 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 vann:preferredNamespaceUri a owl:AnnotationProperty .
 
-base: a owl:Ontology ;
+: a owl:Ontology ;
     dcterms:contributor "Eva Blomqvist" ;
     dcterms:created "2025-03-20" ;
     dcterms:creator "Huanyu Li" ;
@@ -44,46 +44,46 @@ base: a owl:Ontology ;
     owl:versionIRI <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
     owl:versionInfo 0.5 .
 
-base:DigitalObject a owl:Class ;
+:DigitalObject a owl:Class ;
     rdfs:label "Digital object"@en ;
     rdfs:comment "A digital object, e.g. a computer file, that is located on some server, hard drive, or on the web. Most often the digital object is the realization of some piece of information." ;
-    rdfs:subClassOf base:Resource .
+    rdfs:subClassOf :Resource .
 
-base:batchID a owl:DatatypeProperty ;
+:batchID a owl:DatatypeProperty ;
     rdfs:label "batch ID" ;
     rdfs:comment "identifier for a batch" ;
-    rdfs:domain base:BatchOfObjects ;
+    rdfs:domain :BatchOfObjects ;
     rdfs:range xsd:string .
 
-base:batchLabel a owl:DatatypeProperty ;
+:batchLabel a owl:DatatypeProperty ;
     rdfs:label "batch label" ;
     rdfs:comment "label for a batch" ;
-    rdfs:domain base:BatchOfObjects ;
+    rdfs:domain :BatchOfObjects ;
     rdfs:range xsd:string .
 
-base:containsInformation a owl:ObjectProperty ;
+:containsInformation a owl:ObjectProperty ;
     rdfs:label "contains information" ;
     rdfs:comment "Indicating that some piece of information is contained in a larger collection of information, e.g. a data sheet contains a statement about a certain parameter of a product." ;
-    rdfs:domain base:Information ;
-    rdfs:range base:Information ;
-    rdfs:subPropertyOf base:hasPart .
+    rdfs:domain :Information ;
+    rdfs:range :Information ;
+    rdfs:subPropertyOf :hasPart .
 
-base:hasResourceLocation a owl:ObjectProperty ;
+:hasResourceLocation a owl:ObjectProperty ;
     rdfs:label "has resource location" ;
     rdfs:comment "Defines the location of a resource." ;
-    rdfs:domain base:Resource ;
+    rdfs:domain :Resource ;
     rdfs:range location:Location ;
     rdfs:subPropertyOf location:hasLocation .
 
-base:isAbout a owl:ObjectProperty ;
+:isAbout a owl:ObjectProperty ;
     rdfs:label "is about" ;
     rdfs:comment "Connecting the information to the object (physical, virtual, imaginary) that the information is about." ;
-    rdfs:domain base:Information .
+    rdfs:domain :Information .
 
-base:isRealizationOf a owl:ObjectProperty ;
+:isRealizationOf a owl:ObjectProperty ;
     rdfs:label "is realization of"@en ;
     rdfs:comment "Relates a thing, e.g. a digital object, or a physical object, to the information it is a realization of. C.f. a physical book that is the realization of a novel, or a pdf or Excel-file that is a realization of a certain data sheet." ;
-    rdfs:range base:Information .
+    rdfs:range :Information .
 
 odp:coversRequirements a owl:AnnotationProperty .
 
@@ -101,163 +101,163 @@ location:Location a owl:Class .
 
 location:hasLocation a owl:ObjectProperty .
 
-base:batchSize a owl:DatatypeProperty ;
+:batchSize a owl:DatatypeProperty ;
     rdfs:label "batch size"@en ;
     rdfs:comment "batchSize intends to repsent how many physical objects are belong to a batch of objects."@en ;
-    rdfs:domain base:BatchOfObjects ;
+    rdfs:domain :BatchOfObjects ;
     rdfs:range xsd:nonNegativeInteger .
 
-base:Asset a owl:Class ;
+:Asset a owl:Class ;
     rdfs:label "Asset"@en ;
     rdfs:comment "Asset is sth that is valuable and useful to be used in activities, or owned by actors." .
 
-base:SetOfObjects a owl:Class ;
+:SetOfObjects a owl:Class ;
     rdfs:label "Set of objects"@en ;
     rdfs:comment "A set of objects is a set of physical objects (items) that can be of different types, i.e. different kinds of items."@en ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty base:hasBatch ;
-                        owl:someValuesFrom base:BatchOfObjects ] [ a owl:Restriction ;
-                        owl:allValuesFrom base:BatchOfObjects ;
-                        owl:onProperty base:hasBatch ] ) ],
+                        owl:onProperty :hasBatch ;
+                        owl:someValuesFrom :BatchOfObjects ] [ a owl:Restriction ;
+                        owl:allValuesFrom :BatchOfObjects ;
+                        owl:onProperty :hasBatch ] ) ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty base:hasPhysicalObject ;
-                        owl:someValuesFrom base:PhysicalObject ] [ a owl:Restriction ;
-                        owl:allValuesFrom base:PhysicalObject ;
-                        owl:onProperty base:hasPhysicalObject ] ) ],
-        base:Resource .
+                        owl:onProperty :hasPhysicalObject ;
+                        owl:someValuesFrom :PhysicalObject ] [ a owl:Restriction ;
+                        owl:allValuesFrom :PhysicalObject ;
+                        owl:onProperty :hasPhysicalObject ] ) ],
+        :Resource .
 
-base:hasBatch a owl:ObjectProperty ;
+:hasBatch a owl:ObjectProperty ;
     rdfs:label "has batch"@en ;
     rdfs:comment "hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects."@en ;
-    rdfs:domain base:SetOfObjects ;
-    rdfs:range base:BatchOfObjects .
+    rdfs:domain :SetOfObjects ;
+    rdfs:range :BatchOfObjects .
 
-base:hasConstituent a owl:ObjectProperty ;
+:hasConstituent a owl:ObjectProperty ;
     rdfs:label "has constituent"@en ;
     rdfs:comment "hasConstitutent intends to represent that a physical object can have a collection of composing components."@en ;
-    rdfs:domain base:PhysicalObject ;
-    rdfs:range base:Constituent ;
-    rdfs:subPropertyOf base:hasPart .
+    rdfs:domain :PhysicalObject ;
+    rdfs:range :Constituent ;
+    rdfs:subPropertyOf :hasPart .
 
-base:hasMatter a owl:ObjectProperty ;
+:hasMatter a owl:ObjectProperty ;
     rdfs:label "has matter"@en ;
     rdfs:comment "hasMatter intends to represent that a physical object can have a collection of matter."@en ;
-    rdfs:domain base:PhysicalObject ;
-    rdfs:range base:Matter .
+    rdfs:domain :PhysicalObject ;
+    rdfs:range :Matter .
 
-base:hasPart a owl:ObjectProperty,
+:hasPart a owl:ObjectProperty,
         owl:TransitiveProperty ;
     rdfs:label "has part" ;
     rdfs:comment "Indicating that something is part of or is contained by something else." .
 
-base:hasResourceCondition a owl:ObjectProperty ;
+:hasResourceCondition a owl:ObjectProperty ;
     rdfs:label "has resource condition" ;
     rdfs:comment "A resource can has specifc conditions." ;
-    rdfs:domain base:Resource ;
-    rdfs:range base:ResourceCondition .
+    rdfs:domain :Resource ;
+    rdfs:range :ResourceCondition .
 
-base:hasResourceProperty a owl:ObjectProperty ;
+:hasResourceProperty a owl:ObjectProperty ;
     rdfs:label "has resource property" ;
     rdfs:comment "A resource can has specifc properties." ;
-    rdfs:domain base:Resource ;
-    rdfs:range base:ResourceProperty .
+    rdfs:domain :Resource ;
+    rdfs:range :ResourceProperty .
 
-base:hasResourceQuality a owl:ObjectProperty ;
+:hasResourceQuality a owl:ObjectProperty ;
     rdfs:label "has resource quality" ;
     rdfs:comment "A resource can has specifc qualities." ;
-    rdfs:domain base:Resource ;
-    rdfs:range base:ResourceQuality .
+    rdfs:domain :Resource ;
+    rdfs:range :ResourceQuality .
 
-base:Constituent a owl:Class ;
+:Constituent a owl:Class ;
     rdfs:label "Constituent"@en ;
     rdfs:comment "A constituent is a component of object."@en ;
     rdfs:seeAlso "http://emmo.info/emmo#EMMO_ceaaf9f7_fd11_424b_8fda_9afa186af186" .
 
-base:Matter a owl:Class ;
+:Matter a owl:Class ;
     rdfs:label "Matter"@en ;
     rdfs:comment "A matter is a physical substance."@en ;
     rdfs:seeAlso "http://emmo.info/emmo#EMMO_5b2222df_4da6_442f_8244_96e9e45887d1" .
 
-base:ResourceCondition a owl:Class ;
+:ResourceCondition a owl:Class ;
     rdfs:label "Resource Condition" ;
     rdfs:comment "The status of a resource." .
 
-base:ResourceProperty a owl:Class ;
+:ResourceProperty a owl:Class ;
     rdfs:label "Resource Property" ;
     rdfs:comment "The characteristics or attribuets of a resource." .
 
-base:ResourceQuality a owl:Class ;
+:ResourceQuality a owl:Class ;
     rdfs:label "Resource Quality" ;
     rdfs:comment "Resource quality is derived based on assessments of resources considering the conditions and properties." .
 
-base:Information a owl:Class ;
+:Information a owl:Class ;
     rdfs:label "Information"@en ;
     rdfs:comment "Information is an abstract concept that represents any kind of interpretations. For instance, information can be data generated by software systems or data used by people for communications."@en ;
     rdfs:seeAlso "http://emmo.info/emmo#EMMO_64c72d00_7582_44ea_a0b5_3a14e50acc36" ;
-    rdfs:subClassOf base:Asset .
+    rdfs:subClassOf :Asset .
 
-base:hasPhysicalObject a owl:ObjectProperty ;
+:hasPhysicalObject a owl:ObjectProperty ;
     rdfs:label "has physical object"@en ;
     rdfs:comment "hasPhysicalObject intends to represent that a batch of objects or a set of objects can have composing components of physical objects."@en ;
     rdfs:domain [ a owl:Class ;
-            owl:unionOf ( base:BatchOfObjects base:SetOfObjects ) ] ;
-    rdfs:range base:PhysicalObject .
+            owl:unionOf ( :BatchOfObjects :SetOfObjects ) ] ;
+    rdfs:range :PhysicalObject .
 
-base:BatchOfObjects a owl:Class ;
+:BatchOfObjects a owl:Class ;
     rdfs:label "Batch Of Objects"@en ;
     rdfs:comment "A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product instances) adhering to the same product model."@en ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty base:hasPhysicalObject ;
-                        owl:someValuesFrom base:PhysicalObject ] [ a owl:Restriction ;
-                        owl:allValuesFrom base:PhysicalObject ;
-                        owl:onProperty base:hasPhysicalObject ] ) ],
+                        owl:onProperty :hasPhysicalObject ;
+                        owl:someValuesFrom :PhysicalObject ] [ a owl:Restriction ;
+                        owl:allValuesFrom :PhysicalObject ;
+                        owl:onProperty :hasPhysicalObject ] ) ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty base:batchSize ;
+            owl:onProperty :batchSize ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        base:Resource .
+        :Resource .
 
-base:PhysicalObject a owl:Class ;
+:PhysicalObject a owl:Class ;
     rdfs:label "Physical object"@en ;
     rdfs:comment "A physical object is a collection of matter."@en ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty base:hasConstituent ;
-                        owl:someValuesFrom base:Constituent ] [ a owl:Restriction ;
-                        owl:allValuesFrom base:Constituent ;
-                        owl:onProperty base:hasConstituent ] ) ],
+                        owl:onProperty :hasConstituent ;
+                        owl:someValuesFrom :Constituent ] [ a owl:Restriction ;
+                        owl:allValuesFrom :Constituent ;
+                        owl:onProperty :hasConstituent ] ) ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty base:hasMatter ;
-                        owl:someValuesFrom base:Matter ] [ a owl:Restriction ;
-                        owl:allValuesFrom base:Matter ;
-                        owl:onProperty base:hasMatter ] ) ],
-        base:Resource .
+                        owl:onProperty :hasMatter ;
+                        owl:someValuesFrom :Matter ] [ a owl:Restriction ;
+                        owl:allValuesFrom :Matter ;
+                        owl:onProperty :hasMatter ] ) ],
+        :Resource .
 
-base:Resource a owl:Class ;
+:Resource a owl:Class ;
     rdfs:label "Resource"@en ;
     rdfs:comment "Asset from which a solution is created or implemented. Depending on the context, reference to “resource” includes “raw material”, “feedstock”, “material” or “component”. Resource includes any energy type (e.g. the energy content or energy potential of materials). Note 4 to entry: Resources can be considered concerning both stocks and flows."@en ;
     rdfs:isDefinedBy "ISO 59004:2024 - 3.1.5 resource" ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty base:hasResourceCondition ;
-                        owl:someValuesFrom base:ResourceCondition ] [ a owl:Restriction ;
-                        owl:allValuesFrom base:ResourceCondition ;
-                        owl:onProperty base:hasResourceCondition ] ) ],
+                        owl:onProperty :hasResourceCondition ;
+                        owl:someValuesFrom :ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom :ResourceCondition ;
+                        owl:onProperty :hasResourceCondition ] ) ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty base:hasResourceProperty ;
-                        owl:someValuesFrom base:ResourceProperty ] [ a owl:Restriction ;
-                        owl:allValuesFrom base:ResourceProperty ;
-                        owl:onProperty base:hasResourceProperty ] ) ],
+                        owl:onProperty :hasResourceProperty ;
+                        owl:someValuesFrom :ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom :ResourceProperty ;
+                        owl:onProperty :hasResourceProperty ] ) ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty base:hasResourceQuality ;
-                        owl:someValuesFrom base:ResourceQuality ] [ a owl:Restriction ;
-                        owl:allValuesFrom base:ResourceQuality ;
-                        owl:onProperty base:hasResourceQuality ] ) ],
-        base:Asset .
+                        owl:onProperty :hasResourceQuality ;
+                        owl:someValuesFrom :ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom :ResourceQuality ;
+                        owl:onProperty :hasResourceQuality ] ) ],
+        :Asset .
 

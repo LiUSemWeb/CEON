@@ -7,12 +7,18 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/hasChemicalEntity">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/hasMaterialComponent">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/material/Material"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/material/ChemicalEntity"/>
-    <rdfs:comment xml:lang="en">hasChemicalEntity intends to represent that a material can have a collection of chemical entities.</rdfs:comment>
-    <rdfs:label xml:lang="en">has chemical entity</rdfs:label>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/material/MaterialComponent"/>
+    <rdfs:comment xml:lang="en">hasMaterialComponent intends to represent that a material can have a collection of components.</rdfs:comment>
+    <rdfs:label xml:lang="en">has material component</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/HillFormula">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">HillFormula represents that a composition has the hill formula in a string.</rdfs:comment>
+    <rdfs:label>hill formula</rdfs:label>
+    <rdfs:seeAlso>https://w3id.org/mdo/structure/HillFormula</rdfs:seeAlso>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/AnonymousFormula">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -20,19 +26,32 @@
     <rdfs:label>anonymous formula</rdfs:label>
     <rdfs:seeAlso>https://w3id.org/mdo/structure/AnonymousFormula</rdfs:seeAlso>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/ChemicalSubstance">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/material/ChemicalEntity"/>
-    <rdfs:comment xml:lang="en">A chemical substance is made up of a collection of molecular entities.</rdfs:comment>
-    <rdfs:label xml:lang="en">Chemical substance</rdfs:label>
-    <rdfs:seeAlso>http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea</rdfs:seeAlso>
-    <rdfs:seeAlso>http://purl.obolibrary.org/obo/chebi#59999</rdfs:seeAlso>
+  <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfa1059e5202e42c5be42e2f6cade2558b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/material/hasChemicalEntity"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/material/ChemicalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/hasChemicalEntity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/material/Material"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/material/ChemicalEntity"/>
+    <rdfs:comment xml:lang="en">hasChemicalEntity intends to represent that a material can have a collection of chemical entities.</rdfs:comment>
+    <rdfs:label xml:lang="en">has chemical entity</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/DescriptiveFormula">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:comment xml:lang="en">DescriptiveFormula represents that a molecular entity has the descriptive formula in a string.</rdfs:comment>
     <rdfs:label>descriptive formula</rdfs:label>
     <rdfs:seeAlso>https://w3id.org/mdo/structure/DescriptiveFormula</rdfs:seeAlso>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/ReducedChemicalFormula">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">ReducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string.</rdfs:comment>
+    <rdfs:label>reduced formula</rdfs:label>
+    <rdfs:seeAlso>https://w3id.org/mdo/structure/ReducedFormula</rdfs:seeAlso>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -52,16 +71,25 @@
     <rdfs:seeAlso rdf:resource="https://github.com/LiUSemWeb/CEON"/>
     <owl:versionInfo>0.1</owl:versionInfo>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/ChemicalEntity">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Matter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/ChemicalSubstance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/material/ChemicalEntity"/>
+    <rdfs:comment xml:lang="en">A chemical substance is made up of a collection of molecular entities.</rdfs:comment>
+    <rdfs:label xml:lang="en">Chemical substance</rdfs:label>
+    <rdfs:seeAlso>http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea</rdfs:seeAlso>
+    <rdfs:seeAlso>http://purl.obolibrary.org/obo/chebi#59999</rdfs:seeAlso>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/Material">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
-    <rdfs:comment xml:lang="en">A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance.</rdfs:comment>
-    <rdfs:label xml:lang="en">Chemical entity</rdfs:label>
-    <rdfs:seeAlso>http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0</rdfs:seeAlso>
-    <rdfs:seeAlso>http://purl.obolibrary.org/obo/chebi#24431</rdfs:seeAlso>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/description">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+    <rdfs:subClassOf rdf:nodeID="nfa1059e5202e42c5be42e2f6cade2558b1"/>
+    <rdfs:comment xml:lang="en">Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of.</rdfs:comment>
+    <rdfs:label xml:lang="en">Material</rdfs:label>
+    <rdfs:seeAlso>http://emmo.info/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94</rdfs:seeAlso>
+    <rdfs:seeAlso>https://w3id.org/mdo/core/Material</rdfs:seeAlso>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/MolecularEntity">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -71,49 +99,21 @@
     <rdfs:seeAlso>http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a</rdfs:seeAlso>
     <rdfs:seeAlso>http://purl.obolibrary.org/obo/chebi#23367</rdfs:seeAlso>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/hasMaterialComponent">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/material/Material"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/material/MaterialComponent"/>
-    <rdfs:comment xml:lang="en">hasMaterialComponent intends to represent that a material can have a collection of components.</rdfs:comment>
-    <rdfs:label xml:lang="en">has material component</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Matter">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/Material">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
-    <rdfs:subClassOf rdf:nodeID="n08e8c2b9fae44da58f965aba828bca58b1"/>
-    <rdfs:comment xml:lang="en">Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of.</rdfs:comment>
-    <rdfs:label xml:lang="en">Material</rdfs:label>
-    <rdfs:seeAlso>http://emmo.info/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94</rdfs:seeAlso>
-    <rdfs:seeAlso>https://w3id.org/mdo/core/Material</rdfs:seeAlso>
-  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/MaterialComponent">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Constituent"/>
     <rdfs:comment xml:lang="en">A material component is a part of a material.</rdfs:comment>
     <rdfs:label xml:lang="en">Material component</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/ReducedChemicalFormula">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:comment xml:lang="en">ReducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string.</rdfs:comment>
-    <rdfs:label>reduced formula</rdfs:label>
-    <rdfs:seeAlso>https://w3id.org/mdo/structure/ReducedFormula</rdfs:seeAlso>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n08e8c2b9fae44da58f965aba828bca58b1">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/material/hasChemicalEntity"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/material/ChemicalEntity"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/ChemicalEntity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/resourceODP/Matter"/>
+    <rdfs:comment xml:lang="en">A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance.</rdfs:comment>
+    <rdfs:label xml:lang="en">Chemical entity</rdfs:label>
+    <rdfs:seeAlso>http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0</rdfs:seeAlso>
+    <rdfs:seeAlso>http://purl.obolibrary.org/obo/chebi#24431</rdfs:seeAlso>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/resourceODP/Constituent">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/material/HillFormula">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:comment xml:lang="en">HillFormula represents that a composition has the hill formula in a string.</rdfs:comment>
-    <rdfs:label>hill formula</rdfs:label>
-    <rdfs:seeAlso>https://w3id.org/mdo/structure/HillFormula</rdfs:seeAlso>
   </rdf:Description>
 </rdf:RDF>
