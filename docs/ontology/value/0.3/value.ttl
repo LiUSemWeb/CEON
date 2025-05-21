@@ -40,15 +40,17 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/value/0.3/> ;
-    owl:versionInfo "0.4" .
+    owl:versionInfo "0.3" .
 
 :EconomicValue a owl:Class ;
     rdfs:label "Economic Value" ;
+    rdfs:comment "Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
     rdfs:subClassOf :Value ;
     owl:equivalentClass :UseValue .
 
 :EnvironmentalValue a owl:Class ;
     rdfs:label "Environmental Value" ;
+    rdfs:comment "Environmental value represents how a thing (e.g., a product or service) match some environmental goals or needs of an actor under some circumstances." ;
     rdfs:subClassOf :Value .
 
 :ExchangeValue a owl:Class ;
@@ -58,6 +60,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 :SocialValue a owl:Class ;
     rdfs:label "Social Value" ;
+    rdfs:comment "Social value represents how a thing (e.g., a product or service) match some social goals or needs of an actor under some circumstances." ;
     rdfs:subClassOf :Value .
 
 :ValueConsumer a :ValueParticipationRole,
@@ -80,19 +83,12 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 :ValueEvaluator a :ValueParticipationRole,
         owl:NamedIndividual .
 
-:ValuePerceptionType a owl:Class ;
-    rdfs:label "Value Perception Type" .
-
 :hasPerception a owl:ObjectProperty ;
     rdfs:label "has perception" ;
     rdfs:comment "An actor perceive specific values, or a value proposition is about specific values." ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( actorODP:Actor :ValueProposition ) ] ;
     rdfs:range :ValuePerception .
-
-:hasPerceptionType a owl:ObjectProperty ;
-    rdfs:label "has perception type" ;
-    rdfs:comment "A perception has a specific type in terms of how a propostion or actor perceive values." .
 
 :hasValuableResource a owl:ObjectProperty ;
     rdfs:label "has valuable resource" ;
@@ -121,7 +117,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:range actorODP:Actor .
 
 :targettingResource a owl:ObjectProperty ;
-    rdfs:label "targets resource" ;
+    rdfs:label "targetting resource" ;
     rdfs:comment "A value proposition is about some resources." ;
     rdfs:domain :ValueProposition ;
     rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
@@ -135,7 +131,7 @@ xsd:gYear a rdfs:Datatype .
 
 :UseValue a owl:Class ;
     rdfs:label "Use Value" ;
-    rdfs:comment "Use value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
+    rdfs:comment "Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
     rdfs:subClassOf :Value .
 
 :hasAimedValue a owl:ObjectProperty ;
@@ -152,14 +148,14 @@ xsd:gYear a rdfs:Datatype .
     rdfs:subPropertyOf owl:topObjectProperty .
 
 :targettingActor a owl:ObjectProperty ;
-    rdfs:label "targets actor" ;
+    rdfs:label "targetting actor" ;
     rdfs:comment "A value proposition is about some actors." ;
     rdfs:domain :ValueProposition ;
     rdfs:range actorODP:Actor ;
     rdfs:subPropertyOf :hasVPTargets .
 
 :targettingValueParticipation a owl:ObjectProperty ;
-    rdfs:label "targets value participation" ;
+    rdfs:label "targetting value participation" ;
     rdfs:comment "A value proposition is about some participation." ;
     rdfs:domain :ValueProposition ;
     rdfs:range :ValueParticipation ;
@@ -168,7 +164,8 @@ xsd:gYear a rdfs:Datatype .
 <http://w3id.org/CEON/ontology/resourceODP/Resource> a owl:Class .
 
 :ValuePerception a owl:Class ;
-    rdfs:label "Value Perception" .
+    rdfs:label "Value Perception" ;
+    rdfs:comment "Value perception of an actor determines specifc values." .
 
 :hasVPTargets a owl:ObjectProperty ;
     rdfs:label "has value proposition targets" ;
