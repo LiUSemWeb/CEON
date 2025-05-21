@@ -15,12 +15,12 @@
                                            owl:imports <http://w3id.org/CEON/ontology/qudtunit/2.1/> ;
                                            dcterms:creator "Huanyu Li" ;
                                            dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
-                                           dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module"@en ;
+                                           dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module" ;
                                            vann:preferredNamespacePrefix "quantity" ;
                                            vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/quantity/" ;
-                                           rdfs:comment "This module defines base properties to describe quantitites with standardized units."@en ;
-                                           rdfs:seeAlso "https://github.com/LiUSemWeb/Materials-Design-Ontology" ;
-                                           owl:versionInfo "0.2"@en .
+                                           rdfs:comment "This module defines base properties to describe quantitites with standardized units." ;
+                                           rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
+                                           owl:versionInfo "0.2" .
 
 #################################################################
 #    Annotation properties
@@ -90,6 +90,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                    rdfs:subPropertyOf qudt:quantityValue ;
                                    rdfs:domain :QuantityInterval ;
                                    rdfs:range qudt:QuantityValue ;
+                                   rdfs:comment "represents the maximum value (included) of an interval" ;
                                    rdfs:label "has maximal value included of interval" .
 
 
@@ -98,6 +99,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                       rdfs:subPropertyOf qudt:quantityValue ;
                                       rdfs:domain :QuantityInterval ;
                                       rdfs:range qudt:QuantityValue ;
+                                      rdfs:comment "represents the maximum value (not included) of an interval" ;
                                       rdfs:label "has maximal value not included of interval" .
 
 
@@ -106,6 +108,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                    rdfs:subPropertyOf qudt:quantityValue ;
                                    rdfs:domain :QuantityInterval ;
                                    rdfs:range qudt:QuantityValue ;
+                                   rdfs:comment "represents the minimal value (included) of an interval" ;
                                    rdfs:label "has minimal value included of interval" .
 
 
@@ -114,24 +117,28 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                       rdfs:subPropertyOf qudt:quantityValue ;
                                       rdfs:domain :QuantityInterval ;
                                       rdfs:range qudt:QuantityValue ;
+                                      rdfs:comment "represents the minimal value (not included) of an interval" ;
                                       rdfs:label "has minimal value not included of interval" .
 
 
 ###  http://w3id.org/CEON/ontology/quantity/hasPrice
 :hasPrice rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf qudt:quantityValue ;
+          rdfs:comment "represents that sth has a specific cost" ;
           rdfs:label "has price" .
 
 
 ###  http://w3id.org/CEON/ontology/quantity/hasProcessCost
 :hasProcessCost rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf qudt:quantityValue ;
+                rdfs:comment "represents that a process can have a cost" ;
                 rdfs:label "has process cost" .
 
 
 ###  http://w3id.org/CEON/ontology/quantity/hasRecyclingCost
 :hasRecyclingCost rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf :hasProcessCost ;
+                  rdfs:comment "The cost of recycling, expressed as an amount of money with a currency unit." ;
                   rdfs:label "has recycling cost" .
 
 
@@ -166,12 +173,14 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 ###  http://w3id.org/CEON/ontology/quantity/hasVolume
 :hasVolume rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf qudt:quantityValue ;
+           rdfs:comment "represents the volume of an object" ;
            rdfs:label "has volume" .
 
 
 ###  http://w3id.org/CEON/ontology/quantity/hasWeight
 :hasWeight rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf qudt:quantityValue ;
+           rdfs:comment "represents the weight of an object" ;
            rdfs:label "has weight" .
 
 
@@ -184,8 +193,9 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/ontology/quantity/objectValue
 :objectValue rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:comment "objectValue is analogous to qudt:numericalValue" .
+             rdfs:subPropertyOf qudt:hasQuantityKind ;
+             rdfs:comment "objectValue is analogous to qudt:numericalValue" ;
+             rdfs:label "object value" .
 
 
 #################################################################
@@ -194,13 +204,17 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/ontology/quantity/numericalMaxValue
 :numericalMaxValue rdf:type owl:DatatypeProperty ;
-                   rdfs:range xsd:double .
+                   rdfs:range xsd:double ;
+                   rdfs:comment "represents the maximal value of a quantity" ;
+                   rdfs:label "numerical max value" .
 
 
 ###  http://w3id.org/CEON/ontology/quantity/numericalMinValue
 :numericalMinValue rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf owl:topDataProperty ;
-                   rdfs:range xsd:double .
+                   rdfs:range xsd:double ;
+                   rdfs:comment "represents the minimal value of a quantity" ;
+                   rdfs:label "numerical min value" .
 
 
 #################################################################
@@ -209,6 +223,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  http://w3id.org/CEON/ontology/quantity/QuantityInterval
 :QuantityInterval rdf:type owl:Class ;
+                  rdfs:comment "Quantity interval is an interval with two quantity values." ;
                   rdfs:label "Quantity Interval" .
 
 
@@ -221,7 +236,7 @@ qudt-unit:EURO-PER-KiloM rdf:type owl:NamedIndividual ,
                                   qudt:Unit ;
                          dcterms:description "Euro Per Kilometer (€/km) is a unit used to represent the cost or value associated with transporting a resource."^^rdf:HTML ;
                          qudt:symbol "€/km" ;
-                         rdfs:label "Euro Per Kilometer"@en .
+                         rdfs:label "Euro Per Kilometer" .
 
 
 ###  http://qudt.org/vocab/unit/EURO-PER-M2
@@ -229,7 +244,7 @@ qudt-unit:EURO-PER-M2 rdf:type owl:NamedIndividual ,
                                qudt:Unit ;
                       dcterms:description "Euro Per Square Meter (€/km) is a unit used to represent the cost or value of resource per square meter."^^rdf:HTML ;
                       qudt:symbol "€/m²" ;
-                      rdfs:label "Euro Per Square Meter"@en .
+                      rdfs:label "Euro Per Square Meter" .
 
 
 ###  http://w3id.org/CEON/ontology/quantity/Cost
