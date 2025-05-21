@@ -26,7 +26,7 @@
                                         odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE1-3, CE5-16, CE5-17." ;
                                         rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the value concept." ;
                                         rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
-                                        owl:versionInfo "0.4" .
+                                        owl:versionInfo "0.3" .
 
 #################################################################
 #    Annotation properties
@@ -113,12 +113,6 @@ xsd:gYear rdf:type rdfs:Datatype .
                rdfs:label "has perception" .
 
 
-###  http://w3id.org/CEON/ontology/value/hasPerceptionType
-:hasPerceptionType rdf:type owl:ObjectProperty ;
-                   rdfs:comment "A perception has a specific type in terms of how a propostion or actor perceive values." ;
-                   rdfs:label "has perception type" .
-
-
 ###  http://w3id.org/CEON/ontology/value/hasVPTargets
 :hasVPTargets rdf:type owl:ObjectProperty ;
               rdfs:comment "A value proposition is proposed about specific actors, participations or resources." ;
@@ -165,7 +159,7 @@ xsd:gYear rdf:type rdfs:Datatype .
                  rdfs:domain :ValueProposition ;
                  rdfs:range actorODP:Actor ;
                  rdfs:comment "A value proposition is about some actors." ;
-                 rdfs:label "targets actor" .
+                 rdfs:label "targetting actor" .
 
 
 ###  http://w3id.org/CEON/ontology/value/targettingResource
@@ -174,7 +168,7 @@ xsd:gYear rdf:type rdfs:Datatype .
                     rdfs:domain :ValueProposition ;
                     rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
                     rdfs:comment "A value proposition is about some resources." ;
-                    rdfs:label "targets resource" .
+                    rdfs:label "targetting resource" .
 
 
 ###  http://w3id.org/CEON/ontology/value/targettingValueParticipation
@@ -183,7 +177,7 @@ xsd:gYear rdf:type rdfs:Datatype .
                               rdfs:domain :ValueProposition ;
                               rdfs:range :ValueParticipation ;
                               rdfs:comment "A value proposition is about some participation." ;
-                              rdfs:label "targets value participation" .
+                              rdfs:label "targetting value participation" .
 
 
 #################################################################
@@ -198,12 +192,14 @@ xsd:gYear rdf:type rdfs:Datatype .
 :EconomicValue rdf:type owl:Class ;
                owl:equivalentClass :UseValue ;
                rdfs:subClassOf :Value ;
+               rdfs:comment "Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
                rdfs:label "Economic Value" .
 
 
 ###  http://w3id.org/CEON/ontology/value/EnvironmentalValue
 :EnvironmentalValue rdf:type owl:Class ;
                     rdfs:subClassOf :Value ;
+                    rdfs:comment "Environmental value represents how a thing (e.g., a product or service) match some environmental goals or needs of an actor under some circumstances." ;
                     rdfs:label "Environmental Value" .
 
 
@@ -217,13 +213,14 @@ xsd:gYear rdf:type rdfs:Datatype .
 ###  http://w3id.org/CEON/ontology/value/SocialValue
 :SocialValue rdf:type owl:Class ;
              rdfs:subClassOf :Value ;
+             rdfs:comment "Social value represents how a thing (e.g., a product or service) match some social goals or needs of an actor under some circumstances." ;
              rdfs:label "Social Value" .
 
 
 ###  http://w3id.org/CEON/ontology/value/UseValue
 :UseValue rdf:type owl:Class ;
           rdfs:subClassOf :Value ;
-          rdfs:comment "Use value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
+          rdfs:comment "Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
           rdfs:label "Use Value" .
 
 
@@ -254,12 +251,8 @@ xsd:gYear rdf:type rdfs:Datatype .
 
 ###  http://w3id.org/CEON/ontology/value/ValuePerception
 :ValuePerception rdf:type owl:Class ;
+                 rdfs:comment "Value perception of an actor determines specifc values." ;
                  rdfs:label "Value Perception" .
-
-
-###  http://w3id.org/CEON/ontology/value/ValuePerceptionType
-:ValuePerceptionType rdf:type owl:Class ;
-                     rdfs:label "Value Perception Type" .
 
 
 ###  http://w3id.org/CEON/ontology/value/ValueProposition
