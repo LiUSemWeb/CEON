@@ -40,17 +40,18 @@ actorODP:ResourceRelation a owl:Class .
         "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: CE5-2, C11-2, C12-1, C13-3, E2-1, T8-3." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/>,
-        <http://w3id.org/CEON/ontology/location/0.2/>,
         <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/product/0.5/> ;
     owl:versionInfo 0.5 .
 
 :ISOCompliance a owl:Class ;
     rdfs:label "ISO Compliance" ;
+    rdfs:comment "ISO compliance is a compliance issuing thay sth (e.g., organization's structure, business operations, practices or policies) follows a specific ISO standard." ;
     rdfs:subClassOf :Compliance .
 
 :REACHCompliance a owl:Class ;
     rdfs:label "REACH Compliance" ;
+    rdfs:comment "REACH (Regulation on the registration, evaluation, authorisation and restriction of chemicals) compliance is a compliance issueing that the REACH regulation is satisfied." ;
     rdfs:seeAlso "https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en" ;
     rdfs:subClassOf :Compliance ;
     owl:equivalentClass [ a owl:Restriction ;
@@ -59,6 +60,7 @@ actorODP:ResourceRelation a owl:Class .
 
 :RoHSCompliance a owl:Class ;
     rdfs:label "RoHS Compliance" ;
+    rdfs:comment "RoHS (Restriction of Hazardous Substances in Electrical and Electronic Equipment) compliance is a compliance issuing that RoHS objectives are satisfied." ;
     rdfs:seeAlso "https://environment.ec.europa.eu/topics/waste-and-recycling/rohs-directive_en" ;
     rdfs:subClassOf :Compliance ;
     owl:equivalentClass [ a owl:Restriction ;
@@ -303,6 +305,8 @@ resourceODP:BatchOfObjects a owl:Class ;
 
 resourceODP:PhysicalObject a owl:Class .
 
+<http://w3id.org/CEON/ontology/location/hasLocation> a owl:ObjectProperty .
+
 :AssemblyLocation a owl:Class ;
     rdfs:label "Assembly Location" ;
     rdfs:comment "The location where a physical object is assembled." ;
@@ -367,6 +371,19 @@ resourceODP:PhysicalObject a owl:Class .
         <http://w3id.org/CEON/ontology/location/Location> .
 
 resourceODP:Matter a owl:Class .
+
+<http://w3id.org/CEON/ontology/location/hasCity> a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+<http://w3id.org/CEON/ontology/location/hasCountry> a owl:DatatypeProperty .
+
+<http://w3id.org/CEON/ontology/location/hasPostalCode> a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+<http://w3id.org/CEON/ontology/location/hasStreetAddress> a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+<http://w3id.org/CEON/ontology/location/Location> a owl:Class .
 
 :Compliance a owl:Class ;
     rdfs:label "Compliance" ;

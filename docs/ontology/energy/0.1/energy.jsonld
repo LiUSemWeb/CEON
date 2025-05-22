@@ -1,49 +1,22 @@
 [
   {
-    "@id": "http://purl.org/dc/terms/license",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/participatingEnergy",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "participatingEnergy represents the energy in an energy composition."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "participating energy"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participatingSubject"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/Hydropower",
+    "@id": "http://w3id.org/CEON/ontology/energy/NonRenewableEnergy",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "Hydropower"
+        "@value": "Nonrenewable energy represents energy that comes from such resources that cannot be replaced onew they are used up."
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+    "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "https://en.wikipedia.org/wiki/Hydropower"
+        "@value": "NonReneable Energy"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "http://w3id.org/CEON/ontology/energy/EnergySource"
+        "@id": "http://w3id.org/CEON/ontology/energy/Energy"
       }
     ]
   },
@@ -100,50 +73,92 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/energy/Wind",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Wind"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "https://en.wikipedia.org/wiki/Wind_power"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/energy/EnergySource"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/Biogas",
+    "@id": "http://w3id.org/CEON/ontology/energy/EnergyComposition",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "Biogas represents an energy source that is produced from raw materials such as agricultural waste, manure, municipal waste, plant material, sewage, green waste, wastewater, and food waste."
+        "@value": "The relation representing the particpation of an energy as a resource."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Biogass"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "https://en.wikipedia.org/wiki/Biogas"
+        "@value": "Energy Composition"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "http://w3id.org/CEON/ontology/energy/Biomass"
+        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceParticipation"
       }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/contributor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/hasOriginalEnergy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "hasOriginalEnergy represents that an energy transformation process has its initial energy."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has original energy"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "_:n9753ed1304684ca2b56bc1cc988b4b62b4"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participatingResource"
+      }
+    ]
+  },
+  {
+    "@id": "_:n9753ed1304684ca2b56bc1cc988b4b62b4",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/energy/NonRenewableEnergy"
+          },
+          {
+            "@id": "http://w3id.org/CEON/ontology/energy/RenewableEnergy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://www.opengis.net/ont/geosparql#geoJSONLiteral",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/license",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/description",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
@@ -173,12 +188,6 @@
     ]
   },
   {
-    "@id": "http://purl.org/dc/terms/created",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
     "@id": "http://w3id.org/CEON/ontology/energy/Energy",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -205,80 +214,30 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/energy/hasConvertedEnergy",
+    "@id": "http://w3id.org/CEON/ontology/energy/EnergyConversion",
     "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
+      "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "hasConvertedEnergy represents that an energy transformation process has its final energy."
+        "@value": "Energy Conversion is a process of transforming energy."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "has converted energy"
+        "@value": "Energy Conversion"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:nf2a26d42f9324aeb98f8f2e9dba575f2b1"
+        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
       }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participatingResource"
-      }
-    ]
-  },
-  {
-    "@id": "_:nf2a26d42f9324aeb98f8f2e9dba575f2b1",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/energy/NonRenewableEnergy"
-          },
-          {
-            "@id": "http://w3id.org/CEON/ontology/energy/RenewableEnergy"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/description",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
     "@id": "http://purl.org/dc/terms/creator",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/NaturalGas",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Natural Gas"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "https://en.wikipedia.org/wiki/Natural_gas"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/energy/FossilFuel"
-      }
     ]
   },
   {
@@ -308,222 +267,6 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/energy/hasAnergy",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "hasAnergy represents that energy has part of anergy."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has anergy"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participatingObject"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/SolarEnergySource",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "Solar Energy Source is the Sun."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Solar Energy Source"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "https://en.wikipedia.org/wiki/Solar_energy"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/energy/EnergySource"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/NonRenewableEnergy",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "Nonrenewable energy represents energy that comes from such resources that cannot be replaced onew they are used up."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "NonReneable Energy"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/energy/Energy"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "hasEnergyComponentPercentage represents the percentage of a particular energy as a composition."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/energy/EnergyComposition"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has energy component percentage"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/elements/1.1/description",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/Petroleum",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Petroleum"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "https://en.wikipedia.org/wiki/Petroleum"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/energy/FossilFuel"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/Coal",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Coal"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "https://en.wikipedia.org/wiki/Coal"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/energy/FossilFuel"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/EnergyConversion",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "Energy Conversion is a process of transforming energy."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Energy Conversion"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/title",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/hasCarbonIntensity",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "hasCarbonIntensity measures how intensive that the carbon is for an energy source."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/energy/EnergySource"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has carbon intensity"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/contributor",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/hasSustainability",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/energy/EnergySource"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has sustainability"
-      },
-      {
-        "@value": "hasSustainability measures how sustainable an energy source is."
-      }
-    ]
-  },
-  {
     "@id": "http://w3id.org/CEON/ontology/energy/EnergySource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -537,39 +280,6 @@
       {
         "@value": "Energy Source"
       }
-    ]
-  },
-  {
-    "@id": "http://www.opengis.net/ont/geosparql#gmlLiteral",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/energy/hasExergy",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "hasExergy represents that energy has part of exergy."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has exergy"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participatingObject"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
@@ -612,12 +322,6 @@
       {
         "@id": "http://w3id.org/CEON/ontology/actorODP/Infrastructure"
       }
-    ]
-  },
-  {
-    "@id": "http://www.opengis.net/ont/geosparql#geoJSONLiteral",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
     ]
   },
   {
@@ -702,7 +406,116 @@
     ]
   },
   {
-    "@id": "http://www.opengis.net/ont/geosparql#wktLiteral",
+    "@id": "http://w3id.org/CEON/ontology/energy/hasCarbonIntensity",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "hasCarbonIntensity measures how intensive that the carbon is for an energy source."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/energy/EnergySource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has carbon intensity"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/hasExergy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "hasExergy represents that energy has part of exergy."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has exergy"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participatingObject"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/Hydropower",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Hydropower"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@value": "https://en.wikipedia.org/wiki/Hydropower"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/energy/EnergySource"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/hasSustainability",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/energy/EnergySource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has sustainability"
+      },
+      {
+        "@value": "hasSustainability measures how sustainable an energy source is."
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/Petroleum",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Petroleum"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@value": "https://en.wikipedia.org/wiki/Petroleum"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/energy/FossilFuel"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.opengis.net/ont/geosparql#gmlLiteral",
     "@type": [
       "http://www.w3.org/2000/01/rdf-schema#Datatype"
     ]
@@ -714,9 +527,24 @@
     ]
   },
   {
-    "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+    "@id": "http://w3id.org/CEON/ontology/energy/Wind",
     "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Wind"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@value": "https://en.wikipedia.org/wiki/Wind_power"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/energy/EnergySource"
+      }
     ]
   },
   {
@@ -746,23 +574,106 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/energy/hasOriginalEnergy",
+    "@id": "http://w3id.org/CEON/ontology/energy/NaturalGas",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Natural Gas"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@value": "https://en.wikipedia.org/wiki/Natural_gas"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/energy/FossilFuel"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.opengis.net/ont/geosparql#wktLiteral",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ]
+  },
+  {
+    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/elements/1.1/description",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.org/vocab/vann/preferredNamespaceUri",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/SolarEnergySource",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Solar Energy Source is the Sun."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Solar Energy Source"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@value": "https://en.wikipedia.org/wiki/Solar_energy"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/energy/EnergySource"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/title",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/hasConvertedEnergy",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "hasOriginalEnergy represents that an energy transformation process has its initial energy."
+        "@value": "hasConvertedEnergy represents that an energy transformation process has its final energy."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "has original energy"
+        "@value": "has converted energy"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
-        "@id": "_:nf2a26d42f9324aeb98f8f2e9dba575f2b4"
+        "@id": "_:n9753ed1304684ca2b56bc1cc988b4b62b1"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
@@ -772,7 +683,7 @@
     ]
   },
   {
-    "@id": "_:nf2a26d42f9324aeb98f8f2e9dba575f2b4",
+    "@id": "_:n9753ed1304684ca2b56bc1cc988b4b62b1",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -790,29 +701,118 @@
     ]
   },
   {
-    "@id": "http://purl.org/vocab/vann/preferredNamespaceUri",
+    "@id": "http://purl.org/dc/terms/created",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/energy/EnergyComposition",
+    "@id": "http://w3id.org/CEON/ontology/energy/hasAnergy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "hasAnergy represents that energy has part of anergy."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has anergy"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participatingObject"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/participatingEnergy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "participatingEnergy represents the energy in an energy composition."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "participating energy"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participatingSubject"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/Biogas",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The relation representing the particpation of an energy as a resource."
+        "@value": "Biogas represents an energy source that is produced from raw materials such as agricultural waste, manure, municipal waste, plant material, sewage, green waste, wastewater, and food waste."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Energy Composition"
+        "@value": "Biogass"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@value": "https://en.wikipedia.org/wiki/Biogas"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceParticipation"
+        "@id": "http://w3id.org/CEON/ontology/energy/Biomass"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "hasEnergyComponentPercentage represents the percentage of a particular energy as a composition."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/energy/EnergyComposition"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has energy component percentage"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/energy/Coal",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Coal"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
+      {
+        "@value": "https://en.wikipedia.org/wiki/Coal"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/energy/FossilFuel"
       }
     ]
   }
