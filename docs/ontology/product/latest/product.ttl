@@ -39,18 +39,19 @@ actorODP:ResourceRelation a owl:Class .
     odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-2, CVN-ResrouceType-4, C11-2, C12-1, C13-3, E2-1, T8-3.",
         "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: CE5-2, C11-2, C12-1, C13-3, E2-1, T8-3." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
-    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/>,
-        <http://w3id.org/CEON/ontology/location/0.2/>,
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/>,
         <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/product/0.5/> ;
     owl:versionInfo 0.5 .
 
 :ISOCompliance a owl:Class ;
     rdfs:label "ISO Compliance" ;
+    rdfs:comment "ISO compliance is a compliance issuing thay sth (e.g., organization's structure, business operations, practices or policies) follows a specific ISO standard." ;
     rdfs:subClassOf :Compliance .
 
 :REACHCompliance a owl:Class ;
     rdfs:label "REACH Compliance" ;
+    rdfs:comment "REACH (Regulation on the registration, evaluation, authorisation and restriction of chemicals) compliance is a compliance issueing that the REACH regulation is satisfied." ;
     rdfs:seeAlso "https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en" ;
     rdfs:subClassOf :Compliance ;
     owl:equivalentClass [ a owl:Restriction ;
@@ -59,6 +60,7 @@ actorODP:ResourceRelation a owl:Class .
 
 :RoHSCompliance a owl:Class ;
     rdfs:label "RoHS Compliance" ;
+    rdfs:comment "RoHS (Restriction of Hazardous Substances in Electrical and Electronic Equipment) compliance is a compliance issuing that RoHS objectives are satisfied." ;
     rdfs:seeAlso "https://environment.ec.europa.eu/topics/waste-and-recycling/rohs-directive_en" ;
     rdfs:subClassOf :Compliance ;
     owl:equivalentClass [ a owl:Restriction ;
@@ -78,13 +80,13 @@ actorODP:ResourceRelation a owl:Class .
             owl:unionOf ( :Item :Product resourceODP:Matter ) ] .
 
 :compositionQuantity a owl:DatatypeProperty ;
-    rdfs:label "Composition quantity"@en ;
+    rdfs:label "composition quantity" ;
     rdfs:comment "compositionQuantity represents the quantity of elements of a composition." ;
     rdfs:domain :Composition ;
     rdfs:range xsd:double .
 
 :hasBrand a owl:DatatypeProperty ;
-    rdfs:label "Brand" ;
+    rdfs:label "has brand" ;
     rdfs:comment "The brand name of a product." ;
     rdfs:range xsd:string .
 
@@ -106,13 +108,13 @@ actorODP:ResourceRelation a owl:Class .
     rdfs:seeAlso "https://www.gs1.org/standards/id-keys/gtin" .
 
 :hasProductComponent a owl:ObjectProperty ;
-    rdfs:label "has product component"@en ;
-    rdfs:comment "hasProductComponent intends to represent that a product can have other product components."@en ;
+    rdfs:label "has product component" ;
+    rdfs:comment "hasProductComponent intends to represent that a product can have other product components." ;
     rdfs:domain :Product ;
     rdfs:range :Product .
 
 :hasProductName a owl:DatatypeProperty ;
-    rdfs:label "Product Name" ;
+    rdfs:label "product name" ;
     rdfs:comment "The name of a product." ;
     rdfs:range xsd:string .
 
@@ -143,19 +145,19 @@ actorODP:Actor a owl:Class .
         owl:NamedIndividual .
 
 :Solution a owl:Class ;
-    rdfs:label "Solution"@en ;
-    rdfs:comment "Product or service, or a combination thereof, that fulfils a need of an interested party."@en ;
+    rdfs:label "Solution" ;
+    rdfs:comment "Product or service, or a combination thereof, that fulfils a need of an interested party." ;
     rdfs:isDefinedBy "ISO 59004:2024 - 3.2.1 solution" .
 
 :associatedWithMatter a owl:ObjectProperty ;
-    rdfs:label "associated with matter"@en ;
-    rdfs:comment "associatedWithMatter intends to represent the matter to which a matter compopsition information regards to."@en ;
+    rdfs:label "associated with matter" ;
+    rdfs:comment "associatedWithMatter intends to represent the matter to which a matter compopsition information regards to." ;
     rdfs:domain :MatterComposition ;
     rdfs:range resourceODP:Matter .
 
 :associatedWithProductModel a owl:ObjectProperty ;
-    rdfs:label "associated with product model"@en ;
-    rdfs:comment "associatedWithProductModel intends to represent the product model to which a product compopsition information regards to."@en ;
+    rdfs:label "associated with product model" ;
+    rdfs:comment "associatedWithProductModel intends to represent the product model to which a product compopsition information regards to." ;
     rdfs:domain :ProductComposition ;
     rdfs:range :Product .
 
@@ -167,8 +169,8 @@ actorODP:Actor a owl:Class .
     rdfs:subPropertyOf owl:topObjectProperty .
 
 :batchOfProduct a owl:ObjectProperty ;
-    rdfs:label "batch of products"@en ;
-    rdfs:comment "batchOfProduct intends to represent what is the model product of a batch of objects."@en ;
+    rdfs:label "batch of products" ;
+    rdfs:comment "batchOfProduct intends to represent what is the model product of a batch of objects." ;
     rdfs:domain resourceODP:BatchOfObjects ;
     rdfs:range :Product .
 
@@ -225,8 +227,8 @@ actorODP:Actor a owl:Class .
     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/location/hasLocation> .
 
 :modelledBy a owl:ObjectProperty ;
-    rdfs:label "modelled by"@en ;
-    rdfs:comment "modelledBy intends to represent that product objects follow particular product models."@en ;
+    rdfs:label "modelled by" ;
+    rdfs:comment "modelledBy intends to represent that product objects follow particular product models." ;
     rdfs:domain :Item ;
     rdfs:range :Product .
 
@@ -243,8 +245,8 @@ resourceODP:BatchOfObjects a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 :MatterComposition a owl:Class ;
-    rdfs:label "Matter composition"@en ;
-    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter."@en ;
+    rdfs:label "Matter composition" ;
+    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass resourceODP:Matter ;
             owl:onProperty :associatedWithMatter ;
@@ -252,8 +254,8 @@ resourceODP:BatchOfObjects a owl:Class ;
         :Composition .
 
 :ProductComposition a owl:Class ;
-    rdfs:label "Product composition"@en ;
-    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product."@en ;
+    rdfs:label "Product composition" ;
+    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass :Product ;
             owl:onProperty :associatedWithProductModel ;
@@ -290,18 +292,20 @@ resourceODP:BatchOfObjects a owl:Class ;
     rdfs:comment "The rules or restrictions made or maintained by authorities." .
 
 :complianceWith a owl:ObjectProperty ;
-    rdfs:label "Compliance with" ;
+    rdfs:label "compliance with" ;
     rdfs:comment "Represents what the compliance is compliant with (e.g. a standard or regulation)." ;
     rdfs:domain :Compliance .
 
 :hasComposition a owl:ObjectProperty ;
     rdfs:label "has composition" ;
-    rdfs:comment "hasComposition intends to represent that a product model or physical object can have compostition information."@en ;
+    rdfs:comment "hasComposition intends to represent that a product model or physical object can have compostition information." ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( :Product resourceODP:PhysicalObject ) ] ;
     rdfs:range :Composition .
 
 resourceODP:PhysicalObject a owl:Class .
+
+<http://w3id.org/CEON/ontology/location/hasLocation> a owl:ObjectProperty .
 
 :AssemblyLocation a owl:Class ;
     rdfs:label "Assembly Location" ;
@@ -368,6 +372,19 @@ resourceODP:PhysicalObject a owl:Class .
 
 resourceODP:Matter a owl:Class .
 
+<http://w3id.org/CEON/ontology/location/hasCity> a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+<http://w3id.org/CEON/ontology/location/hasCountry> a owl:DatatypeProperty .
+
+<http://w3id.org/CEON/ontology/location/hasPostalCode> a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+<http://w3id.org/CEON/ontology/location/hasStreetAddress> a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+<http://w3id.org/CEON/ontology/location/Location> a owl:Class .
+
 :Compliance a owl:Class ;
     rdfs:label "Compliance" ;
     rdfs:comment "Represents that something is compliant with some standard or has a received a certain certification." .
@@ -376,8 +393,8 @@ resourceODP:Matter a owl:Class .
     rdfs:subClassOf actorODP:ResourceParticipation .
 
 :Item a owl:Class ;
-    rdfs:label "Item"@en ;
-    rdfs:comment "An item is a physical object put into a market for sale, i.e. corresponding to an individual of a product. The item can be a thing that grows naturally or produced through some chemical or manufacturing processes."@en ;
+    rdfs:label "Item" ;
+    rdfs:comment "An item is a physical object put into a market for sale, i.e. corresponding to an individual of a product. The item can be a thing that grows naturally or produced through some chemical or manufacturing processes." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass :Product ;
             owl:onProperty :modelledBy ;
@@ -385,9 +402,9 @@ resourceODP:Matter a owl:Class .
         resourceODP:PhysicalObject .
 
 :Product a owl:Class ;
-    rdfs:label "Product"@en ;
-    rdfs:comment "Physical-based object designed for or utilized with a purpose. A product can be, for example: goods of any type; hardware (e.g. engine mechanical part, spare parts, consumables); electrical or electronic hardware devices or components (e.g. computers, communication equipment and sensors); processed materials (e.g. lubricant, cement)."@en,
-        "Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product."@en ;
+    rdfs:label "Product" ;
+    rdfs:comment "Physical-based object designed for or utilized with a purpose. A product can be, for example: goods of any type; hardware (e.g. engine mechanical part, spare parts, consumables); electrical or electronic hardware devices or components (e.g. computers, communication equipment and sensors); processed materials (e.g. lubricant, cement).",
+        "Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product." ;
     rdfs:isDefinedBy "ISO 59004:2024 -3.2.2 product" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty :hasComposition ;

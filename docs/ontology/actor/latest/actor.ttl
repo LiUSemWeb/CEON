@@ -38,10 +38,9 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: C0-1, C0-2, C3-4, T3-4",
         "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: C0-1, C0-2, C3-4, T3-4" ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
-    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/>,
-        <http://w3id.org/CEON/ontology/location/0.2/> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/actor/0.3/> ;
-    owl:versionInfo 0.3 .
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/actor/0.4/> ;
+    owl:versionInfo 0.4 .
 
 :BuyingResource a owl:Class ;
     rdfs:label "Buying resource" ;
@@ -287,6 +286,10 @@ actorODP:participatingResource a owl:ObjectProperty .
 
 <http://w3id.org/CEON/ontology/cvn/Collaboration> a owl:Class .
 
+<http://w3id.org/CEON/ontology/location/Location> a owl:Class .
+
+<http://w3id.org/CEON/ontology/location/hasLocation> a owl:ObjectProperty .
+
 <http://w3id.org/CEON/ontology/processODP/Process> a owl:Class .
 
 <http://w3id.org/CEON/ontology/resourceODP/Resource> a owl:Class .
@@ -329,23 +332,7 @@ actorODP:participationIn a owl:ObjectProperty .
 :OrganisationLocation a owl:Class ;
     rdfs:label "Organisation Location" ;
     rdfs:comment "Location of an organisation" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/location/hasCity> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/location/hasCountry> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/location/hasPostalCode> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/location/hasStreetAddress> ],
-        <http://w3id.org/CEON/ontology/location/Location> .
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/location/Location> .
 
 actorODP:participatingActor a owl:ObjectProperty .
 

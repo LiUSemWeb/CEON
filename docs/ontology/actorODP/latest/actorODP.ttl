@@ -29,11 +29,11 @@ vann:preferredNamespacePrefix a owl:AnnotationProperty .
 vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 : a owl:Ontology ;
-    dcterms:contributor "Huanyu Li",
+    dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
         "Robin Keskisärkkä" ;
-    dcterms:created "2023-03-17"^^xsd:date ;
-    dcterms:creator "Eva Blomqvist" ;
+    dcterms:created "2025-05-20"^^xsd:date ;
+    dcterms:creator "Huanyu Li" ;
     dcterms:description "A core ODP of the CEON ontology network, defining aspects of the actor concept." ;
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Actor ODP" ;
@@ -43,8 +43,8 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
         "Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE2-1, CE2-2, CE4-2, CE6-3, CE12-1, CE10-1, CE10-4, CE10-9, CVN-Actor-1,4,6,7, CVN-Competency-3, C11-1, C11-3, E1-6,6,6,9, E4-10" ;
     rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the actor concept." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/actorODP/0.3/> ;
-    owl:versionInfo 0.3 .
+    owl:versionIRI <http://w3id.org/CEON/ontology/actorODP/0.4/> ;
+    owl:versionInfo 0.4 .
 
 :actorType a owl:ObjectProperty ;
     rdfs:label "actor type" ;
@@ -82,6 +82,12 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:domain :Participation ;
     rdfs:range :Actor .
 
+:participatingInfrastructure a owl:ObjectProperty ;
+    rdfs:label "participating infrastructure" ;
+    rdfs:comment "Holds the value of the infrastructure involved in this participation relation." ;
+    rdfs:domain :Participation ;
+    rdfs:range :Infrastructure .
+
 :participatingObject a owl:ObjectProperty ;
     rdfs:label "participating object" ;
     rdfs:comment "Participating object in a resource participation. This is part of a resource participation that can be a directional relation, and the participating object is the end point of the relation." ;
@@ -100,12 +106,6 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:domain :ResourceParticipation ;
     rdfs:range resourceODP:Resource .
 
-:participating_infrastructure a owl:ObjectProperty ;
-    rdfs:label "participating infrastructure" ;
-    rdfs:comment "Holds the value of the infrastructure involved in this participation relation." ;
-    rdfs:domain :Participation ;
-    rdfs:range :Infrastructure .
-
 :participationEndTime a owl:DatatypeProperty ;
     rdfs:label "participation end time" ;
     rdfs:comment "The end of a time interval." ;
@@ -114,7 +114,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
             owl:unionOf ( xsd:date xsd:dateTime xsd:gMonthYear xsd:gYear ) ] .
 
 :participationIn a owl:ObjectProperty ;
-    rdfs:label "is a participation in" ;
+    rdfs:label "participation in" ;
     rdfs:comment "The collaboration or process that this participation relates to." ;
     rdfs:domain :CollaborationParticipation ;
     rdfs:range [ a owl:Class ;
@@ -166,7 +166,7 @@ cvn:Collaboration a owl:Class ;
 processODP:Process a owl:Class .
 
 :CollaborationParticipation a owl:Class ;
-    rdfs:label "Collaboration participation" ;
+    rdfs:label "Collaboration Participation" ;
     rdfs:comment "The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time." ;
     rdfs:subClassOf :Participation .
 
@@ -175,7 +175,7 @@ processODP:Process a owl:Class .
     rdfs:comment "An infrastructure refers to facilities, services, or systems for participations to function." .
 
 :ResourceParticipation a owl:Class ;
-    rdfs:label "Resource participation" ;
+    rdfs:label "Resource Participation" ;
     rdfs:comment "The generic relation representing the particpation of a resource in some relation. For example, it can be specialized to represent a reified version of an object or data property." ;
     rdfs:subClassOf :Participation .
 

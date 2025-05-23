@@ -20,27 +20,27 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 qudt-unit:EURO-PER-KiloM a qudt:Unit,
         owl:NamedIndividual ;
-    rdfs:label "Euro Per Kilometer"@en ;
+    rdfs:label "Euro Per Kilometer" ;
     dcterms:description "Euro Per Kilometer (€/km) is a unit used to represent the cost or value associated with transporting a resource."^^rdf:HTML ;
     qudt:symbol "€/km" .
 
 qudt-unit:EURO-PER-M2 a qudt:Unit,
         owl:NamedIndividual ;
-    rdfs:label "Euro Per Square Meter"@en ;
+    rdfs:label "Euro Per Square Meter" ;
     dcterms:description "Euro Per Square Meter (€/km) is a unit used to represent the cost or value of resource per square meter."^^rdf:HTML ;
     qudt:symbol "€/m²" .
 
 : a owl:Ontology ;
     dcterms:creator "Huanyu Li" ;
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
-    dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module"@en ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module" ;
     vann:preferredNamespacePrefix "quantity" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/quantity/" ;
-    rdfs:comment "This module defines base properties to describe quantitites with standardized units."@en ;
-    rdfs:seeAlso "https://github.com/LiUSemWeb/Materials-Design-Ontology" ;
+    rdfs:comment "This module defines base properties to describe quantitites with standardized units." ;
+    rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
     owl:imports <http://w3id.org/CEON/ontology/qudtunit/2.1/> ;
     owl:versionIRI <http://w3id.org/CEON/ontology/quantity/0.2/> ;
-    owl:versionInfo "0.2"@en .
+    owl:versionInfo "0.2" .
 
 :Cost a owl:NamedIndividual .
 
@@ -76,34 +76,40 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
 
 :hasMaximalValueIncludedOfInterval a owl:ObjectProperty ;
     rdfs:label "has maximal value included of interval" ;
+    rdfs:comment "represents the maximum value (included) of an interval" ;
     rdfs:domain :QuantityInterval ;
     rdfs:range qudt:QuantityValue ;
     rdfs:subPropertyOf qudt:quantityValue .
 
 :hasMaximalValueNotIncludedOfInterval a owl:ObjectProperty ;
     rdfs:label "has maximal value not included of interval" ;
+    rdfs:comment "represents the maximum value (not included) of an interval" ;
     rdfs:domain :QuantityInterval ;
     rdfs:range qudt:QuantityValue ;
     rdfs:subPropertyOf qudt:quantityValue .
 
 :hasMinimalValueIncludedOfInterval a owl:ObjectProperty ;
     rdfs:label "has minimal value included of interval" ;
+    rdfs:comment "represents the minimal value (included) of an interval" ;
     rdfs:domain :QuantityInterval ;
     rdfs:range qudt:QuantityValue ;
     rdfs:subPropertyOf qudt:quantityValue .
 
 :hasMinimalValueNotIncludedOfInterval a owl:ObjectProperty ;
     rdfs:label "has minimal value not included of interval" ;
+    rdfs:comment "represents the minimal value (not included) of an interval" ;
     rdfs:domain :QuantityInterval ;
     rdfs:range qudt:QuantityValue ;
     rdfs:subPropertyOf qudt:quantityValue .
 
 :hasPrice a owl:ObjectProperty ;
     rdfs:label "has price" ;
+    rdfs:comment "represents that sth has a specific cost" ;
     rdfs:subPropertyOf qudt:quantityValue .
 
 :hasRecyclingCost a owl:ObjectProperty ;
     rdfs:label "has recycling cost" ;
+    rdfs:comment "The cost of recycling, expressed as an amount of money with a currency unit." ;
     rdfs:subPropertyOf :hasProcessCost .
 
 :hasRefurbishmentCost a owl:ObjectProperty ;
@@ -128,10 +134,12 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
 
 :hasVolume a owl:ObjectProperty ;
     rdfs:label "has volume" ;
+    rdfs:comment "represents the volume of an object" ;
     rdfs:subPropertyOf qudt:quantityValue .
 
 :hasWeight a owl:ObjectProperty ;
     rdfs:label "has weight" ;
+    rdfs:comment "represents the weight of an object" ;
     rdfs:subPropertyOf qudt:quantityValue .
 
 :hasWidth a owl:ObjectProperty ;
@@ -140,18 +148,24 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
     rdfs:subPropertyOf :hasDimension .
 
 :numericalMaxValue a owl:DatatypeProperty ;
+    rdfs:label "numerical max value" ;
+    rdfs:comment "represents the maximal value of a quantity" ;
     rdfs:range xsd:double .
 
 :numericalMinValue a owl:DatatypeProperty ;
+    rdfs:label "numerical min value" ;
+    rdfs:comment "represents the minimal value of a quantity" ;
     rdfs:range xsd:double ;
     rdfs:subPropertyOf owl:topDataProperty .
 
 :objectValue a owl:ObjectProperty ;
+    rdfs:label "object value" ;
     rdfs:comment "objectValue is analogous to qudt:numericalValue" ;
-    rdfs:subPropertyOf owl:topObjectProperty .
+    rdfs:subPropertyOf qudt:hasQuantityKind .
 
 :QuantityInterval a owl:Class ;
-    rdfs:label "Quantity Interval" .
+    rdfs:label "Quantity Interval" ;
+    rdfs:comment "Quantity interval is an interval with two quantity values." .
 
 :hasDimension a owl:ObjectProperty ;
     rdfs:label "has dimension" ;
@@ -160,5 +174,6 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
 
 :hasProcessCost a owl:ObjectProperty ;
     rdfs:label "has process cost" ;
+    rdfs:comment "represents that a process can have a cost" ;
     rdfs:subPropertyOf qudt:quantityValue .
 
