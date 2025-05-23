@@ -254,12 +254,25 @@ def create_index_file():
     core = ["actor", "actorODP", "cvn",
             "material", "process", "processODP",
             "product", "resourceODP", "value", 
-            "energy", "quantity", "statement", "location"]
+            "energy", "quantity", "statement", "location", "datasheet", "full"]
+    
+    core_actor = ["actorODP", "actor"]
+    core_process = ["processODP", "process"]
+    core_resource = ["resourceODP", "material", "product", "energy"]
+    core_cvn = ["cvn", "value"]
+    core_full = ["full"]
+    core_supplementary = ["quantity", "statement", "location", "datasheet"]
     
     data = {
         "core": [],
         "other": [],
-        "demo": []
+        "demo": [],
+        "actor": [],
+        "process": [],
+        "resource": [],
+        "cvn": [],
+        "full": [],
+        "supplementary": []
     }
     for type in ["modules", "demo"]:
         ontologies = {}
@@ -290,6 +303,19 @@ def create_index_file():
             else:
                 if name in core:
                     data["core"].append(ontology)
+                    # New added code below
+                    if name in core_actor:
+                        data["actor"].append(ontology)
+                    if name in core_process:
+                        data["process"].append(ontology)
+                    if name in core_resource:
+                        data["resource"].append(ontology)
+                    if name in core_full:
+                        data["full"].append(ontology)
+                    if name in core_cvn:
+                        data["cvn"].append(ontology)
+                    if name in core_supplementary:
+                        data["supplementary"].append(ontology)
                 else:
                     data["other"].append(ontology)
     
