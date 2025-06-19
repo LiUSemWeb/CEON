@@ -75,6 +75,23 @@ odp:coversRequirements rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
+###  http://w3id.org/CEON/ontology/process/affectObject
+:affectObject rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf processODP:isSettingFor ;
+              rdfs:domain :Transition ;
+              rdfs:comment "A certain transition may affect objects, e.g. material that changes its state from one situation to another." ;
+              rdfs:label "affect object" .
+
+
+###  http://w3id.org/CEON/ontology/process/duringTime
+:duringTime rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf processODP:isSettingFor ;
+            rdfs:domain :Transition ;
+            rdfs:range processODP:TimeInterval ;
+            rdfs:comment "The time interval during which a transition takes place." ;
+            rdfs:label "during time" .
+
+
 ###  http://w3id.org/CEON/ontology/process/needsEnergy
 :needsEnergy rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf processODP:hasInput ;
@@ -128,14 +145,14 @@ processODP:hasOutput rdf:type owl:ObjectProperty .
 
 ###  http://w3id.org/CEON/ontology/process/AssemblingProcess
 :AssemblingProcess rdf:type owl:Class ;
-                   rdfs:subClassOf processODP:TransformationProcess ;
+                   rdfs:subClassOf :TransformationProcess ;
                    rdfs:comment "A process of assembling." ;
                    rdfs:label "Assembling Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/BuyResourceProcess
 :BuyResourceProcess rdf:type owl:Class ;
-                    rdfs:subClassOf processODP:TransformationProcess ;
+                    rdfs:subClassOf processODP:Process ;
                     rdfs:comment "A process of buying a resource." ;
                     rdfs:label "Buy Resource Process" .
 
@@ -156,153 +173,164 @@ processODP:hasOutput rdf:type owl:ObjectProperty .
 
 ###  http://w3id.org/CEON/ontology/process/ChangeResourceProcess
 :ChangeResourceProcess rdf:type owl:Class ;
-                       rdfs:subClassOf processODP:TransformationProcess ;
+                       rdfs:subClassOf :TransformationProcess ;
                        rdfs:comment "A process of a changing resource." ;
                        rdfs:label "Change Resource Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/ContactProcess
 :ContactProcess rdf:type owl:Class ;
-                rdfs:subClassOf processODP:TransformationProcess ;
+                rdfs:subClassOf processODP:Process ;
                 rdfs:comment "A contact process." ;
                 rdfs:label "Contact Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/DeconstructionProcess
 :DeconstructionProcess rdf:type owl:Class ;
-                       rdfs:subClassOf processODP:TransformationProcess ;
+                       rdfs:subClassOf :TransformationProcess ;
                        rdfs:comment "A process of deconstruction." ;
                        rdfs:label "Deconstruction Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/DisassemblingProcess
 :DisassemblingProcess rdf:type owl:Class ;
-                      rdfs:subClassOf processODP:TransformationProcess ;
+                      rdfs:subClassOf :TransformationProcess ;
                       rdfs:comment "A process of disassembling." ;
                       rdfs:label "Disassembling Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/DismantleProcess
 :DismantleProcess rdf:type owl:Class ;
-                  rdfs:subClassOf processODP:TransformationProcess ;
+                  rdfs:subClassOf :TransformationProcess ;
                   rdfs:comment "A process of dismantling." ;
                   rdfs:label "Dismantle Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/EnsureClaimProcess
 :EnsureClaimProcess rdf:type owl:Class ;
-                    rdfs:subClassOf processODP:TransformationProcess ;
+                    rdfs:subClassOf processODP:Process ;
                     rdfs:comment "A process of ensuring a claim." ;
                     rdfs:label "Ensure Claim Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/IssuingCertificateProcess
 :IssuingCertificateProcess rdf:type owl:Class ;
-                           rdfs:subClassOf processODP:TransformationProcess ;
+                           rdfs:subClassOf :TransformationProcess ;
                            rdfs:comment "A process of issuing a certificate." ;
                            rdfs:label "Issuing Certificate Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/ManufacturingProcess
 :ManufacturingProcess rdf:type owl:Class ;
-                      rdfs:subClassOf processODP:TransformationProcess ;
+                      rdfs:subClassOf :TransformationProcess ;
                       rdfs:comment "A process of manufacturing." ;
                       rdfs:label "Manufacturing Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/OffsetProcess
 :OffsetProcess rdf:type owl:Class ;
-               rdfs:subClassOf processODP:TransformationProcess ;
+               rdfs:subClassOf :TransformationProcess ;
                rdfs:comment "A process of offsetting." ;
                rdfs:label "Offset Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/ProductionProcess
 :ProductionProcess rdf:type owl:Class ;
-                   rdfs:subClassOf processODP:TransformationProcess ;
+                   rdfs:subClassOf :TransformationProcess ;
                    rdfs:comment "A process of production." ;
                    rdfs:label "Production Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/RecycleProcess
 :RecycleProcess rdf:type owl:Class ;
-                rdfs:subClassOf processODP:TransformationProcess ;
+                rdfs:subClassOf :TransformationProcess ;
                 rdfs:comment "A process of recycling." ;
                 rdfs:label "Recycle Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/RefurbishmentProcess
 :RefurbishmentProcess rdf:type owl:Class ;
-                      rdfs:subClassOf processODP:TransformationProcess ;
+                      rdfs:subClassOf :TransformationProcess ;
                       rdfs:comment "A process of refurbishment." ;
                       rdfs:label "Refurbishment Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/RemoveProcess
 :RemoveProcess rdf:type owl:Class ;
-               rdfs:subClassOf processODP:TransformationProcess ;
+               rdfs:subClassOf processODP:Process ;
                rdfs:comment "A process of removing." ;
                rdfs:label "Remove Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/RemoveResourceProcess
 :RemoveResourceProcess rdf:type owl:Class ;
-                       rdfs:subClassOf processODP:TransformationProcess ;
+                       rdfs:subClassOf :TransformationProcess ;
                        rdfs:comment "A process of removing a resource." ;
                        rdfs:label "Remove Resource Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/RepairProcess
 :RepairProcess rdf:type owl:Class ;
-               rdfs:subClassOf processODP:TransformationProcess ;
+               rdfs:subClassOf :TransformationProcess ;
                rdfs:comment "A process of repairing." ;
                rdfs:label "Repair Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/ResellProcess
 :ResellProcess rdf:type owl:Class ;
-               rdfs:subClassOf processODP:TransformationProcess ;
+               rdfs:subClassOf processODP:Process ;
                rdfs:comment "A process of reselling." ;
                rdfs:label "Resell Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/ReuseProcess
 :ReuseProcess rdf:type owl:Class ;
-              rdfs:subClassOf processODP:TransformationProcess ;
+              rdfs:subClassOf processODP:Process ;
               rdfs:comment "A process of reusing." ;
               rdfs:label "Reuse Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/SellResourceProcess
 :SellResourceProcess rdf:type owl:Class ;
-                     rdfs:subClassOf processODP:TransformationProcess ;
+                     rdfs:subClassOf processODP:Process ;
                      rdfs:comment "A process of selling a resource." ;
                      rdfs:label "Sell Resource Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/ServiceProcess
 :ServiceProcess rdf:type owl:Class ;
-                rdfs:subClassOf processODP:TransformationProcess ;
+                rdfs:subClassOf :TransformationProcess ;
                 rdfs:comment "A process of servicing." ;
                 rdfs:label "Service Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/ShareResourceProcess
 :ShareResourceProcess rdf:type owl:Class ;
-                      rdfs:subClassOf processODP:TransformationProcess ;
+                      rdfs:subClassOf processODP:Process ;
                       rdfs:comment "A process of sharing a resource." ;
                       rdfs:label "Share Resource Process" .
 
 
 ###  http://w3id.org/CEON/ontology/process/TakeBackProcess
 :TakeBackProcess rdf:type owl:Class ;
-                 rdfs:subClassOf processODP:TransformationProcess ;
+                 rdfs:subClassOf processODP:Process ;
                  rdfs:comment "A process of taking back." ;
                  rdfs:label "Take Back Process" .
 
 
-###  http://w3id.org/CEON/ontology/processODP/TransformationProcess
-processODP:TransformationProcess rdf:type owl:Class .
+###  http://w3id.org/CEON/ontology/process/TransformationProcess
+:TransformationProcess rdf:type owl:Class ;
+                       rdfs:subClassOf processODP:Process ;
+                       rdfs:comment "A process that transforms some situation into another situation, i.e. changes the state of affairs of some actor, resource etc." ;
+                       rdfs:label "Transformation Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/Transition
+:Transition rdf:type owl:Class ;
+            rdfs:subClassOf processODP:Situation ;
+            rdfs:comment "A transition is a situation that creates a context for two additional different Situations, one Process, and at least one Object: one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions, in which at least one Object is situated. Finally, one or more time interval(s) may position the situations and the transitional event in time, and we may include the event that triggered the transition as well." ;
+            rdfs:label "Transition" .
+
 
 
 ###  http://w3id.org/CEON/ontology/resourceODP/Resource
