@@ -117,12 +117,46 @@
 
 ###  http://w3id.org/CEON/ontology/processODP/Event
 :Event rdf:type owl:Class ;
+       rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hasInput ;
+                                                owl:someValuesFrom owl:Thing
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hasOutput ;
+                                                owl:someValuesFrom owl:Thing
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPart ;
+                         owl:allValuesFrom :Event
+                       ] ;
        rdfs:comment "Something that happens within a given context or (short) timeframe." ;
        rdfs:label "Event".
 
 
 ###  http://w3id.org/CEON/ontology/processODP/Process
 :Process rdf:type owl:Class ;
+         rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hasInput ;
+                                                  owl:someValuesFrom owl:Thing
+                                                ]
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hasOutput ;
+                                                  owl:someValuesFrom owl:Thing
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasPart ;
+                           owl:allValuesFrom [ rdf:type owl:Class ;
+                                               owl:unionOf ( :Event
+                                                             :Process
+                                                           )
+                                             ]
+                         ] ;
          rdfs:comment "Something that takes place over a (longer) period of time and changes some state of affairs."@en ;
          rdfs:label "Process" .
 
