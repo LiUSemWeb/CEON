@@ -252,12 +252,12 @@ def create_index_file():
     index_file = "docs/index.html"
     
     core = ["actor", "actorODP", "cvn",
-            "material", "process", "processODP",
+            "material", "process", "processODP", "plan",
             "product", "resourceODP", "value", 
             "energy", "quantity", "statement", "location", "datasheet", "full"]
     
     core_actor = ["actorODP", "actor"]
-    core_process = ["processODP", "process"]
+    core_process = ["processODP", "process", "plan"]
     core_resource = ["resourceODP", "material", "product", "energy"]
     core_cvn = ["cvn", "value"]
     core_full = ["full"]
