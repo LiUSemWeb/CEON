@@ -16,16 +16,19 @@
                                         dcterms:contributor "Eva Blomqvist" ,
                                                             "Mikael Lindecrantz" ,
                                                             "Robin Keskisärkkä" ;
-                                        dcterms:created "2024-11-13" ;
+                                        dcterms:created "2024-11-13"^^xsd:date ;
                                         dcterms:creator "Huanyu Li" ;
                                         dcterms:description "The Actor module of CEON (Circular Economy Ontology Network)." ;
+                                        dcterms:issued "2025-06-30"^^xsd:date ;
                                         dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                        dcterms:publisher "Onto-DESIDE" ;
                                         dcterms:title "Circular Economy Ontology Network (CEON) - Actor Module" ;
-                                        vann:preferredNamespacePrefix "actor" ;
+                                        vann:preferredNamespacePrefix "ceon-actor" ;
                                         vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/actor/" ;
                                         odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: C0-1, C0-2, C3-4, T3-4" ,
                                                                "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: C0-1, C0-2, C3-4, T3-4" ;
                                         rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+                                        owl:priorVersion 0.3 ;
                                         owl:versionInfo 0.4 .
 
 #################################################################
@@ -48,8 +51,16 @@ dcterms:creator rdf:type owl:AnnotationProperty .
 dcterms:description rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/terms/license
 dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/title
@@ -354,7 +365,17 @@ actorODP:participationIn rdf:type owl:ObjectProperty .
 
 ###  http://w3id.org/CEON/ontology/actor/RepairingResource
 :RepairingResource rdf:type owl:Class ;
-                   rdfs:subClassOf actorODP:ResourceRelation .
+                   owl:equivalentClass [ owl:intersectionOf ( actorODP:ResourceRelation
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty actorODP:participantRole ;
+                                                                owl:hasValue :repairer
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                   rdfs:subClassOf actorODP:ResourceRelation ;
+                   rdfs:comment "The relation where the role of the actor is the repairer of a certain resource." ;
+                   rdfs:label "Repairing resource" .
 
 
 ###  http://w3id.org/CEON/ontology/actor/ResellingResource
@@ -504,11 +525,9 @@ actorODP:Role rdf:type owl:Class .
 
 ###  http://w3id.org/CEON/ontology/cvn/CVN
 <http://w3id.org/CEON/ontology/cvn/CVN> rdf:type owl:Class ;
-                                        rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collaboration> .
-
-
-###  http://w3id.org/CEON/ontology/cvn/Collaboration
-<http://w3id.org/CEON/ontology/cvn/Collaboration> rdf:type owl:Class .
+                                        rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collaboration> ;
+                                        rdfs:comment "Circular Value Network" ;
+                                        rdfs:label "CVN" .
 
 
 ###  http://w3id.org/CEON/ontology/location/Location
@@ -575,6 +594,11 @@ actorODP:Role rdf:type owl:Class .
 ###  http://w3id.org/CEON/ontology/actor/recycler
 :recycler rdf:type owl:NamedIndividual ,
                    :ActorCVNRole .
+
+
+###  http://w3id.org/CEON/ontology/actor/repairer
+:repairer rdf:type owl:NamedIndividual ,
+                   :ActorResourceRole .
 
 
 ###  http://w3id.org/CEON/ontology/actor/reseller

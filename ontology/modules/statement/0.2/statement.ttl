@@ -15,18 +15,29 @@
                                                         <http://w3id.org/CEON/ontology/quantity/0.2/> ,
                                                         <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
                                             dcterms:contributor "Eva Blomqvist" ;
-                                            dcterms:created "2025-03-23" ;
+                                            dcterms:created "2025-03-23"^^xsd:date ;
                                             dcterms:creator "Huanyu Li" ;
                                             dcterms:description "A module to represent statements of CEON resources." ;
+                                            dcterms:issued "2025-06-30"^^xsd:date ;
                                             dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                            dcterms:publisher "Onto-DESIDE" ;
                                             dcterms:title "Circular Economy Ontology Network (CEON) - Statement Module" ;
-                                            vann:preferredNamespacePrefix "statement" ;
+                                            vann:preferredNamespacePrefix "ceon-statement" ;
                                             vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/statement/" ;
-                                            owl:versionInfo "0.2" .
+                                            owl:priorVersion 0.1 ;
+                                            owl:versionInfo 0.2 .
 
 #################################################################
 #    Annotation properties
 #################################################################
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:AnnotationProperty .
+
 
 ###  http://qudt.org/schema/qudt/hasUnit
 <http://qudt.org/schema/qudt/hasUnit> rdf:type owl:AnnotationProperty .
@@ -59,6 +70,7 @@
 ###  http://w3id.org/CEON/ontology/statement/hasAvailability
 :hasAvailability rdf:type owl:ObjectProperty ;
                  rdfs:range :Availability ;
+                 rdfs:comment "hasAvailability represents the abailability of some resource or information." ;
                  rdfs:label "has availability" .
 
 
@@ -264,18 +276,21 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
 
 ###  http://w3id.org/CEON/ontology/statement/Availability
 :Availability rdf:type owl:Class ;
+              rdfs:comment "Represent the abailability of some resource or information." ;
               rdfs:label "Availability" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/DemountingStatement
 :DemountingStatement rdf:type owl:Class ;
                      rdfs:subClassOf :PCDSStatement ;
+                     rdfs:comment "Demounting Statement in PCDS." ;
                      rdfs:label "Demounting Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/DisassemblyStatement
 :DisassemblyStatement rdf:type owl:Class ;
                       rdfs:subClassOf :PCDSStatement ;
+                      rdfs:comment "Disassembly Statement in PCDS." ;
                       rdfs:label "Disassembly Statement" .
 
 
@@ -308,6 +323,7 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
 ###  http://w3id.org/CEON/ontology/statement/DismantlingStatement
 :DismantlingStatement rdf:type owl:Class ;
                       rdfs:subClassOf :PCDSStatement ;
+                      rdfs:comment "Dismantling Statement in PCDS." ;
                       rdfs:label "Dismantling Statement" .
 
 
@@ -377,7 +393,8 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
 ###  http://w3id.org/CEON/ontology/statement/MFOfDismantlableComponentForReuseRecycledAvailabilityStatement
 :MFOfDismantlableComponentForReuseRecycledAvailabilityStatement rdf:type owl:Class ;
                                                                 rdfs:subClassOf :DismantlingStatement ;
-                                                                :PCDSmapping "6.2.1.10" .
+                                                                :PCDSmapping "6.2.1.10" ;
+                                                                rdfs:label "Mass Fraction Of Dismantlable Component For Reuse Recycled Availability Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/MFOfDismantlableComponentForReuseRecycledStatement
@@ -418,7 +435,8 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
                                                                                     ]
                                                                                   )
                                                                     ] ;
-                                                    :PCDSmapping "6.2.1.02, 6.2.1.03, 6.2.1.04, 6.2.1.05, 6.2.1.06, 6.2.1.07, 6.2.1.08, 6.2.1.09" .
+                                                    :PCDSmapping "6.2.1.02, 6.2.1.03, 6.2.1.04, 6.2.1.05, 6.2.1.06, 6.2.1.07, 6.2.1.08, 6.2.1.09" ;
+                                                    rdfs:label "Mass Fraction Of Dismantlable Component For Reuse Recycled Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/MFOfPostConsumerRecycledMaterialContentAvailabilityStatement
@@ -522,7 +540,8 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
 ###  http://w3id.org/CEON/ontology/statement/MFOfProductDesignedCleanlyRemovedFromFixedAssemblyAvailabilityStatement
 :MFOfProductDesignedCleanlyRemovedFromFixedAssemblyAvailabilityStatement rdf:type owl:Class ;
                                                                          rdfs:subClassOf :DemountingStatement ;
-                                                                         :PCDSmapping "5.4.1.14" .
+                                                                         :PCDSmapping "5.4.1.14" ;
+                                                                         rdfs:label "Mass Fraction Of Product Designed Cleanly Removed From Fixed Assembly Availability Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/MFOfProductDesignedCleanlyRemovedFromFixedAssemblyStatement
@@ -563,13 +582,15 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
                                                                                              ]
                                                                                            )
                                                                              ] ;
-                                                             :PCDSmapping "5.4.1.06, 5.4.1.07, 5.4.1.08, 5.4.1.09, 5.4.1.10, 5.4.1.11, 5.4.1.12, 5.4.1.13" .
+                                                             :PCDSmapping "5.4.1.06, 5.4.1.07, 5.4.1.08, 5.4.1.09, 5.4.1.10, 5.4.1.11, 5.4.1.12, 5.4.1.13" ;
+                                                             rdfs:label "Mass Fraction Of Product Designed Cleanly Removed From Fixed Assembly Statement" .
 
 
-###  http://w3id.org/CEON/ontology/statement/MFOfProductDesignedCleanlyRemovedFromProductAssemblyAvailabilittyStatement
-:MFOfProductDesignedCleanlyRemovedFromProductAssemblyAvailabilittyStatement rdf:type owl:Class ;
-                                                                            rdfs:subClassOf :DisassemblyStatement ;
-                                                                            :PCDSmapping "5.5.1.09" .
+###  http://w3id.org/CEON/ontology/statement/MFOfProductDesignedCleanlyRemovedFromProductAssemblyAvailabilityStatement
+:MFOfProductDesignedCleanlyRemovedFromProductAssemblyAvailabilityStatement rdf:type owl:Class ;
+                                                                           rdfs:subClassOf :DisassemblyStatement ;
+                                                                           :PCDSmapping "5.5.1.09" ;
+                                                                           rdfs:label "Mass Fraction Of Product Designed Cleanly Removed From Product Assembly Availability Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/MFOfProductDesignedCleanlyRemovedFromProductAssemblyStatement
@@ -610,13 +631,15 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
                                                                                                ]
                                                                                              )
                                                                                ] ;
-                                                               :PCDSmapping "5.5.1.02, 5.5.1.03, 5.5.1.04, 5.5.1.05, 5.5.1.06, 5.5.1.07, 5.5.1.08, 5.5.1.09" .
+                                                               :PCDSmapping "5.5.1.02, 5.5.1.03, 5.5.1.04, 5.5.1.05, 5.5.1.06, 5.5.1.07, 5.5.1.08, 5.5.1.09" ;
+                                                               rdfs:label "Mass Fraction Of Product Designed Cleanly Removed From Product Assembly Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/MFOfProductRecyclingAtSimilarLevelAvailabilityStatement
 :MFOfProductRecyclingAtSimilarLevelAvailabilityStatement rdf:type owl:Class ;
                                                          rdfs:subClassOf :RecyclingStatement ;
-                                                         :PCDSmapping "6.4.1.10" .
+                                                         :PCDSmapping "6.4.1.10" ;
+                                                         rdfs:label "Mass Fraction Of Product Recycling At Similar Level Availability Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/MFOfProductRecyclingAtSimilarLevelStatement
@@ -657,13 +680,15 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
                                                                              ]
                                                                            )
                                                              ] ;
-                                             :PCDSmapping "6.4.1.02, 6.4.1.03, 6.4.1.04, 6.4.1.05, 6.4.1.06, 6.4.1.07, 6.4.1.08, 6.4.1.09" .
+                                             :PCDSmapping "6.4.1.02, 6.4.1.03, 6.4.1.04, 6.4.1.05, 6.4.1.06, 6.4.1.07, 6.4.1.08, 6.4.1.09" ;
+                                             rdfs:label "Mass Fraction Of Product Recycling At Similar Level Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/MFOfProductReleasedToEnvironmentAvailablityStatement
 :MFOfProductReleasedToEnvironmentAvailablityStatement rdf:type owl:Class ;
                                                       rdfs:subClassOf :ReleasedIntoEnvironmentStatement ;
-                                                      :PCDSmapping "6.1.0.09" .
+                                                      :PCDSmapping "6.1.0.09" ;
+                                                      rdfs:label "Mass Fraction Of Product Released To Environment Availablity Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/MFOfProductReleasedToEnvironmentStatement
@@ -704,7 +729,8 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
                                                                            ]
                                                                          )
                                                            ] ;
-                                           :PCDSmapping "6.1.0.01, 6.1.0.02, 6.1.0.03, 6.1.0.04, 6.1.0.05, 6.1.0.06, 6.1.0.07, 6.1.0.08" .
+                                           :PCDSmapping "6.1.0.01, 6.1.0.02, 6.1.0.03, 6.1.0.04, 6.1.0.05, 6.1.0.06, 6.1.0.07, 6.1.0.08" ;
+                                           rdfs:label "Mass Fraction Of Product Released To Environment Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/MFOfRecycledMaterialContentAvailabilityStatement
@@ -906,6 +932,7 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
 ###  http://w3id.org/CEON/ontology/statement/PCDSStatement
 :PCDSStatement rdf:type owl:Class ;
                rdfs:subClassOf :Statement ;
+               rdfs:comment "PCDS statement is a statement that is based on PCDS template." ;
                rdfs:label "PCDS Statement" .
 
 
@@ -956,6 +983,7 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
 :ProductCompositionStatement rdf:type owl:Class ;
                              rdfs:subClassOf :PCDSStatement ;
                              :PCDSmapping "3.1.0.01-3.1.0.13, 3.1.1.01-3.1.1.02, 3.2.0.01-3.2.0.02" ;
+                             rdfs:comment "Product Composition Statement in PCDS." ;
                              rdfs:label "Product Composition Statement" .
 
 
@@ -969,30 +997,35 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
 ###  http://w3id.org/CEON/ontology/statement/RecycledMaterialStatement
 :RecycledMaterialStatement rdf:type owl:Class ;
                            rdfs:subClassOf :PCDSStatement ;
+                           rdfs:comment "Recycled Material Statement in PCDS." ;
                            rdfs:label "Recycled Material Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/RecyclingStatement
 :RecyclingStatement rdf:type owl:Class ;
                     rdfs:subClassOf :PCDSStatement ;
+                    rdfs:comment "Recycling Statement in PCDS." ;
                     rdfs:label "Recycling Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/ReleasedIntoEnvironmentStatement
 :ReleasedIntoEnvironmentStatement rdf:type owl:Class ;
                                   rdfs:subClassOf :PCDSStatement ;
+                                  rdfs:comment "Released Into Environment Statement in PCDS." ;
                                   rdfs:label "Released Into Environment Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/RenewableEnergyStatement
 :RenewableEnergyStatement rdf:type owl:Class ;
                           rdfs:subClassOf :PCDSStatement ;
+                          rdfs:comment "Renewable Energy Statement in PCDS." ;
                           rdfs:label "Renewable Energy Statement" .
 
 
 ###  http://w3id.org/CEON/ontology/statement/ReusedContentStatement
 :ReusedContentStatement rdf:type owl:Class ;
                         rdfs:subClassOf :PCDSStatement ;
+                        rdfs:comment "Reused Content Statement in PCDS." ;
                         rdfs:label "Reused Content Statement" .
 
 
@@ -1006,6 +1039,7 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
 ###  http://w3id.org/CEON/ontology/statement/SustainablyProducedRenewableMaterialStatement
 :SustainablyProducedRenewableMaterialStatement rdf:type owl:Class ;
                                                rdfs:subClassOf :PCDSStatement ;
+                                               rdfs:comment "Sustainably Produced Renewable Material Statement in PCDS." ;
                                                rdfs:label "Sustainably Produced Renewable Material Statement" .
 
 
@@ -1115,6 +1149,7 @@ resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
 ###  http://w3id.org/CEON/ontology/statement/WaterReuseOrRecirculationStatement
 :WaterReuseOrRecirculationStatement rdf:type owl:Class ;
                                     rdfs:subClassOf :PCDSStatement ;
+                                    rdfs:comment "Water Reuse or Recirculation Statement in PCDS." ;
                                     rdfs:label "Water Reuse Or Recirculation Statement" .
 
 
