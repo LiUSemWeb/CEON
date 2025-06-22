@@ -94,6 +94,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 #################################################################
 
 
+
 ex:OutsoleManufacturer123 a actorODP:Actor;
   rdfs:label "OutsoleManufacturer123".
 ex:LacesManufacturer123 a actorODP:Actor;
@@ -106,8 +107,8 @@ ex:ShoeBrand123 a actorODP:Actor;
   rdfs:label "ShoeBrand123".
 ex:Supplier123 a  actorODP:Actor;
   rdfs:label "Supplier123".
-ex:sound_system_manufacotr_1 a actorODP:Actor;
-    rdfs:label "sound_system_manufactor".
+ex:sound_system_manufacturer_1 a actorODP:Actor;
+    rdfs:label "sound_system_manufacturer".
 
 ex:building_owner_1 a actorODP:Actor .
 
@@ -239,13 +240,13 @@ ex:speaker_1_REACH_compliance a product:REACHCompliance, statement:Statement;
 
 ex:repair_sound_system_1_rr a actor:RepairingResource ;
     actorODP:participantRole actor:repairer ;
-    actorODP:participantActor ex:sound_system_manufacotr_1 ;
+    actorODP:participantActor ex:sound_system_manufacturer_1 ;
     actorODP:participatingResource ex:sound_system_1 ;
     actor:hasProcessParticipation ex:repair_sound_system_1_pp .
 
 ex:repair_sound_system_1_pp a actor:ProcessParticipation;
     actorODP:participantRole actor:repairer ;
-    actorODP:participatingActor ex:sound_system_manufacotr_1 ;
+    actorODP:participatingActor ex:sound_system_manufacturer_1 ;
     actorODP:participationIn ex:repair_sound_system_1_process ;
     actor:hasResourceRelation ex:repair_sound_system_1_rr .
 
@@ -282,7 +283,7 @@ ex:dismantle_ce-company1-batch-321_pp a actorODP:ProcessParticipation;
     actorODP:participantRole actor:dismantler ;
     actorODP:participatingActor ex:Dismantler_7890 ;
     actorODP:participationIn ex:dismantle_ce-company1-batch-321_process ;
-    actor:hasResourceRelation actor:DismantlingResource ;
+    actor:hasResourceRelation ex:dismantle_ce-company1-batch-321_rr ;
     quantity:hasDismantlingCost [ a quantity:DismantlingCost, qudt:QuantityValue ; qudt:numericValue "150"^^xsd:double ; qudt:hasUnit unit:Euro ].
 
 ex:dismantle_ce-company1-batch-321_exec a plan:PlanExecution;
@@ -301,7 +302,7 @@ ex:recycle_ce-company1-batch-321_pp a actorODP:ProcessParticipation;
     actorODP:participantRole actor:recycler ;
     actorODP:participatingActor ex:Reclcyer_7890 ;
     actorODP:participationIn ex:recycle_ce-company1-batch-321_process ;
-    actor:hasResourceRelation actor:RecyclingResource ;
+    actor:hasResourceRelation recycle_ce-company1-batch-321_rr ;
     quantity:hasRecyclingCost [ a quantity:RecyclingCost, qudt:QuantityValue ; qudt:numericValue "100"^^xsd:double ; qudt:hasUnit unit:Euro ].
 
 ex:recycle_ce-company1-batch-321_exec a plan:PlanExecution;
@@ -310,10 +311,11 @@ ex:recycle_ce-company1-batch-321_exec a plan:PlanExecution;
 ex:recycle_ce-company1-batch-321_process a process:RecycleProcess ;
     processODP:hasInput ex:ce-company1-batch-321 .
 
-ex:recycle_ce-company1-batch-321 a actor:RecyclingResource ;
+ex:recycle_ce-company1-batch-321_rr a actor:RecyclingResource ;
     actorODP:participantRole actor:recycler ;
     actorODP:participantActor ex:Reclcyer_7890 ;
-    actorODP:participatingResource ex:ce-company1-batch-321 .
+    actorODP:participatingResource ex:ce-company1-batch-321 ;
+    actor:hasProcessParticipation ex:recycle_ce-company1-batch-321_pp .
 
 # A third party (construction_company123) is interested to buy two batches of doors
 # The building owner shares a price privately with construction_comapny123  via the OCP. 
