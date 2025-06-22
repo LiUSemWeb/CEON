@@ -16,7 +16,11 @@ dcterms:creator a owl:AnnotationProperty .
 
 dcterms:description a owl:AnnotationProperty .
 
+dcterms:issued a owl:AnnotationProperty .
+
 dcterms:license a owl:AnnotationProperty .
+
+dcterms:publisher a owl:AnnotationProperty .
 
 dcterms:title a owl:AnnotationProperty .
 
@@ -28,17 +32,20 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
         "Robin Keskisärkkä" ;
-    dcterms:created "2024-11-13" ;
+    dcterms:created "2024-11-13"^^xsd:date ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "The Actor module of CEON (Circular Economy Ontology Network)." ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:publisher "Onto-DESIDE" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Actor Module" ;
-    vann:preferredNamespacePrefix "actor" ;
+    vann:preferredNamespacePrefix "ceon-actor" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/actor/" ;
     odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: C0-1, C0-2, C3-4, T3-4",
         "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: C0-1, C0-2, C3-4, T3-4" ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/> ;
+    owl:priorVersion 0.3 ;
     owl:versionIRI <http://w3id.org/CEON/ontology/actor/0.4/> ;
     owl:versionInfo 0.4 .
 
@@ -132,7 +139,13 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
                         owl:onProperty actorODP:participantRole ] ) ] .
 
 :RepairingResource a owl:Class ;
-    rdfs:subClassOf actorODP:ResourceRelation .
+    rdfs:label "Repairing resource" ;
+    rdfs:comment "The relation where the role of the actor is the repairer of a certain resource." ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue :repairer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
 
 :ResellingResource a owl:Class ;
     rdfs:label "Reselling resource" ;
@@ -255,6 +268,9 @@ odp:coversRequirements a owl:AnnotationProperty .
 :provider a :ActorResourceRole,
         owl:NamedIndividual .
 
+:repairer a :ActorResourceRole,
+        owl:NamedIndividual .
+
 :reseller a :ActorCVNRole,
         :ActorResourceRole,
         owl:NamedIndividual .
@@ -282,9 +298,9 @@ actorODP:Participation a owl:Class .
 actorODP:participatingResource a owl:ObjectProperty .
 
 <http://w3id.org/CEON/ontology/cvn/CVN> a owl:Class ;
+    rdfs:label "CVN" ;
+    rdfs:comment "Circular Value Network" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/cvn/Collaboration> .
-
-<http://w3id.org/CEON/ontology/cvn/Collaboration> a owl:Class .
 
 <http://w3id.org/CEON/ontology/location/Location> a owl:Class .
 

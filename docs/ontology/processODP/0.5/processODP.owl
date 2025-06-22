@@ -7,40 +7,18 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/endTime">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/startTime">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/TimeInterval"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:comment>Represents the end time of a time interval.</rdfs:comment>
-    <rdfs:label>end time</rdfs:label>
+    <rdfs:comment>Represents the start time of a time interval.</rdfs:comment>
+    <rdfs:label>start time</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasInput">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasOutput">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-    <rdfs:comment>The inputs to this process event.</rdfs:comment>
-    <rdfs:label>has input</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <owl:versionIRI rdf:resource="http://w3id.org/CEON/ontology/processODP/0.5/"/>
-    <dcterms:contributor>Eva Blomqvist</dcterms:contributor>
-    <dcterms:contributor>Mikael Lindecrantz</dcterms:contributor>
-    <dcterms:contributor>Robin Keskisärkkä</dcterms:contributor>
-    <dcterms:created>2025-05-20</dcterms:created>
-    <dcterms:creator>Huanyu Li</dcterms:creator>
-    <dcterms:description>A core ODP of the CEON ontology network, defining aspects of the process concept.</dcterms:description>
-    <dcterms:license>https://creativecommons.org/licenses/by/4.0/</dcterms:license>
-    <dcterms:title>Circular Economy Ontology Network (CEON) - Process ODP</dcterms:title>
-    <vann:preferredNamespacePrefix>processODP</vann:preferredNamespacePrefix>
-    <vann:preferredNamespaceUri>http://w3id.org/CEON/ontology/processODP/</vann:preferredNamespaceUri>
-    <odp:coversRequirements>Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3,4,5, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6</odp:coversRequirements>
-    <odp:coversRequirements>Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE3-5, CE7-4, CE7-5, CE8-2, CE10-7, CE12-1, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6</odp:coversRequirements>
-    <rdfs:comment>A core ODP of the CEON ontology network, defining aspects of the process concept.</rdfs:comment>
-    <rdfs:seeAlso rdf:resource="https://github.com/LiUSemWeb/CEON"/>
-    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</owl:versionInfo>
+    <rdfs:comment>The output to this process event.</rdfs:comment>
+    <rdfs:label>has output</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/occursAtLocation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -49,6 +27,23 @@
     <rdfs:comment>The location in which something (e.g. an execution/transition) takes place, e.g. the factory location where something is manufactured.</rdfs:comment>
     <rdfs:label>occurs at location</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="n4538017708b04d4788dee5a74aa271dab1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/isSettingFor"/>
+    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasInput">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
+    <rdfs:comment>The inputs to this process event.</rdfs:comment>
+    <rdfs:label>has input</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/isSettingFor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
+    <rdfs:comment>The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state.</rdfs:comment>
+    <rdfs:label>is the setting for</rdfs:label>
+  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/duringTime">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/processODP/isSettingFor"/>
@@ -56,21 +51,38 @@
     <rdfs:comment>The time interval during which a transition takes place.</rdfs:comment>
     <rdfs:label>during time</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n687a5300f4f14dc6992c4a35a7ee4e35b1">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/isSettingFor"/>
-    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Situation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="n4538017708b04d4788dee5a74aa271dab1"/>
+    <rdfs:comment>A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time.</rdfs:comment>
+    <rdfs:label>Situation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:versionIRI rdf:resource="http://w3id.org/CEON/ontology/processODP/0.5/"/>
+    <dcterms:contributor>Eva Blomqvist</dcterms:contributor>
+    <dcterms:contributor>Mikael Lindecrantz</dcterms:contributor>
+    <dcterms:contributor>Robin Keskisärkkä</dcterms:contributor>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-20</dcterms:created>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-30</dcterms:issued>
+    <dcterms:publisher>Onto-DESIDE</dcterms:publisher>
+    <dcterms:creator>Huanyu Li</dcterms:creator>
+    <dcterms:description>A core ODP of the CEON ontology network, defining aspects of the process concept.</dcterms:description>
+    <dcterms:license>https://creativecommons.org/licenses/by/4.0/</dcterms:license>
+    <dcterms:title>Circular Economy Ontology Network (CEON) - Process ODP</dcterms:title>
+    <vann:preferredNamespacePrefix>ceon-processODP</vann:preferredNamespacePrefix>
+    <vann:preferredNamespaceUri>http://w3id.org/CEON/ontology/processODP/</vann:preferredNamespaceUri>
+    <odp:coversRequirements>Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3,4,5, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6</odp:coversRequirements>
+    <odp:coversRequirements>Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE3-5, CE7-4, CE7-5, CE8-2, CE10-7, CE12-1, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6</odp:coversRequirements>
+    <rdfs:comment>A core ODP of the CEON ontology network, defining aspects of the process concept.</rdfs:comment>
+    <rdfs:seeAlso rdf:resource="https://github.com/LiUSemWeb/CEON"/>
+    <owl:priorVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.4</owl:priorVersion>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/TimeInterval">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:comment>A temporal entity has a starting time and an ending time.</rdfs:comment>
     <rdfs:label>Time Interval</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasOutput">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-    <rdfs:comment>The output to this process event.</rdfs:comment>
-    <rdfs:label>has output</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Process">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -79,11 +91,8 @@
     <rdfs:label>Process</rdfs:label>
     <rdfs:seeAlso>https://ref.gs1.org/epcis/EPCISEvent</rdfs:seeAlso>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/isSettingFor">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
-    <rdfs:comment>The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state.</rdfs:comment>
-    <rdfs:label>is the setting for</rdfs:label>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/location/Location">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasPart">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -91,49 +100,16 @@
     <rdfs:comment>A plan or execution can consists of several parts, which are sub-plans (or execution steps).</rdfs:comment>
     <rdfs:label>has part</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/startTime">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/endTime">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/TimeInterval"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:comment>Represents the start time of a time interval.</rdfs:comment>
-    <rdfs:label>start time</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Situation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="n687a5300f4f14dc6992c4a35a7ee4e35b1"/>
-    <rdfs:comment>A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time.</rdfs:comment>
-    <rdfs:label>Situation</rdfs:label>
+    <rdfs:comment>Represents the end time of a time interval.</rdfs:comment>
+    <rdfs:label>end time</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Event">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:comment>Activities that take place within a given context or timeframe.</rdfs:comment>
     <rdfs:label>Event</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/location/Location">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
 </rdf:RDF>
