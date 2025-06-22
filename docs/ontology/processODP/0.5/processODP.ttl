@@ -29,13 +29,12 @@
 
 :Event a owl:Class ;
     rdfs:label "Event" ;
-    rdfs:comment "Activities that take place within a given context or timeframe." .
+    rdfs:comment "Something that happens within a given context or (short) timeframe." .
 
 :duringTime a owl:ObjectProperty ;
     rdfs:label "during time" ;
-    rdfs:comment "The time interval during which a transition takes place." ;
-    rdfs:range :TimeInterval ;
-    rdfs:subPropertyOf :isSettingFor .
+    rdfs:comment "The time interval during which something, e.g. a process or event, takes place." ;
+    rdfs:range :TimeInterval .
 
 :endTime a owl:DatatypeProperty ;
     rdfs:label "end time" ;
@@ -45,22 +44,22 @@
 
 :hasInput a owl:ObjectProperty ;
     rdfs:label "has input" ;
-    rdfs:comment "The inputs to this process event." ;
+    rdfs:comment "The inputs to a process or event." ;
     rdfs:domain :Process .
 
 :hasOutput a owl:ObjectProperty ;
     rdfs:label "has output" ;
-    rdfs:comment "The output to this process event." ;
+    rdfs:comment "The output of a process or event." ;
     rdfs:domain :Process .
 
 :hasPart a owl:ObjectProperty,
         owl:TransitiveProperty ;
     rdfs:label "has part" ;
-    rdfs:comment "A plan or execution can consists of several parts, which are sub-plans (or execution steps)." .
+    rdfs:comment "A process or event can consist of several parts, which are sub-processes (e.g. steps) or events." .
 
 :occursAtLocation a owl:ObjectProperty ;
     rdfs:label "occurs at location" ;
-    rdfs:comment "The location in which something (e.g. an execution/transition) takes place, e.g. the factory location where something is manufactured." ;
+    rdfs:comment "The location in which something (e.g. an event or process) takes place, e.g. the factory location where something is manufactured." ;
     rdfs:range <http://w3id.org/CEON/ontology/location/Location> ;
     rdfs:subPropertyOf :isSettingFor .
 
@@ -81,16 +80,14 @@
 
 :Process a owl:Class ;
     rdfs:label "Process" ;
-    rdfs:comment "Set of interrelated or interacting activities that transforms inputs into outputs."@en ;
-    rdfs:isDefinedBy "ISO 59004:2024  - 3.5.5 process" ;
-    rdfs:seeAlso "https://ref.gs1.org/epcis/EPCISEvent" .
-
-:TimeInterval a owl:Class ;
-    rdfs:label "Time Interval" ;
-    rdfs:comment "A temporal entity has a starting time and an ending time." .
+    rdfs:comment "Something that takes place over a (longer) period of time and changes some state of affairs."@en .
 
 :isSettingFor a owl:ObjectProperty ;
     rdfs:label "is the setting for" ;
     rdfs:comment "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state." ;
     rdfs:domain :Situation .
+
+:TimeInterval a owl:Class ;
+    rdfs:label "Time Interval" ;
+    rdfs:comment "A temporal entity has a starting time and an ending time." .
 

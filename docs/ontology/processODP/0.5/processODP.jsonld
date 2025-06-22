@@ -1,26 +1,5 @@
 [
   {
-    "@id": "http://w3id.org/CEON/ontology/processODP/hasInput",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The inputs to this process event."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Process"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has input"
-      }
-    ]
-  },
-  {
     "@id": "http://w3id.org/CEON/ontology/processODP/startTime",
     "@type": [
       "http://www.w3.org/2002/07/owl#DatatypeProperty"
@@ -47,6 +26,50 @@
     ]
   },
   {
+    "@id": "http://w3id.org/CEON/ontology/processODP/hasPart",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A process or event can consist of several parts, which are sub-processes (e.g. steps) or events."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has part"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "is the setting for"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/location/Location",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/processODP/Situation",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -63,12 +86,12 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:n0cc0898d25714bf5bcd6dc70bb017667b1"
+        "@id": "_:nd46215ea6e374a78a77a46356dadbfc2b1"
       }
     ]
   },
   {
-    "@id": "_:n0cc0898d25714bf5bcd6dc70bb017667b1",
+    "@id": "_:nd46215ea6e374a78a77a46356dadbfc2b1",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -84,40 +107,13 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/processODP/Process",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "Set of interrelated or interacting activities that transforms inputs into outputs."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@value": "ISO 59004:2024  - 3.5.5 process"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Process"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#seeAlso": [
-      {
-        "@value": "https://ref.gs1.org/epcis/EPCISEvent"
-      }
-    ]
-  },
-  {
     "@id": "http://w3id.org/CEON/ontology/processODP/hasOutput",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The output to this process event."
+        "@value": "The output of a process or event."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
@@ -128,23 +124,6 @@
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
         "@value": "has output"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/hasPart",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "http://www.w3.org/2002/07/owl#TransitiveProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "A plan or execution can consists of several parts, which are sub-plans (or execution steps)."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has part"
       }
     ]
   },
@@ -248,32 +227,6 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/processODP/occursAtLocation",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The location in which something (e.g. an execution/transition) takes place, e.g. the factory location where something is manufactured."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "occurs at location"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/location/Location"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
-      }
-    ]
-  },
-  {
     "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -290,71 +243,19 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/processODP/Event",
+    "@id": "http://w3id.org/CEON/ontology/processODP/Process",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "Activities that take place within a given context or timeframe."
+        "@language": "en",
+        "@value": "Something that takes place over a (longer) period of time and changes some state of affairs."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Event"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/location/Location",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/duringTime",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The time interval during which a transition takes place."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "during time"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "is the setting for"
+        "@value": "Process"
       }
     ]
   },
@@ -381,6 +282,90 @@
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
         "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/occursAtLocation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The location in which something (e.g. an event or process) takes place, e.g. the factory location where something is manufactured."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "occurs at location"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/location/Location"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/duringTime",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The time interval during which something, e.g. a process or event, takes place."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "during time"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/hasInput",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The inputs to a process or event."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/Process"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has input"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/Event",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Something that happens within a given context or (short) timeframe."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Event"
       }
     ]
   }

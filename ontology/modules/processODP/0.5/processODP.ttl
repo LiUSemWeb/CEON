@@ -46,30 +46,29 @@
 
 ###  http://w3id.org/CEON/ontology/processODP/duringTime
 :duringTime rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :isSettingFor ;
             rdfs:range :TimeInterval ;
-            rdfs:comment "The time interval during which a transition takes place." ;
+            rdfs:comment "The time interval during which something, e.g. a process or event, takes place." ;
             rdfs:label "during time" .
 
 
 ###  http://w3id.org/CEON/ontology/processODP/hasInput
 :hasInput rdf:type owl:ObjectProperty ;
           rdfs:domain :Process ;
-          rdfs:comment "The inputs to this process event." ;
+          rdfs:comment "The inputs to a process or event." ;
           rdfs:label "has input" .
 
 
 ###  http://w3id.org/CEON/ontology/processODP/hasOutput
 :hasOutput rdf:type owl:ObjectProperty ;
            rdfs:domain :Process ;
-           rdfs:comment "The output to this process event." ;
+           rdfs:comment "The output of a process or event." ;
            rdfs:label "has output" .
 
 
 ###  http://w3id.org/CEON/ontology/processODP/hasPart
 :hasPart rdf:type owl:ObjectProperty ,
                   owl:TransitiveProperty ;
-         rdfs:comment "A plan or execution can consists of several parts, which are sub-plans (or execution steps)." ;
+         rdfs:comment "A process or event can consist of several parts, which are sub-processes (e.g. steps) or events." ;
          rdfs:label "has part" .
 
 
@@ -84,7 +83,7 @@
 :occursAtLocation rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf :isSettingFor ;
                   rdfs:range <http://w3id.org/CEON/ontology/location/Location> ;
-                  rdfs:comment "The location in which something (e.g. an execution/transition) takes place, e.g. the factory location where something is manufactured." ;
+                  rdfs:comment "The location in which something (e.g. an event or process) takes place, e.g. the factory location where something is manufactured." ;
                   rdfs:label "occurs at location" .
 
 
@@ -118,16 +117,14 @@
 
 ###  http://w3id.org/CEON/ontology/processODP/Event
 :Event rdf:type owl:Class ;
-       rdfs:comment "Activities that take place within a given context or timeframe." ;
-       rdfs:label "Event" .
+       rdfs:comment "Something that happens within a given context or (short) timeframe." ;
+       rdfs:label "Event".
 
 
 ###  http://w3id.org/CEON/ontology/processODP/Process
 :Process rdf:type owl:Class ;
-         rdfs:comment "Set of interrelated or interacting activities that transforms inputs into outputs."@en ;
-         rdfs:isDefinedBy "ISO 59004:2024  - 3.5.5 process" ;
-         rdfs:label "Process" ;
-         rdfs:seeAlso "https://ref.gs1.org/epcis/EPCISEvent" .
+         rdfs:comment "Something that takes place over a (longer) period of time and changes some state of affairs."@en ;
+         rdfs:label "Process" .
 
 
 ###  http://w3id.org/CEON/ontology/processODP/Situation
