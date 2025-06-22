@@ -19,10 +19,6 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:24_XXX_projectName :hasTakebackPrice [ a qudt:QuantityValue ;
-            qudt:hasUnit unit:Euro ;
-            qudt:numericValue 2e+02 ] .
-
 ex:LacesManufacturer123_part1 a actorODP:ManufacturingResource ;
     actorODP:participantRole actor:manufacturer ;
     actorODP:participatingActor ex:LacesManufacturer123 ;
@@ -91,11 +87,9 @@ ex:dismantle_24_XXX_projectName_3 a actorODP:DismantlingResource ;
 ex:dismantle_ce-company1-batch-321_exec a plan:PlanExecution ;
     processODP:isSettingFor ex:dismantle_ce-company1-batch-321_process .
 
-ex:dismantle_ce-company1-batch-321_rr a actor:DismantlingResource ;
-    actor:hasProcessParticipation ex:dismantle_ce-company1-batch-321_pp ;
-    actorODP:participantActor ex:Dismantler_7890 ;
-    actorODP:participantRole actor:dismantler ;
-    actorODP:participatingResource ex:ce-company1-batch-321 .
+ex:f24_XXX_projectName :hasTakebackPrice [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 2e+02 ] .
 
 ex:floor_installation a actorODP:ResourceRelation,
         statement:Statement ;
@@ -134,23 +128,8 @@ ex:recycle_24_XXX_projectName_2 a actor:RecyclingResource ;
             qudt:hasUnit unit:Euro ;
             qudt:numericValue 1.5e+02 ] .
 
-ex:recycle_ce-company1-batch-321 a actor:RecyclingResource ;
-    actorODP:participantActor ex:Reclcyer_7890 ;
-    actorODP:participantRole actor:recycler ;
-    actorODP:participatingResource ex:ce-company1-batch-321 .
-
 ex:recycle_ce-company1-batch-321_exec a plan:PlanExecution ;
     processODP:isSettingFor ex:recycle_ce-company1-batch-321_process .
-
-ex:recycle_ce-company1-batch-321_pp a actorODP:ProcessParticipation ;
-    actor:hasResourceRelation actor:RecyclingResource ;
-    actorODP:participantRole actor:recycler ;
-    actorODP:participatingActor ex:Reclcyer_7890 ;
-    actorODP:participationIn ex:recycle_ce-company1-batch-321_process ;
-    quantity:hasRecyclingCost [ a qudt:QuantityValue,
-                quantity:RecyclingCost ;
-            qudt:hasUnit unit:Euro ;
-            qudt:numericValue 1e+02 ] .
 
 ex:repair_sound_system_1_exec a plan:PlanExecution ;
     processODP:isSettingFor ex:repair_sound_system_1_process .
@@ -277,7 +256,7 @@ ex:ce-company1-batch-334 a resourceODP:BatchOfObjects ;
     product:batchOfProduct ex:ce-company1-batch-334-product .
 
 ex:dismantle_ce-company1-batch-321_pp a actorODP:ProcessParticipation ;
-    actor:hasResourceRelation actor:DismantlingResource ;
+    actor:hasResourceRelation ex:dismantle_ce-company1-batch-321_rr ;
     actorODP:participantRole actor:dismantler ;
     actorODP:participatingActor ex:Dismantler_7890 ;
     actorODP:participationIn ex:dismantle_ce-company1-batch-321_process ;
@@ -286,17 +265,39 @@ ex:dismantle_ce-company1-batch-321_pp a actorODP:ProcessParticipation ;
             qudt:hasUnit unit:Euro ;
             qudt:numericValue 1.5e+02 ] .
 
+ex:dismantle_ce-company1-batch-321_rr a actor:DismantlingResource ;
+    actor:hasProcessParticipation ex:dismantle_ce-company1-batch-321_pp ;
+    actorODP:participantActor ex:Dismantler_7890 ;
+    actorODP:participantRole actor:dismantler ;
+    actorODP:participatingResource ex:ce-company1-batch-321 .
+
 ex:pedestal_1234 a product:Product .
+
+ex:recycle_ce-company1-batch-321_pp a actorODP:ProcessParticipation ;
+    actor:hasResourceRelation ex:recycle_ce-company1-batch-321_rr ;
+    actorODP:participantRole actor:recycler ;
+    actorODP:participatingActor ex:Reclcyer_7890 ;
+    actorODP:participationIn ex:recycle_ce-company1-batch-321_process ;
+    quantity:hasRecyclingCost [ a qudt:QuantityValue,
+                quantity:RecyclingCost ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 1e+02 ] .
+
+ex:recycle_ce-company1-batch-321_rr a actor:RecyclingResource ;
+    actor:hasProcessParticipation ex:recycle_ce-company1-batch-321_pp ;
+    actorODP:participantActor ex:Reclcyer_7890 ;
+    actorODP:participantRole actor:recycler ;
+    actorODP:participatingResource ex:ce-company1-batch-321 .
 
 ex:repair_sound_system_1_pp a actor:ProcessParticipation ;
     actor:hasResourceRelation ex:repair_sound_system_1_rr ;
     actorODP:participantRole actor:repairer ;
-    actorODP:participatingActor ex:sound_system_manufacotr_1 ;
+    actorODP:participatingActor ex:sound_system_manufacturer_1 ;
     actorODP:participationIn ex:repair_sound_system_1_process .
 
 ex:repair_sound_system_1_rr a actor:RepairingResource ;
     actor:hasProcessParticipation ex:repair_sound_system_1_pp ;
-    actorODP:participantActor ex:sound_system_manufacotr_1 ;
+    actorODP:participantActor ex:sound_system_manufacturer_1 ;
     actorODP:participantRole actor:repairer ;
     actorODP:participatingResource ex:sound_system_1 .
 
@@ -357,8 +358,8 @@ ex:repair_sound_system_1_process a process:RepairProcess ;
     processODP:hasInput ex:sound_system_1 ;
     processODP:hasOutput ex:sound_system_2 .
 
-ex:sound_system_manufacotr_1 a actorODP:Actor ;
-    rdfs:label "sound_system_manufactor" .
+ex:sound_system_manufacturer_1 a actorODP:Actor ;
+    rdfs:label "sound_system_manufacturer" .
 
 ex:C002_batch a resourceODP:BatchOfObjects ;
     product:batchOfProduct ex:C002 ;
