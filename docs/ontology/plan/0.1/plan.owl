@@ -7,9 +7,13 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb1">
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab9">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasPart"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/plan/satisfiesPlan"/>
     <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/plan/Plan"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/satisfiesPlan">
@@ -20,12 +24,12 @@
     <rdfs:comment>A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan.</rdfs:comment>
     <rdfs:label>satisfies plan</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/followsExecution">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/precedesExecution">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/processODP/isSettingFor"/>
     <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/plan/PlanExecution"/>
-    <rdfs:comment>The situation after the execution takes place, i.e. the state of affairs after the process event, such as the product being assembled, or the material being recycled.</rdfs:comment>
-    <rdfs:label>follows execution</rdfs:label>
+    <rdfs:comment>The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled.</rdfs:comment>
+    <rdfs:label>precedes execution</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/occursAtTime">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -33,6 +37,13 @@
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
     <rdfs:comment>Represents the time at which something takes place.</rdfs:comment>
     <rdfs:label>occurs at time</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/Plan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/plan/Description"/>
+    <rdfs:subClassOf rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab1"/>
+    <rdfs:comment>A Description having an explicit goal, to be achieved by executing the plan.</rdfs:comment>
+    <rdfs:label>Plan</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -53,28 +64,34 @@
     <rdfs:seeAlso rdf:resource="https://github.com/LiUSemWeb/CEON"/>
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</owl:versionInfo>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/precedesExecution">
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/plan/precedesExecution"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/PlanExecution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
+    <rdfs:subClassOf rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab2"/>
+    <rdfs:subClassOf rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab7"/>
+    <rdfs:subClassOf rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab8"/>
+    <rdfs:subClassOf rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab9"/>
+    <rdfs:subClassOf rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab10"/>
+    <rdfs:subClassOf rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab11"/>
+    <rdfs:comment>Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution.</rdfs:comment>
+    <rdfs:label>Plan Execution</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/isSettingFor"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/followsExecution">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://w3id.org/CEON/ontology/processODP/isSettingFor"/>
     <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/plan/PlanExecution"/>
-    <rdfs:comment>The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled.</rdfs:comment>
-    <rdfs:label>precedes execution</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/Description">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>A Description is a SocialObject that represents a conceptualization. 
-For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations.</rdfs:comment>
-    <rdfs:label>Description</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb10">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasPart"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/plan/PlanExecution"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb7">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/plan/followsExecution"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
+    <rdfs:comment>The situation after the execution takes place, i.e. the state of affairs after the process event, such as the product being assembled, or the material being recycled.</rdfs:comment>
+    <rdfs:label>follows execution</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/hasPlanExecution">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -84,66 +101,49 @@ For example, a Plan is a Description of some actions to be executed by agents in
     <rdfs:comment>A plan can have specific executions.</rdfs:comment>
     <rdfs:label>has plan exeution</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/PlanExecution">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
-    <rdfs:subClassOf rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb2"/>
-    <rdfs:subClassOf rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb7"/>
-    <rdfs:subClassOf rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb8"/>
-    <rdfs:subClassOf rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb9"/>
-    <rdfs:subClassOf rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb10"/>
-    <rdfs:subClassOf rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb11"/>
-    <rdfs:comment>Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution.</rdfs:comment>
-    <rdfs:label>Plan Execution</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb11">
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab1">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/isSettingFor"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/Plan">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/CEON/ontology/plan/Description"/>
-    <rdfs:subClassOf rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb1"/>
-    <rdfs:comment>A Description having an explicit goal, to be achieved by executing the plan.</rdfs:comment>
-    <rdfs:label>Plan</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb8">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/plan/precedesExecution"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasOutput">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb9">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/plan/satisfiesPlan"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasPart"/>
     <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/plan/Plan"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasInput">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb4">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasOutput">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab6">
+    <rdf:first rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab4"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/duringTime"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/TimeInterval"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasPart"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/plan/PlanExecution"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab4">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/occursAtTime"/>
     <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb2">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:unionOf rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb5"/>
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab5">
+    <rdf:first rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab3"/>
+    <rdf:rest rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab6"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb6">
-    <rdf:first rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb4"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb5">
-    <rdf:first rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb3"/>
-    <rdf:rest rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb6"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n29cbcf61b25f438f93c6b45d147352cbb3">
+  <rdf:Description rdf:nodeID="n283323b138d54670ac880e55a1b0d17ab7">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/duringTime"/>
-    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/TimeInterval"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/plan/followsExecution"/>
+    <owl:someValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/plan/Description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>A Description is a SocialObject that represents a conceptualization. 
+For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations.</rdfs:comment>
+    <rdfs:label>Description</rdfs:label>
   </rdf:Description>
 </rdf:RDF>
