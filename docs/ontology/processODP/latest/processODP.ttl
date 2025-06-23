@@ -7,39 +7,31 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-dcterms:contributor a owl:AnnotationProperty .
-
-dcterms:created a owl:AnnotationProperty .
-
-dcterms:creator a owl:AnnotationProperty .
-
-dcterms:description a owl:AnnotationProperty .
-
-dcterms:license a owl:AnnotationProperty .
-
-dcterms:title a owl:AnnotationProperty .
-
-vann:preferredNamespacePrefix a owl:AnnotationProperty .
-
-vann:preferredNamespaceUri a owl:AnnotationProperty .
-
 : a owl:Ontology ;
     dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
         "Robin Keskisärkkä" ;
-    dcterms:created "2025-05-20" ;
+    dcterms:created "2025-05-20"^^xsd:date ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "A core ODP of the CEON ontology network, defining aspects of the process concept." ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:publisher "Onto-DESIDE" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Process ODP" ;
-    vann:preferredNamespacePrefix "processODP" ;
+    vann:preferredNamespacePrefix "ceon-processODP" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/processODP/" ;
     odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3,4,5, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6",
         "Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE3-5, CE7-4, CE7-5, CE8-2, CE10-7, CE12-1, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6" ;
     rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the process concept." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:priorVersion 0.4 ;
     owl:versionIRI <http://w3id.org/CEON/ontology/processODP/0.5/> ;
     owl:versionInfo 0.5 .
+
+:duringTime a owl:ObjectProperty ;
+    rdfs:label "during time" ;
+    rdfs:comment "The time interval during which something, e.g. a process or event, takes place." ;
+    rdfs:range :TimeInterval .
 
 :endTime a owl:DatatypeProperty ;
     rdfs:label "end time" ;
@@ -47,26 +39,9 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:domain :TimeInterval ;
     rdfs:range xsd:dateTime .
 
-:hasInput a owl:ObjectProperty ;
-    rdfs:label "has input" ;
-    rdfs:comment "The inputs to this process event." ;
-    rdfs:domain :Process .
-
-:hasOutput a owl:ObjectProperty ;
-    rdfs:label "has output" ;
-    rdfs:comment "The output to this process event." ;
-    rdfs:domain :Process .
-
-:hasPlanExecution a owl:ObjectProperty ;
-    rdfs:label "has plan execution"@en ;
-    rdfs:comment "A plan can have specific executions."@en ;
-    rdfs:domain :Plan ;
-    rdfs:range :PlanExecution ;
-    owl:inverseOf :satisfiesPlan .
-
 :occursAtLocation a owl:ObjectProperty ;
     rdfs:label "occurs at location" ;
-    rdfs:comment "The location in which something (e.g. an execution/transition) takes place, e.g. the factory location where something is manufactured." ;
+    rdfs:comment "The location in which something (e.g. an event or process) takes place, e.g. the factory location where something is manufactured." ;
     rdfs:range <http://w3id.org/CEON/ontology/location/Location> ;
     rdfs:subPropertyOf :isSettingFor .
 
@@ -76,98 +51,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:domain :TimeInterval ;
     rdfs:range xsd:dateTime .
 
-odp:coversRequirements a owl:AnnotationProperty .
-
 <http://w3id.org/CEON/ontology/location/Location> a owl:Class .
-
-:Event a owl:Class ;
-    rdfs:label "Event" ;
-    rdfs:comment "Activities that take place within a given context or timeframe." .
-
-:TransformationProcess a owl:Class ;
-    rdfs:label "Transformation" ;
-    rdfs:comment "A process that transforms some situation into another situation, i.e. changes the state of affairs of some actor, resource etc." ;
-    rdfs:subClassOf :Process .
-
-:affectedObject a owl:ObjectProperty ;
-    rdfs:label "affected object" ;
-    rdfs:comment "The object that is affected by a certain transition, e.g. material that changes its state from one situation to another." ;
-    rdfs:domain :Transition ;
-    rdfs:subPropertyOf :isSettingFor .
-
-:duringTime a owl:ObjectProperty ;
-    rdfs:label "during time" ;
-    rdfs:comment "The time interval during which a transition takes place." ;
-    rdfs:domain :Transition ;
-    rdfs:range :TimeInterval ;
-    rdfs:subPropertyOf :isSettingFor .
-
-:followsExecution a owl:ObjectProperty ;
-    rdfs:label "follows execution" ;
-    rdfs:comment "The situation after the execution takes place, i.e. the state of affairs after the process event, such as the product being assembled, or the material being recycled." ;
-    rdfs:domain :PlanExecution ;
-    rdfs:subPropertyOf :isSettingFor .
-
-:occursAtTime a owl:DatatypeProperty ;
-    rdfs:label "occurs at time" ;
-    rdfs:comment "Represents the time at which something takes place." ;
-    rdfs:domain :PlanExecution ;
-    rdfs:range xsd:dateTime .
-
-:precedesExecution a owl:ObjectProperty ;
-    rdfs:label "precedes execution" ;
-    rdfs:comment "The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled." ;
-    rdfs:domain :PlanExecution ;
-    rdfs:subPropertyOf :isSettingFor .
-
-:Description a owl:Class ;
-    rdfs:label "Description" ;
-    rdfs:comment """A Description is a SocialObject that represents a conceptualization. 
-For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations.""" .
-
-:Transition a owl:Class ;
-    rdfs:label "Transition" ;
-    rdfs:comment "A transition is a situation that creates a context for two additional different Situations, one Process, and at least one Object: one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions, in which at least one Object is situated. Finally, one or more time interval(s) may position the situations and the transitional event in time, and we may include the event that triggered the transition as well." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty :isSettingFor ;
-            owl:someValuesFrom :TransformationProcess ],
-        [ a owl:Restriction ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty :affectedObject ],
-        :PlanExecution .
-
-:hasPart a owl:ObjectProperty,
-        owl:TransitiveProperty ;
-    rdfs:label "has part" ;
-    rdfs:comment "A plan or execution can consists of several parts, which are sub-plans (or execution steps)." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( :Plan :PlanExecution ) ] ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( :Plan :PlanExecution ) ] .
-
-:satisfiesPlan a owl:ObjectProperty ;
-    rdfs:label "satisfies plan" ;
-    rdfs:comment "A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan." ;
-    rdfs:domain :Situation ;
-    rdfs:range :Description .
-
-:Process a owl:Class ;
-    rdfs:label "Process" ;
-    rdfs:comment "Set of interrelated or interacting activities that transforms inputs into outputs."@en ;
-    rdfs:isDefinedBy "ISO 59004:2024  - 3.5.5 process" ;
-    rdfs:subClassOf :Event .
-
-:TimeInterval a owl:Class ;
-    rdfs:label "Time Interval" ;
-    rdfs:comment "A temporal entity has a starting time and an ending time." .
-
-:Plan a owl:Class ;
-    rdfs:label "Plan" ;
-    rdfs:comment "A Description having an explicit goal, to be achieved by executing the plan." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty :hasPart ;
-            owl:someValuesFrom :Plan ],
-        :Description .
 
 :Situation a owl:Class ;
     rdfs:label "Situation" ;
@@ -176,34 +60,54 @@ For example, a Plan is a Description of some actions to be executed by agents in
             owl:onProperty :isSettingFor ;
             owl:someValuesFrom owl:Thing ] .
 
-:PlanExecution a owl:Class ;
-    rdfs:label "Plan Execution" ;
-    rdfs:comment "Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty :followsExecution ;
-            owl:someValuesFrom :Situation ],
+:Event a owl:Class ;
+    rdfs:label "Event" ;
+    rdfs:comment "Something that happens within a given context or (short) timeframe." ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasInput ;
+                        owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
+                        owl:onProperty :hasOutput ;
+                        owl:someValuesFrom owl:Thing ] ) ],
         [ a owl:Restriction ;
-            owl:onProperty :hasPart ;
-            owl:someValuesFrom :PlanExecution ],
-        [ a owl:Restriction ;
-            owl:onProperty :isSettingFor ;
-            owl:someValuesFrom :Process ],
-        [ a owl:Restriction ;
-            owl:onProperty :precedesExecution ;
-            owl:someValuesFrom :Situation ],
-        [ a owl:Restriction ;
-            owl:onProperty :satisfiesPlan ;
-            owl:someValuesFrom :Plan ],
-        [ a owl:Class ;
-            owl:unionOf ( [ a owl:Restriction ;
-                        owl:onProperty :duringTime ;
-                        owl:someValuesFrom :TimeInterval ] [ a owl:Restriction ;
-                        owl:onProperty :occursAtTime ;
-                        owl:someValuesFrom xsd:dateTime ] ) ],
-        :Situation .
+            owl:allValuesFrom :Event ;
+            owl:onProperty :hasPart ] .
+
+:hasInput a owl:ObjectProperty ;
+    rdfs:label "has input" ;
+    rdfs:comment "The inputs to a process or event." ;
+    rdfs:domain :Process .
+
+:hasOutput a owl:ObjectProperty ;
+    rdfs:label "has output" ;
+    rdfs:comment "The output of a process or event." ;
+    rdfs:domain :Process .
+
+:hasPart a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "has part" ;
+    rdfs:comment "A process or event can consist of several parts, which are sub-processes (e.g. steps) or events." .
 
 :isSettingFor a owl:ObjectProperty ;
     rdfs:label "is the setting for" ;
     rdfs:comment "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state." ;
     rdfs:domain :Situation .
+
+:Process a owl:Class ;
+    rdfs:label "Process" ;
+    rdfs:comment "Something that takes place over a (longer) period of time and changes some state of affairs."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:unionOf ( :Event :Process ) ] ;
+            owl:onProperty :hasPart ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty :hasInput ;
+                        owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
+                        owl:onProperty :hasOutput ;
+                        owl:someValuesFrom owl:Thing ] ) ] .
+
+:TimeInterval a owl:Class ;
+    rdfs:label "Time Interval" ;
+    rdfs:comment "A temporal entity has a starting time and an ending time." .
 

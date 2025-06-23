@@ -11,19 +11,23 @@
 
 <http://w3id.org/CEON/demo/textile/> a owl:Ontology ;
     dcterms:contributor "Eva Blomqvist" ;
+    dcterms:created "2023-09-14"^^xsd:date ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "The Textile module of CEON (Circular Economy Ontology Network)." ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:publisher "Onto-DESIDE" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Textile Module" ;
+    vann:preferredNamespacePrefix "ceon-demo-textile" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/demo/textile/" ;
-    ns1:prefix "textile" ;
     rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
     owl:imports <http://w3id.org/CEON/ontology/actor/0.4/>,
-        <http://w3id.org/CEON/ontology/actorODP/0.3/>,
+        <http://w3id.org/CEON/ontology/actorODP/0.4/>,
         <http://w3id.org/CEON/ontology/datasheet/0.3/>,
-        <http://w3id.org/CEON/ontology/material/0.3/>,
+        <http://w3id.org/CEON/ontology/material/0.4/>,
         <http://w3id.org/CEON/ontology/product/0.5/>,
         <http://w3id.org/CEON/ontology/statement/0.2/> ;
+    owl:priorVersion 0.1 ;
     owl:versionIRI <http://w3id.org/CEON/demo/textile/0.2/> ;
     owl:versionInfo 0.2 .
 
@@ -392,6 +396,12 @@ ns2:hasMinimalValueNotIncludedOfInterval a owl:AnnotationProperty .
     :PCDSmapping "5040-5046" ;
     rdfs:comment "Percentage of the product content anticipated to become leakage during the use phase due to for example wear & tear, oxidation, erosion, etc."@en ;
     rdfs:subPropertyOf :hasProperty .
+
+:associatedProcessForProperty a owl:ObjectProperty ;
+    rdfs:label "associated process for property" ;
+    rdfs:comment "A property may be associated with a process." ;
+    rdfs:domain <http://w3id.org/CEON/ontology/processODP/Process> ;
+    rdfs:range <http://w3id.org/CEON/ontology/resourceODP/ResourceProperty> .
 
 :azoDye a :DyeStuff,
         :PrintStuff,

@@ -1,46 +1,29 @@
 @prefix : <http://w3id.org/CEON/ontology/energy/> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-dc:description a owl:AnnotationProperty .
-
-dcterms:contributor a owl:AnnotationProperty .
-
-dcterms:created a owl:AnnotationProperty .
-
-dcterms:creator a owl:AnnotationProperty .
-
-dcterms:description a owl:AnnotationProperty .
-
-dcterms:license a owl:AnnotationProperty .
-
-dcterms:title a owl:AnnotationProperty .
-
-vann:preferredNamespacePrefix a owl:AnnotationProperty .
-
-vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 : a owl:Ontology ;
     dcterms:contributor "Eva Blomqvist" ;
     dcterms:created "2025-03-20" ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "A module of the CEON ontology network defining aspects of the energy concept." ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:publisher "Onto-DESIDE" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Energy Module" ;
-    vann:preferredNamespacePrefix "energy" ;
+    vann:preferredNamespacePrefix "ceon-energy" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/energy/" ;
     odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE1-2, CE4-3, CE6-3, CE7-4, CE8-2, CE10-7, CE10-9, CE11-6, CE12-5." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/>,
         <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
+    owl:priorVersion 0.1 ;
     owl:versionIRI <http://w3id.org/CEON/ontology/energy/0.2/> ;
     owl:versionInfo 0.2 .
 
@@ -151,8 +134,8 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/participatingResource> .
 
 :hasSustainability a owl:DatatypeProperty ;
-    rdfs:label "has sustainability",
-        "hasSustainability measures how sustainable an energy source is." ;
+    rdfs:label "has sustainability" ;
+    rdfs:comment "hasSustainability measures how sustainable an energy source is." ;
     rdfs:domain :EnergySource ;
     rdfs:range xsd:double .
 
@@ -161,17 +144,11 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:comment "participatingEnergy represents the energy in an energy composition." ;
     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/participatingSubject> .
 
-odp:coversRequirements a owl:AnnotationProperty .
-
 geo:geoJSONLiteral a rdfs:Datatype .
 
 geo:gmlLiteral a rdfs:Datatype .
 
 geo:wktLiteral a rdfs:Datatype .
-
-skos:definition a owl:AnnotationProperty .
-
-skos:prefLabel a owl:AnnotationProperty .
 
 :EnergyComposition a owl:Class ;
     rdfs:label "Energy Composition" ;

@@ -11,36 +11,27 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-dcterms:contributor a owl:AnnotationProperty .
-
-dcterms:creator a owl:AnnotationProperty .
-
-dcterms:description a owl:AnnotationProperty .
-
-dcterms:title a owl:AnnotationProperty .
-
-vann:preferredNamespacePrefix a owl:AnnotationProperty .
-
-vann:preferredNamespaceUri a owl:AnnotationProperty .
-
 : a owl:Ontology ;
     dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
         "Robin Keskisärkkä" ;
-    dcterms:created "2025-05-22" ;
+    dcterms:created "2025-05-22"^^xsd:date ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself." ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
     dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+    dcterms:publisher "Onto-DESIDE" ;
     dcterms:title "Circular Economy Ontology Network (CEON) - Circular Value Network Module" ;
-    vann:preferredNamespacePrefix "cvn" ;
+    vann:preferredNamespacePrefix "ceon-cvn" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/cvn/" ;
     odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-CVN-1, CVN-Process-1,6, CVN-VP-1, CVN-Type-3, C0-1.",
         "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE2-1, CE3-1, CE3-2, CE4-1, CE5-16, C0-1." ;
     rdfs:comment "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:imports <http://w3id.org/CEON/ontology/actor/0.4/> ;
+    owl:priorVersion 0.2 ;
     owl:versionIRI <http://w3id.org/CEON/ontology/cvn/0.3/> ;
-    owl:versionInfo "0.3" .
+    owl:versionInfo 0.3 .
 
 :aimsAtValue a owl:ObjectProperty ;
     rdfs:label "aims at value" ;
@@ -94,7 +85,9 @@ xsd:gYear a rdfs:Datatype .
 
 actorODP:Participation a owl:Class .
 
-:Collaboration a owl:Class .
+:Collaboration a owl:Class ;
+    rdfs:label "Collaboration" ;
+    rdfs:comment "A collaboration between a set of actors." .
 
 value:Value a owl:Class .
 

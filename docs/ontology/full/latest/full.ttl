@@ -1,9 +1,194 @@
 @prefix : <http://w3id.org/CEON/ontology/full/> .
+@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
+@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix bot: <https://w3id.org/bot#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://example.com/> .
+@prefix location: <http://w3id.org/CEON/ontology/location/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix plan: <http://w3id.org/CEON/ontology/plan/> .
+@prefix process: <http://w3id.org/CEON/ontology/process/> .
+@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
+@prefix product: <http://w3id.org/CEON/ontology/product/> .
+@prefix quantity: <http://w3id.org/CEON/ontology/quantity/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix statement: <http://w3id.org/CEON/ontology/statement/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:LacesManufacturer123_part1 a actor:ManufacturingResource ;
+    actorODP:participantRole actor:manufacturer ;
+    actorODP:participatingActor ex:LacesManufacturer123 ;
+    actorODP:participatingResource ex:productBysupplier123 .
+
+ex:OutsoleManufacturer123 a actorODP:Actor ;
+    rdfs:label "OutsoleManufacturer123" .
+
+ex:Recycler_7890 a actorODP:Actor ;
+    rdfs:label "Recycler X" .
+
+ex:ShoeBrand123 a actorODP:Actor ;
+    rdfs:label "ShoeBrand123" .
+
+ex:buy_C002_batch a actor:BuyingResource ;
+    actorODP:participantActor ex:ConstructionManufacturer_0987 ;
+    actorODP:participantRole actor:buyer ;
+    actorODP:participatingResource ex:C002_batch ;
+    quantity:hasPrice [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 1.2e+03 ] .
+
+ex:buy_ce-company1-batch-321 a actor:BuyingResource ;
+    actorODP:participantActor ex:construction_company_123 ;
+    actorODP:participantRole actor:buyer ;
+    actorODP:participatingResource ex:ce-company1-batch-321 ;
+    quantity:hasPrice [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 1.5e+02 ] .
+
+ex:buy_ce-company1-batch-334 a actor:BuyingResource ;
+    actorODP:participantActor ex:construction_company_123 ;
+    actorODP:participantRole actor:buyer ;
+    actorODP:participatingResource ex:ce-company1-batch-334 ;
+    quantity:hasPrice [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 1.5e+02 ] .
+
+ex:dismantle_24_XXX_projectName_1 a actor:DismantlingResource ;
+    actorODP:participantRole actor:dismantler ;
+    actorODP:participatingActor ex:Dismantler_7890 ;
+    actorODP:participatingResource ex:tile_in_B1S3R2 ;
+    quantity:hasDismantlingCost [ a qudt:QuantityValue,
+                quantity:DismantlingCost ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 3e+03 ] .
+
+ex:dismantle_24_XXX_projectName_2 a actor:DismantlingResource ;
+    actorODP:participantRole actor:dismantler ;
+    actorODP:participatingActor ex:Dismantler_7890 ;
+    actorODP:participatingResource ex:pedestal_in_B1S3R2 ;
+    quantity:hasDismantlingCost [ a qudt:QuantityValue,
+                quantity:DismantlingCost ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 3e+02 ] .
+
+ex:dismantle_24_XXX_projectName_3 a actor:DismantlingResource ;
+    actorODP:participantRole actor:dismantler ;
+    actorODP:participatingActor ex:Dismantler_7890 ;
+    actorODP:participatingResource ex:acoustic_layer_in_B1S3R2 ;
+    quantity:hasDismantlingCost [ a qudt:QuantityValue,
+                quantity:DismantlingCost ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 2e+02 ] .
+
+ex:dismantle_ce-company1-batch-321_exec a plan:PlanExecution ;
+    processODP:isSettingFor ex:dismantle_ce-company1-batch-321_process .
+
+ex:f24_XXX_projectName :hasTakebackPrice [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 2e+02 ] .
+
+ex:floor_installation a actorODP:ResourceRelation,
+        statement:Statement ;
+    actorODP:participatingResource ex:Floortile_1234 ;
+    location:hasLocation ex:room_2 .
+
+ex:own_building a actor:OwningResource ;
+    actorODP:participantActor ex:building_owner_1 ;
+    actorODP:participantRole actor:owner ;
+    actorODP:participatingResource ex:build_1 .
+
+ex:produce_tile a process:ProductionProcess ;
+    processODP:hasInput ex:C002_batch ;
+    processODP:hasOutput ex:Floortile_1234_batch .
+
+ex:recycle_24_XXX_projectName_1 a actor:RecyclingResource ;
+    actorODP:participantActor ex:recycling_company_1 ;
+    actorODP:participantRole actor:recycler ;
+    actorODP:participatingResource ex:tile_in_B1S3R2 ;
+    quantity:hasRecyclingCost [ a qudt:QuantityValue,
+                quantity:RecyclingCost ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 2e+03 ] .
+
+ex:recycle_24_XXX_projectName_2 a actor:RecyclingResource ;
+    actorODP:participantActor ex:recycling_company_1 ;
+    actorODP:participantRole actor:recycler ;
+    actorODP:participatingResource ex:acoustic_layer_in_B1S3R2,
+        ex:pedestal_in_B1S3R2 ;
+    quantity:hasRecyclingCost [ a qudt:QuantityValue,
+                quantity:RecyclingCost ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 2e+02 ],
+        [ a qudt:QuantityValue,
+                quantity:RecyclingCost ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 1.5e+02 ] .
+
+ex:recycle_ce-company1-batch-321_exec a plan:PlanExecution ;
+    processODP:isSettingFor ex:recycle_ce-company1-batch-321_process .
+
+ex:repair_sound_system_1_exec a plan:PlanExecution ;
+    processODP:isSettingFor ex:repair_sound_system_1_process .
+
+ex:sell_C002_batch a actor:SellingResource ;
+    actorODP:participantActor ex:recycling_company_1 ;
+    actorODP:participantRole actor:seller ;
+    actorODP:participatingResource ex:C002_batch ;
+    quantity:hasPrice [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 1.2e+03 ] .
+
+ex:sell_productBysupplier123_batch_1 a actor:SellingResource ;
+    actorODP:participantActor ex:Supplier123 ;
+    actorODP:participantRole actor:seller ;
+    actorODP:participatingResource ex:productBysupplier123_batch_1 ;
+    quantity:hasPrice [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 2.4e+03 ] .
+
+ex:sound_system_installation a actorODP:ResourceRelation,
+        statement:Statement ;
+    actorODP:participatingResource ex:sound_system_2 .
+
+ex:supply_C002_batch a actor:SupplingResource ;
+    actorODP:participantActor ex:recycling_company_1 ;
+    actorODP:participantRole actor:supplier ;
+    actorODP:participatingResource ex:C002_batch ;
+    actorODP:participationStartTime "2025-05-01" .
+
+ex:supply_productBysupplier123_batch_1 a actor:SupplingResource ;
+    actorODP:participantActor ex:Supplier123 ;
+    actorODP:participantRole actor:supplier ;
+    actorODP:participatingResource ex:productBysupplier123_batch_1 ;
+    actorODP:participationStartTime "2025-05-01" .
+
+ex:takeback_24_XXX_projectName_1 a actor:TakingBackResource ;
+    actorODP:participantActor ex:ConstructionManufacturer_0987 ;
+    actorODP:participantRole actor:seller ;
+    actorODP:participatingResource ex:tile_in_B1S3R2 ;
+    quantity:hasPrice [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 2e+02 ] .
+
+ex:takeback_24_XXX_projectName_2 a actor:TakingBackResource ;
+    actorODP:participantActor ex:ConstructionManufacturer_0987 ;
+    actorODP:participantRole actor:seller ;
+    actorODP:participatingResource ex:pedestal_in_B1S3R2 ;
+    quantity:hasPrice [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 5e+01 ] .
+
+ex:takeback_24_XXX_projectName_3 a actor:TakingBackResource ;
+    actorODP:participantActor ex:ConstructionManufacturer_0987 ;
+    actorODP:participantRole actor:seller ;
+    actorODP:participatingResource ex:acoustic_layer_in_B1S3R2 ;
+    quantity:hasPrice [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 5e+01 ] .
 
 dcterms:contributor a owl:AnnotationProperty .
 
@@ -24,24 +209,188 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 : a owl:Ontology ;
     dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz" ;
-    dcterms:created "2025-02-13"^^xsd:string ;
+    dcterms:created "2025-06-12" ;
     dcterms:creator "Huanyu Li" ;
     dcterms:description "The full module of CEON (Circular Economy Ontology Network)." ;
-    dcterms:license "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE"^^xsd:string ;
-    dcterms:title "Circular Economy Ontology Network (CEON) - Full"^^xsd:string ;
-    vann:preferredNamespacePrefix "full"^^xsd:string ;
-    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/full/"^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://github.com/LiUSemWeb/CEON/blob/master/LICENSE" ;
+    dcterms:publisher "Onto-DESIDE" ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Full" ;
+    vann:preferredNamespacePrefix "full" ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/full/" ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
-    owl:imports <http://w3id.org/CEON/ontology/actor/0.3/>,
-        <http://w3id.org/CEON/ontology/cvn/0.2/>,
-        <http://w3id.org/CEON/ontology/energy/0.1/>,
-        <http://w3id.org/CEON/ontology/location/0.1/>,
-        <http://w3id.org/CEON/ontology/material/0.3/>,
-        <http://w3id.org/CEON/ontology/process/0.4/>,
-        <http://w3id.org/CEON/ontology/product/0.4/>,
-        <http://w3id.org/CEON/ontology/quantity/0.1/>,
-        <http://w3id.org/CEON/ontology/statement/0.1/>,
-        <http://w3id.org/CEON/ontology/value/0.2/> ;
-    owl:versionIRI <http://w3id.org/CEON/ontology/full/0.1/> ;
-    owl:versionInfo "0.1" .
+    owl:imports <http://w3id.org/CEON/ontology/actor/0.4/>,
+        <http://w3id.org/CEON/ontology/cvn/0.3/>,
+        <http://w3id.org/CEON/ontology/energy/0.2/>,
+        <http://w3id.org/CEON/ontology/location/0.2/>,
+        <http://w3id.org/CEON/ontology/material/0.4/>,
+        <http://w3id.org/CEON/ontology/process/0.5/>,
+        <http://w3id.org/CEON/ontology/product/0.5/>,
+        <http://w3id.org/CEON/ontology/quantity/0.2/>,
+        <http://w3id.org/CEON/ontology/statement/0.2/>,
+        <http://w3id.org/CEON/ontology/value/0.3/> ;
+    owl:priorVersion 0.1 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/full/0.2/> ;
+    owl:versionInfo 0.2 .
+
+ex:Floortile_1234_batch a resourceODP:BatchOfObjects ;
+    product:batchOfProduct ex:Floortile_1234 .
+
+ex:LacesManufacturer123 a actorODP:Actor ;
+    rdfs:label "LacesManufacturer123" .
+
+ex:Nortec-C2C_silver_compliance a product:Compliance,
+        statement:Statement ;
+    product:complianceWith ex:C2C_MH_Sliver ;
+    product:hasCertificate "https://ex.org/compliance.pdf"^^xsd:anyURI ;
+    statement:statementAbout ex:Floortile_1234 .
+
+ex:acoustic_layer_1235 a product:Product .
+
+ex:build_1 a bot:Building ;
+    bot:hasSpace ex:room_1 .
+
+ex:building_owner_1 a actorODP:Actor .
+
+ex:ce-company1-batch-334 a resourceODP:BatchOfObjects ;
+    product:batchOfProduct ex:ce-company1-batch-334-product .
+
+ex:dismantle_ce-company1-batch-321_pp a actorODP:ProcessParticipation ;
+    actor:hasResourceRelation ex:dismantle_ce-company1-batch-321_rr ;
+    actorODP:participantRole actor:dismantler ;
+    actorODP:participatingActor ex:Dismantler_7890 ;
+    actorODP:participationIn ex:dismantle_ce-company1-batch-321_process ;
+    quantity:hasDismantlingCost [ a qudt:QuantityValue,
+                quantity:DismantlingCost ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 1.5e+02 ] .
+
+ex:dismantle_ce-company1-batch-321_rr a actor:DismantlingResource ;
+    actor:hasProcessParticipation ex:dismantle_ce-company1-batch-321_pp ;
+    actorODP:participantActor ex:Dismantler_7890 ;
+    actorODP:participantRole actor:dismantler ;
+    actorODP:participatingResource ex:ce-company1-batch-321 .
+
+ex:pedestal_1234 a product:Product .
+
+ex:recycle_ce-company1-batch-321_pp a actorODP:ProcessParticipation ;
+    actor:hasResourceRelation ex:recycle_ce-company1-batch-321_rr ;
+    actorODP:participantRole actor:recycler ;
+    actorODP:participatingActor ex:Reclcyer_7890 ;
+    actorODP:participationIn ex:recycle_ce-company1-batch-321_process ;
+    quantity:hasRecyclingCost [ a qudt:QuantityValue,
+                quantity:RecyclingCost ;
+            qudt:hasUnit unit:Euro ;
+            qudt:numericValue 1e+02 ] .
+
+ex:recycle_ce-company1-batch-321_rr a actor:RecyclingResource ;
+    actor:hasProcessParticipation ex:recycle_ce-company1-batch-321_pp ;
+    actorODP:participantActor ex:Reclcyer_7890 ;
+    actorODP:participantRole actor:recycler ;
+    actorODP:participatingResource ex:ce-company1-batch-321 .
+
+ex:repair_sound_system_1_pp a actor:ProcessParticipation ;
+    actor:hasResourceRelation ex:repair_sound_system_1_rr ;
+    actorODP:participantRole actor:repairer ;
+    actorODP:participatingActor ex:sound_system_manufacturer_1 ;
+    actorODP:participationIn ex:repair_sound_system_1_process .
+
+ex:repair_sound_system_1_rr a actor:RepairingResource ;
+    actor:hasProcessParticipation ex:repair_sound_system_1_pp ;
+    actorODP:participantActor ex:sound_system_manufacturer_1 ;
+    actorODP:participantRole actor:repairer ;
+    actorODP:participatingResource ex:sound_system_1 .
+
+ex:room_1 a bot:Space ;
+    rdfs:label "room" ;
+    bot:containsElement ex:Floortile_1234,
+        ex:pedestal_1234,
+        ex:tile_1234 .
+
+ex:room_2 a bot:Space ;
+    rdfs:label "room" ;
+    bot:containsElement ex:acoustic_layer_1235,
+        ex:sound_system_1,
+        ex:speaker_1,
+        ex:speaker_2 .
+
+ex:speaker_1 a product:Product .
+
+ex:speaker_1_REACH_compliance a product:REACHCompliance,
+        statement:Statement ;
+    product:complianceWith product:REACH ;
+    product:hasCertificate "http://reach.org/examplecert1234.pdf"^^xsd:anyURI ;
+    statement:statementAbout ex:sound_system_1 .
+
+ex:speaker_2 a product:Product .
+
+ex:tile_1234 a product:Product .
+
+ex:Supplier123 a actorODP:Actor ;
+    rdfs:label "Supplier123" .
+
+ex:construction_company_123 a actorODP:Actor ;
+    rdfs:label "construction_company_123" .
+
+ex:dismantle_ce-company1-batch-321_process a process:DismantleProcess ;
+    processODP:hasInput ex:ce-company1-batch-321 .
+
+ex:productBysupplier123 a product:Product ;
+    rdfs:label "rubber layer 1" .
+
+ex:productBysupplier123_batch_1 a resourceODP:BatchOfObjects ;
+    product:batchOfProduct ex:productBysupplier123 ;
+    quantity:hasDimension [ a ex:Weight,
+                qudt:QuantityValue ;
+            qudt:hasUnit unit:KiloGM ;
+            qudt:numericValue 3e+02 ],
+        [ a ex:Volume,
+                qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:numericValue 1e+00 ] ;
+    resourceODP:batchSize "500"^^xsd:int ;
+    resourceODP:hasResourceCondition ex:new_condition .
+
+ex:recycle_ce-company1-batch-321_process a process:RecycleProcess ;
+    processODP:hasInput ex:ce-company1-batch-321 .
+
+ex:repair_sound_system_1_process a process:RepairProcess ;
+    processODP:hasInput ex:sound_system_1 ;
+    processODP:hasOutput ex:sound_system_2 .
+
+ex:sound_system_manufacturer_1 a actorODP:Actor ;
+    rdfs:label "sound_system_manufacturer" .
+
+ex:C002_batch a resourceODP:BatchOfObjects ;
+    product:batchOfProduct ex:C002 ;
+    quantity:hasDimension [ a ex:Weight,
+                qudt:QuantityValue ;
+            qudt:hasUnit unit:KiloGM ;
+            qudt:numericValue 1.5e+03 ],
+        [ a ex:Volume,
+                qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:numericValue 3e+00 ] ;
+    resourceODP:batchSize "2500"^^xsd:int ;
+    resourceODP:hasResourceCondition ex:good_condition .
+
+ex:ConstructionManufacturer_0987 a actorODP:Actor ;
+    rdfs:label "ConstructionManufacturer" .
+
+ex:Floortile_1234 a product:Product ;
+    rdfs:label "A floor tile product" ;
+    product:hasCompliance ex:Nortec-C2C_silver_compliance .
+
+ex:recycling_company_1 a actorODP:Actor ;
+    rdfs:label "recycling company 1" .
+
+ex:sound_system_1 a product:Product ;
+    product:hasCompliance ex:speaker_1_REACH_compliance ;
+    resourceODP:hasResourceCondition ex:broken_condition .
+
+ex:Dismantler_7890 a actorODP:Actor ;
+    rdfs:label "Dismantler X" .
+
+ex:ce-company1-batch-321 a resourceODP:BatchOfObjects ;
+    product:batchOfProduct ex:ce-company1-batch-321-product .
 
