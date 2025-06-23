@@ -39,7 +39,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     dcterms:title "Circular Economy Ontology Network (CEON) - Energy Module" ;
     vann:preferredNamespacePrefix "energy" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/energy/" ;
-    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D2.3: CE1-2, CE4-3, CE6-3, CE7-4, CE8-2, CE10-7, CE10-9, CE11-6, CE12-5." ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE1-2, CE4-3, CE6-3, CE7-4, CE8-2, CE10-7, CE10-9, CE11-6, CE12-5." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/>,
         <http://w3id.org/CEON/ontology/resourceODP/0.3/> ;
@@ -108,7 +108,6 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 :hasAnergy a owl:ObjectProperty ;
     rdfs:label "has anergy" ;
     rdfs:comment "hasAnergy represents that energy has part of anergy." ;
-    rdfs:range :Anergy ;
     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/participatingObject> .
 
 :hasCarbonIntensity a owl:DatatypeProperty ;
@@ -137,7 +136,6 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 :hasExergy a owl:ObjectProperty ;
     rdfs:label "has exergy" ;
     rdfs:comment "hasExergy represents that energy has part of exergy." ;
-    rdfs:range :Exergy ;
     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/actorODP/participatingObject> .
 
 :hasOriginalEnergy a owl:ObjectProperty ;
@@ -169,21 +167,10 @@ skos:definition a owl:AnnotationProperty .
 
 skos:prefLabel a owl:AnnotationProperty .
 
-:Anergy a owl:Class ;
-    rdfs:label "Anergy" ;
-    rdfs:comment "In constrast to exergy, anergy is the part of the energy of a system that cannot be used." ;
-    rdfs:subClassOf :Energy .
-
 :EnergyComposition a owl:Class ;
     rdfs:label "Energy Composition" ;
     rdfs:comment "The relation representing the particpation of an energy as a resource." ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/actorODP/ResourceParticipation> .
-
-:Exergy a owl:Class ;
-    rdfs:label "Exergy" ;
-    rdfs:comment "Exergy refers to available energy of a system that can be used to perform work." ;
-    rdfs:seeAlso "https://en.wikipedia.org/wiki/Exergy" ;
-    rdfs:subClassOf :Energy .
 
 :Biomass a owl:Class ;
     rdfs:label "Biomass" ;
@@ -201,17 +188,17 @@ skos:prefLabel a owl:AnnotationProperty .
     rdfs:comment "Renewable energy represents energy that comes from renewable resources." ;
     rdfs:subClassOf :Energy .
 
-:FossilFuel a owl:Class ;
-    rdfs:label "Fossil Fuel" ;
-    rdfs:comment "A fossil fuel is a carbon compound- or hydrocarbon-containing material[2] formed naturally in the Earth's crust from the buried remains of prehistoric organisms (animals, plants or planktons), a process that occurs within geological formations." ;
-    rdfs:seeAlso "https://en.wikipedia.org/wiki/Fossil_fuel" ;
-    rdfs:subClassOf :EnergySource .
-
 :Energy a owl:Class ;
     rdfs:label "Energy" ;
     rdfs:comment "Energy is an ability or a property of matter or a system, to do work because of its motion, its mass, its electric charge, etc." ;
     rdfs:seeAlso "http://emmo.info/emmo#EMMO_31ec09ba_1713_42cb_83c7_b38bf6f9ced2" ;
     rdfs:subClassOf <http://w3id.org/CEON/ontology/resourceODP/Resource> .
+
+:FossilFuel a owl:Class ;
+    rdfs:label "Fossil Fuel" ;
+    rdfs:comment "A fossil fuel is a carbon compound- or hydrocarbon-containing material[2] formed naturally in the Earth's crust from the buried remains of prehistoric organisms (animals, plants or planktons), a process that occurs within geological formations." ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Fossil_fuel" ;
+    rdfs:subClassOf :EnergySource .
 
 :EnergySource a owl:Class ;
     rdfs:label "Energy Source" ;
