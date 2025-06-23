@@ -80,6 +80,15 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
                         owl:hasValue :consumer ;
                         owl:onProperty actorODP:participantRole ] ) ] .
 
+:DismantlingResource a owl:Class ;
+    rdfs:label "Dismantling resource" ;
+    rdfs:comment "The relation where the role of the actor is the dismantler of a certain resource." ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue :dismantler ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
 :IssuingResource a owl:Class ;
     rdfs:label "Issuing resource" ;
     rdfs:comment "The relation where the role of the actor is the issuer of a certain resource." ;
@@ -138,6 +147,15 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
                         owl:hasValue :provider ;
                         owl:onProperty actorODP:participantRole ] ) ] .
 
+:RecyclingResource a owl:Class ;
+    rdfs:label "Recycling resource" ;
+    rdfs:comment "The relation where the role of the actor is the recycler of a certain resource." ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue :recycler ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
 :RepairingResource a owl:Class ;
     rdfs:label "Repairing resource" ;
     rdfs:comment "The relation where the role of the actor is the repairer of a certain resource." ;
@@ -182,6 +200,15 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
                         owl:hasValue :supplier ;
                         owl:onProperty actorODP:participantRole ] ) ] .
 
+:TakingBackResource a owl:Class ;
+    rdfs:label "Taking back resource",
+        "The relation where the role of the actor is the collector of a certain resource." ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue :collector ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
 :UpdatingResource a owl:Class ;
     rdfs:label "Updating resource" ;
     rdfs:comment "The relation where the role of the actor is the updater of a certain resource." ;
@@ -215,20 +242,11 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     rdfs:domain actorODP:Capability ;
     rdfs:subPropertyOf actorODP:capabilityProperty .
 
-:collector a :ActorCVNRole,
-        owl:NamedIndividual .
-
-:dismantler a :ActorCVNRole,
-        owl:NamedIndividual .
-
 :neededResourceRelation a owl:ObjectProperty ;
     rdfs:label "needed resource relations" ;
     rdfs:comment "In order for an actor to have a capability, it needs to have certain resources, e.g. materials, infrastrucutre, know-how, information etc." ;
     rdfs:domain actorODP:Capability ;
     rdfs:subPropertyOf actorODP:capabilityProperty .
-
-:recycler a :ActorCVNRole,
-        owl:NamedIndividual .
 
 odp:coversRequirements a owl:AnnotationProperty .
 
@@ -244,7 +262,13 @@ odp:coversRequirements a owl:AnnotationProperty .
 :buyer a :ActorResourceRole,
         owl:NamedIndividual .
 
+:collector a :ActorCVNRole,
+        owl:NamedIndividual .
+
 :consumer a :ActorResourceRole,
+        owl:NamedIndividual .
+
+:dismantler a :ActorCVNRole,
         owl:NamedIndividual .
 
 :hasOrganisationName a owl:DatatypeProperty ;
@@ -266,6 +290,9 @@ odp:coversRequirements a owl:AnnotationProperty .
         owl:NamedIndividual .
 
 :provider a :ActorResourceRole,
+        owl:NamedIndividual .
+
+:recycler a :ActorCVNRole,
         owl:NamedIndividual .
 
 :repairer a :ActorResourceRole,

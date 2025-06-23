@@ -19,7 +19,7 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:LacesManufacturer123_part1 a actorODP:ManufacturingResource ;
+ex:LacesManufacturer123_part1 a actor:ManufacturingResource ;
     actorODP:participantRole actor:manufacturer ;
     actorODP:participatingActor ex:LacesManufacturer123 ;
     actorODP:participatingResource ex:productBysupplier123 .
@@ -57,30 +57,30 @@ ex:buy_ce-company1-batch-334 a actor:BuyingResource ;
             qudt:hasUnit unit:Euro ;
             qudt:numericValue 1.5e+02 ] .
 
-ex:dismantle_24_XXX_projectName_1 a actorODP:DismantlingResource ;
+ex:dismantle_24_XXX_projectName_1 a actor:DismantlingResource ;
     actorODP:participantRole actor:dismantler ;
     actorODP:participatingActor ex:Dismantler_7890 ;
     actorODP:participatingResource ex:tile_in_B1S3R2 ;
     quantity:hasDismantlingCost [ a qudt:QuantityValue,
-                :DismantlingCost ;
+                quantity:DismantlingCost ;
             qudt:hasUnit unit:Euro ;
             qudt:numericValue 3e+03 ] .
 
-ex:dismantle_24_XXX_projectName_2 a actorODP:DismantlingResource ;
+ex:dismantle_24_XXX_projectName_2 a actor:DismantlingResource ;
     actorODP:participantRole actor:dismantler ;
     actorODP:participatingActor ex:Dismantler_7890 ;
     actorODP:participatingResource ex:pedestal_in_B1S3R2 ;
     quantity:hasDismantlingCost [ a qudt:QuantityValue,
-                :DismantlingCost ;
+                quantity:DismantlingCost ;
             qudt:hasUnit unit:Euro ;
             qudt:numericValue 3e+02 ] .
 
-ex:dismantle_24_XXX_projectName_3 a actorODP:DismantlingResource ;
+ex:dismantle_24_XXX_projectName_3 a actor:DismantlingResource ;
     actorODP:participantRole actor:dismantler ;
     actorODP:participatingActor ex:Dismantler_7890 ;
     actorODP:participatingResource ex:acoustic_layer_in_B1S3R2 ;
     quantity:hasDismantlingCost [ a qudt:QuantityValue,
-                :DismantlingCost ;
+                quantity:DismantlingCost ;
             qudt:hasUnit unit:Euro ;
             qudt:numericValue 2e+02 ] .
 
@@ -110,7 +110,7 @@ ex:recycle_24_XXX_projectName_1 a actor:RecyclingResource ;
     actorODP:participantRole actor:recycler ;
     actorODP:participatingResource ex:tile_in_B1S3R2 ;
     quantity:hasRecyclingCost [ a qudt:QuantityValue,
-                :RecyclingCost ;
+                quantity:RecyclingCost ;
             qudt:hasUnit unit:Euro ;
             qudt:numericValue 2e+03 ] .
 
@@ -120,11 +120,11 @@ ex:recycle_24_XXX_projectName_2 a actor:RecyclingResource ;
     actorODP:participatingResource ex:acoustic_layer_in_B1S3R2,
         ex:pedestal_in_B1S3R2 ;
     quantity:hasRecyclingCost [ a qudt:QuantityValue,
-                :RecyclingCost ;
+                quantity:RecyclingCost ;
             qudt:hasUnit unit:Euro ;
             qudt:numericValue 2e+02 ],
         [ a qudt:QuantityValue,
-                :RecyclingCost ;
+                quantity:RecyclingCost ;
             qudt:hasUnit unit:Euro ;
             qudt:numericValue 1.5e+02 ] .
 
@@ -340,12 +340,12 @@ ex:productBysupplier123 a product:Product ;
 
 ex:productBysupplier123_batch_1 a resourceODP:BatchOfObjects ;
     product:batchOfProduct ex:productBysupplier123 ;
-    quantity:hasDimension [ a qudt:QuantityValue,
-                :Weight ;
+    quantity:hasDimension [ a ex:Weight,
+                qudt:QuantityValue ;
             qudt:hasUnit unit:KiloGM ;
             qudt:numericValue 3e+02 ],
-        [ a qudt:QuantityValue,
-                :Volume ;
+        [ a ex:Volume,
+                qudt:QuantityValue ;
             qudt:hasUnit unit:M3 ;
             qudt:numericValue 1e+00 ] ;
     resourceODP:batchSize "500"^^xsd:int ;
@@ -363,12 +363,12 @@ ex:sound_system_manufacturer_1 a actorODP:Actor ;
 
 ex:C002_batch a resourceODP:BatchOfObjects ;
     product:batchOfProduct ex:C002 ;
-    quantity:hasDimension [ a qudt:QuantityValue,
-                :Weight ;
+    quantity:hasDimension [ a ex:Weight,
+                qudt:QuantityValue ;
             qudt:hasUnit unit:KiloGM ;
             qudt:numericValue 1.5e+03 ],
-        [ a qudt:QuantityValue,
-                :Volume ;
+        [ a ex:Volume,
+                qudt:QuantityValue ;
             qudt:hasUnit unit:M3 ;
             qudt:numericValue 3e+00 ] ;
     resourceODP:batchSize "2500"^^xsd:int ;
