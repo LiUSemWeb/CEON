@@ -152,7 +152,7 @@ ex:room_2 a bot:Space;
 ex:productBysupplier123 a product:Product;
     rdfs:label "rubber layer 1".
 
-ex:LacesManufacturer123_part1 a actorODP:ManufacturingResource;
+ex:LacesManufacturer123_part1 a actor:ManufacturingResource;
     actorODP:participantRole actor:manufacturer ;
     actorODP:participatingActor ex:LacesManufacturer123 ;
     actorODP:participatingResource ex:productBysupplier123.
@@ -160,8 +160,8 @@ ex:LacesManufacturer123_part1 a actorODP:ManufacturingResource;
 # batch1 of recycling company 1
 ex:C002_batch a resourceODP:BatchOfObjects;
  product:batchOfProduct ex:C002 ;
- quantity:hasDimension [ a :Weight, qudt:QuantityValue; qudt:numericValue "1500"^^xsd:double ; qudt:hasUnit unit:KiloGM ];
- quantity:hasDimension [ a :Volume, qudt:QuantityValue; qudt:numericValue "3"^^xsd:double ; qudt:hasUnit unit:M3 ];
+ quantity:hasDimension [ a ex:Weight, qudt:QuantityValue; qudt:numericValue "1500"^^xsd:double ; qudt:hasUnit unit:KiloGM ];
+ quantity:hasDimension [ a ex:Volume, qudt:QuantityValue; qudt:numericValue "3"^^xsd:double ; qudt:hasUnit unit:M3 ];
  resourceODP:batchSize "2500"^^xsd:int;
  resourceODP:hasResourceCondition ex:good_condition.
 
@@ -180,8 +180,8 @@ ex:sell_C002_batch a actor:SellingResource ;
 #batch1 of supplier123
 ex:productBysupplier123_batch_1 a resourceODP:BatchOfObjects;
  product:batchOfProduct ex:productBysupplier123 ;
- quantity:hasDimension [ a :Weight, qudt:QuantityValue; qudt:numericValue "300"^^xsd:double ; qudt:hasUnit unit:KiloGM ];
- quantity:hasDimension [ a :Volume, qudt:QuantityValue; qudt:numericValue "1"^^xsd:double ; qudt:hasUnit unit:M3 ];
+ quantity:hasDimension [ a ex:Weight, qudt:QuantityValue; qudt:numericValue "300"^^xsd:double ; qudt:hasUnit unit:KiloGM ];
+ quantity:hasDimension [ a ex:Volume, qudt:QuantityValue; qudt:numericValue "1"^^xsd:double ; qudt:hasUnit unit:M3 ];
  resourceODP:batchSize "500"^^xsd:int;
  resourceODP:hasResourceCondition ex:new_condition.
 
@@ -367,41 +367,41 @@ ex:takeback_24_XXX_projectName_3 a actor:TakingBackResource ;
 ### The dismantler and the recycler share their prices privately with the building owner via the OCP. 
 ### The building owner queries the OCP to see the costs for dismantling and recycling, and the buyback price and decides to return the floor system elements to ConstructionManufacturer for takeback. 
 
-ex:dismantle_24_XXX_projectName_1 a actorODP:DismantlingResource;
+ex:dismantle_24_XXX_projectName_1 a actor:DismantlingResource;
     actorODP:participantRole actor:dismantler ;
     actorODP:participatingActor ex:Dismantler_7890 ;
     actorODP:participatingResource ex:tile_in_B1S3R2;
-    quantity:hasDismantlingCost [ a :DismantlingCost, qudt:QuantityValue ; qudt:numericValue "3000"^^xsd:double ; qudt:hasUnit unit:Euro ].
+    quantity:hasDismantlingCost [ a quantity:DismantlingCost, qudt:QuantityValue ; qudt:numericValue "3000"^^xsd:double ; qudt:hasUnit unit:Euro ].
 
-ex:dismantle_24_XXX_projectName_2 a actorODP:DismantlingResource;
+ex:dismantle_24_XXX_projectName_2 a actor:DismantlingResource;
     actorODP:participantRole actor:dismantler ;
     actorODP:participatingActor ex:Dismantler_7890 ;
     actorODP:participatingResource ex:pedestal_in_B1S3R2;
-    quantity:hasDismantlingCost [ a :DismantlingCost, qudt:QuantityValue ; qudt:numericValue "300"^^xsd:double ; qudt:hasUnit unit:Euro ].
+    quantity:hasDismantlingCost [ a quantity:DismantlingCost, qudt:QuantityValue ; qudt:numericValue "300"^^xsd:double ; qudt:hasUnit unit:Euro ].
 
-ex:dismantle_24_XXX_projectName_3 a actorODP:DismantlingResource;
+ex:dismantle_24_XXX_projectName_3 a actor:DismantlingResource;
     actorODP:participantRole actor:dismantler ;
     actorODP:participatingActor ex:Dismantler_7890 ;
     actorODP:participatingResource ex:acoustic_layer_in_B1S3R2;
-    quantity:hasDismantlingCost [ a :DismantlingCost, qudt:QuantityValue ; qudt:numericValue "200"^^xsd:double ; qudt:hasUnit unit:Euro ].
+    quantity:hasDismantlingCost [ a quantity:DismantlingCost, qudt:QuantityValue ; qudt:numericValue "200"^^xsd:double ; qudt:hasUnit unit:Euro ].
 
 ex:recycle_24_XXX_projectName_1 a actor:RecyclingResource ;
     actorODP:participantRole actor:recycler ;
     actorODP:participantActor ex:recycling_company_1 ;
     actorODP:participatingResource ex:tile_in_B1S3R2 ;
-    quantity:hasRecyclingCost [ a :RecyclingCost, qudt:QuantityValue ; qudt:numericValue "2000"^^xsd:double ; qudt:hasUnit unit:Euro ].
+    quantity:hasRecyclingCost [ a quantity:RecyclingCost, qudt:QuantityValue ; qudt:numericValue "2000"^^xsd:double ; qudt:hasUnit unit:Euro ].
 
 ex:recycle_24_XXX_projectName_2 a actor:RecyclingResource ;
     actorODP:participantRole actor:recycler ;
     actorODP:participantActor ex:recycling_company_1 ;
     actorODP:participatingResource ex:pedestal_in_B1S3R2 ;
-    quantity:hasRecyclingCost [ a :RecyclingCost, qudt:QuantityValue ; qudt:numericValue "200"^^xsd:double ; qudt:hasUnit unit:Euro ].
+    quantity:hasRecyclingCost [ a quantity:RecyclingCost, qudt:QuantityValue ; qudt:numericValue "200"^^xsd:double ; qudt:hasUnit unit:Euro ].
 
 ex:recycle_24_XXX_projectName_2 a actor:RecyclingResource ;
     actorODP:participantRole actor:recycler ;
     actorODP:participantActor ex:recycling_company_1 ;
     actorODP:participatingResource ex:acoustic_layer_in_B1S3R2 ;
-    quantity:hasRecyclingCost [ a :RecyclingCost, qudt:QuantityValue ; qudt:numericValue "150"^^xsd:double ; qudt:hasUnit unit:Euro ].
+    quantity:hasRecyclingCost [ a quantity:RecyclingCost, qudt:QuantityValue ; qudt:numericValue "150"^^xsd:double ; qudt:hasUnit unit:Euro ].
 ################################################################################################################
 
 
