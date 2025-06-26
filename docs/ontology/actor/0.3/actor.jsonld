@@ -1,5 +1,18 @@
 [
   {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participatingResource",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/producer",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/cvn/CVN",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -11,56 +24,32 @@
     ]
   },
   {
-    "@id": "http://purl.org/dc/terms/title",
+    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
-    "@id": "http://purl.org/vocab/vann/preferredNamespaceUri",
+    "@id": "http://w3id.org/CEON/ontology/actor/seller",
     "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorCVNRole",
+      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actor/neededResourceRelation",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "In order for an actor to have a capability, it needs to have certain resources, e.g. materials, infrastrucutre, know-how, information etc."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Capability"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "needed resource relations"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/capabilityProperty"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/SellingResource",
+    "@id": "http://w3id.org/CEON/ontology/actor/ViewingResource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The relation where the role of the actor is the seller of a certain resource."
+        "@value": "The relation where the role of the actor is the viewer of a certain resource."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Selling resource"
+        "@value": "Viewing resource"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
@@ -70,12 +59,12 @@
     ],
     "http://www.w3.org/2002/07/owl#equivalentClass": [
       {
-        "@id": "_:n693199beaa9648559440056f428c975cb49"
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb68"
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb49",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb68",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -86,20 +75,20 @@
             "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb50"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb69"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb50",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb69",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
     "http://www.w3.org/2002/07/owl#hasValue": [
       {
-        "@id": "http://w3id.org/CEON/ontology/actor/seller"
+        "@id": "http://w3id.org/CEON/ontology/actor/viewer"
       }
     ],
     "http://www.w3.org/2002/07/owl#onProperty": [
@@ -109,13 +98,383 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participatingActor",
+    "@id": "http://w3id.org/CEON/ontology/actor/CVNParticipation",
     "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A participation-relation, that represents the participation of an actor in a CVN with a certain role. For instance, a specific company playing the role of recycler in a certain flow of a CVN. The participation may also be related to a certain time (or time interval)."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Circular Value Network Participation"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"
+      },
+      {
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb5"
+      }
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/Capability",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb5",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"
+          },
+          {
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb6"
+          },
+          {
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb7"
+          },
+          {
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb8"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb6",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actor/ActorCVNRole"
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb7",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participatingActor"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Actor"
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb8",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participationIn"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/cvn/CVN"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/Actor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/created",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/ActorCollaborationRole",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The roles of an actor involved in a collaboration."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Actor collaboration role"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Role"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/ProvidingResource",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The relation where the role of the actor is the provider of a certain resource."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Providing resource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb41"
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb41",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+          },
+          {
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb42"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb42",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#hasValue": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actor/provider"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/ActorProcessRole",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The role(s) of an actor involved in a process."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Actor process role"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actor/ActorCollaborationRole"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/issuer",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/Process",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/ActorCVNRole",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The role(s) of an actor in a Circular Value Network, which is a specific type of collaboration."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Actor Circular Value Network role"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actor/ActorCollaborationRole"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/ResellingResource",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The relation where the role of the actor is the reseller of a certain resource."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Reselling resource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb45"
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb45",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+          },
+          {
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb46"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb46",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#hasValue": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actor/reseller"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/OwningResource",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The relation where the role of the actor is the owner of a certain resource."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Owning resource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb25"
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb25",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+          },
+          {
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb26"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb26",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#hasValue": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actor/owner"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/Role",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ]
@@ -142,12 +501,12 @@
     ],
     "http://www.w3.org/2002/07/owl#equivalentClass": [
       {
-        "@id": "_:n693199beaa9648559440056f428c975cb56"
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb56"
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb56",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb56",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -158,14 +517,14 @@
             "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb57"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb57"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb57",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb57",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -181,18 +540,24 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actor/ProducingResource",
+    "@id": "http://purl.org/dc/terms/contributor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/SellingResource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The relation where the role of the actor is the producer of a certain resource."
+        "@value": "The relation where the role of the actor is the seller of a certain resource."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Producing resource"
+        "@value": "Selling resource"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
@@ -202,12 +567,12 @@
     ],
     "http://www.w3.org/2002/07/owl#equivalentClass": [
       {
-        "@id": "_:n693199beaa9648559440056f428c975cb37"
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb49"
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb37",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb49",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -218,20 +583,20 @@
             "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb38"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb50"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb38",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb50",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
     "http://www.w3.org/2002/07/owl#hasValue": [
       {
-        "@id": "http://w3id.org/CEON/ontology/actor/producer"
+        "@id": "http://w3id.org/CEON/ontology/actor/seller"
       }
     ],
     "http://www.w3.org/2002/07/owl#onProperty": [
@@ -241,9 +606,63 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/Role",
+    "@id": "http://w3id.org/CEON/ontology/actor/UsingResource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The relation where the role of the actor is the user of a certain resource."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Using resource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb64"
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb64",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+          },
+          {
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb65"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb65",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#hasValue": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actor/user"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
+      }
     ]
   },
   {
@@ -253,37 +672,37 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/Participation",
+    "@id": "http://w3id.org/CEON/ontology/actorODP/Capability",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actor/consumer",
+    "@id": "http://purl.org/vocab/vann/preferredNamespaceUri",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/updater",
     "@type": [
       "http://www.w3.org/2002/07/owl#NamedIndividual",
       "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
     ]
   },
   {
-    "@id": "http://purl.org/dc/terms/creator",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/ProvidingResource",
+    "@id": "http://w3id.org/CEON/ontology/actor/BuyingResource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The relation where the role of the actor is the provider of a certain resource."
+        "@value": "The relation where the role of the actor is the buyer of a certain resource."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Providing resource"
+        "@value": "Buying resource"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
@@ -293,12 +712,12 @@
     ],
     "http://www.w3.org/2002/07/owl#equivalentClass": [
       {
-        "@id": "_:n693199beaa9648559440056f428c975cb41"
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb1"
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb41",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb1",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -309,286 +728,26 @@
             "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb42"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb2"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb42",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb2",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
     "http://www.w3.org/2002/07/owl#hasValue": [
       {
-        "@id": "http://w3id.org/CEON/ontology/actor/provider"
+        "@id": "http://w3id.org/CEON/ontology/actor/buyer"
       }
     ],
     "http://www.w3.org/2002/07/owl#onProperty": [
       {
         "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
       }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/issuer",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/description",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/ActorCVNRole",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The role(s) of an actor in a Circular Value Network, which is a specific type of collaboration."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Actor Circular Value Network role"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actor/ActorCollaborationRole"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participatingResource",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/license",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/ConsumingResource",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The relation where the role of the actor is the consumer of a certain resource."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Consuming resource"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "_:n693199beaa9648559440056f428c975cb13"
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb13",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-          },
-          {
-            "@id": "_:n693199beaa9648559440056f428c975cb14"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb14",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#hasValue": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actor/consumer"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/UpdatingResource",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The relation where the role of the actor is the updater of a certain resource."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Updating resource"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "_:n693199beaa9648559440056f428c975cb60"
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb60",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-          },
-          {
-            "@id": "_:n693199beaa9648559440056f428c975cb61"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb61",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#hasValue": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actor/updater"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/ActorCollaborationRole",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The roles of an actor involved in a collaboration."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Actor collaboration role"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Role"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/ResellingResource",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The relation where the role of the actor is the reseller of a certain resource."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Reselling resource"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "_:n693199beaa9648559440056f428c975cb45"
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb45",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-          },
-          {
-            "@id": "_:n693199beaa9648559440056f428c975cb46"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb46",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#hasValue": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actor/reseller"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/provider",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
-    ]
-  },
-  {
-    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
@@ -620,6 +779,106 @@
     ]
   },
   {
+    "@id": "http://w3id.org/CEON/ontology/actor/buyer",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/Stakeholder",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "Person or organization that can affect, be affected by, or perceive itself to be affected by a decision or activity. To “perceive itself to be affected” means the perception has been made known to the organization."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@value": "ISO 59004:2024 - 3.4.2 interested party, stakeholder"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Interested party"
+      },
+      {
+        "@language": "en",
+        "@value": "Stakeholder"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb53"
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb53",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/actor/Organisation"
+          },
+          {
+            "@id": "http://w3id.org/CEON/ontology/actor/Person"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/viewer",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/manufacturer",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorCVNRole"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/Participation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/Person",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@language": "en",
+        "@value": "Person"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Actor"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/title",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/actor/ProcessParticipation",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -639,12 +898,12 @@
         "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"
       },
       {
-        "@id": "_:n693199beaa9648559440056f428c975cb29"
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb29"
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb29",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb29",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -655,20 +914,20 @@
             "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb30"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb30"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb31"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb31"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb32"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb32"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb30",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb30",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -684,7 +943,7 @@
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb31",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb31",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -700,7 +959,7 @@
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb32",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb32",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -716,111 +975,11 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actor/CVNParticipation",
+    "@id": "http://w3id.org/CEON/ontology/actor/supplier",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "A participation-relation, that represents the participation of an actor in a CVN with a certain role. For instance, a specific company playing the role of recycler in a certain flow of a CVN. The participation may also be related to a certain time (or time interval)."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Circular Value Network Participation"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"
-      },
-      {
-        "@id": "_:n693199beaa9648559440056f428c975cb5"
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb5",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation"
-          },
-          {
-            "@id": "_:n693199beaa9648559440056f428c975cb6"
-          },
-          {
-            "@id": "_:n693199beaa9648559440056f428c975cb7"
-          },
-          {
-            "@id": "_:n693199beaa9648559440056f428c975cb8"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb6",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actor/ActorCVNRole"
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb7",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participatingActor"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Actor"
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb8",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participationIn"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/cvn/CVN"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participationIn",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorCVNRole",
+      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
     ]
   },
   {
@@ -850,141 +1009,6 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actor/dismantler",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorCVNRole"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/reseller",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorCVNRole",
-      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/UsingResource",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The relation where the role of the actor is the user of a certain resource."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Using resource"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "_:n693199beaa9648559440056f428c975cb64"
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb64",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-          },
-          {
-            "@id": "_:n693199beaa9648559440056f428c975cb65"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb65",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#hasValue": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actor/user"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/ViewingResource",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The relation where the role of the actor is the viewer of a certain resource."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Viewing resource"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "_:n693199beaa9648559440056f428c975cb68"
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb68",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-          },
-          {
-            "@id": "_:n693199beaa9648559440056f428c975cb69"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb69",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#hasValue": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actor/viewer"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
-      }
-    ]
-  },
-  {
     "@id": "http://w3id.org/CEON/ontology/actor/IssuingResource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -1006,12 +1030,12 @@
     ],
     "http://www.w3.org/2002/07/owl#equivalentClass": [
       {
-        "@id": "_:n693199beaa9648559440056f428c975cb17"
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb17"
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb17",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb17",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -1022,14 +1046,14 @@
             "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb18"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb18"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb18",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb18",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -1045,18 +1069,25 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actor/OwningResource",
+    "@id": "http://w3id.org/CEON/ontology/actor/dismantler",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorCVNRole"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/ProducingResource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The relation where the role of the actor is the owner of a certain resource."
+        "@value": "The relation where the role of the actor is the producer of a certain resource."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Owning resource"
+        "@value": "Producing resource"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
@@ -1066,12 +1097,12 @@
     ],
     "http://www.w3.org/2002/07/owl#equivalentClass": [
       {
-        "@id": "_:n693199beaa9648559440056f428c975cb25"
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb37"
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb25",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb37",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -1082,20 +1113,20 @@
             "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb26"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb38"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb26",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb38",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
     "http://www.w3.org/2002/07/owl#hasValue": [
       {
-        "@id": "http://w3id.org/CEON/ontology/actor/owner"
+        "@id": "http://w3id.org/CEON/ontology/actor/producer"
       }
     ],
     "http://www.w3.org/2002/07/owl#onProperty": [
@@ -1105,95 +1136,9 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actor/ActorProcessRole",
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participationIn",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The role(s) of an actor involved in a process."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Actor process role"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actor/ActorCollaborationRole"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/user",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorCVNRole",
-      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/owner",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/created",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/Person",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Person"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Actor"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/producer",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/Process",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/buyer",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/recycler",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorCVNRole"
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
     ]
   },
   {
@@ -1213,12 +1158,12 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:n693199beaa9648559440056f428c975cb72"
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb72"
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb72",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb72",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -1229,20 +1174,20 @@
             "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb73"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb73"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb74"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb74"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb75"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb75"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb73",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb73",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -1258,7 +1203,7 @@
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb74",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb74",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -1274,7 +1219,7 @@
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb75",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb75",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -1290,45 +1235,18 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actor/supplier",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorCVNRole",
-      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/contributor",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/viewer",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/BuyingResource",
+    "@id": "http://w3id.org/CEON/ontology/actor/ManufacturingResource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The relation where the role of the actor is the buyer of a certain resource."
+        "@value": "The relation where the role of the actor is the manufacturer of a certain resource."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Buying resource"
+        "@value": "Manufacturing resource"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
@@ -1338,12 +1256,12 @@
     ],
     "http://www.w3.org/2002/07/owl#equivalentClass": [
       {
-        "@id": "_:n693199beaa9648559440056f428c975cb1"
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb21"
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb1",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb21",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -1354,26 +1272,260 @@
             "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
           },
           {
-            "@id": "_:n693199beaa9648559440056f428c975cb2"
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb22"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:n693199beaa9648559440056f428c975cb2",
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb22",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
     "http://www.w3.org/2002/07/owl#hasValue": [
       {
-        "@id": "http://w3id.org/CEON/ontology/actor/buyer"
+        "@id": "http://w3id.org/CEON/ontology/actor/manufacturer"
       }
     ],
     "http://www.w3.org/2002/07/owl#onProperty": [
       {
         "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
       }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/cvn/Collaboration",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/user",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorCVNRole",
+      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participatingActor",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/UpdatingResource",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The relation where the role of the actor is the updater of a certain resource."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Updating resource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb60"
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb60",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+          },
+          {
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb61"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb61",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#hasValue": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actor/updater"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/ConsumingResource",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The relation where the role of the actor is the consumer of a certain resource."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Consuming resource"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#equivalentClass": [
+      {
+        "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb13"
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb13",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#intersectionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
+          },
+          {
+            "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb14"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:na2ebacaad9b54c2fa21187b35a95f91cb14",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#hasValue": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actor/consumer"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/collector",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorCVNRole"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/reseller",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorCVNRole",
+      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/neededResourceRelation",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "In order for an actor to have a capability, it needs to have certain resources, e.g. materials, infrastrucutre, know-how, information etc."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Capability"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "needed resource relations"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/capabilityProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/description",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/consumer",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/ActorResourceRole",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The role(s) of an actor in relation to a resource."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Actor resource role"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/actorODP/Role"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/actor/owner",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#NamedIndividual",
+      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
     ]
   },
   {
@@ -1458,181 +1610,29 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actor/collector",
+    "@id": "http://purl.org/dc/terms/creator",
     "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorCVNRole"
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/Actor",
+    "@id": "http://purl.org/dc/terms/license",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/ActorResourceRole",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The role(s) of an actor in relation to a resource."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Actor resource role"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/Role"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/Stakeholder",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "Person or organization that can affect, be affected by, or perceive itself to be affected by a decision or activity. To “perceive itself to be affected” means the perception has been made known to the organization."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@value": "ISO 59004:2024 - 3.4.2 interested party, stakeholder"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@language": "en",
-        "@value": "Interested party"
-      },
-      {
-        "@language": "en",
-        "@value": "Stakeholder"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "_:n693199beaa9648559440056f428c975cb53"
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb53",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/actor/Organisation"
-          },
-          {
-            "@id": "http://w3id.org/CEON/ontology/actor/Person"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/updater",
+    "@id": "http://w3id.org/CEON/ontology/actor/provider",
     "@type": [
       "http://www.w3.org/2002/07/owl#NamedIndividual",
       "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/actor/seller",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#NamedIndividual",
-      "http://w3id.org/CEON/ontology/actor/ActorCVNRole",
-      "http://w3id.org/CEON/ontology/actor/ActorResourceRole"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/manufacturer",
+    "@id": "http://w3id.org/CEON/ontology/actor/recycler",
     "@type": [
       "http://www.w3.org/2002/07/owl#NamedIndividual",
       "http://w3id.org/CEON/ontology/actor/ActorCVNRole"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/cvn/Collaboration",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/actor/ManufacturingResource",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The relation where the role of the actor is the manufacturer of a certain resource."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Manufacturing resource"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#equivalentClass": [
-      {
-        "@id": "_:n693199beaa9648559440056f428c975cb21"
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb21",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#intersectionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/actorODP/ResourceRelation"
-          },
-          {
-            "@id": "_:n693199beaa9648559440056f428c975cb22"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:n693199beaa9648559440056f428c975cb22",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#hasValue": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actor/manufacturer"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/actorODP/participantRole"
-      }
     ]
   }
 ]
