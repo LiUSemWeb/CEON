@@ -1,32 +1,41 @@
 [
   {
-    "@id": "http://w3id.org/CEON/ontology/plan/hasPlanExecution",
+    "@id": "http://w3id.org/CEON/ontology/plan/Plan",
     "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
+      "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "A plan can have specific executions."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/plan/Plan"
+        "@value": "A Description having an explicit goal, to be achieved by executing the plan."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "has plan exeution"
+        "@value": "Plan"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "http://w3id.org/CEON/ontology/plan/PlanExecution"
+        "@id": "http://w3id.org/CEON/ontology/plan/Description"
+      },
+      {
+        "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb1"
+      }
+    ]
+  },
+  {
+    "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/hasPart"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
       {
-        "@id": "http://www.w3.org/2002/07/owl#topObjectProperty"
+        "@id": "http://w3id.org/CEON/ontology/plan/Plan"
       }
     ]
   },
@@ -37,18 +46,28 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/plan/Description",
+    "@id": "http://w3id.org/CEON/ontology/plan/precedesExecution",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "A Description is a SocialObject that represents a conceptualization. \nFor example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations."
+        "@value": "The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/plan/PlanExecution"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Description"
+        "@value": "precedes execution"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
       }
     ]
   },
@@ -79,269 +98,39 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/plan/Plan",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "A Description having an explicit goal, to be achieved by executing the plan."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Plan"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/plan/Description"
-      },
-      {
-        "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb1"
-      }
-    ]
-  },
-  {
-    "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb1",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/hasPart"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/plan/Plan"
-      }
-    ]
-  },
-  {
     "@id": "http://w3id.org/CEON/ontology/processODP/hasInput",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/plan/PlanExecution",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Plan Execution"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
-      },
-      {
-        "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb2"
-      },
-      {
-        "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb7"
-      },
-      {
-        "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb8"
-      },
-      {
-        "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb9"
-      },
-      {
-        "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb10"
-      },
-      {
-        "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb11"
-      }
-    ]
-  },
-  {
-    "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb2",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb3"
-          },
-          {
-            "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb4"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb3",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/duringTime"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval"
-      }
-    ]
-  },
-  {
-    "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb4",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/occursAtTime"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
-      }
-    ]
-  },
-  {
-    "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb7",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/plan/followsExecution"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
-      }
-    ]
-  },
-  {
-    "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb8",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/plan/precedesExecution"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
-      }
-    ]
-  },
-  {
-    "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb9",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/plan/satisfiesPlan"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/plan/Plan"
-      }
-    ]
-  },
-  {
-    "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb10",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/hasPart"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/plan/PlanExecution"
-      }
-    ]
-  },
-  {
-    "@id": "_:nad385b11211d4b4e91d4aa23d698ce4eb11",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Process"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/plan/occursAtTime",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "Represents the time at which something takes place."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/plan/PlanExecution"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "occurs at time"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/plan/precedesExecution",
+    "@id": "http://w3id.org/CEON/ontology/plan/hasPlanExecution",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled."
+        "@value": "A plan can have specific executions."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
       {
-        "@id": "http://w3id.org/CEON/ontology/plan/PlanExecution"
+        "@id": "http://w3id.org/CEON/ontology/plan/Plan"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "precedes execution"
+        "@value": "has plan exeution"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/plan/PlanExecution"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
       {
-        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
+        "@id": "http://www.w3.org/2002/07/owl#topObjectProperty"
       }
     ]
   },
@@ -433,6 +222,48 @@
     ]
   },
   {
+    "@id": "http://w3id.org/CEON/ontology/plan/occursAtTime",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Represents the time at which something takes place."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/plan/PlanExecution"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "occurs at time"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/plan/Description",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A Description is a SocialObject that represents a conceptualization. \nFor example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Description"
+      }
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/plan/satisfiesPlan",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
@@ -460,6 +291,175 @@
     "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
       {
         "@id": "http://www.w3.org/2002/07/owl#topObjectProperty"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/plan/PlanExecution",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Plan Execution"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
+      },
+      {
+        "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb2"
+      },
+      {
+        "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb7"
+      },
+      {
+        "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb8"
+      },
+      {
+        "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb9"
+      },
+      {
+        "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb10"
+      },
+      {
+        "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb11"
+      }
+    ]
+  },
+  {
+    "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb2",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb3"
+          },
+          {
+            "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb3",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/duringTime"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval"
+      }
+    ]
+  },
+  {
+    "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb4",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/occursAtTime"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
+      }
+    ]
+  },
+  {
+    "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb7",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/plan/followsExecution"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
+      }
+    ]
+  },
+  {
+    "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb8",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/plan/precedesExecution"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
+      }
+    ]
+  },
+  {
+    "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb9",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/plan/satisfiesPlan"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/plan/Plan"
+      }
+    ]
+  },
+  {
+    "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb10",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/hasPart"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/plan/PlanExecution"
+      }
+    ]
+  },
+  {
+    "@id": "_:n5f4c5c805ca04403a24d0df4b51e7bdbb11",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/Process"
       }
     ]
   }
