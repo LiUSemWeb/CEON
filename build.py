@@ -58,7 +58,7 @@ def copy_ontologies():
             os.system(f"cp docs/{map[type]}/{name}/{version}/* docs/{map[type]}/{name}/latest/")
 
 def copy_alignments():
-    for type in ["ce", "materials"]:
+    for type in ["ce", "materials", "general"]:
         for source in sorted(glob(f"alignment/{type}/*", recursive=True)):
             if not (source.endswith(".rdf") or source.endswith(".tsv") or source.endswith(".ttl")):
                 continue
@@ -236,7 +236,8 @@ def create_index_file():
     }
     alignment_data = {
         "ce": [],
-        "materials": []
+        "materials": [],
+        "general": []
     }
 
     for type in ["modules", "demo"]:
@@ -284,7 +285,7 @@ def create_index_file():
                 else:
                     data["other"].append(ontology)
     
-    for type in ['ce', 'materials']:
+    for type in ['ce', 'materials', 'general']:
         alignment = {}
         for alignment_file in glob(f"alignment/{type}/*", recursive=True):
             if not alignment_file.endswith(".rdf"):
@@ -292,7 +293,6 @@ def create_index_file():
             o1, o2 = analyze_alignment_in_rdf(alignment_file)
             alignment_name = os.path.splitext(os.path.basename(alignment_file))[0]
             source, target = alignment_name.split("-")
-            print(o1, o2)
             if not alignment.get(alignment_name):
                 alignment = {
                     "name": alignment_name,
@@ -302,7 +302,6 @@ def create_index_file():
                     "target_uri": o2
                 }
             alignment_data[type].append(alignment)
-        print(alignment_data)
 
     for list in alignment_data.values():         
         list.sort(key=lambda x: x["name"])
