@@ -1,12 +1,6 @@
 [
   {
-    "@id": "http://www.w3.org/2001/XMLSchema#gYear",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/Process",
+    "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ]
@@ -28,9 +22,134 @@
     ]
   },
   {
+    "@id": "http://w3id.org/CEON/ontology/processODP/Process",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/cvn/implementsBlueprint",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The blueprint (or plan) that this concrete CVN is an instance of."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/cvn/CVN"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "implements blueprint"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/cvn/CVNBlueprint"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/cvn/CVN",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@language": "en",
+        "@value": "A network of interlinked value chains and interested parties."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@value": "ISO 59004:2024 - 3.5.3 value network"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Circular Value Network"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/cvn/Collaboration"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/cvn/CVNBlueprint",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Circular Value Network Blueprint"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2001/XMLSchema#date",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ]
+  },
+  {
     "@id": "http://www.w3.org/2001/XMLSchema#gMonthYear",
     "@type": [
       "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/value/Value",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/cvn/CircularStrategy",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A circular strategy, such as to reccycle, reuse or refurbish something."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Circular Strategy"
+      }
+    ]
+  },
+  {
+    "@id": "http://www.w3.org/2001/XMLSchema#gYear",
+    "@type": [
+      "http://www.w3.org/2000/01/rdf-schema#Datatype"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/cvn/Collaboration",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A collaboration between a set of actors."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Collaboration"
+      }
     ]
   },
   {
@@ -138,13 +257,13 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/cvn/implementsBlueprint",
+    "@id": "http://w3id.org/CEON/ontology/cvn/implementsStrategy",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The blueprint (or plan) that this concrete CVN is an instance of."
+        "@value": "A strategy that is implemented by this CVN or CVN blueprint."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
@@ -154,137 +273,24 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "implements blueprint"
+        "@value": "implements strategy"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
-        "@id": "http://w3id.org/CEON/ontology/cvn/CVNBlueprint"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/cvn/CircularStrategy",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "A circular strategy, such as to reccycle, reuse or refurbish something."
+        "@id": "http://w3id.org/CEON/ontology/cvn/CircularStrategy"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
       {
-        "@value": "Circular Strategy"
+        "@id": "http://w3id.org/CEON/ontology/cvn/relatedStrategy"
       }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/resourceODP/Resource",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/cvn/CVNBlueprint",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Circular Value Network Blueprint"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/cvn/createsValue",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "Value creation can be captured at the actor level, i.e. value created by an actor's participation in a collaboration, or at the process or complete CVN level."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "_:n2ed64d2cc0c44105aefcee5eab47e8e4b10"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "creates value"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/value/Value"
-      }
-    ]
-  },
-  {
-    "@id": "_:n2ed64d2cc0c44105aefcee5eab47e8e4b10",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2002/07/owl#unionOf": [
-      {
-        "@list": [
-          {
-            "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
-          },
-          {
-            "@id": "http://w3id.org/CEON/ontology/cvn/CVN"
-          },
-          {
-            "@id": "http://w3id.org/CEON/ontology/processODP/Process"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "@id": "http://www.w3.org/2001/XMLSchema#date",
-    "@type": [
-      "http://www.w3.org/2000/01/rdf-schema#Datatype"
     ]
   },
   {
     "@id": "http://w3id.org/CEON/ontology/value/ValueProposition",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/cvn/CVN",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "A network of interlinked value chains and interested parties."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@value": "ISO 59004:2024 - 3.5.3 value network"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Circular Value Network"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/cvn/Collaboration"
-      }
     ]
   },
   {
@@ -330,7 +336,7 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
       {
-        "@id": "_:n2ed64d2cc0c44105aefcee5eab47e8e4b4"
+        "@id": "_:n25d4203d1bfe45d9a3286241cfc142ddb4"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
@@ -340,12 +346,12 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#range": [
       {
-        "@id": "_:n2ed64d2cc0c44105aefcee5eab47e8e4b7"
+        "@id": "_:n25d4203d1bfe45d9a3286241cfc142ddb7"
       }
     ]
   },
   {
-    "@id": "_:n2ed64d2cc0c44105aefcee5eab47e8e4b4",
+    "@id": "_:n25d4203d1bfe45d9a3286241cfc142ddb4",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -363,7 +369,7 @@
     ]
   },
   {
-    "@id": "_:n2ed64d2cc0c44105aefcee5eab47e8e4b7",
+    "@id": "_:n25d4203d1bfe45d9a3286241cfc142ddb7",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -381,9 +387,50 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/value/Value",
+    "@id": "http://w3id.org/CEON/ontology/cvn/createsValue",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "Value creation can be captured at the actor level, i.e. value created by an actor's participation in a collaboration, or at the process or complete CVN level."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "_:n25d4203d1bfe45d9a3286241cfc142ddb10"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "creates value"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/value/Value"
+      }
+    ]
+  },
+  {
+    "@id": "_:n25d4203d1bfe45d9a3286241cfc142ddb10",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2002/07/owl#unionOf": [
+      {
+        "@list": [
+          {
+            "@id": "http://w3id.org/CEON/ontology/actorODP/Participation"
+          },
+          {
+            "@id": "http://w3id.org/CEON/ontology/cvn/CVN"
+          },
+          {
+            "@id": "http://w3id.org/CEON/ontology/processODP/Process"
+          }
+        ]
+      }
     ]
   },
   {
@@ -398,7 +445,7 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
       {
-        "@id": "_:n2ed64d2cc0c44105aefcee5eab47e8e4b1"
+        "@id": "_:n25d4203d1bfe45d9a3286241cfc142ddb1"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
@@ -413,7 +460,7 @@
     ]
   },
   {
-    "@id": "_:n2ed64d2cc0c44105aefcee5eab47e8e4b1",
+    "@id": "_:n25d4203d1bfe45d9a3286241cfc142ddb1",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -427,53 +474,6 @@
             "@id": "http://w3id.org/CEON/ontology/cvn/CVNBlueprint"
           }
         ]
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/cvn/implementsStrategy",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "A strategy that is implemented by this CVN or CVN blueprint."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/cvn/CVN"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "implements strategy"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/cvn/CircularStrategy"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/cvn/relatedStrategy"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/cvn/Collaboration",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "A collaboration between a set of actors."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Collaboration"
       }
     ]
   },
