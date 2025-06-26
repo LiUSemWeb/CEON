@@ -10,6 +10,8 @@ from pylode.profiles.vocpub import VocPub
 from rdflib import Graph
 import logging
 from playwright.sync_api import sync_playwright
+import xml.etree.ElementTree
+import xml.dom.minidom
 
 # Configure root logger
 logger = logging.getLogger()
@@ -55,6 +57,32 @@ def copy_ontologies():
             os.makedirs(f"docs/{map[type]}/{name}/latest/", exist_ok=True)
             os.system(f"cp docs/{map[type]}/{name}/{version}/* docs/{map[type]}/{name}/latest/")
 
+def copy_alignments():
+    for type in ["ce", "materials"]:
+        for source in sorted(glob(f"alignment/{type}/*", recursive=True)):
+            if not (source.endswith(".rdf") or source.endswith(".tsv") or source.endswith(".ttl")):
+                continue
+            alignment_name = os.path.splitext(os.path.basename(source))[0]
+            target = f"docs/alignment/{type}/"
+            os.makedirs(target, exist_ok=True)
+
+            logging.debug(f"Source:\t{source}")
+            logging.debug(f"Name:\t{alignment_name}")
+            logging.debug(f"Target:\t{target}")
+
+            os.makedirs(f"docs/alignment/{type}/", exist_ok=True)
+            os.system(f"cp {source} docs/alignment/{type}/")
+            #g = Graph()
+            #g.parse(source)
+            #g.serialize(destination=f"{target}{alignment_name}.rdf", format="xml")
+
+
+def analyze_alignment_in_rdf(alignment_rdf_file):
+    doc = xml.dom.minidom.parse(alignment_rdf_file)
+    o1 = doc.getElementsByTagName('onto1').item(0).firstChild.data
+    o2 = doc.getElementsByTagName('onto2').item(0).firstChild.data
+    return o1, o2
+    
 
 def download_owl2vowl():
     """Download and extract OWL2VOWL."""
@@ -206,6 +234,11 @@ def create_index_file():
         "full": [],
         "supplementary": []
     }
+    alignment_data = {
+        "ce": [],
+        "materials": []
+    }
+
     for type in ["modules", "demo"]:
         ontologies = {}
         for source in glob(f"ontology/{type}/*/*/*", recursive=True):
@@ -251,7 +284,30 @@ def create_index_file():
                 else:
                     data["other"].append(ontology)
     
-    for list in data.values():           
+    for type in ['ce', 'materials']:
+        alignment = {}
+        for alignment_file in glob(f"alignment/{type}/*", recursive=True):
+            if not alignment_file.endswith(".rdf"):
+                continue
+            o1, o2 = analyze_alignment_in_rdf(alignment_file)
+            alignment_name = os.path.splitext(os.path.basename(alignment_file))[0]
+            source, target = alignment_name.split("-")
+            print(o1, o2)
+            if not alignment.get(alignment_name):
+                alignment = {
+                    "name": alignment_name,
+                    "source": source,
+                    "source_uri": o1,
+                    "target": target,
+                    "target_uri": o2
+                }
+            alignment_data[type].append(alignment)
+        print(alignment_data)
+
+    for list in alignment_data.values():         
+        list.sort(key=lambda x: x["name"])
+
+    for list in data.values():     
         list.sort(key=lambda x: x["name"])
 
     # sort by name ascending, version descending
@@ -259,7 +315,7 @@ def create_index_file():
         template = compiler.compile(f.read())
         
     with open(index_file, "w") as f:
-        f.write(template({"data": data}))
+        f.write(template({"data": data, "alignment_data": alignment_data}))
 
 def html_to_pdf_with_playwright(html_file, pdf_file):
     """Convert HTML file to a PDF file using Playwright."""
@@ -353,6 +409,7 @@ def main():
     build_pdf_playwright()
     create_index_file()
     copy_ontologies()
+    copy_alignments()
 
 if __name__ == "__main__":
     main()
