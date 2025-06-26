@@ -176,6 +176,9 @@
                 </table>
 
                 <h2>Supplementary</h2>
+                 <p>
+                    The following modules are supplemental to the core modules as shown in Figure 1.</ul>
+                </p>
                 <table>
                     <colgroup>
                         <col class="col-1">
@@ -212,47 +215,15 @@
                     {{/each}}
                 </table>
 
-                <h1>Full Imported Version</h1>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Ontology
-                        </th>
-                        <th>
-                            Version
-                        </th>
-                        <th>
-                            Docs
-                        </th>
-                    </tr>
-                    {{#each data.full}}
-                        <tr>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a>
-                                (<a href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>)
-                            </td>
-                            <td>
-                                {{versions.0}}
-                            </td>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">html</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+          
 
 
 
 
-                <h1>Use Cases</h1>
+                <h1>Use Case Ontologies</h1>
+                 <p>
+                   The use case ontologies reuse the core modules of CEON and focus on representing use case data about products' lifecycle operations.</ul>
+                </p>
                 <table>
                     <colgroup>
                         <col class="col-1">
@@ -289,7 +260,8 @@
                     {{/each}}
                 </table>
 
-                <h1>Other Modules</h1>
+                <h1>Other Reused Ontologies</h1>
+                <p>The following ontologies are not included directly in CEON, but are reused or referenced. For instance, the Building Topology Ontology (BOT) is used in the construction use case, and the QUDT ontology is referred to in the Quantity module.</p>
                 <table>
                     <colgroup>
                         <col class="col-1">
@@ -325,6 +297,158 @@
                         </tr>
                     {{/each}}
                 </table>
+                <h1>Full Imported Version</h1>
+                <p>The following ontology file is the complete version of CEON, including both core and supplementary modules.</p>
+
+                <table>
+                    <colgroup>
+                        <col class="col-1">
+                        <col class="col-2">
+                        <col class="col-3">
+                      </colgroup>
+                    <tr>
+                        <th>
+                            Ontology
+                        </th>
+                        <th>
+                            Version
+                        </th>
+                        <th>
+                            Docs
+                        </th>
+                    </tr>
+                    {{#each data.full}}
+                        <tr>
+                            <td>
+                                <a href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a>
+                                (<a href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>,
+                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>,
+                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>)
+                            </td>
+                            <td>
+                                {{versions.0}}
+                            </td>
+                            <td>
+                                <a href="ontology/{{name}}/{{versions.0}}/index.html">html</a>,
+                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+                
+                <h1>Alignment Module</h1>
+                <p>The alignment module contains preliminary results aligning CEON with relevant ontologies in the domains of circular economy (CE) and materials.</p>
+
+                <h2>CE related ontologies</h2>
+                <table>
+                    <colgroup>
+                        <col class="col-1">
+                        <col class="col-2">
+                        <col class="col-3">
+                        <col class="col-3">
+                      </colgroup>
+                    <tr>
+                        <th>
+                            Source Ontology
+                        </th>
+                        <th>
+                            Target Ontology
+                        </th>
+                        <th>
+                            Alignment
+                        </th>
+                    </tr>
+                    {{#each alignment_data.ce}}
+                        <tr>
+                            <td>
+                                <a href="{{source_uri}}">{{source}}</a>
+                            </td>
+                            <td>
+                                <a href="{{target_uri}}">{{target}}</a>
+                            </td>
+                            <td>
+                                (<a href="alignment/ce/{{name}}.rdf">rdf</a>, 
+                                <a href="alignment/ce/{{name}}.ttl">ttl</a>,
+                                <a href="alignment/ce/{{name}}.tsv">tsv</a>)
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+
+                <h2>Materials related ontologies</h2>
+                <table>
+                    <colgroup>
+                        <col class="col-1">
+                        <col class="col-2">
+                        <col class="col-3">
+                        <col class="col-3">
+                      </colgroup>
+                    <tr>
+                        <th>
+                            Source Ontology
+                        </th>
+                        <th>
+                            Target Ontology
+                        </th>
+                        <th>
+                            Alignment
+                        </th>
+
+                    </tr>
+                    {{#each alignment_data.materials}}
+                        <tr>
+                            <td>
+                                <a href="{{source_uri}}">{{source}}</a>
+                            </td>
+                            <td>
+                                <a href="{{target_uri}}">{{target}}</a>
+                            </td>
+                            <td>
+                                (<a href="alignment/materials/{{name}}.rdf">rdf</a>, 
+                                <a href="alignment/materials/{{name}}.ttl">ttl</a>,
+                                <a href="alignment/materials/{{name}}.tsv">tsv</a>)
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+
+                <h2>General (Top) level ontologies</h2>
+                <table>
+                    <colgroup>
+                        <col class="col-1">
+                        <col class="col-2">
+                        <col class="col-3">
+                        <col class="col-3">
+                      </colgroup>
+                    <tr>
+                        <th>
+                            Source Ontology
+                        </th>
+                        <th>
+                            Target Ontology
+                        </th>
+                        <th>
+                            Alignment
+                        </th>
+
+                    </tr>
+                    {{#each alignment_data.general}}
+                        <tr>
+                            <td>
+                                <a href="{{source_uri}}">{{source}}</a>
+                            </td>
+                            <td>
+                                <a href="{{target_uri}}">{{target}}</a>
+                            </td>
+                            <td>
+                                (<a href="alignment/general/{{name}}.rdf">rdf</a>, 
+                                <a href="alignment/general/{{name}}.ttl">ttl</a>,
+                                <a href="alignment/general/{{name}}.tsv">tsv</a>)
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+
 
             </div>
         </main>
