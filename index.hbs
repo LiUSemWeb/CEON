@@ -14,7 +14,7 @@
                     The Circular Economy Ontology Network (CEON) provides a shared vocabulary for representing information about circular economies in the form of a network of ontology modules.
                 </p>
                 <p>
-                    The figure below shows an overview of the topics covered. The lines between the boxes represent some common-sense relations between the topics, which are represented as formal relations within the actual modules, such as <code>owl:import</code> or specific object properties connecting concepts inside the modules. The light blue box (location) is not part of CEON, but instead reuses a standard geographical ontology such as the OGC GeoSPARQL standards.
+                    The figure below shows an overview of the topics covered. The lines between the boxes represent some common-sense relations between the topics, which are represented as formal relations within the actual modules, such as <code>owl:import</code> or specific object properties connecting concepts inside the modules.
                 </p>
                 <div class="img-div">
                     <img src="images/overview_v1.0.0.png">
@@ -412,6 +412,42 @@
                     {{/each}}
                 </table>
 
+                <h2>General (Top) level ontologies</h2>
+                <table>
+                    <colgroup>
+                        <col class="col-1">
+                        <col class="col-2">
+                        <col class="col-3">
+                        <col class="col-3">
+                      </colgroup>
+                    <tr>
+                        <th>
+                            Source Ontology
+                        </th>
+                        <th>
+                            Target Ontology
+                        </th>
+                        <th>
+                            Alignment
+                        </th>
+
+                    </tr>
+                    {{#each alignment_data.general}}
+                        <tr>
+                            <td>
+                                <a href="{{source_uri}}">{{source}}</a>
+                            </td>
+                            <td>
+                                <a href="{{target_uri}}">{{target}}</a>
+                            </td>
+                            <td>
+                                (<a href="alignment/general/{{name}}.rdf">rdf</a>, 
+                                <a href="alignment/general/{{name}}.ttl">ttl</a>,
+                                <a href="alignment/general/{{name}}.tsv">tsv</a>)
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
 
 
             </div>
