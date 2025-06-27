@@ -1,5 +1,6 @@
 @prefix : <http://w3id.org/CEON/ontology/quantity/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix qudt-unit: <http://qudt.org/vocab/unit/> .
@@ -7,6 +8,14 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:issued a owl:AnnotationProperty .
+
+dcterms:publisher a owl:AnnotationProperty .
 
 qudt-unit:EURO-PER-KiloM a qudt:Unit,
         owl:NamedIndividual ;
@@ -30,6 +39,7 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
     dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module" ;
     vann:preferredNamespacePrefix "ceon-quantity" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/quantity/" ;
+    ns1:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: C3-2, C13-1, C13-4, E3-1, E4-11, T6-1, T10-1." ;
     rdfs:comment "This module defines base properties to describe quantitites with standardized units." ;
     rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
     owl:imports <http://w3id.org/CEON/ontology/qudtunit/2.1/> ;
@@ -157,6 +167,10 @@ qudt-unit:EURO-PER-M2 a qudt:Unit,
     rdfs:label "object value" ;
     rdfs:comment "objectValue is analogous to qudt:numericalValue" ;
     rdfs:subPropertyOf qudt:hasQuantityKind .
+
+ns1:coversRequirements a owl:AnnotationProperty .
+
+xsd:date a rdfs:Datatype .
 
 :QuantityInterval a owl:Class ;
     rdfs:label "Quantity Interval" ;
