@@ -11,6 +11,26 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:issued a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:publisher a owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
 : a owl:Ontology ;
     dcterms:contributor "Eva Blomqvist",
         "Mikael Lindecrantz",
@@ -24,19 +44,13 @@
     dcterms:title "Circular Economy Ontology Network (CEON) - Actor ODP" ;
     vann:preferredNamespacePrefix "ceon-actorODP" ;
     vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/actorODP/" ;
-    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3, CVN-Actor-1,4,6,7, CVN-Competency-3, CVN-Information-4, C11-1, C11-3, E1-6,6,6,9, E4-10",
-        "Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE2-1, CE2-2, CE4-2, CE6-3, CE12-1, CE10-1, CE10-4, CE10-9, CVN-Actor-1,4,6,7, CVN-Competency-3, C11-1, C11-3, E1-6,6,6,9, E4-10" ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3, CVN-Actor-1,4,6,7, CVN-Competency-3, CVN-Information-4, C11-1, C11-3, E1-6,6,6,9, E4-10.",
+        "Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE2-1, CE2-2, CE4-2, CE6-3, CE12-1, CE10-1, CE10-3, CE10-4, CE10-9, C3-6, C3-9, C11-1, C11-3, C13-8, C13-10, E1-6, E1-9, E4-10." ;
     rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the actor concept." ;
     rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
     owl:priorVersion 0.3 ;
     owl:versionIRI <http://w3id.org/CEON/ontology/actorODP/0.4/> ;
     owl:versionInfo 0.4 .
-
-:actorType a owl:ObjectProperty ;
-    rdfs:label "actor type" ;
-    rdfs:comment "The type of the actor." ;
-    rdfs:domain :Actor ;
-    rdfs:range :ActorType .
 
 :basedOnCapability a owl:ObjectProperty ;
     rdfs:label "based on capability" ;
@@ -106,15 +120,13 @@
     rdfs:range [ a owl:Class ;
             owl:unionOf ( cvn:Collaboration processODP:Process ) ] .
 
+odp:coversRequirements a owl:AnnotationProperty .
+
 geo:geoJSONLiteral a rdfs:Datatype .
 
 geo:gmlLiteral a rdfs:Datatype .
 
 geo:wktLiteral a rdfs:Datatype .
-
-:ActorType a owl:Class ;
-    rdfs:label "Actor Type" ;
-    rdfs:comment "The type of an actor, e.g. the type of company, or a specific subtype based on the organisations capabilities." .
 
 :ResourceRelation a owl:Class ;
     rdfs:label "Resource Relation" ;
@@ -143,6 +155,10 @@ cvn:Collaboration a owl:Class .
 
 processODP:Process a owl:Class .
 
+:Actor a owl:Class ;
+    rdfs:label "Actor" ;
+    rdfs:comment "An agent able to act in the context of a circular value network, e.g. an organisation, person." .
+
 :CollaborationParticipation a owl:Class ;
     rdfs:label "Collaboration Participation" ;
     rdfs:comment "The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time." ;
@@ -156,10 +172,6 @@ processODP:Process a owl:Class .
     rdfs:label "Resource Participation" ;
     rdfs:comment "The generic relation representing the particpation of a resource in some relation. For example, it can be specialized to represent a reified version of an object or data property." ;
     rdfs:subClassOf :Participation .
-
-:Actor a owl:Class ;
-    rdfs:label "Actor" ;
-    rdfs:comment "An agent able to act in the context of a circular value network, e.g. an organisation, person." .
 
 :Capability a owl:Class ;
     rdfs:label "Capability" ;
