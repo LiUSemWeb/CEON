@@ -58,7 +58,7 @@ def copy_ontologies():
             os.system(f"cp docs/{map[type]}/{name}/{version}/* docs/{map[type]}/{name}/latest/")
 
 def copy_alignments():
-    for type in ["ce", "materials", "general"]:
+    for type in ['ce', 'sustainability', 'materials', 'manufacturing', 'product', 'logistics', 'general']:
         for source in sorted(glob(f"alignment/{type}/*", recursive=True)):
             if not (source.endswith(".rdf") or source.endswith(".tsv") or source.endswith(".ttl")):
                 continue
@@ -236,7 +236,11 @@ def create_index_file():
     }
     alignment_data = {
         "ce": [],
+        "sustainability": [],
         "materials": [],
+        "manufacturing": [],
+        "product": [],
+        "logistics": [],
         "general": []
     }
 
@@ -285,7 +289,7 @@ def create_index_file():
                 else:
                     data["other"].append(ontology)
     
-    for type in ['ce', 'materials', 'general']:
+    for type in ['ce', 'sustainability', 'materials', 'manufacturing', 'product', 'logistics', 'general']:
         alignment = {}
         for alignment_file in glob(f"alignment/{type}/*", recursive=True):
             if not alignment_file.endswith(".rdf"):
