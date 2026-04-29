@@ -1,604 +1,579 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link href="style.css" rel="stylesheet"/>
-        <title>
-            Circular Economy Ontology Network (CEON)
-        </title>
-    </head>
-    <body>
-        <main>
-            <div id="overview">
-                <h1>Circular Economy Ontology Network (CEON)</h1>
-                <p>
-                    The Circular Economy Ontology Network (CEON) provides a shared vocabulary for representing information about circular economies in the form of a network of ontology modules.
-                </p>
-                <p>
-                    The figure below shows an overview of the topics covered. The lines between the boxes represent some common-sense relations between the topics, which are represented as formal relations within the actual modules, such as <code>owl:imports</code> or specific object properties connecting concepts inside the modules. 
-                </p>
-                <div class="img-div">
-                    <img src="images/overview_v1.0.0.png">
-                </div>
-            </div>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Circular Economy Ontology Network (CEON)</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body { padding-top: 80px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 15px; }
 
-            <div id="index">
-                <h1>Core Modules</h1>
-                <p>
-                    The set of core modules that are in this release of CEON forms a set of generic reusable ontology building blocks and include  Actor, Process, Resource, and Circular Value Network.
-                    </ul>
-                </p>
-                <h2>Actor</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Ontology
-                        </th>
-                        <th>
-                            Version
-                        </th>
-                        <th>
-                            Docs
-                        </th>
-                    </tr>
-                    {{#each data.actor}}
-                        <tr>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a>
-                                (<a href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>)
-                            </td>
-                            <td>
-                                {{versions.0}}
-                            </td>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">html</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+    .navbar { background-color: #2c3e50; border: none; border-radius: 0; min-height: 60px; }
+    .navbar .navbar-header { display: flex; align-items: center; height: 60px; }
+    .navbar-brand { display: flex !important; align-items: center; height: 60px !important; padding-top: 0 !important; padding-bottom: 0 !important; color: #ecf0f1 !important; font-size: 1.3em; }
+    .navbar-brand img { display: block; }
+    .navbar-nav > li > a { color: #ecf0f1 !important; line-height: 60px; padding-top: 0; padding-bottom: 0; font-size: 1em; }
+    .navbar-nav > li > a:hover { color: #1abc9c !important; background: transparent !important; }
+    .navbar-toggle { margin-top: 13px; }
 
-                <h2>Process</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Ontology
-                        </th>
-                        <th>
-                            Version
-                        </th>
-                        <th>
-                            Docs
-                        </th>
-                    </tr>
-                    {{#each data.process}}
-                        <tr>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a>
-                                (<a href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>)
-                            </td>
-                            <td>
-                                {{versions.0}}
-                            </td>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">html</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+    .page-header { border-bottom: 2px solid #1abc9c; margin-bottom: 25px; }
+    .page-header h1 { color: #2c3e50; font-weight: 300; font-size: 2.4em; }
 
-                <h2>Resource</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Ontology
-                        </th>
-                        <th>
-                            Version
-                        </th>
-                        <th>
-                            Docs
-                        </th>
-                    </tr>
-                    {{#each data.resource}}
-                        <tr>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a>
-                                (<a href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>)
-                            </td>
-                            <td>
-                                {{versions.0}}
-                            </td>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">html</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+    .intro-text { color: #555; font-size: 1.1em; margin-bottom: 20px; line-height: 1.7; }
 
-                <h2>CVN</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Ontology
-                        </th>
-                        <th>
-                            Version
-                        </th>
-                        <th>
-                            Docs
-                        </th>
-                    </tr>
-                    {{#each data.cvn}}
-                        <tr>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a>
-                                (<a href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>)
-                            </td>
-                            <td>
-                                {{versions.0}}
-                            </td>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">html</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+    .overview-img { text-align: center; margin: 25px 0; }
+    .overview-img img { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 8px; background: #fff; }
 
-                <h2>Supplementary</h2>
-                 <p>
-                    The following modules are supplemental to the core modules as shown in Figure 1.</ul>
-                </p>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Ontology
-                        </th>
-                        <th>
-                            Version
-                        </th>
-                        <th>
-                            Docs
-                        </th>
-                    </tr>
-                    {{#each data.supplementary}}
-                        <tr>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a>
-                                (<a href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>)
-                            </td>
-                            <td>
-                                {{versions.0}}
-                            </td>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">html</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+    h2.section-title {
+      font-size: 1.6em;
+      color: #2c3e50;
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    h3.subsection-title {
+      font-size: 1.2em;
+      color: #555;
+      font-weight: 600;
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
 
-          
+    .table { font-size: 1em; }
+    .table > thead > tr > th {
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      border-color: #2c3e50;
+      font-weight: 500;
+      white-space: nowrap;
+      font-size: 1em;
+    }
+    .table-striped > tbody > tr:nth-of-type(odd) { background-color: #f9f9f9; }
+    .table > tbody > tr > td { vertical-align: middle; }
+    .table > tbody > tr:hover { background-color: #eaf7f4; }
 
+    .badge-format {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 0.85em;
+      font-weight: 600;
+      border-radius: 3px;
+      margin-right: 3px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .badge-ttl  { background-color: #27ae60; }
+    .badge-rdf  { background-color: #e74c3c; }
+    .badge-json { background-color: #f39c12; }
+    .badge-html { background-color: #2980b9; }
+    .badge-pdf  { background-color: #8e44ad; }
+    .badge-tsv  { background-color: #16a085; }
 
+    .badge-format:hover { opacity: 0.85; color: #fff; text-decoration: none; }
 
+    .label-version {
+      display: inline-block;
+      background: #ecf0f1;
+      color: #2c3e50;
+      border: 1px solid #bdc3c7;
+      padding: 2px 9px;
+      border-radius: 10px;
+      font-size: 0.88em;
+      font-weight: 600;
+    }
 
-                <h1>Use Case Ontologies</h1>
-                 <p>
-                   The use case ontologies reuse the core modules of CEON and focus on representing use case data about products' lifecycle operations.</ul>
-                </p>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Ontology
-                        </th>
-                        <th>
-                            Version
-                        </th>
-                        <th>
-                            Docs
-                        </th>
-                    </tr>
-                    {{#each data.demo}}
-                        <tr>
-                            <td>
-                                <a href="demo/{{name}}/{{versions.0}}/index.html">{{name}}</a>
-                                (<a href="demo/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>,
-                                <a href="demo/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>,
-                                <a href="demo/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>)
-                            </td>
-                            <td>
-                                {{versions.0}}
-                            </td>
-                            <td>
-                                <a href="demo/{{name}}/{{versions.0}}/index.html">html</a>,
-                                <a href="demo/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+    .onto-name { font-weight: 600; color: #2c3e50; font-size: 1em; }
+    .onto-name:hover { color: #1abc9c; }
 
-                <h1>Other Reused Ontologies</h1>
-                <p>The following ontologies are not included directly in CEON, but are reused or referenced. For instance, the Building Topology Ontology (BOT) is used in the construction use case, and the QUDT ontology is referred to in the Quantity module.</p>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Ontology
-                        </th>
-                        <th>
-                            Version
-                        </th>
-                        <th>
-                            Docs
-                        </th>
-                    </tr>
-                    {{#each data.other}}
-                        <tr>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a>
-                                (<a href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>)
-                            </td>
-                            <td>
-                                {{versions.0}}
-                            </td>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">html</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
-                <h1>Full Imported Version</h1>
-                <p>The following ontology file is the complete version of CEON, including both core and supplementary modules.</p>
+    .section-desc { color: #666; font-size: 1em; margin-bottom: 15px; }
 
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Ontology
-                        </th>
-                        <th>
-                            Version
-                        </th>
-                        <th>
-                            Docs
-                        </th>
-                    </tr>
-                    {{#each data.full}}
-                        <tr>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a>
-                                (<a href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>)
-                            </td>
-                            <td>
-                                {{versions.0}}
-                            </td>
-                            <td>
-                                <a href="ontology/{{name}}/{{versions.0}}/index.html">html</a>,
-                                <a href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
-                
-                <h1>Alignment Module</h1>
-                <p>The alignment module contains results aligning CEON with relevant ontologies in the domains of circular economy (CE), sustainability, materials, manufacturing, product, logistics, and with two general ontologies.</p>
+    .footer {
+      margin-top: 60px;
+      padding: 30px 0 20px;
+      border-top: 2px solid #1abc9c;
+      background: #f8f8f8;
+      text-align: center;
+      font-size: 0.95em;
+      color: #777;
+    }
+    .footer a { color: #2c3e50; }
+    .footer a:hover { color: #1abc9c; }
+    .footer .logos { margin-top: 15px; }
+    .footer .logos img { height: 45px; margin: 0 12px; vertical-align: middle; }
 
-                <h2>CE related ontologies</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Source Ontology
-                        </th>
-                        <th>
-                            Target Ontology
-                        </th>
-                        <th>
-                            Alignment
-                        </th>
-                    </tr>
-                    {{#each alignment_data.ce}}
-                        <tr>
-                            <td>
-                                <a href="{{source_uri}}">{{source}}</a>
-                            </td>
-                            <td>
-                                <a href="{{target_uri}}">{{target}}</a>
-                            </td>
-                            <td>
-                                (<a href="alignment/ce/{{name}}.rdf">rdf</a>, 
-                                <a href="alignment/ce/{{name}}.ttl">ttl</a>,
-                                <a href="alignment/ce/{{name}}.tsv">tsv</a>)
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+    .hr-green { border-top: 1px solid #1abc9c; margin: 30px 0; }
 
-                <h2>Sustainability related ontologies</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Source Ontology
-                        </th>
-                        <th>
-                            Target Ontology
-                        </th>
-                        <th>
-                            Alignment
-                        </th>
+    .badge-license {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 0.85em;
+      font-weight: 600;
+      border-radius: 3px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #7f8c8d;
+    }
+    .badge-license:hover { opacity: 0.85; color: #fff; text-decoration: none; }
+    .align-arrow { color: #bbb; font-size: 1.1em; }
+  </style>
+</head>
+<body>
 
-                    </tr>
-                    {{#each alignment_data.sustainability}}
-                        <tr>
-                            <td>
-                                <a href="{{source_uri}}">{{source}}</a>
-                            </td>
-                            <td>
-                                <a href="{{target_uri}}">{{target}}</a>
-                            </td>
-                            <td>
-                                (<a href="alignment/sustainability/{{name}}.rdf">rdf</a>, 
-                                <a href="alignment/sustainability/{{name}}.ttl">ttl</a>,
-                                <a href="alignment/sustainability/{{name}}.tsv">tsv</a>)
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+<!-- Navbar -->
+<nav class="navbar navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="images/ceon-logo.png" alt="CEON" style="height: 40px;">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#core">Core Modules</a></li>
+        <li><a href="#usecases">Use Cases</a></li>
+        <li><a href="#other">Reused Ontologies</a></li>
+        <li><a href="#alignment">Alignments</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://github.com/LiUSemWeb/CEON" target="_blank"><span class="glyphicon glyphicon-link"></span> GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-                <h2>Materials related ontologies</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Source Ontology
-                        </th>
-                        <th>
-                            Target Ontology
-                        </th>
-                        <th>
-                            Alignment
-                        </th>
+<div class="container">
 
-                    </tr>
-                    {{#each alignment_data.materials}}
-                        <tr>
-                            <td>
-                                <a href="{{source_uri}}">{{source}}</a>
-                            </td>
-                            <td>
-                                <a href="{{target_uri}}">{{target}}</a>
-                            </td>
-                            <td>
-                                (<a href="alignment/materials/{{name}}.rdf">rdf</a>, 
-                                <a href="alignment/materials/{{name}}.ttl">ttl</a>,
-                                <a href="alignment/materials/{{name}}.tsv">tsv</a>)
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+  <!-- Header -->
+  <div class="page-header">
+    <h1>Circular Economy Ontology Network <small>(CEON)</small></h1>
+  </div>
 
-                <h2>Manufacturing related ontologies</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Source Ontology
-                        </th>
-                        <th>
-                            Target Ontology
-                        </th>
-                        <th>
-                            Alignment
-                        </th>
+  <p class="intro-text">
+    The Circular Economy Ontology Network (CEON) provides a shared vocabulary for representing information about circular economies in the form of a network of ontology modules. The figure below shows an overview of the topics covered. The lines between the boxes represent some common-sense relations between the topics, which are represented as formal relations within the actual modules, such as <code>owl:imports</code> or specific object properties connecting concepts inside the modules.
+  </p>
 
-                    </tr>
-                    {{#each alignment_data.manufacturing}}
-                        <tr>
-                            <td>
-                                <a href="{{source_uri}}">{{source}}</a>
-                            </td>
-                            <td>
-                                <a href="{{target_uri}}">{{target}}</a>
-                            </td>
-                            <td>
-                                (<a href="alignment/manufacturing/{{name}}.rdf">rdf</a>, 
-                                <a href="alignment/manufacturing/{{name}}.ttl">ttl</a>,
-                                <a href="alignment/manufacturing/{{name}}.tsv">tsv</a>)
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+  <div class="overview-img">
+    <img src="images/CEON-new.png" alt="CEON Overview">
+  </div>
 
-                <h2>Product related ontologies</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Source Ontology
-                        </th>
-                        <th>
-                            Target Ontology
-                        </th>
-                        <th>
-                            Alignment
-                        </th>
+  <hr class="hr-green">
 
-                    </tr>
-                    {{#each alignment_data.product}}
-                        <tr>
-                            <td>
-                                <a href="{{source_uri}}">{{source}}</a>
-                            </td>
-                            <td>
-                                <a href="{{target_uri}}">{{target}}</a>
-                            </td>
-                            <td>
-                                (<a href="alignment/product/{{name}}.rdf">rdf</a>, 
-                                <a href="alignment/product/{{name}}.ttl">ttl</a>,
-                                <a href="alignment/product/{{name}}.tsv">tsv</a>)
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+  <!-- ============================================================ -->
+  <!-- CORE MODULES -->
+  <!-- ============================================================ -->
+  <h2 class="section-title" id="core"><span class="glyphicon glyphicon-th-large"></span> Core Modules</h2>
+  <p class="section-desc">
+    The set of core modules that are in this release of CEON forms a set of generic reusable ontology building blocks and include Actor, Process, Resource, and Circular Value Network.
+  </p>
 
-                <h2>Logistics related ontologies</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Source Ontology
-                        </th>
-                        <th>
-                            Target Ontology
-                        </th>
-                        <th>
-                            Alignment
-                        </th>
+  <!-- Actor -->
+  <h3 class="subsection-title">Actor</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
+    </thead>
+    <tbody>
+      {{#each data.actor}}
+      <tr>
+        <td><a class="onto-name" href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a></td>
+        <td><span class="label-version">{{versions.0}}</span></td>
+        <td>
+          <a class="badge-format badge-ttl" href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-rdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-json" href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>
+        </td>
+        <td>
+          <a class="badge-format badge-html" href="ontology/{{name}}/{{versions.0}}/index.html">html</a>
+          <a class="badge-format badge-pdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
+        </td>
+        <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
-                    </tr>
-                    {{#each alignment_data.logistics}}
-                        <tr>
-                            <td>
-                                <a href="{{source_uri}}">{{source}}</a>
-                            </td>
-                            <td>
-                                <a href="{{target_uri}}">{{target}}</a>
-                            </td>
-                            <td>
-                                (<a href="alignment/logistics/{{name}}.rdf">rdf</a>, 
-                                <a href="alignment/logistics/{{name}}.ttl">ttl</a>,
-                                <a href="alignment/logistics/{{name}}.tsv">tsv</a>)
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+  <!-- Process -->
+  <h3 class="subsection-title">Process</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
+    </thead>
+    <tbody>
+      {{#each data.process}}
+      <tr>
+        <td><a class="onto-name" href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a></td>
+        <td><span class="label-version">{{versions.0}}</span></td>
+        <td>
+          <a class="badge-format badge-ttl" href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-rdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-json" href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>
+        </td>
+        <td>
+          <a class="badge-format badge-html" href="ontology/{{name}}/{{versions.0}}/index.html">html</a>
+          <a class="badge-format badge-pdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
+        </td>
+        <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
-                <h2>General (Top) level ontologies</h2>
-                <table>
-                    <colgroup>
-                        <col class="col-1">
-                        <col class="col-2">
-                        <col class="col-3">
-                        <col class="col-3">
-                      </colgroup>
-                    <tr>
-                        <th>
-                            Source Ontology
-                        </th>
-                        <th>
-                            Target Ontology
-                        </th>
-                        <th>
-                            Alignment
-                        </th>
+  <!-- Resource -->
+  <h3 class="subsection-title">Resource</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
+    </thead>
+    <tbody>
+      {{#each data.resource}}
+      <tr>
+        <td><a class="onto-name" href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a></td>
+        <td><span class="label-version">{{versions.0}}</span></td>
+        <td>
+          <a class="badge-format badge-ttl" href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-rdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-json" href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>
+        </td>
+        <td>
+          <a class="badge-format badge-html" href="ontology/{{name}}/{{versions.0}}/index.html">html</a>
+          <a class="badge-format badge-pdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
+        </td>
+        <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
-                    </tr>
-                    {{#each alignment_data.general}}
-                        <tr>
-                            <td>
-                                <a href="{{source_uri}}">{{source}}</a>
-                            </td>
-                            <td>
-                                <a href="{{target_uri}}">{{target}}</a>
-                            </td>
-                            <td>
-                                (<a href="alignment/general/{{name}}.rdf">rdf</a>, 
-                                <a href="alignment/general/{{name}}.ttl">ttl</a>,
-                                <a href="alignment/general/{{name}}.tsv">tsv</a>)
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+  <!-- CVN -->
+  <h3 class="subsection-title">Circular Value Network (CVN)</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
+    </thead>
+    <tbody>
+      {{#each data.cvn}}
+      <tr>
+        <td><a class="onto-name" href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a></td>
+        <td><span class="label-version">{{versions.0}}</span></td>
+        <td>
+          <a class="badge-format badge-ttl" href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-rdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-json" href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>
+        </td>
+        <td>
+          <a class="badge-format badge-html" href="ontology/{{name}}/{{versions.0}}/index.html">html</a>
+          <a class="badge-format badge-pdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
+        </td>
+        <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
+  <!-- Supplementary -->
+  <h3 class="subsection-title">Supplementary</h3>
+  <p class="section-desc">The following modules are supplemental to the core modules as shown in the overview figure.</p>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
+    </thead>
+    <tbody>
+      {{#each data.supplementary}}
+      <tr>
+        <td><a class="onto-name" href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a></td>
+        <td><span class="label-version">{{versions.0}}</span></td>
+        <td>
+          <a class="badge-format badge-ttl" href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-rdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-json" href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>
+        </td>
+        <td>
+          <a class="badge-format badge-html" href="ontology/{{name}}/{{versions.0}}/index.html">html</a>
+          <a class="badge-format badge-pdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
+        </td>
+        <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 
-            </div>
-        </main>
-    </body>
+  <!-- Full Imported Version -->
+  <h2 class="section-title" id="full"><span class="glyphicon glyphicon-compressed"></span> Full Imported Version</h2>
+  <p class="section-desc">The following ontology file is the complete version of CEON, including both core and supplementary modules.</p>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
+    </thead>
+    <tbody>
+      {{#each data.full}}
+      <tr>
+        <td><a class="onto-name" href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a></td>
+        <td><span class="label-version">{{versions.0}}</span></td>
+        <td>
+          <a class="badge-format badge-ttl" href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-rdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-json" href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>
+        </td>
+        <td>
+          <a class="badge-format badge-html" href="ontology/{{name}}/{{versions.0}}/index.html">html</a>
+          <a class="badge-format badge-pdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
+        </td>
+        <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <hr class="hr-green">
+
+  <!-- ============================================================ -->
+  <!-- USE CASE ONTOLOGIES -->
+  <!-- ============================================================ -->
+  <h2 class="section-title" id="usecases"><span class="glyphicon glyphicon-briefcase"></span> Use Case Ontologies</h2>
+  <p class="section-desc">The use case ontologies reuse the core modules of CEON and focus on representing use case data about products' lifecycle operations.</p>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
+    </thead>
+    <tbody>
+      {{#each data.demo}}
+      <tr>
+        <td><a class="onto-name" href="demo/{{name}}/{{versions.0}}/index.html">{{name}}</a></td>
+        <td><span class="label-version">{{versions.0}}</span></td>
+        <td>
+          <a class="badge-format badge-ttl" href="demo/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-rdf" href="demo/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-json" href="demo/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>
+        </td>
+        <td>
+          <a class="badge-format badge-html" href="demo/{{name}}/{{versions.0}}/index.html">html</a>
+          <a class="badge-format badge-pdf" href="demo/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
+        </td>
+        <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <hr class="hr-green">
+
+  <!-- ============================================================ -->
+  <!-- OTHER REUSED ONTOLOGIES -->
+  <!-- ============================================================ -->
+  <h2 class="section-title" id="other"><span class="glyphicon glyphicon-retweet"></span> Other Reused Ontologies</h2>
+  <p class="section-desc">The following ontologies are not included directly in CEON, but are reused or referenced. For instance, the Building Topology Ontology (BOT) is used in the construction use case, and the QUDT ontology is referred to in the Quantity module.</p>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th></tr>
+    </thead>
+    <tbody>
+      {{#each data.other}}
+      <tr>
+        <td><a class="onto-name" href="ontology/{{name}}/{{versions.0}}/index.html">{{name}}</a></td>
+        <td><span class="label-version">{{versions.0}}</span></td>
+        <td>
+          <a class="badge-format badge-ttl" href="ontology/{{name}}/{{versions.0}}/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-rdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-json" href="ontology/{{name}}/{{versions.0}}/{{name}}.jsonld">json-ld</a>
+        </td>
+        <td>
+          <a class="badge-format badge-html" href="ontology/{{name}}/{{versions.0}}/index.html">html</a>
+          <a class="badge-format badge-pdf" href="ontology/{{name}}/{{versions.0}}/{{name}}.pdf">pdf</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <hr class="hr-green">
+
+  <!-- ============================================================ -->
+  <!-- ALIGNMENT MODULE -->
+  <!-- ============================================================ -->
+  <h2 class="section-title" id="alignment"><span class="glyphicon glyphicon-random"></span> Alignment Module</h2>
+  <p class="section-desc">
+    The alignment module contains results aligning CEON with relevant ontologies in the domains of circular economy (CE), sustainability, materials, manufacturing, product, logistics, and with two general ontologies.
+  </p>
+
+  <!-- CE -->
+  <h3 class="subsection-title">CE related ontologies</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
+    </thead>
+    <tbody>
+      {{#each alignment_data.ce}}
+      <tr>
+        <td><a href="{{source_uri}}">{{source}}</a></td>
+        <td class="align-arrow text-center">&#8594;</td>
+        <td><a href="{{target_uri}}">{{target}}</a></td>
+        <td>
+          <a class="badge-format badge-rdf" href="alignment/ce/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-ttl" href="alignment/ce/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-tsv" href="alignment/ce/{{name}}.tsv">tsv</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <!-- Sustainability -->
+  <h3 class="subsection-title">Sustainability related ontologies</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
+    </thead>
+    <tbody>
+      {{#each alignment_data.sustainability}}
+      <tr>
+        <td><a href="{{source_uri}}">{{source}}</a></td>
+        <td class="align-arrow text-center">&#8594;</td>
+        <td><a href="{{target_uri}}">{{target}}</a></td>
+        <td>
+          <a class="badge-format badge-rdf" href="alignment/sustainability/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-ttl" href="alignment/sustainability/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-tsv" href="alignment/sustainability/{{name}}.tsv">tsv</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <!-- Materials -->
+  <h3 class="subsection-title">Materials related ontologies</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
+    </thead>
+    <tbody>
+      {{#each alignment_data.materials}}
+      <tr>
+        <td><a href="{{source_uri}}">{{source}}</a></td>
+        <td class="align-arrow text-center">&#8594;</td>
+        <td><a href="{{target_uri}}">{{target}}</a></td>
+        <td>
+          <a class="badge-format badge-rdf" href="alignment/materials/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-ttl" href="alignment/materials/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-tsv" href="alignment/materials/{{name}}.tsv">tsv</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <!-- Manufacturing -->
+  <h3 class="subsection-title">Manufacturing related ontologies</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
+    </thead>
+    <tbody>
+      {{#each alignment_data.manufacturing}}
+      <tr>
+        <td><a href="{{source_uri}}">{{source}}</a></td>
+        <td class="align-arrow text-center">&#8594;</td>
+        <td><a href="{{target_uri}}">{{target}}</a></td>
+        <td>
+          <a class="badge-format badge-rdf" href="alignment/manufacturing/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-ttl" href="alignment/manufacturing/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-tsv" href="alignment/manufacturing/{{name}}.tsv">tsv</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <!-- Product -->
+  <h3 class="subsection-title">Product related ontologies</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
+    </thead>
+    <tbody>
+      {{#each alignment_data.product}}
+      <tr>
+        <td><a href="{{source_uri}}">{{source}}</a></td>
+        <td class="align-arrow text-center">&#8594;</td>
+        <td><a href="{{target_uri}}">{{target}}</a></td>
+        <td>
+          <a class="badge-format badge-rdf" href="alignment/product/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-ttl" href="alignment/product/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-tsv" href="alignment/product/{{name}}.tsv">tsv</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <!-- Logistics -->
+  <h3 class="subsection-title">Logistics related ontologies</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
+    </thead>
+    <tbody>
+      {{#each alignment_data.logistics}}
+      <tr>
+        <td><a href="{{source_uri}}">{{source}}</a></td>
+        <td class="align-arrow text-center">&#8594;</td>
+        <td><a href="{{target_uri}}">{{target}}</a></td>
+        <td>
+          <a class="badge-format badge-rdf" href="alignment/logistics/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-ttl" href="alignment/logistics/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-tsv" href="alignment/logistics/{{name}}.tsv">tsv</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <!-- General -->
+  <h3 class="subsection-title">General (Top) level ontologies</h3>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
+    </thead>
+    <tbody>
+      {{#each alignment_data.general}}
+      <tr>
+        <td><a href="{{source_uri}}">{{source}}</a></td>
+        <td class="align-arrow text-center">&#8594;</td>
+        <td><a href="{{target_uri}}">{{target}}</a></td>
+        <td>
+          <a class="badge-format badge-rdf" href="alignment/general/{{name}}.rdf">rdf</a>
+          <a class="badge-format badge-ttl" href="alignment/general/{{name}}.ttl">ttl</a>
+          <a class="badge-format badge-tsv" href="alignment/general/{{name}}.tsv">tsv</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</div><!-- /container -->
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>
+      Catalogue developed by <a href="https://liu.se/en/research/semantic-web" target="_blank">Linköping University Semantic Web Group</a>
+      &nbsp;&bull;&nbsp;
+      Built with <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://github.com/LiUSemWeb/CEON" target="_blank"><span class="glyphicon glyphicon-link"></span> GitHub Repository</a>
+    </p>
+    <div class="logos" style="margin-top: 18px;">
+      <img src="images/onto-deside-logo.png" alt="OntoDeside Consortium" style="height: 50px; opacity: 0.85;">
+    </div>
+  </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
 </html>
