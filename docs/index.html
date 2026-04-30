@@ -6,143 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Circular Economy Ontology Network (CEON)</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <style>
-    body { padding-top: 80px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 15px; }
-
-    .navbar { background-color: #2c3e50; border: none; border-radius: 0; min-height: 60px; }
-    .navbar .navbar-header { display: flex; align-items: center; height: 60px; }
-    .navbar-brand { display: flex !important; align-items: center; height: 60px !important; padding-top: 0 !important; padding-bottom: 0 !important; color: #ecf0f1 !important; font-size: 1.3em; }
-    .navbar-brand img { display: block; }
-    .navbar-nav > li > a { color: #ecf0f1 !important; line-height: 60px; padding-top: 0; padding-bottom: 0; font-size: 1em; }
-    .navbar-nav > li > a:hover { color: #1abc9c !important; background: transparent !important; }
-    .navbar-toggle { margin-top: 13px; }
-
-    .page-header { border-bottom: 2px solid #1abc9c; margin-bottom: 25px; }
-    .page-header h1 { color: #2c3e50; font-weight: 300; font-size: 2.4em; }
-
-    .intro-text { color: #555; font-size: 1.1em; margin-bottom: 20px; line-height: 1.7; }
-
-    .overview-img { text-align: center; margin: 25px 0; }
-    .overview-img img { max-width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 8px; background: #fff; }
-
-    h2.section-title {
-      font-size: 1.6em;
-      color: #2c3e50;
-      font-weight: 600;
-      margin-top: 30px;
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    h3.subsection-title {
-      font-size: 1.2em;
-      color: #555;
-      font-weight: 600;
-      margin-top: 22px;
-      margin-bottom: 10px;
-    }
-
-    .table { font-size: 1em; }
-    .table > thead > tr > th {
-      background-color: #2c3e50;
-      color: #ecf0f1;
-      border-color: #2c3e50;
-      font-weight: 500;
-      white-space: nowrap;
-      font-size: 1em;
-    }
-    .table-striped > tbody > tr:nth-of-type(odd) { background-color: #f9f9f9; }
-    .table > tbody > tr > td { vertical-align: middle; }
-    .table > tbody > tr:hover { background-color: #eaf7f4; }
-
-    .badge-format {
-      display: inline-block;
-      padding: 3px 8px;
-      font-size: 0.85em;
-      font-weight: 600;
-      border-radius: 3px;
-      margin-right: 3px;
-      text-decoration: none;
-      color: #fff;
-    }
-    .badge-ttl  { background-color: #27ae60; }
-    .badge-rdf  { background-color: #e74c3c; }
-    .badge-json { background-color: #f39c12; }
-    .badge-html { background-color: #2980b9; }
-    .badge-pdf  { background-color: #8e44ad; }
-    .badge-tsv  { background-color: #16a085; }
-
-    .badge-format:hover { opacity: 0.85; color: #fff; text-decoration: none; }
-
-    .label-version {
-      display: inline-block;
-      background: #ecf0f1;
-      color: #2c3e50;
-      border: 1px solid #bdc3c7;
-      padding: 2px 9px;
-      border-radius: 10px;
-      font-size: 0.88em;
-      font-weight: 600;
-    }
-
-    .onto-name { font-weight: 600; color: #2c3e50; font-size: 1em; }
-    .onto-name:hover { color: #1abc9c; }
-
-    .section-desc { color: #666; font-size: 1em; margin-bottom: 15px; }
-
-    .footer {
-      margin-top: 60px;
-      padding: 30px 0 20px;
-      border-top: 2px solid #1abc9c;
-      background: #f8f8f8;
-      text-align: center;
-      font-size: 0.95em;
-      color: #777;
-    }
-    .footer a { color: #2c3e50; }
-    .footer a:hover { color: #1abc9c; }
-    .footer .logos { margin-top: 15px; }
-    .footer .logos img { height: 45px; margin: 0 12px; vertical-align: middle; }
-
-    .hr-green { border-top: 1px solid #1abc9c; margin: 30px 0; }
-
-    .badge-license {
-      display: inline-block;
-      padding: 3px 8px;
-      font-size: 0.85em;
-      font-weight: 600;
-      border-radius: 3px;
-      text-decoration: none;
-      color: #fff;
-      background-color: #7f8c8d;
-    }
-    .badge-license:hover { opacity: 0.85; color: #fff; text-decoration: none; }
-    .align-arrow { color: #bbb; font-size: 1.1em; }
-  </style>
+  <link rel="stylesheet" href="ceon-style.css">
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-fixed-top">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-      </button>
+    <div class="navbar-inner">
       <a class="navbar-brand" href="#">
         <img src="images/ceon-logo.png" alt="CEON" style="height: 40px;">
       </a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#core">Core Modules</a></li>
-        <li><a href="#usecases">Use Cases</a></li>
-        <li><a href="#other">Reused Ontologies</a></li>
-        <li><a href="#alignment">Alignments</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="https://github.com/LiUSemWeb/CEON" target="_blank"><span class="glyphicon glyphicon-link"></span> GitHub</a></li>
-      </ul>
+      <button class="navbar-hamburger" id="navbar-hamburger" aria-label="Toggle navigation">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-menu" id="navbar-menu">
+        <ul class="navbar-links">
+          <li><a href="#core">Core Modules</a></li>
+          <li><a href="#usecases">Use Cases</a></li>
+          <li><a href="#other">Reused Ontologies</a></li>
+          <li><a href="#alignment">Alignments</a></li>
+        </ul>
+        <ul class="navbar-links-right">
+          <li><a href="https://ontodeside.eu" target="_blank"><span class="glyphicon glyphicon-globe"></span> Onto-DESIDE</a></li>
+          <li><a href="https://github.com/LiUSemWeb/CEON" target="_blank"><span class="glyphicon glyphicon-link"></span> GitHub</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
@@ -159,7 +50,7 @@
   </p>
 
   <div class="overview-img">
-    <img src="images/CEON-new.png" alt="CEON Overview">
+    <img src="images/overview_v1.0.0.png" alt="CEON Overview">
   </div>
 
   <hr class="hr-green">
@@ -174,7 +65,7 @@
 
   <!-- Actor -->
   <h3 class="subsection-title">Actor</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
     </thead>
@@ -208,11 +99,11 @@
         <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- Process -->
   <h3 class="subsection-title">Process</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
     </thead>
@@ -260,11 +151,11 @@
         <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- Resource -->
   <h3 class="subsection-title">Resource</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
     </thead>
@@ -326,11 +217,11 @@
         <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- CVN -->
   <h3 class="subsection-title">Circular Value Network (CVN)</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
     </thead>
@@ -364,12 +255,12 @@
         <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- Supplementary -->
   <h3 class="subsection-title">Supplementary</h3>
   <p class="section-desc">The following modules are supplemental to the core modules as shown in the overview figure.</p>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
     </thead>
@@ -431,12 +322,12 @@
         <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- Full Imported Version -->
   <h2 class="section-title" id="full"><span class="glyphicon glyphicon-compressed"></span> Full Imported Version</h2>
   <p class="section-desc">The following ontology file is the complete version of CEON, including both core and supplementary modules.</p>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
     </thead>
@@ -456,7 +347,7 @@
         <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <hr class="hr-green">
 
@@ -465,7 +356,7 @@
   <!-- ============================================================ -->
   <h2 class="section-title" id="usecases"><span class="glyphicon glyphicon-briefcase"></span> Use Case Ontologies</h2>
   <p class="section-desc">The use case ontologies reuse the core modules of CEON and focus on representing use case data about products' lifecycle operations.</p>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th><th>License</th></tr>
     </thead>
@@ -513,7 +404,7 @@
         <td><a class="badge-license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a></td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <hr class="hr-green">
 
@@ -522,7 +413,7 @@
   <!-- ============================================================ -->
   <h2 class="section-title" id="other"><span class="glyphicon glyphicon-retweet"></span> Other Reused Ontologies</h2>
   <p class="section-desc">The following ontologies are not included directly in CEON, but are reused or referenced. For instance, the Building Topology Ontology (BOT) is used in the construction use case, and the QUDT ontology is referred to in the Quantity module.</p>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Ontology</th><th>Version</th><th>Serializations</th><th>Docs</th></tr>
     </thead>
@@ -567,7 +458,7 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <hr class="hr-green">
 
@@ -581,7 +472,7 @@
 
   <!-- CE -->
   <h3 class="subsection-title">CE related ontologies</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
     </thead>
@@ -637,11 +528,11 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- Sustainability -->
   <h3 class="subsection-title">Sustainability related ontologies</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
     </thead>
@@ -707,11 +598,11 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- Materials -->
   <h3 class="subsection-title">Materials related ontologies</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
     </thead>
@@ -847,11 +738,11 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- Manufacturing -->
   <h3 class="subsection-title">Manufacturing related ontologies</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
     </thead>
@@ -957,11 +848,11 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- Product -->
   <h3 class="subsection-title">Product related ontologies</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
     </thead>
@@ -1027,11 +918,11 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- Logistics -->
   <h3 class="subsection-title">Logistics related ontologies</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
     </thead>
@@ -1117,11 +1008,11 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <!-- General -->
   <h3 class="subsection-title">General (Top) level ontologies</h3>
-  <table class="table table-striped table-bordered table-hover">
+  <div class="table-responsive-wrapper"><table class="table table-striped table-bordered table-hover">
     <thead>
       <tr><th>Source Ontology</th><th></th><th>Target Ontology</th><th>Alignment</th></tr>
     </thead>
@@ -1147,7 +1038,7 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
 </div><!-- /container -->
 
@@ -1161,13 +1052,31 @@
       &nbsp;&bull;&nbsp;
       <a href="https://github.com/LiUSemWeb/CEON" target="_blank"><span class="glyphicon glyphicon-link"></span> GitHub Repository</a>
     </p>
-    <div class="logos" style="margin-top: 18px;">
-      <img src="images/onto-deside-logo.png" alt="OntoDeside Consortium" style="height: 50px; opacity: 0.85;">
+    <div style="margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap;">
+      <a href="https://ontodeside.eu" target="_blank">
+        <img src="images/onto-deside-logo.png" alt="Onto-DESIDE Consortium" style="height: 50px; opacity: 0.85;">
+      </a>
+      <img src="https://ontodeside.eu/wp-content/uploads/2022/02/EU-flag-low-resolution.jpg" alt="EU Flag" style="height: 50px;">
+      <p style="margin: 0; font-size: 0.9em; color: #666; text-align: left;">
+        Funded by the European Union — Horizon Europe<br>Grant Agreement No. 101058682
+      </p>
     </div>
   </div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+  var btn = document.getElementById('navbar-hamburger');
+  var menu = document.getElementById('navbar-menu');
+  btn.addEventListener('click', function() {
+    menu.classList.toggle('open');
+  });
+  document.querySelectorAll('.navbar-links a, .navbar-links-right a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      menu.classList.remove('open');
+    });
+  });
+</script>
 </body>
 </html>

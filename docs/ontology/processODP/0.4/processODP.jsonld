@@ -1,54 +1,83 @@
 [
   {
-    "@id": "http://purl.org/vocab/vann/preferredNamespaceUri",
+    "@id": "http://w3id.org/CEON/ontology/processODP/hasPart",
     "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/occursAtLocation",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
+      "http://www.w3.org/2002/07/owl#ObjectProperty",
+      "http://www.w3.org/2002/07/owl#TransitiveProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The location in which something (e.g. an execution/transition) takes place, e.g. the factory location where something is manufactured."
+        "@value": "A plan or execution can consists of several parts, which are sub-plans (or execution steps)."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "occurs at location"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/location/Location"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
+        "@value": "has part"
       }
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/processODP/Description",
+    "@id": "http://w3id.org/CEON/ontology/processODP/Transition",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "A Description is a SocialObject that represents a conceptualization. \nFor example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations."
+        "@value": "A transition is a situation that creates a context for two additional different Situations, one Process, and at least one Object: one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions, in which at least one Object is situated. Finally, one or more time interval(s) may position the situations and the transitional event in time, and we may include the event that triggered the transition as well."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "Description"
+        "@value": "Transition"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/PlanExecution"
+      },
+      {
+        "@id": "_:nd456ba891c98451f87093058e3f9a2eeb13"
+      },
+      {
+        "@id": "_:nd456ba891c98451f87093058e3f9a2eeb14"
       }
     ]
   },
   {
-    "@id": "http://purl.org/dc/terms/description",
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb13",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/TransformationProcess"
+      }
+    ]
+  },
+  {
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb14",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#minCardinality": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+        "@value": "1"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/affectedObject"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/creator",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
@@ -77,6 +106,99 @@
     ]
   },
   {
+    "@id": "http://w3id.org/CEON/ontology/processODP/Event",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/precedesExecution",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/PlanExecution"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "precedes execution"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/Description",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A Description is a SocialObject that represents a conceptualization. \nFor example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Description"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/vocab/vann/preferredNamespaceUri",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/location/Location",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/hasOutput",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The output to this process event."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/Process"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "has output"
+      }
+    ]
+  },
+  {
     "@id": "http://w3id.org/CEON/ontology/processODP/TransformationProcess",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
@@ -98,73 +220,35 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/processODP/startTime",
+    "@id": "http://purl.org/dc/terms/contributor",
     "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval"
-      }
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/processODP/Process",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@language": "en",
-        "@value": "Set of interrelated or interacting activities that transforms inputs into outputs."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-      {
-        "@value": "ISO 59004:2024  - 3.5.5 process"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Process"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Event"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/followsExecution",
+    "@id": "http://w3id.org/CEON/ontology/processODP/occursAtLocation",
     "@type": [
       "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The situation after the execution takes place, i.e. the state of affairs after the process event, such as the product being assembled, or the material being recycled."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/PlanExecution"
+        "@value": "The location in which something (e.g. an execution/transition) takes place, e.g. the factory location where something is manufactured."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "follows execution"
+        "@value": "occurs at location"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#range": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/location/Location"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
       {
         "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
       }
-    ]
-  },
-  {
-    "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
@@ -199,118 +283,24 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/processODP/Event",
+    "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/endTime",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/creator",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/occursAtTime",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "Represents the time at which something takes place."
+        "@value": "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
       {
-        "@id": "http://w3id.org/CEON/ontology/processODP/PlanExecution"
+        "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "occurs at time"
+        "@value": "is the setting for"
       }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#range": [
-      {
-        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/Transition",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "A transition is a situation that creates a context for two additional different Situations, one Process, and at least one Object: one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions, in which at least one Object is situated. Finally, one or more time interval(s) may position the situations and the transitional event in time, and we may include the event that triggered the transition as well."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Transition"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/PlanExecution"
-      },
-      {
-        "@id": "_:nf60d87405144410198b6173e2ca51c2fb13"
-      },
-      {
-        "@id": "_:nf60d87405144410198b6173e2ca51c2fb14"
-      }
-    ]
-  },
-  {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb13",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/TransformationProcess"
-      }
-    ]
-  },
-  {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb14",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#minCardinality": [
-      {
-        "@type": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
-        "@value": "1"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/affectedObject"
-      }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/location/Location",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
     ]
   },
   {
@@ -340,24 +330,140 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/processODP/hasPart",
+    "@id": "http://purl.org/dc/terms/description",
     "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty",
-      "http://www.w3.org/2002/07/owl#TransitiveProperty"
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/Process",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "A plan or execution can consists of several parts, which are sub-plans (or execution steps)."
+        "@language": "en",
+        "@value": "Set of interrelated or interacting activities that transforms inputs into outputs."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
+      {
+        "@value": "ISO 59004:2024  - 3.5.5 process"
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "has part"
+        "@value": "Process"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/Event"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/startTime",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval"
       }
     ]
   },
   {
     "@id": "http://purl.org/dc/terms/created",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/Plan",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Class"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "A Description having an explicit goal, to be achieved by executing the plan."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "Plan"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/Description"
+      },
+      {
+        "@id": "_:nd456ba891c98451f87093058e3f9a2eeb1"
+      }
+    ]
+  },
+  {
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb1",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#Restriction"
+    ],
+    "http://www.w3.org/2002/07/owl#onProperty": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/hasPart"
+      }
+    ],
+    "http://www.w3.org/2002/07/owl#someValuesFrom": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/Plan"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/title",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/endTime",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval"
+      }
+    ]
+  },
+  {
+    "@id": "http://w3id.org/CEON/ontology/processODP/followsExecution",
+    "@type": [
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#comment": [
+      {
+        "@value": "The situation after the execution takes place, i.e. the state of affairs after the process event, such as the product being assembled, or the material being recycled."
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#domain": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/PlanExecution"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#label": [
+      {
+        "@value": "follows execution"
+      }
+    ],
+    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+      {
+        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
+      }
+    ]
+  },
+  {
+    "@id": "http://purl.org/dc/terms/license",
     "@type": [
       "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
@@ -400,12 +506,12 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
       {
-        "@id": "_:nf60d87405144410198b6173e2ca51c2fb12"
+        "@id": "_:nd456ba891c98451f87093058e3f9a2eeb12"
       }
     ]
   },
   {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb12",
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb12",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -421,43 +527,23 @@
     ]
   },
   {
-    "@id": "http://w3id.org/CEON/ontology/processODP/Plan",
+    "@id": "http://w3id.org/CEON/ontology/processODP/satisfiesPlan",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
+      "http://www.w3.org/2002/07/owl#ObjectProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "A Description having an explicit goal, to be achieved by executing the plan."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "Plan"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Description"
+        "@value": "A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan."
       },
       {
-        "@id": "_:nf60d87405144410198b6173e2ca51c2fb1"
+        "@value": "satisfies plan"
       }
     ]
   },
   {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb1",
+    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
     "@type": [
-      "http://www.w3.org/2002/07/owl#Restriction"
-    ],
-    "http://www.w3.org/2002/07/owl#onProperty": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/hasPart"
-      }
-    ],
-    "http://www.w3.org/2002/07/owl#someValuesFrom": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Plan"
-      }
+      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
@@ -542,19 +628,13 @@
     ]
   },
   {
-    "@id": "http://purl.org/dc/terms/contributor",
+    "@id": "http://w3id.org/CEON/ontology/processODP/occursAtTime",
     "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/precedesExecution",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
+      "http://www.w3.org/2002/07/owl#DatatypeProperty"
     ],
     "http://www.w3.org/2000/01/rdf-schema#comment": [
       {
-        "@value": "The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled."
+        "@value": "Represents the time at which something takes place."
       }
     ],
     "http://www.w3.org/2000/01/rdf-schema#domain": [
@@ -564,33 +644,13 @@
     ],
     "http://www.w3.org/2000/01/rdf-schema#label": [
       {
-        "@value": "precedes execution"
+        "@value": "occurs at time"
       }
     ],
-    "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+    "http://www.w3.org/2000/01/rdf-schema#range": [
       {
-        "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor"
+        "@id": "http://www.w3.org/2001/XMLSchema#dateTime"
       }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/satisfiesPlan",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan."
-      },
-      {
-        "@value": "satisfies plan"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/license",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   },
   {
@@ -613,27 +673,27 @@
         "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
       },
       {
-        "@id": "_:nf60d87405144410198b6173e2ca51c2fb2"
+        "@id": "_:nd456ba891c98451f87093058e3f9a2eeb2"
       },
       {
-        "@id": "_:nf60d87405144410198b6173e2ca51c2fb7"
+        "@id": "_:nd456ba891c98451f87093058e3f9a2eeb7"
       },
       {
-        "@id": "_:nf60d87405144410198b6173e2ca51c2fb8"
+        "@id": "_:nd456ba891c98451f87093058e3f9a2eeb8"
       },
       {
-        "@id": "_:nf60d87405144410198b6173e2ca51c2fb9"
+        "@id": "_:nd456ba891c98451f87093058e3f9a2eeb9"
       },
       {
-        "@id": "_:nf60d87405144410198b6173e2ca51c2fb10"
+        "@id": "_:nd456ba891c98451f87093058e3f9a2eeb10"
       },
       {
-        "@id": "_:nf60d87405144410198b6173e2ca51c2fb11"
+        "@id": "_:nd456ba891c98451f87093058e3f9a2eeb11"
       }
     ]
   },
   {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb2",
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb2",
     "@type": [
       "http://www.w3.org/2002/07/owl#Class"
     ],
@@ -641,17 +701,17 @@
       {
         "@list": [
           {
-            "@id": "_:nf60d87405144410198b6173e2ca51c2fb3"
+            "@id": "_:nd456ba891c98451f87093058e3f9a2eeb3"
           },
           {
-            "@id": "_:nf60d87405144410198b6173e2ca51c2fb4"
+            "@id": "_:nd456ba891c98451f87093058e3f9a2eeb4"
           }
         ]
       }
     ]
   },
   {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb3",
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb3",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -667,7 +727,7 @@
     ]
   },
   {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb4",
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb4",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -683,7 +743,7 @@
     ]
   },
   {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb7",
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb7",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -699,7 +759,7 @@
     ]
   },
   {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb8",
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb8",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -715,7 +775,7 @@
     ]
   },
   {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb9",
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb9",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -731,7 +791,7 @@
     ]
   },
   {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb10",
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb10",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -747,7 +807,7 @@
     ]
   },
   {
-    "@id": "_:nf60d87405144410198b6173e2ca51c2fb11",
+    "@id": "_:nd456ba891c98451f87093058e3f9a2eeb11",
     "@type": [
       "http://www.w3.org/2002/07/owl#Restriction"
     ],
@@ -760,66 +820,6 @@
       {
         "@id": "http://w3id.org/CEON/ontology/processODP/Plan"
       }
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/TimeInterval",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#Class"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/isSettingFor",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Situation"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "is the setting for"
-      }
-    ]
-  },
-  {
-    "@id": "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
-    ]
-  },
-  {
-    "@id": "http://w3id.org/CEON/ontology/processODP/hasOutput",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#ObjectProperty"
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#comment": [
-      {
-        "@value": "The output to this process event."
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#domain": [
-      {
-        "@id": "http://w3id.org/CEON/ontology/processODP/Process"
-      }
-    ],
-    "http://www.w3.org/2000/01/rdf-schema#label": [
-      {
-        "@value": "has output"
-      }
-    ]
-  },
-  {
-    "@id": "http://purl.org/dc/terms/title",
-    "@type": [
-      "http://www.w3.org/2002/07/owl#AnnotationProperty"
     ]
   }
 ]
