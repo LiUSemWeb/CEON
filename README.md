@@ -103,7 +103,7 @@ Any release with major version zero (e.g., `v0.1.0`) is part of initial developm
 
 
 ## Contact
-* Robin Keskisärkkä <robin.keskisarkka@liu.se>
 * Huanyu Li <huanyu.li@liu.se>
-* Eva Blomqvist <eva.blomqvist@liu.se>
+* Robin Keskisärkkä <robin.keskisarkka@liu.se>
 * Mikael Lindecrantz <mikael.lindecrantz@ragnsells.com>
+* Eva Blomqvist <eva.blomqvist@liu.se>
