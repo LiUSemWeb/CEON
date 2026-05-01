@@ -214,14 +214,14 @@ def create_index_file():
     core = ["actor", "actorODP", "cvn",
             "material", "process", "processODP", "plan",
             "product", "resourceODP", "value", 
-            "energy", "quantity", "statement", "location", "datasheet", "full"]
+            "energy", "quantity", "statement", "location", "full"]
     
     core_actor = ["actorODP", "actor"]
     core_process = ["processODP", "process", "plan"]
     core_resource = ["resourceODP", "material", "product", "energy"]
     core_cvn = ["cvn", "value"]
     core_full = ["full"]
-    core_supplementary = ["quantity", "statement", "location", "datasheet"]
+    core_supplementary = ["quantity", "statement", "location"]
     
     data = {
         "core": [],
