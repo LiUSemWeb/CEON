@@ -1,42 +1,22 @@
-# Circular Economy Ontology Network (CEON)
+# Development Process
 
-Welcome to the **CEON development documentation site** — the companion resource to the [CEON ontology catalogue](https://w3id.org/CEON/).
+This section describes how CEON was developed — the methodology, design decisions, and tooling used to create and maintain the ontology network.
 
-This site documents the development process, requirements, competency questions, and SPARQL queries for the Circular Economy Ontology Network. For the ontology modules themselves (serializations, alignments, auto-generated docs), see the main catalogue.
+## Overview
 
----
+CEON follows the **eXtreme Design (XD)** **modular ontology engineering** approach, where each relevant topic (actors, processes, resources, etc.) is developed as a separate ontology module that can be independently reused.
 
-## What is CEON?
+The development process is iterative in three rounds and driven by:
 
-The Circular Economy Ontology Network (CEON) provides a shared vocabulary for representing information about circular economies in the form of a **network of ontology modules**. It is developed by the [Linköping University Semantic Web Group](https://liu.se/en/research/semantic-web) as part of the [Onto-DESIDE](https://ontodeside.eu) project, funded by the European Union under Horizon Europe Grant Agreement No. 101058682.
+1. **Domain requirements** collected from use case partners in the Onto-DESIDE project
+2. **Competency questions** that the ontology must be able to answer
+3. **Ontology Design Patterns (ODPs)** that provide reusable building blocks
+4. **Ontology Evaluation** that identify issues in the development
+5. **Alignment** with existing ontologies to improve semantic interoperability
 
-## What's in this documentation?
+## Sections
 
-| Section | Description |
-|---|---|
-| [Development Process](index.md) | Methodology, design decisions, and versioning strategy |
-| [Requirements](1.0.0/requirements/index.md) | Functional requirements per ontology module |
-| [Competency Questions](1.0.0/competency-questions/index.md) | CQs used to validate each module |
-| [SPARQL Queries](1.0.0/sparql/index.md) | Ready-to-use SPARQL queries with examples |
+- [Methodology](methodology/methodology.md) — the step-by-step development methodology
+- [Ontology Design Patterns](methodology/odps.md) — the ODPs used and how they are applied
+- [Versioning & Releases](methodology/versioning.md) — how versions are managed and released
 
-<!--
-| [Usage Examples](usage/index.md) | End-to-end examples for each use case domain |
-
-## Ontology Modules
-
-CEON is organized as a network of modules. The **core modules** are:
-
-- **Actor** – organizations and agents in circular value networks
-- **Process** – activities and plans in circular economy operations
-- **Resource** – materials, products, and energy
-- **Circular Value Network (CVN)** – connections between actors and value flows
-
-Supplementary modules include *Location*, *Quantity*, and *Statement*.
-
----
-
--->
-
-
-!!! tip "New to CEON?"
-    Start with the [Development Process](index.md) to understand the design philosophy, then explore [Competency Questions](1.0.0/competency-questions/index.md) to see what kinds of queries the ontology is designed to answer.
