@@ -7,12 +7,78 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Event">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/isSettingFor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
+    <rdfs:comment>The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state.</rdfs:comment>
+    <rdfs:label>is the setting for</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb5">
+    <rdf:first rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb3"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Process">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b1"/>
-    <rdfs:subClassOf rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b6"/>
-    <rdfs:comment>Something that happens within a given context or (short) timeframe.</rdfs:comment>
-    <rdfs:label>Event</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb7"/>
+    <rdfs:subClassOf rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb12"/>
+    <rdfs:comment xml:lang="en">Something that takes place over a (longer) period of time and changes some state of affairs.</rdfs:comment>
+    <rdfs:label>Process</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/endTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/TimeInterval"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:comment>Represents the end time of a time interval.</rdfs:comment>
+    <rdfs:label>end time</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasOutput"/>
+    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasInput"/>
+    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb13">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb14"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Situation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb16"/>
+    <rdfs:comment>A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time.</rdfs:comment>
+    <rdfs:label>Situation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/duringTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/TimeInterval"/>
+    <rdfs:comment>The time interval during which something, e.g. a process or event, takes place.</rdfs:comment>
+    <rdfs:label>during time</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb10">
+    <rdf:first rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb8"/>
+    <rdf:rest rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/isSettingFor"/>
+    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasInput">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
+    <rdfs:comment>The inputs to a process or event.</rdfs:comment>
+    <rdfs:label>has input</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasPart"/>
+    <owl:allValuesFrom rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb13"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -36,56 +102,42 @@
     <owl:priorVersion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.4</owl:priorVersion>
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</owl:versionInfo>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/isSettingFor">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Situation"/>
-    <rdfs:comment>The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state.</rdfs:comment>
-    <rdfs:label>is the setting for</rdfs:label>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb15">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/startTime">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/TimeInterval"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:comment>Represents the start time of a time interval.</rdfs:comment>
-    <rdfs:label>start time</rdfs:label>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb7">
+    <owl:intersectionOf rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb10"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb4">
+    <rdf:first rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb2"/>
+    <rdf:rest rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb5"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/description">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/endTime">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/TimeInterval"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:comment>Represents the end time of a time interval.</rdfs:comment>
-    <rdfs:label>end time</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b4">
-    <rdf:first rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b2"/>
-    <rdf:rest rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b5"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b2">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasInput"/>
-    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b9">
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb9">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasOutput"/>
     <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b16">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/isSettingFor"/>
-    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/license">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/issued">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasInput">
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasOutput">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-    <rdfs:comment>The inputs to a process or event.</rdfs:comment>
-    <rdfs:label>has input</rdfs:label>
+    <rdfs:comment>The output of a process or event.</rdfs:comment>
+    <rdfs:label>has output</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/TimeInterval">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>A temporal entity has a starting time and an ending time.</rdfs:comment>
+    <rdfs:label>Time Interval</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/occursAtLocation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -94,35 +146,30 @@
     <rdfs:comment>The location in which something (e.g. an event or process) takes place, e.g. the factory location where something is manufactured.</rdfs:comment>
     <rdfs:label>occurs at location</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/TimeInterval">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>A temporal entity has a starting time and an ending time.</rdfs:comment>
-    <rdfs:label>Time Interval</rdfs:label>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/startTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/TimeInterval"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:comment>Represents the start time of a time interval.</rdfs:comment>
+    <rdfs:label>start time</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b5">
-    <rdf:first rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b3"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#date">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b14">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/processODP/Event"/>
-    <rdf:rest rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b15"/>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasInput"/>
+    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b13">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/publisher">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb1">
+    <owl:intersectionOf rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb4"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:unionOf rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b14"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b11">
-    <rdf:first rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b9"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/duringTime">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:range rdf:resource="http://w3id.org/CEON/ontology/processODP/TimeInterval"/>
-    <rdfs:comment>The time interval during which something, e.g. a process or event, takes place.</rdfs:comment>
-    <rdfs:label>during time</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasPart">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -130,89 +177,42 @@
     <rdfs:comment>A process or event can consist of several parts, which are sub-processes (e.g. steps) or events.</rdfs:comment>
     <rdfs:label>has part</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b3">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasOutput"/>
-    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Event">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb1"/>
+    <rdfs:subClassOf rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb6"/>
+    <rdfs:comment>Something that happens within a given context or (short) timeframe.</rdfs:comment>
+    <rdfs:label>Event</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b8">
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb6">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasInput"/>
-    <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasPart"/>
+    <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/Event"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
+  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/issued">
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb11">
+    <rdf:first rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb9"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb14">
+    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/processODP/Event"/>
+    <rdf:rest rdf:nodeID="nb1f291dab3f64ad88a7883fd38a721bcb15"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/location/Location">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b1">
-    <owl:intersectionOf rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b4"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b7">
-    <owl:intersectionOf rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b10"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b15">
-    <rdf:first rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b6">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasPart"/>
-    <owl:allValuesFrom rdf:resource="http://w3id.org/CEON/ontology/processODP/Event"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b10">
-    <rdf:first rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b8"/>
-    <rdf:rest rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b11"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Process">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b7"/>
-    <rdfs:subClassOf rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b12"/>
-    <rdfs:comment xml:lang="en">Something that takes place over a (longer) period of time and changes some state of affairs.</rdfs:comment>
-    <rdfs:label>Process</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/hasOutput">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://w3id.org/CEON/ontology/processODP/Process"/>
-    <rdfs:comment>The output of a process or event.</rdfs:comment>
-    <rdfs:label>has output</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/processODP/Situation">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b16"/>
-    <rdfs:comment>A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time.</rdfs:comment>
-    <rdfs:label>Situation</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b12">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://w3id.org/CEON/ontology/processODP/hasPart"/>
-    <owl:allValuesFrom rdf:nodeID="n2beffb452b5a43eb89040421f2a7a361b13"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/contributor">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/dc/terms/publisher">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#date">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Datatype"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/CEON/ontology/location/Location">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
 </rdf:RDF>
