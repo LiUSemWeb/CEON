@@ -31,8 +31,14 @@ jobs:
 
       - name: Commit and push docs/dev
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add -f docs/dev/
-          git commit -m "Deploy MkDocs documentation [skip ci]"
+          git commit -m "Deploy MkDocs documentation"
           git push
+      
+      - name: push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
