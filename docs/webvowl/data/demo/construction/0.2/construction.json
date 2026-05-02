@@ -1,7 +1,7 @@
 {
   "_comment" : "Created with OWL2VOWL (version 0.3.7), http://vowl.visualdataweb.org",
   "header" : {
-    "languages" : [ "de", "hi", "en-us", "ru", "pt", "bg", "fr", "hu", "undefined", "sl", "ms", "el", "en", "it", "es", "zh", "cs", "ar", "la", "ja", "fa", "pl", "he", "ro", "tr", "en-gb" ],
+    "languages" : [ "de", "hi", "en-us", "ru", "pt", "bg", "fr", "hu", "undefined", "sl", "ms", "el", "en", "it", "es", "zh", "cs", "ar", "la", "ja", "fa", "pl", "ro", "he", "en-gb", "tr" ],
     "baseIris" : [ "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://qudt.org/schema/qudt", "http://w3id.org/CEON/ontology/statement", "http://w3id.org/CEON/ontology/actor", "http://w3id.org/CEON/ontology/product", "http://www.w3.org/2002/07/owl", "http://w3id.org/CEON/ontology/cvn", "http://w3id.org/CEON/ontology/actorODP", "http://w3id.org/CEON/ontology/location", "http://www.w3.org/2001/XMLSchema", "http://w3id.org/CEON/ontology/material", "http://w3id.org/CEON/ontology/datasheet", "http://w3id.org/CEON/ontology/quantity", "http://w3id.org/CEON/ontology/resourceODP", "http://www.w3.org/2000/01/rdf-schema", "http://www.w3.org/ns/prov", "http://w3id.org/CEON/ontology/processODP", "http://w3id.org/CEON/demo/construction", "http://www.opengis.net/ont/geosparql" ],
     "prefixList" : {
       "product" : "http://w3id.org/CEON/ontology/product/",
@@ -27,7 +27,7 @@
       "ns1" : "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#",
       "actorODP" : "http://w3id.org/CEON/ontology/actorODP/",
       "resourceODP" : "http://w3id.org/CEON/ontology/resourceODP/",
-      "ns2" : "http://w3id.org/CEON/ontology/quantity#"
+      "ns2" : "http://qudt.org/schema/qudt/"
     },
     "title" : {
       "undefined" : "Circular Economy Ontology Network (CEON) - Construction Module"
@@ -973,26 +973,6 @@
       "IRI-based" : "QuantityInterval"
     },
     "individuals" : [ {
-      "iri" : "http://w3id.org/CEON/ontology/statement/50gt-75le",
-      "baseIri" : "http://w3id.org/CEON/ontology/statement",
-      "annotations" : {
-        "hasMinimalValueNotIncludedOfInterval" : [ {
-          "identifier" : "hasMinimalValueNotIncludedOfInterval",
-          "language" : "undefined",
-          "value" : "http://w3id.org/CEON/ontology/statement/50p",
-          "type" : "iri"
-        } ],
-        "hasMaximalValueIncludedOfInterval" : [ {
-          "identifier" : "hasMaximalValueIncludedOfInterval",
-          "language" : "undefined",
-          "value" : "http://w3id.org/CEON/ontology/statement/75p",
-          "type" : "iri"
-        } ]
-      },
-      "labels" : {
-        "IRI-based" : "50gt-75le"
-      }
-    }, {
       "iri" : "http://w3id.org/CEON/ontology/statement/75gt-95le",
       "baseIri" : "http://w3id.org/CEON/ontology/statement",
       "annotations" : {
@@ -1011,6 +991,26 @@
       },
       "labels" : {
         "IRI-based" : "75gt-95le"
+      }
+    }, {
+      "iri" : "http://w3id.org/CEON/ontology/statement/50gt-75le",
+      "baseIri" : "http://w3id.org/CEON/ontology/statement",
+      "annotations" : {
+        "hasMinimalValueNotIncludedOfInterval" : [ {
+          "identifier" : "hasMinimalValueNotIncludedOfInterval",
+          "language" : "undefined",
+          "value" : "http://w3id.org/CEON/ontology/statement/50p",
+          "type" : "iri"
+        } ],
+        "hasMaximalValueIncludedOfInterval" : [ {
+          "identifier" : "hasMaximalValueIncludedOfInterval",
+          "language" : "undefined",
+          "value" : "http://w3id.org/CEON/ontology/statement/75p",
+          "type" : "iri"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "50gt-75le"
       }
     }, {
       "iri" : "http://w3id.org/CEON/ontology/statement/95gt-99le",
@@ -1308,7 +1308,7 @@
     "instances" : 0,
     "label" : {
       "IRI-based" : "ResourceParticipation",
-      "undefined" : "Resource participation"
+      "undefined" : "Resource Participation"
     },
     "subClasses" : [ "5", "61", "1" ],
     "comment" : {
@@ -1406,7 +1406,7 @@
     "comment" : {
       "undefined" : "A participation-relation, that represents the participation of an actor in a CVN with a certain role. For instance, a specific company playing the role of recycler in a certain flow of a CVN. The participation may also be related to a certain time (or time interval)."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "108",
     "superClasses" : [ "109" ]
   }, {
@@ -1493,9 +1493,9 @@
     "subClasses" : [ "8", "14", "18", "23", "27", "34", "38", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151" ],
     "intersection" : [ "71" ],
     "comment" : {
-      "undefined" : "The relation involving the role of a certain actor with respect to a certain resource, e.g. an organisation or individual (actor) owning (role) a specific product (resource) at a specific point or period in time."
+      "undefined" : "A relation between a resource, an actor, and the role the actor has in relation to the resource. For instance, the role of owner that a certain actor takes for a certain resource for a certain period of time. Or the seller of a certain resource, until that resource has been sold, and the actor no longer has that role in relation to the resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "9",
     "superClasses" : [ "71" ]
   }, {
@@ -1664,7 +1664,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the seller of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "38",
     "superClasses" : [ "9" ]
   }, {
@@ -1713,7 +1713,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the supplier of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "150",
     "superClasses" : [ "9" ]
   }, {
@@ -1724,12 +1724,12 @@
       "seeAlso" : [ {
         "identifier" : "seeAlso",
         "language" : "undefined",
-        "value" : "http://emmo.info/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94",
+        "value" : "https://w3id.org/mdo/core/Material",
         "type" : "label"
       }, {
         "identifier" : "seeAlso",
         "language" : "undefined",
-        "value" : "https://w3id.org/mdo/core/Material",
+        "value" : "http://emmo.info/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94",
         "type" : "label"
       } ]
     },
@@ -1769,7 +1769,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the reseller of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "148",
     "superClasses" : [ "9" ]
   }, {
@@ -1803,7 +1803,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the owner of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "142",
     "superClasses" : [ "9" ]
   }, {
@@ -2573,7 +2573,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the dismantler of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "145",
     "superClasses" : [ "9" ]
   }, {
@@ -2767,7 +2767,7 @@
       "iri" : "http://w3id.org/CEON/demo/construction/F60",
       "baseIri" : "http://w3id.org/CEON/demo/construction",
       "comment" : {
-        "undefined" : "F60"
+        "undefined" : "F60 represents a fire resitance duration of 60 min."
       },
       "labels" : {
         "IRI-based" : "F60"
@@ -2839,7 +2839,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the consumer of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "14",
     "superClasses" : [ "9" ]
   }, {
@@ -2923,7 +2923,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the repairer of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "143",
     "superClasses" : [ "9" ]
   }, {
@@ -3051,7 +3051,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the user of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "8",
     "superClasses" : [ "9" ]
   }, {
@@ -3115,7 +3115,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the manufacturer of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "144",
     "superClasses" : [ "9" ]
   }, {
@@ -3409,16 +3409,16 @@
       "iri" : "http://qudt.org/vocab/unit/MilliM2",
       "baseIri" : "http://qudt.org/vocab/unit",
       "annotations" : {
-        "uneceCommonCode" : [ {
-          "identifier" : "uneceCommonCode",
-          "language" : "undefined",
-          "value" : "MMK",
-          "type" : "label"
-        } ],
         "symbol" : [ {
           "identifier" : "symbol",
           "language" : "undefined",
           "value" : "mm²",
+          "type" : "label"
+        } ],
+        "uneceCommonCode" : [ {
+          "identifier" : "uneceCommonCode",
+          "language" : "undefined",
+          "value" : "MMK",
           "type" : "label"
         } ],
         "plainTextDescription" : [ {
@@ -3458,16 +3458,16 @@
         "undefined" : "A common metric unit of length or distance. One kilometer equals exactly 1000 meters, about 0.621 371 19 mile, 1093.6133 yards, or 3280.8399 feet. Oddly, higher multiples of the meter are rarely used; even the distances to the farthest galaxies are usually measured in kilometers. "
       },
       "annotations" : {
-        "symbol" : [ {
-          "identifier" : "symbol",
-          "language" : "undefined",
-          "value" : "km",
-          "type" : "label"
-        } ],
         "uneceCommonCode" : [ {
           "identifier" : "uneceCommonCode",
           "language" : "undefined",
           "value" : "KMT",
+          "type" : "label"
+        } ],
+        "symbol" : [ {
+          "identifier" : "symbol",
+          "language" : "undefined",
+          "value" : "km",
           "type" : "label"
         } ],
         "isDefinedBy" : [ {
@@ -3510,16 +3510,16 @@
       "iri" : "http://qudt.org/vocab/unit/TONNE",
       "baseIri" : "http://qudt.org/vocab/unit",
       "annotations" : {
-        "uneceCommonCode" : [ {
-          "identifier" : "uneceCommonCode",
-          "language" : "undefined",
-          "value" : "TNE",
-          "type" : "label"
-        } ],
         "symbol" : [ {
           "identifier" : "symbol",
           "language" : "undefined",
           "value" : "t",
+          "type" : "label"
+        } ],
+        "uneceCommonCode" : [ {
+          "identifier" : "uneceCommonCode",
+          "language" : "undefined",
+          "value" : "TNE",
           "type" : "label"
         } ],
         "plainTextDescription" : [ {
@@ -3558,16 +3558,16 @@
         "undefined" : "The millimetre (International spelling as used by the International Bureau of Weights and Measures) or millimeter (American spelling) (SI unit symbol mm) is a unit of length in the metric system, equal to one thousandth of a metre, which is the SI base unit of length. It is equal to 1000 micrometres or 1000000 nanometres. A millimetre is equal to exactly 5/127 (approximately 0.039370) of an inch."
       },
       "annotations" : {
-        "uneceCommonCode" : [ {
-          "identifier" : "uneceCommonCode",
-          "language" : "undefined",
-          "value" : "MMT",
-          "type" : "label"
-        } ],
         "symbol" : [ {
           "identifier" : "symbol",
           "language" : "undefined",
           "value" : "mm",
+          "type" : "label"
+        } ],
+        "uneceCommonCode" : [ {
+          "identifier" : "uneceCommonCode",
+          "language" : "undefined",
+          "value" : "MMT",
           "type" : "label"
         } ],
         "isDefinedBy" : [ {
@@ -3582,12 +3582,6 @@
           "value" : "http://qudt.org/vocab/prefix/Milli",
           "type" : "iri"
         } ],
-        "altLabel" : [ {
-          "identifier" : "altLabel",
-          "language" : "en-gb",
-          "value" : "mil",
-          "type" : "label"
-        } ],
         "informativeReference" : [ {
           "identifier" : "informativeReference",
           "language" : "undefined",
@@ -3598,6 +3592,12 @@
           "identifier" : "ucumCode",
           "language" : "undefined",
           "value" : "mm",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "en-gb",
+          "value" : "mil",
           "type" : "label"
         } ],
         "dbpediaMatch" : [ {
@@ -3694,12 +3694,12 @@
         "ucumCode" : [ {
           "identifier" : "ucumCode",
           "language" : "undefined",
-          "value" : "{#}",
+          "value" : "1",
           "type" : "label"
         }, {
           "identifier" : "ucumCode",
           "language" : "undefined",
-          "value" : "1",
+          "value" : "{#}",
           "type" : "label"
         } ]
       },
@@ -3775,16 +3775,16 @@
           "value" : "http://qudt.org/2.1/vocab/unit",
           "type" : "iri"
         } ],
-        "informativeReference" : [ {
-          "identifier" : "informativeReference",
-          "language" : "undefined",
-          "value" : "http://en.wikipedia.org/wiki/Kilogram?oldid=493633626",
-          "type" : "label"
-        } ],
         "ucumCode" : [ {
           "identifier" : "ucumCode",
           "language" : "undefined",
           "value" : "kg",
+          "type" : "label"
+        } ],
+        "informativeReference" : [ {
+          "identifier" : "informativeReference",
+          "language" : "undefined",
+          "value" : "http://en.wikipedia.org/wiki/Kilogram?oldid=493633626",
           "type" : "label"
         } ],
         "dbpediaMatch" : [ {
@@ -3813,8 +3813,8 @@
         "it" : "chilogrammo",
         "fr" : "kilogramme",
         "hu" : "kilogramm*",
-        "zh" : "公斤",
         "es" : "kilogramo",
+        "zh" : "公斤",
         "cs" : "kilogram",
         "ar" : "كيلوغرام",
         "la" : "chiliogramma",
@@ -3913,16 +3913,16 @@
           "value" : "L",
           "type" : "label"
         } ],
-        "altLabel" : [ {
-          "identifier" : "altLabel",
-          "language" : "undefined",
-          "value" : "litre",
-          "type" : "label"
-        } ],
         "informativeReference" : [ {
           "identifier" : "informativeReference",
           "language" : "undefined",
           "value" : "http://en.wikipedia.org/wiki/Litre?oldid=494846400",
+          "type" : "label"
+        } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "litre",
           "type" : "label"
         } ],
         "dbpediaMatch" : [ {
@@ -4009,8 +4009,8 @@
         "de" : "Meter",
         "hi" : "मीटर",
         "IRI-based" : "M",
-        "en-us" : "Meter",
         "ru" : "метр",
+        "en-us" : "Meter",
         "pt" : "metro",
         "bg" : "метър",
         "fr" : "mètre",
@@ -4020,8 +4020,8 @@
         "el" : "μέτρο",
         "en" : "metre",
         "it" : "metro",
-        "zh" : "米",
         "es" : "metro",
+        "zh" : "米",
         "cs" : "metr",
         "ar" : "متر",
         "la" : "metrum",
@@ -4036,16 +4036,16 @@
       "iri" : "http://qudt.org/vocab/unit/DeciL",
       "baseIri" : "http://qudt.org/vocab/unit",
       "annotations" : {
-        "symbol" : [ {
-          "identifier" : "symbol",
-          "language" : "undefined",
-          "value" : "dL",
-          "type" : "label"
-        } ],
         "uneceCommonCode" : [ {
           "identifier" : "uneceCommonCode",
           "language" : "undefined",
           "value" : "DLT",
+          "type" : "label"
+        } ],
+        "symbol" : [ {
+          "identifier" : "symbol",
+          "language" : "undefined",
+          "value" : "dL",
           "type" : "label"
         } ],
         "plainTextDescription" : [ {
@@ -4103,16 +4103,16 @@
           "value" : "http://www.ontology-of-units-of-measure.org/resource/om-2/year",
           "type" : "iri"
         } ],
-        "uneceCommonCode" : [ {
-          "identifier" : "uneceCommonCode",
-          "language" : "undefined",
-          "value" : "ANN",
-          "type" : "label"
-        } ],
         "symbol" : [ {
           "identifier" : "symbol",
           "language" : "undefined",
           "value" : "yr",
+          "type" : "label"
+        } ],
+        "uneceCommonCode" : [ {
+          "identifier" : "uneceCommonCode",
+          "language" : "undefined",
+          "value" : "ANN",
           "type" : "label"
         } ],
         "isDefinedBy" : [ {
@@ -4191,16 +4191,16 @@
       "iri" : "http://qudt.org/vocab/unit/DeciM2",
       "baseIri" : "http://qudt.org/vocab/unit",
       "annotations" : {
-        "uneceCommonCode" : [ {
-          "identifier" : "uneceCommonCode",
-          "language" : "undefined",
-          "value" : "DMK",
-          "type" : "label"
-        } ],
         "symbol" : [ {
           "identifier" : "symbol",
           "language" : "undefined",
           "value" : "dm²",
+          "type" : "label"
+        } ],
+        "uneceCommonCode" : [ {
+          "identifier" : "uneceCommonCode",
+          "language" : "undefined",
+          "value" : "DMK",
           "type" : "label"
         } ],
         "plainTextDescription" : [ {
@@ -4246,16 +4246,16 @@
           "value" : "http://www.ontology-of-units-of-measure.org/resource/om-2/ohm",
           "type" : "iri"
         } ],
-        "symbol" : [ {
-          "identifier" : "symbol",
-          "language" : "undefined",
-          "value" : "Ω",
-          "type" : "label"
-        } ],
         "uneceCommonCode" : [ {
           "identifier" : "uneceCommonCode",
           "language" : "undefined",
           "value" : "OHM",
+          "type" : "label"
+        } ],
+        "symbol" : [ {
+          "identifier" : "symbol",
+          "language" : "undefined",
+          "value" : "Ω",
           "type" : "label"
         } ],
         "isDefinedBy" : [ {
@@ -4264,16 +4264,16 @@
           "value" : "http://qudt.org/2.1/vocab/unit",
           "type" : "iri"
         } ],
-        "informativeReference" : [ {
-          "identifier" : "informativeReference",
-          "language" : "undefined",
-          "value" : "http://en.wikipedia.org/wiki/Ohm?oldid=494685555",
-          "type" : "label"
-        } ],
         "ucumCode" : [ {
           "identifier" : "ucumCode",
           "language" : "undefined",
           "value" : "Ohm",
+          "type" : "label"
+        } ],
+        "informativeReference" : [ {
+          "identifier" : "informativeReference",
+          "language" : "undefined",
+          "value" : "http://en.wikipedia.org/wiki/Ohm?oldid=494685555",
           "type" : "label"
         } ],
         "dbpediaMatch" : [ {
@@ -4290,8 +4290,8 @@
         } ]
       },
       "labels" : {
-        "de" : "Ohm",
         "hi" : "ओह्म",
+        "de" : "Ohm",
         "IRI-based" : "OHM",
         "ru" : "ом",
         "pt" : "ohm",
@@ -4302,8 +4302,8 @@
         "it" : "ohm",
         "fr" : "ohm",
         "hu" : "ohm",
-        "es" : "ohmio",
         "zh" : "欧姆",
+        "es" : "ohmio",
         "cs" : "ohm",
         "ar" : "أوم",
         "la" : "ohmium",
@@ -4332,66 +4332,6 @@
       "labels" : {
         "IRI-based" : "EURO-PER-KiloM",
         "undefined" : "Euro Per Kilometer"
-      }
-    }, {
-      "iri" : "http://qudt.org/vocab/unit/DAY",
-      "baseIri" : "http://qudt.org/vocab/unit",
-      "description" : {
-        "undefined" : "Mean solar day"
-      },
-      "annotations" : {
-        "omUnit" : [ {
-          "identifier" : "omUnit",
-          "language" : "undefined",
-          "value" : "http://www.ontology-of-units-of-measure.org/resource/om-2/day",
-          "type" : "iri"
-        } ],
-        "uneceCommonCode" : [ {
-          "identifier" : "uneceCommonCode",
-          "language" : "undefined",
-          "value" : "DAY",
-          "type" : "label"
-        } ],
-        "symbol" : [ {
-          "identifier" : "symbol",
-          "language" : "undefined",
-          "value" : "day",
-          "type" : "label"
-        } ],
-        "isDefinedBy" : [ {
-          "identifier" : "isDefinedBy",
-          "language" : "undefined",
-          "value" : "http://qudt.org/2.1/vocab/unit",
-          "type" : "iri"
-        } ],
-        "informativeReference" : [ {
-          "identifier" : "informativeReference",
-          "language" : "undefined",
-          "value" : "http://en.wikipedia.org/wiki/Day?oldid=494970012",
-          "type" : "label"
-        } ],
-        "ucumCode" : [ {
-          "identifier" : "ucumCode",
-          "language" : "undefined",
-          "value" : "d",
-          "type" : "label"
-        } ],
-        "dbpediaMatch" : [ {
-          "identifier" : "dbpediaMatch",
-          "language" : "undefined",
-          "value" : "http://dbpedia.org/resource/Day",
-          "type" : "label"
-        } ],
-        "udunitsCode" : [ {
-          "identifier" : "udunitsCode",
-          "language" : "undefined",
-          "value" : "d",
-          "type" : "label"
-        } ]
-      },
-      "labels" : {
-        "IRI-based" : "DAY",
-        "en" : "Day"
       }
     }, {
       "iri" : "http://qudt.org/vocab/unit/KiloGM-PER-M2",
@@ -4436,6 +4376,66 @@
         "en" : "Kilogram per Square Metre"
       }
     }, {
+      "iri" : "http://qudt.org/vocab/unit/DAY",
+      "baseIri" : "http://qudt.org/vocab/unit",
+      "description" : {
+        "undefined" : "Mean solar day"
+      },
+      "annotations" : {
+        "omUnit" : [ {
+          "identifier" : "omUnit",
+          "language" : "undefined",
+          "value" : "http://www.ontology-of-units-of-measure.org/resource/om-2/day",
+          "type" : "iri"
+        } ],
+        "uneceCommonCode" : [ {
+          "identifier" : "uneceCommonCode",
+          "language" : "undefined",
+          "value" : "DAY",
+          "type" : "label"
+        } ],
+        "symbol" : [ {
+          "identifier" : "symbol",
+          "language" : "undefined",
+          "value" : "day",
+          "type" : "label"
+        } ],
+        "isDefinedBy" : [ {
+          "identifier" : "isDefinedBy",
+          "language" : "undefined",
+          "value" : "http://qudt.org/2.1/vocab/unit",
+          "type" : "iri"
+        } ],
+        "ucumCode" : [ {
+          "identifier" : "ucumCode",
+          "language" : "undefined",
+          "value" : "d",
+          "type" : "label"
+        } ],
+        "informativeReference" : [ {
+          "identifier" : "informativeReference",
+          "language" : "undefined",
+          "value" : "http://en.wikipedia.org/wiki/Day?oldid=494970012",
+          "type" : "label"
+        } ],
+        "dbpediaMatch" : [ {
+          "identifier" : "dbpediaMatch",
+          "language" : "undefined",
+          "value" : "http://dbpedia.org/resource/Day",
+          "type" : "label"
+        } ],
+        "udunitsCode" : [ {
+          "identifier" : "udunitsCode",
+          "language" : "undefined",
+          "value" : "d",
+          "type" : "label"
+        } ]
+      },
+      "labels" : {
+        "IRI-based" : "DAY",
+        "en" : "Day"
+      }
+    }, {
       "iri" : "http://qudt.org/vocab/unit/GM-PER-M3",
       "baseIri" : "http://qudt.org/vocab/unit",
       "annotations" : {
@@ -4466,12 +4466,12 @@
         "ucumCode" : [ {
           "identifier" : "ucumCode",
           "language" : "undefined",
-          "value" : "g.m-3",
+          "value" : "g/m3",
           "type" : "label"
         }, {
           "identifier" : "ucumCode",
           "language" : "undefined",
-          "value" : "g/m3",
+          "value" : "g.m-3",
           "type" : "label"
         } ]
       },
@@ -4536,16 +4536,16 @@
           "value" : "http://www.ontology-of-units-of-measure.org/resource/om-2/hour",
           "type" : "iri"
         } ],
-        "symbol" : [ {
-          "identifier" : "symbol",
-          "language" : "undefined",
-          "value" : "hr",
-          "type" : "label"
-        } ],
         "uneceCommonCode" : [ {
           "identifier" : "uneceCommonCode",
           "language" : "undefined",
           "value" : "HUR",
+          "type" : "label"
+        } ],
+        "symbol" : [ {
+          "identifier" : "symbol",
+          "language" : "undefined",
+          "value" : "hr",
           "type" : "label"
         } ],
         "isDefinedBy" : [ {
@@ -4590,16 +4590,16 @@
         "undefined" : "A centimetre is a unit of length in the metric system, equal to one hundredth of a metre, which is the SI base unit of length. Centi is the SI prefix for a factor of 10.  The centimetre is the base unit of length in the now deprecated centimetre-gram-second (CGS) system of units."
       },
       "annotations" : {
-        "uneceCommonCode" : [ {
-          "identifier" : "uneceCommonCode",
-          "language" : "undefined",
-          "value" : "CMT",
-          "type" : "label"
-        } ],
         "symbol" : [ {
           "identifier" : "symbol",
           "language" : "undefined",
           "value" : "cm",
+          "type" : "label"
+        } ],
+        "uneceCommonCode" : [ {
+          "identifier" : "uneceCommonCode",
+          "language" : "undefined",
+          "value" : "CMT",
           "type" : "label"
         } ],
         "isDefinedBy" : [ {
@@ -4614,16 +4614,16 @@
           "value" : "http://qudt.org/vocab/prefix/Centi",
           "type" : "iri"
         } ],
-        "ucumCode" : [ {
-          "identifier" : "ucumCode",
-          "language" : "undefined",
-          "value" : "cm",
-          "type" : "label"
-        } ],
         "informativeReference" : [ {
           "identifier" : "informativeReference",
           "language" : "undefined",
           "value" : "http://en.wikipedia.org/wiki/Centimetre?oldid=494931891",
+          "type" : "label"
+        } ],
+        "ucumCode" : [ {
+          "identifier" : "ucumCode",
+          "language" : "undefined",
+          "value" : "cm",
           "type" : "label"
         } ],
         "dbpediaMatch" : [ {
@@ -4680,6 +4680,12 @@
           "value" : "<p>See NIST section <a href=\"http://physics.nist.gov/Pubs/SP811/sec06.html#6.2.8\">SP811 section 6.2.8</a></p>",
           "type" : "label"
         } ],
+        "altLabel" : [ {
+          "identifier" : "altLabel",
+          "language" : "undefined",
+          "value" : "degree-centigrade",
+          "type" : "label"
+        } ],
         "ucumCode" : [ {
           "identifier" : "ucumCode",
           "language" : "undefined",
@@ -4692,12 +4698,6 @@
           "value" : "http://en.wikipedia.org/wiki/Celsius?oldid=494152178",
           "type" : "label"
         } ],
-        "altLabel" : [ {
-          "identifier" : "altLabel",
-          "language" : "undefined",
-          "value" : "degree-centigrade",
-          "type" : "label"
-        } ],
         "dbpediaMatch" : [ {
           "identifier" : "dbpediaMatch",
           "language" : "undefined",
@@ -4707,12 +4707,12 @@
         "udunitsCode" : [ {
           "identifier" : "udunitsCode",
           "language" : "undefined",
-          "value" : "°C",
+          "value" : "℃",
           "type" : "label"
         }, {
           "identifier" : "udunitsCode",
           "language" : "undefined",
-          "value" : "℃",
+          "value" : "°C",
           "type" : "label"
         } ]
       },
@@ -4729,8 +4729,8 @@
         "it" : "grado celsius",
         "fr" : "degré celsius",
         "hu" : "Celsius-fok",
-        "zh" : "摄氏度",
         "es" : "grado celsius",
+        "zh" : "摄氏度",
         "cs" : "stupně celsia",
         "ar" : "درجة مئوية",
         "la" : "gradus celsii",
@@ -4738,8 +4738,8 @@
         "sl" : "stopinja Celzija",
         "fa" : "درجه سانتی گراد/سلسیوس",
         "pl" : "stopień celsjusza",
-        "he" : "צלזיוס",
         "ro" : "grad celsius",
+        "he" : "צלזיוס",
         "tr" : "celsius"
       }
     }, {
@@ -4767,16 +4767,16 @@
           "value" : "http://qudt.org/2.1/vocab/unit",
           "type" : "iri"
         } ],
-        "ucumCode" : [ {
-          "identifier" : "ucumCode",
-          "language" : "undefined",
-          "value" : "m2",
-          "type" : "label"
-        } ],
         "informativeReference" : [ {
           "identifier" : "informativeReference",
           "language" : "undefined",
           "value" : "http://en.wikipedia.org/wiki/Square_metre?oldid=490945508",
+          "type" : "label"
+        } ],
+        "ucumCode" : [ {
+          "identifier" : "ucumCode",
+          "language" : "undefined",
+          "value" : "m2",
           "type" : "label"
         } ],
         "dbpediaMatch" : [ {
@@ -4787,8 +4787,8 @@
         } ]
       },
       "labels" : {
-        "hi" : "वर्ग मीटर",
         "de" : "Quadratmeter",
+        "hi" : "वर्ग मीटर",
         "IRI-based" : "M2",
         "ru" : "квадратный метр",
         "en-us" : "Square Meter",
@@ -4801,8 +4801,8 @@
         "el" : "τετραγωνικό μέτρο",
         "en" : "square metre",
         "it" : "metro quadrato",
-        "es" : "metro cuadrado",
         "zh" : "平方米",
+        "es" : "metro cuadrado",
         "cs" : "čtvereční metr",
         "ar" : "متر مربع",
         "la" : "metrum quadratum",
@@ -4838,16 +4838,16 @@
           "value" : "http://qudt.org/2.1/vocab/unit",
           "type" : "iri"
         } ],
-        "ucumCode" : [ {
-          "identifier" : "ucumCode",
-          "language" : "undefined",
-          "value" : "m3",
-          "type" : "label"
-        } ],
         "informativeReference" : [ {
           "identifier" : "informativeReference",
           "language" : "undefined",
           "value" : "http://en.wikipedia.org/wiki/Cubic_metre?oldid=490956678",
+          "type" : "label"
+        } ],
+        "ucumCode" : [ {
+          "identifier" : "ucumCode",
+          "language" : "undefined",
+          "value" : "m3",
           "type" : "label"
         } ],
         "dbpediaMatch" : [ {
@@ -4870,8 +4870,8 @@
         "en" : "cubic metre",
         "it" : "metro cubo",
         "fr" : "mètre cube",
-        "es" : "metro cúbico",
         "zh" : "立方米",
+        "es" : "metro cúbico",
         "cs" : "metr krychlový",
         "ar" : "متر مكعب",
         "la" : "metrum cubicum",
@@ -4879,8 +4879,8 @@
         "sl" : "kubični meter",
         "fa" : "متر مکعب",
         "pl" : "metr sześcienny",
-        "ro" : "metru cub",
         "he" : "מטר מעוקב",
+        "ro" : "metru cub",
         "tr" : "metreküp"
       }
     }, {
@@ -4941,16 +4941,16 @@
           "value" : "http://www.ontology-of-units-of-measure.org/resource/om-2/second-Time",
           "type" : "iri"
         } ],
-        "uneceCommonCode" : [ {
-          "identifier" : "uneceCommonCode",
-          "language" : "undefined",
-          "value" : "SEC",
-          "type" : "label"
-        } ],
         "symbol" : [ {
           "identifier" : "symbol",
           "language" : "undefined",
           "value" : "s",
+          "type" : "label"
+        } ],
+        "uneceCommonCode" : [ {
+          "identifier" : "uneceCommonCode",
+          "language" : "undefined",
+          "value" : "SEC",
           "type" : "label"
         } ],
         "isDefinedBy" : [ {
@@ -4959,16 +4959,16 @@
           "value" : "http://qudt.org/2.1/vocab/unit",
           "type" : "iri"
         } ],
-        "ucumCode" : [ {
-          "identifier" : "ucumCode",
-          "language" : "undefined",
-          "value" : "s",
-          "type" : "label"
-        } ],
         "informativeReference" : [ {
           "identifier" : "informativeReference",
           "language" : "undefined",
           "value" : "http://en.wikipedia.org/wiki/Second?oldid=495241006",
+          "type" : "label"
+        } ],
+        "ucumCode" : [ {
+          "identifier" : "ucumCode",
+          "language" : "undefined",
+          "value" : "s",
           "type" : "label"
         } ],
         "dbpediaMatch" : [ {
@@ -4985,8 +4985,8 @@
         } ]
       },
       "labels" : {
-        "de" : "Sekunde",
         "hi" : "सैकण्ड",
+        "de" : "Sekunde",
         "IRI-based" : "SEC",
         "ru" : "секунда",
         "pt" : "segundo",
@@ -5023,16 +5023,16 @@
           "value" : "http://www.ontology-of-units-of-measure.org/resource/om-2/minute-Time",
           "type" : "iri"
         } ],
-        "uneceCommonCode" : [ {
-          "identifier" : "uneceCommonCode",
-          "language" : "undefined",
-          "value" : "MIN",
-          "type" : "label"
-        } ],
         "symbol" : [ {
           "identifier" : "symbol",
           "language" : "undefined",
           "value" : "min",
+          "type" : "label"
+        } ],
+        "uneceCommonCode" : [ {
+          "identifier" : "uneceCommonCode",
+          "language" : "undefined",
+          "value" : "MIN",
           "type" : "label"
         } ],
         "isDefinedBy" : [ {
@@ -5065,16 +5065,16 @@
         "undefined" : "Kilogram per cubic metre is an SI derived unit of density, defined by mass in kilograms divided by volume in cubic metres. The official SI symbolic abbreviation is \\(kg \\cdot m^{-3}\\), or equivalently either \\(kg/m^3\\)."
       },
       "annotations" : {
-        "uneceCommonCode" : [ {
-          "identifier" : "uneceCommonCode",
-          "language" : "undefined",
-          "value" : "KMQ",
-          "type" : "label"
-        } ],
         "symbol" : [ {
           "identifier" : "symbol",
           "language" : "undefined",
           "value" : "kg/m³",
+          "type" : "label"
+        } ],
+        "uneceCommonCode" : [ {
+          "identifier" : "uneceCommonCode",
+          "language" : "undefined",
+          "value" : "KMQ",
           "type" : "label"
         } ],
         "plainTextDescription" : [ {
@@ -5092,12 +5092,12 @@
         "ucumCode" : [ {
           "identifier" : "ucumCode",
           "language" : "undefined",
-          "value" : "kg.m-3",
+          "value" : "kg/m3",
           "type" : "label"
         }, {
           "identifier" : "ucumCode",
           "language" : "undefined",
-          "value" : "kg/m3",
+          "value" : "kg.m-3",
           "type" : "label"
         } ]
       },
@@ -5114,8 +5114,8 @@
         "en" : "kilogram per cubic metre",
         "it" : "chilogrammo al metro cubo",
         "fr" : "kilogramme par mètre cube",
-        "es" : "kilogramo por metro cúbico",
         "zh" : "千克每立方米",
+        "es" : "kilogramo por metro cúbico",
         "cs" : "kilogram na metr krychlový",
         "ar" : "كيلوغرام لكل متر مكعب",
         "ja" : "キログラム毎立方メートル",
@@ -5129,16 +5129,16 @@
       "iri" : "http://qudt.org/vocab/unit/KiloOHM",
       "baseIri" : "http://qudt.org/vocab/unit",
       "annotations" : {
-        "symbol" : [ {
-          "identifier" : "symbol",
-          "language" : "undefined",
-          "value" : "kΩ",
-          "type" : "label"
-        } ],
         "uneceCommonCode" : [ {
           "identifier" : "uneceCommonCode",
           "language" : "undefined",
           "value" : "B49",
+          "type" : "label"
+        } ],
+        "symbol" : [ {
+          "identifier" : "symbol",
+          "language" : "undefined",
+          "value" : "kΩ",
           "type" : "label"
         } ],
         "plainTextDescription" : [ {
@@ -5496,7 +5496,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the viewer of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "147",
     "superClasses" : [ "9" ]
   }, {
@@ -5735,7 +5735,7 @@
     "comment" : {
       "undefined" : "A data sheet is a collection of data about something, e.g. a set of facts about a product."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "55",
     "superClasses" : [ "56" ]
   }, {
@@ -5871,7 +5871,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the updater of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "34",
     "superClasses" : [ "9" ]
   }, {
@@ -6022,10 +6022,10 @@
     "instances" : 0,
     "label" : {
       "IRI-based" : "TakingBackResource",
-      "undefined" : "Taking back resource"
+      "undefined" : "The relation where the role of the actor is the collector of a certain resource."
     },
     "intersection" : [ "9" ],
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "146",
     "superClasses" : [ "9" ]
   }, {
@@ -6062,7 +6062,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the buyer of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "18",
     "superClasses" : [ "9" ]
   }, {
@@ -6073,12 +6073,12 @@
       "seeAlso" : [ {
         "identifier" : "seeAlso",
         "language" : "undefined",
-        "value" : "http://purl.obolibrary.org/obo/chebi#24431",
+        "value" : "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0",
         "type" : "label"
       }, {
         "identifier" : "seeAlso",
         "language" : "undefined",
-        "value" : "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0",
+        "value" : "http://purl.obolibrary.org/obo/chebi#24431",
         "type" : "label"
       } ]
     },
@@ -6190,7 +6190,7 @@
     "comment" : {
       "undefined" : "Participation of a certain actor in a certain process, with a certain role. For instance, a certain department of a recycling company having the role of quality controllant, or material sorter, in a certain recycling process. The participation may also be given a time, e.g. a start and end time."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "153",
     "superClasses" : [ "109" ]
   }, {
@@ -6205,7 +6205,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the producer of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "27",
     "superClasses" : [ "9" ]
   }, {
@@ -6406,12 +6406,12 @@
       "seeAlso" : [ {
         "identifier" : "seeAlso",
         "language" : "undefined",
-        "value" : "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea",
+        "value" : "http://purl.obolibrary.org/obo/chebi#59999",
         "type" : "label"
       }, {
         "identifier" : "seeAlso",
         "language" : "undefined",
-        "value" : "http://purl.obolibrary.org/obo/chebi#59999",
+        "value" : "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea",
         "type" : "label"
       } ]
     },
@@ -6558,12 +6558,12 @@
       "seeAlso" : [ {
         "identifier" : "seeAlso",
         "language" : "undefined",
-        "value" : "http://purl.obolibrary.org/obo/chebi#23367",
+        "value" : "http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a",
         "type" : "label"
       }, {
         "identifier" : "seeAlso",
         "language" : "undefined",
-        "value" : "http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a",
+        "value" : "http://purl.obolibrary.org/obo/chebi#23367",
         "type" : "label"
       } ]
     },
@@ -6638,7 +6638,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the recycler of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "149",
     "superClasses" : [ "9" ]
   }, {
@@ -6653,7 +6653,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the issuer of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "151",
     "superClasses" : [ "9" ]
   }, {
@@ -6682,7 +6682,7 @@
     "comment" : {
       "undefined" : "The relation where the role of the actor is the provider of a certain resource."
     },
-    "attributes" : [ "intersection", "external" ],
+    "attributes" : [ "external", "intersection" ],
     "id" : "23",
     "superClasses" : [ "9" ]
   }, {
@@ -6802,12 +6802,6 @@
       "iri" : "http://w3id.org/CEON/ontology/statement/50p",
       "baseIri" : "http://w3id.org/CEON/ontology/statement",
       "annotations" : {
-        "hasUnit" : [ {
-          "identifier" : "hasUnit",
-          "language" : "undefined",
-          "value" : "http://qudt.org/vocab/unit/PERCENT",
-          "type" : "iri"
-        } ],
         "numericValue" : [ {
           "identifier" : "numericValue",
           "language" : "undefined",
@@ -6850,12 +6844,6 @@
       "iri" : "http://w3id.org/CEON/ontology/statement/1p",
       "baseIri" : "http://w3id.org/CEON/ontology/statement",
       "annotations" : {
-        "hasUnit" : [ {
-          "identifier" : "hasUnit",
-          "language" : "undefined",
-          "value" : "http://qudt.org/vocab/unit/PERCENT",
-          "type" : "iri"
-        } ],
         "numericValue" : [ {
           "identifier" : "numericValue",
           "language" : "undefined",
@@ -6870,12 +6858,6 @@
       "iri" : "http://w3id.org/CEON/ontology/statement/0p",
       "baseIri" : "http://w3id.org/CEON/ontology/statement",
       "annotations" : {
-        "hasUnit" : [ {
-          "identifier" : "hasUnit",
-          "language" : "undefined",
-          "value" : "http://qudt.org/vocab/unit/PERCENT",
-          "type" : "iri"
-        } ],
         "numericValue" : [ {
           "identifier" : "numericValue",
           "language" : "undefined",
@@ -6890,12 +6872,6 @@
       "iri" : "http://w3id.org/CEON/ontology/statement/25p",
       "baseIri" : "http://w3id.org/CEON/ontology/statement",
       "annotations" : {
-        "hasUnit" : [ {
-          "identifier" : "hasUnit",
-          "language" : "undefined",
-          "value" : "http://qudt.org/vocab/unit/PERCENT",
-          "type" : "iri"
-        } ],
         "numericValue" : [ {
           "identifier" : "numericValue",
           "language" : "undefined",
@@ -6910,12 +6886,6 @@
       "iri" : "http://w3id.org/CEON/ontology/statement/0.001p",
       "baseIri" : "http://w3id.org/CEON/ontology/statement",
       "annotations" : {
-        "hasUnit" : [ {
-          "identifier" : "hasUnit",
-          "language" : "undefined",
-          "value" : "http://qudt.org/vocab/unit/PERCENT",
-          "type" : "iri"
-        } ],
         "numericValue" : [ {
           "identifier" : "numericValue",
           "language" : "undefined",
@@ -6930,12 +6900,6 @@
       "iri" : "http://w3id.org/CEON/ontology/statement/75p",
       "baseIri" : "http://w3id.org/CEON/ontology/statement",
       "annotations" : {
-        "hasUnit" : [ {
-          "identifier" : "hasUnit",
-          "language" : "undefined",
-          "value" : "http://qudt.org/vocab/unit/PERCENT",
-          "type" : "iri"
-        } ],
         "numericValue" : [ {
           "identifier" : "numericValue",
           "language" : "undefined",
@@ -6970,12 +6934,6 @@
       "iri" : "http://w3id.org/CEON/ontology/statement/10p",
       "baseIri" : "http://w3id.org/CEON/ontology/statement",
       "annotations" : {
-        "hasUnit" : [ {
-          "identifier" : "hasUnit",
-          "language" : "undefined",
-          "value" : "http://qudt.org/vocab/unit/PERCENT",
-          "type" : "iri"
-        } ],
         "numericValue" : [ {
           "identifier" : "numericValue",
           "language" : "undefined",
@@ -6990,12 +6948,6 @@
       "iri" : "http://w3id.org/CEON/ontology/statement/99p",
       "baseIri" : "http://w3id.org/CEON/ontology/statement",
       "annotations" : {
-        "hasUnit" : [ {
-          "identifier" : "hasUnit",
-          "language" : "undefined",
-          "value" : "http://qudt.org/vocab/unit/PERCENT",
-          "type" : "iri"
-        } ],
         "numericValue" : [ {
           "identifier" : "numericValue",
           "language" : "undefined",
@@ -8439,7 +8391,7 @@
     "range" : "215",
     "label" : {
       "IRI-based" : "participationIn",
-      "undefined" : "is a participation in"
+      "undefined" : "participation in"
     },
     "domain" : "109",
     "comment" : {
@@ -8955,7 +8907,7 @@
     "superproperty" : [ "113" ],
     "domain" : "320",
     "comment" : {
-      "undefined" : "has recycling separability"
+      "undefined" : "hasRecyclingSeparability is used to describe the amount of the product or product object that can be separated for recycling."
     },
     "attributes" : [ "object" ],
     "id" : "193"
@@ -9352,7 +9304,7 @@
     },
     "domain" : "330",
     "comment" : {
-      "undefined" : "hasProductDescription is used to represent a textual description of a product or product object."
+      "undefined" : "has product description"
     },
     "attributes" : [ "datatype" ],
     "id" : "416"
@@ -10825,7 +10777,7 @@
     "range" : "436",
     "label" : {
       "IRI-based" : "hasOrganisationName",
-      "undefined" : "Represent name of an organisation."
+      "undefined" : "has organisation name"
     },
     "domain" : "179",
     "attributes" : [ "external", "datatype" ],
@@ -11205,7 +11157,7 @@
     "range" : "602",
     "label" : {
       "IRI-based" : "hasOrganisationName",
-      "undefined" : "Represent name of an organisation."
+      "undefined" : "has organisation name"
     },
     "domain" : "179",
     "attributes" : [ "external", "datatype", "someValues" ],
