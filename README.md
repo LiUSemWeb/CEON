@@ -1,5 +1,10 @@
 # CEON: Circular Economy Ontology Network
 
+[![DOI](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.17751741-blue.svg)](https://doi.org/10.5281/zenodo.18411651)
+[![Ontology: CC-BY 4.0](https://img.shields.io/badge/ontology-CC--BY%204.0-orange.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![License: MIT (code)](https://img.shields.io/badge/code-MIT-green.svg)](LICENSE)
+
+
 The Circular Economy Ontology Network (CEON) provides a shared vocabulary in the form of a network of ontologies to support efficient decentralized sharing of industry data in circular economies.
 
 ## Developer guidelines
